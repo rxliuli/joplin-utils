@@ -26,7 +26,7 @@ class ResourceApi {
   async remove(id: string) {
     return (
       await axios.delete<ResourceProperties>(
-        ApiUtil.baseUrl(`/resources/${id}`)
+        ApiUtil.baseUrl(`/resources/${id}`),
       )
     ).data
   }

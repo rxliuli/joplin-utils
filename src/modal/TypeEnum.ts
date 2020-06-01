@@ -13,5 +13,5 @@ export enum TypeEnum {
   ResourceLocalState = 12,
   Revision = 13,
   Migration = 14,
-  SmartFilter = 15
+  SmartFilter = 15,
 }
