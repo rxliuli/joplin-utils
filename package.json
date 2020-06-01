@@ -1,0 +1,40 @@
+{
+  "name": "joplin-api",
+  "version": "0.1.0",
+  "description": "TypeScript SDK 的模板项目",
+  "license": "mit",
+  "main": "dist/joplin-api.js",
+  "module": "dist/joplin-api-es.js",
+  "scripts": {
+    "build": "rollup -c build/rollup.config.js",
+    "clean": "rimraf dist/",
+    "dev": "rollup -w -c build/rollup.config.js",
+    "docs": "typedoc --out docs src --exclude src/**/*.test.ts && cp README.md docs/ && cp .nojekyll docs/",
+    "postinstall": "yarn link:add && yarn link:remove && yarn link:add",
+    "link:add": "yarn link && yarn link %npm_package_name%",
+    "link:remove": "yarn unlink %npm_package_name% && yarn unlink",
+    "test": "jest --all"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.12",
+    "@types/rollup": "^0.54.0",
+    "husky": "^3.0.5",
+    "jest": "^24.5.0",
+    "jest-extended": "^0.11.1",
+    "lint-staged": "^9.3.0",
+    "prettier": "^1.18.2",
+    "prettier-config-standard": "^1.0.1",
+    "rollup": "^1.27.0",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-typescript2": "^0.25.2",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.5.0",
+    "tslib": "^1.10.0",
+    "typedoc": "^0.15.3",
+    "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "query-string": "^6.12.1"
+  }
+}
