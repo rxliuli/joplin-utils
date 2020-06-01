@@ -1,4 +1,4 @@
-export enum SearchTypeEnum {
+export enum TypeEnum {
   Note = 1,
   Folder = 2,
   Setting = 3,

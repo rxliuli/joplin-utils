@@ -1,7 +1,7 @@
 import { NoteProperties } from './NoteProperties'
-import { SearchTypeEnum } from './SearchTypeEnum'
+import { CommonType } from './CommonType'
 
-export type SearchData = Pick<
+export type NoteGetRes = Pick<
   NoteProperties,
   | 'id'
   | 'title'
@@ -12,6 +12,5 @@ export type SearchData = Pick<
   | 'user_updated_time'
   | 'user_created_time'
   | 'encryption_applied'
-> & {
-  type_: SearchTypeEnum
-}
+> &
+  CommonType

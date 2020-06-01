@@ -38,7 +38,7 @@ export interface ResourceProperties {
   /**
    * text
    */
-  encryption_cipher_: string
+  encryption_cipher_text: string
   /**
    *
    */

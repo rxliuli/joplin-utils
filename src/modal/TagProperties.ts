@@ -26,7 +26,7 @@ export interface TagProperties {
   /**
    * text
    */
-  encryption_cipher_: string
+  encryption_cipher_text: string
   /**
    *
    */
