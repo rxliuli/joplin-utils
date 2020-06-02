@@ -1,4 +1,4 @@
-import { setupTestEnv } from './SetupTestEnv'
+import { setupTestEnv } from '../../test/SetupTestEnv'
 import { joplinApi } from './JoplinApi'
 
 describe('test Joplin', () => {

@@ -1,5 +1,5 @@
 import { searchApi } from './SearchApi'
-import { setupTestEnv } from './SetupTestEnv'
+import { setupTestEnv } from '../../test/SetupTestEnv'
 
 describe('test SearchApi', () => {
   beforeAll(() => {

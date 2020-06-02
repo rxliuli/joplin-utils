@@ -1,5 +1,5 @@
 import { noteApi } from './NoteApi'
-import { setupTestEnv } from './SetupTestEnv'
+import { setupTestEnv } from '../../test/SetupTestEnv'
 
 describe('test JoplinApi', () => {
   beforeAll(() => {

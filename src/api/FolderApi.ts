@@ -2,16 +2,17 @@ import axios from 'axios'
 import { ApiUtil } from '../util/ApiUtil'
 import { FolderProperties } from '../modal/FolderProperties'
 import { NoteProperties } from '../modal/NoteProperties'
+import { FolderListRes } from '../modal/FolderListRes'
+import { FolderGetRes } from '../modal/FolderGetRes'
+import { FolderCreateRes } from '../modal/FolderCreateRes'
 
 class FolderApi {
   async list() {
-    return (await axios.get<FolderProperties[]>(ApiUtil.baseUrl('/folders')))
-      .data
+    return (await axios.get<FolderListRes[]>(ApiUtil.baseUrl('/folders'))).data
   }
   async get(id: string) {
-    return (
-      await axios.get<FolderProperties>(ApiUtil.baseUrl(`/folders/${id}`))
-    ).data
+    return (await axios.get<FolderGetRes>(ApiUtil.baseUrl(`/folders/${id}`)))
+      .data
   }
   async notesByFolderId(id: string) {
     return (
@@ -19,7 +20,9 @@ class FolderApi {
     ).data
   }
   async create(param: Pick<FolderProperties, 'title' | 'parent_id'>) {
-    return (await axios.post(ApiUtil.baseUrl(`/folders`), param)).data
+    return (
+      await axios.post<FolderCreateRes>(ApiUtil.baseUrl(`/folders`), param)
+    ).data
   }
   async update(param: Pick<FolderProperties, 'id' | 'title'>) {
     const { id, ...others } = param
@@ -30,4 +33,4 @@ class FolderApi {
   }
 }
 
-export const joplinApi = new FolderApi()
+export const folderApi = new FolderApi()
