@@ -20,3 +20,7 @@ Joplin api 的 js 封装，使用 ts 编写，提供完整的类型定义，包�
   | 删除         | `remove` | `noteApi.remove` |
 
 - 存在一些特殊情况，例如涉及到多个实体的 api，命名则一般是 `操作实体 + by + 依据实体`，例如 根据笔记 id 获取标签列表的 api 是 `noteApi.tagsById`
+
+## 一些问题
+
+- `get` 方法不应该报错，如果不存在应该返回 `null` 而非抛出异常

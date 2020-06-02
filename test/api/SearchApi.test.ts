@@ -1,11 +1,9 @@
-import { searchApi } from './SearchApi'
-import { setupTestEnv } from '../../test/SetupTestEnv'
+import { searchApi } from '../..'
+import { config } from '../../'
 
 describe('test SearchApi', () => {
-  beforeAll(() => {
-    setupTestEnv()
-  })
   it('test search', async () => {
+    console.log(config)
     const res = await searchApi.search({
       query: 'title:测试',
     })

@@ -417,9 +417,89 @@
     }());
     var folderApi = new FolderApi();
 
+    var ResourceApi = /** @class */ (function () {
+        function ResourceApi() {
+        }
+        ResourceApi.prototype.list = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/resources'))];
+                        case 1: return [2 /*return*/, (_a.sent())
+                                .data];
+                    }
+                });
+            });
+        };
+        ResourceApi.prototype.get = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/resources/" + id))];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        /**
+         * Creates a new resource
+         * Creating a new resource is special because you also need to upload the file. Unlike other API calls, this one must have the "multipart/form-data" Content-Type. The file data must be passed to the "data" form field, and the other properties to the "props" form field. An example of a valid call with cURL would be:
+         * The "data" field is required, while the "props" one is not. If not specified, default values will be used.
+         * @param param
+         * TODO
+         */
+        ResourceApi.prototype.create = function (param) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl('/resources'), param)];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        ResourceApi.prototype.update = function (param) {
+            return __awaiter(this, void 0, void 0, function () {
+                var id, others;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            id = param.id, others = __rest(param, ["id"]);
+                            return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/resources/" + id), others)];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        ResourceApi.prototype.remove = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/resources/" + id))];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        ResourceApi.prototype.fileByResourceId = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/resources/" + id + "/file"))];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        return ResourceApi;
+    }());
+    var resourceApi = new ResourceApi();
+
+    exports.config = config;
     exports.folderApi = folderApi;
     exports.joplinApi = joplinApi;
     exports.noteApi = noteApi;
+    exports.resourceApi = resourceApi;
     exports.searchApi = searchApi;
     exports.tagApi = tagApi;
 

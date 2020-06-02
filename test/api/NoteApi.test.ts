@@ -1,10 +1,6 @@
-import { noteApi } from './NoteApi'
-import { setupTestEnv } from '../../test/SetupTestEnv'
+import { noteApi } from '../../'
 
 describe('test JoplinApi', () => {
-  beforeAll(() => {
-    setupTestEnv()
-  })
   const folderId = '1dbc83a4ffae4cc8911534d1d013ae72'
   const noteId = '2538240060064c88baf9fdd60b1513d9'
   it('test list', async () => {

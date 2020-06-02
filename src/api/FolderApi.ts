@@ -5,6 +5,7 @@ import { NoteProperties } from '../modal/NoteProperties'
 import { FolderListRes } from '../modal/FolderListRes'
 import { FolderGetRes } from '../modal/FolderGetRes'
 import { FolderCreateRes } from '../modal/FolderCreateRes'
+import { FolderUpdateRes } from '../modal/FolderUpdateRes'
 
 class FolderApi {
   async list() {
@@ -26,10 +27,15 @@ class FolderApi {
   }
   async update(param: Pick<FolderProperties, 'id' | 'title'>) {
     const { id, ...others } = param
-    return (await axios.put(ApiUtil.baseUrl(`/folders/${id}`), others)).data
+    return (
+      await axios.put<FolderUpdateRes>(
+        ApiUtil.baseUrl(`/folders/${id}`),
+        others,
+      )
+    ).data
   }
   async remove(id: string) {
-    return (await axios.delete(ApiUtil.baseUrl(`/folders/${id}`))).data
+    return (await axios.delete<string>(ApiUtil.baseUrl(`/folders/${id}`))).data
   }
 }
 

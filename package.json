@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "description": "TypeScript SDK 的模板项目",
   "license": "mit",
-  "main": "dist/joplin-api.js",
-  "module": "dist/joplin-api-es.js",
+  "main": "./dist/joplin-api.js",
+  "module": "./dist/joplin-api-es.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "rollup -c build/rollup.config.js",
     "clean": "rimraf dist/",

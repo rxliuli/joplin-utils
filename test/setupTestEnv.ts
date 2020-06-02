@@ -1,4 +1,4 @@
-import { config } from '../src/util/config'
+import { config } from '..'
 
 export function setupTestEnv() {
   config.token =
