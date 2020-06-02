@@ -9,6 +9,7 @@ export default {
     // 打包名称
     name: name,
     exports: 'named',
+    globals: 'joplinApi',
     // 启用代码映射，便于调试之用
     sourcemap: true,
   },

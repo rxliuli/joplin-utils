@@ -1,0 +1,1 @@
+{"version":3,"file":"ajax.d.ts","sourceRoot":"","sources":["ajax.ts"],"names":[],"mappings":"AAAA,OAAc,EAAE,MAAM,EAAE,MAAM,OAAO,CAAA;AAErC,wBAAsB,IAAI,CAAC,CAAC,EAAE,MAAM,EAAE;IACpC,GAAG,EAAE,MAAM,CAAA;IACX,MAAM,CAAC,EAAE,MAAM,CAAA;IACf,MAAM,EAAE,MAAM,CAAA;CACf,cAGA"}

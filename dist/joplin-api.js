@@ -1,8 +1,10 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-    typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (global = global || self, factory(global['joplin-api'] = {}));
-}(this, (function (exports) { 'use strict';
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('axios'), require('query-string')) :
+    typeof define === 'function' && define.amd ? define(['exports', 'axios', 'query-string'], factory) :
+    (global = global || self, factory(global['joplin-api'] = {}, global.axios, global.queryString));
+}(this, (function (exports, axios, queryString) { 'use strict';
+
+    axios = axios && axios.hasOwnProperty('default') ? axios['default'] : axios;
 
     /*! *****************************************************************************
     Copyright (c) Microsoft Corporation. All rights reserved.
@@ -18,6 +20,29 @@
     See the Apache Version 2.0 License for specific language governing permissions
     and limitations under the License.
     ***************************************************************************** */
+
+    var __assign = function() {
+        __assign = Object.assign || function __assign(t) {
+            for (var s, i = 1, n = arguments.length; i < n; i++) {
+                s = arguments[i];
+                for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+            }
+            return t;
+        };
+        return __assign.apply(this, arguments);
+    };
+
+    function __rest(s, e) {
+        var t = {};
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+            for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+                if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                    t[p[i]] = s[p[i]];
+            }
+        return t;
+    }
 
     function __awaiter(thisArg, _arguments, P, generator) {
         return new (P || (P = Promise))(function (resolve, reject) {
@@ -56,18 +81,347 @@
         }
     }
 
-    function hello() {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                console.log('hello world');
-                return [2 /*return*/];
-            });
-        });
-    }
-    var index = { hello: hello };
+    var Config = /** @class */ (function () {
+        function Config() {
+            this.port = 41184;
+            this.token = '';
+        }
+        return Config;
+    }());
+    var config = new Config();
 
-    exports.default = index;
-    exports.hello = hello;
+    var ApiUtil = /** @class */ (function () {
+        function ApiUtil() {
+        }
+        ApiUtil.baseUrl = function (url, param) {
+            var query = queryString.stringify(__assign(__assign({}, param), { token: config.token }));
+            return "http://localhost:" + config.port + url + "?" + query;
+        };
+        return ApiUtil;
+    }());
+
+    var NoteApi = /** @class */ (function () {
+        function NoteApi() {
+        }
+        NoteApi.prototype.list = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var res;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/notes'))];
+                        case 1:
+                            res = _a.sent();
+                            return [2 /*return*/, res.data];
+                    }
+                });
+            });
+        };
+        NoteApi.prototype.get = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                var res;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/notes/" + id))];
+                        case 1:
+                            res = _a.sent();
+                            return [2 /*return*/, res.data];
+                    }
+                });
+            });
+        };
+        NoteApi.prototype.create = function (param) {
+            return __awaiter(this, void 0, void 0, function () {
+                var res;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/notes"), param)];
+                        case 1:
+                            res = _a.sent();
+                            return [2 /*return*/, res.data];
+                    }
+                });
+            });
+        };
+        NoteApi.prototype.update = function (param) {
+            return __awaiter(this, void 0, void 0, function () {
+                var id, others, res;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            id = param.id, others = __rest(param, ["id"]);
+                            return [4 /*yield*/, axios.put(ApiUtil.baseUrl("/notes/" + id), others)];
+                        case 1:
+                            res = _a.sent();
+                            return [2 /*return*/, res.data];
+                    }
+                });
+            });
+        };
+        /**
+         * @param id
+         * @throws Error: Request failed with status code 404
+         */
+        NoteApi.prototype.remove = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                var res;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/notes/" + id))];
+                        case 1:
+                            res = _a.sent();
+                            return [2 /*return*/, res.data];
+                    }
+                });
+            });
+        };
+        NoteApi.prototype.tagsById = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                var res;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/notes/" + id + "/tags"))];
+                        case 1:
+                            res = _a.sent();
+                            return [2 /*return*/, res.data];
+                    }
+                });
+            });
+        };
+        NoteApi.prototype.resourcesById = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                var res;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/notes/" + id + "/resources"))];
+                        case 1:
+                            res = _a.sent();
+                            return [2 /*return*/, res.data];
+                    }
+                });
+            });
+        };
+        return NoteApi;
+    }());
+    var noteApi = new NoteApi();
+
+    var TagApi = /** @class */ (function () {
+        function TagApi() {
+        }
+        TagApi.prototype.list = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/tags'))];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        TagApi.prototype.get = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/tags/" + id))];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        TagApi.prototype.create = function (param) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl('/tags'), param)];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        TagApi.prototype.update = function (param) {
+            return __awaiter(this, void 0, void 0, function () {
+                var id, others;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            id = param.id, others = __rest(param, ["id"]);
+                            return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/tags/" + id), others)];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        TagApi.prototype.remove = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/tags/" + id))];
+                        case 1: return [2 /*return*/, (_a.sent())
+                                .data];
+                    }
+                });
+            });
+        };
+        TagApi.prototype.notesByTagId = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/tags/" + id + "/notes"))];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        /**
+         * Post a note to this endpoint to add the tag to the note. The note data must at least contain an ID property (all other properties will be ignored).
+         * @param id
+         */
+        TagApi.prototype.updateNotesByTagId = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/tags/" + id + "/notes"))];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        TagApi.prototype.removeNotesByNoteId = function (tagId, noteId) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/tags/" + tagId + "/notes/" + noteId))];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        return TagApi;
+    }());
+    var tagApi = new TagApi();
+
+    var SearchApi = /** @class */ (function () {
+        function SearchApi() {
+        }
+        SearchApi.prototype.search = function (options) {
+            return __awaiter(this, void 0, void 0, function () {
+                var res;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/search', options))];
+                        case 1:
+                            res = _a.sent();
+                            return [2 /*return*/, res.data];
+                    }
+                });
+            });
+        };
+        return SearchApi;
+    }());
+    var searchApi = new SearchApi();
+
+    var JoplinApi = /** @class */ (function () {
+        function JoplinApi() {
+        }
+        JoplinApi.prototype.scan = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    throw new Error('no impl');
+                });
+            });
+        };
+        JoplinApi.prototype.ping = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                var res;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/ping'))];
+                        case 1:
+                            res = _a.sent();
+                            return [2 /*return*/, res.data === 'JoplinClipperServer'];
+                    }
+                });
+            });
+        };
+        return JoplinApi;
+    }());
+    var joplinApi = new JoplinApi();
+
+    var FolderApi = /** @class */ (function () {
+        function FolderApi() {
+        }
+        FolderApi.prototype.list = function () {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/folders'))];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        FolderApi.prototype.get = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/folders/" + id))];
+                        case 1: return [2 /*return*/, (_a.sent())
+                                .data];
+                    }
+                });
+            });
+        };
+        FolderApi.prototype.notesByFolderId = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/folders/" + id + "/notes"))];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        FolderApi.prototype.create = function (param) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/folders"), param)];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        FolderApi.prototype.update = function (param) {
+            return __awaiter(this, void 0, void 0, function () {
+                var id, others;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            id = param.id, others = __rest(param, ["id"]);
+                            return [4 /*yield*/, axios.put(ApiUtil.baseUrl("/folders/" + id), others)];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        FolderApi.prototype.remove = function (id) {
+            return __awaiter(this, void 0, void 0, function () {
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/folders/" + id))];
+                        case 1: return [2 /*return*/, (_a.sent()).data];
+                    }
+                });
+            });
+        };
+        return FolderApi;
+    }());
+    var folderApi = new FolderApi();
+
+    exports.folderApi = folderApi;
+    exports.joplinApi = joplinApi;
+    exports.noteApi = noteApi;
+    exports.searchApi = searchApi;
+    exports.tagApi = tagApi;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
