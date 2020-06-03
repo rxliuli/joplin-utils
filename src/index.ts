@@ -5,5 +5,15 @@ import { joplinApi } from './api/JoplinApi'
 import { folderApi } from './api/FolderApi'
 import { resourceApi } from './api/ResourceApi'
 import { config } from './util/config'
+import { TypeEnum } from './modal/TypeEnum'
 
-export { noteApi, folderApi, searchApi, joplinApi, tagApi, resourceApi, config }
+export {
+  noteApi,
+  folderApi,
+  searchApi,
+  joplinApi,
+  tagApi,
+  resourceApi,
+  config,
+  TypeEnum,
+}

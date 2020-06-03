@@ -5,5 +5,6 @@ import { joplinApi } from './api/JoplinApi';
 import { folderApi } from './api/FolderApi';
 import { resourceApi } from './api/ResourceApi';
 import { config } from './util/config';
-export { noteApi, folderApi, searchApi, joplinApi, tagApi, resourceApi, config };
+import { TypeEnum } from './modal/TypeEnum';
+export { noteApi, folderApi, searchApi, joplinApi, tagApi, resourceApi, config, TypeEnum, };
 //# sourceMappingURL=index.d.ts.map

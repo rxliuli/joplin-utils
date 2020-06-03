@@ -505,6 +505,24 @@
     }());
     var resourceApi = new ResourceApi();
 
+    (function (TypeEnum) {
+        TypeEnum[TypeEnum["Note"] = 1] = "Note";
+        TypeEnum[TypeEnum["Folder"] = 2] = "Folder";
+        TypeEnum[TypeEnum["Setting"] = 3] = "Setting";
+        TypeEnum[TypeEnum["Resource"] = 4] = "Resource";
+        TypeEnum[TypeEnum["Tag"] = 5] = "Tag";
+        TypeEnum[TypeEnum["NoteTag"] = 6] = "NoteTag";
+        TypeEnum[TypeEnum["Search"] = 7] = "Search";
+        TypeEnum[TypeEnum["Alarm"] = 8] = "Alarm";
+        TypeEnum[TypeEnum["MasterKey"] = 9] = "MasterKey";
+        TypeEnum[TypeEnum["ItemChange"] = 10] = "ItemChange";
+        TypeEnum[TypeEnum["NoteResource"] = 11] = "NoteResource";
+        TypeEnum[TypeEnum["ResourceLocalState"] = 12] = "ResourceLocalState";
+        TypeEnum[TypeEnum["Revision"] = 13] = "Revision";
+        TypeEnum[TypeEnum["Migration"] = 14] = "Migration";
+        TypeEnum[TypeEnum["SmartFilter"] = 15] = "SmartFilter";
+    })(exports.TypeEnum || (exports.TypeEnum = {}));
+
     exports.config = config;
     exports.folderApi = folderApi;
     exports.joplinApi = joplinApi;

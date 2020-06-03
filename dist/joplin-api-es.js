@@ -500,5 +500,24 @@ var ResourceApi = /** @class */ (function () {
 }());
 var resourceApi = new ResourceApi();
 
-export { config, folderApi, joplinApi, noteApi, resourceApi, searchApi, tagApi };
+var TypeEnum;
+(function (TypeEnum) {
+    TypeEnum[TypeEnum["Note"] = 1] = "Note";
+    TypeEnum[TypeEnum["Folder"] = 2] = "Folder";
+    TypeEnum[TypeEnum["Setting"] = 3] = "Setting";
+    TypeEnum[TypeEnum["Resource"] = 4] = "Resource";
+    TypeEnum[TypeEnum["Tag"] = 5] = "Tag";
+    TypeEnum[TypeEnum["NoteTag"] = 6] = "NoteTag";
+    TypeEnum[TypeEnum["Search"] = 7] = "Search";
+    TypeEnum[TypeEnum["Alarm"] = 8] = "Alarm";
+    TypeEnum[TypeEnum["MasterKey"] = 9] = "MasterKey";
+    TypeEnum[TypeEnum["ItemChange"] = 10] = "ItemChange";
+    TypeEnum[TypeEnum["NoteResource"] = 11] = "NoteResource";
+    TypeEnum[TypeEnum["ResourceLocalState"] = 12] = "ResourceLocalState";
+    TypeEnum[TypeEnum["Revision"] = 13] = "Revision";
+    TypeEnum[TypeEnum["Migration"] = 14] = "Migration";
+    TypeEnum[TypeEnum["SmartFilter"] = 15] = "SmartFilter";
+})(TypeEnum || (TypeEnum = {}));
+
+export { TypeEnum, config, folderApi, joplinApi, noteApi, resourceApi, searchApi, tagApi };
 //# sourceMappingURL=joplin-api-es.js.map
