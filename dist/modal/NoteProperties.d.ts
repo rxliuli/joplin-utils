@@ -1,29 +1,14 @@
 import { IntBool } from '../types/IntBool';
-export interface NoteProperties {
-    /**
-     * ID
-     */
-    id: string;
+import { BaseProperties } from './BaseProperties';
+export interface NoteProperties extends BaseProperties {
     /**
      * ID of the notebook that contains this note. Change this ID to move the note to a different notebook.
      */
     parent_id: string;
     /**
-     * The note title.
-     */
-    title: string;
-    /**
      * The note body, in Markdown. May also contain HTML.
      */
     body: string;
-    /**
-     * When the note was created.
-     */
-    created_time: number;
-    /**
-     * When the note was last updated.
-     */
-    updated_time: number;
     /**
      * Tells whether the note is a conflict or not.
      */
@@ -77,29 +62,9 @@ export interface NoteProperties {
      */
     order: number;
     /**
-     * When the note was created. It may differ from created_time as it can be manually set by the user.
-     */
-    user_created_time: number;
-    /**
-     * When the note was last updated. It may differ from updated_time as it can be manually set by the user.
-     */
-    user_updated_time: number;
-    /**
-     * text
-     */
-    encryption_cipher_text: string;
-    /**
-     * int
-     */
-    encryption_applied: number;
-    /**
      * int
      */
     markup_language: number;
-    /**
-     * int
-     */
-    is_shared: number;
     /**
      * Note body, in HTML format
      */

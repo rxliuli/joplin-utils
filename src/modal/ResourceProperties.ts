@@ -1,12 +1,6 @@
-export interface ResourceProperties {
-  /**
-   *
-   */
-  id: string
-  /**
-   * The resource title.
-   */
-  title: string
+import { BaseProperties } from './BaseProperties'
+
+export interface ResourceProperties extends BaseProperties {
   /**
    *
    */
@@ -16,33 +10,9 @@ export interface ResourceProperties {
    */
   filename: string
   /**
-   * When the resource was created.
-   */
-  created_time: number
-  /**
-   * When the resource was last updated.
-   */
-  updated_time: number
-  /**
-   * When the resource was created. It may differ from created_time as it can be manually set by the user.
-   */
-  user_created_time: number
-  /**
-   * When the resource was last updated. It may differ from updated_time as it can be manually set by the user.
-   */
-  user_updated_time: number
-  /**
    *
    */
   file_extension: string
-  /**
-   * text
-   */
-  encryption_cipher_text: string
-  /**
-   *
-   */
-  encryption_applied: number
   /**
    *
    */
@@ -51,8 +21,4 @@ export interface ResourceProperties {
    *
    */
   size: number
-  /**
-   *
-   */
-  is_shared: number
 }

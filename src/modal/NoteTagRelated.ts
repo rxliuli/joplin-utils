@@ -1,11 +1,15 @@
 import { CommonType } from './CommonType'
+import { BaseProperties } from './BaseProperties'
 
-export interface NoteTagRelated extends CommonType {
-  id: string
-  tag_id: string
-  note_id: string
-  updated_time: number
-  created_time: number
-  user_updated_time: number
-  user_created_time: number
-}
+export type NoteTagRelated = CommonType &
+  Pick<
+    BaseProperties,
+    | 'id'
+    | 'updated_time'
+    | 'created_time'
+    | 'user_updated_time'
+    | 'user_created_time'
+  > & {
+    tag_id: string
+    note_id: string
+  }

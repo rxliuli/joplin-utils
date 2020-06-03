@@ -11,6 +11,10 @@ export default {
     file: resolve(__dirname, `../dist/${name}.min.js`),
     // 打包的格式，umd 支持 commonjs/amd/life 三种方式
     format: 'umd',
+    globals: {
+      axios: 'axios',
+      'query-string': 'queryString',
+    },
   },
   plugins: [
     ...base.plugins,

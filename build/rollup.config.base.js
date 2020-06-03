@@ -5,6 +5,7 @@ import typescript from 'rollup-plugin-typescript2'
 export default {
   // 入口文件
   input: resolve(__dirname, '../src/index.ts'),
+  external: ['axios', 'query-string'],
   output: {
     // 打包名称
     name: name,

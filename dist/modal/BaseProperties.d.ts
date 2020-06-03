@@ -1,12 +1,8 @@
-export interface FolderProperties {
+export interface BaseProperties {
     /**
      * text
      */
     id: string;
-    /**
-     * The folder title.
-     */
-    title: string;
     /**
      * When the folder was created.
      */
@@ -24,20 +20,20 @@ export interface FolderProperties {
      */
     user_updated_time: number;
     /**
+     * The tag title.
+     */
+    title: string;
+    /**
      * text
      */
     encryption_cipher_text: string;
     /**
-     * int
+     *
      */
     encryption_applied: number;
     /**
-     * text
-     */
-    parent_id: string;
-    /**
-     * int
+     *
      */
     is_shared: number;
 }
-//# sourceMappingURL=FolderProperties.d.ts.map
+//# sourceMappingURL=BaseProperties.d.ts.map
