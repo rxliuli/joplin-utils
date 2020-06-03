@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { ApiUtil } from '../util/ApiUtil'
 import { FolderProperties } from '../modal/FolderProperties'
-import { NoteProperties } from '../modal/NoteProperties'
 import { FolderListRes } from '../modal/FolderListRes'
 import { FolderGetRes } from '../modal/FolderGetRes'
 import { FolderCreateRes } from '../modal/FolderCreateRes'
 import { FolderUpdateRes } from '../modal/FolderUpdateRes'
+import { NoteGetRes } from '../modal/NoteGetRes'
 
 class FolderApi {
   async list() {
@@ -14,11 +14,6 @@ class FolderApi {
   async get(id: string) {
     return (await axios.get<FolderGetRes>(ApiUtil.baseUrl(`/folders/${id}`)))
       .data
-  }
-  async notesByFolderId(id: string) {
-    return (
-      await axios.get<NoteProperties[]>(ApiUtil.baseUrl(`/folders/${id}/notes`))
-    ).data
   }
   async create(param: Pick<FolderProperties, 'title' | 'parent_id'>) {
     return (
@@ -36,6 +31,11 @@ class FolderApi {
   }
   async remove(id: string) {
     return (await axios.delete<string>(ApiUtil.baseUrl(`/folders/${id}`))).data
+  }
+  async notesByFolderId(id: string) {
+    return (
+      await axios.get<NoteGetRes[]>(ApiUtil.baseUrl(`/folders/${id}/notes`))
+    ).data
   }
 }
 

@@ -370,16 +370,6 @@ var FolderApi = /** @class */ (function () {
             });
         });
     };
-    FolderApi.prototype.notesByFolderId = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/folders/" + id + "/notes"))];
-                    case 1: return [2 /*return*/, (_a.sent()).data];
-                }
-            });
-        });
-    };
     FolderApi.prototype.create = function (param) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -408,6 +398,16 @@ var FolderApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/folders/" + id))];
+                    case 1: return [2 /*return*/, (_a.sent()).data];
+                }
+            });
+        });
+    };
+    FolderApi.prototype.notesByFolderId = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/folders/" + id + "/notes"))];
                     case 1: return [2 /*return*/, (_a.sent()).data];
                 }
             });

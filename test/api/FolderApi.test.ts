@@ -44,4 +44,9 @@ describe('test FolderApi', () => {
     console.log(removeRes)
     await expect(folderApi.get(createRes.id)).rejects.not.toBeNull()
   })
+  it('test notesByFolderId', async () => {
+    const res = await folderApi.notesByFolderId(id)
+    console.log(res)
+    expect(res.length).toBeGreaterThan(0)
+  })
 })
