@@ -1,42 +1,84 @@
 import * as vscode from 'vscode'
+import { TreeItemCollapsibleState } from 'vscode'
+import { folderApi, TypeEnum } from 'joplin-api'
+import { FolderListRes } from 'joplin-api/dist/modal/FolderListRes'
+import { treeMapping } from './util/treeMapping'
+import { INode } from './util/INode'
+import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
 import path = require('path')
+import { BaseProperties } from 'joplin-api/dist/modal/BaseProperties'
 
-export class NoteListProvider implements vscode.TreeDataProvider<Note> {
-  constructor() {}
+export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
+  constructor() {
+    this.init()
+  }
+
+  private folderList: FolderListRes[] = []
+  private folderMap = new Map<string, FolderListRes>()
+  private async init() {
+    this.folderList = await folderApi.list()
+    this.folderList.forEach((item) =>
+      treeMapping(item, {
+        before: (folder) => {
+          this.folderMap.set(folder.id, folder)
+          return {
+            id: folder.id,
+            parentId: folder.parent_id,
+            child: folder.children as any,
+            path: '',
+          } as INode
+        },
+      }),
+    )
+  }
 
   /**
    * 实现自定义渲染每个元素
    * @param element
    */
-  getTreeItem(element: Note): vscode.TreeItem {
+  getTreeItem(element: FolderOrNote): vscode.TreeItem {
     return element
   }
   /**
    * 实现获取子列表的方法
    * @param element
    */
-  getChildren(element?: Note): Thenable<Note[]> {
-    return Promise.resolve([
-      new Note('测试 1', vscode.TreeItemCollapsibleState.Collapsed),
-      new Note('测试 2', vscode.TreeItemCollapsibleState.Collapsed),
-    ])
+  async getChildren(element?: FolderOrNote) {
+    if (!element) {
+      if (this.folderList.length === 0) {
+        await this.init()
+      }
+      return this.folderList.map((folder) => new FolderOrNote(folder))
+    }
+    const folder = this.folderMap.get(element.item.id)
+    if (!folder || (folder.note_count === 0 && !folder.children)) {
+      return []
+    }
+    const folderItemList =
+      folder.children?.map((folder) => new FolderOrNote(folder)) || []
+    const noteItemList = (await folderApi.notesByFolderId(folder.id)).map(
+      (note) => new FolderOrNote(note),
+    )
+    return folderItemList.concat(noteItemList)
   }
 }
 
-class Note extends vscode.TreeItem {
-  constructor(
-    public readonly label: string,
-    public readonly collapsibleState: vscode.TreeItemCollapsibleState,
-  ) {
-    super(label, collapsibleState)
+class FolderOrNote extends vscode.TreeItem {
+  constructor(public item: FolderListRes | NoteGetRes) {
+    super(
+      item.title,
+      item.type_ === TypeEnum.Folder
+        ? vscode.TreeItemCollapsibleState.Collapsed
+        : TreeItemCollapsibleState.None,
+    )
   }
 
   get tooltip(): string {
-    return 'tooltip'
+    return this.item.title
   }
 
   get description(): string {
-    return 'description'
+    return ''
   }
 
   iconPath = {

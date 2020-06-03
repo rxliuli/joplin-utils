@@ -891,10 +891,10 @@ isexe@^2.0.0:
   resolved "https://registry.npm.taobao.org/isexe/download/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
-joplin-api@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.npm.taobao.org/joplin-api/download/joplin-api-0.1.1.tgz#eecb24e0c494cda2641f038fa74ab133aad842a9"
-  integrity sha1-7ssk4MSUzaJkHwOPp0qxM6rYQqk=
+joplin-api@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.npmjs.org/joplin-api/-/joplin-api-0.1.2.tgz#0445d9190203011260141ffefeb48c6c7c0dbf19"
+  integrity sha512-s2bCGxEAjSNB5oopsoOL3cbKf2z5v+zT0Tk4JQYI3IqGRiE3YPxDpdba7O2+F5WVnNIAwPorEUXFCh/ub/52yg==
   dependencies:
     axios "^0.19.2"
     query-string "^6.12.1"
