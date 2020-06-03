@@ -10,7 +10,7 @@ class ResourceApi {
   }
   async get(id: string) {
     return (
-      await axios.get<ResourceProperties>(ApiUtil.baseUrl(`/resources/${id}`))
+      await axios.get<ResourceGetRes>(ApiUtil.baseUrl(`/resources/${id}`))
     ).data
   }
   /**
@@ -21,20 +21,29 @@ class ResourceApi {
    * TODO
    */
   async create(param: Pick<ResourceProperties, 'title'>) {
-    return (await axios.post(ApiUtil.baseUrl('/resources'), param)).data
+    return (
+      await axios.post<ResourceGetRes>(ApiUtil.baseUrl('/resources'), param)
+    ).data
   }
 
   async update(param: Pick<ResourceProperties, 'id' | 'title'>) {
     const { id, ...others } = param
-    return (await axios.post(ApiUtil.baseUrl(`/resources/${id}`), others)).data
-  }
-  async remove(id: string) {
     return (
-      await axios.delete<ResourceProperties>(
+      await axios.post<ResourceGetRes>(
         ApiUtil.baseUrl(`/resources/${id}`),
+        others,
       )
     ).data
   }
+  async remove(id: string) {
+    return (await axios.delete<string>(ApiUtil.baseUrl(`/resources/${id}`)))
+      .data
+  }
+
+  /**
+   * Gets the actual file associated with this resource.
+   * @param id
+   */
   async fileByResourceId(id: string) {
     return (await axios.get(ApiUtil.baseUrl(`/resources/${id}/file`))).data
   }

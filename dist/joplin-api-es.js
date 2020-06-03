@@ -240,7 +240,8 @@ var TagApi = /** @class */ (function () {
                     case 0:
                         id = param.id, others = __rest(param, ["id"]);
                         return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/tags/" + id), others)];
-                    case 1: return [2 /*return*/, (_a.sent()).data];
+                    case 1: return [2 /*return*/, (_a.sent())
+                            .data];
                 }
             });
         });
@@ -261,26 +262,30 @@ var TagApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/tags/" + id + "/notes"))];
-                    case 1: return [2 /*return*/, (_a.sent()).data];
+                    case 1: return [2 /*return*/, (_a.sent())
+                            .data];
                 }
             });
         });
     };
     /**
      * Post a note to this endpoint to add the tag to the note. The note data must at least contain an ID property (all other properties will be ignored).
-     * @param id
+     * @param tagId
+     * @param noteId
      */
-    TagApi.prototype.updateNotesByTagId = function (id) {
+    TagApi.prototype.addTagByNoteId = function (tagId, noteId) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/tags/" + id + "/notes"))];
+                    case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/tags/" + tagId + "/notes/"), {
+                            id: noteId,
+                        })];
                     case 1: return [2 /*return*/, (_a.sent()).data];
                 }
             });
         });
     };
-    TagApi.prototype.removeNotesByNoteId = function (tagId, noteId) {
+    TagApi.prototype.removeTagByNoteId = function (tagId, noteId) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
@@ -471,11 +476,16 @@ var ResourceApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/resources/" + id))];
-                    case 1: return [2 /*return*/, (_a.sent()).data];
+                    case 1: return [2 /*return*/, (_a.sent())
+                            .data];
                 }
             });
         });
     };
+    /**
+     * Gets the actual file associated with this resource.
+     * @param id
+     */
     ResourceApi.prototype.fileByResourceId = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {

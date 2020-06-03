@@ -1,4 +1,6 @@
 import { resourceApi } from '../../'
+import { pathExistsSync, writeFileSync } from 'fs-extra'
+import { resolve } from 'path'
 
 describe('test ResourceApi', () => {
   const id = 'af01a0f4d30d418f8cd9f31f174da28f'
@@ -13,6 +15,20 @@ describe('test ResourceApi', () => {
     expect(res.id).toBe(id)
   })
   it('test create', async () => {
-
+    // TODO Test later
+  })
+  it('test update', () => {
+    // TODO Test later
+  })
+  it('test remove ', () => {
+    // TODO Test later
+  })
+  it('test resourcesByFileId', async () => {
+    // TODO Test later
+    const res = await resourceApi.fileByResourceId(id)
+    console.log(res)
+    const path = resolve(__dirname, '../resource/resourcesByFileId.txt')
+    writeFileSync(path, res)
+    expect(pathExistsSync(path)).toBeTruthy()
   })
 })
