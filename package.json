@@ -1,7 +1,7 @@
 {
   "name": "joplin-api",
   "version": "0.1.0",
-  "description": "TypeScript SDK 的模板项目",
+  "description": "joplin ts/js api",
   "license": "mit",
   "main": "./dist/joplin-api.js",
   "module": "./dist/joplin-api-es.js",
