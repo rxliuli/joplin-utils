@@ -23,6 +23,12 @@
         }
       ]
     },
+    "viewsWelcome": [
+      {
+        "view": "joplin-note",
+        "contents": "还未配置 token 与端口，请首先进行配置"
+      }
+    ],
     "views": {
       "joplin-note": [
         {
@@ -47,6 +53,21 @@
           "command": "joplinNote.refreshNoteList",
           "when": "view == joplin-note",
           "group": "navigation"
+        },
+        {
+          "command": "joplinNote.addFolder",
+          "when": "view == joplin-note"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "joplinNote.rename",
+          "when": "view == joplin-note",
+          "group": "inline"
+        },
+        {
+          "command": "joplinNote.delete",
+          "when": "view == joplin-note"
         }
       ]
     }

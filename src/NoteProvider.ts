@@ -82,6 +82,13 @@ class FolderOrNote extends vscode.TreeItem {
         ? vscode.TreeItemCollapsibleState.Collapsed
         : TreeItemCollapsibleState.None,
     )
+    if (item.type_ === TypeEnum.Note) {
+      this.command = {
+        command: 'extension.openNote',
+        title: this.item.title,
+        arguments: [this.item.id],
+      }
+    }
   }
 
   get tooltip(): string {

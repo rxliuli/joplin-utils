@@ -11,7 +11,11 @@ export function activate(context: vscode.ExtensionContext) {
   initTestEnv()
   vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
   vscode.commands.registerCommand('joplinNote.refreshNoteList', () => {
+    // noinspection JSIgnoredPromiseFromCall
     joplinNoteView.refresh()
+  })
+  vscode.commands.registerCommand('extension.openNote', (id: string) => {
+    vscode.window.showInformationMessage(`打开 ${id}`)
   })
 }
 
