@@ -1,11 +1,9 @@
 import * as vscode from 'vscode'
-import { TreeItemCollapsibleState } from 'vscode'
-import { folderApi, TypeEnum } from 'joplin-api'
+import { folderApi } from 'joplin-api'
 import { FolderListRes } from 'joplin-api/dist/modal/FolderListRes'
-import { treeMapping } from './util/treeMapping'
-import { INode } from './util/INode'
-import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
-import path = require('path')
+import { treeMapping } from '../util/treeMapping'
+import { INode } from '../util/INode'
+import { FolderOrNote } from '../FolderOrNote'
 
 export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
   private _onDidChangeTreeData: vscode.EventEmitter<
@@ -71,36 +69,5 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
       (note) => new FolderOrNote(note),
     )
     return folderItemList.concat(noteItemList)
-  }
-}
-
-class FolderOrNote extends vscode.TreeItem {
-  constructor(public item: FolderListRes | NoteGetRes) {
-    super(
-      item.title,
-      item.type_ === TypeEnum.Folder
-        ? vscode.TreeItemCollapsibleState.Collapsed
-        : TreeItemCollapsibleState.None,
-    )
-    if (item.type_ === TypeEnum.Note) {
-      this.command = {
-        command: 'extension.openNote',
-        title: this.item.title,
-        arguments: [this.item.id],
-      }
-    }
-  }
-
-  get tooltip(): string {
-    return this.item.title
-  }
-
-  get description(): string {
-    return ''
-  }
-
-  iconPath = {
-    light: path.resolve(__dirname, './resources/light/dependency.svg'),
-    dark: path.resolve(__dirname, './resources/dark/dependency.svg'),
   }
 }

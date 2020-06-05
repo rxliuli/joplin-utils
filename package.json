@@ -52,7 +52,11 @@
       },
       {
         "command": "joplinNote.rename",
-        "title": "rename"
+        "title": "rename",
+        "icon": {
+          "light": "src/assets/resources/light/edit.svg",
+          "dark": "src/assets/resources/dark/edit.svg"
+        }
       },
       {
         "command": "joplinNote.remove",
@@ -75,12 +79,10 @@
         {
           "command": "joplinNote.create",
           "when": "view == joplin-note",
-          "group": "inline"
         },
         {
           "command": "joplinNote.rename",
           "when": "view == joplin-note",
-          "group": "inline"
         },
         {
           "command": "joplinNote.remove",
