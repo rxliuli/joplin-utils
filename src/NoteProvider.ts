@@ -6,10 +6,21 @@ import { treeMapping } from './util/treeMapping'
 import { INode } from './util/INode'
 import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
 import path = require('path')
-import { BaseProperties } from 'joplin-api/dist/modal/BaseProperties'
 
 export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
+  private _onDidChangeTreeData: vscode.EventEmitter<
+    FolderOrNote | undefined
+  > = new vscode.EventEmitter<FolderOrNote | undefined>()
+  readonly onDidChangeTreeData: vscode.Event<FolderOrNote | undefined> = this
+    ._onDidChangeTreeData.event
+
+  async refresh() {
+    await this.init()
+    this._onDidChangeTreeData.fire(undefined)
+  }
+
   constructor() {
+    // noinspection JSIgnoredPromiseFromCall
     this.init()
   }
 

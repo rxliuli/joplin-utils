@@ -14,7 +14,6 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [],
     "viewsContainers": {
       "activitybar": [
         {
@@ -29,6 +28,25 @@
         {
           "id": "joplin-note",
           "name": "Note List"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "joplinNote.refreshNoteList",
+        "title": "Refresh",
+        "icon": {
+          "light": "src/assets/resources/light/refresh.svg",
+          "dark": "src/assets/resources/dark/refresh.svg"
+        }
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "joplinNote.refreshNoteList",
+          "when": "view == joplin-note",
+          "group": "navigation"
         }
       ]
     }

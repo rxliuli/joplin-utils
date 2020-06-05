@@ -10,6 +10,9 @@ export function activate(context: vscode.ExtensionContext) {
   const joplinNoteView = new NoteListProvider()
   initTestEnv()
   vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
+  vscode.commands.registerCommand('joplinNote.refreshNoteList', () => {
+    joplinNoteView.refresh()
+  })
 }
 
 // this method is called when your extension is deactivated
