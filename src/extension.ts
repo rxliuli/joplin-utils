@@ -15,7 +15,19 @@ export function activate(context: vscode.ExtensionContext) {
     joplinNoteView.refresh()
   })
   vscode.commands.registerCommand('extension.openNote', (id: string) => {
-    vscode.window.showInformationMessage(`打开 ${id}`)
+    vscode.window.showInformationMessage(`打开笔记 ${id}`)
+  })
+  vscode.commands.registerCommand('joplinNote.create', (title) => {
+    console.log('joplinNote.create: ', title)
+    vscode.window.showInformationMessage(`创建目录 ${title}`)
+  })
+  vscode.commands.registerCommand('joplinNote.rename', (title) => {
+    console.log('joplinNote.rename: ', title)
+    vscode.window.showInformationMessage(`重命名 ${title}`)
+  })
+  vscode.commands.registerCommand('joplinNote.remove', (id) => {
+    console.log('joplinNote.remove: ', id)
+    vscode.window.showInformationMessage(`删除 ${id}`)
   })
 }
 

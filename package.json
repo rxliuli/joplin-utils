@@ -45,6 +45,18 @@
           "light": "src/assets/resources/light/refresh.svg",
           "dark": "src/assets/resources/dark/refresh.svg"
         }
+      },
+      {
+        "command": "joplinNote.create",
+        "title": "Add Folder"
+      },
+      {
+        "command": "joplinNote.rename",
+        "title": "rename"
+      },
+      {
+        "command": "joplinNote.remove",
+        "title": "remove"
       }
     ],
     "menus": {
@@ -55,18 +67,23 @@
           "group": "navigation"
         },
         {
-          "command": "joplinNote.addFolder",
+          "command": "joplinNote.create",
           "when": "view == joplin-note"
         }
       ],
       "view/item/context": [
+        {
+          "command": "joplinNote.create",
+          "when": "view == joplin-note",
+          "group": "inline"
+        },
         {
           "command": "joplinNote.rename",
           "when": "view == joplin-note",
           "group": "inline"
         },
         {
-          "command": "joplinNote.delete",
+          "command": "joplinNote.remove",
           "when": "view == joplin-note"
         }
       ]
