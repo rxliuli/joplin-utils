@@ -9,7 +9,7 @@ describe('test FolderApi', () => {
   describe('basic test', () => {
     it('test list', async () => {
       const res = await folderApi.list()
-      console.log(res)
+      console.log(JSON.stringify(res, null, 2))
       expect(res.length).toBeGreaterThan(0)
     })
     it('test get', async () => {
@@ -58,6 +58,16 @@ describe('test FolderApi', () => {
         parent_id: '',
       })
       console.log(res)
+    })
+    it.skip('test move', async () => {
+      //目前不能将 parent_id 指向子级，否则会出现致命性的错误
+      const parent_id = 'd6dea1e4297c480a9f2501818a64e1a1'
+      const res = await folderApi.update({
+        id,
+        parent_id,
+      })
+      console.log(res)
+      expect(res.parent_id).toBe(parent_id)
     })
   })
 })

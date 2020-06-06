@@ -2786,6 +2786,11 @@ listr@^0.14.3:
     p-map "^2.0.0"
     rxjs "^6.3.3"
 
+liuli-types@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/liuli-types/-/liuli-types-0.1.0.tgz#6fddbe8c4e9ad170d31f75d5b8fc240877ca6f2d"
+  integrity sha512-sCwtOMjU8artkNVQLiIh4lt5AQzWMbhVH6bVXwJWoMi5BWbIFl12gTlRfEREFGupx3WM9H2+RkjO48sk80W9WQ==
+
 load-json-file@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npm.taobao.org/load-json-file/download/load-json-file-4.0.0.tgz#2f5f45ab91e33216234fd53adab668eb4ec0993b"

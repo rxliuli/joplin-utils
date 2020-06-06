@@ -4,12 +4,12 @@ import { TagGetRes } from '../modal/TagGetRes';
 import { NoteCreateRes } from '../modal/NoteCreateRes';
 import { NoteUpdateRes } from '../modal/NoteUpdateRes';
 import { ResourceGetRes } from '../modal/ResourceGetRes';
-declare type NoteCreateParam = Pick<NoteProperties, 'title' | 'parent_id'> & (Pick<NoteProperties, 'body'> | Pick<NoteProperties, 'body_html'>);
+import { RequiredField } from 'liuli-types';
 declare class NoteApi {
     list(): Promise<NoteGetRes[]>;
     get(id: string): Promise<NoteGetRes>;
-    create(param: NoteCreateParam & Partial<Pick<NoteProperties, 'id'>>): Promise<NoteCreateRes>;
-    update(param: Omit<NoteCreateParam, 'parent_id'> & Pick<NoteProperties, 'id'> & Partial<Pick<NoteProperties, 'body'> | Pick<NoteProperties, 'body_html'>>): Promise<NoteUpdateRes>;
+    create(param: RequiredField<Partial<NoteProperties>, 'title'>): Promise<NoteCreateRes>;
+    update(param: RequiredField<Partial<NoteProperties>, 'id'>): Promise<NoteUpdateRes>;
     /**
      * @param id
      * @throws Error: Request failed with status code 404

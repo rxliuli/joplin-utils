@@ -6,6 +6,7 @@ import { FolderGetRes } from '../modal/FolderGetRes'
 import { FolderCreateRes } from '../modal/FolderCreateRes'
 import { FolderUpdateRes } from '../modal/FolderUpdateRes'
 import { NoteGetRes } from '../modal/NoteGetRes'
+import { RequiredField } from 'liuli-types'
 
 class FolderApi {
   async list() {
@@ -15,12 +16,12 @@ class FolderApi {
     return (await axios.get<FolderGetRes>(ApiUtil.baseUrl(`/folders/${id}`)))
       .data
   }
-  async create(param: Pick<FolderProperties, 'title' | 'parent_id'>) {
+  async create(param: RequiredField<Partial<FolderProperties>, 'title'>) {
     return (
       await axios.post<FolderCreateRes>(ApiUtil.baseUrl(`/folders`), param)
     ).data
   }
-  async update(param: Pick<FolderProperties, 'id' | 'title'>) {
+  async update(param: RequiredField<Partial<FolderProperties>, 'id'>) {
     const { id, ...others } = param
     return (
       await axios.put<FolderUpdateRes>(

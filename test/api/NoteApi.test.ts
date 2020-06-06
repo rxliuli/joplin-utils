@@ -70,5 +70,14 @@ describe('test JoplinApi', () => {
       console.log(res)
       expect(res.title).toBe(title)
     })
+    it('test move', async () => {
+      const parent_id = 'd6dea1e4297c480a9f2501818a64e1a1'
+      const res = await noteApi.update({
+        id: noteId,
+        parent_id,
+      })
+      console.log(res)
+      expect(res.parent_id).toBe(parent_id)
+    })
   })
 })

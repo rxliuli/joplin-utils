@@ -6,9 +6,7 @@ import { TagGetRes } from '../modal/TagGetRes'
 import { NoteCreateRes } from '../modal/NoteCreateRes'
 import { NoteUpdateRes } from '../modal/NoteUpdateRes'
 import { ResourceGetRes } from '../modal/ResourceGetRes'
-
-type NoteCreateParam = Pick<NoteProperties, 'title' | 'parent_id'> &
-  (Pick<NoteProperties, 'body'> | Pick<NoteProperties, 'body_html'>)
+import { RequiredField } from 'liuli-types'
 
 class NoteApi {
   async list() {
@@ -19,18 +17,14 @@ class NoteApi {
     const res = await axios.get<NoteGetRes>(ApiUtil.baseUrl(`/notes/${id}`))
     return res.data
   }
-  async create(param: NoteCreateParam & Partial<Pick<NoteProperties, 'id'>>) {
+  async create(param: RequiredField<Partial<NoteProperties>, 'title'>) {
     const res = await axios.post<NoteCreateRes>(
       ApiUtil.baseUrl(`/notes`),
       param,
     )
     return res.data
   }
-  async update(
-    param: Omit<NoteCreateParam, 'parent_id'> &
-      Pick<NoteProperties, 'id'> &
-      Partial<Pick<NoteProperties, 'body'> | Pick<NoteProperties, 'body_html'>>,
-  ) {
+  async update(param: RequiredField<Partial<NoteProperties>, 'id'>) {
     const { id, ...others } = param
     const res = await axios.put<NoteUpdateRes>(
       ApiUtil.baseUrl(`/notes/${id}`),
