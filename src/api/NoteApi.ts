@@ -29,7 +29,7 @@ class NoteApi {
   async update(
     param: Omit<NoteCreateParam, 'parent_id'> &
       Pick<NoteProperties, 'id'> &
-      (Pick<NoteProperties, 'body'> | Pick<NoteProperties, 'body_html'>),
+      Partial<Pick<NoteProperties, 'body'> | Pick<NoteProperties, 'body_html'>>,
   ) {
     const { id, ...others } = param
     const res = await axios.put<NoteUpdateRes>(

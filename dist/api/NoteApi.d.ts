@@ -9,7 +9,7 @@ declare class NoteApi {
     list(): Promise<NoteGetRes[]>;
     get(id: string): Promise<NoteGetRes>;
     create(param: NoteCreateParam & Partial<Pick<NoteProperties, 'id'>>): Promise<NoteCreateRes>;
-    update(param: Omit<NoteCreateParam, 'parent_id'> & Pick<NoteProperties, 'id'> & (Pick<NoteProperties, 'body'> | Pick<NoteProperties, 'body_html'>)): Promise<NoteUpdateRes>;
+    update(param: Omit<NoteCreateParam, 'parent_id'> & Pick<NoteProperties, 'id'> & Partial<Pick<NoteProperties, 'body'> | Pick<NoteProperties, 'body_html'>>): Promise<NoteUpdateRes>;
     /**
      * @param id
      * @throws Error: Request failed with status code 404
