@@ -1,7 +1,8 @@
 import { NoteGetRes } from '../modal/NoteGetRes';
 import { TypeEnum } from '../modal/TypeEnum';
 declare class SearchApi {
-    search(options: {
+    private static readonly TypeEnumMap;
+    search(param: {
         query: string;
         type?: TypeEnum;
     }): Promise<NoteGetRes[]>;

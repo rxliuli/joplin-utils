@@ -299,15 +299,38 @@ var TagApi = /** @class */ (function () {
 }());
 var tagApi = new TagApi();
 
+var TypeEnum;
+(function (TypeEnum) {
+    TypeEnum[TypeEnum["Note"] = 1] = "Note";
+    TypeEnum[TypeEnum["Folder"] = 2] = "Folder";
+    TypeEnum[TypeEnum["Setting"] = 3] = "Setting";
+    TypeEnum[TypeEnum["Resource"] = 4] = "Resource";
+    TypeEnum[TypeEnum["Tag"] = 5] = "Tag";
+    TypeEnum[TypeEnum["NoteTag"] = 6] = "NoteTag";
+    TypeEnum[TypeEnum["Search"] = 7] = "Search";
+    TypeEnum[TypeEnum["Alarm"] = 8] = "Alarm";
+    TypeEnum[TypeEnum["MasterKey"] = 9] = "MasterKey";
+    TypeEnum[TypeEnum["ItemChange"] = 10] = "ItemChange";
+    TypeEnum[TypeEnum["NoteResource"] = 11] = "NoteResource";
+    TypeEnum[TypeEnum["ResourceLocalState"] = 12] = "ResourceLocalState";
+    TypeEnum[TypeEnum["Revision"] = 13] = "Revision";
+    TypeEnum[TypeEnum["Migration"] = 14] = "Migration";
+    TypeEnum[TypeEnum["SmartFilter"] = 15] = "SmartFilter";
+})(TypeEnum || (TypeEnum = {}));
+
+var _a;
 var SearchApi = /** @class */ (function () {
     function SearchApi() {
     }
-    SearchApi.prototype.search = function (options) {
+    SearchApi.prototype.search = function (param) {
         return __awaiter(this, void 0, void 0, function () {
-            var res;
+            var type, others, res;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/search', options))];
+                    case 0:
+                        SearchApi.TypeEnumMap['8'] = '';
+                        type = param.type, others = __rest(param, ["type"]);
+                        return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/search', __assign(__assign({}, others), { type: SearchApi.TypeEnumMap[type] })))];
                     case 1:
                         res = _a.sent();
                         return [2 /*return*/, res.data];
@@ -315,6 +338,23 @@ var SearchApi = /** @class */ (function () {
             });
         });
     };
+    SearchApi.TypeEnumMap = (_a = {},
+        _a[TypeEnum.Note] = 'note',
+        _a[TypeEnum.Folder] = 'folder',
+        _a[TypeEnum.Setting] = 'setting',
+        _a[TypeEnum.Resource] = 'resource',
+        _a[TypeEnum.Tag] = 'tag',
+        _a[TypeEnum.NoteTag] = 'note_tag',
+        _a[TypeEnum.Search] = 'search',
+        _a[TypeEnum.Alarm] = 'alarm',
+        _a[TypeEnum.MasterKey] = 'master_key',
+        _a[TypeEnum.ItemChange] = 'item_change',
+        _a[TypeEnum.NoteResource] = 'note_resource',
+        _a[TypeEnum.ResourceLocalState] = 'resource_local_state',
+        _a[TypeEnum.Revision] = 'revision',
+        _a[TypeEnum.Migration] = 'migration',
+        _a[TypeEnum.SmartFilter] = 'smart_filter',
+        _a);
     return SearchApi;
 }());
 var searchApi = new SearchApi();
@@ -499,25 +539,6 @@ var ResourceApi = /** @class */ (function () {
     return ResourceApi;
 }());
 var resourceApi = new ResourceApi();
-
-var TypeEnum;
-(function (TypeEnum) {
-    TypeEnum[TypeEnum["Note"] = 1] = "Note";
-    TypeEnum[TypeEnum["Folder"] = 2] = "Folder";
-    TypeEnum[TypeEnum["Setting"] = 3] = "Setting";
-    TypeEnum[TypeEnum["Resource"] = 4] = "Resource";
-    TypeEnum[TypeEnum["Tag"] = 5] = "Tag";
-    TypeEnum[TypeEnum["NoteTag"] = 6] = "NoteTag";
-    TypeEnum[TypeEnum["Search"] = 7] = "Search";
-    TypeEnum[TypeEnum["Alarm"] = 8] = "Alarm";
-    TypeEnum[TypeEnum["MasterKey"] = 9] = "MasterKey";
-    TypeEnum[TypeEnum["ItemChange"] = 10] = "ItemChange";
-    TypeEnum[TypeEnum["NoteResource"] = 11] = "NoteResource";
-    TypeEnum[TypeEnum["ResourceLocalState"] = 12] = "ResourceLocalState";
-    TypeEnum[TypeEnum["Revision"] = 13] = "Revision";
-    TypeEnum[TypeEnum["Migration"] = 14] = "Migration";
-    TypeEnum[TypeEnum["SmartFilter"] = 15] = "SmartFilter";
-})(TypeEnum || (TypeEnum = {}));
 
 export { TypeEnum, config, folderApi, joplinApi, noteApi, resourceApi, searchApi, tagApi };
 //# sourceMappingURL=joplin-api-es.js.map

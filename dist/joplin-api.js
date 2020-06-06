@@ -304,15 +304,37 @@
     }());
     var tagApi = new TagApi();
 
+    (function (TypeEnum) {
+        TypeEnum[TypeEnum["Note"] = 1] = "Note";
+        TypeEnum[TypeEnum["Folder"] = 2] = "Folder";
+        TypeEnum[TypeEnum["Setting"] = 3] = "Setting";
+        TypeEnum[TypeEnum["Resource"] = 4] = "Resource";
+        TypeEnum[TypeEnum["Tag"] = 5] = "Tag";
+        TypeEnum[TypeEnum["NoteTag"] = 6] = "NoteTag";
+        TypeEnum[TypeEnum["Search"] = 7] = "Search";
+        TypeEnum[TypeEnum["Alarm"] = 8] = "Alarm";
+        TypeEnum[TypeEnum["MasterKey"] = 9] = "MasterKey";
+        TypeEnum[TypeEnum["ItemChange"] = 10] = "ItemChange";
+        TypeEnum[TypeEnum["NoteResource"] = 11] = "NoteResource";
+        TypeEnum[TypeEnum["ResourceLocalState"] = 12] = "ResourceLocalState";
+        TypeEnum[TypeEnum["Revision"] = 13] = "Revision";
+        TypeEnum[TypeEnum["Migration"] = 14] = "Migration";
+        TypeEnum[TypeEnum["SmartFilter"] = 15] = "SmartFilter";
+    })(exports.TypeEnum || (exports.TypeEnum = {}));
+
+    var _a;
     var SearchApi = /** @class */ (function () {
         function SearchApi() {
         }
-        SearchApi.prototype.search = function (options) {
+        SearchApi.prototype.search = function (param) {
             return __awaiter(this, void 0, void 0, function () {
-                var res;
+                var type, others, res;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/search', options))];
+                        case 0:
+                            SearchApi.TypeEnumMap['8'] = '';
+                            type = param.type, others = __rest(param, ["type"]);
+                            return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/search', __assign(__assign({}, others), { type: SearchApi.TypeEnumMap[type] })))];
                         case 1:
                             res = _a.sent();
                             return [2 /*return*/, res.data];
@@ -320,6 +342,23 @@
                 });
             });
         };
+        SearchApi.TypeEnumMap = (_a = {},
+            _a[exports.TypeEnum.Note] = 'note',
+            _a[exports.TypeEnum.Folder] = 'folder',
+            _a[exports.TypeEnum.Setting] = 'setting',
+            _a[exports.TypeEnum.Resource] = 'resource',
+            _a[exports.TypeEnum.Tag] = 'tag',
+            _a[exports.TypeEnum.NoteTag] = 'note_tag',
+            _a[exports.TypeEnum.Search] = 'search',
+            _a[exports.TypeEnum.Alarm] = 'alarm',
+            _a[exports.TypeEnum.MasterKey] = 'master_key',
+            _a[exports.TypeEnum.ItemChange] = 'item_change',
+            _a[exports.TypeEnum.NoteResource] = 'note_resource',
+            _a[exports.TypeEnum.ResourceLocalState] = 'resource_local_state',
+            _a[exports.TypeEnum.Revision] = 'revision',
+            _a[exports.TypeEnum.Migration] = 'migration',
+            _a[exports.TypeEnum.SmartFilter] = 'smart_filter',
+            _a);
         return SearchApi;
     }());
     var searchApi = new SearchApi();
@@ -504,24 +543,6 @@
         return ResourceApi;
     }());
     var resourceApi = new ResourceApi();
-
-    (function (TypeEnum) {
-        TypeEnum[TypeEnum["Note"] = 1] = "Note";
-        TypeEnum[TypeEnum["Folder"] = 2] = "Folder";
-        TypeEnum[TypeEnum["Setting"] = 3] = "Setting";
-        TypeEnum[TypeEnum["Resource"] = 4] = "Resource";
-        TypeEnum[TypeEnum["Tag"] = 5] = "Tag";
-        TypeEnum[TypeEnum["NoteTag"] = 6] = "NoteTag";
-        TypeEnum[TypeEnum["Search"] = 7] = "Search";
-        TypeEnum[TypeEnum["Alarm"] = 8] = "Alarm";
-        TypeEnum[TypeEnum["MasterKey"] = 9] = "MasterKey";
-        TypeEnum[TypeEnum["ItemChange"] = 10] = "ItemChange";
-        TypeEnum[TypeEnum["NoteResource"] = 11] = "NoteResource";
-        TypeEnum[TypeEnum["ResourceLocalState"] = 12] = "ResourceLocalState";
-        TypeEnum[TypeEnum["Revision"] = 13] = "Revision";
-        TypeEnum[TypeEnum["Migration"] = 14] = "Migration";
-        TypeEnum[TypeEnum["SmartFilter"] = 15] = "SmartFilter";
-    })(exports.TypeEnum || (exports.TypeEnum = {}));
 
     exports.config = config;
     exports.folderApi = folderApi;

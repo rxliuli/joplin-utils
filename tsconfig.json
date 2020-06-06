@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es2017", "esnext.array", "dom", "es2015.iterable"],
+    "lib": ["es2017", "esnext.array", "es2015.iterable"],
     "paths": {
       "*": ["types/*"]
     },
