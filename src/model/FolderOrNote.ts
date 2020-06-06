@@ -31,4 +31,9 @@ export class FolderOrNote extends vscode.TreeItem {
     light: path.resolve(__dirname, './resources/light/dependency.svg'),
     dark: path.resolve(__dirname, './resources/dark/dependency.svg'),
   }
+  get contextValue() {
+    return this.item.type_ === TypeEnum.Folder
+      ? 'joplinNote.folder'
+      : 'joplinNote.note'
+  }
 }

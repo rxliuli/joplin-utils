@@ -3,7 +3,7 @@ import { folderApi } from 'joplin-api'
 import { FolderListRes } from 'joplin-api/dist/modal/FolderListRes'
 import { treeMapping } from '../util/treeMapping'
 import { INode } from '../util/INode'
-import { FolderOrNote } from '../FolderOrNote'
+import { FolderOrNote } from './FolderOrNote'
 
 export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
   private _onDidChangeTreeData: vscode.EventEmitter<
@@ -48,6 +48,7 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
   getTreeItem(element: FolderOrNote): vscode.TreeItem {
     return element
   }
+
   /**
    * 实现获取子列表的方法
    * @param element
@@ -70,4 +71,5 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     )
     return folderItemList.concat(noteItemList)
   }
+
 }

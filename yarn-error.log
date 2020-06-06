@@ -1,20 +1,20 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js run watch
 
 PATH: 
-  C:\Users\rxliuli\bin;D:\Program\cmder\bin;D:\Program\cmder\vendor\bin;D:\Program\cmder\vendor\git-for-windows\bin;D:\Program\cmder\vendor\git-for-windows\mingw64\bin;D:\Program\cmder\vendor\git-for-windows\usr\local\bin;D:\Program\cmder\vendor\git-for-windows\usr\bin;D:\Program\cmder\vendor\git-for-windows\usr\bin;D:\Program\cmder\vendor\git-for-windows\mingw64\bin;D:\Program\cmder\vendor\git-for-windows\usr\bin;C:\Users\rxliuli\bin;D:\Program\cmder\vendor\conemu-maximus5\ConEmu\Scripts;D:\Program\cmder\vendor\conemu-maximus5;D:\Program\cmder\vendor\conemu-maximus5\ConEmu;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Users\rxliuli\AppData\Local\Yarn\bin;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\Java\jdk1.8.0_181\jre\bin;C:\Users\rxliuli\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Go\bin;D:\Program\Git\bin;C:\Users\rxliuli\.windows-build-tools\python27;C:\Users\rxliuli\AppData\Local\Microsoft\WindowsApps;C:\Users\rxliuli\AppData\Roaming\npm;C:\Program Files\JetBrains\WebStorm 2019.2.3\bin;C:\Users\rxliuli\AppData\Local\Programs\Microsoft VS Code\bin;D:\Program\Bandizip;C:\Users\rxliuli\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\rxliuli\AppData\Local\BypassRuntm;C:\Users\rxliuli\AppData\Local\Yarn\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.4\bin;C:\Program Files\JetBrains\WebStorm 2020.1\bin;D:\Program\protoc-3.12.2-win64\bin;C:\Users\rxliuli\go\bin;D:\Program\cmder;D:\Program\cmder\vendor\git-for-windows\usr\bin\vendor_perl;D:\Program\cmder\vendor\git-for-windows\usr\bin\core_perl
+  C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Java\jdk-11.0.7\bin;C:\Program Files\Java\jdk-11.0.7\jre\bin;C:\Users\rxliuli\AppData\Local\Microsoft\WindowsApps;D:\Program\Bandizip\;C:\Users\rxliuli\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\rxliuli\AppData\Roaming\npm;C:\Users\rxliuli\AppData\Local\Yarn\bin;D:\Program\Shoruct;;C:\Users\rxliuli\.deno\bin
 
 Yarn version: 
-  1.21.1
+  1.22.4
 
 Node version: 
-  10.16.3
+  12.16.2
 
 Platform: 
   win32 x64
 
 Trace: 
-  SyntaxError: E:\Text\Web\joplin-vscode-plugin\package.json: Unexpected token ] in JSON at position 560
+  SyntaxError: C:\Users\rxliuli\Text\Web\joplin-vscode-plugin\package.json: Unexpected token } in JSON at position 1842
       at JSON.parse (<anonymous>)
       at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
       at Generator.next (<anonymous>)
@@ -38,16 +38,6 @@ npm manifest:
     ],
     "main": "./out/extension.js",
     "contributes": {
-      "commands": [
-        {
-          "command": "joplinNote.refreshEntry",
-          "title": "Refresh",
-          "icon": {
-            "light": "resources/light/refresh.svg",
-            "dark": "resources/dark/refresh.svg"
-          }
-        },
-      ],
       "viewsContainers": {
         "activitybar": [
           {
@@ -57,11 +47,70 @@ npm manifest:
           }
         ]
       },
+      "viewsWelcome": [
+        {
+          "view": "joplin-note",
+          "contents": "还未配置 token 与端口，请首先进行配置"
+        }
+      ],
       "views": {
         "joplin-note": [
           {
             "id": "joplin-note",
             "name": "Note List"
+          }
+        ]
+      },
+      "commands": [
+        {
+          "command": "joplinNote.refreshNoteList",
+          "title": "Refresh",
+          "icon": {
+            "light": "src/assets/resources/light/refresh.svg",
+            "dark": "src/assets/resources/dark/refresh.svg"
+          }
+        },
+        {
+          "command": "joplinNote.create",
+          "title": "Add Folder"
+        },
+        {
+          "command": "joplinNote.rename",
+          "title": "rename",
+          "icon": {
+            "light": "src/assets/resources/light/edit.svg",
+            "dark": "src/assets/resources/dark/edit.svg"
+          }
+        },
+        {
+          "command": "joplinNote.remove",
+          "title": "remove"
+        }
+      ],
+      "menus": {
+        "view/title": [
+          {
+            "command": "joplinNote.refreshNoteList",
+            "when": "view == joplin-note",
+            "group": "navigation"
+          },
+          {
+            "command": "joplinNote.create",
+            "when": "view == joplin-note"
+          }
+        ],
+        "view/item/context": [
+          {
+            "command": "joplinNote.create",
+            "when": "view == joplin-note",
+          },
+          {
+            "command": "joplinNote.rename",
+            "when": "view == joplin-note",
+          },
+          {
+            "command": "joplinNote.remove",
+            "when": "view == joplin-note"
           }
         ]
       }
@@ -1262,6 +1311,11 @@ Lockfile:
     version "1.1.2"
     resolved "https://registry.npm.taobao.org/prelude-ls/download/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
     integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
+  
+  prettier@^2.0.5:
+    version "2.0.5"
+    resolved "https://registry.npm.taobao.org/prettier/download/prettier-2.0.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fprettier%2Fdownload%2Fprettier-2.0.5.tgz#d6d56282455243f2f92cc1716692c08aa31522d4"
+    integrity sha1-1tVigkVSQ/L5LMFxZpLAiqMVItQ=
   
   progress@^2.0.0:
     version "2.0.3"

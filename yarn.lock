@@ -891,10 +891,10 @@ isexe@^2.0.0:
   resolved "https://registry.npm.taobao.org/isexe/download/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
-joplin-api@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.npmjs.org/joplin-api/-/joplin-api-0.1.2.tgz#0445d9190203011260141ffefeb48c6c7c0dbf19"
-  integrity sha512-s2bCGxEAjSNB5oopsoOL3cbKf2z5v+zT0Tk4JQYI3IqGRiE3YPxDpdba7O2+F5WVnNIAwPorEUXFCh/ub/52yg==
+joplin-api@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.npmjs.org/joplin-api/-/joplin-api-0.1.4.tgz#741d431d74de9a5df44dfdea21a8c861042a63d2"
+  integrity sha512-blHPFzoLBs+C1OFMQo8NbB/XEwoaIs1Sf9h8QiS/KqO8H/5zzWX35i98niE+KmXOg01IdRo2WvEAYEcB/2AMLA==
   dependencies:
     axios "^0.19.2"
     query-string "^6.12.1"
@@ -1164,11 +1164,6 @@ prelude-ls@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npm.taobao.org/prelude-ls/download/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
-
-prettier@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.npm.taobao.org/prettier/download/prettier-2.0.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fprettier%2Fdownload%2Fprettier-2.0.5.tgz#d6d56282455243f2f92cc1716692c08aa31522d4"
-  integrity sha1-1tVigkVSQ/L5LMFxZpLAiqMVItQ=
 
 progress@^2.0.0:
   version "2.0.3"

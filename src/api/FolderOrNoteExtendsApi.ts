@@ -3,8 +3,8 @@ import { TypeEnum, noteApi, folderApi } from 'joplin-api'
 import { BaseProperties } from 'joplin-api/dist/modal/BaseProperties'
 import { FolderProperties } from 'joplin-api/dist/modal/FolderProperties'
 
-class FolderOrNoteExtendsApi {
-  async delete(item: Pick<BaseProperties, 'id'> & CommonType) {
+export class FolderOrNoteExtendsApi {
+  async remove(item: Pick<BaseProperties, 'id'> & CommonType) {
     switch (item.type_) {
       case TypeEnum.Folder:
         await folderApi.remove(item.id)
@@ -52,4 +52,3 @@ class FolderOrNoteExtendsApi {
     }
   }
 }
-export const folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()

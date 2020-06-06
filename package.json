@@ -47,12 +47,16 @@
         }
       },
       {
-        "command": "joplinNote.create",
+        "command": "joplinNote.createFolder",
         "title": "Add Folder"
       },
       {
+        "command": "joplinNote.createNote",
+        "title": "Add Note"
+      },
+      {
         "command": "joplinNote.rename",
-        "title": "rename",
+        "title": "Rename",
         "icon": {
           "light": "src/assets/resources/light/edit.svg",
           "dark": "src/assets/resources/dark/edit.svg"
@@ -60,7 +64,7 @@
       },
       {
         "command": "joplinNote.remove",
-        "title": "remove"
+        "title": "Remove"
       }
     ],
     "menus": {
@@ -71,18 +75,23 @@
           "group": "navigation"
         },
         {
-          "command": "joplinNote.create",
-          "when": "view == joplin-note"
+          "command": "joplinNote.createFolder",
+          "when": "view == joplin-note",
+          "group": "navigation"
         }
       ],
       "view/item/context": [
         {
-          "command": "joplinNote.create",
-          "when": "view == joplin-note",
+          "command": "joplinNote.createFolder",
+          "when": "view == joplin-note && viewItem == joplinNote.folder"
+        },
+        {
+          "command": "joplinNote.createNote",
+          "when": "view == joplin-note && viewItem == joplinNote.folder"
         },
         {
           "command": "joplinNote.rename",
-          "when": "view == joplin-note",
+          "when": "view == joplin-note"
         },
         {
           "command": "joplinNote.remove",
@@ -113,6 +122,6 @@
     "vscode-test": "^1.3.0"
   },
   "dependencies": {
-    "joplin-api": "^0.1.2"
+    "joplin-api": "^0.1.4"
   }
 }
