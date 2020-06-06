@@ -21,6 +21,13 @@ export class FolderOrNote extends vscode.TreeItem {
       }
     }
   }
+
+  /**
+   * 使用 joplin 中的 id，避免额外的渲染
+   */
+  get id() {
+    return this.item.id
+  }
   get tooltip(): string {
     return this.item.title
   }
