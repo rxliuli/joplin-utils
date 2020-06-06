@@ -3,29 +3,33 @@
 import * as vscode from 'vscode'
 import { NoteListProvider } from './model/NoteProvider'
 import { initTestEnv } from './util/initTestEnv'
-import { FolderOrNote } from './model/FolderOrNote'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
 import { TypeEnum } from 'joplin-api'
+import { appConfig } from './config/AppConfig'
+
+initTestEnv()
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  if (!appConfig.token) {
+    vscode.window.showInformationMessage('请先配置 joplin token 与安装路径！')
+    return
+  }
   const joplinNoteView = new NoteListProvider()
   const service = new JoplinNoteCommandService(joplinNoteView)
-  initTestEnv()
+  service.init(appConfig)
   vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
 
   //region 注册命令
 
-  vscode.commands.registerCommand('joplinNote.refreshNoteList', () => {
-    // noinspection JSIgnoredPromiseFromCall
-    joplinNoteView.refresh()
-  })
   vscode.commands.registerCommand(
-    'extension.openNote',
-    (item: FolderOrNote) => {
-      vscode.window.showInformationMessage(`打开笔记 ${item.item.title}`)
-    },
+    'joplinNote.refreshNoteList',
+    joplinNoteView.refresh.bind(joplinNoteView),
+  )
+  vscode.commands.registerCommand(
+    'joplinNote.openNote',
+    service.openNote.bind(service),
   )
   vscode.commands.registerCommand('joplinNote.createFolder', (item) =>
     service.create(item, TypeEnum.Folder),

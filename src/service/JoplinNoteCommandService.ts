@@ -1,13 +1,20 @@
 import { FolderOrNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
-import { folderApi, TypeEnum } from 'joplin-api'
+import { config, folderApi, TypeEnum } from 'joplin-api'
 import { NoteListProvider } from '../model/NoteProvider'
 import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
+import { appConfig, AppConfig } from '../config/AppConfig'
+import { resolve } from 'path'
+import { existsSync } from 'fs'
+import { vscodeMarkdownFileApi } from '../api/VSCodeMarkdownFileApi'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
   constructor(private joplinNoteView: NoteListProvider) {}
+  init(appConfig: AppConfig) {
+    config.token = appConfig.token
+  }
 
   /**
    * create folder or note
@@ -72,5 +79,28 @@ export class JoplinNoteCommandService {
     }
     await this.folderOrNoteExtendsApi.remove(item.item)
     await this.joplinNoteView.refresh()
+  }
+
+  /**
+   * open note in vscode
+   * @param item
+   */
+  async openNote(item: Omit<FolderOrNote, 'item'> & { item: NoteGetRes }) {
+    if (!appConfig.programPath) {
+      vscode.window.showInformationMessage('请先配置 joplin 的安装目录')
+      return
+    }
+    const notePath = resolve(
+      appConfig.programPath,
+      'JoplinProfile',
+      `edit-${item.item.id}.md`,
+    )
+    if (!existsSync(notePath)) {
+      vscode.window.showErrorMessage(
+        '请先在 Joplin 中使用在外部编辑器打开该文件',
+      )
+      return
+    }
+    await vscodeMarkdownFileApi.open(notePath)
   }
 }

@@ -15,7 +15,7 @@ export class FolderOrNote extends vscode.TreeItem {
     )
     if (item.type_ === TypeEnum.Note) {
       this.command = {
-        command: 'extension.openNote',
+        command: 'joplinNote.openNote',
         title: this.item.title,
         arguments: [this],
       }
