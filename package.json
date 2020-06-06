@@ -65,6 +65,11 @@
       {
         "command": "joplinNote.remove",
         "title": "Remove"
+      },
+      {
+        "command": "joplinNote.search",
+        "title": "Search",
+        "icon": "src/assets/resources/dark/search.svg"
       }
     ],
     "menus": {
@@ -76,6 +81,11 @@
         },
         {
           "command": "joplinNote.createFolder",
+          "when": "view == joplin-note",
+          "group": "navigation"
+        },
+        {
+          "command": "joplinNote.search",
           "when": "view == joplin-note",
           "group": "navigation"
         }

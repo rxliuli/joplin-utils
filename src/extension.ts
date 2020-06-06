@@ -37,6 +37,7 @@ export function activate(context: vscode.ExtensionContext) {
   vscode.commands.registerCommand('joplinNote.createNote', (item) =>
     service.create(item, TypeEnum.Note),
   )
+  vscode.commands.registerCommand('joplinNote.search', service.search.bind(service))
   vscode.commands.registerCommand('joplinNote.rename', (title) => {
     console.log('joplinNote.rename: ', title)
     vscode.window.showInformationMessage(`重命名 ${title}`)

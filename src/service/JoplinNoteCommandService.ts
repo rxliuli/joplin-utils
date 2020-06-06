@@ -1,6 +1,6 @@
 import { FolderOrNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
-import { config, folderApi, TypeEnum } from 'joplin-api'
+import { config, folderApi, searchApi, TypeEnum } from 'joplin-api'
 import { NoteListProvider } from '../model/NoteProvider'
 import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
@@ -8,6 +8,7 @@ import { appConfig, AppConfig } from '../config/AppConfig'
 import { resolve } from 'path'
 import { existsSync } from 'fs'
 import { vscodeMarkdownFileApi } from '../api/VSCodeMarkdownFileApi'
+import { QuickPickItem } from 'vscode'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -102,5 +103,38 @@ export class JoplinNoteCommandService {
       return
     }
     await vscodeMarkdownFileApi.open(notePath)
+  }
+
+  /**
+   * show search input box
+   */
+  async search() {
+    interface SearchNoteItem extends QuickPickItem {
+      noteId: string
+    }
+    const searchQuickPickBox = vscode.window.createQuickPick<SearchNoteItem>()
+    searchQuickPickBox.placeholder = '请输入关键字'
+    searchQuickPickBox.canSelectMany = false
+    searchQuickPickBox.onDidChangeValue(async (value: string) => {
+      if (value.trim() === '') {
+        searchQuickPickBox.items = []
+        return
+      }
+      const noteList = await searchApi.search({
+        query: value,
+        type: TypeEnum.Note,
+      })
+      searchQuickPickBox.items = noteList.map((note) => ({
+        label: note.title,
+        noteId: note.id,
+        alwaysShow: true,
+      }))
+      console.log('search: ', value, JSON.stringify(searchQuickPickBox.items))
+    })
+    searchQuickPickBox.onDidAccept(() => {
+      const selectItem = searchQuickPickBox.selectedItems[0]
+      vscodeMarkdownFileApi.open(selectItem.noteId)
+    })
+    searchQuickPickBox.show()
   }
 }

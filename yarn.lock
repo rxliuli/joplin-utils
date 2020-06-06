@@ -211,7 +211,7 @@ astral-regex@^1.0.0:
 
 axios@^0.19.2:
   version "0.19.2"
-  resolved "https://registry.npm.taobao.org/axios/download/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
+  resolved "https://registry.npm.taobao.org/axios/download/axios-0.19.2.tgz?cache=0&sync_timestamp=1579668002584&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faxios%2Fdownload%2Faxios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
   integrity sha1-PqNsXYgY0NX4qKl6bTa4bNwAyyc=
   dependencies:
     follow-redirects "1.5.10"
@@ -650,7 +650,7 @@ flatted@^2.0.0:
 
 follow-redirects@1.5.10:
   version "1.5.10"
-  resolved "https://registry.npm.taobao.org/follow-redirects/download/follow-redirects-1.5.10.tgz?cache=0&sync_timestamp=1585479417937&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffollow-redirects%2Fdownload%2Ffollow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
+  resolved "https://registry.npm.taobao.org/follow-redirects/download/follow-redirects-1.5.10.tgz#7b7a9f9aea2fdff36786a94ff643ed07f4ff5e2a"
   integrity sha1-e3qfmuov3/NnhqlP9kPtB/T/Xio=
   dependencies:
     debug "=3.1.0"
@@ -892,9 +892,9 @@ isexe@^2.0.0:
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
 joplin-api@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.npmjs.org/joplin-api/-/joplin-api-0.1.4.tgz#741d431d74de9a5df44dfdea21a8c861042a63d2"
-  integrity sha512-blHPFzoLBs+C1OFMQo8NbB/XEwoaIs1Sf9h8QiS/KqO8H/5zzWX35i98niE+KmXOg01IdRo2WvEAYEcB/2AMLA==
+  version "0.1.5"
+  resolved "https://registry.npm.taobao.org/joplin-api/download/joplin-api-0.1.5.tgz#d896b8cd880496b1f8a30224708daba6a9ffc8ac"
+  integrity sha1-2Ja4zYgElrH4owIkcI2rpqn/yKw=
   dependencies:
     axios "^0.19.2"
     query-string "^6.12.1"
@@ -1176,9 +1176,9 @@ punycode@^2.1.0:
   integrity sha1-tYsBCsQMIsVldhbI0sLALHv0eew=
 
 query-string@^6.12.1:
-  version "6.12.1"
-  resolved "https://registry.npm.taobao.org/query-string/download/query-string-6.12.1.tgz#2ae4d272db4fba267141665374e49a1de09e8a7c"
-  integrity sha1-KuTScttPuiZxQWZTdOSaHeCeinw=
+  version "6.13.0"
+  resolved "https://registry.npm.taobao.org/query-string/download/query-string-6.13.0.tgz?cache=0&sync_timestamp=1591426063576&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fquery-string%2Fdownload%2Fquery-string-6.13.0.tgz#8d875f66581c854d7480ac79478abb847de742f6"
+  integrity sha1-jYdfZlgchU10gKx5R4q7hH3nQvY=
   dependencies:
     decode-uri-component "^0.2.0"
     split-on-first "^1.0.0"
@@ -1303,7 +1303,7 @@ slice-ansi@^2.1.0:
 
 split-on-first@^1.0.0:
   version "1.1.0"
-  resolved "https://registry.npm.taobao.org/split-on-first/download/split-on-first-1.1.0.tgz?cache=0&sync_timestamp=1573659333652&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsplit-on-first%2Fdownload%2Fsplit-on-first-1.1.0.tgz#f610afeee3b12bce1d0c30425e76398b78249a5f"
+  resolved "https://registry.npm.taobao.org/split-on-first/download/split-on-first-1.1.0.tgz#f610afeee3b12bce1d0c30425e76398b78249a5f"
   integrity sha1-9hCv7uOxK84dDDBCXnY5i3gkml8=
 
 sprintf-js@~1.0.2:
