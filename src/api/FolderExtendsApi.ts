@@ -1,12 +1,16 @@
 import { FolderProperties } from 'joplin-api/dist/modal/FolderProperties'
+import { folderApi } from 'joplin-api'
 
-export class FolderExtendsApi {
+class FolderExtendsApi {
   /**
    * 重命名目录
    * @param param
    */
   rename(param: Pick<FolderProperties, 'id' | 'title'>) {
-    throw new Error('no impl')
+    return folderApi.update({
+      id: param.id,
+      title: param.title,
+    })
   }
 
   /**
@@ -15,6 +19,12 @@ export class FolderExtendsApi {
    * @param movedParentId
    */
   move(folderId: string, movedParentId: string) {
-    throw new Error('no impl')
+    //这里的类型定义有问题
+    // return folderApi.update({
+    //   id: folderId,
+    //   parent_id: movedParentId,
+    // })
   }
 }
+
+export const folderExtendsApi = new FolderExtendsApi()

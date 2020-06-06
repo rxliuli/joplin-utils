@@ -82,6 +82,23 @@ export class JoplinNoteCommandService {
     await this.joplinNoteView.refresh()
   }
 
+  async rename(item: FolderOrNote) {
+    console.log('joplinNote.rename: ', item)
+    const title = await vscode.window.showInputBox({
+      placeHolder: `请输入新的名字`,
+      value: item.item.title,
+    })
+    if (!title) {
+      return
+    }
+    await this.folderOrNoteExtendsApi.rename({
+      id: item.item.id,
+      title,
+      type_: item.item.type_,
+    })
+    await this.joplinNoteView.refresh()
+  }
+
   /**
    * open note in vscode
    * @param item

@@ -1,7 +1,7 @@
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { noteApi } from 'joplin-api'
 
-export class NoteExtendsApi {
+class NoteExtendsApi {
   /**
    * 重命名笔记
    * @param param
@@ -22,3 +22,5 @@ export class NoteExtendsApi {
     throw new Error('no impl')
   }
 }
+
+export const noteExtendsApi = new NoteExtendsApi()
