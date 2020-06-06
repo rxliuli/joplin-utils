@@ -12,7 +12,6 @@
     "dev": "rollup -w -c build/rollup.config.js",
     "docs": "typedoc --out docs src --exclude src/**/*.test.ts && cp README.zh_cn.md docs/ && cp .nojekyll docs/",
     "format": "prettier --write src/**/*.ts",
-    "postinstall": "yarn link:add && yarn link:remove && yarn link:add",
     "test": "jest --all"
   },
   "publishConfig": {
