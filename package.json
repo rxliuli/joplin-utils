@@ -108,6 +108,19 @@
           "when": "view == joplin-note"
         }
       ]
+    },
+    "configuration": {
+      "title": "joplin",
+      "properties": {
+        "joplin.token": {
+          "type": "string",
+          "description": "joplin web server token"
+        },
+        "joplin.programPath": {
+          "type": "string",
+          "description": "joplin program install path"
+        }
+      }
     }
   },
   "scripts": {

@@ -2,17 +2,17 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode'
 import { NoteListProvider } from './model/NoteProvider'
-import { initTestEnv } from './util/initTestEnv'
+import { initDevEnv } from './util/initDevEnv'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
 import { TypeEnum } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
 
-initTestEnv()
+initDevEnv()
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  if (!appConfig.token) {
+  if (!appConfig.token || !appConfig.programPath) {
     vscode.window.showInformationMessage('请先配置 joplin token 与安装路径！')
     return
   }

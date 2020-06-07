@@ -14,6 +14,9 @@ export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
   constructor(private joplinNoteView: NoteListProvider) {}
   init(appConfig: AppConfig) {
+    if (!appConfig.token) {
+      return
+    }
     config.token = appConfig.token
   }
 
