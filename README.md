@@ -23,6 +23,7 @@ The integration of joplin in VSCode currently allows direct operations on direct
 - Not opened directly after creating a note
 - Sync is not turned off after closing notes
 - The directory tree in VSCode is not updated when operating on directories/notes in Joplin
+- Packaging and development environment variables do not take effect
 - No international processing
 
 ## Release Notes

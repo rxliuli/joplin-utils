@@ -9,9 +9,9 @@
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
-    "compile": "tsc -p ./",
+    "compile": "cross-env NODE_ENV=production tsc -p ./",
     "lint": "eslint src --ext ts",
-    "watch": "tsc -watch -p ./",
+    "watch": "cross-env NODE_ENV=development tsc -watch -p ./",
     "pretest": "yarn run compile && yarn run lint",
     "test": "node ./out/test/runTest.js",
     "pack": "vsce package"
@@ -56,8 +56,8 @@
         "command": "joplinNote.refreshNoteList",
         "title": "Refresh",
         "icon": {
-          "light": "src/assets/resources/light/refresh.svg",
-          "dark": "src/assets/resources/dark/refresh.svg"
+          "light": "resources/light/refresh.svg",
+          "dark": "resources/dark/refresh.svg"
         }
       },
       {
@@ -72,8 +72,8 @@
         "command": "joplinNote.rename",
         "title": "Rename",
         "icon": {
-          "light": "src/assets/resources/light/edit.svg",
-          "dark": "src/assets/resources/dark/edit.svg"
+          "light": "resources/light/edit.svg",
+          "dark": "resources/dark/edit.svg"
         }
       },
       {
@@ -83,7 +83,7 @@
       {
         "command": "joplinNote.search",
         "title": "Search",
-        "icon": "src/assets/resources/dark/search.svg"
+        "icon": "resources/dark/search.svg"
       }
     ],
     "menus": {
@@ -144,6 +144,7 @@
     "@types/vscode": "^1.45.0",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
     "@typescript-eslint/parser": "^2.30.0",
+    "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "glob": "^7.1.6",
     "liuli-types": "^0.1.1",
