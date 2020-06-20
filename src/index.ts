@@ -6,6 +6,7 @@ import { folderApi } from './api/FolderApi'
 import { resourceApi } from './api/ResourceApi'
 import { config } from './util/config'
 import { TypeEnum } from './modal/TypeEnum'
+import { actionApi } from './api/ActionApi'
 
 export {
   noteApi,
@@ -14,6 +15,7 @@ export {
   joplinApi,
   tagApi,
   resourceApi,
+  actionApi,
   config,
   TypeEnum,
 }

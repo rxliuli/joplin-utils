@@ -540,5 +540,48 @@ var ResourceApi = /** @class */ (function () {
 }());
 var resourceApi = new ResourceApi();
 
-export { TypeEnum, config, folderApi, joplinApi, noteApi, resourceApi, searchApi, tagApi };
+var ActionEnum;
+(function (ActionEnum) {
+    ActionEnum["OpenAndWatch"] = "openAndWatch";
+    ActionEnum["StopWatching"] = "stopWatching";
+    ActionEnum["NoteIsWatched"] = "noteIsWatched";
+})(ActionEnum || (ActionEnum = {}));
+var ActionApi = /** @class */ (function () {
+    function ActionApi() {
+    }
+    ActionApi.prototype.openAndWatch = function (noteId) {
+        return ActionApi.baseAction(ActionEnum.OpenAndWatch, noteId);
+    };
+    ActionApi.prototype.stopWatching = function (noteId) {
+        return ActionApi.baseAction(ActionEnum.StopWatching, noteId);
+    };
+    ActionApi.prototype.noteIsWatched = function (noteId) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, ActionApi.baseAction(ActionEnum.NoteIsWatched, noteId)];
+            });
+        });
+    };
+    ActionApi.baseAction = function (action, noteId) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl('/services/externalEditWatcher'), {
+                            action: action,
+                            noteId: noteId,
+                        }, {
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                        })];
+                    case 1: return [2 /*return*/, (_a.sent()).data];
+                }
+            });
+        });
+    };
+    return ActionApi;
+}());
+var actionApi = new ActionApi();
+
+export { TypeEnum, actionApi, config, folderApi, joplinApi, noteApi, resourceApi, searchApi, tagApi };
 //# sourceMappingURL=joplin-api-es.js.map

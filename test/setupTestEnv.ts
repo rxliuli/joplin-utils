@@ -1,6 +1,7 @@
 import { config } from '..'
 
 export function setupTestEnv() {
+  config.port = 41184
   config.token =
-    'fc2f96db977465ea019ba0ebb148c2e212998fb7aec7a6b93a88c5fd86fe779e56d7c0229feb868c1b38df6a2390bd383bd1e2b090887569ae9e502b1a6d743f'
+    'b1794631245c1c5e2d56150bd7c52af98a7c8c97e5f490dff5f82baa21526595f01e5b4762684d9ddd6a3171fbe4540085a3558cf978193a894dae52d8bc4a3d'
 }

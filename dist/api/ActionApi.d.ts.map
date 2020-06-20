@@ -1,0 +1,1 @@
+{"version":3,"file":"ActionApi.d.ts","sourceRoot":"","sources":["../src/api/ActionApi.ts"],"names":[],"mappings":"AASA,cAAM,SAAS;IACb,YAAY,CAAC,MAAM,EAAE,MAAM;IAI3B,YAAY,CAAC,MAAM,EAAE,MAAM;IAIrB,aAAa,CAAC,MAAM,EAAE,MAAM;mBAIb,UAAU;CAgBhC;AAED,eAAO,MAAM,SAAS,WAAkB,CAAA"}
