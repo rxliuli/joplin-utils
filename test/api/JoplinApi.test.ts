@@ -1,4 +1,4 @@
-import { joplinApi } from '../..'
+import { joplinApi } from '../../src'
 
 describe('test Joplin', () => {
   it('test ping', async () => {

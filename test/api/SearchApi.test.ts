@@ -1,24 +1,21 @@
-import { searchApi } from '../..'
-import { config } from '../../'
+import { searchApi } from '../../src'
 import { TypeEnum } from '../../src'
+import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
 
 describe('test SearchApi', () => {
+  initTestFolderAndNote()
   it('test search note', async () => {
-    console.log(config)
     const res = await searchApi.search({
       query: 'title:测试',
       type: TypeEnum.Note,
     })
-    console.log(res)
-    expect(res.length).toBeGreaterThan(0)
+    expect(res.length).toBe(1)
   })
   it('test search folder', async () => {
-    console.log(config)
     const res = await searchApi.search({
-      query: 'title:测试',
+      query: '测试目录',
       type: TypeEnum.Folder,
     })
-    console.log(res)
-    expect(res.length).toBe(0)
+    expect(res.length).toBe(1)
   })
 })
