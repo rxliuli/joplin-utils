@@ -1,13 +1,10 @@
 import { FolderOrNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
-import { config, folderApi, searchApi, TypeEnum } from 'joplin-api'
+import { actionApi, config, folderApi, searchApi, TypeEnum } from 'joplin-api'
 import { NoteListProvider } from '../model/NoteProvider'
 import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
-import { appConfig, AppConfig } from '../config/AppConfig'
-import { resolve } from 'path'
-import { existsSync } from 'fs'
-import { vscodeMarkdownFileApi } from '../api/VSCodeMarkdownFileApi'
+import { AppConfig } from '../config/AppConfig'
 import { QuickPickItem } from 'vscode'
 
 export class JoplinNoteCommandService {
@@ -18,6 +15,7 @@ export class JoplinNoteCommandService {
       return
     }
     config.token = appConfig.token
+    config.port = appConfig.port
   }
 
   /**
@@ -107,22 +105,7 @@ export class JoplinNoteCommandService {
    * @param item
    */
   async openNote(item: Omit<FolderOrNote, 'item'> & { item: NoteGetRes }) {
-    if (!appConfig.programPath) {
-      vscode.window.showInformationMessage('请先配置 joplin 的安装目录')
-      return
-    }
-    const notePath = resolve(
-      appConfig.programPath,
-      'JoplinProfile',
-      `edit-${item.item.id}.md`,
-    )
-    if (!existsSync(notePath)) {
-      vscode.window.showErrorMessage(
-        '请先在 Joplin 中使用在外部编辑器打开该文件',
-      )
-      return
-    }
-    await vscodeMarkdownFileApi.open(notePath)
+    await actionApi.openAndWatch(item.item.id)
   }
 
   /**
@@ -153,7 +136,7 @@ export class JoplinNoteCommandService {
     })
     searchQuickPickBox.onDidAccept(() => {
       const selectItem = searchQuickPickBox.selectedItems[0]
-      vscodeMarkdownFileApi.open(selectItem.noteId)
+      actionApi.openAndWatch(selectItem.noteId)
     })
     searchQuickPickBox.show()
   }

@@ -12,8 +12,8 @@ initDevEnv()
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-  if (!appConfig.token || !appConfig.programPath) {
-    vscode.window.showInformationMessage('请先配置 joplin token 与安装路径！')
+  if (!appConfig.token) {
+    vscode.window.showInformationMessage('请先配置 joplin token！')
     return
   }
   const joplinNoteView = new NoteListProvider()

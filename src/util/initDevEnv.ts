@@ -1,7 +1,8 @@
 import { appConfig } from '../config/AppConfig'
+import { config } from 'joplin-api'
 
 export function initDevEnv() {
-  appConfig.token =
-    'fc2f96db977465ea019ba0ebb148c2e212998fb7aec7a6b93a88c5fd86fe779e56d7c0229feb868c1b38df6a2390bd383bd1e2b090887569ae9e502b1a6d743f'
-  appConfig.programPath = 'D:/Program/JoplinPortable'
+  config.token = appConfig.token =
+    '303c85ce19d4eaf23e23ae7817e36043ae0fcf57bf6699b646c796189f1fa65b31ecbc394e48e8840fd9ca643aacc6067a3e5abdbe8b52b7d231a06545241457'
+  config.port = appConfig.port = 27583
 }

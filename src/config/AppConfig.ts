@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 
 export class AppConfig {
   token?: string
-  programPath?: string
+  port!: number
 
   /**
    * reload joplin for vscode config
@@ -10,8 +10,8 @@ export class AppConfig {
   loadConfig() {
     const config = vscode.workspace.getConfiguration('joplin')
     this.token = config.token
-    this.programPath = config.programPath
-    console.log('loadConfig: ', this.token, this.programPath)
+    this.port = config.port
+    console.log('loadConfig: ', this.token, config.port)
   }
 
   constructor() {

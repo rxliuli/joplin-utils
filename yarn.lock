@@ -891,10 +891,10 @@ isexe@^2.0.0:
   resolved "https://registry.npm.taobao.org/isexe/download/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
 
-joplin-api@^0.1.4:
-  version "0.1.5"
-  resolved "https://registry.npm.taobao.org/joplin-api/download/joplin-api-0.1.5.tgz#d896b8cd880496b1f8a30224708daba6a9ffc8ac"
-  integrity sha1-2Ja4zYgElrH4owIkcI2rpqn/yKw=
+joplin-api@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/joplin-api/-/joplin-api-0.1.7.tgz#c703164f61b7f4deffa2ce769f86e74aafbfbd89"
+  integrity sha512-G+DWKoCZ9TLJzFvGaQFPMHLFpDEEO7pTBiUJJwE8R/t2LqDTA7Ql23mHopfBv9qgW+TKlnlHTM5hsZzWcoIifg==
   dependencies:
     axios "^0.19.2"
     query-string "^6.12.1"
@@ -937,6 +937,11 @@ levn@^0.3.0, levn@~0.3.0:
   dependencies:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
+
+liuli-types@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/liuli-types/-/liuli-types-0.1.1.tgz#957d3dcda2e35cdc1d792335d1d0c2143c9b3cff"
+  integrity sha512-lL1oFwrwnAOzHAUbe2TMyTccgr2N6Ix2rm99RKeMQvzPTI9/SBhO4Nok8xqzZn9Li4pop84Laks5woyEQURICQ==
 
 locate-path@^3.0.0:
   version "3.0.0"
