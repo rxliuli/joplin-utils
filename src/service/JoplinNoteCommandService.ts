@@ -16,6 +16,11 @@ export class JoplinNoteCommandService {
     }
     config.token = appConfig.token
     config.port = appConfig.port
+
+    setInterval(async () => {
+      console.log('joplin folder tree refresh: ', new Date().toLocaleString())
+      await this.joplinNoteView.refresh()
+    }, 1000 * 10)
   }
 
   /**
