@@ -4,6 +4,7 @@
   "description": "joplin 的 vscode 集成",
   "version": "0.0.1",
   "publisher": "rxliuli",
+  "icon": "resources/dep_test.svg",
   "engines": {
     "vscode": "^1.45.0"
   },
@@ -33,7 +34,7 @@
         {
           "id": "joplin-note",
           "title": "Joplin",
-          "icon": "resources/dep.svg"
+          "icon": "resources/dep_test.svg"
         }
       ]
     },
@@ -62,11 +63,19 @@
       },
       {
         "command": "joplinNote.createFolder",
-        "title": "%commands.joplinNote.createFolder%"
+        "title": "%commands.joplinNote.createFolder%",
+        "icon": {
+          "light": "resources/light/new-folder.svg",
+          "dark": "resources/dark/new-folder.svg"
+        }
       },
       {
         "command": "joplinNote.createNote",
-        "title": "%commands.joplinNote.createFolder%"
+        "title": "%commands.joplinNote.createNote%",
+        "icon": {
+          "light": "resources/light/new-file.svg",
+          "dark": "resources/dark/new-file.svg"
+        }
       },
       {
         "command": "joplinNote.rename",
@@ -78,12 +87,19 @@
       },
       {
         "command": "joplinNote.remove",
-        "title": "%commands.joplinNote.remove%"
+        "title": "%commands.joplinNote.remove%",
+        "icon": {
+          "light": "resources/light/trash.svg",
+          "dark": "resources/dark/trash.svg"
+        }
       },
       {
         "command": "joplinNote.search",
         "title": "%commands.joplinNote.search%",
-        "icon": "resources/dark/search.svg"
+        "icon": {
+          "light": "resources/light/search.svg",
+          "dark": "resources/dark/search.svg"
+        }
       }
     ],
     "menus": {

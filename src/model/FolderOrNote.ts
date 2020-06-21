@@ -13,6 +13,11 @@ export class FolderOrNote extends vscode.TreeItem {
         ? vscode.TreeItemCollapsibleState.Collapsed
         : TreeItemCollapsibleState.None,
     )
+    const iconName = item.type_ === TypeEnum.Folder ? 'folder' : 'note'
+    this.iconPath = {
+      light: path.resolve(__dirname, `../../resources/light/${iconName}.svg`),
+      dark: path.resolve(__dirname, `../../resources/light/${iconName}.svg`),
+    }
     if (item.type_ === TypeEnum.Note) {
       this.command = {
         command: 'joplinNote.openNote',
@@ -33,10 +38,6 @@ export class FolderOrNote extends vscode.TreeItem {
   }
   get description(): string {
     return ''
-  }
-  iconPath = {
-    light: path.resolve(__dirname, './resources/light/dependency.svg'),
-    dark: path.resolve(__dirname, './resources/dark/dependency.svg'),
   }
   get contextValue() {
     return this.item.type_ === TypeEnum.Folder
