@@ -4,8 +4,11 @@ import * as vscode from 'vscode'
 import { NoteListProvider } from './model/NoteProvider'
 import { initDevEnv } from './util/initDevEnv'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
-import { TypeEnum } from 'joplin-api'
+import { actionApi, TypeEnum } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
+import { safeExec } from './util/safeExec'
+import { TextDocument } from 'vscode'
+import { HandlerService } from './service/HandlerService'
 
 initDevEnv()
 
@@ -17,11 +20,16 @@ export function activate(context: vscode.ExtensionContext) {
     return
   }
   const joplinNoteView = new NoteListProvider()
-  const service = new JoplinNoteCommandService(joplinNoteView)
-  service.init(appConfig)
+  const joplinNoteCommandService = new JoplinNoteCommandService(joplinNoteView)
+  joplinNoteCommandService.init(appConfig)
+  const handlerService = new HandlerService()
   vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
 
   //region 注册命令
+
+  vscode.workspace.onDidCloseTextDocument(
+    handlerService.handleCloseTextDocument.bind(handlerService),
+  )
 
   vscode.commands.registerCommand(
     'joplinNote.refreshNoteList',
@@ -29,25 +37,25 @@ export function activate(context: vscode.ExtensionContext) {
   )
   vscode.commands.registerCommand(
     'joplinNote.openNote',
-    service.openNote.bind(service),
+    joplinNoteCommandService.openNote.bind(joplinNoteCommandService),
   )
   vscode.commands.registerCommand('joplinNote.createFolder', (item) =>
-    service.create(item, TypeEnum.Folder),
+    joplinNoteCommandService.create(item, TypeEnum.Folder),
   )
   vscode.commands.registerCommand('joplinNote.createNote', (item) =>
-    service.create(item, TypeEnum.Note),
+    joplinNoteCommandService.create(item, TypeEnum.Note),
   )
   vscode.commands.registerCommand(
     'joplinNote.search',
-    service.search.bind(service),
+    joplinNoteCommandService.search.bind(joplinNoteCommandService),
   )
   vscode.commands.registerCommand(
     'joplinNote.rename',
-    service.rename.bind(service),
+    joplinNoteCommandService.rename.bind(joplinNoteCommandService),
   )
   vscode.commands.registerCommand(
     'joplinNote.remove',
-    service.remove.bind(service),
+    joplinNoteCommandService.remove.bind(joplinNoteCommandService),
   )
 
   //endregion
