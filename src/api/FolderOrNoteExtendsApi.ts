@@ -37,18 +37,18 @@ export class FolderOrNoteExtendsApi {
   ) {
     switch (item.type_) {
       case TypeEnum.Folder:
-        await folderApi.create({
+        return await folderApi.create({
           title: item.title,
           parent_id: item.parent_id,
         })
-        break
       case TypeEnum.Note:
-        await noteApi.create({
+        return await noteApi.create({
           title: item.title,
           parent_id: item.parent_id,
           body: '',
         })
-        break
+      default:
+        throw new Error('no impl')
     }
   }
 }

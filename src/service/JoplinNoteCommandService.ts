@@ -1,11 +1,11 @@
 import { FolderOrNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
+import { QuickPickItem } from 'vscode'
 import { actionApi, config, folderApi, searchApi, TypeEnum } from 'joplin-api'
 import { NoteListProvider } from '../model/NoteProvider'
 import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { AppConfig } from '../config/AppConfig'
-import { QuickPickItem } from 'vscode'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -52,12 +52,15 @@ export class JoplinNoteCommandService {
       return
     }
     console.log('create: ', item, type)
-    await this.folderOrNoteExtendsApi.create({
+    const { id } = await this.folderOrNoteExtendsApi.create({
       title,
       parent_id: item.item.id,
       type_: type,
     })
     await this.joplinNoteView.refresh()
+    if (type === TypeEnum.Note) {
+      await actionApi.openAndWatch(id)
+    }
   }
 
   /**
