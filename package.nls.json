@@ -1,0 +1,12 @@
+{
+  "say.hello": "hello {0}",
+  "viewsWelcome.joplin-note": "No notes detected!",
+  "views.joplin-note.joplin-note": "All notes",
+  "commands.joplinNote.refreshNoteList": "Refresh",
+  "commands.joplinNote.createFolder": "Add Folder",
+  "commands.joplinNote.rename": "Rename",
+  "commands.joplinNote.remove": "Remove",
+  "commands.joplinNote.search": "Search",
+  "configuration.joplin.token": "joplin web server token",
+  "configuration.joplin.port": "joplin web service port, default is 41184"
+}

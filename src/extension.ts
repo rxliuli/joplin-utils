@@ -4,13 +4,19 @@ import * as vscode from 'vscode'
 import { NoteListProvider } from './model/NoteProvider'
 import { initDevEnv } from './util/initDevEnv'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
-import { actionApi, TypeEnum } from 'joplin-api'
+import { TypeEnum } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
-import { safeExec } from './util/safeExec'
-import { TextDocument } from 'vscode'
 import { HandlerService } from './service/HandlerService'
+import * as nls from 'vscode-nls'
 
 initDevEnv()
+
+nls.config({
+  messageFormat: nls.MessageFormat.bundle,
+  bundleFormat: nls.BundleFormat.standalone,
+})()
+const localize: nls.LocalizeFunc = nls.loadMessageBundle()
+console.log('i18n: ', localize('say.hello', 'world'), vscode.env.language)
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed

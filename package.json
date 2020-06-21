@@ -40,21 +40,21 @@
     "viewsWelcome": [
       {
         "view": "joplin-note",
-        "contents": "还未配置 token 与端口，请首先进行配置"
+        "contents": "%viewsWelcome.joplin-note%"
       }
     ],
     "views": {
       "joplin-note": [
         {
           "id": "joplin-note",
-          "name": "Note List"
+          "name": "%views.joplin-note.joplin-note%"
         }
       ]
     },
     "commands": [
       {
         "command": "joplinNote.refreshNoteList",
-        "title": "Refresh",
+        "title": "%commands.joplinNote.refreshNoteList%",
         "icon": {
           "light": "resources/light/refresh.svg",
           "dark": "resources/dark/refresh.svg"
@@ -62,15 +62,15 @@
       },
       {
         "command": "joplinNote.createFolder",
-        "title": "Add Folder"
+        "title": "%commands.joplinNote.createFolder%"
       },
       {
         "command": "joplinNote.createNote",
-        "title": "Add Note"
+        "title": "%commands.joplinNote.createFolder%"
       },
       {
         "command": "joplinNote.rename",
-        "title": "Rename",
+        "title": "%commands.joplinNote.rename%",
         "icon": {
           "light": "resources/light/edit.svg",
           "dark": "resources/dark/edit.svg"
@@ -78,11 +78,11 @@
       },
       {
         "command": "joplinNote.remove",
-        "title": "Remove"
+        "title": "%commands.joplinNote.remove%"
       },
       {
         "command": "joplinNote.search",
-        "title": "Search",
+        "title": "%commands.joplinNote.search%",
         "icon": "resources/dark/search.svg"
       }
     ],
@@ -128,11 +128,12 @@
       "properties": {
         "joplin.token": {
           "type": "string",
-          "description": "joplin web server token"
+          "description": "%configuration.joplin.token%"
         },
         "joplin.port": {
           "type": "number",
-          "description": "joplin web service port, default is 41184"
+          "default": 41184,
+          "description": "%configuration.joplin.port%"
         }
       }
     }
@@ -150,6 +151,8 @@
     "liuli-types": "^0.1.1",
     "mocha": "^7.1.2",
     "typescript": "^3.8.3",
+    "vscode-nls": "^4.1.2",
+    "vscode-nls-dev": "^3.3.2",
     "vscode-test": "^1.3.0"
   },
   "dependencies": {
