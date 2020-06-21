@@ -2,8 +2,8 @@ import { appConfig } from '../config/AppConfig'
 import { config } from 'joplin-api'
 
 export function initDevEnv() {
-  console.log('process.env.NODE_ENV: ', process.env.NODE_ENV)
-  if (process.env.NODE_ENV !== 'development') {
+  console.log('process.env.DEBUG: ', process.env.DEBUG)
+  if (!process.env.DEBUG) {
     return
   }
   config.token = appConfig.token =
