@@ -33,7 +33,7 @@
         {
           "id": "joplin-note",
           "title": "Joplin",
-          "icon": "src/assets/dep.svg"
+          "icon": "resources/dep.svg"
         }
       ]
     },
