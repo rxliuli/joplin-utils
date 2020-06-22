@@ -32,7 +32,7 @@ export class JoplinNoteCommandService {
     console.log('joplinNote.create: ', item)
     if (!item) {
       const title = await vscode.window.showInputBox({
-        placeHolder: '请输入笔记目录名',
+        placeHolder: 'Please enter a note directory name',
       })
       if (!title) {
         return
@@ -46,9 +46,9 @@ export class JoplinNoteCommandService {
       return
     }
     const title = await vscode.window.showInputBox({
-      placeHolder: `请输入要创建的${
-        type === TypeEnum.Folder ? '目录' : '笔记'
-      }名`,
+      placeHolder: `Please enter what you want to create ${
+        type === TypeEnum.Folder ? 'folder' : 'note'
+      } name`,
     })
     if (item.item.type_ !== TypeEnum.Folder) {
       return
@@ -74,17 +74,17 @@ export class JoplinNoteCommandService {
    */
   async remove(item: FolderOrNote) {
     const folderOrNote = item.item
-    const res = await vscode.window.showQuickPick(['确认', '取消'], {
-      placeHolder: `是否删除${
+    const res = await vscode.window.showQuickPick(['Confirm', 'Cancel'], {
+      placeHolder: `delete or not ${
         folderOrNote.type_ === TypeEnum.Folder
-          ? '目录'
+          ? 'folder'
           : (folderOrNote as NoteGetRes).is_todo
-          ? '待办事项'
-          : '笔记'
+          ? 'todo'
+          : 'note'
       } [${folderOrNote.title}]`,
     })
     console.log(res)
-    if (res !== '确认') {
+    if (res !== 'Confirm') {
       return
     }
     await this.folderOrNoteExtendsApi.remove(item.item)
@@ -94,7 +94,7 @@ export class JoplinNoteCommandService {
   async rename(item: FolderOrNote) {
     console.log('joplinNote.rename: ', item)
     const title = await vscode.window.showInputBox({
-      placeHolder: `请输入新的名字`,
+      placeHolder: `Please enter a new name`,
       value: item.item.title,
     })
     if (!title) {
@@ -124,7 +124,7 @@ export class JoplinNoteCommandService {
       noteId: string
     }
     const searchQuickPickBox = vscode.window.createQuickPick<SearchNoteItem>()
-    searchQuickPickBox.placeholder = '请输入关键字'
+    searchQuickPickBox.placeholder = 'Please enter key words'
     searchQuickPickBox.canSelectMany = false
     searchQuickPickBox.onDidChangeValue(async (value: string) => {
       if (value.trim() === '') {

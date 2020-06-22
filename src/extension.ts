@@ -16,13 +16,13 @@ nls.config({
   bundleFormat: nls.BundleFormat.standalone,
 })()
 const localize: nls.LocalizeFunc = nls.loadMessageBundle()
-console.log('i18n: ', localize('say.hello', 'world'), vscode.env.language)
+console.log('i18n: ', localize('', 'say.hello', 'world'), vscode.env.language)
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   if (!appConfig.token) {
-    vscode.window.showInformationMessage('请先配置 joplin token！')
+    vscode.window.showInformationMessage('Please configure joplin token first!')
     return
   }
   const joplinNoteView = new NoteListProvider()

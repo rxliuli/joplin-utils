@@ -1,0 +1,13 @@
+{
+  "say.hello": "你好 {0}",
+  "viewsWelcome.joplin-note": "没有检测到任何笔记！",
+  "views.joplin-note.joplin-note": "所有笔记",
+  "commands.joplinNote.refreshNoteList": "刷新",
+  "commands.joplinNote.createFolder": "创建目录",
+  "commands.joplinNote.createNote": "创建笔记",
+  "commands.joplinNote.rename": "重命名",
+  "commands.joplinNote.remove": "删除",
+  "commands.joplinNote.search": "搜索",
+  "configuration.joplin.token": "joplin web 服务的 token",
+  "configuration.joplin.port": "joplin web 服务的端口号, 默认为 41184"
+}
