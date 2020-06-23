@@ -27,6 +27,14 @@ The integration of joplin in VSCode currently allows direct operations on direct
 
 ## Release Notes
 
+### 0.1.2
+
+- When activating Joplin for vscode, first call the ping interface once, if it fails, add obvious error message
+
+### 0.1.1
+
+- Update instructions, add screenshots
+
 ### 0.1.0
 
 - Open directly after creating notes

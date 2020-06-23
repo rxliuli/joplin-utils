@@ -2,7 +2,7 @@
   "name": "joplin-vscode-plugin",
   "displayName": "joplin-vscode-plugin",
   "description": "%package.description%",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "rxliuli",
   "engines": {
     "vscode": "^1.45.0"

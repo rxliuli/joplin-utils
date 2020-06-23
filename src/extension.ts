@@ -4,10 +4,11 @@ import * as vscode from 'vscode'
 import { NoteListProvider } from './model/NoteProvider'
 import { initDevEnv } from './util/initDevEnv'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
-import { TypeEnum } from 'joplin-api'
+import { joplinApi, TypeEnum } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
 import { HandlerService } from './service/HandlerService'
 import * as nls from 'vscode-nls'
+import { safeExec } from './util/safeExec'
 
 initDevEnv()
 
@@ -20,11 +21,27 @@ console.log('i18n: ', localize('', 'say.hello', 'world'), vscode.env.language)
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+export async function activate(context: vscode.ExtensionContext) {
   if (!appConfig.token) {
     vscode.window.showInformationMessage(
       'Please configure joplin token first, and then restart VSCode!',
     )
+    return
+  }
+  const errMsg = () =>
+    vscode.window.showErrorMessage(
+      `Joplin's token/port is set incorrectly, unable to access Joplin service!`,
+    )
+  try {
+    if (!(await joplinApi.ping())) {
+      errMsg()
+      return
+    }
+  } catch (e) {
+    errMsg()
+    return
+  }
+  if (!safeExec(() => joplinApi.ping(), Promise.resolve(false))) {
     return
   }
   const joplinNoteView = new NoteListProvider()
