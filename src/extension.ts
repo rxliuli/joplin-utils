@@ -22,7 +22,9 @@ console.log('i18n: ', localize('', 'say.hello', 'world'), vscode.env.language)
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   if (!appConfig.token) {
-    vscode.window.showInformationMessage('Please configure joplin token first!')
+    vscode.window.showInformationMessage(
+      'Please configure joplin token first, and then restart VSCode!',
+    )
     return
   }
   const joplinNoteView = new NoteListProvider()
