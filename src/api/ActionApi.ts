@@ -22,18 +22,10 @@ class ActionApi {
 
   private static async baseAction(action: ActionEnum, noteId: string) {
     return (
-      await axios.post(
-        ApiUtil.baseUrl('/services/externalEditWatcher'),
-        {
-          action,
-          noteId,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-        },
-      )
+      await axios.post(ApiUtil.baseUrl('/services/externalEditWatcher'), {
+        action,
+        noteId,
+      })
     ).data
   }
 }
