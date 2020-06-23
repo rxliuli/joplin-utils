@@ -7,6 +7,7 @@
   "engines": {
     "vscode": "^1.45.0"
   },
+  "icon": "resources/icon.png",
   "scripts": {
     "vscode:prepublish": "yarn run compile",
     "compile": "tsc -p ./",
@@ -33,7 +34,7 @@
         {
           "id": "joplin-note",
           "title": "Joplin",
-          "icon": "resources/dep_test.svg"
+          "icon": "resources/icon.svg"
         }
       ]
     },
