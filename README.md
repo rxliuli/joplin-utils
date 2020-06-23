@@ -2,6 +2,8 @@
 
 The integration of joplin in VSCode currently allows direct operations on directories and notes, while supporting the search function.
 
+![Preview](https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200623085740.png)
+
 ## Features
 
 - There is a tab in VSCode to show the directory tree
@@ -16,19 +18,23 @@ The integration of joplin in VSCode currently allows direct operations on direct
 
 ## Plugin settings
 
--`joplin.token`: token for joplin web service -`joplin.port`: port of joplin web service, default is 41184
+- `joplin.token`: token for joplin web service
+- `joplin.port`: port of joplin web service, default is 41184
 
 ## Known issues
 
-- Not opened directly after creating a note
-- Sync is not turned off after closing notes
-- The directory tree in VSCode is not updated when operating on directories/notes in Joplin
-- Packaging and development environment variables do not take effect
-- Shortcut key support is missing
-- No international processing
-- ICON is not joplin
+- Lack of shortcut key support
 
 ## Release Notes
+
+### 0.1.0
+
+- Open directly after creating notes
+- Turn off sync after closing notes
+- The directory tree in VSCode is automatically updated regularly when doing operations on directories/notes in Joplin
+- Add development environment variables
+- Support internationalization
+- Replace icon with joplin
 
 ### 0.0.1
 
