@@ -1,5 +1,7 @@
 # joplin-vscode-plugin
 
+> [English](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/README.md), [简体中文](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/README.ZH_CN.md)
+
 The integration of joplin in VSCode currently allows direct operations on directories and notes, while supporting the search function.
 
 ![Preview](https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200623085740.png)
@@ -11,17 +13,17 @@ The integration of joplin in VSCode currently allows direct operations on direct
 - Click and edit directly in VSCode
 - Search all notes in VSCode
 
-## Claim
+## Requirements
 
 - [Joplin Pre v1.0.221](https://github.com/laurent22/joplin/releases/tag/v1.0.221)
 - VSCode version> v1.45.0
 
-## Plugin settings
+## Extension Settings
 
 - `joplin.token`: token for joplin web service
 - `joplin.port`: port of joplin web service, default is 41184
 
-## Known issues
+## Known Issues
 
 - Lack of shortcut key support
 
@@ -65,3 +67,13 @@ The integration of joplin in VSCode currently allows direct operations on direct
 - [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
+
+## FAQ
+
+### No list displayed in the sidebar
+
+After checking joplin configuration items, restart VSCode.
+
+### Clicking on the sidebar fails to open the note
+
+Please use the Pre version [v1.0.224](https://github.com/laurent22/joplin/releases/tag/v1.0.224), because it contains several new APIs, such as opening notes according to noteId in VSCode .

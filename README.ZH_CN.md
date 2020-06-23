@@ -65,3 +65,13 @@
 - [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
+
+## 常问问题
+
+### 插件没有显示列表
+
+请检查完 joplin 的配置项之后，重新启动 VSCode。
+
+### 在侧边栏中点击无法打开笔记
+
+请使用 Pre 版本 [v1.0.224](https://github.com/laurent22/joplin/releases/tag/v1.0.224)，因为它包含了必须的几个新 API，例如在 VSCode 中根据 noteId 打开笔记。
