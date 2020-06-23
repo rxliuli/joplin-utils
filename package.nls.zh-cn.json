@@ -1,5 +1,6 @@
 {
   "say.hello": "你好 {0}",
+  "package.description": "joplin 的 vscode 集成",
   "viewsWelcome.joplin-note": "没有检测到任何笔记！",
   "views.joplin-note.joplin-note": "所有笔记",
   "commands.joplinNote.refreshNoteList": "刷新",

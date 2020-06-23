@@ -1,5 +1,6 @@
 {
   "say.hello": "hello {0}",
+  "package.description": "joplin's vscode integration",
   "viewsWelcome.joplin-note": "No notes detected!",
   "views.joplin-note.joplin-note": "All notes",
   "commands.joplinNote.refreshNoteList": "Refresh",
