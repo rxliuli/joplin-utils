@@ -2,7 +2,11 @@ import { TextDocument } from 'vscode'
 import { actionApi } from 'joplin-api'
 import { safeExec } from '../util/safeExec'
 
-export class HandlerService {
+class HandlerService {
+  /**
+   * close note watch
+   * @param e
+   */
   async handleCloseTextDocument(e: TextDocument) {
     console.log('vscode.workspace.onDidCloseTextDocument: ', e)
     const noteId = safeExec(
@@ -15,3 +19,5 @@ export class HandlerService {
     await actionApi.stopWatching(noteId)
   }
 }
+
+export const handlerService = new HandlerService()

@@ -6,7 +6,7 @@ import { initDevEnv } from './util/initDevEnv'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
 import { joplinApi, TypeEnum } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
-import { HandlerService } from './service/HandlerService'
+import { handlerService } from './service/HandlerService'
 import * as nls from 'vscode-nls'
 import { safeExec } from './util/safeExec'
 
@@ -47,7 +47,6 @@ export async function activate(context: vscode.ExtensionContext) {
   const joplinNoteView = new NoteListProvider()
   const joplinNoteCommandService = new JoplinNoteCommandService(joplinNoteView)
   joplinNoteCommandService.init(appConfig)
-  const handlerService = new HandlerService()
   vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
 
   //region 注册命令
