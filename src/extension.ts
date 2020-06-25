@@ -9,6 +9,7 @@ import { appConfig } from './config/AppConfig'
 import { HandlerService } from './service/HandlerService'
 import * as nls from 'vscode-nls'
 import { safeExec } from './util/safeExec'
+import { checkJoplinServer } from './util/checkJoplinServer'
 
 initDevEnv()
 
@@ -16,29 +17,11 @@ nls.config({
   messageFormat: nls.MessageFormat.bundle,
   bundleFormat: nls.BundleFormat.standalone,
 })()
-const localize: nls.LocalizeFunc = nls.loadMessageBundle()
-console.log('i18n: ', localize('', 'say.hello', 'world'), vscode.env.language)
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export async function activate(context: vscode.ExtensionContext) {
-  if (!appConfig.token) {
-    vscode.window.showInformationMessage(
-      'Please configure joplin token first, and then restart VSCode!',
-    )
-    return
-  }
-  const errMsg = () =>
-    vscode.window.showErrorMessage(
-      `Joplin's token/port is set incorrectly, unable to access Joplin service!`,
-    )
-  try {
-    if (!(await joplinApi.ping())) {
-      errMsg()
-      return
-    }
-  } catch (e) {
-    errMsg()
+  if (!(await checkJoplinServer())) {
     return
   }
   if (!safeExec(() => joplinApi.ping(), Promise.resolve(false))) {
