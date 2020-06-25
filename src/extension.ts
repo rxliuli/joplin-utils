@@ -28,10 +28,16 @@ export async function activate(context: vscode.ExtensionContext) {
     return
   }
   const joplinNoteView = new NoteListProvider()
-  const joplinNoteCommandService = new JoplinNoteCommandService(joplinNoteView)
+  // vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
+  const treeView = vscode.window.createTreeView('joplin-note', {
+    treeDataProvider: joplinNoteView,
+  })
+  const joplinNoteCommandService = new JoplinNoteCommandService(
+    joplinNoteView,
+    treeView,
+  )
   joplinNoteCommandService.init(appConfig)
   const handlerService = new HandlerService()
-  vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
 
   //region 注册命令
 

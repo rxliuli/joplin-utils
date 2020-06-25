@@ -1,6 +1,6 @@
 import { FolderOrNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
-import { QuickPickItem } from 'vscode'
+import { QuickPickItem, TreeView } from 'vscode'
 import { actionApi, config, folderApi, searchApi, TypeEnum } from 'joplin-api'
 import { NoteListProvider } from '../model/NoteProvider'
 import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
@@ -9,7 +9,10 @@ import { AppConfig } from '../config/AppConfig'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
-  constructor(private joplinNoteView: NoteListProvider) {}
+  constructor(
+    private joplinNoteView: NoteListProvider,
+    private treeView: TreeView<FolderOrNote>,
+  ) {}
   init(appConfig: AppConfig) {
     if (!appConfig.token) {
       return
@@ -114,6 +117,19 @@ export class JoplinNoteCommandService {
    */
   async openNote(item: Omit<FolderOrNote, 'item'> & { item: NoteGetRes }) {
     await actionApi.openAndWatch(item.item.id)
+    console.log('openNote: ', item.id, await actionApi.noteIsWatched(item.id))
+    const interval = setInterval(() => {
+      this.treeView.reveal(item, {
+        select: true,
+        focus: true,
+      })
+    }, 17)
+    await new Promise((resolve) =>
+      setTimeout(() => {
+        clearInterval(interval)
+        resolve()
+      }, 200),
+    )
   }
 
   /**
