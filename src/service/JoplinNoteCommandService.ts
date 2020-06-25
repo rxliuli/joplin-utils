@@ -21,48 +21,38 @@ export class JoplinNoteCommandService {
     config.port = appConfig.port
 
     setInterval(async () => {
-      console.log('joplin folder tree refresh: ', new Date().toLocaleString())
       await this.joplinNoteView.refresh()
     }, 1000 * 10)
   }
 
   /**
    * create folder or note
-   * @param item
    * @param type
+   * @param item
    */
-  async create(item: FolderOrNote, type: TypeEnum) {
-    console.log('joplinNote.create: ', item)
-    if (!item) {
-      const title = await vscode.window.showInputBox({
-        placeHolder: 'Please enter a note directory name',
-      })
-      if (!title) {
-        return
-      }
-      const folder = {
-        title,
-        parent_id: '',
-      }
-      await folderApi.create(folder)
-      await this.joplinNoteView.refresh()
-      return
-    }
+  async create(
+    type: TypeEnum,
+    item: FolderOrNote = this.treeView.selection[0],
+  ) {
+    const parentFolderId = !item
+      ? ''
+      : item.item.type_ === TypeEnum.Folder
+      ? item.item.id
+      : item.item.parent_id
+    console.log('joplinNote.create: ', item, parentFolderId)
+
     const title = await vscode.window.showInputBox({
       placeHolder: `Please enter what you want to create ${
         type === TypeEnum.Folder ? 'folder' : 'note'
       } name`,
     })
-    if (item.item.type_ !== TypeEnum.Folder) {
-      return
-    }
     if (!title) {
       return
     }
-    console.log('create: ', item, type)
+
     const { id } = await this.folderOrNoteExtendsApi.create({
       title,
-      parent_id: item.item.id,
+      parent_id: parentFolderId,
       type_: type,
     })
     await this.joplinNoteView.refresh()
@@ -75,7 +65,8 @@ export class JoplinNoteCommandService {
    * remove folder or note
    * @param item
    */
-  async remove(item: FolderOrNote) {
+  async remove(item: FolderOrNote = this.treeView.selection[0]) {
+    console.log('joplinNote.remove: ', item)
     const folderOrNote = item.item
     const res = await vscode.window.showQuickPick(['Confirm', 'Cancel'], {
       placeHolder: `delete or not ${
@@ -94,7 +85,7 @@ export class JoplinNoteCommandService {
     await this.joplinNoteView.refresh()
   }
 
-  async rename(item: FolderOrNote) {
+  async rename(item: FolderOrNote = this.treeView.selection[0]) {
     console.log('joplinNote.rename: ', item)
     const title = await vscode.window.showInputBox({
       placeHolder: `Please enter a new name`,
@@ -128,7 +119,7 @@ export class JoplinNoteCommandService {
       setTimeout(() => {
         clearInterval(interval)
         resolve()
-      }, 200),
+      }, 500),
     )
   }
 

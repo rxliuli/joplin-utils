@@ -139,6 +139,43 @@
         }
       ]
     },
+    "keybindings": [
+      {
+        "key": "ctrl+alt+insert",
+        "command": "joplinNote.createFolder",
+        "when": "focusedView == joplin-note"
+      },
+      {
+        "key": "ctrl+r",
+        "command": "joplinNote.refreshNoteList",
+        "when": "focusedView == joplin-note"
+      },
+      {
+        "key": "ctrl+shift+f",
+        "command": "joplinNote.search",
+        "when": "focusedView == joplin-note"
+      },
+      {
+        "key": "ctrl+alt+insert",
+        "command": "joplinNote.createFolder",
+        "when": "focusedView == joplin-note"
+      },
+      {
+        "key": "alt+insert",
+        "command": "joplinNote.createNote",
+        "when": "focusedView == joplin-note"
+      },
+      {
+        "key": "f2",
+        "command": "joplinNote.rename",
+        "when": "focusedView == joplin-note"
+      },
+      {
+        "key": "delete",
+        "command": "joplinNote.remove",
+        "when": "focusedView == joplin-note"
+      }
+    ],
     "configuration": {
       "title": "joplin",
       "properties": {

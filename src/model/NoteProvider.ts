@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import { folderApi } from 'joplin-api'
+import { folderApi, noteApi } from 'joplin-api'
 import { FolderListRes } from 'joplin-api/dist/modal/FolderListRes'
 import { treeMapping } from '../util/treeMapping'
 import { INode } from '../util/INode'
@@ -13,6 +13,7 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     ._onDidChangeTreeData.event
 
   async refresh() {
+    console.log('joplin folder tree refresh: ', new Date().toLocaleString())
     await this.init()
     this._onDidChangeTreeData.fire(undefined)
   }
@@ -72,4 +73,11 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     return folderItemList.concat(noteItemList)
   }
 
+  async getParent(element: FolderOrNote) {
+    const parent = this.folderMap.get(element.item.parent_id)
+    if (!parent) {
+      return
+    }
+    return new FolderOrNote(parent)
+  }
 }

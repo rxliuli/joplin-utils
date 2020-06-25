@@ -8,7 +8,6 @@ import { joplinApi, TypeEnum } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
 import { HandlerService } from './service/HandlerService'
 import * as nls from 'vscode-nls'
-import { safeExec } from './util/safeExec'
 import { checkJoplinServer } from './util/checkJoplinServer'
 
 initDevEnv()
@@ -24,9 +23,6 @@ export async function activate(context: vscode.ExtensionContext) {
   if (!(await checkJoplinServer())) {
     return
   }
-  if (!safeExec(() => joplinApi.ping(), Promise.resolve(false))) {
-    return
-  }
   const joplinNoteView = new NoteListProvider()
   // vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
   const treeView = vscode.window.createTreeView('joplin-note', {
@@ -39,7 +35,7 @@ export async function activate(context: vscode.ExtensionContext) {
   joplinNoteCommandService.init(appConfig)
   const handlerService = new HandlerService()
 
-  //region 注册命令
+  //region register commands
 
   vscode.workspace.onDidCloseTextDocument(
     handlerService.handleCloseTextDocument.bind(handlerService),
@@ -50,18 +46,19 @@ export async function activate(context: vscode.ExtensionContext) {
     joplinNoteView.refresh.bind(joplinNoteView),
   )
   vscode.commands.registerCommand(
+    'joplinNote.search',
+    joplinNoteCommandService.search.bind(joplinNoteCommandService),
+  )
+  vscode.commands.registerCommand(
     'joplinNote.openNote',
     joplinNoteCommandService.openNote.bind(joplinNoteCommandService),
   )
+
   vscode.commands.registerCommand('joplinNote.createFolder', (item) =>
-    joplinNoteCommandService.create(item, TypeEnum.Folder),
+    joplinNoteCommandService.create(TypeEnum.Folder, item),
   )
   vscode.commands.registerCommand('joplinNote.createNote', (item) =>
-    joplinNoteCommandService.create(item, TypeEnum.Note),
-  )
-  vscode.commands.registerCommand(
-    'joplinNote.search',
-    joplinNoteCommandService.search.bind(joplinNoteCommandService),
+    joplinNoteCommandService.create(TypeEnum.Note, item),
   )
   vscode.commands.registerCommand(
     'joplinNote.rename',
