@@ -4,9 +4,9 @@ import * as vscode from 'vscode'
 import { NoteListProvider } from './model/NoteProvider'
 import { initDevEnv } from './util/initDevEnv'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
-import { joplinApi, TypeEnum } from 'joplin-api'
+import { TypeEnum } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
-import { HandlerService } from './service/HandlerService'
+import { handlerService } from './service/HandlerService'
 import * as nls from 'vscode-nls'
 import { checkJoplinServer } from './util/checkJoplinServer'
 
@@ -33,7 +33,6 @@ export async function activate(context: vscode.ExtensionContext) {
     treeView,
   )
   joplinNoteCommandService.init(appConfig)
-  const handlerService = new HandlerService()
 
   //region register commands
 
