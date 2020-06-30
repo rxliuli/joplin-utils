@@ -13,7 +13,7 @@
 
 ## 要求
 
-- [Joplin Pre v1.0.221](https://github.com/laurent22/joplin/releases/tag/v1.0.221)
+- [Joplin Pre v1.0.224](https://github.com/laurent22/joplin/releases/tag/v1.0.224)
 - VSCode version > v1.45.0
 
 ## 插件设置
@@ -82,4 +82,4 @@ curl http://127.0.0.1:41184/ping
 
 ### 在侧边栏中点击无法打开笔记
 
-请使用 Pre 版本 [v1.0.224](https://github.com/laurent22/joplin/releases/tag/v1.0.224)，因为它包含了必须的几个新 API，例如在 VSCode 中根据 noteId 打开笔记。
+请使用版本 [v1.0.224](https://github.com/laurent22/joplin/releases/tag/v1.0.224) 或更高，因为它包含了必须的几个新 API，例如在 VSCode 中根据 noteId 打开笔记。
