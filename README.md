@@ -15,7 +15,7 @@ The integration of joplin in VSCode currently allows direct operations on direct
 
 ## Requirements
 
-- [Joplin Pre v1.0.221](https://github.com/laurent22/joplin/releases/tag/v1.0.221)
+- [Joplin v1.0.224](https://github.com/laurent22/joplin/releases/tag/v1.0.224)
 - VSCode version> v1.45.0
 
 ## Extension Settings
@@ -84,4 +84,4 @@ After checking joplin configuration items, restart VSCode.
 
 ### Clicking on the sidebar fails to open the note
 
-Please use the Pre version [v1.0.224](https://github.com/laurent22/joplin/releases/tag/v1.0.224), because it contains several new APIs, such as opening notes according to noteId in VSCode .
+Please use the last version [v1.0.224](https://github.com/laurent22/joplin/releases/tag/v1.0.224), because it contains several new APIs, such as opening notes according to noteId in VSCode .
