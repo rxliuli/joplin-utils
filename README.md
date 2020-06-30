@@ -70,6 +70,14 @@ The integration of joplin in VSCode currently allows direct operations on direct
 
 ## FAQ
 
+### Show error message **Joplin's token/port is set incorrectly, unable to access Joplin service!**
+
+Please try to execute the following command in CMD/Bash, if there is no problem, it should return **JoplinClipperServer**, otherwise you need File an issue with Joplin.
+
+```cmd
+curl http://127.0.0.1:41184/ping
+```
+
 ### No list displayed in the sidebar
 
 After checking joplin configuration items, restart VSCode.

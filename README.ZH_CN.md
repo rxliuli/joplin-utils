@@ -68,6 +68,14 @@
 
 ## 常问问题
 
+### 显示错误信息 **Joplin’s token/port is set incorrectly, unable to access Joplin service!**
+
+请尝试在 CMD/Bash 执行以下命令，如果没有问题，它应该返回 **JoplinClipperServer**，否则你需要向 Joplin 官方提 issue。
+
+```cmd
+curl http://127.0.0.1:41184/ping
+```
+
 ### 插件没有显示列表
 
 请检查完 joplin 的配置项之后，重新启动 VSCode。
