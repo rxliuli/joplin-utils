@@ -76,6 +76,10 @@
 curl http://127.0.0.1:41184/ping
 ```
 
+### 点击后没有在 VSCode 中打开
+
+请参考官方的默认外部编辑器设置：[How can I edit my note in an external text editor?](https://joplinapp.org/faq/#how-can-i-edit-my-note-in-an-external-text-editor)
+
 ### 插件没有显示列表
 
 请检查完 joplin 的配置项之后，重新启动 VSCode。

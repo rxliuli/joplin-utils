@@ -78,6 +78,10 @@ Please try to execute the following command in CMD/Bash, if there is no problem,
 curl http://127.0.0.1:41184/ping
 ```
 
+### Not opened in VSCode after clicking
+
+Please refer to the official default external editor settings: [How can I edit my note in an external text editor?](https://joplinapp.org/faq/#how-can-i-edit-my-note-in-an-external-text-editor)
+
 ### No list displayed in the sidebar
 
 After checking joplin configuration items, restart VSCode.
