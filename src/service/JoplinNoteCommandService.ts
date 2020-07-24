@@ -1,11 +1,12 @@
 import { FolderOrNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
 import { QuickPickItem, TreeView } from 'vscode'
-import { actionApi, config, folderApi, searchApi, TypeEnum } from 'joplin-api'
+import { actionApi, config, noteApi, searchApi, TypeEnum } from 'joplin-api'
 import { NoteListProvider } from '../model/NoteProvider'
 import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { AppConfig } from '../config/AppConfig'
+import * as path from 'path'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -116,10 +117,7 @@ export class JoplinNoteCommandService {
       })
     }, 17)
     await new Promise((resolve) =>
-      setTimeout(() => {
-        clearInterval(interval)
-        resolve()
-      }, 500),
+      setTimeout(() => resolve(clearInterval(interval)), 500),
     )
   }
 
@@ -154,5 +152,26 @@ export class JoplinNoteCommandService {
       actionApi.openAndWatch(selectItem.noteId)
     })
     searchQuickPickBox.show()
+  }
+
+  /**
+   * 切换选中的文件时自动展开左侧的树
+   * @param fileName
+   */
+  async focus(fileName?: string) {
+    if (!fileName) {
+      return
+    }
+    if (!this.treeView.visible) {
+      return
+    }
+    const joplinMdRegexp = new RegExp(`${path.sep}edit-(\\w{32})\\.md$`)
+    console.log('focus: ', fileName, joplinMdRegexp.exec(fileName))
+    if (!joplinMdRegexp.test(fileName)) {
+      return
+    }
+    const noteId = joplinMdRegexp.exec(fileName)![1]
+    const note = await noteApi.get(noteId)
+    this.treeView.reveal(new FolderOrNote(note))
   }
 }

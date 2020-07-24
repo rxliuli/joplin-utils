@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import { folderApi, noteApi } from 'joplin-api'
+import { folderApi } from 'joplin-api'
 import { FolderListRes } from 'joplin-api/dist/modal/FolderListRes'
 import { treeMapping } from '../util/treeMapping'
 import { INode } from '../util/INode'
@@ -61,7 +61,7 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
       }
       return this.folderList.map((folder) => new FolderOrNote(folder))
     }
-    const folder = this.folderMap.get(element.item.id)
+    const folder = this.folderMap.get(element.id)
     if (!folder || (folder.note_count === 0 && !folder.children)) {
       return []
     }
