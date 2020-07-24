@@ -29,6 +29,12 @@ The integration of joplin in VSCode currently allows direct operations on direct
 
 ## Release Notes
 
+### 0.1.3
+
+-Click the note to switch to the corresponding directory
+-Only keep the shortcut keys for rename and delete
+-Fixed the problem that the cursor was forced to transfer to the editor after clicking the note (not completely resolved)
+
 ### 0.1.2
 
 - When activating Joplin for vscode, first call the ping interface once, if it fails, add obvious error message
