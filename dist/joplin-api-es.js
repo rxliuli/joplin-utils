@@ -89,7 +89,9 @@ var ApiUtil = /** @class */ (function () {
     function ApiUtil() {
     }
     ApiUtil.baseUrl = function (url, param) {
-        var query = stringify(__assign(__assign({}, param), { token: config.token }));
+        var query = stringify(__assign(__assign({}, param), { token: config.token }), {
+            arrayFormat: 'comma',
+        });
         return "http://localhost:" + config.port + url + "?" + query;
     };
     return ApiUtil;
@@ -98,12 +100,12 @@ var ApiUtil = /** @class */ (function () {
 var NoteApi = /** @class */ (function () {
     function NoteApi() {
     }
-    NoteApi.prototype.list = function () {
+    NoteApi.prototype.list = function (fields) {
         return __awaiter(this, void 0, void 0, function () {
             var res;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/notes'))];
+                    case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/notes', { fields: fields }))];
                     case 1:
                         res = _a.sent();
                         return [2 /*return*/, res.data];
@@ -111,12 +113,12 @@ var NoteApi = /** @class */ (function () {
             });
         });
     };
-    NoteApi.prototype.get = function (id) {
+    NoteApi.prototype.get = function (id, fields) {
         return __awaiter(this, void 0, void 0, function () {
             var res;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/notes/" + id))];
+                    case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/notes/" + id, { fields: fields }))];
                     case 1:
                         res = _a.sent();
                         return [2 /*return*/, res.data];
@@ -359,33 +361,6 @@ var SearchApi = /** @class */ (function () {
 }());
 var searchApi = new SearchApi();
 
-var JoplinApi = /** @class */ (function () {
-    function JoplinApi() {
-    }
-    JoplinApi.prototype.scan = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                throw new Error('no impl');
-            });
-        });
-    };
-    JoplinApi.prototype.ping = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var res;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/ping'))];
-                    case 1:
-                        res = _a.sent();
-                        return [2 /*return*/, res.data === 'JoplinClipperServer'];
-                }
-            });
-        });
-    };
-    return JoplinApi;
-}());
-var joplinApi = new JoplinApi();
-
 var FolderApi = /** @class */ (function () {
     function FolderApi() {
     }
@@ -569,10 +544,6 @@ var ActionApi = /** @class */ (function () {
                     case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl('/services/externalEditWatcher'), {
                             action: action,
                             noteId: noteId,
-                        }, {
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',
-                            },
                         })];
                     case 1: return [2 /*return*/, (_a.sent()).data];
                 }
@@ -582,6 +553,71 @@ var ActionApi = /** @class */ (function () {
     return ActionApi;
 }());
 var actionApi = new ActionApi();
+
+var JoplinApi = /** @class */ (function () {
+    function JoplinApi() {
+    }
+    JoplinApi.pingPort = function (port) {
+        return __awaiter(this, void 0, void 0, function () {
+            var res;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, axios.get("http://localhost:" + port + "/ping")];
+                    case 1:
+                        res = _a.sent();
+                        return [2 /*return*/, res.data === 'JoplinClipperServer'];
+                }
+            });
+        });
+    };
+    JoplinApi.range = function (begin, end) {
+        var res = [];
+        for (var i = begin; i < end; i++) {
+            res.push(i);
+        }
+        return res;
+    };
+    JoplinApi.prototype.scan = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var list;
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, Promise.all(JoplinApi.range(41184, 41194 + 1).filter(function (port) { return __awaiter(_this, void 0, void 0, function () {
+                            var e_1;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        _a.trys.push([0, 2, , 3]);
+                                        return [4 /*yield*/, JoplinApi.pingPort(port)];
+                                    case 1: return [2 /*return*/, _a.sent()];
+                                    case 2:
+                                        e_1 = _a.sent();
+                                        return [2 /*return*/, false];
+                                    case 3: return [2 /*return*/];
+                                }
+                            });
+                        }); }))];
+                    case 1:
+                        list = _a.sent();
+                        if (list.length === 0) {
+                            throw new Error("Joplin's port is not scanned");
+                        }
+                        return [2 /*return*/, list[0]];
+                }
+            });
+        });
+    };
+    JoplinApi.prototype.ping = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, JoplinApi.pingPort(config.port)];
+            });
+        });
+    };
+    return JoplinApi;
+}());
+var joplinApi = new JoplinApi();
 
 export { TypeEnum, actionApi, config, folderApi, joplinApi, noteApi, resourceApi, searchApi, tagApi };
 //# sourceMappingURL=joplin-api-es.js.map

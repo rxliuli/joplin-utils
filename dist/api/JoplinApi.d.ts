@@ -1,4 +1,6 @@
 declare class JoplinApi {
+    private static pingPort;
+    private static range;
     scan(): Promise<number>;
     ping(): Promise<boolean>;
 }

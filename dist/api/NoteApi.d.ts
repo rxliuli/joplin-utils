@@ -7,7 +7,9 @@ import { ResourceGetRes } from '../modal/ResourceGetRes';
 import { RequiredField } from 'liuli-types';
 declare class NoteApi {
     list(): Promise<NoteGetRes[]>;
+    list<K extends keyof NoteProperties>(fields?: K[]): Promise<Pick<NoteProperties, K>[]>;
     get(id: string): Promise<NoteGetRes>;
+    get<K extends keyof NoteProperties>(id: string, fields?: K[]): Promise<Pick<NoteProperties, K>>;
     create(param: RequiredField<Partial<NoteProperties>, 'title'>): Promise<NoteCreateRes>;
     update(param: RequiredField<Partial<NoteProperties>, 'id'>): Promise<NoteUpdateRes>;
     /**
