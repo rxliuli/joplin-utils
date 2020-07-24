@@ -9,12 +9,25 @@ import { ResourceGetRes } from '../modal/ResourceGetRes'
 import { RequiredField } from 'liuli-types'
 
 class NoteApi {
-  async list() {
-    const res = await axios.get<NoteGetRes[]>(ApiUtil.baseUrl('/notes'))
+  async list(): Promise<NoteGetRes[]>
+  async list<K extends keyof NoteProperties>(
+    fields?: K[],
+  ): Promise<Pick<NoteProperties, K>[]>
+  async list(fields?: (keyof NoteProperties)[]) {
+    const res = await axios.get<NoteGetRes[]>(
+      ApiUtil.baseUrl('/notes', { fields }),
+    )
     return res.data
   }
-  async get(id: string) {
-    const res = await axios.get<NoteGetRes>(ApiUtil.baseUrl(`/notes/${id}`))
+  async get(id: string): Promise<NoteGetRes>
+  async get<K extends keyof NoteProperties>(
+    id: string,
+    fields?: K[],
+  ): Promise<Pick<NoteProperties, K>>
+  async get(id: string, fields?: (keyof NoteProperties)[]) {
+    const res = await axios.get<NoteGetRes>(
+      ApiUtil.baseUrl(`/notes/${id}`, { fields }),
+    )
     return res.data
   }
   async create(param: RequiredField<Partial<NoteProperties>, 'title'>) {
