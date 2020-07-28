@@ -1,16 +1,16 @@
 <!-- 封面 -->
 
-![logo](_media/icon.svg)
+![logo](https://raw.githubusercontent.com/rxliuli/joplin-vscode-plugin/master/resources/icon.png)
 
-# docsify <small>3.5</small>
+# VSCode Joplin 插件
 
-> 中文
+> 在 VSCode 中集成 joplin，目前允许直接对目录、笔记进行操作，同时支持搜索功能。
 
-- 简单、轻便 (压缩后 ~21kB)
-- 无需生成 html 文件
-- 众多主题
+- VSCode 的专业编辑功能及其生态
+- Joplin 强大的搜索和同步功能
+- 开源 + 免费
 
-[GitHub](https://github.com/docsifyjs/docsify/)
-[Get Started](#docsify)
+[GitHub](https://github.com/rxliuli/joplin-vscode-plugin)
+[Get Started](zh-cn/_navbar/get-started/introduction.md)
 
 <!-- 背景图片 -->

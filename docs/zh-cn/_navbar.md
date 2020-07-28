@@ -1,0 +1,5 @@
+- [入门](zh-cn/_navbar/get-started/introduction.md)
+- [其他](zh-cn/_navbar/other/vscode-introduction.md)
+- Language
+  - [En](/)
+  - [中文](/zh-cn/)

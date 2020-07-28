@@ -1,0 +1,3 @@
+- [为什么要开发这个插件](zh-cn/_navbar/other/why.md)
+- [VSCode 简介](zh-cn/_navbar/other/vscode-introduction.md)
+- [VSCode + Markdown](zh-cn/_navbar/other/vscode-markdown-plugin.md)
