@@ -1,5 +1,5 @@
-- [入门](zh-cn/_navbar/get-started/introduction.md)
+- [入门](zh-cn/_navbar/get-started/quick-start.md)
 - [其他](zh-cn/_navbar/other/why.md)
-- Language
-  - [En](/)
+- 语言
+  - [English](/)
   - [中文](/zh-cn/)

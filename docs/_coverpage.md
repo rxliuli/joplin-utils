@@ -2,13 +2,13 @@
 
 ![logo](https://raw.githubusercontent.com/rxliuli/joplin-vscode-plugin/master/resources/icon.png)
 
-# VSCode Joplin 插件
+# VSCode Joplin Plugin
 
-> 在 VSCode 中集成 joplin，目前允许直接对目录、笔记进行操作，同时支持搜索功能。
+> The integration of joplin in VSCode currently allows direct operations on directories and notes, while supporting the search function.
 
-- VSCode 的专业编辑功能及其生态
-- Joplin 强大的搜索和同步功能
-- 开源 + 免费
+- VSCode's professional editing function and its ecology
+- Joplin's powerful search and synchronization functions
+- Open source + free
 
 [GitHub](https://github.com/rxliuli/joplin-vscode-plugin)
 [Get Started](zh-cn/_navbar/get-started/quick-start.md)

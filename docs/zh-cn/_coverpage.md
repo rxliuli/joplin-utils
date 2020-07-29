@@ -11,6 +11,6 @@
 - 开源 + 免费
 
 [GitHub](https://github.com/rxliuli/joplin-vscode-plugin)
-[Get Started](zh-cn/_navbar/get-started/introduction.md)
+[快速开始](zh-cn/_navbar/get-started/quick-start.md)
 
 <!-- 背景图片 -->

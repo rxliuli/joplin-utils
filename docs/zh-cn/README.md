@@ -2,6 +2,8 @@
 
 在 VSCode 中集成 joplin，目前允许直接对目录、笔记进行操作，同时支持搜索功能。
 
+![Preview](https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200623085740.png)
+
 ## 功能
 
 - 在 VSCode 中有一个选项卡可以展示目录树
