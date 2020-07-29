@@ -1,6 +1,6 @@
 # 快速开始
 
-> 本教程假设你已经熟悉 VSCode 及其 Markdown 环境、Joplin 使用，仅是为了快速了解如何使用插件将它们结合起来。如果从未接触过 Joplin/VSCode，请查看完整[教程](zh-cn/_navbar/get-started/tutorials.md)。
+> 本教程假设你已经熟悉 VSCode 及其 Markdown 环境、Joplin 使用，仅是为了快速了解如何使用插件将它们结合起来。如果从未接触过 Joplin/VSCode，请查看[相关文档](zh-cn/_navbar/other/why)。
 
 ## 安装 VSCode-Joplin 插件
 
