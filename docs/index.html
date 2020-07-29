@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <title>Joplin VSCode Plugin</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Description" />
     <meta
@@ -33,7 +33,10 @@
     </script>
     <script>
       window.$docsify = {
-        name: 'VSCode Joplin 插件',
+        name: local({
+          '/zh-cn/': 'Joplin VSCode 插件',
+          '/': 'Joplin VSCode Plugin',
+        }),
         repo: 'https://github.com/rxliuli/joplin-vscode-plugin',
         loadSidebar: true,
         loadNavbar: true,
