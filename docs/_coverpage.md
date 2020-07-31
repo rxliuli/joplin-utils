@@ -2,7 +2,7 @@
 
 ![logo](https://raw.githubusercontent.com/rxliuli/joplin-vscode-plugin/master/resources/icon.png)
 
-# VSCode Joplin Plugin
+# Joplin VSCode Plugin
 
 > The integration of joplin in VSCode currently allows direct operations on directories and notes, while supporting the search function.
 

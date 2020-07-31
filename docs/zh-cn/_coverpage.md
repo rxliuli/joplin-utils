@@ -2,7 +2,7 @@
 
 ![logo](https://raw.githubusercontent.com/rxliuli/joplin-vscode-plugin/master/resources/icon.png)
 
-# VSCode Joplin 插件
+# Joplin VSCode 插件
 
 > 在 VSCode 中集成 joplin，目前允许直接对目录、笔记进行操作，同时支持搜索功能。
 
