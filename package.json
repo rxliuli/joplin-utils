@@ -162,6 +162,21 @@
           "type": "number",
           "default": 41184,
           "description": "%configuration.joplin.port%"
+        },
+        "joplin.sortNotes": {
+          "type": "boolean",
+          "default": false,
+          "description": "%configuration.joplin.sortNotes%"
+        },
+        "joplin.sortNotesType": {
+          "type": "string",
+          "default": "alphabetical",
+          "description": "%configuration.joplin.sortNotesType%"
+        },
+        "joplin.sortOrder": {
+          "type": "string",
+          "default": "asc",
+          "description": "%configuration.joplin.sortOrder%"
         }
       }
     }

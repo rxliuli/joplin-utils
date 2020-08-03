@@ -4,6 +4,7 @@ import { FolderListRes } from 'joplin-api/dist/modal/FolderListRes'
 import { treeMapping } from '../util/treeMapping'
 import { INode } from '../util/INode'
 import { FolderOrNote } from './FolderOrNote'
+import { appConfig } from '../config/AppConfig'
 
 export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
   private _onDidChangeTreeData: vscode.EventEmitter<
@@ -74,16 +75,30 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     console.log('\n\nnoteItemList: \n')
     console.log(noteItemList)
   }
-  noteItemList.sort((a,b)=>{
-    if (a.item.title < b.item.title) {
-      return -1
+  if (appConfig.sortNotes) {
+    let order: number = 1
+    if (appConfig.sortOrder == 'desc') {
+      order = -1
     }
-    if (a.item.title < b.item.title) {
-      return 1
+    switch (appConfig.sortNotesType) {
+      case 'alphabetical': {
+        noteItemList.sort((a,b)=>{
+          if (a.item.title < b.item.title) {
+            return -1 * order
+          }
+          if (a.item.title < b.item.title) {
+            return 1 * order
+          }
+          return 0
+        })
+        break
+      }
+      default: {
+        break
+      }
     }
-    return 0
-  })
-        return folderItemList.concat(noteItemList)
+  }
+  return folderItemList.concat(noteItemList)
   }
 
   async getParent(element: FolderOrNote) {

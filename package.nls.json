@@ -10,5 +10,8 @@
   "commands.joplinNote.remove": "Remove",
   "commands.joplinNote.search": "Search",
   "configuration.joplin.token": "joplin web server token",
-  "configuration.joplin.port": "joplin web service port, default is 41184"
+  "configuration.joplin.port": "joplin web service port, default is 41184",
+  "configuration.joplin.sortNotes": "Whether to sort notes.",
+  "configuration.joplin.sortNotesType": "Type of sorting notes.",
+  "configuration.joplin.sortOrder": "Order of sorting notes (asc or desc)"
 }
