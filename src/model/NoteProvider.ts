@@ -71,8 +71,18 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
       (note) => new FolderOrNote(note),
     )
   if (process.env.DEBUG) {
-    console.log('\n\nFolderItemList: \n',JSON.stringify(folderItemList,null,2),'\n\nnoteItemList: \n',JSON.stringify(noteItemList))
+    console.log('\n\nnoteItemList: \n')
+    console.log(noteItemList)
   }
+  noteItemList.sort((a,b)=>{
+    if (a.item.title < b.item.title) {
+      return -1
+    }
+    if (a.item.title < b.item.title) {
+      return 1
+    }
+    return 0
+  })
         return folderItemList.concat(noteItemList)
   }
 
