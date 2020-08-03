@@ -70,7 +70,10 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     const noteItemList = (await folderApi.notesByFolderId(folder.id)).map(
       (note) => new FolderOrNote(note),
     )
-    return folderItemList.concat(noteItemList)
+  if (process.env.DEBUG) {
+    console.log('\n\nFolderItemList: \n',JSON.stringify(folderItemList,null,2),'\n\nnoteItemList: \n',JSON.stringify(noteItemList))
+  }
+        return folderItemList.concat(noteItemList)
   }
 
   async getParent(element: FolderOrNote) {
