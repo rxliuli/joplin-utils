@@ -76,18 +76,20 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     console.log(noteItemList)
   }
   if (appConfig.sortNotes) {
-    let order: number = 1
-    if (appConfig.sortOrder == 'desc') {
-      order = -1
-    }
     switch (appConfig.sortNotesType) {
       case 'alphabetical': {
         noteItemList.sort((a,b)=>{
-          if (a.item.title < b.item.title) {
-            return -1 * order
+          return b.item.title.localeCompare(a.item.title)
+        })
+        break
+      }
+      case 'id': {
+        noteItemList.sort((a,b)=>{
+          if (a.item.id < b.item.id) {
+            return -1
           }
-          if (a.item.title < b.item.title) {
-            return 1 * order
+          if (a.item.id > b.item.id) {
+            return 1
           }
           return 0
         })
@@ -96,6 +98,9 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
       default: {
         break
       }
+    }
+    if (appConfig.sortOrder == 'desc') {
+      noteItemList.reverse()
     }
   }
   return folderItemList.concat(noteItemList)
