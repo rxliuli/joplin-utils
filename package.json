@@ -172,20 +172,27 @@
           "type": "string",
           "default": "alphabetical",
           "description": "%configuration.joplin.sortNotesType%",
-          "enum": [ "alphabetical", "id", "none"],
-          "enumDescriptions": [ 
-            "%configuration.joplin.sortNotesTypeAlphabetical%", 
+          "enum": [
+            "alphabetical",
+            "id",
+            "none"
+          ],
+          "enumDescriptions": [
+            "%configuration.joplin.sortNotesTypeAlphabetical%",
             "%configuration.joplin.sortNotesTypeId%",
-            "%configuration.joplin.sortNotesTypeNone%",
+            "%configuration.joplin.sortNotesTypeNone%"
           ]
         },
         "joplin.sortOrder": {
           "type": "string",
           "default": "asc",
           "description": "%configuration.joplin.sortOrder%",
-          "enum": [ "asc", "desc" ],
-          "enumDescriptions": [ 
-            "%configuration.joplin.sortNotesOrderAsc%", 
+          "enum": [
+            "asc",
+            "desc"
+          ],
+          "enumDescriptions": [
+            "%configuration.joplin.sortNotesOrderAsc%",
             "%configuration.joplin.sortNotesOrderDesc%"
           ]
         }
