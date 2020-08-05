@@ -1,23 +1,23 @@
-# 快速开始
+# Quick start
 
-> 本教程假设你已经熟悉 VSCode 及其 Markdown 环境、Joplin 使用，仅是为了快速了解如何使用插件将它们结合起来。如果从未接触过 Joplin/VSCode，请查看完整[教程](zh-cn/_navbar/get-started/tutorials.md)。
+> This tutorial assumes that you are already familiar with VSCode, its Markdown environment, and the use of Joplin, just to quickly understand how to use plugins to combine them. If you have never contacted Joplin/VSCode, please check [Related Documents](_navbar/other/why).
 
-## 安装 VSCode-Joplin 插件
+## Install VSCode-Joplin plugin
 
-在 VSCode 的插件市场搜索 Joplin，然后点击 install，稍后，插件应该就会安装。
+Search for Joplin in VSCode's plug-in market and click install. After a while, the plug-in should be installed.
 
 ![install plugin](../../../_media/install-plugin.png)
 
-## 配置插件
+## Configure plugin
 
-> 确保你已经开启 Web Clipper 服务，参考：[Joplin Web Clipper](https://joplinapp.org/clipper/)
+> Make sure you have enabled the Web Clipper service, refer to: [Joplin Web Clipper](https://joplinapp.org/clipper/)
 
-接下来，需要为插件配置 Joplin 的端口和 token，一般端口默认是 41184 无需配置，只需配置 token 即可。
+Next, you need to configure the Joplin port and token for the plug-in. Generally, the port defaults to 41184. No configuration is required, just configure the token.
 
 ![install plugin](../../../_media/joplin-settings.png)
 
-## 重启 VSCode
+## Restart VSCode
 
-由于某些原因，目前 Joplin 无法在配置后立刻生效，需要关闭 VSCode 之后重新启动才能重新加载配置。
+For some reasons, currently Joplin cannot take effect immediately after configuration. You need to close VSCode and restart to reload the configuration.
 
 ![preview](https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200623085740.png)

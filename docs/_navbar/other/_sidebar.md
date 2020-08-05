@@ -1,11 +1,8 @@
-- [为什么要开发这个插件](zh-cn/_navbar/other/why.md)
+- [Why develop this plugin](_navbar/other/why.md)
+- [Joplin Forum](https://discourse.joplinapp.org/)
 - VSCode
-  - [VSCode 官方文档](https://code.visualstudio.com/docs)
-  - [VSCode 中文翻译文档](https://jeasonstudio.gitbooks.io/vscode-cn-doc/)
+  - [VSCode Official Document](https://code.visualstudio.com/docs)
 - Markdown
-  - [Markdown 指南（英文）](https://www.markdownguide.org/)
-  - [Markdown 指南（翻译）](https://www.markdown.xyz/)
+  - [Markdown Guide (English)](https://www.markdownguide.org/)
 - VSCode + Markdown
-  - [VSCode 官方文档](https://code.visualstudio.com/docs/languages/markdown)
-  - [VSCode 搭建 markdown 写作环境](https://blog.rxliuli.com/p/43851eb5/)
-  - [Markdown Extension Pack(吾辈发布的)](https://marketplace.visualstudio.com/items?itemName=rxliuli.markdown-extension-pack)
+  - [VSCode Official Document](https://code.visualstudio.com/docs/languages/markdown)

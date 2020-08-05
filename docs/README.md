@@ -1,23 +1,23 @@
-# 简介
+# Introduction
 
-在 VSCode 中集成 joplin，目前允许直接对目录、笔记进行操作，同时支持搜索功能。
+Integrating joplin in VSCode, currently allows direct operations on directories and notes, and supports search functions.
 
 ![Preview](https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200623085740.png)
 
-## 功能
+## Features
 
-- 在 VSCode 中有一个选项卡可以展示目录树
-- 在 VSCode 中创建/更新/删除目录/笔记
-- 在 VSCode 中点击即直接编辑
-- 在 VSCode 中搜索所有笔记
-- 在 VSCode 中点击 Joplin 笔记选项卡时自动展开左侧目录
+- There is a tab in VSCode to display the directory tree
+- Create/update/delete directories/notes in VSCode
+- Click to edit directly in VSCode
+- Search all notes in VSCode
+- When you click on the Joplin notes tab in VSCode, the left directory will be automatically expanded
 
-## 要求
+## Claim
 
-- Joplin 版本 > v1.0.224
-- VSCode 版本 > v1.45.0
+- Joplin version> v1.0.224
+- VSCode version> v1.45.0
 
-## 插件设置
+## Plug-in settings
 
-- `joplin.token`: joplin web 服务的 token
-- `joplin.port`: joplin web 服务的端口，默认为 41184
+- `joplin.token`: the token of the joplin web service
+- `joplin.port`: port of joplin web service, default is 41184

@@ -1,4 +1,5 @@
 - [为什么要开发这个插件](zh-cn/_navbar/other/why.md)
+- [Joplin 论坛](https://discourse.joplinapp.org/)
 - VSCode
   - [VSCode 官方文档](https://code.visualstudio.com/docs)
   - [VSCode 中文翻译文档](https://jeasonstudio.gitbooks.io/vscode-cn-doc/)

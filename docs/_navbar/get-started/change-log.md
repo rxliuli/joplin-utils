@@ -1,31 +1,38 @@
-# 更新日志
+# Release Notes
+
+## 0.1.4
+
+- Support custom note display sorting, currently supports `alphabetical/default` sorting, and supports reverse order
+- Add the official website of this plugin (lack of English translation)
+- Fix some prompt English grammar issues
+- Fix the problem of `token/port` in the code in the development environment
 
 ## 0.1.3
 
-- 实现点击笔记切换到对应目录
-- 只保留重命名与删除的快捷键
-- 修复点击笔记之后光标强制转移到了编辑器的问题（未能完全解决）
+- Click the note to switch to the corresponding directory
+- Only keep the shortcut keys for rename and delete
+- Fixed the problem that the cursor was forced to transfer to the editor after clicking the note (not completely resolved)
 
 ## 0.1.2
 
-- 在激活 Joplin for vscode 时，首先调用一次 ping 接口，如果未能成功则添加明显的错误信息
+- When activating Joplin for vscode, first call the ping interface once, if it fails, add obvious error message
 
 ## 0.1.1
 
-- 更新说明，添加截图
+- Update instructions, add screenshots
 
 ## 0.1.0
 
-- 创建笔记后直接打开
-- 关闭笔记后关闭同步
-- 在 Joplin 中对目录/笔记做操作时 VSCode 中的目录树定时自动更新
-- 添加开发环境变量
-- 支持国际化
-- 将 icon 替换为 joplin 的
+- Open directly after creating notes
+- Turn off sync after closing notes
+- The directory tree in VSCode is automatically updated regularly when doing operations on directories/notes in Joplin
+- Add development environment variables
+- Support internationalization
+- Replace icon with joplin
 
 ## 0.0.1
 
-- 在 VSCode 中有一个选项卡可以展示目录树
-- 在 VSCode 中创建/更新/删除目录/笔记
-- 在 VSCode 中点击即直接编辑
-- 在 VSCode 中搜索所有笔记
+- There is a tab in VSCode to show the directory tree
+- Create/update/delete directories/notes in VSCode
+- Click and edit directly in VSCode
+- Search all notes in VSCode
