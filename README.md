@@ -29,6 +29,13 @@ The integration of joplin in VSCode currently allows direct operations on direct
 
 ## Release Notes
 
+### 0.1.4
+
+- Support custom note display sorting, currently supports `alphabetical/default` sorting, and supports reverse order
+- Add the official website of this plugin (lack of English translation)
+- Fix some prompt English grammar issues
+- Fix the problem of `token/port` in the code in the development environment
+
 ### 0.1.3
 
 - Click the note to switch to the corresponding directory
