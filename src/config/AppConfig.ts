@@ -1,11 +1,20 @@
 import * as vscode from 'vscode'
 
+export enum SortNotesTypeEnum {
+  Alphabetical = 'alphabetical',
+  Default = 'default',
+}
+export enum SortOrderEnum {
+  Asc = 'asc',
+  Desc = 'desc',
+}
+
 export class AppConfig {
   token?: string
   port!: number
   sortNotes?: boolean
-  sortNotesType?: string
-  sortOrder?: string
+  sortNotesType?: SortNotesTypeEnum
+  sortOrder?: SortOrderEnum
 
   /**
    * reload joplin for vscode config
@@ -18,13 +27,19 @@ export class AppConfig {
     this.sortNotesType = config.sortNotesType
     this.sortOrder = config.sortOrder
     if (process.env.DEBUG) {
-      console.log('loadConfig: ', 
-      '\nToken: ', this.token, 
-      '\nPort: ', this.port,
-      '\nTo Sort Notes: ', this.sortNotes,
-      '\nSort Notes Type: ', this.sortNotesType,
-      '\nSort Order: ', this.sortOrder
-      );
+      console.log(
+        'loadConfig: ',
+        '\nToken: ',
+        this.token,
+        '\nPort: ',
+        this.port,
+        '\nTo Sort Notes: ',
+        this.sortNotes,
+        '\nSort Notes Type: ',
+        this.sortNotesType,
+        '\nSort Order: ',
+        this.sortOrder,
+      )
     }
   }
 

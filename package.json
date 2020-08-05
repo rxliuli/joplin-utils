@@ -173,14 +173,12 @@
           "default": "alphabetical",
           "description": "%configuration.joplin.sortNotesType%",
           "enum": [
-            "alphabetical",
-            "id",
-            "none"
+            "default",
+            "alphabetical"
           ],
           "enumDescriptions": [
-            "%configuration.joplin.sortNotesTypeAlphabetical%",
-            "%configuration.joplin.sortNotesTypeId%",
-            "%configuration.joplin.sortNotesTypeNone%"
+            "%configuration.joplin.sortNotesTypeDefault%",
+            "%configuration.joplin.sortNotesTypeAlphabetical%"
           ]
         },
         "joplin.sortOrder": {

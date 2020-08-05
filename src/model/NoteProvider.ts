@@ -4,7 +4,11 @@ import { FolderListRes } from 'joplin-api/dist/modal/FolderListRes'
 import { treeMapping } from '../util/treeMapping'
 import { INode } from '../util/INode'
 import { FolderOrNote } from './FolderOrNote'
-import { appConfig } from '../config/AppConfig'
+import {
+  appConfig,
+  SortNotesTypeEnum,
+  SortOrderEnum,
+} from '../config/AppConfig'
 
 export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
   private _onDidChangeTreeData: vscode.EventEmitter<
@@ -71,39 +75,27 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     const noteItemList = (await folderApi.notesByFolderId(folder.id)).map(
       (note) => new FolderOrNote(note),
     )
-  if (process.env.DEBUG) {
-    console.log('\n\nnoteItemList: \n')
-    console.log(noteItemList)
-  }
-  if (appConfig.sortNotes) {
-    switch (appConfig.sortNotesType) {
-      case 'alphabetical': {
-        noteItemList.sort((a,b)=>{
-          return b.item.title.localeCompare(a.item.title)
-        })
-        break
+    if (process.env.DEBUG) {
+      console.log('\n\nnoteItemList: \n')
+      console.log(noteItemList)
+      console.log('appConfig: ', appConfig)
+    }
+    if (appConfig.sortNotes) {
+      const compareMap: Record<
+        SortNotesTypeEnum,
+        (a: FolderOrNote, b: FolderOrNote) => number
+      > = {
+        [SortNotesTypeEnum.Alphabetical]: (a, b) => {
+          return -b.item.title.localeCompare(a.item.title)
+        },
+        [SortNotesTypeEnum.Default]: () => 0,
       }
-      case 'id': {
-        noteItemList.sort((a,b)=>{
-          if (a.item.id < b.item.id) {
-            return -1
-          }
-          if (a.item.id > b.item.id) {
-            return 1
-          }
-          return 0
-        })
-        break
-      }
-      default: {
-        break
+      noteItemList.sort(compareMap[appConfig.sortNotesType!])
+      if (appConfig.sortOrder == SortOrderEnum.Desc) {
+        noteItemList.reverse()
       }
     }
-    if (appConfig.sortOrder == 'desc') {
-      noteItemList.reverse()
-    }
-  }
-  return folderItemList.concat(noteItemList)
+    return folderItemList.concat(noteItemList)
   }
 
   async getParent(element: FolderOrNote) {

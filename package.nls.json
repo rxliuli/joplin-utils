@@ -13,10 +13,9 @@
   "configuration.joplin.port": "joplin web service port, default is 41184",
   "configuration.joplin.sortNotes": "Whether to sort notes.",
   "configuration.joplin.sortNotesType": "Type of sorting notes.",
+  "configuration.joplin.sortNotesTypeDefault": "Default Joplin order (whatever that is).",
+  "configuration.joplin.sortNotesTypeAlphabetical": "Sort notes by alphabetical order of its Title property.",
   "configuration.joplin.sortOrder": "Order of sorting notes (asc or desc)",
-  "configuration.joplin.sortNotesOrderAlphabetical": "Sort notes by alphabetical order of its Title property.",
-  "configuration.joplin.sortNotesOrderId": "Sort notes by alphabetical order of its ID property.",
-  "configuration.joplin.sortNotesOrderNone": "Default Joplin order (whatever that is).",
   "configuration.joplin.sortNotesOrderAsc": "'asc': ascending order",
   "configuration.joplin.sortNotesOrderDesc": "'desc': descending order (reverse)"
 }

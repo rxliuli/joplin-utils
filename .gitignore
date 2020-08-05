@@ -5,3 +5,4 @@ node_modules
 .idea
 .history
 yarn-error.log
+test
