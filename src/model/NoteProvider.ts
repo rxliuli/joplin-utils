@@ -4,6 +4,11 @@ import { FolderListRes } from 'joplin-api/dist/modal/FolderListRes'
 import { treeMapping } from '../util/treeMapping'
 import { INode } from '../util/INode'
 import { FolderOrNote } from './FolderOrNote'
+import {
+  appConfig,
+  SortNotesTypeEnum,
+  SortOrderEnum,
+} from '../config/AppConfig'
 
 export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
   private _onDidChangeTreeData: vscode.EventEmitter<
@@ -70,6 +75,26 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     const noteItemList = (await folderApi.notesByFolderId(folder.id)).map(
       (note) => new FolderOrNote(note),
     )
+    if (process.env.DEBUG) {
+      console.log('\n\nnoteItemList: \n')
+      console.log(noteItemList)
+      console.log('appConfig: ', appConfig)
+    }
+    if (appConfig.sortNotes) {
+      const compareMap: Record<
+        SortNotesTypeEnum,
+        (a: FolderOrNote, b: FolderOrNote) => number
+      > = {
+        [SortNotesTypeEnum.Alphabetical]: (a, b) => {
+          return -b.item.title.localeCompare(a.item.title)
+        },
+        [SortNotesTypeEnum.Default]: () => 0,
+      }
+      noteItemList.sort(compareMap[appConfig.sortNotesType!])
+      if (appConfig.sortOrder == SortOrderEnum.Desc) {
+        noteItemList.reverse()
+      }
+    }
     return folderItemList.concat(noteItemList)
   }
 

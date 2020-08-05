@@ -1,6 +1,5 @@
 {
   "say.hello": "你好 {0}",
-  "package.description": "joplin 的 vscode 集成",
   "viewsWelcome.joplin-note": "没有检测到任何笔记！",
   "views.joplin-note.joplin-note": "所有笔记",
   "commands.joplinNote.refreshNoteList": "刷新",
@@ -10,5 +9,12 @@
   "commands.joplinNote.remove": "删除",
   "commands.joplinNote.search": "搜索",
   "configuration.joplin.token": "joplin web 服务的 token",
-  "configuration.joplin.port": "joplin web 服务的端口号, 默认为 41184"
+  "configuration.joplin.port": "joplin web 服务的端口号, 默认为 41184",
+  "configuration.joplin.sortNotes": "是否对笔记进行排序",
+  "configuration.joplin.sortNotesType": "笔记排序的类型",
+  "configuration.joplin.sortNotesTypeDefault": "Joplin 默认的排序",
+  "configuration.joplin.sortNotesTypeAlphabetical": "按照标题的字母顺序排序",
+  "configuration.joplin.sortOrder": "笔记排序的顺序（升序或降序）",
+  "configuration.joplin.sortNotesOrderAsc": "升序",
+  "configuration.joplin.sortNotesOrderDesc": "降序"
 }
