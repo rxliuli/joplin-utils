@@ -158,11 +158,6 @@
         "key": "delete",
         "command": "joplinNote.remove",
         "when": "focusedView == joplin-note"
-      },
-      {
-        "key": "ctrl+shift+c",
-        "command": "joplinNote.copyLink",
-        "when": "focusedView == joplin-note"
       }
     ],
     "configuration": {
