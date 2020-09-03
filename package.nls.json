@@ -7,6 +7,7 @@
   "commands.joplinNote.createFolder": "Create folder",
   "commands.joplinNote.createNote": "Create note",
   "commands.joplinNote.rename": "Rename",
+  "commands.joplinNote.copyLink": "Copy link",
   "commands.joplinNote.remove": "Remove",
   "commands.joplinNote.search": "Search",
   "configuration.joplin.token": "joplin web server token",

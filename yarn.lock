@@ -1445,6 +1445,11 @@ semver@^7.3.2:
   resolved "https://registry.npm.taobao.org/semver/download/semver-7.3.2.tgz#604962b052b81ed0786aae84389ffba70ffd3938"
   integrity sha1-YElisFK4HtB4aq6EOJ/7pw/9OTg=
 
+serialize-query-params@^1.2.1:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/serialize-query-params/-/serialize-query-params-1.2.2.tgz#92e00b4108c8469333640df09f78551e6ffd60ad"
+  integrity sha512-dVNo1bYmLRmzZU+GI8w3VCale5t9rg4lDLwV4hIs0ZZYEVrZZs8c9jg57PSp9cm90tJuZbXcmZvDu8OQ4cwieQ==
+
 set-blocking@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npm.taobao.org/set-blocking/download/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
@@ -1726,6 +1731,13 @@ uri-js@^4.2.2:
   integrity sha1-lMVA4f93KVbiKZUHwBCupsiDjrA=
   dependencies:
     punycode "^2.1.0"
+
+use-query-params@^1.1.6:
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/use-query-params/-/use-query-params-1.1.6.tgz#3e36cb45f22c4eea90c6cdc604e115af2fe4a950"
+  integrity sha512-zd58jSb0Yb6Io+hg47gXH0z1Zh8gp2CDRCw4ZzwlPBnODBO1CegX2c38Tca+RtZbjJsTtzWA+098uxDtLMEpYA==
+  dependencies:
+    serialize-query-params "^1.2.1"
 
 util-deprecate@~1.0.1:
   version "1.0.2"

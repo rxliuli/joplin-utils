@@ -6,7 +6,7 @@ import { initDevEnv } from './util/initDevEnv'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
 import { TypeEnum } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
-import { handlerService } from './service/HandlerService'
+import { HandlerService } from './service/HandlerService'
 import * as nls from 'vscode-nls'
 import { checkJoplinServer } from './util/checkJoplinServer'
 
@@ -19,6 +19,7 @@ nls.config({
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
+// noinspection JSUnusedLocalSymbols
 export async function activate(context: vscode.ExtensionContext) {
   if (!(await checkJoplinServer())) {
     return
@@ -33,12 +34,9 @@ export async function activate(context: vscode.ExtensionContext) {
     treeView,
   )
   joplinNoteCommandService.init(appConfig)
+  const handlerService = new HandlerService(joplinNoteCommandService)
 
   //region register commands
-
-  vscode.workspace.onDidCloseTextDocument(
-    handlerService.handleCloseTextDocument.bind(handlerService),
-  )
 
   vscode.commands.registerCommand(
     'joplinNote.refreshNoteList',
@@ -64,12 +62,23 @@ export async function activate(context: vscode.ExtensionContext) {
     joplinNoteCommandService.rename.bind(joplinNoteCommandService),
   )
   vscode.commands.registerCommand(
+    'joplinNote.copyLink',
+    joplinNoteCommandService.copyLink.bind(joplinNoteCommandService),
+  )
+  vscode.commands.registerCommand(
     'joplinNote.remove',
     joplinNoteCommandService.remove.bind(joplinNoteCommandService),
   )
   vscode.window.onDidChangeActiveTextEditor((e) =>
     joplinNoteCommandService.focus(e?.document.fileName),
   )
+
+  vscode.workspace.onDidCloseTextDocument(
+    handlerService.handleCloseTextDocument.bind(handlerService),
+  )
+  vscode.window.registerUriHandler({
+    handleUri: handlerService.uriHandler.bind(handlerService),
+  })
 
   //endregion
 }

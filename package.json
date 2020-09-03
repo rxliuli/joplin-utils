@@ -25,7 +25,8 @@
     "url": "https://github.com/rxliuli/joplin-vscode-plugin.git"
   },
   "activationEvents": [
-    "onView:joplin-note"
+    "onView:joplin-note",
+    "onUri"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -94,6 +95,10 @@
         }
       },
       {
+        "command": "joplinNote.copyLink",
+        "title": "%commands.joplinNote.copyLink%"
+      },
+      {
         "command": "joplinNote.search",
         "title": "%commands.joplinNote.search%",
         "icon": {
@@ -136,6 +141,10 @@
         {
           "command": "joplinNote.remove",
           "when": "view == joplin-note"
+        },
+        {
+          "command": "joplinNote.copyLink",
+          "when": "view == joplin-note && viewItem == joplinNote.note"
         }
       ]
     },
@@ -148,6 +157,11 @@
       {
         "key": "delete",
         "command": "joplinNote.remove",
+        "when": "focusedView == joplin-note"
+      },
+      {
+        "key": "ctrl+shift+c",
+        "command": "joplinNote.copyLink",
         "when": "focusedView == joplin-note"
       }
     ],
@@ -215,6 +229,7 @@
   },
   "dependencies": {
     "joplin-api": "^0.1.7",
+    "use-query-params": "^1.1.6",
     "vscode-nls": "^4.1.2"
   }
 }

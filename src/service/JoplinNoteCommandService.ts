@@ -10,10 +10,12 @@ import * as path from 'path'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
+
   constructor(
     private joplinNoteView: NoteListProvider,
     private treeView: TreeView<FolderOrNote>,
   ) {}
+
   init(appConfig: AppConfig) {
     if (!appConfig.token) {
       return
@@ -103,12 +105,22 @@ export class JoplinNoteCommandService {
     await this.joplinNoteView.refresh()
   }
 
+  async copyLink(item: FolderOrNote = this.treeView.selection[0]) {
+    console.log('joplinNote.copyLink: ', item)
+    //The special logic here refers to deleting the '# '
+    const label = item.label?.startsWith('#')
+      ? item.label?.replace('# ', '')
+      : item.label
+    const url = `[${label}](vscode://rxliuli.joplin-vscode-plugin/open?id=${item.id})`
+    vscode.env.clipboard.writeText(url)
+  }
+
   /**
    * open note in vscode
    * @param item
    */
   async openNote(item: Omit<FolderOrNote, 'item'> & { item: NoteGetRes }) {
-    await actionApi.openAndWatch(item.item.id)
+    await actionApi.openAndWatch(item.id)
     console.log('openNote: ', item.id, await actionApi.noteIsWatched(item.id))
     const interval = setInterval(() => {
       this.treeView.reveal(item, {
@@ -128,6 +140,7 @@ export class JoplinNoteCommandService {
     interface SearchNoteItem extends QuickPickItem {
       noteId: string
     }
+
     const searchQuickPickBox = vscode.window.createQuickPick<SearchNoteItem>()
     searchQuickPickBox.placeholder = 'Please enter key words'
     searchQuickPickBox.canSelectMany = false
