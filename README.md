@@ -13,6 +13,7 @@ The integration of joplin in VSCode currently allows direct operations on direct
 - Create/update/delete directories/notes in VSCode
 - Click and edit directly in VSCode
 - Search all notes in VSCode
+- Quote/jump notes in VSCode
 
 ## Requirements
 
@@ -29,6 +30,11 @@ The integration of joplin in VSCode currently allows direct operations on direct
 - Lack of shortcut key support
 
 ## Release Notes
+
+### 0.1.5
+
+- Support copying the joplin note link of the vscode:// protocol in vscode
+- Support open _vscode://rxliuli.joplin-vscode-plugin/open?id=_ link in vscode
 
 ### 0.1.4
 

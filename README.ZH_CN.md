@@ -13,6 +13,7 @@
 - 在 VSCode 中创建/更新/删除目录/笔记
 - 在 VSCode 中点击即直接编辑
 - 在 VSCode 中搜索所有笔记
+- 在 VSCode 中引用/跳转笔记
 
 ## 要求
 
@@ -29,6 +30,11 @@
 - 缺少快捷键支持
 
 ## 发布说明
+
+### 0.1.5
+
+- 支持在 vscode 中复制 vscode:// 协议的 joplin 笔记链接
+- 支持在 vscode 中打开 _vscode://rxliuli.joplin-vscode-plugin/open?id=_ 链接
 
 ### 0.1.4
 
