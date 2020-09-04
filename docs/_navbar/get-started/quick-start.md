@@ -6,7 +6,7 @@
 
 Search for Joplin in VSCode's plug-in market and click install. After a while, the plug-in should be installed.
 
-![install plugin](../../../_media/install-plugin.png)
+![install plugin](../../_media/install-plugin.png)
 
 ## Configure plugin
 
@@ -14,7 +14,7 @@ Search for Joplin in VSCode's plug-in market and click install. After a while, t
 
 Next, you need to configure the Joplin port and token for the plug-in. Generally, the port defaults to 41184. No configuration is required, just configure the token.
 
-![install plugin](../../../_media/joplin-settings.png)
+![install plugin](../../_media/joplin-settings.png)
 
 ## Restart VSCode
 
