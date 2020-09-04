@@ -204,10 +204,12 @@
           ]
         }
       }
-    }
+    },
+    "markdown.markdownItPlugins": true
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",
+    "@types/markdown-it": "^10.0.2",
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.11.0",
     "@types/vscode": "^1.45.0",

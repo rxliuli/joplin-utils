@@ -9,6 +9,8 @@ import { appConfig } from './config/AppConfig'
 import { HandlerService } from './service/HandlerService'
 import * as nls from 'vscode-nls'
 import { checkJoplinServer } from './util/checkJoplinServer'
+import * as MarkdownIt from 'markdown-it'
+import { useJoplinLink } from './util/useJoplinLink'
 
 initDevEnv()
 
@@ -20,7 +22,7 @@ nls.config({
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 // noinspection JSUnusedLocalSymbols
-export async function activate(context: vscode.ExtensionContext) {
+export async function activate() {
   if (!(await checkJoplinServer())) {
     return
   }
@@ -73,12 +75,26 @@ export async function activate(context: vscode.ExtensionContext) {
     joplinNoteCommandService.focus(e?.document.fileName),
   )
 
+  //endregion
+
+  //region register other service
+
   vscode.workspace.onDidCloseTextDocument(
     handlerService.handleCloseTextDocument.bind(handlerService),
   )
   vscode.window.registerUriHandler({
     handleUri: handlerService.uriHandler.bind(handlerService),
   })
+
+  //endregion
+
+  //region register markdown renderer
+
+  return {
+    extendMarkdownIt(md: MarkdownIt) {
+      return md.use(useJoplinLink())
+    },
+  }
 
   //endregion
 }

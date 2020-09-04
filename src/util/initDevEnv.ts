@@ -15,6 +15,6 @@ export function initDevEnv() {
   // such as ENV vars or, at least, do not commit them to the final code. (you
   // could also use different branch for that). These configs were messing up
   // with my use of the source code, for instance.
-  config.token = appConfig.token = process.env.JOPLIN_TOKEN!
-  config.port = appConfig.port = Number.parseInt(process.env.JOPLIN_PORT!)
+  config.token = appConfig.token = '303c85ce19d4eaf23e23ae7817e36043ae0fcf57bf6699b646c796189f1fa65b31ecbc394e48e8840fd9ca643aacc6067a3e5abdbe8b52b7d231a06545241457'!
+  config.port = appConfig.port = 27583
 }

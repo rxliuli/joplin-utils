@@ -111,7 +111,7 @@ export class JoplinNoteCommandService {
     const label = item.label?.startsWith('#')
       ? item.label?.replace('# ', '')
       : item.label
-    const url = `[${label}](vscode://rxliuli.joplin-vscode-plugin/open?id=${item.id})`
+    const url = `[${label}](:${item.id})`
     vscode.env.clipboard.writeText(url)
   }
 
