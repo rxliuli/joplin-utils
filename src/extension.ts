@@ -11,6 +11,7 @@ import * as nls from 'vscode-nls'
 import { checkJoplinServer } from './util/checkJoplinServer'
 import * as MarkdownIt from 'markdown-it'
 import { useJoplinLink } from './util/useJoplinLink'
+import { JoplinMarkdownProvider } from './model/JoplinMarkdownProvider'
 
 initDevEnv()
 
@@ -22,7 +23,7 @@ nls.config({
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 // noinspection JSUnusedLocalSymbols
-export async function activate() {
+export async function activate(context: vscode.ExtensionContext) {
   if (!(await checkJoplinServer())) {
     return
   }
@@ -88,7 +89,16 @@ export async function activate() {
 
   //endregion
 
-  //region register markdown renderer
+  //region register markdown support
+
+  vscode.languages.registerDefinitionProvider(
+    {
+      scheme: 'file',
+      language: 'markdown',
+      pattern: 'edit-*.md',
+    },
+    new JoplinMarkdownProvider(),
+  )
 
   return {
     extendMarkdownIt(md: MarkdownIt) {
