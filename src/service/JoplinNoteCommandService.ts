@@ -14,7 +14,8 @@ export class JoplinNoteCommandService {
   constructor(
     private joplinNoteView: NoteListProvider,
     private treeView: TreeView<FolderOrNote>,
-  ) {}
+  ) {
+  }
 
   init(appConfig: AppConfig) {
     if (!appConfig.token) {
@@ -40,8 +41,8 @@ export class JoplinNoteCommandService {
     const parentFolderId = !item
       ? ''
       : item.item.type_ === TypeEnum.Folder
-      ? item.item.id
-      : item.item.parent_id
+        ? item.item.id
+        : item.item.parent_id
     console.log('joplinNote.create: ', item, parentFolderId)
 
     const title = await vscode.window.showInputBox({
@@ -111,7 +112,7 @@ export class JoplinNoteCommandService {
     const label = item.label?.startsWith('#')
       ? item.label?.replace('# ', '')
       : item.label
-    const url = `[${label}](:${item.id})`
+    const url = `[${label}](:/${item.id})`
     vscode.env.clipboard.writeText(url)
   }
 
