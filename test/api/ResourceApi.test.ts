@@ -2,8 +2,8 @@ import { resourceApi } from '../../src'
 import { pathExistsSync, writeFileSync } from 'fs-extra'
 import { resolve } from 'path'
 
-describe.skip('test ResourceApi', () => {
-  const id = 'af01a0f4d30d418f8cd9f31f174da28f'
+describe('test ResourceApi', () => {
+  const id = 'd2baabaeebe54e87bf7571d6eff230e9'
   it('test list', async () => {
     const res = await resourceApi.list()
     console.log(res)
@@ -23,11 +23,10 @@ describe.skip('test ResourceApi', () => {
   it('test remove ', () => {
     // TODO Test later
   })
-  it('test resourcesByFileId', async () => {
-    // TODO Test later
+  it('test fileByResourceId', async () => {
     const res = await resourceApi.fileByResourceId(id)
-    console.log(res)
-    const path = resolve(__dirname, '../resource/resourcesByFileId.txt')
+    console.log(typeof res)
+    const path = resolve(__dirname, '../resource/resourcesByFileId.png')
     writeFileSync(path, res)
     expect(pathExistsSync(path)).toBeTruthy()
   })

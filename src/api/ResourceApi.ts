@@ -45,7 +45,10 @@ class ResourceApi {
    * @param id
    */
   async fileByResourceId(id: string) {
-    return (await axios.get(ApiUtil.baseUrl(`/resources/${id}/file`))).data
+    const resp = await axios.get(ApiUtil.baseUrl(`/resources/${id}/file`), {
+      responseType: 'arraybuffer',
+    })
+    return Buffer.from(resp.data, 'binary')
   }
 }
 
