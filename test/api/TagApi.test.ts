@@ -16,7 +16,7 @@ describe('test TagApi', () => {
     const res = await tagApi.create({
       title,
     })
-    expect(res.title).toBe(title)
+    expect(res.title.toLowerCase()).toBe(title.toLowerCase())
   })
   it('test update', async () => {
     const title = `test ${new Date().toISOString()}`
