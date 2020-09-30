@@ -1,4 +1,4 @@
-# 详细配置
+# 其他功能
 
 ## 配置表
 
@@ -16,3 +16,12 @@
 | `language`      | `english`      |                | 插件显示的语言，跟随 VSCode  |
 |                 |                | `en`           | 英语                         |
 |                 |                | `zh`           | 简体中文                     |
+
+## 粘贴图片
+
+`v0.1.7` 之后新增了图片粘贴功能，可以通过命令或快捷键将图片上传到 Joplin 并粘贴链接到 VSCode 中。
+
+1. `ctrl+alt+u` 粘贴剪切板的图片
+2. `ctrl+alt+e` 使用文件管理器选择图片粘贴
+
+如果不想记快捷键，可以 `ctrl+shift+p` 搜索 `Upload image from clipboard/explorer` 回车即可上传。

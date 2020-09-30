@@ -1,4 +1,4 @@
 - [快速开始](zh-cn/_navbar/get-started/quick-start.md)
 - [常问问题](zh-cn/_navbar/get-started/faq.md)
 - [更新日志](zh-cn/_navbar/get-started/change-log.md)
-- [详细配置](zh-cn/_navbar/get-started/configuration.md)
+- [其他功能](zh-cn/_navbar/get-started/configuration.md)
