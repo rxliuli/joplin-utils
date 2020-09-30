@@ -49,5 +49,17 @@
     "axios": "^0.19.2",
     "node-fetch": "^2.6.1",
     "query-string": "^6.12.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts}": [
+      "eslint --max-warnings=0",
+      "prettier --ignore-path .eslintignore --write",
+      "git add"
+    ]
   }
 }
