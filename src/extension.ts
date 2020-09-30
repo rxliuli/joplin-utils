@@ -12,6 +12,7 @@ import { checkJoplinServer } from './util/checkJoplinServer'
 import * as MarkdownIt from 'markdown-it'
 import { useJoplinLink } from './util/useJoplinLink'
 import { JoplinMarkdownProvider } from './model/JoplinMarkdownProvider'
+import { uploadImageService } from './service/UploadImageService'
 
 initDevEnv()
 
@@ -74,6 +75,15 @@ export async function activate(context: vscode.ExtensionContext) {
   )
   vscode.window.onDidChangeActiveTextEditor((e) =>
     joplinNoteCommandService.focus(e?.document.fileName),
+  )
+
+  //endregion
+
+  //region register image upload
+
+  vscode.commands.registerCommand(
+    'joplin.uploadImageFromClipboard',
+    uploadImageService.uploadImageFromClipboard.bind(uploadImageService),
   )
 
   //endregion
