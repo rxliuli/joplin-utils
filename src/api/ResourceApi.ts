@@ -3,6 +3,7 @@ import axios from 'axios'
 import { ApiUtil } from '../util/ApiUtil'
 import { ResourceGetRes } from '../modal/ResourceGetRes'
 import * as FormData from 'form-data'
+import fetch from 'node-fetch'
 
 class ResourceApi {
   async list() {
@@ -22,14 +23,11 @@ class ResourceApi {
    * TODO
    */
   async create(fd: FormData) {
-    const resp = await axios.post<ResourceGetRes>(
-      ApiUtil.baseUrl('/resources'),
-      fd,
-      {
-        headers: fd.getHeaders(),
-      },
-    )
-    return resp.data
+    const resp = await fetch(ApiUtil.baseUrl('/resources'), {
+      method: 'post',
+      body: fd,
+    })
+    return (await resp.json()) as ResourceGetRes
   }
 
   async update(param: Pick<ResourceProperties, 'id' | 'title'>) {

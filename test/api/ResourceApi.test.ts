@@ -2,11 +2,11 @@ import { resourceApi } from '../../src'
 import { pathExistsSync, writeFileSync, createReadStream } from 'fs-extra'
 import { resolve } from 'path'
 import FormData from 'form-data'
-import { ApiUtil } from '../../src/util/ApiUtil'
 import axios from 'axios'
-import { ResourceGetRes } from '../../src/modal/ResourceGetRes'
+import { ApiUtil } from '../../src/util/ApiUtil'
+import fetch from 'node-fetch'
 
-describe.skip('test ResourceApi', () => {
+describe('test ResourceApi', () => {
   const id = 'd2baabaeebe54e87bf7571d6eff230e9'
   it('test list', async () => {
     const res = await resourceApi.list()
@@ -18,26 +18,41 @@ describe.skip('test ResourceApi', () => {
     console.log(res)
     expect(res.id).toBe(id)
   })
-  it.skip('test create', async () => {
+  it('test create', async () => {
     const fd = new FormData()
     const path = resolve(__dirname, '../resource/resourcesByFileId.png')
-    fd.append('props', JSON.stringify({ title: '图片标题' }))
+    const title = 'image title'
+    fd.append('props', JSON.stringify({ title: title }))
     fd.append('data', createReadStream(path))
-    await resourceApi.create(fd)
+    const json = await resourceApi.create(fd)
+    expect(json.title).toBe(title)
   })
-  it('test create by fetch', async () => {
-    const fd = new FormData()
-    const path = resolve(__dirname, '../resource/resourcesByFileId.png')
-    fd.append('props', JSON.stringify({ title: 'image' }))
-    fd.append('data', createReadStream(path))
-    const resp = await axios.post<ResourceGetRes>(
-      ApiUtil.baseUrl('/resources'),
-      fd,
-      {
+  describe('diff fetch and axios', () => {
+    function getFormData() {
+      const fd = new FormData()
+      const path = resolve(__dirname, '../resource/resourcesByFileId.png')
+      const title = 'image title'
+      fd.append('props', JSON.stringify({ title: title }))
+      fd.append('data', createReadStream(path))
+      return fd
+    }
+
+    it('test create by fetch', async () => {
+      const fd = getFormData()
+      const resp = await fetch(ApiUtil.baseUrl('/resources'), {
+        method: 'post',
+        body: fd,
+      })
+      const json = await resp.json()
+      console.log('json: ', json)
+    })
+    it.skip('test create by axios', async () => {
+      const fd = getFormData()
+      const resp = await axios.post(ApiUtil.baseUrl('/resources'), fd, {
         headers: fd.getHeaders(),
-      },
-    )
-    console.log(resp.data)
+      })
+      console.log('resp.data: ', resp.data)
+    })
   })
   it('test update', async () => {
     const getRes = await resourceApi.get(id)

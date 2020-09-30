@@ -13,5 +13,9 @@ module.exports = function () {
       },
     },
     testFramework: 'jest',
+    workers: {
+      initial: 1,
+      regular: 2,
+    },
   }
 }

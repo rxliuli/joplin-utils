@@ -1,10 +1,10 @@
-import { folderApi, noteApi, actionApi } from '../../src'
+import { actionApi } from '../../src'
 import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
 
 describe('test ActionApi', () => {
   const data = initTestFolderAndNote()
 
-  it('test ActionApi.openAndWatch', async () => {
+  it.skip('test ActionApi.openAndWatch', async () => {
     const res = await actionApi.openAndWatch(data.noteId)
     console.log(res)
   })
