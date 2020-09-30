@@ -1,6 +1,6 @@
 {
   "name": "joplin-api",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "description": "joplin ts/js api",
   "license": "mit",
   "main": "./dist/joplin-api.js",
@@ -46,9 +46,9 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "form-data": "^3.0.0",
     "node-fetch": "^2.6.1",
-    "query-string": "^6.12.1",
-    "form-data": "^3.0.0"
+    "query-string": "^6.12.1"
   },
   "husky": {
     "hooks": {

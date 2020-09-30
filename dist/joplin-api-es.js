@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { stringify } from 'query-string';
+import FormData from 'form-data';
 import fetch from 'node-fetch';
 
 /*! *****************************************************************************
@@ -441,18 +442,21 @@ var ResourceApi = /** @class */ (function () {
      * Creates a new resource
      * Creating a new resource is special because you also need to upload the file. Unlike other API calls, this one must have the "multipart/form-data" Content-Type. The file data must be passed to the "data" form field, and the other properties to the "props" form field. An example of a valid call with cURL would be:
      * The "data" field is required, while the "props" one is not. If not specified, default values will be used.
-     * @param fd
-     * TODO
+     * @param param
      */
-    ResourceApi.prototype.create = function (fd) {
+    ResourceApi.prototype.create = function (param) {
         return __awaiter(this, void 0, void 0, function () {
-            var resp;
+            var fd, resp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, fetch(ApiUtil.baseUrl('/resources'), {
-                            method: 'post',
-                            body: fd,
-                        })];
+                    case 0:
+                        fd = new FormData();
+                        fd.append('props', JSON.stringify({ title: param.title }));
+                        fd.append('data', param.data);
+                        return [4 /*yield*/, fetch(ApiUtil.baseUrl('/resources'), {
+                                method: 'post',
+                                body: fd,
+                            })];
                     case 1:
                         resp = _a.sent();
                         return [4 /*yield*/, resp.json()];
