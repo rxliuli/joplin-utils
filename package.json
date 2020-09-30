@@ -167,6 +167,18 @@
         "key": "delete",
         "command": "joplinNote.remove",
         "when": "focusedView == joplin-note"
+      },
+      {
+        "command": "joplin.uploadImageFromClipboard",
+        "key": "ctrl+alt+u",
+        "mac": "cmd+alt+u",
+        "when": "editorTextFocus && editorLangId == markdown"
+      },
+      {
+        "command": "joplin.uploadImageFromExplorer",
+        "key": "ctrl+alt+e",
+        "mac": "cmd+alt+e",
+        "when": "editorTextFocus && editorLangId == markdown"
       }
     ],
     "configuration": {

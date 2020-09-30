@@ -6,7 +6,7 @@ export class UploadImageService {
   async uploadImageFromClipboard() {
     const clipboardImage = await UploadImageUtil.getClipboardImage()
     if (!clipboardImage.isExistFile) {
-      vscode.window.showWarningMessage('剪切板没有检查到图片')
+      vscode.window.showWarningMessage('Clipboard does not check the picture')
       return
     }
     const markdownLink = await UploadImageUtil.uploadImageByPath(
@@ -40,7 +40,7 @@ export class UploadImageService {
   get editor(): vscode.TextEditor {
     const editor = vscode.window.activeTextEditor
     if (!editor) {
-      window.showErrorMessage('没有活动的编辑器')
+      window.showErrorMessage('No active editor')
     }
     return editor as vscode.TextEditor
   }
