@@ -11,7 +11,6 @@ import * as nls from 'vscode-nls'
 import { checkJoplinServer } from './util/checkJoplinServer'
 import * as MarkdownIt from 'markdown-it'
 import { useJoplinLink } from './util/useJoplinLink'
-import { JoplinMarkdownProvider } from './model/JoplinMarkdownProvider'
 import { uploadImageService } from './service/UploadImageService'
 
 initDevEnv()
@@ -104,15 +103,6 @@ export async function activate(context: vscode.ExtensionContext) {
   //endregion
 
   //region register markdown support
-
-  vscode.languages.registerDefinitionProvider(
-    {
-      scheme: 'file',
-      language: 'markdown',
-      pattern: 'edit-*.md',
-    },
-    new JoplinMarkdownProvider(),
-  )
 
   return {
     extendMarkdownIt(md: MarkdownIt) {
