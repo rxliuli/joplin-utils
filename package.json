@@ -27,7 +27,6 @@
     "@types/jest": "^24.0.12",
     "@types/node-fetch": "^2.5.7",
     "@types/rollup": "^0.54.0",
-    "form-data": "^3.0.0",
     "fs-extra": "^9.0.1",
     "husky": "^3.0.5",
     "jest": "^24.5.0",
@@ -48,7 +47,8 @@
   "dependencies": {
     "axios": "^0.20.0",
     "node-fetch": "^2.6.1",
-    "query-string": "^6.12.1"
+    "query-string": "^6.12.1",
+    "form-data": "^3.0.0"
   },
   "husky": {
     "hooks": {

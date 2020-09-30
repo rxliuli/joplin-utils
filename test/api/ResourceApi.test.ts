@@ -18,19 +18,19 @@ describe('test ResourceApi', () => {
     console.log(res)
     expect(res.id).toBe(id)
   })
-  it('test create', async () => {
-    const fd = new FormData()
-    const path = resolve(__dirname, '../resource/resourcesByFileId.png')
-    const title = 'image title'
-    fd.append('props', JSON.stringify({ title: title }))
-    fd.append('data', createReadStream(path))
-    const json = await resourceApi.create(fd)
-    expect(json.title).toBe(title)
-  })
+
   describe('diff fetch and axios', () => {
+    const path = resolve(__dirname, '../resource/resourcesByFileId.png')
+    it('test create', async () => {
+      const title = 'image title'
+      const json = await resourceApi.create({
+        title,
+        data: createReadStream(path),
+      })
+      expect(json.title).toBe(title)
+    })
     function getFormData() {
       const fd = new FormData()
-      const path = resolve(__dirname, '../resource/resourcesByFileId.png')
       const title = 'image title'
       fd.append('props', JSON.stringify({ title: title }))
       fd.append('data', createReadStream(path))
