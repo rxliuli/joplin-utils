@@ -10,6 +10,8 @@
   "commands.joplinNote.copyLink": "Copy link",
   "commands.joplinNote.remove": "Remove",
   "commands.joplinNote.search": "Search",
+  "commands.joplinNote.uploadImageFromClipboard": "Upload image from clipboard",
+  "commands.joplinNote.uploadImageFromExplorer": "Upload image from explorer",
   "configuration.joplin.token": "joplin web server token",
   "configuration.joplin.port": "joplin web service port, default is 41184",
   "configuration.joplin.sortNotes": "Whether to sort notes.",

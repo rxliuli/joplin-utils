@@ -85,6 +85,10 @@ export async function activate(context: vscode.ExtensionContext) {
     'joplin.uploadImageFromClipboard',
     uploadImageService.uploadImageFromClipboard.bind(uploadImageService),
   )
+  vscode.commands.registerCommand(
+    'joplin.uploadImageFromExplorer',
+    uploadImageService.uploadImageFromExplorer.bind(uploadImageService),
+  )
 
   //endregion
 
