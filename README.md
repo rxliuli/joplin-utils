@@ -8,8 +8,8 @@ Joplin api's js package, written in ts, provides a complete type definition, inc
 
 ## Conventional name
 
--Use class to encapsulate API, for example note related API is encapsulated in `NoteApi` class.
--Keep the same naming for the same function meaning. For example, the note list is `NoteApi.list`. The following is a complete comparison table
+- Use class to encapsulate API, for example note related API is encapsulated in `NoteApi` class.
+- Keep the same naming for the same function meaning. For example, the note list is `NoteApi.list`. The following is a complete comparison table
 
 | Meaning   | Naming   | Examples         |
 | --------- | -------- | ---------------- |
