@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { ApiUtil } from '../util/ApiUtil'
+import { ajax } from '../util/ajax'
 
 enum ActionEnum {
   OpenAndWatch = 'openAndWatch',
@@ -21,12 +20,10 @@ class ActionApi {
   }
 
   private static async baseAction(action: ActionEnum, noteId: string) {
-    return (
-      await axios.post(ApiUtil.baseUrl('/services/externalEditWatcher'), {
-        action,
-        noteId,
-      })
-    ).data
+    return ajax.post('/services/externalEditWatcher', {
+      action,
+      noteId,
+    })
   }
 }
 

@@ -1,33 +1,29 @@
-import axios from 'axios'
 import { TagProperties } from '../modal/TagProperties'
-import { ApiUtil } from '../util/ApiUtil'
 import { TagGetRes } from '../modal/TagGetRes'
 import { NoteGetRes } from '../modal/NoteGetRes'
 import { NoteTagRelated } from '../modal/NoteTagRelated'
+import { ajax } from '../util/ajax'
 
 class TagApi {
   async list() {
-    return (await axios.get<TagGetRes[]>(ApiUtil.baseUrl('/tags'))).data
+    return await ajax.get<TagGetRes[]>('/tags')
   }
   async get(id: string) {
-    return (await axios.get<TagGetRes>(ApiUtil.baseUrl(`/tags/${id}`))).data
+    return await ajax.get<TagGetRes>(`/tags/${id}`)
   }
   async create(param: Pick<TagProperties, 'title'>) {
-    return (await axios.post<TagGetRes>(ApiUtil.baseUrl('/tags'), param)).data
+    return await ajax.post<TagGetRes>('/tags', param)
   }
   async update(param: Pick<TagProperties, 'id' | 'title'>) {
     const { id, ...others } = param
-    return (await axios.post<TagGetRes>(ApiUtil.baseUrl(`/tags/${id}`), others))
-      .data
+    return await ajax.post<TagGetRes>(`/tags/${id}`, others)
   }
   async remove(id: string) {
-    return (await axios.delete<TagProperties>(ApiUtil.baseUrl(`/tags/${id}`)))
-      .data
+    return await ajax.delete<TagProperties>(`/tags/${id}`)
   }
 
   async notesByTagId(id: string) {
-    return (await axios.get<NoteGetRes[]>(ApiUtil.baseUrl(`/tags/${id}/notes`)))
-      .data
+    return await ajax.get<NoteGetRes[]>(`/tags/${id}/notes`)
   }
 
   /**
@@ -36,22 +32,13 @@ class TagApi {
    * @param noteId
    */
   async addTagByNoteId(tagId: string, noteId: string) {
-    return (
-      await axios.post<NoteTagRelated | null>(
-        ApiUtil.baseUrl(`/tags/${tagId}/notes/`),
-        {
-          id: noteId,
-        },
-      )
-    ).data
+    return await ajax.post<NoteTagRelated | null>(`/tags/${tagId}/notes/`, {
+      id: noteId,
+    })
   }
 
   async removeTagByNoteId(tagId: string, noteId: string) {
-    return (
-      await axios.delete<void>(
-        ApiUtil.baseUrl(`/tags/${tagId}/notes/${noteId}`),
-      )
-    ).data
+    return await ajax.delete<void>(`/tags/${tagId}/notes/${noteId}`)
   }
 }
 

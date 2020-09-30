@@ -1,10 +1,14 @@
-import axios from 'axios'
 import { config } from '..'
+import { request } from '../util/ajax'
 
 class JoplinApi {
   private static async pingPort(port: number) {
-    const res = await axios.get<string>(`http://localhost:${port}/ping`)
-    return res.data === 'JoplinClipperServer'
+    const res = await request<string>({
+      url: `http://localhost:${port}/ping`,
+      method: 'get',
+      responseType: 'text',
+    })
+    return res === 'JoplinClipperServer'
   }
 
   private static range(begin: number, end: number) {
@@ -32,6 +36,7 @@ class JoplinApi {
   }
 
   async ping(): Promise<boolean> {
+    console.log('config port: ', config.port)
     return JoplinApi.pingPort(config.port)
   }
 }

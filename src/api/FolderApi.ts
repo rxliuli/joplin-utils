@@ -1,5 +1,3 @@
-import axios from 'axios'
-import { ApiUtil } from '../util/ApiUtil'
 import { FolderProperties } from '../modal/FolderProperties'
 import { FolderListRes } from '../modal/FolderListRes'
 import { FolderGetRes } from '../modal/FolderGetRes'
@@ -7,36 +5,27 @@ import { FolderCreateRes } from '../modal/FolderCreateRes'
 import { FolderUpdateRes } from '../modal/FolderUpdateRes'
 import { NoteGetRes } from '../modal/NoteGetRes'
 import { RequiredField } from 'liuli-types'
+import { ajax } from '../util/ajax'
 
 class FolderApi {
   async list() {
-    return (await axios.get<FolderListRes[]>(ApiUtil.baseUrl('/folders'))).data
+    return ajax.get<FolderListRes[]>('/folders')
   }
   async get(id: string) {
-    return (await axios.get<FolderGetRes>(ApiUtil.baseUrl(`/folders/${id}`)))
-      .data
+    return ajax.get<FolderGetRes>(`/folders/${id}`)
   }
   async create(param: RequiredField<Partial<FolderProperties>, 'title'>) {
-    return (
-      await axios.post<FolderCreateRes>(ApiUtil.baseUrl(`/folders`), param)
-    ).data
+    return ajax.post<FolderCreateRes>(`/folders`, param)
   }
   async update(param: RequiredField<Partial<FolderProperties>, 'id'>) {
     const { id, ...others } = param
-    return (
-      await axios.put<FolderUpdateRes>(
-        ApiUtil.baseUrl(`/folders/${id}`),
-        others,
-      )
-    ).data
+    return ajax.put<FolderUpdateRes>(`/folders/${id}`, others)
   }
   async remove(id: string) {
-    return (await axios.delete<string>(ApiUtil.baseUrl(`/folders/${id}`))).data
+    return ajax.delete<string>(`/folders/${id}`)
   }
   async notesByFolderId(id: string) {
-    return (
-      await axios.get<NoteGetRes[]>(ApiUtil.baseUrl(`/folders/${id}/notes`))
-    ).data
+    return ajax.get<NoteGetRes[]>(`/folders/${id}/notes`)
   }
 }
 

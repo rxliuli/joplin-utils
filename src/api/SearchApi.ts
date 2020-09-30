@@ -1,7 +1,7 @@
-import axios from 'axios'
-import { ApiUtil } from '../util/ApiUtil'
 import { NoteGetRes } from '../modal/NoteGetRes'
+// noinspection ES6PreferShortImport
 import { TypeEnum } from '../modal/TypeEnum'
+import { ajax } from '../util/ajax'
 
 class SearchApi {
   private static readonly TypeEnumMap: Record<TypeEnum, string> = {
@@ -25,13 +25,10 @@ class SearchApi {
   async search(param: { query: string; type?: TypeEnum }) {
     SearchApi.TypeEnumMap['8'] = ''
     const { type, ...others } = param
-    const res = await axios.get<NoteGetRes[]>(
-      ApiUtil.baseUrl('/search', {
-        ...others,
-        type: SearchApi.TypeEnumMap[type!],
-      }),
-    )
-    return res.data
+    return ajax.get<NoteGetRes[]>('/search', {
+      ...others,
+      type: SearchApi.TypeEnumMap[type!],
+    })
   }
 }
 

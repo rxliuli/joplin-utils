@@ -7,7 +7,7 @@ describe('test JoplinApi', () => {
     it('test list', async () => {
       const res = await noteApi.list()
       console.log(res)
-      expect(res.length).toBeGreaterThan(0)
+      expect(res.length).toBeGreaterThanOrEqual(0)
     })
     it('test get', async () => {
       const res = await noteApi.get(data.noteId)
@@ -46,7 +46,7 @@ describe('test JoplinApi', () => {
       expect(createRes.id).not.toBeNull()
       const res = await noteApi.remove(createRes.id)
       console.log(res)
-      expect(res).toBe('')
+      expect(res).toBeNull()
     })
     it('test tagsById', async () => {
       const tagList = await noteApi.tagsById(data.noteId)

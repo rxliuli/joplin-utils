@@ -1,12 +1,11 @@
-import axios from 'axios'
 import { NoteGetRes } from '../modal/NoteGetRes'
 import { NoteProperties } from '../modal/NoteProperties'
-import { ApiUtil } from '../util/ApiUtil'
 import { TagGetRes } from '../modal/TagGetRes'
 import { NoteCreateRes } from '../modal/NoteCreateRes'
 import { NoteUpdateRes } from '../modal/NoteUpdateRes'
 import { ResourceGetRes } from '../modal/ResourceGetRes'
 import { RequiredField } from 'liuli-types'
+import { ajax } from '../util/ajax'
 
 class NoteApi {
   async list(): Promise<NoteGetRes[]>
@@ -14,10 +13,7 @@ class NoteApi {
     fields?: K[],
   ): Promise<Pick<NoteProperties, K>[]>
   async list(fields?: (keyof NoteProperties)[]) {
-    const res = await axios.get<NoteGetRes[]>(
-      ApiUtil.baseUrl('/notes', { fields }),
-    )
-    return res.data
+    return ajax.get<NoteGetRes[]>('/notes', { fields })
   }
   async get(id: string): Promise<NoteGetRes>
   async get<K extends keyof NoteProperties>(
@@ -25,25 +21,14 @@ class NoteApi {
     fields?: K[],
   ): Promise<Pick<NoteProperties, K>>
   async get(id: string, fields?: (keyof NoteProperties)[]) {
-    const res = await axios.get<NoteGetRes>(
-      ApiUtil.baseUrl(`/notes/${id}`, { fields }),
-    )
-    return res.data
+    return ajax.get<NoteGetRes>(`/notes/${id}`, { fields })
   }
   async create(param: RequiredField<Partial<NoteProperties>, 'title'>) {
-    const res = await axios.post<NoteCreateRes>(
-      ApiUtil.baseUrl(`/notes`),
-      param,
-    )
-    return res.data
+    return ajax.post<NoteCreateRes>('/notes', param)
   }
   async update(param: RequiredField<Partial<NoteProperties>, 'id'>) {
     const { id, ...others } = param
-    const res = await axios.put<NoteUpdateRes>(
-      ApiUtil.baseUrl(`/notes/${id}`),
-      others,
-    )
-    return res.data
+    return await ajax.put<NoteUpdateRes>(`/notes/${id}`, others)
   }
 
   /**
@@ -51,20 +36,13 @@ class NoteApi {
    * @throws Error: Request failed with status code 404
    */
   async remove(id: string) {
-    const res = await axios.delete(ApiUtil.baseUrl(`/notes/${id}`))
-    return res.data
+    return ajax.delete(`/notes/${id}`)
   }
   async tagsById(id: string) {
-    const res = await axios.get<TagGetRes[]>(
-      ApiUtil.baseUrl(`/notes/${id}/tags`),
-    )
-    return res.data
+    return ajax.get<TagGetRes[]>(`/notes/${id}/tags`)
   }
   async resourcesById(id: string) {
-    const res = await axios.get<ResourceGetRes[]>(
-      ApiUtil.baseUrl(`/notes/${id}/resources`),
-    )
-    return res.data
+    return ajax.get<ResourceGetRes[]>(`/notes/${id}/resources`)
   }
 }
 

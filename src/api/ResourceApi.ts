@@ -1,19 +1,16 @@
 import { ResourceProperties } from '../modal/ResourceProperties'
-import axios from 'axios'
-import { ApiUtil } from '../util/ApiUtil'
 import { ResourceGetRes } from '../modal/ResourceGetRes'
 import * as FormData from 'form-data'
 import fetch from 'node-fetch'
+import { ajax } from '../util/ajax'
+import { ApiUtil } from '../util/ApiUtil'
 
 class ResourceApi {
   async list() {
-    return (await axios.get<ResourceGetRes[]>(ApiUtil.baseUrl('/resources')))
-      .data
+    return await ajax.get<ResourceGetRes[]>('/resources')
   }
   async get(id: string) {
-    return (
-      await axios.get<ResourceGetRes>(ApiUtil.baseUrl(`/resources/${id}`))
-    ).data
+    return await ajax.get<ResourceGetRes>(`/resources/${id}`)
   }
   /**
    * Creates a new resource
@@ -32,15 +29,10 @@ class ResourceApi {
 
   async update(param: Pick<ResourceProperties, 'id' | 'title'>) {
     const { id, ...others } = param
-    return (
-      await axios.put<ResourceGetRes>(
-        ApiUtil.baseUrl(`/resources/${id}`),
-        others,
-      )
-    ).data
+    return await ajax.put<ResourceGetRes>(`/resources/${id}`, others)
   }
   async remove(id: string) {
-    return (await axios.delete(ApiUtil.baseUrl(`/resources/${id}`))).data
+    return await ajax.delete(`/resources/${id}`)
   }
 
   /**
@@ -48,10 +40,14 @@ class ResourceApi {
    * @param id
    */
   async fileByResourceId(id: string) {
-    const resp = await axios.get(ApiUtil.baseUrl(`/resources/${id}/file`), {
-      responseType: 'arraybuffer',
-    })
-    return Buffer.from(resp.data, 'binary')
+    const resp = await ajax.get<any>(
+      `/resources/${id}/file`,
+      {},
+      {
+        responseType: 'arraybuffer',
+      },
+    )
+    return Buffer.from(resp, 'binary')
   }
 }
 
