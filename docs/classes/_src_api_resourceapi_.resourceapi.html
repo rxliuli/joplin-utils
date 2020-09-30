@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ResourceApi | joplin-api - v0.1.7</title>
+	<title>ResourceApi | joplin-api - v0.1.9</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">joplin-api - v0.1.7</a>
+					<a href="../index.html" class="title">joplin-api - v0.1.9</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -101,13 +101,13 @@
 					<a name="create" class="tsd-anchor"></a>
 					<h3>create</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>param<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_modal_resourceproperties_.resourceproperties.html" class="tsd-signature-type">ResourceProperties</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"title"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_modal_resourceproperties_.resourceproperties.html" class="tsd-signature-type">ResourceProperties</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/_src_modal_commontype_.commontype.html" class="tsd-signature-type">CommonType</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>fd<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">FormData</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_modal_resourceproperties_.resourceproperties.html" class="tsd-signature-type">ResourceProperties</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/_src_modal_commontype_.commontype.html" class="tsd-signature-type">CommonType</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/fe2a617/src/api/ResourceApi.ts#L23">src/api/ResourceApi.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/5943e3a/src/api/ResourceApi.ts#L25">src/api/ResourceApi.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -120,7 +120,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>param: <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_modal_resourceproperties_.resourceproperties.html" class="tsd-signature-type">ResourceProperties</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"title"</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5>fd: <span class="tsd-signature-type">FormData</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>TODO</p>
 									</div>
@@ -134,13 +134,13 @@
 					<a name="filebyresourceid" class="tsd-anchor"></a>
 					<h3>file<wbr>ByResource<wbr>Id</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">file<wbr>ByResource<wbr>Id<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">file<wbr>ByResource<wbr>Id<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/fe2a617/src/api/ResourceApi.ts#L47">src/api/ResourceApi.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/5943e3a/src/api/ResourceApi.ts#L50">src/api/ResourceApi.ts:50</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -156,7 +156,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -170,7 +170,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/fe2a617/src/api/ResourceApi.ts#L11">src/api/ResourceApi.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/5943e3a/src/api/ResourceApi.ts#L13">src/api/ResourceApi.ts:13</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -193,7 +193,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/fe2a617/src/api/ResourceApi.ts#L7">src/api/ResourceApi.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/5943e3a/src/api/ResourceApi.ts#L9">src/api/ResourceApi.ts:9</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">(</span><a href="../interfaces/_src_modal_resourceproperties_.resourceproperties.html" class="tsd-signature-type">ResourceProperties</a><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/_src_modal_commontype_.commontype.html" class="tsd-signature-type">CommonType</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -204,13 +204,13 @@
 					<a name="remove" class="tsd-anchor"></a>
 					<h3>remove</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">remove<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/fe2a617/src/api/ResourceApi.ts#L38">src/api/ResourceApi.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/5943e3a/src/api/ResourceApi.ts#L42">src/api/ResourceApi.ts:42</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -219,7 +219,7 @@
 									<h5>id: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -233,7 +233,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/fe2a617/src/api/ResourceApi.ts#L29">src/api/ResourceApi.ts:29</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/5943e3a/src/api/ResourceApi.ts#L33">src/api/ResourceApi.ts:33</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>

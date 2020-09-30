@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { stringify } from 'query-string';
+import fetch from 'node-fetch';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -460,15 +461,22 @@ var ResourceApi = /** @class */ (function () {
      * Creates a new resource
      * Creating a new resource is special because you also need to upload the file. Unlike other API calls, this one must have the "multipart/form-data" Content-Type. The file data must be passed to the "data" form field, and the other properties to the "props" form field. An example of a valid call with cURL would be:
      * The "data" field is required, while the "props" one is not. If not specified, default values will be used.
-     * @param param
+     * @param fd
      * TODO
      */
-    ResourceApi.prototype.create = function (param) {
+    ResourceApi.prototype.create = function (fd) {
         return __awaiter(this, void 0, void 0, function () {
+            var resp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl('/resources'), param)];
-                    case 1: return [2 /*return*/, (_a.sent()).data];
+                    case 0: return [4 /*yield*/, fetch(ApiUtil.baseUrl('/resources'), {
+                            method: 'post',
+                            body: fd,
+                        })];
+                    case 1:
+                        resp = _a.sent();
+                        return [4 /*yield*/, resp.json()];
+                    case 2: return [2 /*return*/, (_a.sent())];
                 }
             });
         });
@@ -480,7 +488,7 @@ var ResourceApi = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         id = param.id, others = __rest(param, ["id"]);
-                        return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/resources/" + id), others)];
+                        return [4 /*yield*/, axios.put(ApiUtil.baseUrl("/resources/" + id), others)];
                     case 1: return [2 /*return*/, (_a.sent()).data];
                 }
             });
@@ -491,8 +499,7 @@ var ResourceApi = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/resources/" + id))];
-                    case 1: return [2 /*return*/, (_a.sent())
-                            .data];
+                    case 1: return [2 /*return*/, (_a.sent()).data];
                 }
             });
         });
@@ -503,10 +510,15 @@ var ResourceApi = /** @class */ (function () {
      */
     ResourceApi.prototype.fileByResourceId = function (id) {
         return __awaiter(this, void 0, void 0, function () {
+            var resp;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/resources/" + id + "/file"))];
-                    case 1: return [2 /*return*/, (_a.sent()).data];
+                    case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/resources/" + id + "/file"), {
+                            responseType: 'arraybuffer',
+                        })];
+                    case 1:
+                        resp = _a.sent();
+                        return [2 /*return*/, Buffer.from(resp.data, 'binary')];
                 }
             });
         });
