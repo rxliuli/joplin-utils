@@ -103,59 +103,87 @@
         return ApiUtil;
     }());
 
+    var defaultConfig = {
+        method: 'get',
+        data: undefined,
+        headers: {},
+        responseType: 'json',
+    };
+    /**
+     * 封装 ajax 请求
+     * @param config
+     */
+    function request(config) {
+        return __awaiter(this, void 0, void 0, function () {
+            var mergeConfig;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        mergeConfig = __assign(__assign({}, defaultConfig), config);
+                        return [4 /*yield*/, axios.request({
+                                url: mergeConfig.url,
+                                method: mergeConfig.method,
+                                data: mergeConfig.data,
+                                headers: mergeConfig.headers,
+                                responseType: mergeConfig.responseType,
+                            })];
+                    case 1: return [2 /*return*/, (_a.sent()).data];
+                }
+            });
+        });
+    }
+    var Ajax = /** @class */ (function () {
+        function Ajax() {
+        }
+        Ajax.prototype.get = function (url, data, config) {
+            return request(__assign(__assign({ url: ApiUtil.baseUrl(url, data) }, config), { method: 'get' }));
+        };
+        Ajax.prototype.post = function (url, data, config) {
+            return request(__assign(__assign({ url: ApiUtil.baseUrl(url), data: data }, config), { method: 'post' }));
+        };
+        Ajax.prototype.put = function (url, data, config) {
+            return request(__assign(__assign({ url: ApiUtil.baseUrl(url), data: data }, config), { method: 'put' }));
+        };
+        Ajax.prototype.delete = function (url, data, config) {
+            return request(__assign(__assign({ url: ApiUtil.baseUrl(url), data: data }, config), { method: 'delete' }));
+        };
+        return Ajax;
+    }());
+    var ajax = new Ajax();
+
     var NoteApi = /** @class */ (function () {
         function NoteApi() {
         }
         NoteApi.prototype.list = function (fields) {
             return __awaiter(this, void 0, void 0, function () {
-                var res;
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/notes', { fields: fields }))];
-                        case 1:
-                            res = _a.sent();
-                            return [2 /*return*/, res.data];
-                    }
+                    return [2 /*return*/, ajax.get('/notes', { fields: fields })];
                 });
             });
         };
         NoteApi.prototype.get = function (id, fields) {
             return __awaiter(this, void 0, void 0, function () {
-                var res;
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/notes/" + id, { fields: fields }))];
-                        case 1:
-                            res = _a.sent();
-                            return [2 /*return*/, res.data];
-                    }
+                    return [2 /*return*/, ajax.get("/notes/" + id, { fields: fields })];
                 });
             });
         };
         NoteApi.prototype.create = function (param) {
             return __awaiter(this, void 0, void 0, function () {
-                var res;
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/notes"), param)];
-                        case 1:
-                            res = _a.sent();
-                            return [2 /*return*/, res.data];
-                    }
+                    return [2 /*return*/, ajax.post('/notes', param)];
                 });
             });
         };
         NoteApi.prototype.update = function (param) {
             return __awaiter(this, void 0, void 0, function () {
-                var id, others, res;
+                var id, others;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
                             id = param.id, others = __rest(param, ["id"]);
-                            return [4 /*yield*/, axios.put(ApiUtil.baseUrl("/notes/" + id), others)];
-                        case 1:
-                            res = _a.sent();
-                            return [2 /*return*/, res.data];
+                            return [4 /*yield*/, ajax.put("/notes/" + id, others)];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -166,40 +194,22 @@
          */
         NoteApi.prototype.remove = function (id) {
             return __awaiter(this, void 0, void 0, function () {
-                var res;
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/notes/" + id))];
-                        case 1:
-                            res = _a.sent();
-                            return [2 /*return*/, res.data];
-                    }
+                    return [2 /*return*/, ajax.delete("/notes/" + id)];
                 });
             });
         };
         NoteApi.prototype.tagsById = function (id) {
             return __awaiter(this, void 0, void 0, function () {
-                var res;
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/notes/" + id + "/tags"))];
-                        case 1:
-                            res = _a.sent();
-                            return [2 /*return*/, res.data];
-                    }
+                    return [2 /*return*/, ajax.get("/notes/" + id + "/tags")];
                 });
             });
         };
         NoteApi.prototype.resourcesById = function (id) {
             return __awaiter(this, void 0, void 0, function () {
-                var res;
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/notes/" + id + "/resources"))];
-                        case 1:
-                            res = _a.sent();
-                            return [2 /*return*/, res.data];
-                    }
+                    return [2 /*return*/, ajax.get("/notes/" + id + "/resources")];
                 });
             });
         };
@@ -214,8 +224,8 @@
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/tags'))];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
+                        case 0: return [4 /*yield*/, ajax.get('/tags')];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -224,8 +234,8 @@
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/tags/" + id))];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
+                        case 0: return [4 /*yield*/, ajax.get("/tags/" + id)];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -234,8 +244,8 @@
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl('/tags'), param)];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
+                        case 0: return [4 /*yield*/, ajax.post('/tags', param)];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -247,9 +257,8 @@
                     switch (_a.label) {
                         case 0:
                             id = param.id, others = __rest(param, ["id"]);
-                            return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/tags/" + id), others)];
-                        case 1: return [2 /*return*/, (_a.sent())
-                                .data];
+                            return [4 /*yield*/, ajax.post("/tags/" + id, others)];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -258,9 +267,8 @@
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/tags/" + id))];
-                        case 1: return [2 /*return*/, (_a.sent())
-                                .data];
+                        case 0: return [4 /*yield*/, ajax.delete("/tags/" + id)];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -269,9 +277,8 @@
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/tags/" + id + "/notes"))];
-                        case 1: return [2 /*return*/, (_a.sent())
-                                .data];
+                        case 0: return [4 /*yield*/, ajax.get("/tags/" + id + "/notes")];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -285,10 +292,10 @@
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/tags/" + tagId + "/notes/"), {
+                        case 0: return [4 /*yield*/, ajax.post("/tags/" + tagId + "/notes/", {
                                 id: noteId,
                             })];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -297,8 +304,8 @@
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/tags/" + tagId + "/notes/" + noteId))];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
+                        case 0: return [4 /*yield*/, ajax.delete("/tags/" + tagId + "/notes/" + noteId)];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -331,17 +338,11 @@
         }
         SearchApi.prototype.search = function (param) {
             return __awaiter(this, void 0, void 0, function () {
-                var type, others, res;
+                var type, others;
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            SearchApi.TypeEnumMap['8'] = '';
-                            type = param.type, others = __rest(param, ["type"]);
-                            return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/search', __assign(__assign({}, others), { type: SearchApi.TypeEnumMap[type] })))];
-                        case 1:
-                            res = _a.sent();
-                            return [2 /*return*/, res.data];
-                    }
+                    SearchApi.TypeEnumMap['8'] = '';
+                    type = param.type, others = __rest(param, ["type"]);
+                    return [2 /*return*/, ajax.get('/search', __assign(__assign({}, others), { type: SearchApi.TypeEnumMap[type] }))];
                 });
             });
         };
@@ -372,31 +373,21 @@
         FolderApi.prototype.list = function () {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/folders'))];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
-                    }
+                    return [2 /*return*/, ajax.get('/folders')];
                 });
             });
         };
         FolderApi.prototype.get = function (id) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/folders/" + id))];
-                        case 1: return [2 /*return*/, (_a.sent())
-                                .data];
-                    }
+                    return [2 /*return*/, ajax.get("/folders/" + id)];
                 });
             });
         };
         FolderApi.prototype.create = function (param) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl("/folders"), param)];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
-                    }
+                    return [2 /*return*/, ajax.post("/folders", param)];
                 });
             });
         };
@@ -404,32 +395,22 @@
             return __awaiter(this, void 0, void 0, function () {
                 var id, others;
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0:
-                            id = param.id, others = __rest(param, ["id"]);
-                            return [4 /*yield*/, axios.put(ApiUtil.baseUrl("/folders/" + id), others)];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
-                    }
+                    id = param.id, others = __rest(param, ["id"]);
+                    return [2 /*return*/, ajax.put("/folders/" + id, others)];
                 });
             });
         };
         FolderApi.prototype.remove = function (id) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/folders/" + id))];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
-                    }
+                    return [2 /*return*/, ajax.delete("/folders/" + id)];
                 });
             });
         };
         FolderApi.prototype.notesByFolderId = function (id) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/folders/" + id + "/notes"))];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
-                    }
+                    return [2 /*return*/, ajax.get("/folders/" + id + "/notes")];
                 });
             });
         };
@@ -444,9 +425,8 @@
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl('/resources'))];
-                        case 1: return [2 /*return*/, (_a.sent())
-                                .data];
+                        case 0: return [4 /*yield*/, ajax.get('/resources')];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -455,8 +435,8 @@
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/resources/" + id))];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
+                        case 0: return [4 /*yield*/, ajax.get("/resources/" + id)];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -492,8 +472,8 @@
                     switch (_a.label) {
                         case 0:
                             id = param.id, others = __rest(param, ["id"]);
-                            return [4 /*yield*/, axios.put(ApiUtil.baseUrl("/resources/" + id), others)];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
+                            return [4 /*yield*/, ajax.put("/resources/" + id, others)];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -502,8 +482,8 @@
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.delete(ApiUtil.baseUrl("/resources/" + id))];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
+                        case 0: return [4 /*yield*/, ajax.delete("/resources/" + id)];
+                        case 1: return [2 /*return*/, _a.sent()];
                     }
                 });
             });
@@ -517,12 +497,12 @@
                 var resp;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get(ApiUtil.baseUrl("/resources/" + id + "/file"), {
+                        case 0: return [4 /*yield*/, ajax.get("/resources/" + id + "/file", {}, {
                                 responseType: 'arraybuffer',
                             })];
                         case 1:
                             resp = _a.sent();
-                            return [2 /*return*/, Buffer.from(resp.data, 'binary')];
+                            return [2 /*return*/, Buffer.from(resp, 'binary')];
                     }
                 });
             });
@@ -556,13 +536,10 @@
         ActionApi.baseAction = function (action, noteId) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.post(ApiUtil.baseUrl('/services/externalEditWatcher'), {
-                                action: action,
-                                noteId: noteId,
-                            })];
-                        case 1: return [2 /*return*/, (_a.sent()).data];
-                    }
+                    return [2 /*return*/, ajax.post('/services/externalEditWatcher', {
+                            action: action,
+                            noteId: noteId,
+                        })];
                 });
             });
         };
@@ -578,10 +555,14 @@
                 var res;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, axios.get("http://localhost:" + port + "/ping")];
+                        case 0: return [4 /*yield*/, request({
+                                url: "http://localhost:" + port + "/ping",
+                                method: 'get',
+                                responseType: 'text',
+                            })];
                         case 1:
                             res = _a.sent();
-                            return [2 /*return*/, res.data === 'JoplinClipperServer'];
+                            return [2 /*return*/, res === 'JoplinClipperServer'];
                     }
                 });
             });
@@ -627,6 +608,7 @@
         JoplinApi.prototype.ping = function () {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
+                    console.log('config port: ', config.port);
                     return [2 /*return*/, JoplinApi.pingPort(config.port)];
                 });
             });

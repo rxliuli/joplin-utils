@@ -14,7 +14,7 @@ declare class ResourceApi {
      */
     create(fd: FormData): Promise<ResourceGetRes>;
     update(param: Pick<ResourceProperties, 'id' | 'title'>): Promise<ResourceGetRes>;
-    remove(id: string): Promise<any>;
+    remove(id: string): Promise<unknown>;
     /**
      * Gets the actual file associated with this resource.
      * @param id

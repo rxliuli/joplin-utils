@@ -16,7 +16,7 @@ declare class NoteApi {
      * @param id
      * @throws Error: Request failed with status code 404
      */
-    remove(id: string): Promise<any>;
+    remove(id: string): Promise<unknown>;
     tagsById(id: string): Promise<TagGetRes[]>;
     resourcesById(id: string): Promise<ResourceGetRes[]>;
 }
