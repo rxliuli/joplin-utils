@@ -34,16 +34,16 @@ export class HandlerService {
       case '/open':
         const id = parse(uri.query).id as string
         if (!id) {
-          vscode.window.showWarningMessage('id 不能为空')
+          vscode.window.showWarningMessage('id cannot be empty')
           return
         }
         const item = await noteApi.get(id)
         if (!item) {
-          vscode.window.showWarningMessage('id 不存在')
+          vscode.window.showWarningMessage('id does not exist')
           return
         }
         if (item.type_ !== TypeEnum.Note) {
-          vscode.window.showWarningMessage('id 不是一个 note')
+          vscode.window.showWarningMessage('id is not a note')
           return
         }
         await this.joplinNoteCommandService.openNote(
