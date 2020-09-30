@@ -1,5 +1,20 @@
 # Release Notes
 
+## 0.1.7
+
+- Support the use of shortcut keys `ctrl+alt+u/ctrl+alt+e`
+- Support uploading clipboard pictures and automatically paste them into the editor
+- Support selecting pictures in the file manager and automatically paste them into the editor
+
+## 0.1.6
+
+- Support joplin custom `[](:/)` link
+
+## 0.1.5
+
+- Support copying the joplin note link of the vscode:// protocol in vscode
+- Support open _vscode://rxliuli.joplin-vscode-plugin/open?id=_ link in vscode
+
 ## 0.1.4
 
 - Support custom note display sorting, currently supports `alphabetical/default` sorting, and supports reverse order
