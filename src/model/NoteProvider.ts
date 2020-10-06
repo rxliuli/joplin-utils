@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import { folderApi } from 'joplin-api'
+import { folderApi, noteApi } from 'joplin-api'
 import { FolderListRes } from 'joplin-api/dist/modal/FolderListRes'
 import { treeMapping } from '../util/treeMapping'
 import { INode } from '../util/INode'
@@ -32,9 +32,13 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
   private folderMap = new Map<string, FolderListRes>()
   private async init() {
     this.folderList = await folderApi.list()
+
     this.folderList.forEach((item) =>
       treeMapping(item, {
         before: (folder) => {
+          if (!folder.id) {
+            console.log(folder.id)
+          }
           this.folderMap.set(folder.id, folder)
           return {
             id: folder.id,
@@ -64,7 +68,13 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
       if (this.folderList.length === 0) {
         await this.init()
       }
-      return this.folderList.map((folder) => new FolderOrNote(folder))
+      const rootNoteList = (await noteApi.list()).filter(
+        (note) => !note.parent_id,
+      )
+      console.log('rootNoteList: ', rootNoteList)
+      return [...this.folderList, ...rootNoteList].map(
+        (item) => new FolderOrNote(item),
+      )
     }
     const folder = this.folderMap.get(element.id)
     if (!folder || (folder.note_count === 0 && !folder.children)) {
