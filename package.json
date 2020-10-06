@@ -113,7 +113,8 @@
       },
       {
         "command": "joplin.uploadImageFromClipboard",
-        "title": "%commands.joplinNote.uploadImageFromClipboard%"
+        "title": "%commands.joplinNote.uploadImageFromClipboard%",
+        "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus"
       },
       {
         "command": "joplin.uploadImageFromExplorer",
@@ -162,6 +163,18 @@
         {
           "command": "joplinNote.toggleTodoState",
           "when": "view == joplin-note && viewItem != joplinNote.folder && viewItem != joplinNote.note"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "joplinNote.uploadImageFromClipboard",
+          "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus",
+          "group": "joplinNote"
+        },
+        {
+          "command": "joplinNote.uploadImageFromExplorer",
+          "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus",
+          "group": "joplinNote"
         }
       ]
     },
