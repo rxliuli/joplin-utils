@@ -72,6 +72,10 @@ export async function activate(context: vscode.ExtensionContext) {
     'joplinNote.remove',
     joplinNoteCommandService.remove.bind(joplinNoteCommandService),
   )
+  vscode.commands.registerCommand(
+    'joplinNote.toggleTodoState',
+    joplinNoteCommandService.toggleTodoState.bind(joplinNoteCommandService),
+  )
   vscode.window.onDidChangeActiveTextEditor((e) =>
     joplinNoteCommandService.focus(e?.document.fileName),
   )

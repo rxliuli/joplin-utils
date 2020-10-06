@@ -7,6 +7,7 @@
   "commands.joplinNote.createNote": "创建笔记",
   "commands.joplinNote.rename": "重命名",
   "commands.joplinNote.copyLink": "复制链接",
+  "commands.joplinNote.toggleTodoState": "切换待办任务状态",
   "commands.joplinNote.remove": "删除",
   "commands.joplinNote.search": "搜索",
   "commands.joplinNote.uploadImageFromClipboard": "从剪切板上传图片",

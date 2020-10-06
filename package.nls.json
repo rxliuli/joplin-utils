@@ -8,6 +8,7 @@
   "commands.joplinNote.createNote": "Create note",
   "commands.joplinNote.rename": "Rename",
   "commands.joplinNote.copyLink": "Copy link",
+  "commands.joplinNote.toggleTodoState": "Toggle todo state",
   "commands.joplinNote.remove": "Remove",
   "commands.joplinNote.search": "Search",
   "commands.joplinNote.uploadImageFromClipboard": "Upload image from clipboard",

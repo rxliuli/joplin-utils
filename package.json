@@ -100,6 +100,10 @@
         "title": "%commands.joplinNote.copyLink%"
       },
       {
+        "command": "joplinNote.toggleTodoState",
+        "title": "%commands.joplinNote.toggleTodoState%"
+      },
+      {
         "command": "joplinNote.search",
         "title": "%commands.joplinNote.search%",
         "icon": {
@@ -153,7 +157,11 @@
         },
         {
           "command": "joplinNote.copyLink",
-          "when": "view == joplin-note && viewItem == joplinNote.note"
+          "when": "view == joplin-note && viewItem != joplinNote.folder"
+        },
+        {
+          "command": "joplinNote.toggleTodoState",
+          "when": "view == joplin-note && viewItem != joplinNote.folder && viewItem != joplinNote.note"
         }
       ]
     },

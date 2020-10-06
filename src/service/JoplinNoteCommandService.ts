@@ -7,6 +7,7 @@ import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { AppConfig } from '../config/AppConfig'
 import * as path from 'path'
+import { noteExtendsApi } from '../api/NoteExtendsApi'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -14,8 +15,7 @@ export class JoplinNoteCommandService {
   constructor(
     private joplinNoteView: NoteListProvider,
     private treeView: TreeView<FolderOrNote>,
-  ) {
-  }
+  ) {}
 
   init(appConfig: AppConfig) {
     if (!appConfig.token) {
@@ -41,8 +41,8 @@ export class JoplinNoteCommandService {
     const parentFolderId = !item
       ? ''
       : item.item.type_ === TypeEnum.Folder
-        ? item.item.id
-        : item.item.parent_id
+      ? item.item.id
+      : item.item.parent_id
     console.log('joplinNote.create: ', item, parentFolderId)
 
     const title = await vscode.window.showInputBox({
@@ -114,6 +114,11 @@ export class JoplinNoteCommandService {
       : item.label
     const url = `[${label}](:/${item.id})`
     vscode.env.clipboard.writeText(url)
+  }
+
+  async toggleTodoState(item: FolderOrNote = this.treeView.selection[0]) {
+    await noteExtendsApi.toggleTodoState(item.id)
+    await this.joplinNoteView.refresh()
   }
 
   /**

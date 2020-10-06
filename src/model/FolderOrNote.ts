@@ -54,8 +54,6 @@ export class FolderOrNote extends vscode.TreeItem {
     return ''
   }
   get contextValue() {
-    return this.item.type_ === TypeEnum.Folder
-      ? 'joplinNote.folder'
-      : 'joplinNote.note'
+    return 'joplinNote.' + FolderOrNote.getIconName(this.item)
   }
 }
