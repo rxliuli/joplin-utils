@@ -13,7 +13,7 @@ export class FolderOrNote extends vscode.TreeItem {
         ? vscode.TreeItemCollapsibleState.Collapsed
         : TreeItemCollapsibleState.None,
     )
-    const iconName = item.type_ === TypeEnum.Folder ? 'folder' : 'note'
+    const iconName = FolderOrNote.getIconName(item)
     this.iconPath = {
       light: path.resolve(__dirname, `../../resources/light/${iconName}.svg`),
       dark: path.resolve(__dirname, `../../resources/light/${iconName}.svg`),
@@ -25,6 +25,20 @@ export class FolderOrNote extends vscode.TreeItem {
         arguments: [this],
       }
     }
+  }
+
+  private static getIconName(item: FolderListRes | NoteGetRes) {
+    if (item.type_ === TypeEnum.Folder) {
+      return 'folder'
+    }
+    const note = item as NoteGetRes
+    if (!note.is_todo) {
+      return 'note'
+    }
+    if (note.todo_completed) {
+      return 'todo-done'
+    }
+    return 'todo-undone'
   }
 
   /**
