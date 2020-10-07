@@ -85,11 +85,11 @@ export async function activate(context: vscode.ExtensionContext) {
   //region register image upload
 
   vscode.commands.registerCommand(
-    'joplin.uploadImageFromClipboard',
+    'joplinNote.uploadImageFromClipboard',
     uploadImageService.uploadImageFromClipboard.bind(uploadImageService),
   )
   vscode.commands.registerCommand(
-    'joplin.uploadImageFromExplorer',
+    'joplinNote.uploadImageFromExplorer',
     uploadImageService.uploadImageFromExplorer.bind(uploadImageService),
   )
 
