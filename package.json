@@ -19,7 +19,7 @@
     "pack": "vsce package"
   },
   "categories": [
-    "Other"
+    "Notebooks"
   ],
   "repository": {
     "type": "git",
