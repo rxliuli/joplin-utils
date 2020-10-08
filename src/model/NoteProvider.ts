@@ -18,8 +18,8 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     ._onDidChangeTreeData.event
 
   async refresh() {
-    console.log('joplin folder tree refresh: ', new Date().toLocaleString())
     await this.init()
+    console.log('joplin folder tree refresh: ', this.folderList)
     this._onDidChangeTreeData.fire(undefined)
   }
 

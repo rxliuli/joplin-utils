@@ -12,6 +12,7 @@ import { checkJoplinServer } from './util/checkJoplinServer'
 import * as MarkdownIt from 'markdown-it'
 import { useJoplinLink } from './util/useJoplinLink'
 import { uploadImageService } from './service/UploadImageService'
+import { ResourceProvider } from './model/ResourceProvider'
 
 initDevEnv()
 
@@ -27,15 +28,24 @@ export async function activate(context: vscode.ExtensionContext) {
   if (!(await checkJoplinServer())) {
     return
   }
-  const joplinNoteView = new NoteListProvider()
+  const noteListProvider = new NoteListProvider()
   // vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
-  const treeView = vscode.window.createTreeView('joplin-note', {
-    treeDataProvider: joplinNoteView,
+  const noteListTreeView = vscode.window.createTreeView('joplin-note', {
+    treeDataProvider: noteListProvider,
   })
-  const joplinNoteCommandService = new JoplinNoteCommandService(
-    joplinNoteView,
-    treeView,
+  const resourceProvider = new ResourceProvider()
+  const resourceTreeView = vscode.window.createTreeView(
+    'joplin-note-resource',
+    {
+      treeDataProvider: resourceProvider,
+    },
   )
+  const joplinNoteCommandService = new JoplinNoteCommandService({
+    noteViewProvider: noteListProvider,
+    noteListTreeView,
+    resourceProvider,
+    resourceTreeView,
+  })
   joplinNoteCommandService.init(appConfig)
   const handlerService = new HandlerService(joplinNoteCommandService)
 
@@ -43,7 +53,7 @@ export async function activate(context: vscode.ExtensionContext) {
 
   vscode.commands.registerCommand(
     'joplinNote.refreshNoteList',
-    joplinNoteView.refresh.bind(joplinNoteView),
+    noteListProvider.refresh.bind(noteListProvider),
   )
   vscode.commands.registerCommand(
     'joplinNote.search',
@@ -76,8 +86,12 @@ export async function activate(context: vscode.ExtensionContext) {
     'joplinNote.toggleTodoState',
     joplinNoteCommandService.toggleTodoState.bind(joplinNoteCommandService),
   )
+  vscode.commands.registerCommand('joplinNote.resource.refresh', () => {
+    const fileName = vscode.window.activeTextEditor?.document.fileName
+    joplinNoteCommandService.onDidChangeActiveTextEditor(fileName)
+  })
   vscode.window.onDidChangeActiveTextEditor((e) =>
-    joplinNoteCommandService.focus(e?.document.fileName),
+    joplinNoteCommandService.onDidChangeActiveTextEditor(e?.document.fileName),
   )
 
   //endregion
