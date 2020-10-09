@@ -17,8 +17,6 @@ export class JoplinNoteCommandService {
     private config: {
       noteViewProvider: NoteListProvider
       noteListTreeView: TreeView<FolderOrNote>
-      resourceProvider: ResourceProvider
-      resourceTreeView: TreeView<Resource>
     },
   ) {}
 
@@ -201,9 +199,7 @@ export class JoplinNoteCommandService {
     const noteId = joplinMdRegexp.exec(fileName)![1]
     await Promise.all([this.focus(noteId), this.refreshResource(noteId)])
   }
-  private async refreshResource(noteId: string) {
-    this.config.resourceProvider.refresh(noteId)
-  }
+  private async refreshResource(noteId: string) {}
   private async focus(noteId: string) {
     const note = await noteApi.get(noteId)
     this.config.noteListTreeView.reveal(new FolderOrNote(note))

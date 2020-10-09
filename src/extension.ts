@@ -33,18 +33,19 @@ export async function activate(context: vscode.ExtensionContext) {
   const noteListTreeView = vscode.window.createTreeView('joplin-note', {
     treeDataProvider: noteListProvider,
   })
-  const resourceProvider = new ResourceProvider()
-  const resourceTreeView = vscode.window.createTreeView(
-    'joplin-note-resource',
-    {
-      treeDataProvider: resourceProvider,
-    },
-  )
+  // 暂时不再需要 resource view 了
+  // const resourceProvider = new ResourceProvider()
+  // const resourceTreeView = vscode.window.createTreeView(
+  //   'joplin-note-resource',
+  //   {
+  //     treeDataProvider: resourceProvider,
+  //   },
+  // )
   const joplinNoteCommandService = new JoplinNoteCommandService({
     noteViewProvider: noteListProvider,
     noteListTreeView,
-    resourceProvider,
-    resourceTreeView,
+    // resourceProvider,
+    // resourceTreeView,
   })
   joplinNoteCommandService.init(appConfig)
   const handlerService = new HandlerService(joplinNoteCommandService)

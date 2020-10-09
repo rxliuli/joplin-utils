@@ -27,7 +27,6 @@
   },
   "activationEvents": [
     "onView:joplin-note",
-    "onView:joplin-note-resource",
     "onUri"
   ],
   "main": "./out/extension.js",
@@ -52,10 +51,6 @@
         {
           "id": "joplin-note",
           "name": "%views.joplin-note.joplin-note%"
-        },
-        {
-          "id": "joplin-note-resource",
-          "name": "resources"
         }
       ]
     },
