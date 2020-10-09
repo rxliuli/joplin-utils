@@ -11,7 +11,7 @@ import * as nls from 'vscode-nls'
 import { checkJoplinServer } from './util/checkJoplinServer'
 import * as MarkdownIt from 'markdown-it'
 import { useJoplinLink } from './util/useJoplinLink'
-import { uploadImageService } from './service/UploadImageService'
+import { uploadImageService } from './service/UploadResourceService'
 
 initDevEnv()
 
@@ -91,6 +91,10 @@ export async function activate(context: vscode.ExtensionContext) {
   vscode.commands.registerCommand(
     'joplin.uploadImageFromExplorer',
     uploadImageService.uploadImageFromExplorer.bind(uploadImageService),
+  )
+  vscode.commands.registerCommand(
+    'joplinNote.uploadFileFromExplorer',
+    uploadImageService.uploadFileFromExplorer.bind(uploadImageService),
   )
 
   //endregion

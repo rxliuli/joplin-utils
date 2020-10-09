@@ -117,8 +117,19 @@
         "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus"
       },
       {
+<<<<<<< Updated upstream
         "command": "joplin.uploadImageFromExplorer",
         "title": "%commands.joplinNote.uploadImageFromExplorer%"
+=======
+        "command": "joplinNote.uploadImageFromExplorer",
+        "title": "%commands.joplinNote.uploadImageFromExplorer%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.uploadFileFromExplorer",
+        "title": "%commands.joplinNote.uploadFileFromExplorer%",
+        "category": "Joplin"
+>>>>>>> Stashed changes
       }
     ],
     "menus": {
@@ -175,6 +186,11 @@
           "command": "joplinNote.uploadImageFromExplorer",
           "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus",
           "group": "joplinNote"
+        },
+        {
+          "command": "joplinNote.uploadFileFromExplorer",
+          "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus",
+          "group": "joplinNote"
         }
       ]
     },
@@ -199,6 +215,12 @@
         "command": "joplin.uploadImageFromExplorer",
         "key": "ctrl+alt+e",
         "mac": "cmd+alt+e",
+        "when": "editorTextFocus && editorLangId == markdown"
+      },
+      {
+        "command": "joplinNote.uploadFileFromExplorer",
+        "key": "ctrl+alt+shift+e",
+        "mac": "cmd+alt+shift+e",
         "when": "editorTextFocus && editorLangId == markdown"
       }
     ],
