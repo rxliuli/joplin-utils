@@ -1,10 +1,14 @@
 import * as vscode from 'vscode'
 import { window } from 'vscode'
+import { globalState } from '../state/GlobalState'
 import { UploadImageUtil } from '../util/UploadImageUtil'
 
 export class UploadImageService {
   async uploadImageFromClipboard() {
-    const clipboardImage = await UploadImageUtil.getClipboardImage()
+    const globalStoragePath = globalState.context.globalStoragePath
+    const clipboardImage = await UploadImageUtil.getClipboardImage(
+      globalStoragePath,
+    )
     if (!clipboardImage.isExistFile) {
       vscode.window.showWarningMessage('Clipboard does not check the picture')
       return

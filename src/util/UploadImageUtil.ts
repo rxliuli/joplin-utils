@@ -44,8 +44,8 @@ export class UploadImageUtil {
   }
 
   // Thanks to vs-picgo: https://github.com/Spades-S/vs-picgo/blob/master/src/extension.ts
-  static async getClipboardImage(): Promise<IClipboardImage> {
-    const baseDir = path.resolve(os.userInfo().homedir, '.joplin-vscode-plugin')
+  static async getClipboardImage(fileDir: string): Promise<IClipboardImage> {
+    const baseDir = path.resolve(fileDir, 'ClipboardImage')
     mkdirpSync(baseDir)
     const imagePath = path.resolve(
       baseDir,

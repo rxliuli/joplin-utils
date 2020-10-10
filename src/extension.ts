@@ -12,7 +12,7 @@ import { checkJoplinServer } from './util/checkJoplinServer'
 import * as MarkdownIt from 'markdown-it'
 import { useJoplinLink } from './util/useJoplinLink'
 import { uploadImageService } from './service/UploadImageService'
-import { ResourceProvider } from './model/ResourceProvider'
+import { globalState } from './state/GlobalState'
 
 initDevEnv()
 
@@ -28,6 +28,8 @@ export async function activate(context: vscode.ExtensionContext) {
   if (!(await checkJoplinServer())) {
     return
   }
+  globalState.context = context
+  console.log('logger path: ', context.logPath)
   const noteListProvider = new NoteListProvider()
   // vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
   const noteListTreeView = vscode.window.createTreeView('joplin-note', {
