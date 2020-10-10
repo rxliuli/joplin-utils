@@ -30,10 +30,10 @@ class Logger {
         ? msg
         : [msg, ...options]
             .map((s) => {
-              if (typeof s === 'object') {
-                return JSON.stringify(s)
-              } else {
+              if (['string', 'number', 'boolean'].includes(typeof s)) {
                 return s.toString()
+              } else {
+                return JSON.stringify(s)
               }
             })
             .join('')
