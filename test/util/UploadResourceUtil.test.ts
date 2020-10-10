@@ -3,9 +3,10 @@ import { pathExistsSync } from 'fs-extra'
 import * as path from 'path'
 
 describe('测试 UploadResourceUtil', () => {
+  const resourceDir = path.resolve(__dirname, './resource/')
   it('测试从剪切板复制图像', async () => {
     try {
-      const image = await UploadResourceUtil.getClipboardImage()
+      const image = await UploadResourceUtil.getClipboardImage(resourceDir)
       console.log('image: ', image)
     } catch (e) {}
   })
@@ -17,7 +18,9 @@ describe('测试 UploadResourceUtil', () => {
     console.log('markdownLink: ', markdownLink)
   })
   it('测试从剪切板上传图像', async () => {
-    const clipboardImage = await UploadResourceUtil.getClipboardImage()
+    const clipboardImage = await UploadResourceUtil.getClipboardImage(
+      resourceDir,
+    )
     console.log('clipboardImage: ', clipboardImage)
     if (!clipboardImage.isExistFile) {
       return

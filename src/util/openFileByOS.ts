@@ -5,7 +5,7 @@ import { existsSync } from 'fs-extra'
  * 使用系统打开一些资源
  * @param filePath
  */
-export function openResourceByOS(filePath: string) {
+export function openFileByOS(filePath: string) {
   if (!existsSync(filePath)) {
     return
   }

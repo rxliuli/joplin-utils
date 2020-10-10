@@ -5,8 +5,7 @@ import { parse } from 'querystring'
 import { JoplinNoteCommandService } from './JoplinNoteCommandService'
 import { FolderOrNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
-import { openResourceByOS as openFileByOS } from '../util/openFileByOS'
-import { appConfig } from '../config/AppConfig'
+import { openFileByOS } from '../util/openFileByOS'
 import path = require('path')
 
 /**
@@ -39,14 +38,14 @@ export class HandlerService {
         await this.openNote(id)
         break
       case '/resource':
-        await this.openResource(id)
+        await HandlerService.openResource(id)
         break
       default:
         vscode.window.showErrorMessage('无法处理的链接')
     }
   }
 
-  private async openResource(id: string) {
+  private static async openResource(id: string) {
     const resource = await resourceApi.get(id)
     const fileName = resource.id + '.' + resource.file_extension
     console.log('open file: ', fileName)
