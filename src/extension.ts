@@ -13,6 +13,10 @@ import * as MarkdownIt from 'markdown-it'
 import { useJoplinLink } from './util/useJoplinLink'
 import { globalState } from './state/GlobalState'
 import { uploadResourceService } from './service/UploadResourceService'
+import { logger } from './util/Logger'
+import winston = require('winston')
+import path = require('path')
+import { mkdirpSync } from 'fs-extra'
 
 initDevEnv()
 
@@ -28,8 +32,15 @@ export async function activate(context: vscode.ExtensionContext) {
   if (!(await checkJoplinServer())) {
     return
   }
-  globalState.context = context
-  console.log('logger path: ', context.logPath)
+  ;(() => {
+    globalState.context = context
+    const logDir = path.resolve(context.globalStoragePath!, 'log')
+    logger.winstonLogger.add(
+      new winston.transports.File({
+        filename: path.resolve(logDir, 'info.log'),
+      }),
+    )
+  })()
   const noteListProvider = new NoteListProvider()
   // vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
   const noteListTreeView = vscode.window.createTreeView('joplin-note', {

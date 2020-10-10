@@ -19,7 +19,7 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
 
   async refresh() {
     await this.init()
-    console.log('joplin folder tree refresh: ', this.folderList)
+    console.log('joplin folder tree refresh: ', this.folderList.length)
     this._onDidChangeTreeData.fire(undefined)
   }
 
@@ -71,7 +71,7 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
       const rootNoteList = (await noteApi.list()).filter(
         (note) => !note.parent_id,
       )
-      console.log('rootNoteList: ', rootNoteList)
+      console.log('rootNoteList.length: ', rootNoteList.length)
       return [...this.folderList, ...rootNoteList].map(
         (item) => new FolderOrNote(item),
       )
