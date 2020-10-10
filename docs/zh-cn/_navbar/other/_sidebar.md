@@ -1,4 +1,6 @@
 - [为什么要开发这个插件](zh-cn/_navbar/other/why.md)
+- [参与项目](zh-cn/_navbar/other/dev.md)
+- [路线图](zh-cn/_navbar/other/roadmap.md)
 - [Joplin 论坛](https://discourse.joplinapp.org/)
 - VSCode
   - [VSCode 官方文档](https://code.visualstudio.com/docs)

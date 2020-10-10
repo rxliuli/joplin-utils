@@ -1,0 +1,21 @@
+# Roadmap
+
+- Edit
+  - [x] Paste pictures are automatically uploaded to joplin and get link insertion
+    - [x] Support editor right-click menu to paste clipboard pictures
+  - [ ] Solve the problem that joplin ref link cannot be opened by `ctrl+click` in the editor
+- Optimization
+  - [x] Enable special right-click menu and icon for todo
+  - [ ] Add development related documents
+  - [x] Fix the problem that the notes in the root directory cannot be displayed
+  - [x] Support viewing attachment resources in external programs
+  - [ ] Add outline title sidebar (wait for api support, or implement it yourself <https://github.com/microsoft/vscode/issues/97095>)
+  - [ ] Should allow dragging of notes or directories
+  - [ ] Rename the note/directory directly in the input box
+- history record
+  - [ ] Allow to view all history of current note
+  - [ ] Compare the specified history with the current file, and support rollback
+- Tag related
+  - [ ] Add tags to notes
+  - [ ] Remove tags for notes
+  - [ ] Rename label
