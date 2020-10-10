@@ -14,7 +14,7 @@ export interface IClipboardImage {
   isExistFile: boolean
 }
 
-export class UploadImageUtil {
+export class UploadResourceUtil {
   static async uploadImageByPath(filePath: string) {
     const param = {
       title: path.basename(filePath),
@@ -26,6 +26,20 @@ export class UploadImageUtil {
       filePath,
     )})`
     console.log('uploadImageFromExplorer end: ', markdownLink)
+    return markdownLink
+  }
+
+  static async uploadFileByPath(filePath: string) {
+    const param = {
+      title: path.basename(filePath),
+      data: createReadStream(path.resolve(filePath)),
+    }
+    console.log('uploadFileFromExplorer begin: ', filePath, param.title)
+    const res = await resourceApi.create(param)
+    const markdownLink = `[${param.title}](resources/${res.id}${path.extname(
+      filePath,
+    )})`
+    console.log('uploadFileFromExplorer end: ', markdownLink)
     return markdownLink
   }
 
@@ -52,7 +66,7 @@ export class UploadImageUtil {
       `${dayjs().format('YYYYMMDDHHmmss')}.png`,
     )
     return await new Promise<IClipboardImage>((resolve): void => {
-      const platform: string = UploadImageUtil.getCurrentPlatform()
+      const platform: string = UploadResourceUtil.getCurrentPlatform()
       let execution
       // for PicGo GUI
       const platformPaths: {

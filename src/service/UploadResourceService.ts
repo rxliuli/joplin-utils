@@ -1,19 +1,19 @@
 import * as vscode from 'vscode'
 import { window } from 'vscode'
 import { globalState } from '../state/GlobalState'
-import { UploadImageUtil } from '../util/UploadImageUtil'
+import { UploadResourceUtil } from '../util/UploadResourceUtil'
 
-export class UploadImageService {
+export class UploadResourceService {
   async uploadImageFromClipboard() {
     const globalStoragePath = globalState.context.globalStoragePath
-    const clipboardImage = await UploadImageUtil.getClipboardImage(
+    const clipboardImage = await UploadResourceUtil.getClipboardImage(
       globalStoragePath,
     )
     if (!clipboardImage.isExistFile) {
-      vscode.window.showWarningMessage('Clipboard does not check the picture')
+      vscode.window.showWarningMessage('Clipboard does not contain picture!')
       return
     }
-    const markdownLink = await UploadImageUtil.uploadImageByPath(
+    const markdownLink = await UploadResourceUtil.uploadImageByPath(
       clipboardImage.imgPath,
     )
     this.insertUrlByActiveEditor(markdownLink)
@@ -30,14 +30,26 @@ export class UploadImageService {
       return
     }
     const file = result[0]
-    const markdownLink = await UploadImageUtil.uploadImageByPath(file.fsPath)
+    const markdownLink = await UploadResourceUtil.uploadImageByPath(file.fsPath)
+    this.insertUrlByActiveEditor(markdownLink)
+  }
+  async uploadFileFromExplorer(): Promise<string | void | Error> {
+    const result = (await vscode.window.showOpenDialog({
+      canSelectMany: false,
+    })) as vscode.Uri[]
+
+    if (!result || result.length === 0) {
+      return
+    }
+    const file = result[0]
+    const markdownLink = await UploadResourceUtil.uploadFileByPath(file.fsPath)
     this.insertUrlByActiveEditor(markdownLink)
   }
 
   insertUrlByActiveEditor(text: string) {
     this.editor.edit((textEditor) => {
       textEditor.replace(this.editor.selection, text)
-      vscode.window.showInformationMessage(`image uploaded successfully.`)
+      vscode.window.showInformationMessage(`file uploaded successfully.`)
     })
   }
 
@@ -50,4 +62,4 @@ export class UploadImageService {
   }
 }
 
-export const uploadImageService = new UploadImageService()
+export const uploadResourceService = new UploadResourceService()

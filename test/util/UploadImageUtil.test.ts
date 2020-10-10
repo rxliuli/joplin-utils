@@ -1,11 +1,11 @@
-import { UploadImageUtil } from '../../src/util/UploadImageUtil'
+import { UploadResourceUtil } from '../../src/util/UploadResourceUtil'
 import { pathExistsSync } from 'fs-extra'
 import * as path from 'path'
 
-describe('测试 UploadImageUtil', () => {
+describe('测试 UploadResourceUtil', () => {
   it('测试从剪切板复制图像', async () => {
     try {
-      const image = await UploadImageUtil.getClipboardImage()
+      const image = await UploadResourceUtil.getClipboardImage()
       console.log('image: ', image)
     } catch (e) {}
   })
@@ -13,16 +13,16 @@ describe('测试 UploadImageUtil', () => {
     const filePath =
       'C:/Users/rxliuli/Pictures/Snipaste_2020-05-04_23-03-33.png'
     console.log(path.resolve(filePath), pathExistsSync(path.resolve(filePath)))
-    const markdownLink = await UploadImageUtil.uploadImageByPath(filePath)
+    const markdownLink = await UploadResourceUtil.uploadImageByPath(filePath)
     console.log('markdownLink: ', markdownLink)
   })
   it('测试从剪切板上传图像', async () => {
-    const clipboardImage = await UploadImageUtil.getClipboardImage()
+    const clipboardImage = await UploadResourceUtil.getClipboardImage()
     console.log('clipboardImage: ', clipboardImage)
     if (!clipboardImage.isExistFile) {
       return
     }
-    const markdownLink = await UploadImageUtil.uploadImageByPath(
+    const markdownLink = await UploadResourceUtil.uploadImageByPath(
       clipboardImage.imgPath,
     )
     console.log('markdownLink: ', markdownLink)
