@@ -13,16 +13,6 @@ export function useJoplinLink() {
     md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
       for (const attr of ['href', 'data-href']) {
         const aIndex = tokens[idx].attrIndex(attr)
-
-        const doc = vscode.window.activeTextEditor?.document
-        const joplinMdRegexp = new RegExp(`${path.sep}edit-(\\w{32})\\.md$`)
-        const isJoplinNote =
-          doc?.languageId === 'markdown' && joplinMdRegexp.test(doc.fileName)
-        console.log('markdown render: ', isJoplinNote, doc)
-        if (!isJoplinNote) {
-          return defaultRender(tokens, idx, options, env, self)
-        }
-
         if (aIndex >= 0) {
           const linkUrl = tokens[idx].attrs![aIndex][1]
           // 匹配 joplin 内部引用链接
