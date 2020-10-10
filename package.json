@@ -151,17 +151,17 @@
         {
           "command": "joplinNote.refreshNoteList",
           "when": "view == joplin-note",
-          "group": "joplinNote"
+          "group": "navigation"
         },
         {
           "command": "joplinNote.createFolder",
           "when": "view == joplin-note",
-          "group": "joplinNote"
+          "group": "navigation"
         },
         {
           "command": "joplinNote.search",
           "when": "view == joplin-note",
-          "group": "joplinNote"
+          "group": "navigation"
         }
       ],
       "view/item/context": [
