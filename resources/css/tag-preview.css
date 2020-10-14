@@ -1,0 +1,32 @@
+.joplin-tag-toolbar {
+  display: flex;
+  align-items: center;
+}
+.joplin-tag-add {
+  margin-left: 4px;
+  cursor: pointer;
+}
+.joplin-tag {
+  font-size: 14px;
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 0 4px 4px;
+  background-image: none;
+  padding: 4px 8px;
+  text-transform: none;
+  font-weight: bolder;
+  border: 0 solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.joplin-tag:hover::after {
+  content: '🗙';
+  margin-right: 0;
+  margin-left: 8px;
+  font-size: 14px;
+  opacity: 0.5;
+}
+.joplin-tag {
+  background-color: #1e669c;
+  color: #e8e8e8;
+}

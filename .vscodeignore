@@ -10,3 +10,6 @@ vsc-extension-quickstart.md
 **/*.ts
 docs/**
 test/**
+dist/**
+.cache/**
+.idea/**
