@@ -4,19 +4,21 @@ import * as vscode from 'vscode'
 import { NoteListProvider } from './model/NoteProvider'
 import { initDevEnv } from './util/initDevEnv'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
-import { TypeEnum } from 'joplin-api'
+import { TypeEnum, noteApi, resourceApi } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
 import { HandlerService } from './service/HandlerService'
 import * as nls from 'vscode-nls'
 import { checkJoplinServer } from './util/checkJoplinServer'
 import * as MarkdownIt from 'markdown-it'
-import { useJoplinLink } from './util/useJoplinLink'
+import { useJoplinLink, wrapLink } from './util/useJoplinLink'
 import { globalState } from './state/GlobalState'
 import { uploadResourceService } from './service/UploadResourceService'
 import { logger } from './util/Logger'
 import winston = require('winston')
 import path = require('path')
-import { mkdirpSync } from 'fs-extra'
+import { getReferenceAtPosition } from './util/utils'
+import { JoplinLinkRegex, JoplinResourceRegex } from './util/constant'
+import { formatSize } from './util/formatSize'
 
 initDevEnv()
 
@@ -135,6 +137,64 @@ export async function activate(context: vscode.ExtensionContext) {
   vscode.window.registerUriHandler({
     handleUri: handlerService.uriHandler.bind(handlerService),
   })
+  const docFilter = {
+    language: 'markdown',
+    scheme: 'file',
+    pattern: '**/edit-*.md',
+  }
+  context.subscriptions.push(
+    vscode.languages.registerDefinitionProvider(docFilter, {
+      async provideDefinition(document, position, token) {
+        const markdownTokenLink = getReferenceAtPosition(document, position)
+        if (!markdownTokenLink) {
+          return
+        }
+        let link: string
+        if (JoplinLinkRegex.test(markdownTokenLink)) {
+          const id = JoplinLinkRegex.exec(markdownTokenLink)![1]
+          console.log('是笔记链接')
+          link = wrapLink(id, TypeEnum.Note)
+        } else if (JoplinResourceRegex.test(markdownTokenLink)) {
+          const id = JoplinResourceRegex.exec(markdownTokenLink)![1]
+          console.log('是资源')
+          link = wrapLink(id, TypeEnum.Resource)
+        } else {
+          console.log('是普通链接：', markdownTokenLink)
+          link = markdownTokenLink
+        }
+        console.log('provideDefinition: ', link, token)
+        const uri = vscode.Uri.parse(link, true)
+        return new vscode.Location(uri, position)
+      },
+    }),
+    vscode.languages.registerHoverProvider(docFilter, {
+      async provideHover(document, position, token) {
+        const markdownTokenLink = getReferenceAtPosition(document, position)
+        if (!markdownTokenLink) {
+          return
+        }
+        let content: string[]
+        if (JoplinLinkRegex.test(markdownTokenLink)) {
+          const id = JoplinLinkRegex.exec(markdownTokenLink)![1]
+          console.log('是笔记链接')
+          // link = wrapLink(id, TypeEnum.Note)
+          const note = await noteApi.get(id)
+          const title = note.title
+          content = [title.startsWith('#') ? title.substr(1).trimLeft() : title]
+        } else if (JoplinResourceRegex.test(markdownTokenLink)) {
+          const id = JoplinResourceRegex.exec(markdownTokenLink)![1]
+          console.log('是资源')
+          const resource = await resourceApi.get(id)
+          content = [resource.title, formatSize(resource.size)]
+        } else {
+          console.log('是普通链接：', markdownTokenLink)
+          content = [markdownTokenLink]
+        }
+        console.log('provideHover: ', content)
+        return new vscode.Hover(content)
+      },
+    }),
+  )
 
   //endregion
 

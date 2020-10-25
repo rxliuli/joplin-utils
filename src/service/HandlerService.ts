@@ -45,7 +45,7 @@ export class HandlerService {
     }
   }
 
-  private static async openResource(id: string) {
+  static async openResource(id: string) {
     const resource = await resourceApi.get(id)
     const fileName = resource.id + '.' + resource.file_extension
     console.log('open file: ', fileName)
@@ -54,7 +54,7 @@ export class HandlerService {
     )
   }
 
-  private async openNote(id: string) {
+  async openNote(id: string) {
     if (!id) {
       vscode.window.showWarningMessage('id cannot be empty')
       return

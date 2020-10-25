@@ -1,6 +1,19 @@
 import * as MarkdownIt from 'markdown-it'
 import path = require('path')
 import * as vscode from 'vscode'
+import { TypeEnum } from 'joplin-api'
+import { JoplinLinkRegex, JoplinResourceRegex } from './constant'
+
+export function wrapLink(id: string, type: TypeEnum.Resource | TypeEnum.Note) {
+  switch (type) {
+    case TypeEnum.Resource:
+      return 'vscode://rxliuli.joplin-vscode-plugin/resource?id=' + id
+    case TypeEnum.Note:
+      return 'vscode://rxliuli.joplin-vscode-plugin/open?id=' + id
+    default:
+      throw new Error('无法处理的链接类型')
+  }
+}
 
 export function useJoplinLink() {
   return function (md: MarkdownIt) {
@@ -16,18 +29,18 @@ export function useJoplinLink() {
         if (aIndex >= 0) {
           const linkUrl = tokens[idx].attrs![aIndex][1]
           // 匹配 joplin 内部引用链接
-          const JoplinRefLinkRegex = /^:\/([0-9a-f]+)$/
           // 匹配 joplin 的资源
-          const JoplinResourceRegex = /^resources\/([\w\.]+?)\.[\w]+$/
           console.log('link: ', linkUrl)
-          if (JoplinRefLinkRegex.test(linkUrl)) {
-            tokens[idx].attrs![aIndex][1] =
-              'vscode://rxliuli.joplin-vscode-plugin/open?id=' +
-              linkUrl.match(JoplinRefLinkRegex)![1]
+          if (JoplinLinkRegex.test(linkUrl)) {
+            tokens[idx].attrs![aIndex][1] = wrapLink(
+              linkUrl.match(JoplinLinkRegex)![1],
+              TypeEnum.Note,
+            )
           } else if (JoplinResourceRegex.test(linkUrl)) {
-            tokens[idx].attrs![aIndex][1] =
-              'vscode://rxliuli.joplin-vscode-plugin/resource?id=' +
-              linkUrl.match(JoplinResourceRegex)![1]
+            tokens[idx].attrs![aIndex][1] = wrapLink(
+              linkUrl.match(JoplinResourceRegex)![1],
+              TypeEnum.Resource,
+            )
           }
         }
       }
