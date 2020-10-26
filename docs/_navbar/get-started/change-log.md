@@ -1,5 +1,12 @@
 # Release Notes
 
+## 0.1.10
+
+- Support clicking joplin-related links in the editor, including
+  - Attached resource files, use the system default program to open
+  - Quote notes, use Joplin to open in a new tab
+- Fixed the problem that Joplin attachment resources could not be opened in markdown preview
+
 ## 0.1.7
 
 - Support the use of shortcut keys `ctrl+alt+u/ctrl+alt+e`
