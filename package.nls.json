@@ -22,5 +22,6 @@
   "configuration.joplin.sortNotesTypeAlphabetical": "Sort notes by alphabetical order of its Title property.",
   "configuration.joplin.sortOrder": "Order of sorting notes (asc or desc)",
   "configuration.joplin.sortNotesOrderAsc": "'asc': ascending order",
-  "configuration.joplin.sortNotesOrderDesc": "'desc': descending order (reverse)"
+  "configuration.joplin.sortNotesOrderDesc": "'desc': descending order (reverse)",
+  "configuration.joplin.programPath": "The directory of the joplin program"
 }

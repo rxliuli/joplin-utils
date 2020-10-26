@@ -15,6 +15,7 @@ export class AppConfig {
   sortNotes?: boolean
   sortNotesType?: SortNotesTypeEnum
   sortOrder?: SortOrderEnum
+  programPath?: string
 
   /**
    * reload joplin for vscode config
@@ -26,6 +27,7 @@ export class AppConfig {
     this.sortNotes = config.sortNotes
     this.sortNotesType = config.sortNotesType
     this.sortOrder = config.sortOrder
+    this.programPath = config.programPath
     if (process.env.DEBUG) {
       console.log(
         'loadConfig: ',

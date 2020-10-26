@@ -21,5 +21,6 @@
   "configuration.joplin.sortNotesTypeAlphabetical": "按照标题的字母顺序排序",
   "configuration.joplin.sortOrder": "笔记排序的顺序（升序或降序）",
   "configuration.joplin.sortNotesOrderAsc": "升序",
-  "configuration.joplin.sortNotesOrderDesc": "降序"
+  "configuration.joplin.sortNotesOrderDesc": "降序",
+  "configuration.joplin.programPath": "joplin 程序的目录"
 }

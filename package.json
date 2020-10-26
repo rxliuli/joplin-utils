@@ -288,6 +288,10 @@
             "%configuration.joplin.sortNotesOrderAsc%",
             "%configuration.joplin.sortNotesOrderDesc%"
           ]
+        },
+        "joplin.programPath": {
+          "type": "string",
+          "description": "%configuration.joplin.programPath%"
         }
       }
     },
@@ -336,10 +340,11 @@
     "cross-env": "^7.0.2",
     "cross-path-sort": "^1.0.0",
     "dayjs": "^1.9.1",
+    "find-process": "^1.4.4",
     "fs-extra": "^9.0.1",
     "joplin-api": "^0.1.12",
-    "markdown-it": "^12.0.2",
     "lodash": "^4.17.20",
+    "markdown-it": "^12.0.2",
     "moment": "^2.29.1",
     "open": "^7.3.0",
     "use-query-params": "^1.1.6",

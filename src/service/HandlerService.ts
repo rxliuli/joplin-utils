@@ -7,6 +7,7 @@ import { FolderOrNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
 import { openFileByOS } from '../util/openFileByOS'
 import path = require('path')
+import { appConfig } from '../config/AppConfig'
 
 /**
  * other service
@@ -46,11 +47,17 @@ export class HandlerService {
   }
 
   static async openResource(id: string) {
+    if (!appConfig.programPath) {
+      vscode.window.showWarningMessage(
+        'Please fill in the joplin installation directory',
+      )
+      return
+    }
     const resource = await resourceApi.get(id)
     const fileName = resource.id + '.' + resource.file_extension
     console.log('open file: ', fileName)
     openFileByOS(
-      path.resolve('D:/Program/Joplin', 'JoplinProfile/resources', fileName),
+      path.resolve(appConfig.programPath, 'JoplinProfile/resources', fileName),
     )
   }
 
