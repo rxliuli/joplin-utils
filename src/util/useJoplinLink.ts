@@ -5,11 +5,12 @@ import { TypeEnum } from 'joplin-api'
 import { JoplinLinkRegex, JoplinResourceRegex } from './constant'
 
 export function wrapLink(id: string, type: TypeEnum.Resource | TypeEnum.Note) {
+  const q = encodeURIComponent(`id=${id}`)
   switch (type) {
     case TypeEnum.Resource:
-      return 'vscode://rxliuli.joplin-vscode-plugin/resource?id=' + id
+      return `vscode://rxliuli.joplin-vscode-plugin/resource?${q}`
     case TypeEnum.Note:
-      return 'vscode://rxliuli.joplin-vscode-plugin/open?id=' + id
+      return `vscode://rxliuli.joplin-vscode-plugin/open?${q}`
     default:
       throw new Error('无法处理的链接类型')
   }

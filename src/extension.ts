@@ -16,9 +16,10 @@ import { uploadResourceService } from './service/UploadResourceService'
 import { logger } from './util/Logger'
 import winston = require('winston')
 import path = require('path')
-import { getReferenceAtPosition } from './util/utils'
+import { getReferenceAtPosition, matchAll } from './util/utils'
 import { JoplinLinkRegex, JoplinResourceRegex } from './util/constant'
 import { formatSize } from './util/formatSize'
+import { isInFencedCodeBlock, isInCodeSpan } from './util/externalUtils'
 
 initDevEnv()
 
@@ -143,28 +144,59 @@ export async function activate(context: vscode.ExtensionContext) {
     pattern: '**/edit-*.md',
   }
   context.subscriptions.push(
-    vscode.languages.registerDefinitionProvider(docFilter, {
-      async provideDefinition(document, position, token) {
-        const markdownTokenLink = getReferenceAtPosition(document, position)
-        if (!markdownTokenLink) {
-          return
-        }
-        let link: string
-        if (JoplinLinkRegex.test(markdownTokenLink)) {
-          const id = JoplinLinkRegex.exec(markdownTokenLink)![1]
-          console.log('是笔记链接')
-          link = wrapLink(id, TypeEnum.Note)
-        } else if (JoplinResourceRegex.test(markdownTokenLink)) {
-          const id = JoplinResourceRegex.exec(markdownTokenLink)![1]
-          console.log('是资源')
-          link = wrapLink(id, TypeEnum.Resource)
-        } else {
-          console.log('是普通链接：', markdownTokenLink)
-          link = markdownTokenLink
-        }
-        console.log('provideDefinition: ', link, token)
-        const uri = vscode.Uri.parse(link, true)
-        return new vscode.Location(uri, position)
+    vscode.languages.registerDocumentLinkProvider(docFilter, {
+      async provideDocumentLinks(document: vscode.TextDocument) {
+        const results: vscode.DocumentLink[] = []
+
+        document
+          .getText()
+          .split(/\r?\n/g)
+          .forEach((lineText, lineNum) => {
+            for (const match of matchAll(/(\[.*\]\()(.+)\)/g, lineText)) {
+              const markdownTokenLink = match[2]
+              if (markdownTokenLink) {
+                const offset = (match.index || 0) + match[1].length
+
+                if (
+                  isInFencedCodeBlock(document, lineNum) ||
+                  isInCodeSpan(document, lineNum, offset)
+                ) {
+                  continue
+                }
+
+                const linkStart = new vscode.Position(lineNum, offset)
+                const linkEnd = new vscode.Position(
+                  lineNum,
+                  offset + markdownTokenLink.length,
+                )
+
+                let link: string
+                if (JoplinLinkRegex.test(markdownTokenLink)) {
+                  const id = JoplinLinkRegex.exec(markdownTokenLink)![1]
+                  link = wrapLink(id, TypeEnum.Note)
+                  console.log('是笔记链接: ', link)
+                } else if (JoplinResourceRegex.test(markdownTokenLink)) {
+                  const id = JoplinResourceRegex.exec(markdownTokenLink)![1]
+                  link = wrapLink(id, TypeEnum.Resource)
+                  console.log('是资源: ', link)
+                } else {
+                  link = markdownTokenLink
+                  console.log('是普通链接：', link)
+                }
+
+                const documentLink = new vscode.DocumentLink(
+                  new vscode.Range(linkStart, linkEnd),
+                  vscode.Uri.parse(link),
+                )
+
+                documentLink.tooltip = 'Follow link'
+
+                results.push(documentLink)
+              }
+            }
+          })
+
+        return results
       },
     }),
     vscode.languages.registerHoverProvider(docFilter, {
@@ -176,18 +208,15 @@ export async function activate(context: vscode.ExtensionContext) {
         let content: string[]
         if (JoplinLinkRegex.test(markdownTokenLink)) {
           const id = JoplinLinkRegex.exec(markdownTokenLink)![1]
-          console.log('是笔记链接')
           // link = wrapLink(id, TypeEnum.Note)
           const note = await noteApi.get(id)
           const title = note.title
           content = [title.startsWith('#') ? title.substr(1).trimLeft() : title]
         } else if (JoplinResourceRegex.test(markdownTokenLink)) {
           const id = JoplinResourceRegex.exec(markdownTokenLink)![1]
-          console.log('是资源')
           const resource = await resourceApi.get(id)
           content = [resource.title, formatSize(resource.size)]
         } else {
-          console.log('是普通链接：', markdownTokenLink)
           content = [markdownTokenLink]
         }
         console.log('provideHover: ', content)
