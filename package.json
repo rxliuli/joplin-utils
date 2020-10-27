@@ -299,10 +299,7 @@
     "markdown.previewStyles": [
       "./resources/css/tag-preview.css"
     ],
-    "markdown.previewScripts": [
-      "./out/markdown/test.js",
-      "./out/markdown/tag-preview.js"
-    ],
+    "markdown.previewScripts": [],
     "capabilities": {
       "hoverProvider": "true",
       "definitionProvider": "true"
