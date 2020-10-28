@@ -13,3 +13,4 @@ test/**
 dist/**
 .cache/**
 .idea/**
+.history/**

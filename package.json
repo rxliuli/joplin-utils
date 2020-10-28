@@ -337,6 +337,7 @@
     "cross-env": "^7.0.2",
     "cross-path-sort": "^1.0.0",
     "dayjs": "^1.9.1",
+    "entities": "^2.1.0",
     "find-process": "^1.4.4",
     "fs-extra": "^9.0.1",
     "joplin-api": "^0.1.12",
