@@ -19,8 +19,8 @@ Joplin api's js package, written in ts, provides a complete type definition, inc
 | Modify    | `update` | `noteApi.update` |
 | Remove    | `remove` | `noteApi.remove` |
 
--There are some special cases, such as APIs involving multiple entities, the naming is generally `operation entity + by + according to entity`, for example, the API to get the tag list according to the note id is `noteApi.tagsById`
+- There are some special cases, such as APIs involving multiple entities, the naming is generally `operation entity + by + according to entity`, for example, the API to get the tag list according to the note id is `noteApi.tagsById`
 
 ## some problems
 
--The `get` method should not report an error, if it does not exist it should return `null` instead of throwing an exception
+- The `get` method should not report an error, if it does not exist it should return `null` instead of throwing an exception
