@@ -5,6 +5,7 @@ import FormData from 'form-data'
 import axios from 'axios'
 import { ApiUtil } from '../../src/util/ApiUtil'
 import fetch from 'node-fetch'
+import { readFileSync } from 'fs'
 
 describe('test ResourceApi', () => {
   const id = 'd2baabaeebe54e87bf7571d6eff230e9'
@@ -33,7 +34,7 @@ describe('test ResourceApi', () => {
       const fd = new FormData()
       const title = 'image title'
       fd.append('props', JSON.stringify({ title: title }))
-      fd.append('data', createReadStream(path))
+      fd.append('data', readFileSync(path))
       return fd
     }
 
@@ -46,11 +47,15 @@ describe('test ResourceApi', () => {
       const json = await resp.json()
       console.log('json: ', json)
     })
-    it.skip('test create by axios', async () => {
+    it('test create by axios', async () => {
       const fd = getFormData()
-      const resp = await axios.post(ApiUtil.baseUrl('/resources'), fd, {
-        headers: fd.getHeaders(),
-      })
+      const resp = await axios.post(
+        ApiUtil.baseUrl('/resources'),
+        fd.getBuffer(),
+        {
+          headers: fd.getHeaders(),
+        },
+      )
       console.log('resp.data: ', resp.data)
     })
   })
