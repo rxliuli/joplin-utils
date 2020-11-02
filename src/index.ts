@@ -6,7 +6,8 @@ import { folderApi } from './api/FolderApi'
 import { resourceApi } from './api/ResourceApi'
 import { config } from './util/config'
 import { TypeEnum } from './modal/TypeEnum'
-import { actionApi } from './api/ActionApi'
+import { noteActionApi, actionApi } from './api/NoteActionApi'
+import { resourceActionApi } from './api/ResourceActionApi'
 
 export {
   noteApi,
@@ -16,6 +17,8 @@ export {
   tagApi,
   resourceApi,
   actionApi,
+  noteActionApi,
+  resourceActionApi,
   config,
   TypeEnum,
 }
