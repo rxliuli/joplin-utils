@@ -11,11 +11,7 @@ import * as nls from 'vscode-nls'
 import { checkJoplinServer } from './util/checkJoplinServer'
 import * as MarkdownIt from 'markdown-it'
 import { useJoplinLink, wrapLink } from './util/useJoplinLink'
-import { globalState } from './state/GlobalState'
 import { uploadResourceService } from './service/UploadResourceService'
-import { logger } from './util/Logger'
-import winston = require('winston')
-import path = require('path')
 import { getReferenceAtPosition, matchAll } from './util/utils'
 import { JoplinLinkRegex, JoplinResourceRegex } from './util/constant'
 import { formatSize } from './util/formatSize'
@@ -35,15 +31,6 @@ export async function activate(context: vscode.ExtensionContext) {
   if (!(await checkJoplinServer())) {
     return
   }
-  ;(() => {
-    globalState.context = context
-    const logDir = path.resolve(context.globalStoragePath!, 'log')
-    logger.winstonLogger.add(
-      new winston.transports.File({
-        filename: path.resolve(logDir, 'info.log'),
-      }),
-    )
-  })()
   const noteListProvider = new NoteListProvider()
   // vscode.window.registerTreeDataProvider('joplin-note', joplinNoteView)
   const noteListTreeView = vscode.window.createTreeView('joplin-note', {
@@ -152,6 +139,7 @@ export async function activate(context: vscode.ExtensionContext) {
           .getText()
           .split(/\r?\n/g)
           .forEach((lineText, lineNum) => {
+            // noinspection RegExpRedundantEscape
             for (const match of matchAll(/(\[.*\]\()(.+)\)/g, lineText)) {
               const markdownTokenLink = match[2]
               if (markdownTokenLink) {
@@ -200,7 +188,7 @@ export async function activate(context: vscode.ExtensionContext) {
       },
     }),
     vscode.languages.registerHoverProvider(docFilter, {
-      async provideHover(document, position, token) {
+      async provideHover(document, position) {
         const markdownTokenLink = getReferenceAtPosition(document, position)
         if (!markdownTokenLink) {
           return
