@@ -1,6 +1,7 @@
 import * as MarkdownIt from 'markdown-it'
 
-const note = `
+it('测试解析链接', () => {
+  const note = `
 # test
 
 ## title 1
@@ -29,9 +30,10 @@ const note = `
 <!-- End markdown -->
 `
 
-const md = new MarkdownIt()
-const [token] = md.parseInline(note, null)
-const linkTokens = token.children
-  .filter((token) => token.type === 'link_open')
-  .map((token) => token.attrGet('href'))
-console.log(linkTokens)
+  const md = new MarkdownIt()
+  const [token] = md.parseInline(note, null)
+  const linkTokens = token
+    .children!.filter((token) => token.type === 'link_open')
+    .map((token) => token.attrGet('href'))
+  console.log(linkTokens)
+})
