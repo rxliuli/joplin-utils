@@ -16,9 +16,11 @@ class ResourceApi {
   async list(pageParam?: PageParam<TagProperties>) {
     return await ajax.get<PageRes<ResourceGetRes>>('/resources', pageParam)
   }
+
   async get(id: string) {
     return await ajax.get<ResourceGetRes>(`/resources/${id}`)
   }
+
   /**
    * Creates a new resource
    * Creating a new resource is special because you also need to upload the file. Unlike other API calls, this one must have the "multipart/form-data" Content-Type. The file data must be passed to the "data" form field, and the other properties to the "props" form field. An example of a valid call with cURL would be:
@@ -40,6 +42,12 @@ class ResourceApi {
     const { id, ...others } = param
     return await ajax.put<ResourceGetRes>(`/resources/${id}`, others)
   }
+
+  /**
+   * TODO 这个 api 存在 bug
+   * @link https://discourse.joplinapp.org/t/pre-release-1-4-is-now-available-for-testing/12247/15?u=rxliuli
+   * @param id
+   */
   async remove(id: string) {
     return await ajax.delete(`/resources/${id}`)
   }
@@ -60,4 +68,4 @@ class ResourceApi {
   }
 }
 
-export const resourceApi = new ResourceApi()
+export const resourceApi = new ResourceApi();

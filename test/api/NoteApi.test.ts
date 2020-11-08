@@ -1,4 +1,4 @@
-import { folderApi, noteApi, resourceApi } from '../../src'
+import { folderApi, noteApi } from '../../src'
 import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
 import { createTestResource } from './CreateTestResource'
 
@@ -49,11 +49,11 @@ describe('test JoplinApi', () => {
       console.log(res)
       expect(res).toBeNull()
     })
-    it.skip('test tagsById', async () => {
+    it('test tagsById', async () => {
       const tagList = await noteApi.tagsById(data.noteId)
       expect(tagList[0].id).toBe(data.tagId)
     })
-    it.skip('test resourcesById', async () => {
+    it('test resourcesById', async () => {
       const resource = await createTestResource()
       await noteApi.update({
         id: data.noteId,
@@ -61,8 +61,8 @@ describe('test JoplinApi', () => {
       })
       const resourceList = await noteApi.resourcesById(data.noteId)
       console.log(resourceList)
-      expect(resourceList.length).toBeGreaterThan(0)
-      await resourceApi.remove(resource.id)
+      expect(resourceList.length).toBe(1)
+      // await resourceApi.remove(resource.id)
     })
   })
   describe('features test', () => {
