@@ -1,5 +1,6 @@
-import { folderApi, noteApi } from '../../src'
+import { folderApi, noteApi, resourceApi } from '../../src'
 import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
+import { createTestResource } from './CreateTestResource'
 
 describe('test JoplinApi', () => {
   const data = initTestFolderAndNote()
@@ -7,11 +8,11 @@ describe('test JoplinApi', () => {
     it('test list', async () => {
       const res = await noteApi.list()
       console.log(res)
-      expect(res.length).toBeGreaterThanOrEqual(0)
+      expect(res.items.length).toBeGreaterThanOrEqual(0)
     })
     it('test get', async () => {
       const res = await noteApi.get(data.noteId)
-      expect(res.title).toBe('测试标题')
+      expect(res.title.startsWith('测试标题')).toBeTruthy()
     })
     it('test create', async () => {
       const res = await noteApi.create({
@@ -48,14 +49,20 @@ describe('test JoplinApi', () => {
       console.log(res)
       expect(res).toBeNull()
     })
-    it('test tagsById', async () => {
+    it.skip('test tagsById', async () => {
       const tagList = await noteApi.tagsById(data.noteId)
       expect(tagList[0].id).toBe(data.tagId)
     })
     it.skip('test resourcesById', async () => {
+      const resource = await createTestResource()
+      await noteApi.update({
+        id: data.noteId,
+        body: `[${resource.title}](:/${resource.id})`,
+      })
       const resourceList = await noteApi.resourcesById(data.noteId)
       console.log(resourceList)
       expect(resourceList.length).toBeGreaterThan(0)
+      await resourceApi.remove(resource.id)
     })
   })
   describe('features test', () => {

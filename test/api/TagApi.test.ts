@@ -5,7 +5,7 @@ describe('test TagApi', () => {
   const data = initTestFolderAndNote()
   it('test list', async () => {
     const res = await tagApi.list()
-    expect(res.length).toBeGreaterThan(0)
+    expect(res.items.length).toBeGreaterThan(0)
   })
   it('test get', async () => {
     const res = await tagApi.get(data.tagId)
@@ -37,15 +37,15 @@ describe('test TagApi', () => {
     await expect(tagApi.get(createRes.id)).rejects.not.toBeNull()
   })
   it('test notesByTagId', async () => {
-    const res = await tagApi.notesByTagId(data.tagId)
-    expect(res.length).toBeGreaterThan(0)
+    const res = await tagApi.notesByTagId({ id: data.tagId })
+    expect(res.items.length).toBeGreaterThan(0)
   })
-  it('test updateNotesByTagId', async () => {
+  it.skip('test updateNotesByTagId', async () => {
     await tagApi.addTagByNoteId(data.tagId, data.noteId)
     const res = await noteApi.tagsById(data.noteId)
     expect(res[0].id).toBe(data.tagId)
   })
-  it('test removeNotesByNoteId', async () => {
+  it.skip('test removeNotesByNoteId', async () => {
     await tagApi.removeTagByNoteId(data.tagId, data.noteId)
     const res = await noteApi.tagsById(data.noteId)
     expect(res.length).toBe(0)

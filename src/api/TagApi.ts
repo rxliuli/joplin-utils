@@ -3,10 +3,11 @@ import { TagGetRes } from '../modal/TagGetRes'
 import { NoteGetRes } from '../modal/NoteGetRes'
 import { NoteTagRelated } from '../modal/NoteTagRelated'
 import { ajax } from '../util/ajax'
+import { PageParam, PageRes } from '../modal/PageData'
 
 class TagApi {
-  async list() {
-    return await ajax.get<TagGetRes[]>('/tags')
+  async list(pageParam?: PageParam<TagProperties>) {
+    return await ajax.get<PageRes<TagGetRes>>('/tags', pageParam)
   }
   async get(id: string) {
     return await ajax.get<TagGetRes>(`/tags/${id}`)
@@ -22,8 +23,11 @@ class TagApi {
     return await ajax.delete<TagProperties>(`/tags/${id}`)
   }
 
-  async notesByTagId(id: string) {
-    return await ajax.get<NoteGetRes[]>(`/tags/${id}/notes`)
+  async notesByTagId({
+    id,
+    ...others
+  }: { id: string } & PageParam<TagProperties>) {
+    return await ajax.get<PageRes<NoteGetRes[]>>(`/tags/${id}/notes`, others)
   }
 
   /**

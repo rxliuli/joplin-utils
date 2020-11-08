@@ -5,9 +5,8 @@ describe('test FolderApi', () => {
   const data = initTestFolderAndNote()
   describe('basic test', () => {
     it('test list', async () => {
-      const res = await folderApi.list()
-      console.log(JSON.stringify(res, null, 2))
-      expect(res.length).toBeGreaterThan(0)
+      const res = await folderApi.list({ fields: ['id'], limit: 1 })
+      expect(res.items.length).toBe(1)
     })
     it('test get', async () => {
       const res = await folderApi.get(data.folderId)
@@ -41,8 +40,7 @@ describe('test FolderApi', () => {
     })
     it('test notesByFolderId', async () => {
       const res = await folderApi.notesByFolderId(data.folderId)
-      console.log(res)
-      expect(res.length).toBeGreaterThan(0)
+      expect(res.items.length).toBeGreaterThan(0)
     })
   })
   describe('features test', () => {
@@ -65,6 +63,11 @@ describe('test FolderApi', () => {
       })
       expect(res.parent_id).toBe(data.folderId)
       await folderApi.remove(createRes.id)
+    })
+    it('测试递归获取目录及笔记', async function() {
+      const folderList = await folderApi.listAll()
+      console.log(folderList.length)
+      expect(folderList.length).toBeGreaterThan(0)
     })
   })
 })

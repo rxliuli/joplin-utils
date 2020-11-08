@@ -6,13 +6,20 @@ import axios from 'axios'
 import { ApiUtil } from '../../src/util/ApiUtil'
 import fetch from 'node-fetch'
 import { readFileSync } from 'fs'
+import { createTestResource } from './CreateTestResource'
 
 describe('test ResourceApi', () => {
-  const id = 'd2baabaeebe54e87bf7571d6eff230e9'
+  let id: string
+  beforeAll(async () => {
+    id = (await createTestResource()).id
+  })
+  afterAll(async () => {
+    await resourceApi.remove(id)
+  })
   it('test list', async () => {
     const res = await resourceApi.list()
     console.log(res)
-    expect(res.length).toBeGreaterThan(0)
+    expect(res.items.length).toBeGreaterThan(0)
   })
   it('test get', async () => {
     const res = await resourceApi.get(id)
@@ -47,7 +54,7 @@ describe('test ResourceApi', () => {
       const json = await resp.json()
       console.log('json: ', json)
     })
-    it('test create by axios', async () => {
+    it.skip('test create by axios', async () => {
       const fd = getFormData()
       const resp = await axios.post(
         ApiUtil.baseUrl('/resources'),
@@ -66,8 +73,7 @@ describe('test ResourceApi', () => {
     expect(updateRes.title).toBe(getRes.title)
   })
   it.skip('test remove ', async () => {
-    const deleteId = '52fe0b8f8ce5468489345b94227261d8'
-    await resourceApi.remove(deleteId)
+    await resourceApi.remove(id)
   })
   it('test fileByResourceId', async () => {
     const res = await resourceApi.fileByResourceId(id)

@@ -5,10 +5,16 @@ import fetch from 'node-fetch'
 import { ajax } from '../util/ajax'
 import { ApiUtil } from '../util/ApiUtil'
 import { ReadStream } from 'fs'
+import { PageParam, PageRes } from '../modal/PageData'
+import { TagProperties } from '../modal/TagProperties'
 
 class ResourceApi {
-  async list() {
-    return await ajax.get<ResourceGetRes[]>('/resources')
+  /**
+   * TODO 此处的类型有问题，应该允许选择返回字段且默认应该是 ResourceGetRes
+   * @param pageParam
+   */
+  async list(pageParam?: PageParam<TagProperties>) {
+    return await ajax.get<PageRes<ResourceGetRes>>('/resources', pageParam)
   }
   async get(id: string) {
     return await ajax.get<ResourceGetRes>(`/resources/${id}`)
