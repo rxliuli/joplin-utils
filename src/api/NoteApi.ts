@@ -4,11 +4,11 @@ import { TagGetRes } from '../modal/TagGetRes'
 import { NoteCreateRes } from '../modal/NoteCreateRes'
 import { NoteUpdateRes } from '../modal/NoteUpdateRes'
 import { ResourceGetRes } from '../modal/ResourceGetRes'
-import { RequiredField } from 'liuli-types'
 import { ajax } from '../util/ajax'
 import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
 import { ResourceProperties } from '../modal/ResourceProperties'
+import { RequiredField } from '../types/RequiredFiled'
 
 /**
  * TODO 可以考虑使用 fields() 方法设置然后产生一个新的 Api 实例

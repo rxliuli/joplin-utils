@@ -4,11 +4,11 @@ import { FolderGetRes } from '../modal/FolderGetRes'
 import { FolderCreateRes } from '../modal/FolderCreateRes'
 import { FolderUpdateRes } from '../modal/FolderUpdateRes'
 import { NoteGetRes } from '../modal/NoteGetRes'
-import { RequiredField } from 'liuli-types'
 import { ajax } from '../util/ajax'
 import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
 import { FolderListRecursionGetTree } from '../modal/FolderListRecursionGetTree'
+import { RequiredField } from '../types/RequiredFiled'
 
 /**
  * 目录相关 api

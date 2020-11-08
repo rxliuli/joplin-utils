@@ -37,7 +37,7 @@ test/
 .huskyrc.js
 .lintstagedrc
 .nojekyll
-.prettierrc.js
+.prettierrc.json
 CNAME
 CONTRIBUTING.md
 jest.config.js
