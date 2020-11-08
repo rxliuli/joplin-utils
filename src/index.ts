@@ -8,6 +8,9 @@ import { config } from './util/config'
 import { TypeEnum } from './modal/TypeEnum'
 import { noteActionApi, actionApi } from './api/NoteActionApi'
 import { resourceActionApi } from './api/ResourceActionApi'
+import { noteExtApi } from './api/NoteExtApi'
+import { folderExtApi } from './api/FolderExtApi'
+import { PageUtil } from './util/PageUtil'
 
 export {
   noteApi,
@@ -21,4 +24,7 @@ export {
   resourceActionApi,
   config,
   TypeEnum,
+  PageUtil,
+  folderExtApi,
+  noteExtApi,
 }
