@@ -35,31 +35,31 @@ export interface NoteProperties extends BaseProperties {
    */
   source_url: string
   /**
-   * Tells whether this note is a todo or not.
+   * Tells whether this note is a to-do or not.
    */
   is_todo: IntBool
   /**
-   * 	When the todo is due. An alarm will be triggered on that date.
+   * When the to-do is due. An alarm will be triggered on that date.
    */
   todo_due: IntBool
   /**
-   * 	Tells whether todo is completed or not. This is a timestamp in milliseconds.
+   * Tells whether to-do is completed or not. This is a timestamp in milliseconds.
    */
   todo_completed: IntBool
   /**
-   * 	text
+   * text
    */
   source: string
   /**
-   * 	text
+   * text
    */
   source_application: string
   /**
-   * 	text
+   * text
    */
   application_data: string
   /**
-   * 	int
+   * int
    */
   order: number
   /**
