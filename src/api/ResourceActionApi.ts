@@ -2,6 +2,7 @@ import { ajax } from '../util/ajax'
 
 enum ActionEnum {
   OpenAndWatch = 'openAndWatch',
+  Watch = 'watch',
   StopWatching = 'stopWatching',
   NoteIsWatched = 'isWatched',
 }
@@ -9,6 +10,10 @@ enum ActionEnum {
 class ResourceActionApi {
   openAndWatch(resourceId: string) {
     return ResourceActionApi.baseAction(ActionEnum.OpenAndWatch, resourceId)
+  }
+
+  watch(resourceId: string) {
+    return ResourceActionApi.baseAction(ActionEnum.Watch, resourceId)
   }
 
   stopWatching(resourceId: string) {
