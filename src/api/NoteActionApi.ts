@@ -15,7 +15,15 @@ class NoteActionApi {
     return NoteActionApi.baseAction(ActionEnum.StopWatching, noteId)
   }
 
+  /**
+   * @deprecated 已废弃，请使用 {@link isWatch}
+   * @param noteId
+   */
   async noteIsWatched(noteId: string) {
+    return this.isWatch(noteId)
+  }
+
+  async isWatch(noteId: string) {
     return NoteActionApi.baseAction(ActionEnum.NoteIsWatched, noteId)
   }
 

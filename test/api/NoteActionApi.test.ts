@@ -18,4 +18,8 @@ describe('test ActionApi', () => {
     const res = await noteActionApi.noteIsWatched(data.noteId)
     console.log(res)
   })
+  it('测试 watch', async () => {
+    // await noteActionApi.watch(data.noteId)
+    expect(await noteActionApi.isWatch(data.noteId)).toBeFalsy()
+  })
 })
