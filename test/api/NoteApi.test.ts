@@ -1,4 +1,4 @@
-import { folderApi, noteApi } from '../../src'
+import { folderApi, noteApi, PageUtil } from '../../src'
 import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
 import { createTestResource } from './CreateTestResource'
 
@@ -85,6 +85,18 @@ describe('test JoplinApi', () => {
         parent_id: createFolderRes.id,
       })
       expect(res.parent_id).toBe(createFolderRes.id)
+    })
+    it('测试获取全部的笔记', async () => {
+      const time1 = Date.now()
+      const res1 = await PageUtil.pageToAllList(noteApi.list)
+      const time2 = Date.now()
+      const res2 = await PageUtil.pageToAllListForParallel(noteApi.list, {
+        fields: ['id', 'title', 'parent_id'],
+      })
+      const time3 = Date.now()
+      console.log(res1.length, res2.length)
+      expect(res1).toEqual(res2)
+      console.log('time diff: ', time2 - time1, time3 - time2)
     })
   })
 })
