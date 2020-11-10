@@ -86,7 +86,7 @@ describe('test JoplinApi', () => {
       })
       expect(res.parent_id).toBe(createFolderRes.id)
     })
-    it('测试获取全部的笔记', async () => {
+    it('test to get all notes', async () => {
       const time1 = Date.now()
       const res1 = await PageUtil.pageToAllList(noteApi.list)
       const time2 = Date.now()
@@ -97,6 +97,12 @@ describe('test JoplinApi', () => {
       console.log(res1.length, res2.length)
       expect(res1).toEqual(res2)
       console.log('time diff: ', time2 - time1, time3 - time2)
+    })
+    it('test and get all notes concurrently', async () => {
+      const res = await PageUtil.pageToAllListForParallel(noteApi.list, {
+        fields: ['id', 'title', 'parent_id'],
+      })
+      console.log('first page and second page: ', res[0], res[100])
     })
   })
 })
