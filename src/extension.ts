@@ -17,6 +17,7 @@ import { JoplinLinkRegex, JoplinResourceRegex } from './util/constant'
 import { formatSize } from './util/formatSize'
 import { isInFencedCodeBlock, isInCodeSpan } from './util/externalUtils'
 import { MDDocumentLinkProvider, MDHoverProvider } from './model/EditorProvider'
+import { BindThisUtil } from './util/BindThisUtil'
 
 initDevEnv()
 
@@ -45,12 +46,14 @@ export async function activate(context: vscode.ExtensionContext) {
   //     treeDataProvider: resourceProvider,
   //   },
   // )
-  const joplinNoteCommandService = new JoplinNoteCommandService({
-    noteViewProvider: noteListProvider,
-    noteListTreeView,
-    // resourceProvider,
-    // resourceTreeView,
-  })
+  const joplinNoteCommandService = BindThisUtil.bindClassMethod(
+    new JoplinNoteCommandService({
+      noteViewProvider: noteListProvider,
+      noteListTreeView,
+      // resourceProvider,
+      // resourceTreeView,
+    }),
+  )
   joplinNoteCommandService.init(appConfig)
   const handlerService = new HandlerService(joplinNoteCommandService)
 
@@ -62,11 +65,11 @@ export async function activate(context: vscode.ExtensionContext) {
   )
   vscode.commands.registerCommand(
     'joplinNote.search',
-    joplinNoteCommandService.search.bind(joplinNoteCommandService),
+    joplinNoteCommandService.search,
   )
   vscode.commands.registerCommand(
     'joplinNote.openNote',
-    joplinNoteCommandService.openNote.bind(joplinNoteCommandService),
+    joplinNoteCommandService.openNote,
   )
 
   vscode.commands.registerCommand('joplinNote.createFolder', (item) =>
@@ -77,19 +80,19 @@ export async function activate(context: vscode.ExtensionContext) {
   )
   vscode.commands.registerCommand(
     'joplinNote.rename',
-    joplinNoteCommandService.rename.bind(joplinNoteCommandService),
+    joplinNoteCommandService.rename,
   )
   vscode.commands.registerCommand(
     'joplinNote.copyLink',
-    joplinNoteCommandService.copyLink.bind(joplinNoteCommandService),
+    joplinNoteCommandService.copyLink,
   )
   vscode.commands.registerCommand(
     'joplinNote.remove',
-    joplinNoteCommandService.remove.bind(joplinNoteCommandService),
+    joplinNoteCommandService.remove,
   )
   vscode.commands.registerCommand(
     'joplinNote.toggleTodoState',
-    joplinNoteCommandService.toggleTodoState.bind(joplinNoteCommandService),
+    joplinNoteCommandService.toggleTodoState,
   )
   vscode.commands.registerCommand('joplinNote.resource.refresh', () => {
     const fileName = vscode.window.activeTextEditor?.document.fileName
