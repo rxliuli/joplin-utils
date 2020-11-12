@@ -4,9 +4,14 @@ import { NoteGetRes } from '../modal/NoteGetRes'
 import { NoteTagRelated } from '../modal/NoteTagRelated'
 import { ajax } from '../util/ajax'
 import { PageParam, PageRes } from '../modal/PageData'
+import { FieldsParam } from '../modal/FieldsParam'
 
 class TagApi {
-  async list(pageParam?: PageParam<TagProperties>) {
+  async list(): Promise<PageRes<TagGetRes>>
+  async list<K extends keyof TagGetRes>(
+    pageParam: PageParam<TagGetRes> & FieldsParam<K>,
+  ): Promise<PageRes<Pick<TagGetRes, K>>>
+  async list(pageParam?: PageParam<TagGetRes>) {
     return await ajax.get<PageRes<TagGetRes>>('/tags', pageParam)
   }
   async get(id: string) {

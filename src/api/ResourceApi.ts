@@ -12,6 +12,10 @@ import { FieldsParam } from '../modal/FieldsParam'
  * 附件资源相关 api
  */
 class ResourceApi {
+  async list(): Promise<PageRes<ResourceGetRes>>
+  async list<K extends keyof ResourceGetRes>(
+    pageParam: PageParam<ResourceGetRes> & FieldsParam<K>,
+  ): Promise<PageRes<Pick<ResourceGetRes, K>>>
   async list(
     pageParam?: PageParam<ResourceGetRes> & FieldsParam<ResourceGetRes>,
   ) {
@@ -69,4 +73,4 @@ class ResourceApi {
   }
 }
 
-export const resourceApi = new ResourceApi();
+export const resourceApi = new ResourceApi()

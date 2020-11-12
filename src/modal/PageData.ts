@@ -1,8 +1,8 @@
 export interface PageParam<T> {
-  cursor?: string
+  page?: number
+  limit?: number
   order_by?: keyof T
   order_dir?: 'ASC' | 'DESC'
-  limit?: number
 }
 
 /**
@@ -10,6 +10,6 @@ export interface PageParam<T> {
  * @link https://joplinapp.org/api/references/rest_api/#pagination
  */
 export interface PageRes<T> {
-  cursor?: string
+  has_more: boolean
   items: T[]
 }

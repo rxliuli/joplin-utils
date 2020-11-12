@@ -8,6 +8,7 @@ import { ajax } from '../util/ajax'
 import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
 import { RequiredField } from '../types/RequiredFiled'
+// noinspection ES6PreferShortImport
 import { PageUtil } from '../util/PageUtil'
 
 /**
@@ -71,4 +72,4 @@ class NoteApi {
   }
 }
 
-export const noteApi = new NoteApi();
+export const noteApi = new NoteApi()

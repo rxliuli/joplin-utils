@@ -17,7 +17,7 @@ describe('test ResourceApi', () => {
     await resourceApi.remove(id)
   })
   it('test list', async () => {
-    const res = await resourceApi.list()
+    const res = await resourceApi.list({ fields: ['id', 'title'] })
     console.log(res)
     expect(res.items.length).toBeGreaterThan(0)
   })
@@ -37,6 +37,7 @@ describe('test ResourceApi', () => {
       })
       expect(json.title).toBe(title)
     })
+
     function getFormData() {
       const fd = new FormData()
       const title = 'image title'

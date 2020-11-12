@@ -86,23 +86,19 @@ describe('test JoplinApi', () => {
       })
       expect(res.parent_id).toBe(createFolderRes.id)
     })
+    it('test page notes', async () => {
+      const pageRes = await noteApi.list({
+        page: 1_000,
+        limit: 100,
+      })
+      expect(pageRes.has_more).toBeFalsy()
+      expect(pageRes.items.length).toBe(0)
+    })
     it('test to get all notes', async () => {
       const time1 = Date.now()
-      const res1 = await PageUtil.pageToAllList(noteApi.list)
+      const res = await PageUtil.pageToAllList(noteApi.list)
       const time2 = Date.now()
-      const res2 = await PageUtil.pageToAllListForParallel(noteApi.list, {
-        fields: ['id', 'title', 'parent_id'],
-      })
-      const time3 = Date.now()
-      console.log(res1.length, res2.length)
-      expect(res1).toEqual(res2)
-      console.log('time diff: ', time2 - time1, time3 - time2)
-    })
-    it('test and get all notes concurrently', async () => {
-      const res = await PageUtil.pageToAllListForParallel(noteApi.list, {
-        fields: ['id', 'title', 'parent_id'],
-      })
-      console.log('first page and second page: ', res[0], res[100])
+      console.log('time diff: ', time2 - time1, res.length)
     })
   })
 })
