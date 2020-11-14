@@ -12,6 +12,7 @@ describe('test JoplinApi', () => {
     })
     it('test get', async () => {
       const res = await noteApi.get(data.noteId)
+      console.log(res)
       expect(res.title.startsWith('测试标题')).toBeTruthy()
     })
     it('test create', async () => {
@@ -33,6 +34,7 @@ describe('test JoplinApi', () => {
         title,
         body,
       })
+      console.log(res)
       expect(res.title).toBe(title)
       expect(res.body).toBe(body)
     })
@@ -51,6 +53,7 @@ describe('test JoplinApi', () => {
     })
     it('test tagsById', async () => {
       const tagList = await noteApi.tagsById(data.noteId)
+      console.log(tagList)
       expect(tagList[0].id).toBe(data.tagId)
     })
     it('test resourcesById', async () => {

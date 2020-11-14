@@ -9,13 +9,14 @@ import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
 import { FolderListRecursionGetTree } from '../modal/FolderListRecursionGetTree'
 import { RequiredField } from '../types/RequiredFiled'
+import { PageUtil } from '..'
 
 /**
  * 目录相关 api
  */
 class FolderApi {
   async list(): Promise<PageRes<FolderListRes>>
-  async list<K extends keyof FolderProperties>(
+  async list<K extends keyof FolderProperties = keyof FolderListRes>(
     pageParam: PageParam<FolderProperties> & FieldsParam<K>,
   ): Promise<PageRes<Pick<FolderProperties, K>>>
   async list(
@@ -52,8 +53,12 @@ class FolderApi {
   }
 
   async notesByFolderId(id: string) {
-    return ajax.get<PageRes<NoteGetRes[]>>(`/folders/${id}/notes`)
+    return PageUtil.pageToAllList(
+      ({ id, ...others }) =>
+        ajax.get<PageRes<NoteGetRes[]>>(`/folders/${id}/notes`, others),
+      { id } as PageParam<NoteGetRes> & { id: string },
+    )
   }
 }
 
-export const folderApi = new FolderApi()
+export const folderApi = new FolderApi();

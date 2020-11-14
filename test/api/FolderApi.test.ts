@@ -1,15 +1,17 @@
-import { folderApi } from '../../src'
+import { folderApi, noteApi } from '../../src'
 import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
 
 describe('test FolderApi', () => {
   const data = initTestFolderAndNote()
   describe('basic test', () => {
     it('test list', async () => {
-      const res = await folderApi.list({ fields: ['id'], limit: 1 })
+      const res = await folderApi.list({ limit: 1 })
+      console.log(res)
       expect(res.items.length).toBe(1)
     })
     it('test get', async () => {
       const res = await folderApi.get(data.folderId)
+      console.log(res)
       expect(res.id).toBe(data.folderId)
     })
     it('test create', async () => {
@@ -17,6 +19,7 @@ describe('test FolderApi', () => {
         title: '# test',
         parent_id: data.folderId,
       })
+      console.log(res)
       expect(res.parent_id).toBe(data.folderId)
       await folderApi.remove(res.id)
     })
@@ -26,6 +29,7 @@ describe('test FolderApi', () => {
         id: data.folderId,
         title,
       })
+      console.log(res)
       expect(res.title).toBe(title)
     })
     it('test remove', async () => {
@@ -39,9 +43,21 @@ describe('test FolderApi', () => {
       await expect(folderApi.get(createRes.id)).rejects.not.toBeNull()
     })
     it('test notesByFolderId', async () => {
+      await Promise.all(
+        Array(200)
+          .fill(0)
+          .map(() =>
+            noteApi.create({
+              title: '# 测试标题',
+              body: '测试内容',
+              parent_id: data.folderId,
+            }),
+          ),
+      )
       const res = await folderApi.notesByFolderId(data.folderId)
-      expect(res.items.length).toBeGreaterThan(0)
-    })
+      console.log(res)
+      expect(res.length).toBeGreaterThan(0)
+    }, 10_000)
   })
   describe('features test', () => {
     it('create folder for root', async () => {
@@ -64,7 +80,7 @@ describe('test FolderApi', () => {
       expect(res.parent_id).toBe(data.folderId)
       await folderApi.remove(createRes.id)
     })
-    it('测试递归获取目录及笔记', async function() {
+    it('测试递归获取目录及笔记', async function () {
       const folderList = await folderApi.listAll()
       console.log(folderList.length)
       expect(folderList.length).toBeGreaterThan(0)

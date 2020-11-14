@@ -16,7 +16,7 @@ import { PageUtil } from '../util/PageUtil'
  */
 class NoteApi {
   async list(): Promise<PageRes<NoteGetRes>>
-  async list<K extends keyof NoteProperties>(
+  async list<K extends keyof NoteProperties = keyof NoteGetRes>(
     pageParam: PageParam<NoteProperties> & FieldsParam<K>,
   ): Promise<PageRes<Pick<NoteProperties, K>>>
   async list(
@@ -72,4 +72,4 @@ class NoteApi {
   }
 }
 
-export const noteApi = new NoteApi()
+export const noteApi = new NoteApi();
