@@ -1,0 +1,1 @@
+{"version":3,"file":"ResourceActionApi.d.ts","sourceRoot":"","sources":["../../src/api/ResourceActionApi.ts"],"names":[],"mappings":"AASA,cAAM,iBAAiB;IACrB,YAAY,CAAC,UAAU,EAAE,MAAM;IAI/B,KAAK,CAAC,UAAU,EAAE,MAAM;IAIxB,YAAY,CAAC,UAAU,EAAE,MAAM;IAIzB,aAAa,CAAC,UAAU,EAAE,MAAM;mBAIjB,UAAU;CAMhC;AAED,eAAO,MAAM,iBAAiB,mBAA0B,CAAA"}

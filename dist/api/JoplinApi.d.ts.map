@@ -1,1 +1,1 @@
-{"version":3,"file":"JoplinApi.d.ts","sourceRoot":"","sources":["../src/api/JoplinApi.ts"],"names":[],"mappings":"AAGA,cAAM,SAAS;mBACQ,QAAQ;IAS7B,OAAO,CAAC,MAAM,CAAC,KAAK;IAQd,IAAI,IAAI,OAAO,CAAC,MAAM,CAAC;IAgBvB,IAAI,IAAI,OAAO,CAAC,OAAO,CAAC;CAI/B;AAED,eAAO,MAAM,SAAS,WAAkB,CAAA"}
+{"version":3,"file":"JoplinApi.d.ts","sourceRoot":"","sources":["../../src/api/JoplinApi.ts"],"names":[],"mappings":"AAIA,cAAM,SAAS;mBACQ,QAAQ;IAS7B,OAAO,CAAC,MAAM,CAAC,KAAK;IAQd,IAAI,IAAI,OAAO,CAAC,MAAM,CAAC;IAgBvB,IAAI,IAAI,OAAO,CAAC,OAAO,CAAC;CAI/B;AAED,eAAO,MAAM,SAAS,WAAkB,CAAA"}

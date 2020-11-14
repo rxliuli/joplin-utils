@@ -72,4 +72,4 @@ class NoteApi {
   }
 }
 
-export const noteApi = new NoteApi();
+export const noteApi = new NoteApi()

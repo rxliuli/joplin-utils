@@ -6,6 +6,10 @@ import { folderApi } from './api/FolderApi';
 import { resourceApi } from './api/ResourceApi';
 import { config } from './util/config';
 import { TypeEnum } from './modal/TypeEnum';
-import { actionApi } from './api/ActionApi';
-export { noteApi, folderApi, searchApi, joplinApi, tagApi, resourceApi, actionApi, config, TypeEnum, };
+import { noteActionApi, actionApi } from './api/NoteActionApi';
+import { resourceActionApi } from './api/ResourceActionApi';
+import { noteExtApi } from './api/NoteExtApi';
+import { folderExtApi } from './api/FolderExtApi';
+import { PageUtil } from './util/PageUtil';
+export { noteApi, folderApi, searchApi, joplinApi, tagApi, resourceApi, actionApi, noteActionApi, resourceActionApi, config, TypeEnum, PageUtil, folderExtApi, noteExtApi, };
 //# sourceMappingURL=index.d.ts.map

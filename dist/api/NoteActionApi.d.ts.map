@@ -1,0 +1,1 @@
+{"version":3,"file":"NoteActionApi.d.ts","sourceRoot":"","sources":["../../src/api/NoteActionApi.ts"],"names":[],"mappings":"AAQA,cAAM,aAAa;IACjB,YAAY,CAAC,MAAM,EAAE,MAAM;IAI3B,YAAY,CAAC,MAAM,EAAE,MAAM;IAI3B;;;OAGG;IACG,aAAa,CAAC,MAAM,EAAE,MAAM;IAI5B,OAAO,CAAC,MAAM,EAAE,MAAM;mBAIP,UAAU;CAMhC;AAED;;GAEG;AACH,eAAO,MAAM,SAAS,eAAsB,CAAA;AAC5C,eAAO,MAAM,aAAa,eAAsB,CAAA"}

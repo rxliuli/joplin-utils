@@ -56,4 +56,4 @@ class FolderApi {
   }
 }
 
-export const folderApi = new FolderApi();
+export const folderApi = new FolderApi()

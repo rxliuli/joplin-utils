@@ -3,7 +3,7 @@ import { TypeEnum } from '../modal/TypeEnum'
 import { ajax } from '../util/ajax'
 import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
-import { NoteProperties } from "../modal/NoteProperties";
+import { NoteProperties } from '../modal/NoteProperties'
 
 class SearchApi {
   private static readonly TypeEnumMap: Record<TypeEnum, string> = {
@@ -25,7 +25,9 @@ class SearchApi {
   }
 
   async search<K extends keyof NoteProperties>(
-    param: { query: string; type?: TypeEnum } & PageParam<Pick<NoteProperties, K>> &
+    param: { query: string; type?: TypeEnum } & PageParam<
+      Pick<NoteProperties, K>
+    > &
       FieldsParam<K>,
   ) {
     SearchApi.TypeEnumMap['8'] = ''

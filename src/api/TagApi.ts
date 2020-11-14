@@ -55,4 +55,4 @@ class TagApi {
   }
 }
 
-export const tagApi = new TagApi();
+export const tagApi = new TagApi()

@@ -1,1 +1,1 @@
-{"version":3,"file":"FolderProperties.d.ts","sourceRoot":"","sources":["../src/modal/FolderProperties.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;AAEjD,MAAM,WAAW,gBAAiB,SAAQ,cAAc;IACtD;;OAEG;IACH,SAAS,EAAE,MAAM,CAAA;CAClB"}
+{"version":3,"file":"FolderProperties.d.ts","sourceRoot":"","sources":["../../src/modal/FolderProperties.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,kBAAkB,CAAA;AAEjD,MAAM,WAAW,gBAAiB,SAAQ,cAAc;IACtD;;OAEG;IACH,SAAS,EAAE,MAAM,CAAA;CAClB"}

@@ -73,4 +73,4 @@ class ResourceApi {
   }
 }
 
-export const resourceApi = new ResourceApi();
+export const resourceApi = new ResourceApi()

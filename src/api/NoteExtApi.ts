@@ -44,4 +44,4 @@ class NoteExtApi {
   }
 }
 
-export const noteExtApi = new NoteExtApi();
+export const noteExtApi = new NoteExtApi()

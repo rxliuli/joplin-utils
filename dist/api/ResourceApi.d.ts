@@ -2,8 +2,14 @@
 import { ResourceProperties } from '../modal/ResourceProperties';
 import { ResourceGetRes } from '../modal/ResourceGetRes';
 import { ReadStream } from 'fs';
+import { PageParam, PageRes } from '../modal/PageData';
+import { FieldsParam } from '../modal/FieldsParam';
+/**
+ * 附件资源相关 api
+ */
 declare class ResourceApi {
-    list(): Promise<ResourceGetRes[]>;
+    list(): Promise<PageRes<ResourceGetRes>>;
+    list<K extends keyof ResourceProperties>(pageParam: PageParam<ResourceProperties> & FieldsParam<K>): Promise<PageRes<Pick<ResourceProperties, K>>>;
     get(id: string): Promise<ResourceGetRes>;
     /**
      * Creates a new resource
@@ -16,6 +22,11 @@ declare class ResourceApi {
         title: string;
     }): Promise<ResourceGetRes>;
     update(param: Pick<ResourceProperties, 'id' | 'title'>): Promise<ResourceGetRes>;
+    /**
+     * TODO 这个 api 存在 bug
+     * @link https://discourse.joplinapp.org/t/pre-release-1-4-is-now-available-for-testing/12247/15?u=rxliuli
+     * @param id
+     */
     remove(id: string): Promise<unknown>;
     /**
      * Gets the actual file associated with this resource.

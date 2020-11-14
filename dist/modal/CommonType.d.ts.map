@@ -1,1 +1,1 @@
-{"version":3,"file":"CommonType.d.ts","sourceRoot":"","sources":["../src/modal/CommonType.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,YAAY,CAAA;AAErC,MAAM,WAAW,UAAU;IACzB,KAAK,EAAE,QAAQ,CAAA;CAChB"}
+{"version":3,"file":"CommonType.d.ts","sourceRoot":"","sources":["../../src/modal/CommonType.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,YAAY,CAAA;AAErC,MAAM,WAAW,UAAU;IACzB,KAAK,EAAE,QAAQ,CAAA;CAChB"}

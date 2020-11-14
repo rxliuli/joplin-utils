@@ -5,19 +5,21 @@
  * @param param 等待时间/等待条件
  * @returns Promise 对象
  */
-export function wait(param?: number | ((...args: any[]) => boolean)): Promise<void> {
+export function wait(
+  param?: number | ((...args: any[]) => boolean),
+): Promise<void> {
   return new Promise((resolve) => {
-    if (typeof param === "number") {
-      setTimeout(resolve, param);
-    } else if (typeof param === "function") {
+    if (typeof param === 'number') {
+      setTimeout(resolve, param)
+    } else if (typeof param === 'function') {
       const timer = setInterval(() => {
         if (param()) {
-          clearInterval(timer);
-          resolve();
+          clearInterval(timer)
+          resolve()
         }
-      }, 100);
+      }, 100)
     } else {
-      resolve();
+      resolve()
     }
-  });
+  })
 }
