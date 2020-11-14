@@ -16,7 +16,7 @@ describe('test SearchApi', () => {
   })
   it('test search folder', async () => {
     const res = await searchApi.search({
-      query: '测试目录',
+      query: '测试目录*',
       type: TypeEnum.Folder,
     })
     expect(res.items.length).toBeGreaterThanOrEqual(1)

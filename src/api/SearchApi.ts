@@ -1,9 +1,9 @@
-import { NoteGetRes } from '../modal/NoteGetRes'
 // noinspection ES6PreferShortImport
 import { TypeEnum } from '../modal/TypeEnum'
 import { ajax } from '../util/ajax'
 import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
+import { NoteProperties } from "../modal/NoteProperties";
 
 class SearchApi {
   private static readonly TypeEnumMap: Record<TypeEnum, string> = {
@@ -24,13 +24,13 @@ class SearchApi {
     [TypeEnum.SmartFilter]: 'smart_filter',
   }
 
-  async search<K extends keyof NoteGetRes>(
-    param: { query: string; type?: TypeEnum } & PageParam<Pick<NoteGetRes, K>> &
+  async search<K extends keyof NoteProperties>(
+    param: { query: string; type?: TypeEnum } & PageParam<Pick<NoteProperties, K>> &
       FieldsParam<K>,
   ) {
     SearchApi.TypeEnumMap['8'] = ''
     const { type, ...others } = param
-    return ajax.get<PageRes<Pick<NoteGetRes, K>>>('/search', {
+    return ajax.get<PageRes<Pick<NoteProperties, K>>>('/search', {
       ...others,
       type: SearchApi.TypeEnumMap[type!],
     })

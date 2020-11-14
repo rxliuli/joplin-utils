@@ -13,11 +13,11 @@ import { FieldsParam } from '../modal/FieldsParam'
  */
 class ResourceApi {
   async list(): Promise<PageRes<ResourceGetRes>>
-  async list<K extends keyof ResourceGetRes>(
-    pageParam: PageParam<ResourceGetRes> & FieldsParam<K>,
-  ): Promise<PageRes<Pick<ResourceGetRes, K>>>
+  async list<K extends keyof ResourceProperties>(
+    pageParam: PageParam<ResourceProperties> & FieldsParam<K>,
+  ): Promise<PageRes<Pick<ResourceProperties, K>>>
   async list(
-    pageParam?: PageParam<ResourceGetRes> & FieldsParam<ResourceGetRes>,
+    pageParam?: PageParam<ResourceProperties> & FieldsParam<ResourceGetRes>,
   ) {
     return await ajax.get<PageRes<ResourceGetRes>>('/resources', pageParam)
   }
@@ -73,4 +73,4 @@ class ResourceApi {
   }
 }
 
-export const resourceApi = new ResourceApi()
+export const resourceApi = new ResourceApi();

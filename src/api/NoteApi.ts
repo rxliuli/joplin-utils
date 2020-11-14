@@ -16,11 +16,11 @@ import { PageUtil } from '../util/PageUtil'
  */
 class NoteApi {
   async list(): Promise<PageRes<NoteGetRes>>
-  async list<K extends keyof NoteGetRes>(
-    pageParam: PageParam<NoteGetRes> & FieldsParam<K>,
-  ): Promise<PageRes<Pick<NoteGetRes, K>>>
+  async list<K extends keyof NoteProperties>(
+    pageParam: PageParam<NoteProperties> & FieldsParam<K>,
+  ): Promise<PageRes<Pick<NoteProperties, K>>>
   async list(
-    pageParam?: PageParam<NoteGetRes> & FieldsParam<keyof NoteGetRes>,
+    pageParam?: PageParam<NoteProperties> & FieldsParam<keyof NoteGetRes>,
   ) {
     return ajax.get<PageRes<NoteGetRes>>('/notes', pageParam)
   }
@@ -72,4 +72,4 @@ class NoteApi {
   }
 }
 
-export const noteApi = new NoteApi()
+export const noteApi = new NoteApi();
