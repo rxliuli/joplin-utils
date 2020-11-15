@@ -33,10 +33,7 @@
   ],
   "main": "./out/extension.js",
   "jest": {
-    "preset": "ts-jest",
-    "testMatch": [
-      "test/**/*.[jt]s"
-    ]
+    "preset": "ts-jest"
   },
   "contributes": {
     "viewsContainers": {

@@ -1,6 +1,11 @@
 import { TextDocument, Uri } from 'vscode'
-import { actionApi, noteApi, resourceApi, TypeEnum } from 'joplin-api'
-import { safeExec } from '../util/safeExec'
+import {
+  noteActionApi,
+  noteApi,
+  resourceActionApi,
+  resourceApi,
+  TypeEnum,
+} from 'joplin-api'
 import { parse } from 'querystring'
 import { JoplinNoteCommandService } from './JoplinNoteCommandService'
 import { FolderOrNote } from '../model/FolderOrNote'
@@ -8,6 +13,8 @@ import * as vscode from 'vscode'
 import { openFileByOS } from '../util/openFileByOS'
 import path = require('path')
 import { appConfig } from '../config/AppConfig'
+import { BiMultiMap } from '../util/BiMultiMap'
+import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 
 /**
  * other service
@@ -16,20 +23,27 @@ export class HandlerService {
   constructor(private joplinNoteCommandService: JoplinNoteCommandService) {
   }
 
+  private readonly openResourceMap = new BiMultiMap<string, string>()
+
   /**
    * close note watch
    * @param e
    */
   async handleCloseTextDocument(e: TextDocument) {
     console.log('vscode.workspace.onDidCloseTextDocument: ', e)
-    const noteId = safeExec(
-      () => new RegExp('/edit-(\\w+)\\.md$').exec(e.uri.path)![1],
-    )
-    if (e.languageId !== 'markdown' || noteId === null) {
+    const noteId = JoplinNoteUtil.getNoteIdByFileName(e.fileName)
+    if (!noteId) {
       return
     }
     console.log('close note: ', noteId)
-    await actionApi.stopWatching(noteId)
+    const note = await noteApi.get(noteId)
+    await noteActionApi.stopWatching(noteId)
+    this.openResourceMap.deleteByKey(noteId)
+    const resourceIdList = this.openResourceMap.getByKey(noteId)
+    await Promise.all(resourceIdList.map(resourceId => resourceActionApi.stopWatching(resourceId)))
+    vscode.window.showInformationMessage(
+      `关闭笔记 [${note.title}] 中附件资源的监听`,
+    )
   }
 
   async uriHandler(uri: Uri) {
@@ -40,28 +54,43 @@ export class HandlerService {
         await this.openNote(id)
         break
       case '/resource':
-        await HandlerService.openResource(id)
+        await this.openResource(id)
         break
       default:
         vscode.window.showErrorMessage('无法处理的链接')
     }
   }
 
-  static async openResource(id: string) {
+  async openResource(id: string) {
     if (!appConfig.programProfilePath) {
       vscode.window.showWarningMessage(
         'Please set up Joplin\'s personal directory',
       )
       return
     }
-    const resource = await resourceApi.get(id, ['id', 'file_extension'])
+    const resource = await resourceApi.get(id, [
+      'id',
+      'title',
+      'file_extension',
+    ])
     const fileName = resource.id + '.' + resource.file_extension
     const filePath = path.resolve(
       appConfig.programProfilePath,
       'resources',
       fileName,
     )
-    console.log('open file: ', filePath)
+    await resourceActionApi.watch(resource.id)
+    const noteId = JoplinNoteUtil.getNoteIdByFileName(
+      vscode.window.activeTextEditor?.document.fileName,
+    )
+    console.log('open file: ', filePath, noteId, resource.id)
+    const isWatch = await resourceActionApi.noteIsWatched(resource.id)
+    if (isWatch) {
+      vscode.window.showInformationMessage(
+        '开始监听附件资源修改：' + resource.title,
+      )
+    }
+    this.openResourceMap.set(id, resource.id)
     openFileByOS(filePath)
   }
 

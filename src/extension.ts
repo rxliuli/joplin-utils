@@ -49,7 +49,7 @@ export async function activate(context: vscode.ExtensionContext) {
     }),
   )
   joplinNoteCommandService.init(appConfig)
-  const handlerService = new HandlerService(joplinNoteCommandService)
+  const handlerService = BindThisUtil.bindClassMethod(new HandlerService(joplinNoteCommandService))
 
   //region register commands
 
@@ -118,10 +118,10 @@ export async function activate(context: vscode.ExtensionContext) {
   //region register other service
 
   vscode.workspace.onDidCloseTextDocument(
-    handlerService.handleCloseTextDocument.bind(handlerService),
+    handlerService.handleCloseTextDocument,
   )
   vscode.window.registerUriHandler({
-    handleUri: handlerService.uriHandler.bind(handlerService),
+    handleUri: handlerService.uriHandler,
   })
   const docFilter = {
     language: 'markdown',

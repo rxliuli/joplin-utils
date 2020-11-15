@@ -1,6 +1,4 @@
 import * as MarkdownIt from 'markdown-it'
-import path = require('path')
-import * as vscode from 'vscode'
 import { TypeEnum } from 'joplin-api'
 import { JoplinLinkRegex, JoplinResourceRegex } from './constant'
 

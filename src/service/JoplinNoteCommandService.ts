@@ -1,11 +1,18 @@
 import { FolderOrNote, JoplinListNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
 import { QuickPickItem, TreeView } from 'vscode'
-import { actionApi, config, noteApi, searchApi, TypeEnum, noteExtApi } from 'joplin-api'
+import {
+  config,
+  noteApi,
+  searchApi,
+  TypeEnum,
+  noteExtApi,
+  noteActionApi,
+} from 'joplin-api'
 import { NoteListProvider } from '../model/NoteProvider'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { AppConfig } from '../config/AppConfig'
-import * as path from 'path'
+import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -62,7 +69,7 @@ export class JoplinNoteCommandService {
     })
     await this.config.noteViewProvider.refresh()
     if (type === TypeEnum.Note) {
-      await actionApi.openAndWatch(id)
+      await noteActionApi.openAndWatch(id)
     }
   }
 
@@ -111,10 +118,7 @@ export class JoplinNoteCommandService {
     item: FolderOrNote = this.config.noteListTreeView.selection[0],
   ) {
     console.log('joplinNote.copyLink: ', item)
-    //The special logic here refers to deleting the '# '
-    const label = item.label?.startsWith('#')
-      ? item.label?.replace('# ', '')
-      : item.label
+    const label = JoplinNoteUtil.trimTitleStart(item.label!)
     const url = `[${label}](:/${item.id})`
     vscode.env.clipboard.writeText(url)
   }
@@ -131,8 +135,8 @@ export class JoplinNoteCommandService {
    * @param item
    */
   async openNote(item: Omit<FolderOrNote, 'item'> & { item: JoplinListNote }) {
-    await actionApi.openAndWatch(item.id)
-    console.log('openNote: ', item.id, await actionApi.noteIsWatched(item.id))
+    await noteActionApi.openAndWatch(item.id)
+    console.log('openNote: ', item.id, await noteActionApi.isWatch(item.id))
     const interval = setInterval(() => {
       this.config.noteListTreeView.reveal(item, {
         select: true,
@@ -177,7 +181,7 @@ export class JoplinNoteCommandService {
     })
     searchQuickPickBox.onDidAccept(() => {
       const selectItem = searchQuickPickBox.selectedItems[0]
-      actionApi.openAndWatch(selectItem.noteId)
+      noteActionApi.openAndWatch(selectItem.noteId)
     })
     searchQuickPickBox.show()
   }
@@ -187,18 +191,13 @@ export class JoplinNoteCommandService {
    * @param fileName
    */
   async onDidChangeActiveTextEditor(fileName?: string) {
-    if (!fileName) {
-      return
-    }
     if (!this.config.noteListTreeView.visible) {
       return
     }
-    const joplinMdRegexp = new RegExp(`${path.sep}edit-(\\w{32})\\.md$`)
-    console.log('focus: ', fileName, joplinMdRegexp.exec(fileName))
-    if (!joplinMdRegexp.test(fileName)) {
+    const noteId = JoplinNoteUtil.getNoteIdByFileName(fileName)
+    if (!noteId) {
       return
     }
-    const noteId = joplinMdRegexp.exec(fileName)![1]
     await Promise.all([this.focus(noteId), this.refreshResource(noteId)])
   }
 
@@ -207,10 +206,18 @@ export class JoplinNoteCommandService {
   }
 
   private async focus(noteId: string) {
-    const note = await noteApi.get(noteId, ['id', 'parent_id', 'title', 'is_todo', 'todo_completed'])
-    this.config.noteListTreeView.reveal(new FolderOrNote({
-      ...note,
-      type_: TypeEnum.Note,
-    }))
+    const note = await noteApi.get(noteId, [
+      'id',
+      'parent_id',
+      'title',
+      'is_todo',
+      'todo_completed',
+    ])
+    this.config.noteListTreeView.reveal(
+      new FolderOrNote({
+        ...note,
+        type_: TypeEnum.Note,
+      }),
+    )
   }
 }

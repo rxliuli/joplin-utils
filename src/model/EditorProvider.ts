@@ -6,6 +6,7 @@ import { JoplinLinkRegex, JoplinResourceRegex } from '../util/constant'
 import { wrapLink } from '../util/useJoplinLink'
 import { TypeEnum, noteApi, resourceApi } from 'joplin-api'
 import { formatSize } from '../util/formatSize'
+import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 
 export class MDDocumentLinkProvider implements DocumentLinkProvider {
   async provideDocumentLinks(document: vscode.TextDocument) {
@@ -76,7 +77,7 @@ export class MDHoverProvider implements HoverProvider {
       // link = wrapLink(id, TypeEnum.Note)
       const note = await noteApi.get(id)
       const title = note.title
-      content = [title.startsWith('#') ? title.substr(1).trimLeft() : title]
+      content = [JoplinNoteUtil.trimTitleStart(title)]
     } else if (JoplinResourceRegex.test(markdownTokenLink)) {
       const id = JoplinResourceRegex.exec(markdownTokenLink)![1]
       const resource = await resourceApi.get(id, ['id', 'title', 'size'])
