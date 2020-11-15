@@ -4,6 +4,7 @@ import { ResourceGetRes } from '../modal/ResourceGetRes';
 import { ReadStream } from 'fs';
 import { PageParam, PageRes } from '../modal/PageData';
 import { FieldsParam } from '../modal/FieldsParam';
+import { CommonType } from '../modal/CommonType';
 /**
  * 附件资源相关 api
  */
@@ -11,6 +12,7 @@ declare class ResourceApi {
     list(): Promise<PageRes<ResourceGetRes>>;
     list<K extends keyof ResourceProperties>(pageParam: PageParam<ResourceProperties> & FieldsParam<K>): Promise<PageRes<Pick<ResourceProperties, K>>>;
     get(id: string): Promise<ResourceGetRes>;
+    get<K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>>(id: string, fields: K[]): Promise<Pick<ResourceProperties, K> & CommonType>;
     /**
      * Creates a new resource
      * Creating a new resource is special because you also need to upload the file. Unlike other API calls, this one must have the "multipart/form-data" Content-Type. The file data must be passed to the "data" form field, and the other properties to the "props" form field. An example of a valid call with cURL would be:

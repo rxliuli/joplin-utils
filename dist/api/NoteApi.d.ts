@@ -12,9 +12,9 @@ import { RequiredField } from '../types/RequiredFiled';
  */
 declare class NoteApi {
     list(): Promise<PageRes<NoteGetRes>>;
-    list<K extends keyof NoteProperties>(pageParam: PageParam<NoteProperties> & FieldsParam<K>): Promise<PageRes<Pick<NoteProperties, K>>>;
+    list<K extends keyof NoteProperties = keyof NoteGetRes>(pageParam: PageParam<NoteProperties> & FieldsParam<K>): Promise<PageRes<Pick<NoteProperties, K>>>;
     get(id: string): Promise<NoteGetRes>;
-    get<K extends keyof NoteGetRes>(id: string, fields?: K[]): Promise<Pick<NoteGetRes, K>>;
+    get<K extends keyof NoteProperties = keyof NoteGetRes>(id: string, fields?: K[]): Promise<Pick<NoteProperties, K>>;
     create(param: RequiredField<Partial<NoteProperties>, 'title'>): Promise<NoteCreateRes>;
     update(param: RequiredField<Partial<NoteProperties>, 'id'>): Promise<NoteUpdateRes>;
     remove(id: string): Promise<unknown>;

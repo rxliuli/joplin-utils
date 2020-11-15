@@ -1,6 +1,5 @@
 import { TagProperties } from '../modal/TagProperties';
 import { TagGetRes } from '../modal/TagGetRes';
-import { NoteGetRes } from '../modal/NoteGetRes';
 import { NoteTagRelated } from '../modal/NoteTagRelated';
 import { PageParam, PageRes } from '../modal/PageData';
 import { FieldsParam } from '../modal/FieldsParam';
@@ -13,7 +12,7 @@ declare class TagApi {
     remove(id: string): Promise<TagProperties>;
     notesByTagId({ id, ...others }: {
         id: string;
-    } & PageParam<TagProperties>): Promise<PageRes<NoteGetRes[]>>;
+    } & PageParam<TagProperties>): Promise<PageRes<Pick<import("../modal/NoteProperties").NoteProperties, "id" | "title" | "parent_id">[]>>;
     /**
      * Post a note to this endpoint to add the tag to the note. The note data must at least contain an ID property (all other properties will be ignored).
      * @param tagId

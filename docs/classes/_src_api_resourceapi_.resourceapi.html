@@ -93,7 +93,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_src_api_resourceapi_.resourceapi.html#create" class="tsd-kind-icon">create</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_src_api_resourceapi_.resourceapi.html#filebyresourceid" class="tsd-kind-icon">file<wbr>ByResource<wbr>Id</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_src_api_resourceapi_.resourceapi.html#get" class="tsd-kind-icon">get</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-not-exported"><a href="_src_api_resourceapi_.resourceapi.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-not-exported"><a href="_src_api_resourceapi_.resourceapi.html#list" class="tsd-kind-icon">list</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_src_api_resourceapi_.resourceapi.html#remove" class="tsd-kind-icon">remove</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_src_api_resourceapi_.resourceapi.html#update" class="tsd-kind-icon">update</a></li>
@@ -114,7 +114,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/eb7fc49/src/api/ResourceApi.ts#L35">src/api/ResourceApi.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/a440e4e/src/api/ResourceApi.ts#L42">src/api/ResourceApi.ts:42</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -154,7 +154,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/eb7fc49/src/api/ResourceApi.ts#L64">src/api/ResourceApi.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/a440e4e/src/api/ResourceApi.ts#L71">src/api/ResourceApi.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -174,17 +174,18 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-not-exported">
 					<a name="get" class="tsd-anchor"></a>
 					<h3>get</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-not-exported">
 						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_src_modal_resourcegetres_.html#resourcegetres" class="tsd-signature-type">ResourceGetRes</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get&lt;K&gt;<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, fields<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_modal_resourceproperties_.resourceproperties.html" class="tsd-signature-type">ResourceProperties</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/_src_modal_commontype_.commontype.html" class="tsd-signature-type">CommonType</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/eb7fc49/src/api/ResourceApi.ts#L25">src/api/ResourceApi.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/a440e4e/src/api/ResourceApi.ts#L26">src/api/ResourceApi.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -194,6 +195,29 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_src_modal_resourcegetres_.html#resourcegetres" class="tsd-signature-type">ResourceGetRes</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/a440e4e/src/api/ResourceApi.ts#L27">src/api/ResourceApi.ts:27</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>K<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">keyof </span><a href="../interfaces/_src_modal_resourceproperties_.resourceproperties.html" class="tsd-signature-type">ResourceProperties</a> = <span class="tsd-signature-symbol">keyof </span><span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ResourceGetRes</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"type_"</span><span class="tsd-signature-symbol">&gt;</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>id: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>fields: <span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_modal_resourceproperties_.resourceproperties.html" class="tsd-signature-type">ResourceProperties</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">K</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> &amp; </span><a href="../interfaces/_src_modal_commontype_.commontype.html" class="tsd-signature-type">CommonType</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -208,7 +232,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/eb7fc49/src/api/ResourceApi.ts#L15">src/api/ResourceApi.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/a440e4e/src/api/ResourceApi.ts#L16">src/api/ResourceApi.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_modal_pagedata_.pageres.html" class="tsd-signature-type">PageRes</a><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_src_modal_resourcegetres_.html#resourcegetres" class="tsd-signature-type">ResourceGetRes</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -216,7 +240,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/eb7fc49/src/api/ResourceApi.ts#L16">src/api/ResourceApi.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/a440e4e/src/api/ResourceApi.ts#L17">src/api/ResourceApi.ts:17</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -245,7 +269,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/eb7fc49/src/api/ResourceApi.ts#L56">src/api/ResourceApi.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/a440e4e/src/api/ResourceApi.ts#L63">src/api/ResourceApi.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -280,7 +304,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/eb7fc49/src/api/ResourceApi.ts#L46">src/api/ResourceApi.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/rxliuli/joplin-api/blob/a440e4e/src/api/ResourceApi.ts#L53">src/api/ResourceApi.ts:53</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -319,7 +343,7 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_src_api_resourceapi_.resourceapi.html#filebyresourceid" class="tsd-kind-icon">file<wbr>ByResource<wbr>Id</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-not-exported">
 								<a href="_src_api_resourceapi_.resourceapi.html#get" class="tsd-kind-icon">get</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter tsd-is-not-exported">

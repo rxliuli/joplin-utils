@@ -537,10 +537,16 @@ var FolderApi = /** @class */ (function () {
             });
         });
     };
-    FolderApi.prototype.notesByFolderId = function (id) {
+    FolderApi.prototype.notesByFolderId = function (id, fields) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, ajax.get("/folders/" + id + "/notes")];
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, PageUtil.pageToAllList(function (_a) {
+                            var id = _a.id, others = __rest(_a, ["id"]);
+                            return ajax.get("/folders/" + id + "/notes", others);
+                        }, { id: id, fields: fields })];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
             });
         });
     };
@@ -564,11 +570,11 @@ var ResourceApi = /** @class */ (function () {
             });
         });
     };
-    ResourceApi.prototype.get = function (id) {
+    ResourceApi.prototype.get = function (id, fields) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, ajax.get("/resources/" + id)];
+                    case 0: return [4 /*yield*/, ajax.get("/resources/" + id, { fields: fields })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -769,16 +775,12 @@ var NoteExtApi = /** @class */ (function () {
      */
     NoteExtApi.prototype.toggleTodo = function (id, completed) {
         return __awaiter(this, void 0, void 0, function () {
-            var item, note;
+            var note;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, noteApi.get(id)];
+                    case 0: return [4 /*yield*/, noteApi.get(id, ['id', 'is_todo', 'todo_completed'])];
                     case 1:
-                        item = _a.sent();
-                        if (item.type_ !== TypeEnum.Note) {
-                            return [2 /*return*/];
-                        }
-                        note = item;
+                        note = _a.sent();
                         if (!note.is_todo) {
                             return [2 /*return*/];
                         }
