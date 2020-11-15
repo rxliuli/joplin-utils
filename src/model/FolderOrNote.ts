@@ -1,12 +1,16 @@
 import * as vscode from 'vscode'
 import { TreeItemCollapsibleState } from 'vscode'
-import { TypeEnum } from 'joplin-api'
-import { FolderListRes } from 'joplin-api/dist/modal/FolderListRes'
-import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
 import path = require('path')
+import { FolderListAllRes } from 'joplin-api/dist/modal/FolderListAllRes'
+import { CommonType } from 'joplin-api/dist/modal/CommonType'
+import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
+import { TypeEnum } from 'joplin-api'
+
+export type JoplinListFolder = FolderListAllRes & CommonType
+export type JoplinListNote = Pick<NoteProperties, 'id' | 'parent_id' | 'title' | 'is_todo' | 'todo_completed'> & CommonType
 
 export class FolderOrNote extends vscode.TreeItem {
-  constructor(public item: FolderListRes | NoteGetRes) {
+  constructor(public item: JoplinListFolder | JoplinListNote) {
     super(
       item.title,
       item.type_ === TypeEnum.Folder
@@ -27,11 +31,11 @@ export class FolderOrNote extends vscode.TreeItem {
     }
   }
 
-  private static getIconName(item: FolderListRes | NoteGetRes) {
+  private static getIconName(item: JoplinListFolder | JoplinListNote) {
     if (item.type_ === TypeEnum.Folder) {
       return 'folder'
     }
-    const note = item as NoteGetRes
+    const note = item as JoplinListNote
     if (!note.is_todo) {
       return 'note'
     }
@@ -47,12 +51,15 @@ export class FolderOrNote extends vscode.TreeItem {
   get id() {
     return this.item.id
   }
+
   get tooltip(): string {
     return this.item.title
   }
+
   get description(): string {
     return ''
   }
+
   get contextValue() {
     return 'joplinNote.' + FolderOrNote.getIconName(this.item)
   }

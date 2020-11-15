@@ -333,6 +333,7 @@
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.1.2",
     "rollup": "^2.30.0",
+    "shx": "^0.3.3",
     "ts-jest": "^26.4.1",
     "tslib": "^2.0.3",
     "typescript": "^3.9.7",

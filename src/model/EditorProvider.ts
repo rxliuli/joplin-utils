@@ -79,7 +79,7 @@ export class MDHoverProvider implements HoverProvider {
       content = [title.startsWith('#') ? title.substr(1).trimLeft() : title]
     } else if (JoplinResourceRegex.test(markdownTokenLink)) {
       const id = JoplinResourceRegex.exec(markdownTokenLink)![1]
-      const resource = await resourceApi.get(id)
+      const resource = await resourceApi.get(id, ['id', 'title', 'size'])
       content = [resource.title, formatSize(resource.size)]
     } else {
       content = [markdownTokenLink]

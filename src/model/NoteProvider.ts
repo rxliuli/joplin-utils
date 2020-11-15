@@ -1,6 +1,5 @@
 import * as vscode from 'vscode'
-import { folderApi, noteApi } from 'joplin-api'
-import { FolderListRes } from 'joplin-api/dist/modal/FolderListRes'
+import { folderApi } from 'joplin-api'
 import { treeMapping } from '../util/treeMapping'
 import { INode } from '../util/INode'
 import { FolderOrNote } from './FolderOrNote'
@@ -9,11 +8,11 @@ import {
   SortNotesTypeEnum,
   SortOrderEnum,
 } from '../config/AppConfig'
+import { FolderListAllRes } from 'joplin-api/dist/modal/FolderListAllRes'
+import { joplinNoteApi } from '../api/JoplinNoteApi'
 
 export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
-  private _onDidChangeTreeData: vscode.EventEmitter<
-    FolderOrNote | undefined
-  > = new vscode.EventEmitter<FolderOrNote | undefined>()
+  private _onDidChangeTreeData: vscode.EventEmitter<FolderOrNote | undefined> = new vscode.EventEmitter<FolderOrNote | undefined>()
   readonly onDidChangeTreeData: vscode.Event<FolderOrNote | undefined> = this
     ._onDidChangeTreeData.event
 
@@ -28,10 +27,11 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     this.init()
   }
 
-  private folderList: FolderListRes[] = []
-  private folderMap = new Map<string, FolderListRes>()
+  private folderList: FolderListAllRes[] = []
+  private folderMap = new Map<string, FolderListAllRes>()
+
   private async init() {
-    this.folderList = await folderApi.list()
+    this.folderList = await folderApi.listAll()
 
     this.folderList.forEach((item) =>
       treeMapping(item, {
@@ -68,11 +68,7 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
       if (this.folderList.length === 0) {
         await this.init()
       }
-      const rootNoteList = (await noteApi.list()).filter(
-        (note) => !note.parent_id,
-      )
-      console.log('rootNoteList.length: ', rootNoteList.length)
-      return [...this.folderList, ...rootNoteList].map(
+      return this.folderList.map(
         (item) => new FolderOrNote(item),
       )
     }
@@ -82,7 +78,7 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     }
     const folderItemList =
       folder.children?.map((folder) => new FolderOrNote(folder)) || []
-    const noteItemList = (await folderApi.notesByFolderId(folder.id)).map(
+    const noteItemList = (await joplinNoteApi.notesByFolderId(folder.id)).map(
       (note) => new FolderOrNote(note),
     )
     if (process.env.DEBUG) {
@@ -91,10 +87,8 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
       console.log('appConfig: ', appConfig)
     }
     if (appConfig.sortNotes) {
-      const compareMap: Record<
-        SortNotesTypeEnum,
-        (a: FolderOrNote, b: FolderOrNote) => number
-      > = {
+      const compareMap: Record<SortNotesTypeEnum,
+        (a: FolderOrNote, b: FolderOrNote) => number> = {
         [SortNotesTypeEnum.Alphabetical]: (a, b) => {
           return -b.item.title.localeCompare(a.item.title)
         },

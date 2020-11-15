@@ -4,18 +4,14 @@ import * as vscode from 'vscode'
 import { NoteListProvider } from './model/NoteProvider'
 import { initDevEnv } from './util/initDevEnv'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
-import { TypeEnum, noteApi, resourceApi } from 'joplin-api'
+import { TypeEnum } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
 import { HandlerService } from './service/HandlerService'
 import * as nls from 'vscode-nls'
 import { checkJoplinServer } from './util/checkJoplinServer'
 import * as MarkdownIt from 'markdown-it'
-import { useJoplinLink, wrapLink } from './util/useJoplinLink'
+import { useJoplinLink } from './util/useJoplinLink'
 import { uploadResourceService } from './service/UploadResourceService'
-import { getReferenceAtPosition, matchAll } from './util/utils'
-import { JoplinLinkRegex, JoplinResourceRegex } from './util/constant'
-import { formatSize } from './util/formatSize'
-import { isInFencedCodeBlock, isInCodeSpan } from './util/externalUtils'
 import { MDDocumentLinkProvider, MDHoverProvider } from './model/EditorProvider'
 import { BindThisUtil } from './util/BindThisUtil'
 
@@ -50,8 +46,6 @@ export async function activate(context: vscode.ExtensionContext) {
     new JoplinNoteCommandService({
       noteViewProvider: noteListProvider,
       noteListTreeView,
-      // resourceProvider,
-      // resourceTreeView,
     }),
   )
   joplinNoteCommandService.init(appConfig)
@@ -156,4 +150,5 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() {
+}

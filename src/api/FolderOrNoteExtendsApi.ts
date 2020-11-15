@@ -1,9 +1,7 @@
 import { CommonType } from 'joplin-api/dist/modal/CommonType'
-import { TypeEnum, noteApi, folderApi } from 'joplin-api'
+import { TypeEnum, noteApi, folderApi, noteExtApi, folderExtApi } from 'joplin-api'
 import { BaseProperties } from 'joplin-api/dist/modal/BaseProperties'
 import { FolderProperties } from 'joplin-api/dist/modal/FolderProperties'
-import { folderExtendsApi } from './FolderExtendsApi'
-import { noteExtendsApi } from './NoteExtendsApi'
 
 export class FolderOrNoteExtendsApi {
   async remove(item: Pick<BaseProperties, 'id'> & CommonType) {
@@ -16,22 +14,18 @@ export class FolderOrNoteExtendsApi {
         break
     }
   }
+
   async rename(item: Pick<BaseProperties, 'id' | 'title'> & CommonType) {
     switch (item.type_) {
       case TypeEnum.Folder:
-        await folderExtendsApi.rename({
-          id: item.id,
-          title: item.title,
-        })
+        await folderExtApi.rename(item.id, item.title)
         break
       case TypeEnum.Note:
-        await noteExtendsApi.rename({
-          id: item.id,
-          title: item.title,
-        })
+        await noteExtApi.rename(item.id, item.title)
         break
     }
   }
+
   async create(
     item: Pick<FolderProperties, 'title' | 'parent_id'> & CommonType,
   ) {

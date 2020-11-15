@@ -1,14 +1,11 @@
-import { FolderOrNote } from '../model/FolderOrNote'
+import { FolderOrNote, JoplinListNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
 import { QuickPickItem, TreeView } from 'vscode'
-import { actionApi, config, noteApi, searchApi, TypeEnum } from 'joplin-api'
+import { actionApi, config, noteApi, searchApi, TypeEnum, noteExtApi } from 'joplin-api'
 import { NoteListProvider } from '../model/NoteProvider'
-import { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { AppConfig } from '../config/AppConfig'
 import * as path from 'path'
-import { noteExtendsApi } from '../api/NoteExtendsApi'
-import { Resource, ResourceProvider } from '../model/ResourceProvider'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -18,7 +15,8 @@ export class JoplinNoteCommandService {
       noteViewProvider: NoteListProvider
       noteListTreeView: TreeView<FolderOrNote>
     },
-  ) {}
+  ) {
+  }
 
   init(appConfig: AppConfig) {
     if (!appConfig.token) {
@@ -44,8 +42,8 @@ export class JoplinNoteCommandService {
     const parentFolderId = !item
       ? ''
       : item.item.type_ === TypeEnum.Folder
-      ? item.item.id
-      : item.item.parent_id
+        ? item.item.id
+        : item.item.parent_id
     console.log('joplinNote.create: ', item, parentFolderId)
 
     const title = await vscode.window.showInputBox({
@@ -79,7 +77,7 @@ export class JoplinNoteCommandService {
       placeHolder: `delete or not ${
         folderOrNote.type_ === TypeEnum.Folder
           ? 'folder'
-          : (folderOrNote as NoteGetRes).is_todo
+          : (folderOrNote as JoplinListNote).is_todo
           ? 'todo'
           : 'note'
       } [${folderOrNote.title}]`,
@@ -124,7 +122,7 @@ export class JoplinNoteCommandService {
   async toggleTodoState(
     item: FolderOrNote = this.config.noteListTreeView.selection[0],
   ) {
-    await noteExtendsApi.toggleTodoState(item.id)
+    await noteExtApi.toggleTodo(item.id)
     await this.config.noteViewProvider.refresh()
   }
 
@@ -132,7 +130,7 @@ export class JoplinNoteCommandService {
    * open note in vscode
    * @param item
    */
-  async openNote(item: Omit<FolderOrNote, 'item'> & { item: NoteGetRes }) {
+  async openNote(item: Omit<FolderOrNote, 'item'> & { item: JoplinListNote }) {
     await actionApi.openAndWatch(item.id)
     console.log('openNote: ', item.id, await actionApi.noteIsWatched(item.id))
     const interval = setInterval(() => {
@@ -162,9 +160,13 @@ export class JoplinNoteCommandService {
         searchQuickPickBox.items = []
         return
       }
-      const noteList = await searchApi.search({
+      const { items: noteList } = await searchApi.search({
         query: value,
         type: TypeEnum.Note,
+        fields: ['id', 'title'],
+        limit: 100,
+        order_by: 'user_updated_time',
+        order_dir: 'DESC',
       })
       searchQuickPickBox.items = noteList.map((note) => ({
         label: note.title,
@@ -199,9 +201,16 @@ export class JoplinNoteCommandService {
     const noteId = joplinMdRegexp.exec(fileName)![1]
     await Promise.all([this.focus(noteId), this.refreshResource(noteId)])
   }
-  private async refreshResource(noteId: string) {}
+
+  private async refreshResource(noteId: string) {
+    console.log('refreshResource: ', noteId)
+  }
+
   private async focus(noteId: string) {
-    const note = await noteApi.get(noteId)
-    this.config.noteListTreeView.reveal(new FolderOrNote(note))
+    const note = await noteApi.get(noteId, ['id', 'parent_id', 'title', 'is_todo', 'todo_completed'])
+    this.config.noteListTreeView.reveal(new FolderOrNote({
+      ...note,
+      type_: TypeEnum.Note,
+    }))
   }
 }

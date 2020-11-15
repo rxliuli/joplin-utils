@@ -53,12 +53,15 @@ export class HandlerService {
       )
       return
     }
-    const resource = await resourceApi.get(id)
+    const resource = await resourceApi.get(id, ['id', 'file_extension'])
     const fileName = resource.id + '.' + resource.file_extension
-    console.log('open file: ', fileName)
-    openFileByOS(
-      path.resolve(appConfig.programPath, 'JoplinProfile/resources', fileName),
+    const filePath = path.resolve(
+      appConfig.programPath,
+      'JoplinProfile/resources',
+      fileName,
     )
+    console.log('open file: ', filePath)
+    openFileByOS(filePath)
   }
 
   async openNote(id: string) {
@@ -66,15 +69,22 @@ export class HandlerService {
       vscode.window.showWarningMessage('id cannot be empty')
       return
     }
-    const item = await noteApi.get(id)
+    const item = await noteApi.get(id, [
+      'id',
+      'parent_id',
+      'title',
+      'is_todo',
+      'todo_completed',
+    ])
     if (!item) {
       vscode.window.showWarningMessage('id does not exist')
       return
     }
-    if (item.type_ !== TypeEnum.Note) {
-      vscode.window.showWarningMessage('id is not a note')
-      return
-    }
-    await this.joplinNoteCommandService.openNote(new FolderOrNote(item) as any)
+    await this.joplinNoteCommandService.openNote(
+      new FolderOrNote({
+        ...item,
+        type_: TypeEnum.Note,
+      }) as any,
+    )
   }
 }

@@ -19,4 +19,4 @@ function gen(name) {
   }
 }
 
-export default ['tag-preview', 'test'].map(gen)
+export default ['tag-preview'].map(gen)
