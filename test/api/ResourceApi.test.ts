@@ -83,4 +83,8 @@ describe('test ResourceApi', () => {
     writeFileSync(path, res)
     expect(pathExistsSync(path)).toBeTruthy()
   })
+  it('测试获取附件资源的大小', async () => {
+    console.log(await resourceApi.get(id))
+    console.log(await resourceApi.get(id, ['id', 'title', 'size']))
+  })
 })

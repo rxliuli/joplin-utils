@@ -9,7 +9,10 @@ import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
 import { FolderListRecursionGetTree } from '../modal/FolderListRecursionGetTree'
 import { RequiredField } from '../types/RequiredFiled'
-import { PageUtil } from '..'
+import { FolderListAllRes } from '../modal/FolderListAllRes'
+import { NoteProperties } from '../modal/NoteProperties'
+// noinspection ES6PreferShortImport
+import { PageUtil } from '../util/PageUtil'
 
 /**
  * 目录相关 api
@@ -29,8 +32,8 @@ class FolderApi {
   /**
    * 使用特殊的 as_tree 参数来恢复旧的行为
    */
-  async listAll(): Promise<FolderListRes[]> {
-    return ajax.get<FolderListRes[]>('/folders', {
+  async listAll(): Promise<FolderListAllRes[]> {
+    return ajax.get<FolderListAllRes[]>('/folders', {
       as_tree: 1,
     } as FolderListRecursionGetTree)
   }
@@ -52,11 +55,22 @@ class FolderApi {
     return ajax.delete<string>(`/folders/${id}`)
   }
 
-  async notesByFolderId(id: string) {
-    return PageUtil.pageToAllList(
+  async notesByFolderId(id: string): Promise<NoteGetRes[]>
+  async notesByFolderId<K extends keyof NoteProperties = keyof NoteGetRes>(
+    id: string,
+    fields: K[],
+  ): Promise<Pick<NoteProperties, K>[]>
+  async notesByFolderId<K extends keyof NoteProperties = keyof NoteGetRes>(
+    id: string,
+    fields?: K[],
+  ): Promise<Pick<NoteProperties, K>[]> {
+    return await PageUtil.pageToAllList(
       ({ id, ...others }) =>
-        ajax.get<PageRes<NoteGetRes[]>>(`/folders/${id}/notes`, others),
-      { id } as PageParam<NoteGetRes> & { id: string },
+        ajax.get<PageRes<Pick<NoteProperties, K>>>(
+          `/folders/${id}/notes`,
+          others,
+        ),
+      { id, fields } as PageParam<Pick<NoteProperties, K>> & { id: string },
     )
   }
 }

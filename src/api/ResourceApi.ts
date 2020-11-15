@@ -7,6 +7,7 @@ import { ApiUtil } from '../util/ApiUtil'
 import { ReadStream } from 'fs'
 import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
+import { CommonType } from '../modal/CommonType'
 
 /**
  * 附件资源相关 api
@@ -22,8 +23,14 @@ class ResourceApi {
     return await ajax.get<PageRes<ResourceGetRes>>('/resources', pageParam)
   }
 
-  async get(id: string) {
-    return await ajax.get<ResourceGetRes>(`/resources/${id}`)
+  async get(id: string): Promise<ResourceGetRes>
+  async get<
+    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>
+  >(id: string, fields: K[]): Promise<Pick<ResourceProperties, K> & CommonType>
+  async get<
+    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>
+  >(id: string, fields?: K[]) {
+    return await ajax.get<ResourceGetRes>(`/resources/${id}`, { fields })
   }
 
   /**
@@ -73,4 +80,4 @@ class ResourceApi {
   }
 }
 
-export const resourceApi = new ResourceApi()
+export const resourceApi = new ResourceApi();

@@ -1,7 +1,5 @@
 import { noteApi } from './NoteApi'
 // noinspection ES6PreferShortImport
-import { TypeEnum } from '../modal/TypeEnum'
-import { NoteGetRes } from '../modal/NoteGetRes'
 import { IntBool } from '../types/IntBool'
 
 class NoteExtApi {
@@ -29,11 +27,7 @@ class NoteExtApi {
    * @param completed
    */
   async toggleTodo(id: string, completed?: IntBool) {
-    const item = await noteApi.get(id)
-    if (item.type_ !== TypeEnum.Note) {
-      return
-    }
-    const note = item as NoteGetRes
+    const note = await noteApi.get(id, ['id', 'is_todo', 'todo_completed'])
     if (!note.is_todo) {
       return
     }

@@ -103,5 +103,8 @@ describe('test JoplinApi', () => {
       const time2 = Date.now()
       console.log('time diff: ', time2 - time1, res.length)
     })
+    it('测试 list 是否默认仅获取顶级笔记', () => {
+      noteApi.list()
+    })
   })
 })

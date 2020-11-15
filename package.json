@@ -8,6 +8,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rollup -c rollup.config.js",
+    "build:dev": "yarn build && yarn unlink && yarn link",
     "clean": "shx rm -rf dist/",
     "dev": "rollup -w -c build/rollup.config.js",
     "docs": "typedoc --out docs src",

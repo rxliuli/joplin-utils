@@ -26,10 +26,10 @@ class NoteApi {
   }
 
   async get(id: string): Promise<NoteGetRes>
-  async get<K extends keyof NoteGetRes>(
+  async get<K extends keyof NoteProperties = keyof NoteGetRes>(
     id: string,
     fields?: K[],
-  ): Promise<Pick<NoteGetRes, K>>
+  ): Promise<Pick<NoteProperties, K>>
   async get(id: string, fields?: (keyof NoteGetRes)[]) {
     return ajax.get<NoteGetRes>(`/notes/${id}`, { fields })
   }

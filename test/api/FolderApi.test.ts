@@ -5,7 +5,10 @@ describe('test FolderApi', () => {
   const data = initTestFolderAndNote()
   describe('basic test', () => {
     it('test list', async () => {
-      const res = await folderApi.list({ limit: 1 })
+      const res = await folderApi.list({
+        fields: ['note_count'] as any,
+        limit: 1,
+      })
       console.log(res)
       expect(res.items.length).toBe(1)
     })
@@ -54,7 +57,12 @@ describe('test FolderApi', () => {
             }),
           ),
       )
-      const res = await folderApi.notesByFolderId(data.folderId)
+      const res = await folderApi.notesByFolderId(data.folderId, [
+        'id',
+        'title',
+        'is_todo',
+        'todo_completed',
+      ])
       console.log(res)
       expect(res.length).toBeGreaterThan(0)
     }, 10_000)
@@ -82,7 +90,7 @@ describe('test FolderApi', () => {
     })
     it('测试递归获取目录及笔记', async function () {
       const folderList = await folderApi.listAll()
-      console.log(folderList.length)
+      console.log(JSON.stringify(folderList, null, 2))
       expect(folderList.length).toBeGreaterThan(0)
     })
   })
