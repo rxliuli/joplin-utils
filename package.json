@@ -295,9 +295,9 @@
             "%configuration.joplin.sortNotesOrderDesc%"
           ]
         },
-        "joplin.programPath": {
+        "joplin.programProfilePath": {
           "type": "string",
-          "description": "%configuration.joplin.programPath%"
+          "description": "%configuration.joplin.programProfilePath%"
         }
       }
     },

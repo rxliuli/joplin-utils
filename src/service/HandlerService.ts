@@ -47,7 +47,7 @@ export class HandlerService {
   }
 
   static async openResource(id: string) {
-    if (!appConfig.programPath) {
+    if (!appConfig.programProfilePath) {
       vscode.window.showWarningMessage(
         'Please fill in the joplin installation directory',
       )
@@ -56,8 +56,8 @@ export class HandlerService {
     const resource = await resourceApi.get(id, ['id', 'file_extension'])
     const fileName = resource.id + '.' + resource.file_extension
     const filePath = path.resolve(
-      appConfig.programPath,
-      'JoplinProfile/resources',
+      appConfig.programProfilePath,
+      'resources',
       fileName,
     )
     console.log('open file: ', filePath)

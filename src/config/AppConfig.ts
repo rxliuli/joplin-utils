@@ -4,6 +4,7 @@ export enum SortNotesTypeEnum {
   Alphabetical = 'alphabetical',
   Default = 'default',
 }
+
 export enum SortOrderEnum {
   Asc = 'asc',
   Desc = 'desc',
@@ -15,7 +16,7 @@ export class AppConfig {
   sortNotes?: boolean
   sortNotesType?: SortNotesTypeEnum
   sortOrder?: SortOrderEnum
-  programPath?: string
+  programProfilePath?: string
 
   /**
    * reload joplin for vscode config
@@ -27,7 +28,7 @@ export class AppConfig {
     this.sortNotes = config.sortNotes
     this.sortNotesType = config.sortNotesType
     this.sortOrder = config.sortOrder
-    this.programPath = config.programPath
+    this.programProfilePath = config.programProfilePath
     if (process.env.DEBUG) {
       console.log(
         'loadConfig: ',
