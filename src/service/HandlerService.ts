@@ -13,7 +13,8 @@ import { appConfig } from '../config/AppConfig'
  * other service
  */
 export class HandlerService {
-  constructor(private joplinNoteCommandService: JoplinNoteCommandService) {}
+  constructor(private joplinNoteCommandService: JoplinNoteCommandService) {
+  }
 
   /**
    * close note watch
@@ -49,7 +50,7 @@ export class HandlerService {
   static async openResource(id: string) {
     if (!appConfig.programProfilePath) {
       vscode.window.showWarningMessage(
-        'Please fill in the joplin installation directory',
+        'Please set up Joplin\'s personal directory',
       )
       return
     }
