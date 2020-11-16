@@ -13,6 +13,9 @@
     "dev": "rollup -w -c build/rollup.config.js",
     "docs": "typedoc --out docs src",
     "postdocs": "shx cp .nojekyll docs/",
+    "predeploy": "yarn docs",
+    "deploy": "gh-pages -d docs -t true",
+    "postdeploy": "shx rm -rf docs",
     "format": "prettier --write src/**/*.ts",
     "test": "jest --all"
   },
@@ -30,6 +33,7 @@
     "@types/node-fetch": "^2.5.7",
     "@types/rollup": "^0.54.0",
     "fs-extra": "^9.0.1",
+    "gh-pages": "^3.1.0",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
     "jest-extended": "^0.11.1",
