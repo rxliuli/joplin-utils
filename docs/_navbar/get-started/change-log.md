@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.2.0
+
+- Synchronize the api changes of joplin v1.4.\*
+
 ## 0.1.10
 
 - Support clicking joplin-related links in the editor, including

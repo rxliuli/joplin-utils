@@ -3,19 +3,31 @@
 - 编辑
   - [x] 粘贴图片自动上传到 joplin 并获取链接插入
     - [x] 支持编辑器右键菜单粘贴剪切板图片
-  - [ ] 解决 joplin ref link 在编辑器中不能 `ctrl+click` 打开的问题
+  - [x] 解决 joplin ref link 在编辑器中不能 `ctrl+click` 打开的问题
+  - [ ] 编辑器自定义面包屑，点击时自动展开左边的侧边栏
 - 优化
   - [x] 对 todo 启用特殊的右键菜单及 icon
   - [ ] 添加开发相关文档
   - [x] 修复根目录的笔记无法显示的问题
   - [x] 支持在外部程序中查看附件资源
+    - [ ] 打开附件资源时自动监视变化，使用 `open` 返回的 `child_process` -- 打算修改为关闭笔记时自动关闭笔记中资源的监听变化
+      - 附件资源可以被添加到多个笔记中
   - [ ] 添加 outline 标题侧边栏（等待 api 支持、或自行实现 <https://github.com/microsoft/vscode/issues/97095>）
-  - [ ] 应该允许拖动笔记或目录
-  - [ ] 笔记/目录重命名直接就地出现输入框
-- 历史记录
-  - [ ] 允许查看当前笔记的所有历史
-  - [ ] 对比指定历史与当前文件，并支持回退
+    - [ ] 笔记标题大纲
+    - [ ] 笔记的附件资源与引用笔记
+    - [ ] 笔记的时间线功能 -- 目前 joplin api 尚未支持
+  - [ ] 搜索时默认显示最近编辑的 20 条历史笔记
+  - [ ] 编写使用 VSCode 编写 Markdown 文档的一些建议
+  - [ ] 在代码编辑器中直接提示添加引用
+  - [x] 应该允许拖动笔记或目录 -- vscode api 不支持
+  - [x] 笔记/目录重命名直接就地出现输入框 -- vscode api 不支持
 - 标签相关
-  - [ ] 为笔记添加标签
-  - [ ] 为笔记删除标签
-  - [ ] 重命名标签
+  - [x] 使用右键修改笔记的标签信息，修改渲染函数渲染标签 -- 不直观，改用 TreeViewProvider 的形式
+  - [ ] 添加一个单独的面板显示标签，以添加、删除和修改
+    - [ ] 确定是否可以添加按钮点击即操作（例如删除）
+- 整理 vscode api 使用
+- 创造 joplin-chars
+  - [x] [笔记关系图](https://echarts.apache.org/examples/zh/editor.html?c=graph)
+  - [x] [笔记目录大小分析图](https://echarts.apache.org/examples/zh/editor.html?c=treemap-disk)
+  - [x] [词云](https://github.com/ecomfe/echarts-wordcloud)
+  - [x] [timeline 时间线](https://rxliuli.com/joplin-charts/#/timeline)

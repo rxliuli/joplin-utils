@@ -1,21 +1,33 @@
 # Roadmap
 
 - Edit
-  - [x] Paste pictures are automatically uploaded to joplin and get link insertion
+  - [x] Paste the picture and upload it to joplin automatically and get the link to insert
     - [x] Support editor right-click menu to paste clipboard pictures
-  - [ ] Solve the problem that joplin ref link cannot be opened by `ctrl+click` in the editor
+  - [x] Solve the problem that joplin ref link cannot be opened by `ctrl+click` in the editor
+  - [ ] The editor customizes breadcrumbs, and the sidebar on the left is automatically expanded when clicked
 - Optimization
   - [x] Enable special right-click menu and icon for todo
   - [ ] Add development related documents
   - [x] Fix the problem that the notes in the root directory cannot be displayed
   - [x] Support viewing attachment resources in external programs
-  - [ ] Add outline title sidebar (wait for api support, or implement it yourself <https://github.com/microsoft/vscode/issues/97095>)
-  - [ ] Should allow dragging of notes or directories
-  - [ ] Rename the note/directory directly in the input box
-- history record
-  - [ ] Allow to view all history of current note
-  - [ ] Compare the specified history with the current file, and support rollback
+    - [ ] Automatically monitor changes when opening the attachment resource, use the `child_process` returned by `open` - I intend to modify it to automatically close the monitoring changes of the resources in the note when the note is closed
+      - Attachment resources can be added to multiple notes
+  - [ ] Add outline title sidebar (waiting for api support, or implement it yourself <https://github.com/microsoft/vscode/issues/97095>)
+    - [ ] Note title outline
+    - [ ] Attachment resources of notes and reference notes
+    - [ ] Timeline function of notes - currently not supported by joplin api
+  - [ ] The 20 most recently edited historical notes are displayed by default when searching
+  - [ ] Some suggestions for writing Markdown documents using VSCode
+  - [ ] Prompt to add references directly in the code editor
+  - [x] Should allow dragging of notes or directories - not supported by vscode api
+  - [x] Rename the note/directory directly in the input box - not supported by vscode api
 - Tag related
-  - [ ] Add tags to notes
-  - [ ] Remove tags for notes
-  - [ ] Rename label
+  - [x] Right-click to modify the label information of the note, modify the rendering function to render the label - not intuitive, use the form of TreeViewProvider instead
+  - [ ] Add a separate panel to display tags to add, delete and modify
+    - [ ] Determine whether you can add a button and click to operate (such as delete)
+- Organize vscode api usage
+- Create joplin-chars
+  - [x] [Note Relation Graph](https://echarts.apache.org/examples/zh/editor.html?c=graph)
+  - [x] [Notes directory size analysis graph](https://echarts.apache.org/examples/zh/editor.html?c=treemap-disk)
+  - [x] [Word Cloud](https://github.com/ecomfe/echarts-wordcloud)
+  - [x] [timeline timeline](https://rxliuli.com/joplin-charts/#/timeline)

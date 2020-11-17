@@ -2,26 +2,31 @@
 
 ## 配置表
 
-| 字段            | 默认值         | 可选值         | 说明                         |
-| --------------- | -------------- | -------------- | ---------------------------- |
-| `token`         |                | `string`       | joplin web 服务的 token      |
-| `port`          | `41184`        | `number`       | joplin web 服务的端口号      |
-| `sortNotes`     | `false`        | `boolean`      | 是否对笔记进行排序           |
-| `sortNotesType` | `alphabetical` |                | 笔记排序的类型               |
-|                 |                | `alphabetical` | 按照标题的字母顺序排序       |
-|                 |                | `default`      | Joplin 默认的排序            |
-| `sortOrder`     | `asc`          |                | 笔记排序的顺序（升序或降序） |
-|                 |                | `asc`          | 升序                         |
-|                 |                | `desc`         | 降序                         |
-| `language`      | `english`      |                | 插件显示的语言，跟随 VSCode  |
-|                 |                | `en`           | 英语                         |
-|                 |                | `zh`           | 简体中文                     |
+| 字段                 | 默认值         | 可选值         | 说明                         |
+| -------------------- | -------------- | -------------- | ---------------------------- |
+| `token`              |                | `string`       | joplin web 服务的 token      |
+| `port`               | `41184`        | `number`       | joplin web 服务的端口号      |
+| `programProfilePath` |                | `string`       | joplin 程序的个人目录        |
+| `sortNotes`          | `false`        | `boolean`      | 是否对笔记进行排序           |
+| `sortNotesType`      | `alphabetical` |                | 笔记排序的类型               |
+|                      |                | `alphabetical` | 按照标题的字母顺序排序       |
+|                      |                | `default`      | Joplin 默认的排序            |
+| `sortOrder`          | `asc`          |                | 笔记排序的顺序（升序或降序） |
+|                      |                | `asc`          | 升序                         |
+|                      |                | `desc`         | 降序                         |
+| `language`           | `english`      |                | 插件显示的语言，跟随 VSCode  |
+|                      |                | `en`           | 英语                         |
+|                      |                | `zh`           | 简体中文                     |
 
 ## 粘贴图片
 
-`v0.1.7` 之后新增了图片粘贴功能，可以通过命令或快捷键将图片上传到 Joplin 并粘贴链接到 VSCode 中。
+`v0.1.7` 之后新增了图片粘贴功能，可以通过右键菜单、命令或快捷键将图片上传到 Joplin 并粘贴链接到 VSCode 中。
 
 1. `ctrl+alt+u` 粘贴剪切板的图片
 2. `ctrl+alt+e` 使用文件管理器选择图片粘贴
 
-如果不想记快捷键，可以 `ctrl+shift+p` 搜索 `Upload image from clipboard/explorer` 回车即可上传。
+## 添加附件
+
+`v0.1.10` 之后新增了添加附件的功能，可以通过命令或快捷键将文件作为附件资源添加到 Joplin 笔记中。
+
+1. `ctrl+alt+shift+e` 选择要添加为附件的文件
