@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.2.1
+
+- Joplin loads the last 20 notes edited by default when searching
+- Bind shortcut keys for joplin search
+- Modify some prompt messages to English (subsequent to internationalization)
+
 ## 0.2.0
 
 - Synchronize the api changes of joplin v1.4.\*
