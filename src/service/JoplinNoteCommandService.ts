@@ -3,11 +3,11 @@ import * as vscode from 'vscode'
 import { QuickPickItem, TreeView } from 'vscode'
 import {
   config,
+  noteActionApi,
   noteApi,
+  noteExtApi,
   searchApi,
   TypeEnum,
-  noteExtApi,
-  noteActionApi,
 } from 'joplin-api'
 import { NoteListProvider } from '../model/NoteProvider'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
@@ -22,8 +22,7 @@ export class JoplinNoteCommandService {
       noteViewProvider: NoteListProvider
       noteListTreeView: TreeView<FolderOrNote>
     },
-  ) {
-  }
+  ) {}
 
   init(appConfig: AppConfig) {
     if (!appConfig.token) {
@@ -49,8 +48,8 @@ export class JoplinNoteCommandService {
     const parentFolderId = !item
       ? ''
       : item.item.type_ === TypeEnum.Folder
-        ? item.item.id
-        : item.item.parent_id
+      ? item.item.id
+      : item.item.parent_id
     console.log('joplinNote.create: ', item, parentFolderId)
 
     const title = await vscode.window.showInputBox({
@@ -159,9 +158,11 @@ export class JoplinNoteCommandService {
     const searchQuickPickBox = vscode.window.createQuickPick<SearchNoteItem>()
     searchQuickPickBox.placeholder = 'Please enter key words'
     searchQuickPickBox.canSelectMany = false
+    searchQuickPickBox.items = await this.loadLastNoteList()
+
     searchQuickPickBox.onDidChangeValue(async (value: string) => {
       if (value.trim() === '') {
-        searchQuickPickBox.items = []
+        searchQuickPickBox.items = await this.loadLastNoteList()
         return
       }
       const { items: noteList } = await searchApi.search({
@@ -186,6 +187,27 @@ export class JoplinNoteCommandService {
     searchQuickPickBox.show()
   }
 
+  private readonly LastLimitCount = 20
+
+  /**
+   * 加载最后编辑的一些笔记
+   * @private
+   */
+  private async loadLastNoteList() {
+    return (
+      await noteApi.list({
+        fields: ['id', 'title'],
+        limit: this.LastLimitCount,
+        order_dir: 'DESC',
+        order_by: 'user_updated_time',
+      })
+    ).items.map((item) => ({
+      label: item.title,
+      noteId: item.id,
+      alwaysShow: true,
+    }))
+  }
+
   /**
    * 切换选中的文件时自动展开左侧的树
    * @param fileName
@@ -202,7 +224,7 @@ export class JoplinNoteCommandService {
   }
 
   private async refreshResource(noteId: string) {
-    console.log('refreshResource: ', noteId)
+    console.log('refreshResource: ', noteId, this.config)
   }
 
   private async focus(noteId: string) {
