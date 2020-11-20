@@ -20,8 +20,7 @@ import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
  * other service
  */
 export class HandlerService {
-  constructor(private joplinNoteCommandService: JoplinNoteCommandService) {
-  }
+  constructor(private joplinNoteCommandService: JoplinNoteCommandService) {}
 
   private readonly openResourceMap = new BiMultiMap<string, string>()
 
@@ -40,9 +39,13 @@ export class HandlerService {
     await noteActionApi.stopWatching(noteId)
     this.openResourceMap.deleteByKey(noteId)
     const resourceIdList = this.openResourceMap.getByKey(noteId)
-    await Promise.all(resourceIdList.map(resourceId => resourceActionApi.stopWatching(resourceId)))
+    await Promise.all(
+      resourceIdList.map((resourceId) =>
+        resourceActionApi.stopWatching(resourceId),
+      ),
+    )
     vscode.window.showInformationMessage(
-      `关闭笔记 [${note.title}] 中附件资源的监听`,
+      `Turn off monitoring of attachment resources in the note [${note.title}]`,
     )
   }
 
@@ -57,14 +60,14 @@ export class HandlerService {
         await this.openResource(id)
         break
       default:
-        vscode.window.showErrorMessage('无法处理的链接')
+        vscode.window.showErrorMessage('Unprocessable link')
     }
   }
 
   async openResource(id: string) {
     if (!appConfig.programProfilePath) {
       vscode.window.showWarningMessage(
-        'Please set up Joplin\'s personal directory',
+        "Please set up Joplin's personal directory",
       )
       return
     }
@@ -87,7 +90,7 @@ export class HandlerService {
     const isWatch = await resourceActionApi.noteIsWatched(resource.id)
     if (isWatch) {
       vscode.window.showInformationMessage(
-        '开始监听附件资源修改：' + resource.title,
+        'Start monitoring attachment resource modification: ' + resource.title,
       )
     }
     this.openResourceMap.set(id, resource.id)
