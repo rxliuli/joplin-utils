@@ -3,7 +3,7 @@
 ## 0.2.1
 
 - Joplin loads the last 20 notes edited by default when searching
-- Bind shortcut keys for joplin search
+- Bind shortcut keys for joplin search `ctrl+j ctrl+o`
 - Modify some prompt messages to English (subsequent to internationalization)
 
 ## 0.2.0

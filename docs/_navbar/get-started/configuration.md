@@ -17,3 +17,25 @@
 | `language`           | `english`      |                | The language displayed by the plugin, follow VSCode     |
 |                      |                | `en`           | English                                                 |
 |                      |                | `zh`           | Simple Chinese                                          |
+
+## Paste picture
+
+After `v0.1.7`, a new image paste function has been added. You can upload images to Joplin through the right-click menu, commands or shortcut keys and paste the link into VSCode.
+
+1. `ctrl+alt+u` paste the clipboard picture
+2. `ctrl+alt+e` Use the file manager to select the picture and paste
+
+## Add attachments
+
+After `v0.1.10`, the function of adding attachments has been added. You can add files as attachment resources to Joplin notes through commands or shortcut keys.
+
+1. `ctrl+alt+shift+e` select the file to be added as an attachment
+
+## hot key
+
+- `f2`: Rename notes or directories
+- `delete`: delete notes or directories
+- `ctrl+alt+u`: upload pictures from clipboard
+- `ctrl+alt+e`: upload image from file chooser
+- `ctrl+alt+shift+e`: add attachments from the file selector
+- `ctrl+j ctrl+o`: search notes
