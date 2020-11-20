@@ -247,6 +247,10 @@
         "key": "ctrl+alt+shift+e",
         "mac": "cmd+alt+shift+e",
         "when": "editorTextFocus && editorLangId == markdown"
+      },
+      {
+        "command": "joplinNote.search",
+        "key": "ctrl+j ctrl+o"
       }
     ],
     "configuration": {
