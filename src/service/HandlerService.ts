@@ -10,11 +10,11 @@ import { parse } from 'querystring'
 import { JoplinNoteCommandService } from './JoplinNoteCommandService'
 import { FolderOrNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
-import { openFileByOS } from '../util/openFileByOS'
 import path = require('path')
 import { appConfig } from '../config/AppConfig'
 import { BiMultiMap } from '../util/BiMultiMap'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
+import { OpenFileService } from '../util/OpenFileService'
 
 /**
  * other service
@@ -64,6 +64,8 @@ export class HandlerService {
     }
   }
 
+  private readonly openFileService = new OpenFileService()
+
   async openResource(id: string) {
     if (!appConfig.programProfilePath) {
       vscode.window.showWarningMessage(
@@ -94,7 +96,8 @@ export class HandlerService {
       )
     }
     this.openResourceMap.set(id, resource.id)
-    openFileByOS(filePath)
+    // await this.openFileService.openFileByOS(filePath)
+    await this.openFileService.openByVSCode(filePath)
   }
 
   async openNote(id: string) {
