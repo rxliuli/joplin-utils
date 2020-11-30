@@ -5,8 +5,9 @@
 | 字段                 | 默认值         | 可选值         | 说明                         |
 | -------------------- | -------------- | -------------- | ---------------------------- |
 | `token`              |                | `string`       | joplin web 服务的 token      |
-| `port`               | `41184`        | `number`       | joplin web 服务的端口号      |
 | `programProfilePath` |                | `string`       | joplin 程序的个人目录        |
+| `port`               | `41184`        | `number`       | joplin web 服务的端口号      |
+| `deleteConfirm`      | `true`         | `boolean`      | 删除时是否提醒               |
 | `sortNotes`          | `false`        | `boolean`      | 是否对笔记进行排序           |
 | `sortNotesType`      | `alphabetical` |                | 笔记排序的类型               |
 |                      |                | `alphabetical` | 按照标题的字母顺序排序       |

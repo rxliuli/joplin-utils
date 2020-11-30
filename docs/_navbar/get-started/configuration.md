@@ -5,8 +5,9 @@
 | Field                | Default value  | Options        | Description                                             |
 | -------------------- | -------------- | -------------- | ------------------------------------------------------- |
 | `token`              |                | `string`       | joplin web server token                                 |
-| `port`               | `41184`        | `number`       | joplin web service port                                 |
 | `programProfilePath` |                | `string`       | Personal directory for joplin programs                  |
+| `port`               | `41184`        | `number`       | joplin web service port                                 |
+| `deleteConfirm`      | `true`         | `boolean`      | Whether to remind when deleting                         |
 | `sortNotes`          | `false`        | `boolean`      | Whether to sort notes.                                  |
 | `sortNotesType`      | `alphabetical` |                | Type of sorting notes.                                  |
 |                      |                | `alphabetical` | Sort notes by alphabetical order of its Title property. |
