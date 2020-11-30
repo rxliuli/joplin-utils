@@ -11,7 +11,7 @@ import {
 } from 'joplin-api'
 import { NoteListProvider } from '../model/NoteProvider'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
-import { AppConfig } from '../config/AppConfig'
+import { appConfig, AppConfig } from '../config/AppConfig'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 
 export class JoplinNoteCommandService {
@@ -79,19 +79,22 @@ export class JoplinNoteCommandService {
   async remove(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
     console.log('joplinNote.remove: ', item)
     const folderOrNote = item.item
-    const res = await vscode.window.showQuickPick(['Confirm', 'Cancel'], {
-      placeHolder: `delete or not ${
-        folderOrNote.type_ === TypeEnum.Folder
-          ? 'folder'
-          : (folderOrNote as JoplinListNote).is_todo
-          ? 'todo'
-          : 'note'
-      } [${folderOrNote.title}]`,
-    })
-    console.log(res)
-    if (res !== 'Confirm') {
-      return
+    if (appConfig.deleteConfirm) {
+      const res = await vscode.window.showQuickPick(['Confirm', 'Cancel'], {
+        placeHolder: `delete or not ${
+          folderOrNote.type_ === TypeEnum.Folder
+            ? 'folder'
+            : (folderOrNote as JoplinListNote).is_todo
+            ? 'todo'
+            : 'note'
+        } [${folderOrNote.title}]`,
+      })
+      console.log(res)
+      if (res !== 'Confirm') {
+        return
+      }
     }
+
     await this.folderOrNoteExtendsApi.remove(item.item)
     await this.config.noteViewProvider.refresh()
   }
