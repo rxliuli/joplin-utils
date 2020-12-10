@@ -6,7 +6,9 @@ import {
   noteActionApi,
   noteApi,
   noteExtApi,
+  PageUtil,
   searchApi,
+  tagApi,
   TypeEnum,
 } from 'joplin-api'
 import { NoteListProvider } from '../model/NoteProvider'
@@ -19,6 +21,8 @@ import { mkdirp, pathExists, remove } from 'fs-extra'
 import { createEmptyFile } from '../util/createEmptyFile'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { uploadResourceService } from './UploadResourceService'
+import { difference } from 'lodash'
+import { TagGetRes } from 'joplin-api/dist/modal/TagGetRes'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -277,6 +281,54 @@ export class JoplinNoteCommandService {
     }
     vscode.window.showInformationMessage(
       `Attachment resource created successfully`,
+    )
+  }
+
+  /**
+   * 管理标签
+   * 有两种模式
+   * 1. 在笔记侧边栏
+   * 2. 在笔记编辑器中
+   * @param item
+   */
+  async manageTags(
+    item?: Omit<FolderOrNote, 'item'> & { item: JoplinListNote },
+  ) {
+    const noteId =
+      item?.id ||
+      JoplinNoteUtil.getNoteIdByFileName(
+        vscode.window.activeTextEditor?.document.fileName,
+      )
+    if (!noteId) {
+      return
+    }
+    const oldSelectIdList = (await noteApi.tagsById(noteId)).map(
+      (tag) => tag.id,
+    )
+    const selectTagSet = new Set(oldSelectIdList)
+    const items = (await PageUtil.pageToAllList(tagApi.list)).map(
+      (tag) =>
+        ({
+          label: tag.title,
+          picked: selectTagSet.has(tag.id),
+          tag,
+        } as vscode.QuickPickItem & { tag: TagGetRes }),
+    )
+
+    const selectItems = await vscode.window.showQuickPick(items, {
+      placeHolder: 'Please select a label for this note',
+      canPickMany: true,
+    })
+    if (!selectItems) {
+      return
+    }
+    const selectIdList = selectItems.map((item) => item.tag.id)
+    const addIdList = difference(selectIdList, oldSelectIdList)
+    const deleteIdList = difference(oldSelectIdList, selectIdList)
+    console.log('选择项: ', selectItems, addIdList, deleteIdList)
+    await Promise.all(addIdList.map((id) => tagApi.addTagByNoteId(id, noteId)))
+    await Promise.all(
+      deleteIdList.map((id) => tagApi.removeTagByNoteId(id, noteId)),
     )
   }
 }

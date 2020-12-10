@@ -16,7 +16,7 @@ export class UploadResourceService {
     const markdownLink = await UploadResourceUtil.uploadImageByPath(
       clipboardImage.imgPath,
     )
-    this.insertUrlByActiveEditor(markdownLink)
+    await this.insertUrlByActiveEditor(markdownLink)
   }
 
   async uploadImageFromExplorer(): Promise<string | void | Error> {
@@ -32,7 +32,7 @@ export class UploadResourceService {
     }
     const file = result[0]
     const markdownLink = await UploadResourceUtil.uploadImageByPath(file.fsPath)
-    this.insertUrlByActiveEditor(markdownLink)
+    await this.insertUrlByActiveEditor(markdownLink)
   }
 
   async uploadFileFromExplorer(): Promise<string | void | Error> {

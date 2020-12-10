@@ -13,12 +13,12 @@ export async function checkJoplinServer() {
   try {
     if (!(await joplinApi.ping())) {
       errMsg()
-      console.log("Could not ping Joplin service.")
+      console.log('Could not ping Joplin service.')
       return false
     }
   } catch (e) {
     errMsg()
-    console.log('Error message: \n',JSON.stringify(e))
+    console.log('Error message: \n', JSON.stringify(e))
     return false
   }
   if (!appConfig.token) {
