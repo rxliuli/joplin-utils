@@ -14,6 +14,7 @@ import { useJoplinLink } from './util/useJoplinLink'
 import { uploadResourceService } from './service/UploadResourceService'
 import { MDDocumentLinkProvider, MDHoverProvider } from './model/EditorProvider'
 import { BindThisUtil } from './util/BindThisUtil'
+import { globalState } from './state/GlobalState'
 
 initDevEnv()
 
@@ -26,6 +27,7 @@ nls.config({
 // your extension is activated the very first time the command is executed
 // noinspection JSUnusedLocalSymbols
 export async function activate(context: vscode.ExtensionContext) {
+  globalState.context = context
   if (!(await checkJoplinServer())) {
     return
   }
@@ -49,7 +51,9 @@ export async function activate(context: vscode.ExtensionContext) {
     }),
   )
   joplinNoteCommandService.init(appConfig)
-  const handlerService = BindThisUtil.bindClassMethod(new HandlerService(joplinNoteCommandService))
+  const handlerService = BindThisUtil.bindClassMethod(
+    new HandlerService(joplinNoteCommandService),
+  )
 
   //region register commands
 
@@ -150,5 +154,4 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {
-}
+export function deactivate() {}
