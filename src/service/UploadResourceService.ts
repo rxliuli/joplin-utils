@@ -18,6 +18,7 @@ export class UploadResourceService {
     )
     this.insertUrlByActiveEditor(markdownLink)
   }
+
   async uploadImageFromExplorer(): Promise<string | void | Error> {
     const result = (await vscode.window.showOpenDialog({
       filters: {
@@ -33,6 +34,7 @@ export class UploadResourceService {
     const markdownLink = await UploadResourceUtil.uploadImageByPath(file.fsPath)
     this.insertUrlByActiveEditor(markdownLink)
   }
+
   async uploadFileFromExplorer(): Promise<string | void | Error> {
     const result = (await vscode.window.showOpenDialog({
       canSelectMany: false,
@@ -43,13 +45,16 @@ export class UploadResourceService {
     }
     const file = result[0]
     const markdownLink = await UploadResourceUtil.uploadFileByPath(file.fsPath)
-    this.insertUrlByActiveEditor(markdownLink)
+    await this.insertUrlByActiveEditor(markdownLink)
+    vscode.window.showInformationMessage(`file uploaded successfully.`)
   }
 
   insertUrlByActiveEditor(text: string) {
-    this.editor.edit((textEditor) => {
-      textEditor.replace(this.editor.selection, text)
-      vscode.window.showInformationMessage(`file uploaded successfully.`)
+    return new Promise((resolve) => {
+      this.editor.edit((textEditor) => {
+        textEditor.replace(this.editor.selection, text)
+        resolve()
+      })
     })
   }
 

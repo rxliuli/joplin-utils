@@ -13,6 +13,7 @@
   "commands.joplinNote.uploadImageFromClipboard": "从剪切板上传图片",
   "commands.joplinNote.uploadImageFromExplorer": "从文件选择器上传图片",
   "commands.joplinNote.uploadFileFromExplorer": "从文件选择器上传文件",
+  "commands.joplinNote.createResource": "创建附件资源",
   "configuration.joplin.token": "joplin web 服务的 token",
   "configuration.joplin.port": "joplin web 服务的端口号, 默认为 41184",
   "configuration.joplin.programProfilePath": "joplin 程序的个人目录",

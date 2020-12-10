@@ -146,6 +146,11 @@
         "category": "Joplin"
       },
       {
+        "command": "joplinNote.createResource",
+        "title": "%commands.joplinNote.createResource%",
+        "category": "Joplin"
+      },
+      {
         "command": "joplinNote.resource.refresh",
         "title": "joplinNote resource refresh",
         "category": "Joplin"
@@ -216,6 +221,11 @@
           "command": "joplinNote.uploadFileFromExplorer",
           "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus",
           "group": "joplinNote@3"
+        },
+        {
+          "command": "joplinNote.createResource",
+          "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus",
+          "group": "joplinNote@4"
         }
       ]
     },
@@ -251,6 +261,10 @@
       {
         "command": "joplinNote.search",
         "key": "ctrl+j ctrl+o"
+      },
+      {
+        "command": "joplinNote.createResource",
+        "key": "ctrl+j ctrl+i"
       }
     ],
     "configuration": {

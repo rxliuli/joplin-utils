@@ -92,6 +92,10 @@ export async function activate(context: vscode.ExtensionContext) {
     'joplinNote.toggleTodoState',
     joplinNoteCommandService.toggleTodoState,
   )
+  vscode.commands.registerCommand(
+    'joplinNote.createResource',
+    joplinNoteCommandService.createResource,
+  )
   vscode.commands.registerCommand('joplinNote.resource.refresh', () => {
     const fileName = vscode.window.activeTextEditor?.document.fileName
     joplinNoteCommandService.onDidChangeActiveTextEditor(fileName)

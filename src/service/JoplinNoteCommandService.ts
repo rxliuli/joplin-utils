@@ -13,6 +13,12 @@ import { NoteListProvider } from '../model/NoteProvider'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { appConfig, AppConfig } from '../config/AppConfig'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
+import { globalState } from '../state/GlobalState'
+import * as path from 'path'
+import { mkdirp, pathExists, remove } from 'fs-extra'
+import { createEmptyFile } from '../util/createEmptyFile'
+import { UploadResourceUtil } from '../util/UploadResourceUtil'
+import { uploadResourceService } from './UploadResourceService'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -243,6 +249,34 @@ export class JoplinNoteCommandService {
         ...note,
         type_: TypeEnum.Note,
       }),
+    )
+  }
+
+  /**
+   * 创建资源
+   */
+  async createResource() {
+    const globalStoragePath = globalState.context.globalStoragePath
+    const title = await vscode.window.showInputBox({
+      placeHolder: 'Please enter the name of the attachment to be created',
+      value: '',
+    })
+    if (!title) {
+      return
+    }
+    const filePath = path.resolve(globalStoragePath, `tempResource/${title}`)
+    const dir = path.dirname(filePath)
+    if (!(await pathExists(dir))) {
+      await mkdirp(dir)
+    }
+    await createEmptyFile(filePath)
+    const markdownLink = await UploadResourceUtil.uploadFileByPath(filePath)
+    await uploadResourceService.insertUrlByActiveEditor(markdownLink)
+    if (await pathExists(filePath)) {
+      await remove(filePath)
+    }
+    vscode.window.showInformationMessage(
+      `Attachment resource created successfully`,
     )
   }
 }
