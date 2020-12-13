@@ -74,34 +74,28 @@ abstract class InnerBaseAsyncArray<T> {
    * 异步的 forEach
    * @param fn 异步迭代函数
    */
-  public abstract async forEach(
-    fn: AsyncArrayCallback<T, void, any>,
-  ): Promise<void>
+  public abstract forEach(fn: AsyncArrayCallback<T, void, any>): Promise<void>
 
   /**
    * 异步的 filter
    * @param fn 异步过滤函数
    * @returns 过滤后的新数组
    */
-  public abstract async filter(
-    fn: AsyncArrayCallback<T, boolean, any>,
-  ): Promise<any>
+  public abstract filter(fn: AsyncArrayCallback<T, boolean, any>): Promise<any>
 
   /**
    * 异步的 map
    * @param fn 异步映射函数
    * @returns 经过映射产生的新的异步数组
    */
-  public abstract async map<R>(fn: AsyncArrayCallback<T, R, any>): Promise<any>
+  public abstract map<R>(fn: AsyncArrayCallback<T, R, any>): Promise<any>
 
   /**
    * 异步的 flatMap
    * @param fn 异步映射函数，产生一个新的数组
    * @returns 压平一层的数组
    */
-  public abstract async flatMap<R>(
-    fn: AsyncArrayCallback<T, R[], any>,
-  ): Promise<any>
+  public abstract flatMap<R>(fn: AsyncArrayCallback<T, R[], any>): Promise<any>
 
   /**
    * 将整个数组排序
@@ -160,7 +154,7 @@ abstract class InnerBaseAsyncArray<T> {
    * @param res 初始值，默认为第一个元素
    * @returns 归纳后的值
    */
-  public abstract async reduce<R = T>(
+  public abstract reduce<R = T>(
     fn: AsyncArrayReduceCallback<T, R, any>,
     res?: R,
   ): Promise<R>
@@ -171,7 +165,7 @@ abstract class InnerBaseAsyncArray<T> {
    * @param res 初始值，默认为最后一个元素
    * @returns 归纳后的值
    */
-  public abstract async reduceRight<R = T>(
+  public abstract reduceRight<R = T>(
     fn: AsyncArrayReduceCallback<T, R, any>,
     res?: R,
   ): Promise<R>
@@ -181,7 +175,7 @@ abstract class InnerBaseAsyncArray<T> {
    * @param fn 异步查询函数
    * @returns 查询到的第一个值的下标
    */
-  public abstract async findIndex(
+  public abstract findIndex(
     fn: AsyncArrayCallback<T, boolean, any>,
   ): Promise<number>
 

@@ -50,7 +50,7 @@ export class UploadResourceService {
   }
 
   insertUrlByActiveEditor(text: string) {
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
       this.editor.edit((textEditor) => {
         textEditor.replace(this.editor.selection, text)
         resolve()

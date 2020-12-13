@@ -7,7 +7,11 @@ import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { TypeEnum } from 'joplin-api'
 
 export type JoplinListFolder = FolderListAllRes & CommonType
-export type JoplinListNote = Pick<NoteProperties, 'id' | 'parent_id' | 'title' | 'is_todo' | 'todo_completed'> & CommonType
+export type JoplinListNote = Pick<
+  NoteProperties,
+  'id' | 'parent_id' | 'title' | 'is_todo' | 'todo_completed'
+> &
+  CommonType
 
 export class FolderOrNote extends vscode.TreeItem {
   constructor(public item: JoplinListFolder | JoplinListNote) {
@@ -45,22 +49,9 @@ export class FolderOrNote extends vscode.TreeItem {
     return 'todo-undone'
   }
 
-  /**
-   * 使用 joplin 中的 id，避免额外的渲染
-   */
-  get id() {
-    return this.item.id
-  }
-
-  get tooltip(): string {
-    return this.item.title
-  }
-
-  get description(): string {
-    return ''
-  }
-
-  get contextValue() {
-    return 'joplinNote.' + FolderOrNote.getIconName(this.item)
-  }
+  id = this.item.id
+  label = this.item.title
+  tooltip = this.item.title
+  description = ''
+  contextValue = 'joplinNote.' + FolderOrNote.getIconName(this.item)
 }
