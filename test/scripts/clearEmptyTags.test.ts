@@ -2,7 +2,7 @@ import { config, PageUtil, tagApi } from 'joplin-api'
 import { AsyncArray } from '../../src/util/AsyncArray'
 import { TagGetRes } from 'joplin-api/dist/modal/TagGetRes'
 
-it('删除所有空的标签', async () => {
+it.skip('删除所有空的标签', async () => {
   config.token = process.env.token as string
   const tagList = await PageUtil.pageToAllList(tagApi.list)
   console.log('tagList: ', tagList)
