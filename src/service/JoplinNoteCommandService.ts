@@ -331,4 +331,17 @@ export class JoplinNoteCommandService {
       deleteIdList.map((id) => tagApi.removeTagByNoteId(id, noteId)),
     )
   }
+
+  async createTag() {
+    const tag = await vscode.window.showInputBox({
+      placeHolder: '请输入新标签的名字',
+    })
+    if (!tag) {
+      return
+    }
+    await tagApi.create({
+      title: tag,
+    })
+    vscode.window.showInformationMessage(`创建标签 [${tag}] 成功`)
+  }
 }

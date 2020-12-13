@@ -111,6 +111,11 @@
         "category": "Joplin"
       },
       {
+        "command": "joplinNote.createTag",
+        "title": "%commands.joplinNote.createTag%",
+        "category": "Joplin"
+      },
+      {
         "command": "joplinNote.copyLink",
         "title": "%commands.joplinNote.copyLink%",
         "category": "Joplin"

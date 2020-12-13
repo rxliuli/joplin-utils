@@ -97,6 +97,7 @@ export async function activate(context: vscode.ExtensionContext) {
     joplinNoteCommandService.createResource,
   )
   vscode.commands.registerCommand('joplinNote.manageTags', joplinNoteCommandService.manageTags)
+  vscode.commands.registerCommand('joplinNote.createTag', joplinNoteCommandService.createTag)
   vscode.commands.registerCommand('joplinNote.resource.refresh', () => {
     const fileName = vscode.window.activeTextEditor?.document.fileName
     joplinNoteCommandService.onDidChangeActiveTextEditor(fileName)
