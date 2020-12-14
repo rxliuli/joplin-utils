@@ -1,0 +1,11 @@
+out
+node_modules
+.vscode-test/
+*.vsix
+.idea
+.history
+yarn-error.log
+dist
+.cache
+*.tgz
+tests/resource
