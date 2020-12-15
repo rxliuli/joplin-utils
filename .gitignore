@@ -8,4 +8,4 @@ yarn-error.log
 dist
 .cache
 *.tgz
-tests/resource
+resource/

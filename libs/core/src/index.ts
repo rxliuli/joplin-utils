@@ -1,5 +1,4 @@
-import type { NoteGetRes } from 'joplin-api/dist/modal/NoteGetRes'
-import { writeFile } from 'fs-extra'
+import { mkdirp, pathExists, writeFile } from 'fs-extra'
 import * as path from 'path'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 
@@ -8,18 +7,23 @@ export interface NoteFile {
   content: string
 }
 
+export type FindNoteEntity = Pick<
+  NoteProperties,
+  'id' | 'title' | 'body' | 'user_updated_time' | 'user_created_time'
+> & {
+  tags: string[]
+}
+
 export interface BaseExportBlogHooks {
   /**
    * 导出的笔记 id 列表
    */
-  noteList(): Promise<Pick<NoteProperties, 'id' | 'title' | 'body'>[]>
+  noteList(): Promise<FindNoteEntity[]>
 
   /**
    * 处理笔记
    */
-  resolve(
-    noteList: Pick<NoteProperties, 'id' | 'title' | 'body'>[],
-  ): Promise<NoteFile[]>
+  resolve(noteList: FindNoteEntity[]): Promise<NoteFile[]>
 
   /**
    * 导出的目录
@@ -47,6 +51,9 @@ export class ExportBlogProcess {
     const noteList = await this.config.noteList()
     const fileList = await this.config.resolve(noteList)
     const dirPath = await this.config.path()
+    if (!(await pathExists(dirPath))) {
+      await mkdirp(dirPath)
+    }
     await Promise.all(
       fileList.map(async (file) => {
         await writeFile(path.resolve(dirPath, file.fileName), file.content, {
