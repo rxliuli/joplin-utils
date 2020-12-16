@@ -4,15 +4,28 @@ import {
   FindNoteEntity,
   NoteFile,
 } from '../src'
-import { config, noteApi, PageUtil, searchApi, TypeEnum } from 'joplin-api'
+import {
+  config,
+  noteApi,
+  PageUtil,
+  resourceApi,
+  searchApi,
+  TypeEnum,
+} from 'joplin-api'
 import * as path from 'path'
 import { AsyncArray } from '../src/util/AsyncArray'
 import MarkdownIt = require('markdown-it')
 import * as yaml from 'yaml'
 import { DateTime } from 'luxon'
+import { arrayToMap } from '../src/util/arrayToMap'
+import { copyFile } from 'fs-extra'
 
 class HexoHooks implements BaseExportBlogHooks {
-  private readonly md: MarkdownIt = new MarkdownIt()
+  private readonly md: MarkdownIt
+
+  constructor() {
+    this.md = new MarkdownIt()
+  }
 
   async noteList() {
     const list = await PageUtil.pageToAllList((pageParam) =>
@@ -81,5 +94,50 @@ describe('测试 ExportBlogProcess', () => {
   })
   it('基本示例', async () => {
     await new ExportBlogProcess(new HexoHooks()).exp()
+  })
+  it('测试 token 变换', async () => {
+    const resourceList = await PageUtil.pageToAllList(resourceApi.list, {
+      fields: ['id', 'file_extension'],
+    })
+    const resourceMap = arrayToMap(resourceList, (resource) => resource.id)
+    const useResourceIdList: string[] = []
+    const md = new MarkdownIt({
+      replaceLink(link, env) {
+        if (!link.startsWith(':/')) {
+          return link
+        }
+        const id = link.slice(2)
+        if (!resourceMap.has(id)) {
+          //也有可能是引用的笔记
+          console.warn('id 不存在: ', id)
+          return link
+        }
+        useResourceIdList.push(id)
+        return '/resource/' + id + '.' + resourceMap.get(id)!.file_extension
+      },
+    } as MarkdownIt.Options & {
+      replaceLink(link: string, env: string): string
+    }).use(require('markdown-it-replace-link'))
+    const res = md.render(
+      (await noteApi.get('5d8273edf5a14756ad629358b6c8c005', ['body'])).body,
+    )
+
+    const resourceOriginPath = path.resolve(
+      'D:/Program/JoplinPortable/JoplinProfile/resources',
+    )
+    const resourceOutPath = path.resolve(
+      __dirname,
+      'resource/hexo-example/source/resource/',
+    )
+    await Promise.all(
+      useResourceIdList.map(async (id) => {
+        const fileName = id + '.' + resourceMap.get(id)!.file_extension
+        await copyFile(
+          path.resolve(resourceOriginPath, fileName),
+          path.resolve(resourceOutPath, fileName),
+        )
+      }),
+    )
+    console.log(res)
   })
 })
