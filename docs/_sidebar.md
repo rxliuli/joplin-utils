@@ -1,4 +1,3 @@
 - [Quick Start](_navbar/get-started/quick-start.md)
 - [FAQ](_navbar/get-started/faq.md)
-- [Update log](_navbar/get-started/change-log.md)
 - [Detailed configuration](_navbar/get-started/configuration.md)
