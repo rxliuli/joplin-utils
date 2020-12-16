@@ -2,6 +2,11 @@
 
 > 本教程假设你已经熟悉 VSCode 及其 Markdown 环境、Joplin 使用，仅是为了快速了解如何使用插件将它们结合起来。如果从未接触过 Joplin/VSCode，请查看[相关文档](zh-cn/_navbar/other/why)。
 
+## 要求
+
+- Joplin 版本 > v1.4.19
+- VSCode 版本 > v1.45.0
+
 ## 安装 VSCode-Joplin 插件
 
 在 VSCode 的插件市场搜索 Joplin，然后点击 install，稍后，插件应该就会安装。
