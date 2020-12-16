@@ -1,5 +1,5 @@
 - [Why develop this plugin](_navbar/other/why.md)
-- [Roadmap](_navbar/other/roadmap.md)
+- [Road map](_navbar/other/roadmap.md)
 - [Joplin Forum](https://discourse.joplinapp.org/)
 - VSCode
   - [VSCode Official Document](https://code.visualstudio.com/docs)

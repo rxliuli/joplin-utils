@@ -1,33 +1,35 @@
-# Roadmap
+# Road map
 
 - Edit
-  - [x] Paste the picture and upload it to joplin automatically and get the link to insert
-    - [x] Support editor right-click menu to paste clipboard pictures
-  - [x] Solve the problem that joplin ref link cannot be opened by `ctrl+click` in the editor
-  - [ ] The editor customizes breadcrumbs, and the sidebar on the left is automatically expanded when clicked
+  - [x] Paste image automatically upload to joplin and get link to insert
+    - [x] Support editor right-click menu to paste clipboard images
+  - [x] Solve the problem that joplin ref link can't be opened by `ctrl+click` in the editor
+  - [x] Editor custom breadcrumbs, automatically expand the left sidebar when clicked -- deprecate, it's not really necessary
 - Optimization
   - [x] Enable special right-click menu and icon for todo
-  - [ ] Add development related documents
-  - [x] Fix the problem that the notes in the root directory cannot be displayed
-  - [x] Support viewing attachment resources in external programs
-    - [ ] Automatically monitor changes when opening the attachment resource, use the `child_process` returned by `open` - I intend to modify it to automatically close the monitoring changes of the resources in the note when the note is closed
-      - Attachment resources can be added to multiple notes
-  - [ ] Add outline title sidebar (waiting for api support, or implement it yourself <https://github.com/microsoft/vscode/issues/97095>)
+  - [ ] support for creating attachments directly in notes, mainly to allow direct creation of code files
+  - [ ] fix bug `Cannot read property 'globalStoragePath' of undefined` when uploading images from clipboard
+  - [ ] Optimize message internationalization
+  - [x] Add development related documentation
+  - [x] Fix the problem that notes in root directory cannot be displayed
+  - [x] Support viewing attached resources in external applications
+    - [x] Automatically monitor changes when opening attached resources, using `child_process` returned by `open` -- by joplin
+  - [x] Show the 20 most recently edited historical notes by default when searching
+  - [x] Some suggestions for writing Markdown documents using VSCode, see: [Personal experience sharing: Using VSCode + Joplin as a note taking tool](:/9648f44ae78240d386481d449c583fc0)
+  - [x] should allow dragging notes or directories -- vscode api does not support
+  - [ x] Rename notes/directories directly in place with input box -- vscode api does not support
+  - [ ] Add a reference directly in the code editor -- can't find a suitable way to do it
+  - [ ] Add outline title sidebar (waiting for api support, or implement <https://github.com/microsoft/vscode/issues/97095> on your own)
     - [ ] Note title outline
-    - [ ] Attachment resources of notes and reference notes
-    - [ ] Timeline function of notes - currently not supported by joplin api
-  - [ ] The 20 most recently edited historical notes are displayed by default when searching
-  - [ ] Some suggestions for writing Markdown documents using VSCode
-  - [ ] Prompt to add references directly in the code editor
-  - [x] Should allow dragging of notes or directories - not supported by vscode api
-  - [x] Rename the note/directory directly in the input box - not supported by vscode api
-- Tag related
-  - [x] Right-click to modify the label information of the note, modify the rendering function to render the label - not intuitive, use the form of TreeViewProvider instead
-  - [ ] Add a separate panel to display tags to add, delete and modify
-    - [ ] Determine whether you can add a button and click to operate (such as delete)
-- Organize vscode api usage
-- Create joplin-chars
-  - [x] [Note Relation Graph](https://echarts.apache.org/examples/zh/editor.html?c=graph)
-  - [x] [Notes directory size analysis graph](https://echarts.apache.org/examples/zh/editor.html?c=treemap-disk)
-  - [x] [Word Cloud](https://github.com/ecomfe/echarts-wordcloud)
-  - [x] [timeline timeline](https://rxliuli.com/joplin-charts/#/timeline)
+    - [ ] Attachment resources and citation notes for notes
+    - [ ] Timeline functionality for notes
+- Tagging related
+  - [ x] Add tags to notes
+  - [ x] Remove tags for notes
+  - [x] Renaming tags
+- Organizing vscode api usage
+- Creating joplin-chars
+  - [x] [Notes relationship diagram](https://echarts.apache.org/examples/zh/editor.html?c=graph)
+  - [x] [Notes directory size analysis diagram](https://echarts.apache.org/examples/zh/editor.html?c=treemap-disk)
+  - [x] [word cloud](https://github.com/ecomfe/echarts-wordcloud)
+  - [x] timeline Timeline

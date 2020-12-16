@@ -15,7 +15,7 @@
 ## 环境要求
 
 - nodejs >= v12
-- joplin >= v1.0.224
+- joplin >= v1.4
 - yarn
 
 ## 启动项目
