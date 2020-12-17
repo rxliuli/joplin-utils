@@ -19,7 +19,11 @@
     "luxon": "^1.25.0",
     "markdown-it": "^12.0.3",
     "markdown-it-meta": "^0.0.1",
-    "markdown-it-replace-link": "^1.1.0"
+    "markdown-it-replace-link": "^1.1.0",
+    "mdast": "^3.0.0",
+    "remark-parse": "^9.0.0",
+    "unified": "^9.2.0",
+    "unist-util-visit": "^2.0.3"
   },
   "jest": {
     "preset": "ts-jest"

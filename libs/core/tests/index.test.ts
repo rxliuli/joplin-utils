@@ -88,7 +88,7 @@ class HexoHooks implements BaseExportBlogHooks {
   }
 }
 
-describe('测试 ExportBlogProcess', () => {
+describe.skip('测试 ExportBlogProcess', () => {
   beforeAll(() => {
     config.token = process.env.token as string
   })
