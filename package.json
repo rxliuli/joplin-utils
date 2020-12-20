@@ -251,6 +251,14 @@
     },
     "keybindings": [
       {
+        "command": "workbench.action.togglePanel",
+        "key": "ctrl+k ctrl+j"
+      },
+      {
+        "command": "workbench.view.extension.joplin-note",
+        "key": "ctrl+j ctrl+j"
+      },
+      {
         "key": "f2",
         "command": "joplinNote.rename",
         "when": "focusedView == joplin-note"
