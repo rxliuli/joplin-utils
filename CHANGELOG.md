@@ -1,5 +1,10 @@
 # Release Notes
 
+## 0.3.1
+
+- Provide keybinding for View: Show Joplin at Ctrl+J Ctrl+J. Add a sensible replacement binding for clobbered command workbench.action.togglePanel at Ctrl+K Ctrl+J.
+- Update quick-start by fleshing out with more detail. Of particular importance is describing where to find the Authorization token in Joplin Desktop and explaining away the clobbering of Ctrl+J system keybinding. Broke up text in a way that gives the impression of good document formatting despite the constraints of markdown.
+
 ## 0.3.0
 
 - Implement the right-click menu to create attachment file resources
