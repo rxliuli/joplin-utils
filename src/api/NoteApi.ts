@@ -10,6 +10,7 @@ import { FieldsParam } from '../modal/FieldsParam'
 import { RequiredField } from '../types/RequiredFiled'
 // noinspection ES6PreferShortImport
 import { PageUtil } from '../util/PageUtil'
+import { CommonType } from '../modal/CommonType'
 
 /**
  * TODO 可以考虑使用 fields() 方法设置然后产生一个新的 Api 实例
@@ -25,13 +26,13 @@ class NoteApi {
     return ajax.get<PageRes<NoteGetRes>>('/notes', pageParam)
   }
 
-  async get(id: string): Promise<NoteGetRes>
+  async get(id: string): Promise<NoteGetRes & CommonType>
   async get<K extends keyof NoteProperties = keyof NoteGetRes>(
     id: string,
     fields?: K[],
-  ): Promise<Pick<NoteProperties, K>>
+  ): Promise<Pick<NoteProperties, K> & CommonType>
   async get(id: string, fields?: (keyof NoteGetRes)[]) {
-    return ajax.get<NoteGetRes>(`/notes/${id}`, { fields })
+    return ajax.get<NoteGetRes & CommonType>(`/notes/${id}`, { fields })
   }
 
   async create(param: RequiredField<Partial<NoteProperties>, 'title'>) {
@@ -72,4 +73,4 @@ class NoteApi {
   }
 }
 
-export const noteApi = new NoteApi();
+export const noteApi = new NoteApi()
