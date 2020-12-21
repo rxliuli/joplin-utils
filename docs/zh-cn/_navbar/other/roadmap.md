@@ -7,7 +7,7 @@
   - [x] 编辑器自定义面包屑，点击时自动展开左边的侧边栏 -- 放弃，这实在没什么必要
 - 优化
   - [x] 对 todo 启用特殊的右键菜单及 icon
-  - [ ] 支持在笔记中直接创建附件，主要是为了可以直接创建代码文件
+  - [x] 支持在笔记中直接创建附件，主要是为了可以直接创建代码文件
   - [x] 修复 bug 从剪切板上传图片时提示 `Cannot read property 'globalStoragePath' of undefined`
   - [ ] 优化消息国际化
   - [x] 添加开发相关文档
@@ -33,3 +33,8 @@
   - [x] [笔记目录大小分析图](https://echarts.apache.org/examples/zh/editor.html?c=treemap-disk)
   - [x] [词云](https://github.com/ecomfe/echarts-wordcloud)
   - [x] timeline 时间线
+- 创造 joplin-blog
+  - [ ] 导出指定笔记到 hexo blog
+  - [ ] 解决内嵌图片的问题
+  - [ ] 解决附件资源的问题
+  - [ ] 解决内部引用笔记的问题

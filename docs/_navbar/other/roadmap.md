@@ -7,8 +7,8 @@
   - [x] Editor custom breadcrumbs, automatically expand the left sidebar when clicked -- deprecate, it's not really necessary
 - Optimization
   - [x] Enable special right-click menu and icon for todo
-  - [ ] support for creating attachments directly in notes, mainly to allow direct creation of code files
-  - [ ] fix bug `Cannot read property 'globalStoragePath' of undefined` when uploading images from clipboard
+  - [x] support for creating attachments directly in notes, mainly to allow direct creation of code files
+  - [x] fix bug `Cannot read property 'globalStoragePath' of undefined` when uploading images from clipboard
   - [ ] Optimize message internationalization
   - [x] Add development related documentation
   - [x] Fix the problem that notes in root directory cannot be displayed
@@ -24,8 +24,8 @@
     - [ ] Attachment resources and citation notes for notes
     - [ ] Timeline functionality for notes
 - Tagging related
-  - [ x] Add tags to notes
-  - [ x] Remove tags for notes
+  - [x] Add tags to notes
+  - [x] Remove tags for notes
   - [x] Renaming tags
 - Organizing vscode api usage
 - Creating joplin-chars
@@ -33,3 +33,8 @@
   - [x] [Notes directory size analysis diagram](https://echarts.apache.org/examples/zh/editor.html?c=treemap-disk)
   - [x] [word cloud](https://github.com/ecomfe/echarts-wordcloud)
   - [x] timeline Timeline
+- Create joplin-blog
+  - [ ] Export specified notes to hexo blog
+  - [ ] Solve the problem of inline images
+  - [ ] Solve the problem of attached resources
+  - [ ] Solve the problem of internal reference notes
