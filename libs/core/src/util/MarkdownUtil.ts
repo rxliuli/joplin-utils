@@ -1,13 +1,18 @@
 import { DateTime } from 'luxon'
 import * as yaml from 'yaml'
-import unified = require('unified')
 import * as remarkParse from 'remark-parse'
-import visit = require('unist-util-visit')
 import { Link } from 'mdast'
 import { Settings } from 'unified'
 import * as remarkStringify from 'remark-stringify'
-import unistUtilMap = require('unist-util-map')
 import { format, Options } from 'prettier'
+import { PromiseType } from 'utility-types'
+import { noteExtensionApi } from '../api/NoteExtensionApi'
+import { AsyncArray } from './AsyncArray'
+import { uniq } from 'lodash'
+import { TypeEnum } from 'joplin-api'
+import unified = require('unified')
+import visit = require('unist-util-visit')
+import unistUtilMap = require('unist-util-map')
 
 export interface NoteMeta {
   layout: string
@@ -28,7 +33,7 @@ export class MarkdownUtil {
     const formatter = 'yyyy-MM-dd hh:mm:ss'
     const metaStr = yaml.stringify({
       layout: 'post',
-      title: meta.title,
+      title: MarkdownUtil.trimTitleStart(meta.title),
       abbrlink: meta.abbrlink,
       date: DateTime.fromMillis(meta.date).toFormat(formatter),
       updated: DateTime.fromMillis(meta.updated).toFormat(formatter),
@@ -82,5 +87,48 @@ export class MarkdownUtil {
     })
     const options: Options = { parser: 'markdown', tabWidth: 2 }
     return format(processor.stringify(tree), options)
+  }
+
+  /**
+   * 转换笔记中的内部链接
+   * @param content
+   */
+  static async convertLink(content: string) {
+    const idList = MarkdownUtil.scanResource(content)
+    const map = await this.fetchResourceList(idList)
+    return MarkdownUtil.convertResource(content, map)
+  }
+
+  /**
+   * 根据 id 列表获取资源相关信息
+   * @param idList
+   */
+  static async fetchResourceList(idList: string[]) {
+    const list: PromiseType<
+      ReturnType<typeof noteExtensionApi['find']>
+    >[] = await new AsyncArray(uniq(idList))
+      .parallel()
+      .map((id) => noteExtensionApi.find(id))
+    return list
+      .map((item) => {
+        switch (item.type_) {
+          case TypeEnum.Note:
+            return [item.id, `/p/${item.id}`]
+          case TypeEnum.Resource:
+            return [item.id, `/resource/${item.id}.${item.file_extension}`]
+        }
+      })
+      .reduce((res, [id, url]) => {
+        res.set(id, url)
+        return res
+      }, new Map<string, string>())
+  }
+
+  /**
+   * 消除第一行可能包含的 # 字符号
+   * @param title
+   */
+  private static trimTitleStart(title: string) {
+    return title.startsWith('#') ? title.substr(1).trimLeft() : title
   }
 }

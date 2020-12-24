@@ -4,19 +4,15 @@ import {
   FindNoteEntity,
   NoteFile,
 } from '../src'
-import { config, noteApi, PageUtil, searchApi, TypeEnum } from 'joplin-api'
+import { noteApi, PageUtil, searchApi, TypeEnum } from 'joplin-api'
 import * as path from 'path'
 import { AsyncArray } from '../src/util/AsyncArray'
-import MarkdownIt = require('markdown-it')
 import { MarkdownUtil } from '../src/util/MarkdownUtil'
+import { noteExtensionApi } from '../src/api/NoteExtensionApi'
+import { uniq } from 'lodash'
+import { copyFile, pathExists } from 'fs-extra'
 
 class HexoHooks implements BaseExportBlogHooks {
-  private readonly md: MarkdownIt
-
-  constructor() {
-    this.md = new MarkdownIt()
-  }
-
   async noteList() {
     const list = await PageUtil.pageToAllList((pageParam) =>
       searchApi.search({
@@ -54,8 +50,9 @@ class HexoHooks implements BaseExportBlogHooks {
    * 将结构化的笔记转换为发布格式的 markdown 内容
    * @param note
    */
-  mdConvert(note: FindNoteEntity): string {
-    return MarkdownUtil.addMeta(note.body, {
+  async mdConvert(note: FindNoteEntity) {
+    const res = await MarkdownUtil.convertLink(note.body)
+    return MarkdownUtil.addMeta(res, {
       layout: 'post',
       title: note.title,
       abbrlink: note.id,
@@ -65,21 +62,47 @@ class HexoHooks implements BaseExportBlogHooks {
     })
   }
 
-  async resolve(noteList: FindNoteEntity[]) {
-    return noteList.map(
-      (note) =>
-        ({
-          fileName: `${note.id}.md`,
-          content: this.mdConvert(note),
-        } as NoteFile),
-    )
+  async resolve(
+    noteList: FindNoteEntity[],
+    profilePath: string,
+  ): Promise<NoteFile[]> {
+    await new AsyncArray(noteList)
+      .parallel()
+      .flatMap(async (note) => uniq(MarkdownUtil.scanResource(note.body)))
+      .map((id) => noteExtensionApi.find(id))
+      .filter(async (item) => item.type_ === TypeEnum.Resource)
+      .map(async (item) => {
+        if (item.type_ !== TypeEnum.Resource) {
+          throw new Error()
+        }
+        return item.id + '.' + item.file_extension
+      })
+      .forEach(async (fileName) => {
+        const resourcePath = path.resolve(profilePath, 'resources', fileName)
+        console.log('fileName: ', resourcePath, await pathExists(resourcePath))
+        try {
+          await copyFile(
+            resourcePath,
+            path.resolve(
+              __dirname,
+              'resource/hexo-example/source/resource/',
+              fileName,
+            ),
+          )
+        } catch (e) {
+          console.error(e)
+        }
+      })
+    return new AsyncArray(noteList).parallel().map(async (note) => {
+      return {
+        fileName: `${note.id}.md`,
+        content: await this.mdConvert(note),
+      } as NoteFile
+    })
   }
 }
 
 describe('测试 ExportBlogProcess', () => {
-  beforeAll(() => {
-    config.token = process.env.token as string
-  })
   it('基本示例', async () => {
     await new ExportBlogProcess(new HexoHooks()).exp()
   })

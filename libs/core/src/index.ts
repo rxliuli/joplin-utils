@@ -23,7 +23,7 @@ export interface BaseExportBlogHooks {
   /**
    * 处理笔记
    */
-  resolve(noteList: FindNoteEntity[]): Promise<NoteFile[]>
+  resolve(noteList: FindNoteEntity[], profilePath: string): Promise<NoteFile[]>
 
   /**
    * 导出的目录
@@ -49,7 +49,10 @@ export class ExportBlogProcess {
 
   async exp() {
     const noteList = await this.config.noteList()
-    const fileList = await this.config.resolve(noteList)
+    const fileList = await this.config.resolve(
+      noteList,
+      path.resolve('D:/Program/JoplinPortable/JoplinProfile'),
+    )
     const dirPath = await this.config.path()
     if (!(await pathExists(dirPath))) {
       await mkdirp(dirPath)

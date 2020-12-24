@@ -1,9 +1,6 @@
 import { MarkdownUtil } from '../../src/util/MarkdownUtil'
 import { DateTime } from 'luxon'
-import { noteApi, TypeEnum } from 'joplin-api'
-import { AsyncArray } from '../../src/util/AsyncArray'
-import { noteExtensionApi } from '../../src/api/NoteExtensionApi'
-import { PromiseType } from 'utility-types'
+import { noteApi } from 'joplin-api'
 
 describe('测试 MarkdownUtil', () => {
   it.skip('测试 addMeta', () => {
@@ -53,27 +50,8 @@ test content`)
       'id',
       'body',
     ])
-    const resourceList = MarkdownUtil.scanResource(note.body)
     console.log(await noteApi.get('d4ab4244b77b4529a68782f2fdcce07e'))
-    const list = (await new AsyncArray(resourceList)
-      .parallel()
-      .map(async (id) => {
-        return await noteExtensionApi.find(id)
-      })) as PromiseType<ReturnType<typeof noteExtensionApi['find']>>[]
-    const map = list
-      .map((item) => {
-        switch (item.type_) {
-          case TypeEnum.Note:
-            return [item.id, `/p/${item.id}`]
-          case TypeEnum.Resource:
-            return [item.id, `/resource/${item.id}.${item.file_extension}`]
-        }
-      })
-      .reduce((res, [id, url]) => {
-        res.set(id, url)
-        return res
-      }, new Map<string, string>())
-    const res = MarkdownUtil.convertResource(note.body, map)
+    const res = MarkdownUtil.convertLink(note.body)
     console.log(res)
   })
 })
