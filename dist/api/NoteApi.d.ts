@@ -8,6 +8,7 @@ import { PageParam, PageRes } from '../modal/PageData';
 import { FieldsParam } from '../modal/FieldsParam';
 import { RequiredField } from '../types/RequiredFiled';
 import { CommonType } from '../modal/CommonType';
+import { ResourceProperties } from '../modal/ResourceProperties';
 /**
  * TODO 可以考虑使用 fields() 方法设置然后产生一个新的 Api 实例
  */
@@ -20,12 +21,8 @@ declare class NoteApi {
     update(param: RequiredField<Partial<NoteProperties>, 'id'>): Promise<NoteUpdateRes>;
     remove(id: string): Promise<unknown>;
     tagsById(id: string): Promise<TagGetRes[]>;
-    /**
-     * TODO 目前这里不指定 fields 时会发生错误，这应该是个 bug
-     * @link https://discourse.joplinapp.org/t/pre-release-1-4-is-now-available-for-testing/12247/14?u=rxliuli
-     * @param id
-     */
     resourcesById(id: string): Promise<ResourceGetRes[]>;
+    resourcesById<K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>>(id: string, fields: K[]): Promise<(Pick<ResourceProperties, K> & CommonType)[]>;
 }
 export declare const noteApi: NoteApi;
 export {};
