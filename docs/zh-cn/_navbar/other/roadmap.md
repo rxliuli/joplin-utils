@@ -6,6 +6,7 @@
   - [x] 解决 joplin ref link 在编辑器中不能 `ctrl+click` 打开的问题
   - [x] 编辑器自定义面包屑，点击时自动展开左边的侧边栏 -- 放弃，这实在没什么必要
 - 优化
+  - [ ] 处理 vscode 不能从链接打开 `.drawio` 的问题（可能也包含 `.km` 的思维导图）
   - [x] 对 todo 启用特殊的右键菜单及 icon
   - [x] 支持在笔记中直接创建附件，主要是为了可以直接创建代码文件
   - [x] 修复 bug 从剪切板上传图片时提示 `Cannot read property 'globalStoragePath' of undefined`
