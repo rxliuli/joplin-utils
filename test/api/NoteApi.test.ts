@@ -67,6 +67,16 @@ describe('test JoplinApi', () => {
       expect(resourceList.length).toBe(1)
       // await resourceApi.remove(resource.id)
     })
+    it('test resourcesById by fields', async () => {
+      const [resource] = await noteApi.resourcesById(data.noteId, [
+        'id',
+        'title',
+        'file_extension',
+        'size',
+      ])
+      console.log(resource.file_extension)
+      console.log(resource.size)
+    })
   })
   describe('features test', () => {
     it('test rename', async () => {
