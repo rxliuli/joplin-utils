@@ -8,5 +8,6 @@ yarn-error.log
 dist
 .cache
 *.tgz
-resource/
+**/tests/resource/
+**/__tests__/resource/
 wallaby.js
