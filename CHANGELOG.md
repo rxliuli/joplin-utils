@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.3.2
+
+- Integrated [sentry](https://sentry.io/) error log analysis
+
 ## 0.3.1
 
 - Provide keybinding for View: Show Joplin at Ctrl+J Ctrl+J. Add a sensible replacement binding for clobbered command workbench.action.togglePanel at Ctrl+K Ctrl+J.
