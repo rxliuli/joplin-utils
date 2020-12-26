@@ -393,6 +393,8 @@
     "vscode-test": "^1.4.1"
   },
   "dependencies": {
+    "@sentry/node": "^5.29.2",
+    "@sentry/tracing": "^5.29.2",
     "cross-env": "^7.0.3",
     "cross-path-sort": "^1.0.0",
     "dayjs": "^1.9.7",
