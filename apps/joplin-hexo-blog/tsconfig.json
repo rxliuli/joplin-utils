@@ -9,6 +9,8 @@
     "sourceMap": true,
     "strict": true,
     "rootDir": "src",
-    "outDir": "dist"
+    "outDir": "dist",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }
