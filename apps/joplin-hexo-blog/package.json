@@ -12,6 +12,9 @@
     "watch": "tsc -w",
     "test": "ts-node src/bin.ts"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "jest": {
     "preset": "ts-jest"
   },
