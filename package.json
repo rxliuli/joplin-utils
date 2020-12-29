@@ -6,7 +6,8 @@
   "workspaces": {
     "packages": [
       "apps/*",
-      "libs/*"
+      "libs/*",
+      "tutorials/*"
     ]
   },
   "husky": {
