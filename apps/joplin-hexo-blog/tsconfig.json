@@ -3,7 +3,6 @@
     "module": "commonjs",
     "target": "es6",
     "lib": [
-      "es6",
       "ESNext"
     ],
     "sourceMap": true,
@@ -12,5 +11,8 @@
     "outDir": "dist",
     "resolveJsonModule": true,
     "esModuleInterop": true
-  }
+  },
+  "exclude": [
+    "gulpfile.ts"
+  ]
 }

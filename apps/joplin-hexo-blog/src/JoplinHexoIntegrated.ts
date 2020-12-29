@@ -4,11 +4,20 @@ import { arrayToMap } from './util/arrayToMap'
 import { noteApi, TypeEnum } from 'joplin-api'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import { CommonNote } from './model/CommonNote'
-import { copyFile, mkdirp, pathExists, writeFile } from 'fs-extra'
+import { copyFile, mkdirp, pathExists, remove, writeFile } from 'fs-extra'
 import * as path from 'path'
 import { forEach } from './util/forEach'
 import { map } from './util/map'
 import { asyncLimiting } from './util/asyncLimiting'
+
+export interface JoplinHexoIntegratedConfig {
+  hexoPath: string
+  joplinProfilePath: string
+  token: string
+  port: number
+  tag: string
+  stickyTopIdList: string[]
+}
 
 /**
  * joplin 与 hexo 的集成
@@ -17,15 +26,7 @@ export class JoplinHexoIntegrated {
   private readonly joplinService: JoplinService
   private readonly joplinNoteParser = new JoplinNoteParser()
 
-  constructor(
-    private readonly config: {
-      hexoPath: string
-      joplinProfilePath: string
-      token: string
-      port: number
-      tag: string
-    },
-  ) {
+  constructor(private readonly config: JoplinHexoIntegratedConfig) {
     this.joplinService = new JoplinService(config.token, config.port)
   }
 
@@ -44,10 +45,13 @@ export class JoplinHexoIntegrated {
     }, 10)
     const fileNoteList = await map(noteList, fn)
     //写入笔记
+    const hexoPostPath = path.resolve(this.config.hexoPath, 'source/_posts')
+    await remove(hexoPostPath)
+    await mkdirp(hexoPostPath)
     await forEach(fileNoteList, async (item) => {
       console.log(`正在写入笔记 [${item.title}]`)
       await writeFile(
-        path.resolve(this.config.hexoPath, 'source/_posts', item.id + '.md'),
+        path.resolve(hexoPostPath, item.id + '.md'),
         item.content,
         {
           encoding: 'utf-8',
@@ -55,15 +59,15 @@ export class JoplinHexoIntegrated {
       )
     })
     //复制资源
+    const hexoResourcePath = path.resolve(
+      this.config.hexoPath,
+      'source/resource',
+    )
+    await remove(hexoResourcePath)
+    await mkdirp(hexoResourcePath)
     await forEach(resourceList, async (item) => {
       console.log(`正在写复制资源 [${item.title}]`)
-      const hexoResourcePath = path.resolve(
-        this.config.hexoPath,
-        'source/resource',
-      )
-      if (!(await pathExists(hexoResourcePath))) {
-        await mkdirp(hexoResourcePath)
-      }
+
       const fileName = item.id + '.' + item.file_extension
       await copyFile(
         path.resolve(this.config.joplinProfilePath, 'resources', fileName),
@@ -107,6 +111,9 @@ export class JoplinHexoIntegrated {
       tags,
       date: note.createdTime,
       updated: note.updatedTime,
+      sticky: this.config.stickyTopIdList.includes(note.id)
+        ? Number.MAX_SAFE_INTEGER
+        : undefined,
     })
     return {
       id: note.id,

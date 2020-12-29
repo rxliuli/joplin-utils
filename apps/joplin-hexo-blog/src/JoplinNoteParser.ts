@@ -1,15 +1,24 @@
 import unified = require('unified')
 import visit = require('unist-util-visit')
+import unistUtilMap = require('unist-util-map')
 import { Link } from 'mdast'
-import * as remarkParse from 'remark-parse'
-import * as remarkStringify from 'remark-stringify'
+import remarkParse from 'remark-parse'
+import remarkStringify from 'remark-stringify'
 import { noteApi, TypeEnum } from 'joplin-api'
 import { arrayToMap } from './util/arrayToMap'
 import { format, Options } from 'prettier'
-import unistUtilMap = require('unist-util-map')
 import * as yaml from 'yaml'
 import { DateTime } from 'luxon'
-import { NoteMeta } from 'joplin-blog-core/src/util/MarkdownUtil'
+
+interface NoteMeta {
+  layout: 'post'
+  title: string
+  abbrlink: string
+  tags: string[]
+  date: number
+  updated: number
+  sticky?: number
+}
 
 export class JoplinNoteParser {
   /**
@@ -89,6 +98,7 @@ export class JoplinNoteParser {
       date: DateTime.fromMillis(meta.date).toFormat(formatter),
       updated: DateTime.fromMillis(meta.updated).toFormat(formatter),
       tags: meta.tags,
+      sticky: meta.sticky,
     })
     return '---\n' + metaStr + `---\n\n` + content
   }
