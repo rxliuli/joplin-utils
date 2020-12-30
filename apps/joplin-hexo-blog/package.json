@@ -1,6 +1,6 @@
 {
   "name": "@liuli-moe/joplin-hexo-blog",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
@@ -47,6 +47,7 @@
     "remark-stringify": "^9.0.1",
     "unified": "^9.2.0",
     "unist-util-map": "^2.0.1",
-    "unist-util-visit": "^2.0.3"
+    "unist-util-visit": "^2.0.3",
+    "prettier": "^2.2.1"
   }
 }
