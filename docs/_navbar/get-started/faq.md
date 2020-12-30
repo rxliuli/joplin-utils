@@ -8,6 +8,12 @@ Please try to execute the following command in CMD/Bash, if there is no problem,
 curl http://127.0.0.1:41184/ping
 ```
 
+On Linux make sure your `/etc/hosts` contains the following entry 
+
+```vim
+127.0.0.1  localhost
+```
+
 ## Not opened in VSCode after clicking
 
 Please refer to the official default external editor settings: [How can I edit my note in an external text editor?](https://joplinapp.org/faq/#how-can-i-edit-my-note-in-an-external-text-editor)
