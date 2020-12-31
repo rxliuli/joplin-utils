@@ -10,26 +10,27 @@ import { forEach } from './util/forEach'
 import { map } from './util/map'
 import { asyncLimiting } from './util/asyncLimiting'
 import { i18nLoader } from './util/constant'
+import { JoplinMarkdownUtil } from './util/JoplinMarkdownUtil'
+import { DateTime } from 'luxon'
 import { BaseJoplinIntegrated } from './BaseJoplinIntegrated'
 
-export interface JoplinHexoIntegratedConfig {
-  type: 'hexo'
-  hexoPath: string
+export interface JoplinVuepressIntegratedConfig {
+  type: 'vuepress'
+  vuepressPath: string
   joplinProfilePath: string
   token: string
   port: number
   tag: string
-  stickyTopIdList: string[]
 }
 
 /**
  * joplin 与 hexo 的集成
  */
-export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
+export class JoplinVuepressIntegrated implements BaseJoplinIntegrated {
   private readonly joplinService: JoplinService
   private readonly joplinNoteParser = new JoplinNoteParser()
 
-  constructor(private readonly config: JoplinHexoIntegratedConfig) {
+  constructor(private readonly config: JoplinVuepressIntegratedConfig) {
     this.joplinService = new JoplinService(config.token, config.port)
   }
 
@@ -48,7 +49,7 @@ export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
     }, 10)
     const fileNoteList = await map(noteList, fn)
     //写入笔记
-    const hexoPostPath = path.resolve(this.config.hexoPath, 'source/_posts')
+    const hexoPostPath = path.resolve(this.config.vuepressPath, 'blog/_posts')
     await remove(hexoPostPath)
     await mkdirp(hexoPostPath)
     await forEach(fileNoteList, async (item) => {
@@ -62,19 +63,19 @@ export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
       )
     })
     //复制资源
-    const hexoResourcePath = path.resolve(
-      this.config.hexoPath,
-      'source/resource',
+    const resourcePath = path.resolve(
+      this.config.vuepressPath,
+      'blog/.vuepress/public/resource',
     )
-    await remove(hexoResourcePath)
-    await mkdirp(hexoResourcePath)
+    await remove(resourcePath)
+    await mkdirp(resourcePath)
     await forEach(resourceList, async (item) => {
       console.log(`${i18nLoader.getText('copyResource')} [${item.title}]`)
 
       const fileName = item.id + '.' + item.file_extension
       await copyFile(
         path.resolve(this.config.joplinProfilePath, 'resources', fileName),
-        path.resolve(this.config.hexoPath, 'source/resource', fileName),
+        path.resolve(resourcePath, fileName),
       )
     })
   }
@@ -107,16 +108,14 @@ export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
     const tags = (await noteApi.tagsById(note.id))
       .map((tag) => tag.title)
       .filter((tag) => tag !== this.config.tag)
-    const contentRes = this.joplinNoteParser.addMeta(content, {
-      layout: 'post',
-      title: note.title,
-      abbrlink: note.id,
+
+    const formatter = 'yyyy-MM-dd hh:mm:ss'
+    const contentRes = JoplinMarkdownUtil.addMeta(content, {
+      title: JoplinMarkdownUtil.trimTitleStart(note.title),
+      permalink: `/p/${note.id}`,
       tags,
-      date: note.createdTime,
-      updated: note.updatedTime,
-      sticky: this.config.stickyTopIdList.includes(note.id)
-        ? Number.MAX_SAFE_INTEGER
-        : undefined,
+      date: DateTime.fromMillis(note.createdTime).toFormat(formatter),
+      updated: DateTime.fromMillis(note.updatedTime).toFormat(formatter),
     })
     return {
       id: note.id,

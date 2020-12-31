@@ -7,7 +7,7 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "imp": "joplin-hexo"
+    "imp": "joplin-blog"
   },
   "hexo": {
     "version": "5.3.0"
@@ -23,6 +23,6 @@
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
     "hexo-theme-landscape": "^0.0.3",
-    "@liuli-moe/joplin-hexo-blog": "^0.1.0"
+    "joplin-blog": "*"
   }
 }

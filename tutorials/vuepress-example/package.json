@@ -5,10 +5,12 @@
   "license": "MIT",
   "scripts": {
     "docs:dev": "vuepress dev blog",
-    "docs:build": "vuepress build blog"
+    "docs:build": "vuepress build blog",
+    "imp": "joplin-blog"
   },
   "devDependencies": {
     "@vuepress/theme-blog": "^2.3.3",
-    "vuepress": "^1.7.1"
+    "vuepress": "^1.7.1",
+    "joplin-blog": "*"
   }
 }
