@@ -1,5 +1,10 @@
 # Release Notes
 
+## 0.3.3
+
+- Implemented the function of deleting tags
+- Completed internationalization of alert messages
+
 ## 0.3.2
 
 - Integrated [sentry](https://sentry.io/) error log analysis
