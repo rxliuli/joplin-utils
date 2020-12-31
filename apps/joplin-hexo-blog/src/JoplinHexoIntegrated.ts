@@ -4,11 +4,12 @@ import { arrayToMap } from './util/arrayToMap'
 import { noteApi, TypeEnum } from 'joplin-api'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import { CommonNote } from './model/CommonNote'
-import { copyFile, mkdirp, pathExists, remove, writeFile } from 'fs-extra'
+import { copyFile, mkdirp, remove, writeFile } from 'fs-extra'
 import * as path from 'path'
 import { forEach } from './util/forEach'
 import { map } from './util/map'
 import { asyncLimiting } from './util/asyncLimiting'
+import { i18nLoader } from './util/constant'
 
 export interface JoplinHexoIntegratedConfig {
   hexoPath: string
@@ -40,7 +41,7 @@ export class JoplinHexoIntegrated {
       'id' | 'title' | 'file_extension'
     >[] = []
     const fn = asyncLimiting(async (item: CommonNote) => {
-      console.log(`正在转换笔记 [${item.title}]`)
+      console.log(`${i18nLoader.getText('convertNote')} [${item.title}]`)
       return await this.convertNote(item, resourceList)
     }, 10)
     const fileNoteList = await map(noteList, fn)
@@ -49,7 +50,7 @@ export class JoplinHexoIntegrated {
     await remove(hexoPostPath)
     await mkdirp(hexoPostPath)
     await forEach(fileNoteList, async (item) => {
-      console.log(`正在写入笔记 [${item.title}]`)
+      console.log(`${i18nLoader.getText('writeNote')} [${item.title}]`)
       await writeFile(
         path.resolve(hexoPostPath, item.id + '.md'),
         item.content,
@@ -66,7 +67,7 @@ export class JoplinHexoIntegrated {
     await remove(hexoResourcePath)
     await mkdirp(hexoResourcePath)
     await forEach(resourceList, async (item) => {
-      console.log(`正在写复制资源 [${item.title}]`)
+      console.log(`${i18nLoader.getText('copyResource')} [${item.title}]`)
 
       const fileName = item.id + '.' + item.file_extension
       await copyFile(

@@ -15,6 +15,7 @@
     "esModuleInterop": true
   },
   "exclude": [
-    "gulpfile.ts"
+    "gulpfile.ts",
+    "dist"
   ]
 }

@@ -4,12 +4,24 @@ import {
   JoplinHexoIntegrated,
   JoplinHexoIntegratedConfig,
 } from './JoplinHexoIntegrated'
+import { i18nLoader } from './util/constant'
+import { LanguageEnum } from './util/I18nLoader'
+import osLocale = require('os-locale')
+
+async function getLanguageEnum(): Promise<LanguageEnum> {
+  const language = await osLocale()
+  if (language.toLocaleLowerCase().includes('zh')) {
+    return LanguageEnum.ZhCN
+  }
+  return LanguageEnum.En
+}
 
 async function main() {
+  await i18nLoader.load(await getLanguageEnum())
   const configPath = path.resolve('.joplin-blog.json')
   console.log('configPath: ', configPath)
   if (!(await pathExists(configPath))) {
-    console.log('没有配置文件')
+    console.log(i18nLoader.getText('notFoundConfig'))
     return
   }
   const config = (await readJson(configPath)) as JoplinHexoIntegratedConfig
