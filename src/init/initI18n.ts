@@ -1,8 +1,10 @@
-import * as nls from 'vscode-nls'
+import { i18nLoader } from '../util/constant'
+import { LanguageEnum } from '../i18n'
+import * as vscode from 'vscode'
 
-export function initI18n() {
-  nls.config({
-    messageFormat: nls.MessageFormat.bundle,
-    bundleFormat: nls.BundleFormat.standalone,
-  })()
+export async function initI18n() {
+  const language = vscode.env.language.toLocaleLowerCase().includes('zh')
+    ? LanguageEnum.ZhCN
+    : LanguageEnum.En
+  await i18nLoader.load(language)
 }

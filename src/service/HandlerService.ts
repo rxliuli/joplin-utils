@@ -15,6 +15,7 @@ import { appConfig } from '../config/AppConfig'
 import { BiMultiMap } from '../util/BiMultiMap'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { OpenFileService } from '../util/OpenFileService'
+import { i18nLoader } from '../util/constant'
 
 /**
  * other service
@@ -45,7 +46,9 @@ export class HandlerService {
       ),
     )
     vscode.window.showInformationMessage(
-      `Turn off monitoring of attachment resources in the note [${note.title}]`,
+      i18nLoader.get('turnOffResourceMonitoring', {
+        title: note.title,
+      }),
     )
   }
 

@@ -2,8 +2,8 @@ import { initSentry } from './initSentry'
 import { initDevEnv } from './initDevEnv'
 import { initI18n } from './initI18n'
 
-export function init() {
+export async function init() {
   initSentry()
   initDevEnv()
-  initI18n()
+  await initI18n()
 }
