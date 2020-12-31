@@ -20,18 +20,23 @@
 5. 运行命令 `yarn imp`
 6. 可以看到 `source/_posts` 目录下已经包含了所有导出的笔记
 
+## 示例
+
+- hexo
+- vuepress
+
 ## 配置
 
 公共
 
-| 配置                | 类型            | 说明                            |
-| ------------------- | --------------- | ------------------------------- |
-| `type`              | `hexo/vuepress` | 集成博客的类型                  |
-| `rootPath`          | `string`        | hexo 目录的位置，一般应该为 `.` |
-| `joplinProfilePath` | `string`        | joplin 个人文件夹               |
-| `token`             | `string`        | joplin web service 的 token     |
-| `port`              | `number`        | joplin web service 的端口       |
-| `tag`               | `string`        | joplin 的博客标签               |
+| 配置                | 类型            | 说明                               |
+| ------------------- | --------------- | ---------------------------------- |
+| `type`              | `hexo/vuepress` | 集成博客的类型                     |
+| `rootPath`          | `string`        | hexo/vuepress 目录，一般应该为 `.` |
+| `joplinProfilePath` | `string`        | joplin 个人文件夹                  |
+| `token`             | `string`        | joplin web service 的 token        |
+| `port`              | `number`        | joplin web service 的端口          |
+| `tag`               | `string`        | joplin 的博客标签                  |
 
 hexo
 

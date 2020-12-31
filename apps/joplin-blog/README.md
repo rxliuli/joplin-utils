@@ -24,14 +24,14 @@ Way 2
 
 public
 
-| configuration       | type            | description                                                       |
-| ------------------- | --------------- | ----------------------------------------------------------------- |
-| `type`              | `hexo/vuepress` | type of integrated blog                                           |
-| `rootPath`          | `string`        | The location of the hexo directory, which should normally be `. ` |
-| `joplinProfilePath` | `string`        | joplin personal folder                                            |
-| `token`             | `string`        | token for joplin web service                                      |
-| `port`              | `number`        | joplin web service's port                                         |
-| `tag`               | `string`        | joplin's blog tag                                                 |
+| configuration       | type            | description                                           |
+| ------------------- | --------------- | ----------------------------------------------------- |
+| `type`              | `hexo/vuepress` | type of integrated blog                               |
+| `rootPath`          | `string`        | hexo/vuepress directory, which should normally be `.` |
+| `joplinProfilePath` | `string`        | joplin personal folder                                |
+| `token`             | `string`        | token for joplin web service                          |
+| `port`              | `number`        | joplin web service's port                             |
+| `tag`               | `string`        | joplin's blog tag                                     |
 
 hexo
 

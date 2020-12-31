@@ -11,6 +11,7 @@ import { map } from './util/map'
 import { asyncLimiting } from './util/asyncLimiting'
 import { i18nLoader } from './util/constant'
 import { BaseJoplinIntegrated } from './BaseJoplinIntegrated'
+import { JoplinMarkdownUtil } from './util/JoplinMarkdownUtil'
 
 export interface JoplinHexoIntegratedConfig {
   type: 'hexo'
@@ -109,7 +110,7 @@ export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
       .filter((tag) => tag !== this.config.tag)
     const contentRes = this.joplinNoteParser.addMeta(content, {
       layout: 'post',
-      title: note.title,
+      title: JoplinMarkdownUtil.trimTitleStart(note.title),
       abbrlink: note.id,
       tags,
       date: note.createdTime,
