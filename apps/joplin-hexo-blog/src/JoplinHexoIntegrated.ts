@@ -14,7 +14,7 @@ import { BaseJoplinIntegrated } from './BaseJoplinIntegrated'
 
 export interface JoplinHexoIntegratedConfig {
   type: 'hexo'
-  hexoPath: string
+  rootPath: string
   joplinProfilePath: string
   token: string
   port: number
@@ -48,7 +48,7 @@ export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
     }, 10)
     const fileNoteList = await map(noteList, fn)
     //写入笔记
-    const hexoPostPath = path.resolve(this.config.hexoPath, 'source/_posts')
+    const hexoPostPath = path.resolve(this.config.rootPath, 'source/_posts')
     await remove(hexoPostPath)
     await mkdirp(hexoPostPath)
     await forEach(fileNoteList, async (item) => {
@@ -63,7 +63,7 @@ export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
     })
     //复制资源
     const hexoResourcePath = path.resolve(
-      this.config.hexoPath,
+      this.config.rootPath,
       'source/resource',
     )
     await remove(hexoResourcePath)
@@ -74,7 +74,7 @@ export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
       const fileName = item.id + '.' + item.file_extension
       await copyFile(
         path.resolve(this.config.joplinProfilePath, 'resources', fileName),
-        path.resolve(this.config.hexoPath, 'source/resource', fileName),
+        path.resolve(this.config.rootPath, 'source/resource', fileName),
       )
     })
   }

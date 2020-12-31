@@ -16,7 +16,7 @@ import { BaseJoplinIntegrated } from './BaseJoplinIntegrated'
 
 export interface JoplinVuepressIntegratedConfig {
   type: 'vuepress'
-  vuepressPath: string
+  rootPath: string
   joplinProfilePath: string
   token: string
   port: number
@@ -49,7 +49,7 @@ export class JoplinVuepressIntegrated implements BaseJoplinIntegrated {
     }, 10)
     const fileNoteList = await map(noteList, fn)
     //写入笔记
-    const hexoPostPath = path.resolve(this.config.vuepressPath, 'blog/_posts')
+    const hexoPostPath = path.resolve(this.config.rootPath, 'blog/_posts')
     await remove(hexoPostPath)
     await mkdirp(hexoPostPath)
     await forEach(fileNoteList, async (item) => {
@@ -64,7 +64,7 @@ export class JoplinVuepressIntegrated implements BaseJoplinIntegrated {
     })
     //复制资源
     const resourcePath = path.resolve(
-      this.config.vuepressPath,
+      this.config.rootPath,
       'blog/.vuepress/public/resource',
     )
     await remove(resourcePath)
