@@ -1,5 +1,5 @@
 export default {
-  "'Turn off monitoring of attachment resources in the note [{{title}}]'":
+  'Turn off monitoring of attachment resources in the note [{{title}}]':
     'Turn off monitoring of attachment resources in the note [{{title}}]',
   'Unprocessable link': 'Unprocessable link',
   "Please set up Joplin's personal directory":

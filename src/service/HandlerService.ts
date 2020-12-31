@@ -47,7 +47,7 @@ export class HandlerService {
     )
     vscode.window.showInformationMessage(
       i18nLoader.get(
-        "'Turn off monitoring of attachment resources in the note [{{title}}]'",
+        'Turn off monitoring of attachment resources in the note [{{title}}]',
         {
           title: note.title,
         },

@@ -1,5 +1,5 @@
 export default {
-  "'Turn off monitoring of attachment resources in the note [{{title}}]'":
+  'Turn off monitoring of attachment resources in the note [{{title}}]':
     '关闭对笔记 [{{title}}] 中附件修改的监听',
   'Unprocessable link': '无法处理的链接',
   "Please set up Joplin's personal directory": '请设置乔普林的个人目录',
