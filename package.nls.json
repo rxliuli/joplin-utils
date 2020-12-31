@@ -13,6 +13,7 @@
   "commands.joplinNote.search": "Search",
   "commands.joplinNote.manageTags": "Manage tags",
   "commands.joplinNote.createTag": "Create tag",
+  "commands.joplinNote.removeTag": "Remove tag",
   "commands.joplinNote.uploadImageFromClipboard": "Upload image from clipboard",
   "commands.joplinNote.uploadImageFromExplorer": "Upload image from explorer",
   "commands.joplinNote.uploadFileFromExplorer": "Upload file from explorer",

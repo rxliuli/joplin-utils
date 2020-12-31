@@ -342,6 +342,26 @@ export class JoplinNoteCommandService {
     await tagApi.create({
       title: tag,
     })
-    vscode.window.showInformationMessage(`创建标签 [${tag}] 成功`)
+    vscode.window.showInformationMessage(`Create tag [${tag}] success`)
+  }
+
+  async removeTag() {
+    const items = (await PageUtil.pageToAllList(tagApi.list)).map(
+      (tag) =>
+        ({
+          label: tag.title,
+          tag,
+        } as vscode.QuickPickItem & { tag: TagGetRes }),
+    )
+    const selectItem = await vscode.window.showQuickPick(items, {
+      placeHolder: 'Please select the tag to delete',
+    })
+    if (!selectItem) {
+      return
+    }
+    await tagApi.remove(selectItem.tag.id)
+    vscode.window.showInformationMessage(
+      `Remove tag [${selectItem.tag.title}] success`,
+    )
   }
 }
