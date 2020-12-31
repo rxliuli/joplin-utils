@@ -22,8 +22,8 @@
 
 ## 示例
 
-- hexo
-- vuepress
+- [hexo](https://github.com/rxliuli/joplin-blog/tree/master/tutorials/hexo-example)
+- [vuepress](https://github.com/rxliuli/joplin-blog/tree/master/tutorials/vuepress-example)
 
 ## 配置
 

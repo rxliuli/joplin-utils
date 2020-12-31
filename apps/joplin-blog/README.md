@@ -20,6 +20,11 @@ Way 2
 5. Run the command `yarn imp` 6.
 6. You can see that the `source/_posts` directory already contains all the exported notes
 
+## Example
+
+- [hexo](https://github.com/rxliuli/joplin-blog/tree/master/tutorials/hexo-example)
+- [vuepress](https://github.com/rxliuli/joplin-blog/tree/master/tutorials/vuepress-example)
+
 ## Configuration
 
 public
