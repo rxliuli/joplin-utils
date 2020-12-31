@@ -46,9 +46,12 @@ export class HandlerService {
       ),
     )
     vscode.window.showInformationMessage(
-      i18nLoader.get('turnOffResourceMonitoring', {
-        title: note.title,
-      }),
+      i18nLoader.get(
+        "'Turn off monitoring of attachment resources in the note [{{title}}]'",
+        {
+          title: note.title,
+        },
+      ),
     )
   }
 
@@ -63,7 +66,7 @@ export class HandlerService {
         await this.openResource(id)
         break
       default:
-        vscode.window.showErrorMessage('Unprocessable link')
+        vscode.window.showErrorMessage(i18nLoader.get('Unprocessable link'))
     }
   }
 
@@ -72,7 +75,7 @@ export class HandlerService {
   async openResource(id: string) {
     if (!appConfig.programProfilePath) {
       vscode.window.showWarningMessage(
-        "Please set up Joplin's personal directory",
+        i18nLoader.get("Please set up Joplin's personal directory"),
       )
       return
     }
@@ -95,7 +98,8 @@ export class HandlerService {
     const isWatch = await resourceActionApi.noteIsWatched(resource.id)
     if (isWatch) {
       vscode.window.showInformationMessage(
-        'Start monitoring attachment resource modification: ' + resource.title,
+        i18nLoader.get('Start monitoring attachment resource modification: ') +
+          resource.title,
       )
     }
     this.openResourceMap.set(id, resource.id)
@@ -105,7 +109,7 @@ export class HandlerService {
 
   async openNote(id: string) {
     if (!id) {
-      vscode.window.showWarningMessage('id cannot be empty')
+      vscode.window.showWarningMessage(i18nLoader.get('id cannot be empty'))
       return
     }
     const item = await noteApi.get(id, [
@@ -116,7 +120,7 @@ export class HandlerService {
       'todo_completed',
     ])
     if (!item) {
-      vscode.window.showWarningMessage('id does not exist')
+      vscode.window.showWarningMessage(i18nLoader.get('id does not exist'))
       return
     }
     await this.joplinNoteCommandService.openNote(
