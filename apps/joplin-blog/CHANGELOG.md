@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.1.2 - 2020-01-01
+
+- fixed passing tag from config instead of hard-coded to blog
+
 ## v0.1.1 - 2020-12-31
 
 - Fix the problem that the `\r` in the title is not cleared when exporting hexo blog
