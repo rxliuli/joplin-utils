@@ -11,4 +11,3 @@ dist
 **/tests/resource/
 **/__tests__/resource/
 wallaby.js
-.joplin-blog.json
