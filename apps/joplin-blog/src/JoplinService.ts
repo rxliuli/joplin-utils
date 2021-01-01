@@ -23,7 +23,7 @@ export class JoplinService {
           'user_updated_time',
         ],
         type: TypeEnum.Note,
-        query: `tag:${'blog'}`,
+        query: `tag:${tag}`,
       }),
     )
     return list.map(
