@@ -6,6 +6,7 @@
   - [x] 解决 joplin ref link 在编辑器中不能 `ctrl+click` 打开的问题
   - [x] 编辑器自定义面包屑，点击时自动展开左边的侧边栏 -- 放弃，这实在没什么必要
   - [ ] 支持在 markdown 直接将 `.drawio/.km` 的文件作为图片显示。
+  - [ ] 集成 joplin v1.5 直接预览视频、音频、PDF 附件资源的功能。
 - 优化
   - [ ] 在代码编辑器中直接添加引用 -- 使用搜索框选择
   - [ ] 添加 outline 标题侧边栏（等待 api 支持、或自行实现 <https://github.com/microsoft/vscode/issues/97095>）
