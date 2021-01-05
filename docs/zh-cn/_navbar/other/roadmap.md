@@ -5,12 +5,18 @@
     - [x] 支持编辑器右键菜单粘贴剪切板图片
   - [x] 解决 joplin ref link 在编辑器中不能 `ctrl+click` 打开的问题
   - [x] 编辑器自定义面包屑，点击时自动展开左边的侧边栏 -- 放弃，这实在没什么必要
+  - [ ] 支持在 markdown 直接将 `.drawio/.km` 的文件作为图片显示。
 - 优化
-  - [ ] 处理 vscode 不能从链接打开 `.drawio` 的问题（可能也包含 `.km` 的思维导图）
+  - [ ] 在代码编辑器中直接添加引用 -- 使用搜索框选择
+  - [ ] 添加 outline 标题侧边栏（等待 api 支持、或自行实现 <https://github.com/microsoft/vscode/issues/97095>）
+    - [ ] 笔记标题大纲
+    - [ ] 笔记的附件资源与引用笔记
+    - [ ] 笔记的时间线功能
+  - [x] 处理 vscode 不能从链接打开 `.drawio` 的问题（可能也包含 `.km` 的思维导图）
   - [x] 对 todo 启用特殊的右键菜单及 icon
   - [x] 支持在笔记中直接创建附件，主要是为了可以直接创建代码文件
   - [x] 修复 bug 从剪切板上传图片时提示 `Cannot read property 'globalStoragePath' of undefined`
-  - [ ] 优化消息国际化
+  - [x] 优化消息国际化
   - [x] 添加开发相关文档
   - [x] 修复根目录的笔记无法显示的问题
   - [x] 支持在外部程序中查看附件资源
@@ -19,11 +25,6 @@
   - [x] 编写使用 VSCode 编写 Markdown 文档的一些建议，参考：[个人经验分享：使用 VSCode + Joplin 作为笔记工具](:/9648f44ae78240d386481d449c583fc0)
   - [x] 应该允许拖动笔记或目录 -- vscode api 不支持
   - [x] 笔记/目录重命名直接就地出现输入框 -- vscode api 不支持
-  - [ ] 在代码编辑器中直接添加引用 -- 找不到一种合适的方式
-  - [ ] 添加 outline 标题侧边栏（等待 api 支持、或自行实现 <https://github.com/microsoft/vscode/issues/97095>）
-    - [ ] 笔记标题大纲
-    - [ ] 笔记的附件资源与引用笔记
-    - [ ] 笔记的时间线功能
 - 标签相关
   - [x] 为笔记添加标签
   - [x] 为笔记删除标签
@@ -35,7 +36,9 @@
   - [x] [词云](https://github.com/ecomfe/echarts-wordcloud)
   - [x] timeline 时间线
 - 创造 joplin-blog
-  - [ ] 导出指定笔记到 hexo blog
-  - [ ] 解决内嵌图片的问题
-  - [ ] 解决附件资源的问题
-  - [ ] 解决内部引用笔记的问题
+  - [ ] 提高性能
+  - [ ] 优化 ux
+  - [x] 导出指定笔记到 hexo blog
+  - [x] 解决内嵌图片的问题
+  - [x] 解决附件资源的问题
+  - [x] 解决内部引用笔记的问题
