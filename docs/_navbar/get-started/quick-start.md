@@ -31,7 +31,7 @@ To access the Joplin database, we need a connection to the API endpoint opened b
 
 > For help with Web Clipper refer to: [Joplin Web Clipper](https://joplinapp.org/clipper/).
 
-Two settings need attention to get up and running.
+Three settings need attention to get up and running.
 
 `Port`
 
@@ -42,6 +42,12 @@ Two settings need attention to get up and running.
 
 - Copy your Authorization token from Joplin settings and paste it here:  
   **Web Clipper -> Advanced options -> Authorization Token**
+
+`Program Profile Path`
+
+This setting is required if you wish to use attachment-related features.
+
+In general, if you are using a portable application, it should be the `. /JoplinProfile` directory, in which you should see the _resources_, _templates_, and _tmp_ directories.
 
 ![install plugin](../../_media/joplin-settings.png)
 
