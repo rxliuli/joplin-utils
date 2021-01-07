@@ -47,6 +47,7 @@ export async function activate(context: vscode.ExtensionContext) {
     const handlerService = BindThisUtil.bindClassMethod(
       new HandlerService(joplinNoteCommandService),
     )
+    joplinNoteCommandService.handlerService = handlerService
 
     //region register commands
 

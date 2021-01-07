@@ -49,6 +49,7 @@ export class AppConfig {
         '\nsort Order: ',
         this.sortOrder,
       )
+      this.programProfilePath = process.env.JOPLIN_PROGRAM_PROFILE_PATH
     }
   }
 

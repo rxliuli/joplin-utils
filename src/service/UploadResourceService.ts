@@ -47,7 +47,9 @@ export class UploadResourceService {
       return
     }
     const file = result[0]
-    const markdownLink = await UploadResourceUtil.uploadFileByPath(file.fsPath)
+    const { markdownLink } = await UploadResourceUtil.uploadFileByPath(
+      file.fsPath,
+    )
     await this.insertUrlByActiveEditor(markdownLink)
     vscode.window.showInformationMessage(
       i18nLoader.get('file uploaded successfully'),

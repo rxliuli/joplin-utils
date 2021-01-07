@@ -36,11 +36,11 @@ export class UploadResourceUtil {
     }
     console.log('uploadFileFromExplorer begin: ', filePath, param.title)
     const res = await resourceApi.create(param)
-    const markdownLink = `[${param.title}](resources/${res.id}${path.extname(
+    const markdownLink = `[${res.title}](resources/${res.id}${path.extname(
       filePath,
     )})`
     console.log('uploadFileFromExplorer end: ', markdownLink)
-    return markdownLink
+    return { res, markdownLink }
   }
 
   static getCurrentPlatform(): string {

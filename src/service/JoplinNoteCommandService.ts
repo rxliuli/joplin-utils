@@ -24,9 +24,12 @@ import { uploadResourceService } from './UploadResourceService'
 import { difference } from 'lodash'
 import { TagGetRes } from 'joplin-api/dist/modal/TagGetRes'
 import { i18nLoader } from '../util/constant'
+import { HandlerService } from './HandlerService'
+import { wait } from '../util/wait'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
+  public handlerService!: HandlerService
 
   constructor(
     private config: {
@@ -288,7 +291,9 @@ export class JoplinNoteCommandService {
       await mkdirp(dir)
     }
     await createEmptyFile(filePath)
-    const markdownLink = await UploadResourceUtil.uploadFileByPath(filePath)
+    const { res, markdownLink } = await UploadResourceUtil.uploadFileByPath(
+      filePath,
+    )
     await uploadResourceService.insertUrlByActiveEditor(markdownLink)
     if (await pathExists(filePath)) {
       await remove(filePath)
@@ -296,6 +301,7 @@ export class JoplinNoteCommandService {
     vscode.window.showInformationMessage(
       i18nLoader.get('Attachment resource created successfully'),
     )
+    await this.handlerService.openResource(res.id)
   }
 
   /**
