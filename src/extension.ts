@@ -76,15 +76,15 @@ export async function activate(context: vscode.ExtensionContext) {
       joplinNoteCommandService.createResource,
     )
     registerCommand(
+      'joplinNote.removeResource',
+      joplinNoteCommandService.removeResource,
+    )
+    registerCommand(
       'joplinNote.manageTags',
       joplinNoteCommandService.manageTags,
     )
     registerCommand('joplinNote.createTag', joplinNoteCommandService.createTag)
     registerCommand('joplinNote.removeTag', joplinNoteCommandService.removeTag)
-    registerCommand('joplinNote.resource.refresh', () => {
-      const fileName = vscode.window.activeTextEditor?.document.fileName
-      joplinNoteCommandService.onDidChangeActiveTextEditor(fileName)
-    })
     vscode.window.onDidChangeActiveTextEditor((e) =>
       joplinNoteCommandService.onDidChangeActiveTextEditor(
         e?.document.fileName,
@@ -152,4 +152,5 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 // this method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() {
+}

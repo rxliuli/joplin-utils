@@ -166,8 +166,8 @@
         "category": "Joplin"
       },
       {
-        "command": "joplinNote.resource.refresh",
-        "title": "joplinNote resource refresh",
+        "command": "joplinNote.removeResource",
+        "title": "%commands.joplinNote.removeResource%",
         "category": "Joplin"
       }
     ],

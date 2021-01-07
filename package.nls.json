@@ -18,6 +18,7 @@
   "commands.joplinNote.uploadImageFromExplorer": "Upload image from explorer",
   "commands.joplinNote.uploadFileFromExplorer": "Upload file from explorer",
   "commands.joplinNote.createResource": "Create attachment resources",
+  "commands.joplinNote.removeResource": "Delete attachment",
   "configuration.joplin.token": "joplin web server token",
   "configuration.joplin.port": "joplin web service port, default is 41184",
   "configuration.joplin.programProfilePath": "Personal directory for joplin programs",

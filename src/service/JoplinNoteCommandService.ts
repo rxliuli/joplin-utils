@@ -7,6 +7,7 @@ import {
   noteApi,
   noteExtApi,
   PageUtil,
+  resourceApi,
   searchApi,
   tagApi,
   TypeEnum,
@@ -26,6 +27,7 @@ import { TagGetRes } from 'joplin-api/dist/modal/TagGetRes'
 import { i18nLoader } from '../util/constant'
 import { HandlerService } from './HandlerService'
 import { wait } from '../util/wait'
+import { ResourceGetRes } from 'joplin-api/dist/modal/ResourceGetRes'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -302,6 +304,35 @@ export class JoplinNoteCommandService {
       i18nLoader.get('Attachment resource created successfully'),
     )
     await this.handlerService.openResource(res.id)
+  }
+
+  /**
+   * 删除附件
+   */
+  async removeResource() {
+    const list = (await PageUtil.pageToAllList(resourceApi.list)).map(
+      (item) =>
+        ({
+          label: item.title,
+          id: item.id,
+        } as vscode.QuickPickItem & { id: string }),
+    )
+    const selectItemList = await vscode.window.showQuickPick(list, {
+      canPickMany: true,
+      placeHolder: '请选择要删除的附件资源',
+    })
+    if (!selectItemList || selectItemList.length === 0) {
+      return
+    }
+    await Promise.all(
+      selectItemList.map(async (item) => resourceApi.remove(item.id)),
+    )
+    vscode.window.showInformationMessage(
+      selectItemList.map((item) => item.label).join('\n'),
+      {
+        title: '删除附件成功',
+      },
+    )
   }
 
   /**
