@@ -2,3 +2,4 @@
 - [常问问题](zh-cn/_navbar/get-started/faq.md)
 - [其他功能](zh-cn/_navbar/get-started/configuration.md)
 - [推荐扩展](zh-cn/_navbar/get-started/recommended-extension.md)
+- [限制](zh-cn/_navbar/get-started/limitations.md)
