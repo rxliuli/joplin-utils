@@ -310,7 +310,12 @@ export class JoplinNoteCommandService {
    * 删除附件
    */
   async removeResource() {
-    const list = (await PageUtil.pageToAllList(resourceApi.list)).map(
+    const list = (
+      await PageUtil.pageToAllList(resourceApi.list, {
+        order_by: 'user_updated_time',
+        order_dir: 'DESC',
+      })
+    ).map(
       (item) =>
         ({
           label: item.title,
