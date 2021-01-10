@@ -6,9 +6,10 @@
   - [x] 解决 joplin ref link 在编辑器中不能 `ctrl+click` 打开的问题
   - [x] 编辑器自定义面包屑，点击时自动展开左边的侧边栏 -- 放弃，这实在没什么必要
   - [ ] 支持在 markdown 直接将 `.drawio/.km` 的文件作为图片显示。
-  - [ ] 集成 joplin v1.5 直接预览视频、音频、PDF 附件资源的功能。
+  - [x] 集成 joplin v1.5 直接预览视频、音频、PDF 附件资源的功能。-- 确定不可行
 - 优化
   - [ ] 在代码编辑器中直接添加引用 -- 使用搜索框选择
+  - [ ] 实现笔记多选功能
   - [ ] 添加 outline 标题侧边栏（等待 api 支持、或自行实现 <https://github.com/microsoft/vscode/issues/97095>）
     - [ ] 笔记标题大纲
     - [ ] 笔记的附件资源与引用笔记
@@ -32,6 +33,8 @@
   - [x] 重命名标签
 - 整理 vscode api 使用
 - 创造 joplin-chars
+  - [ ] 优化性能
+  - [ ] 使用插件将之集成到 joplin 中
   - [x] [笔记关系图](https://echarts.apache.org/examples/zh/editor.html?c=graph)
   - [x] [笔记目录大小分析图](https://echarts.apache.org/examples/zh/editor.html?c=treemap-disk)
   - [x] [词云](https://github.com/ecomfe/echarts-wordcloud)
