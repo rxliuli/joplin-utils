@@ -7,7 +7,7 @@ export default {
   'Start monitoring attachment resource modification: ':
     'Start monitoring attachment resource modification: ',
   'id cannot be empty': 'id cannot be empty',
-  'id does not exist': 'id does not exist',
+  'Note does not exist': 'Note does not exist',
   'Please enter what you want to create {{type}} name':
     'Please enter what you want to create {{type}} name',
   'delete or not {{type}} [{{title}}]': 'delete or not {{type}} [{{title}}]',
@@ -30,4 +30,6 @@ export default {
   'Clipboard does not contain picture!': 'Clipboard does not contain picture',
   'file uploaded successfully': 'file uploaded successfully',
   'No active editor': 'No active editor',
+  'Resource [{{title}}] does not exist': 'Resource [{{title}}] does not exist',
+  'Resource does not exist': 'Resource [{{title}}] does not exist',
 } as const

@@ -6,7 +6,7 @@ export default {
   'Start monitoring attachment resource modification: ':
     '开始监视附件资源的修改：',
   'id cannot be empty': 'id 不能为空',
-  'id does not exist': 'id 不存在',
+  'Note does not exist': '笔记不存在',
   'Please enter what you want to create {{type}} name':
     '请输入要创建{{type}}的名称',
   'delete or not {{type}} [{{title}}]': '是否删除{{type}} [{{title}}]',
@@ -27,4 +27,5 @@ export default {
   'Clipboard does not contain picture!': '剪贴板不包含图片',
   'file uploaded successfully': '文件上传成功',
   'No active editor': '当前没有激活的编辑器',
+  'Resource does not exist': '资源不存在',
 } as const

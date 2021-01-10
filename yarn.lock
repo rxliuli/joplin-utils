@@ -5240,11 +5240,6 @@ linkify-it@^3.0.1:
   dependencies:
     uc.micro "^1.0.1"
 
-liuli-types@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/liuli-types/-/liuli-types-0.1.1.tgz#957d3dcda2e35cdc1d792335d1d0c2143c9b3cff"
-  integrity sha512-lL1oFwrwnAOzHAUbe2TMyTccgr2N6Ix2rm99RKeMQvzPTI9/SBhO4Nok8xqzZn9Li4pop84Laks5woyEQURICQ==
-
 locate-path@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-3.0.0.tgz#dbec3b3ab759758071b58fe59fc41871af21400e"
@@ -8127,6 +8122,11 @@ util@^0.11.0:
   integrity sha512-HShAsny+zS2TZfaXxD9tYj4HQGlBezXZMZuM/S5PKLLoZkShZiGk9o5CzukI1LVHZvjdvZ2Sj1aW/Ndn2NB/HQ==
   dependencies:
     inherits "2.0.3"
+
+utility-types@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.10.0.tgz#ea4148f9a741015f05ed74fd615e1d20e6bed82b"
+  integrity sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==
 
 uuid@^3.3.2:
   version "3.4.0"

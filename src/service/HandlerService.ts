@@ -16,6 +16,7 @@ import { BiMultiMap } from '../util/BiMultiMap'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { OpenFileService } from '../util/OpenFileService'
 import { i18nLoader } from '../util/constant'
+import { safePromise } from '../util/safePromise'
 
 /**
  * other service
@@ -79,11 +80,15 @@ export class HandlerService {
       )
       return
     }
-    const resource = await resourceApi.get(id, [
-      'id',
-      'title',
-      'file_extension',
-    ])
+    const resource = await safePromise(
+      resourceApi.get(id, ['id', 'title', 'file_extension']),
+    )
+    if (!resource) {
+      vscode.window.showWarningMessage(
+        i18nLoader.get('Resource does not exist'),
+      )
+      return
+    }
     const fileName = resource.id + '.' + resource.file_extension
     const filePath = path.resolve(
       appConfig.programProfilePath,
@@ -112,15 +117,17 @@ export class HandlerService {
       vscode.window.showWarningMessage(i18nLoader.get('id cannot be empty'))
       return
     }
-    const item = await noteApi.get(id, [
-      'id',
-      'parent_id',
-      'title',
-      'is_todo',
-      'todo_completed',
-    ])
+    const item = await safePromise(
+      noteApi.get(id, [
+        'id',
+        'parent_id',
+        'title',
+        'is_todo',
+        'todo_completed',
+      ]),
+    )
     if (!item) {
-      vscode.window.showWarningMessage(i18nLoader.get('id does not exist'))
+      vscode.window.showWarningMessage(i18nLoader.get('Note does not exist'))
       return
     }
     await this.joplinNoteCommandService.openNote(
