@@ -11,12 +11,12 @@ import * as MarkdownIt from 'markdown-it'
 import { useJoplinLink } from './util/useJoplinLink'
 import { uploadResourceService } from './service/UploadResourceService'
 import { MDDocumentLinkProvider, MDHoverProvider } from './model/EditorProvider'
-import { BindThisUtil } from './util/BindThisUtil'
 import { globalState } from './state/GlobalState'
 import * as Sentry from '@sentry/node'
 import * as os from 'os'
 import { init } from './init'
 import { registerCommand } from './util/registerCommand'
+import { ClassUtil } from '@liuli-util/object'
 
 init()
 
@@ -37,14 +37,14 @@ export async function activate(context: vscode.ExtensionContext) {
     const noteListTreeView = vscode.window.createTreeView('joplin-note', {
       treeDataProvider: noteListProvider,
     })
-    const joplinNoteCommandService = BindThisUtil.bindClassMethod(
+    const joplinNoteCommandService = ClassUtil.bindMethodThis(
       new JoplinNoteCommandService({
         noteViewProvider: noteListProvider,
         noteListTreeView,
       }),
     )
     joplinNoteCommandService.init(appConfig)
-    const handlerService = BindThisUtil.bindClassMethod(
+    const handlerService = ClassUtil.bindMethodThis(
       new HandlerService(joplinNoteCommandService),
     )
     joplinNoteCommandService.handlerService = handlerService

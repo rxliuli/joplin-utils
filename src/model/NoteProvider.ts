@@ -1,7 +1,5 @@
 import * as vscode from 'vscode'
 import { folderApi } from 'joplin-api'
-import { treeMapping } from '../util/treeMapping'
-import { INode } from '../util/INode'
 import { FolderOrNote } from './FolderOrNote'
 import {
   appConfig,
@@ -10,9 +8,12 @@ import {
 } from '../config/AppConfig'
 import { FolderListAllRes } from 'joplin-api/dist/modal/FolderListAllRes'
 import { joplinNoteApi } from '../api/JoplinNoteApi'
+import { treeEach } from '@liuli-util/tree'
 
 export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
-  private _onDidChangeTreeData: vscode.EventEmitter<FolderOrNote | undefined> = new vscode.EventEmitter<FolderOrNote | undefined>()
+  private _onDidChangeTreeData: vscode.EventEmitter<
+    FolderOrNote | undefined
+  > = new vscode.EventEmitter<FolderOrNote | undefined>()
   readonly onDidChangeTreeData: vscode.Event<FolderOrNote | undefined> = this
     ._onDidChangeTreeData.event
 
@@ -33,21 +34,15 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
   private async init() {
     this.folderList = await folderApi.listAll()
 
-    this.folderList.forEach((item) =>
-      treeMapping(item, {
-        before: (folder) => {
-          if (!folder.id) {
-            console.log(folder.id)
-          }
-          this.folderMap.set(folder.id, folder)
-          return {
-            id: folder.id,
-            parentId: folder.parent_id,
-            child: folder.children as any,
-            path: '',
-          } as INode
-        },
-      }),
+    treeEach(
+      this.folderList,
+      (item: FolderListAllRes) => {
+        this.folderMap.set(item.id, item)
+      },
+      {
+        id: 'id',
+        children: 'children',
+      },
     )
   }
 
@@ -68,9 +63,7 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
       if (this.folderList.length === 0) {
         await this.init()
       }
-      return this.folderList.map(
-        (item) => new FolderOrNote(item),
-      )
+      return this.folderList.map((item) => new FolderOrNote(item))
     }
     const folder = this.folderMap.get(element.id)
     if (!folder || (folder.note_count === 0 && !folder.children)) {
@@ -87,8 +80,10 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
       console.log('appConfig: ', appConfig)
     }
     if (appConfig.sortNotes) {
-      const compareMap: Record<SortNotesTypeEnum,
-        (a: FolderOrNote, b: FolderOrNote) => number> = {
+      const compareMap: Record<
+        SortNotesTypeEnum,
+        (a: FolderOrNote, b: FolderOrNote) => number
+      > = {
         [SortNotesTypeEnum.Alphabetical]: (a, b) => {
           return -b.item.title.localeCompare(a.item.title)
         },

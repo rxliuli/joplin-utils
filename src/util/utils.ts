@@ -4,13 +4,12 @@ import * as path from 'path'
 import { sort as sortPaths } from 'cross-path-sort'
 import * as fs from 'fs'
 
-import { WorkspaceCache, RefT, FoundRefT } from '../types'
+import { FoundRefT, RefT, WorkspaceCache } from '../types'
 import { isInCodeSpan, isInFencedCodeBlock } from './externalUtils'
-import { default as createDailyQuickPick } from './createDailyQuickPick'
 import * as MarkdownIt from 'markdown-it'
 import Token = require('markdown-it/lib/token')
 
-export { sortPaths, createDailyQuickPick }
+export { sortPaths }
 
 const markdownExtRegex = /\.md$/i
 
@@ -327,7 +326,6 @@ export const matchAll = (
   return out
 }
 
-const md = new MarkdownIt()
 export const getReferenceAtPosition = (
   document: vscode.TextDocument,
   position: vscode.Position,
@@ -357,19 +355,6 @@ export const getReferenceAtPosition = (
 export const escapeForRegExp = (value: string) =>
   value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
-export const extractEmbedRefs = (content: string) => {
-  const matches = matchAll(
-    new RegExp(`!\\[\\[(([^\\[\\]]+?)(\\|.*)?)\\]\\]`, 'gi'),
-    content,
-  )
-
-  return matches.map((match) => {
-    const [, $1] = match
-
-    return $1
-  })
-}
-
 export const findReferences = async (
   ref: string,
   excludePaths: string[] = [],
@@ -382,6 +367,7 @@ export const findReferences = async (
     }
 
     const fileContent = fs.readFileSync(fsPath).toString()
+    // noinspection RegExpRedundantEscape
     const refRegexp = new RegExp(
       `\\[\\[(${escapeForRegExp(ref)}(\\|[^\\[\\]]+?)?)\\]\\]`,
       'gi',
@@ -589,13 +575,5 @@ export const findNonIgnoredFiles = async (
     ...Object.keys(getConfigProperty('file.exclude', {})),
     ...(typeof excludeParam === 'string' ? [excludeParam] : []),
   ].join(',')
-
-  const files = await workspace.findFiles(
-    include,
-    `{${exclude}}`,
-    maxResults,
-    token,
-  )
-
-  return files
+  return workspace.findFiles(include, `{${exclude}}`, maxResults, token)
 }

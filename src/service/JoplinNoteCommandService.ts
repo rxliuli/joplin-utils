@@ -26,8 +26,6 @@ import { difference } from 'lodash'
 import { TagGetRes } from 'joplin-api/dist/modal/TagGetRes'
 import { i18nLoader } from '../util/constant'
 import { HandlerService } from './HandlerService'
-import { wait } from '../util/wait'
-import { ResourceGetRes } from 'joplin-api/dist/modal/ResourceGetRes'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()

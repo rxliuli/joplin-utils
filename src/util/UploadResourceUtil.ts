@@ -1,7 +1,6 @@
 import * as os from 'os'
 import * as path from 'path'
 import { createReadStream, mkdirpSync } from 'fs-extra'
-import * as dayjs from 'dayjs'
 import { spawn } from 'child_process'
 import * as fs from 'fs-extra'
 import { resourceApi } from 'joplin-api'
@@ -63,7 +62,7 @@ export class UploadResourceUtil {
     mkdirpSync(baseDir)
     const imagePath = path.resolve(
       baseDir,
-      `${dayjs().format('YYYYMMDDHHmmss')}.png`,
+      `${Date.now()}.png`,
     )
     return await new Promise<IClipboardImage>((resolve): void => {
       const platform: string = UploadResourceUtil.getCurrentPlatform()
