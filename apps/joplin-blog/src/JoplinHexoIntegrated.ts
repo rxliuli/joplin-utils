@@ -1,17 +1,16 @@
 import { JoplinService } from './JoplinService'
 import { JoplinNoteParser } from './JoplinNoteParser'
-import { arrayToMap } from './util/arrayToMap'
 import { noteApi, TypeEnum } from 'joplin-api'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import { CommonNote } from './model/CommonNote'
 import { copyFile, mkdirp, remove, writeFile } from 'fs-extra'
 import * as path from 'path'
-import { forEach } from './util/forEach'
-import { map } from './util/map'
-import { asyncLimiting } from './util/asyncLimiting'
 import { i18nLoader } from './util/constant'
 import { BaseJoplinIntegrated } from './BaseJoplinIntegrated'
 import { JoplinMarkdownUtil } from './util/JoplinMarkdownUtil'
+import { parallelAsyncArray } from '@liuli-util/async/dist/AsyncArray'
+import { asyncLimiting } from '@liuli-util/async'
+import { arrayToMap } from '@liuli-util/array'
 
 export interface JoplinHexoIntegratedConfig {
   type: 'hexo'
@@ -47,12 +46,12 @@ export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
       console.log(`${i18nLoader.getText('convertNote')} [${item.title}]`)
       return await this.convertNote(item, resourceList)
     }, 10)
-    const fileNoteList = await map(noteList, fn)
+    const fileNoteList = await parallelAsyncArray.map(noteList, fn)
     //写入笔记
     const hexoPostPath = path.resolve(this.config.rootPath, 'source/_posts')
     await remove(hexoPostPath)
     await mkdirp(hexoPostPath)
-    await forEach(fileNoteList, async (item) => {
+    await parallelAsyncArray.forEach(fileNoteList, async (item) => {
       console.log(`${i18nLoader.getText('writeNote')} [${item.title}]`)
       await writeFile(
         path.resolve(hexoPostPath, item.id + '.md'),
@@ -69,7 +68,7 @@ export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
     )
     await remove(hexoResourcePath)
     await mkdirp(hexoResourcePath)
-    await forEach(resourceList, async (item) => {
+    await parallelAsyncArray.forEach(resourceList, async (item) => {
       console.log(`${i18nLoader.getText('copyResource')} [${item.title}]`)
 
       const fileName = item.id + '.' + item.file_extension

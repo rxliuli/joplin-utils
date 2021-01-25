@@ -5,10 +5,10 @@ import { Link } from 'mdast'
 import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
 import { noteApi, TypeEnum } from 'joplin-api'
-import { arrayToMap } from './util/arrayToMap'
 import { format, Options } from 'prettier'
 import * as yaml from 'yaml'
 import { DateTime } from 'luxon'
+import { arrayToMap } from '@liuli-util/array'
 
 interface NoteMeta {
   layout: 'post'

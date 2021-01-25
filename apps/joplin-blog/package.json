@@ -51,6 +51,8 @@
     "unified": "^9.2.0",
     "unist-util-map": "^2.0.1",
     "unist-util-visit": "^2.0.3",
-    "yaml": "^1.10.0"
+    "yaml": "^1.10.0",
+    "@liuli-util/async": "^2.5.4",
+    "@liuli-util/array": "^2.5.3"
   }
 }
