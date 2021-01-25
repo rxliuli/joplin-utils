@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "docs:dev": "vuepress dev blog",
     "docs:build": "vuepress build blog",
