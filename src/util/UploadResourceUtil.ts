@@ -16,7 +16,7 @@ export interface IClipboardImage {
 export class UploadResourceUtil {
   static async uploadImageByPath(filePath: string) {
     const param = {
-      title: path.basename(filePath),
+      title: path.parse(filePath).name,
       data: createReadStream(path.resolve(filePath)),
     }
     console.log('uploadImageFromExplorer begin: ', filePath, param.title)
@@ -30,7 +30,7 @@ export class UploadResourceUtil {
 
   static async uploadFileByPath(filePath: string) {
     const param = {
-      title: path.basename(filePath),
+      title: path.parse(filePath).name,
       data: createReadStream(path.resolve(filePath)),
     }
     console.log('uploadFileFromExplorer begin: ', filePath, param.title)
@@ -60,10 +60,7 @@ export class UploadResourceUtil {
   static async getClipboardImage(fileDir: string): Promise<IClipboardImage> {
     const baseDir = path.resolve(fileDir, 'ClipboardImage')
     mkdirpSync(baseDir)
-    const imagePath = path.resolve(
-      baseDir,
-      `${Date.now()}.png`,
-    )
+    const imagePath = path.resolve(baseDir, `${Date.now()}.png`)
     return await new Promise<IClipboardImage>((resolve): void => {
       const platform: string = UploadResourceUtil.getCurrentPlatform()
       let execution
