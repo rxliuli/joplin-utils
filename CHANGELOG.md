@@ -1,5 +1,10 @@
 # Release Notes
 
+## 0.4.1
+
+- 上传图片、创建附件时名称中不再包含后缀
+- 使用 `context.globalStorageUri.fsPath` 替代废弃的 API `context.globalStoragePath`
+
 ## 0.4.0
 
 - Pop-up alert when notes or attachments are opened and found not to exist
@@ -8,7 +13,10 @@
 - Open an attachment immediately after it has been manually created
 - Update roadmap
 - Update get-started documentation to sync with English and fix some of the issues
-- Added [documentation for recommended vscode extensions](https://rxliuli.com/joplin-vscode-plugin/#/_navbar/get-started/recommended-extension)
+-
+
+Added [documentation for recommended vscode extensions](https://rxliuli.com/joplin-vscode-plugin/#/_navbar/get-started/recommended-extension)
+
 - Use `vscode.open` command to open files with `.drawio/.km` suffix if the corresponding extension is installed
 - Fix a problem with translated text
 
@@ -23,8 +31,11 @@
 
 ## 0.3.1
 
-- Provide keybinding for View: Show Joplin at Ctrl+J Ctrl+J. Add a sensible replacement binding for clobbered command workbench.action.togglePanel at Ctrl+K Ctrl+J.
-- Update quick-start by fleshing out with more detail. Of particular importance is describing where to find the Authorization token in Joplin Desktop and explaining away the clobbering of Ctrl+J system keybinding. Broke up text in a way that gives the impression of good document formatting despite the constraints of markdown.
+- Provide keybinding for View: Show Joplin at Ctrl+J Ctrl+J. Add a sensible replacement binding for clobbered command
+  workbench.action.togglePanel at Ctrl+K Ctrl+J.
+- Update quick-start by fleshing out with more detail. Of particular importance is describing where to find the
+  Authorization token in Joplin Desktop and explaining away the clobbering of Ctrl+J system keybinding. Broke up text in
+  a way that gives the impression of good document formatting despite the constraints of markdown.
 
 ## 0.3.0
 
@@ -51,8 +62,8 @@
 ## 0.1.10
 
 - Support clicking joplin-related links in the editor, including
-  - Attached resource files, use the system default program to open
-  - Quote notes, use Joplin to open in a new tab
+    - Attached resource files, use the system default program to open
+    - Quote notes, use Joplin to open in a new tab
 - Fixed the problem that Joplin attachment resources could not be opened in markdown preview
 
 ## 0.1.7
