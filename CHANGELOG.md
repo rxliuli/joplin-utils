@@ -2,8 +2,8 @@
 
 ## 0.4.1
 
-- 上传图片、创建附件时名称中不再包含后缀
-- 使用 `context.globalStorageUri.fsPath` 替代废弃的 API `context.globalStoragePath`
+- No longer include suffixes in names when uploading images and creating attachments
+- Use `context.globalStorageUri.fsPath` instead of the deprecated API `context.globalStoragePath`
 
 ## 0.4.0
 
