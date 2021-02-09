@@ -6,7 +6,7 @@ import { i18nLoader } from '../util/constant'
 
 export class UploadResourceService {
   async uploadImageFromClipboard() {
-    const globalStoragePath = globalState.context.globalStoragePath
+    const globalStoragePath = globalState.context.globalStorageUri.fsPath
     const clipboardImage = await UploadResourceUtil.getClipboardImage(
       globalStoragePath,
     )

@@ -272,7 +272,7 @@ export class JoplinNoteCommandService {
    * 创建资源
    */
   async createResource() {
-    const globalStoragePath = globalState.context.globalStoragePath
+    const globalStoragePath = globalState.context.globalStorageUri.fsPath
     const title = await vscode.window.showInputBox({
       placeHolder: i18nLoader.get(
         'Please enter what you want to create {{type}} name',
