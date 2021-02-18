@@ -398,9 +398,9 @@
     "vscode-test": "^1.4.1"
   },
   "dependencies": {
-    "@liuli-util/async": "^2.4.0",
-    "@liuli-util/object": "^2.4.0",
-    "@liuli-util/tree": "^2.4.0",
+    "@liuli-util/async": "^3.0.3",
+    "@liuli-util/object": "^3.0.2",
+    "@liuli-util/tree": "^3.0.2",
     "@sentry/node": "^5.29.2",
     "@sentry/tracing": "^5.29.2",
     "cross-path-sort": "^1.0.0",

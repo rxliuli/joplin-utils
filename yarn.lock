@@ -1098,20 +1098,20 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@liuli-util/async@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/@liuli-util/async/-/async-2.4.0.tgz#9ae7d068b7075c0fdcbeb9789fb854090480813c"
-  integrity sha512-/14cj9TlpePd71LF12m8g6loRjAh6UNi1fdRwr+WVWTRuRlztv+POJ5V08cOlGProKBUsLN6e1tbU4Z7I4NAIg==
+"@liuli-util/async@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@liuli-util/async/-/async-3.0.3.tgz#cce413734501c2d1c3add8a9f73b6486efa4fa21"
+  integrity sha512-teqssyKkEUTqdtquFfWv9PkGlmcy49V5ZYZyhG5RM4RsIMSkyNe5KwkYJujnha2pxzs3K1Kn1gWOvXZ5WlkoCw==
 
-"@liuli-util/object@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/@liuli-util/object/-/object-2.4.0.tgz#ddc9b43d1a715a9b64d549bfe5462d9babb82421"
-  integrity sha512-XzHa9d8S9vvgaIaZfmOp43cQk6UoYTDXTPiwKzyZy8GZKVOg8HWcQP58whPeP5CG0KyAFxS6XZgW5TZVhlaIlQ==
+"@liuli-util/object@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@liuli-util/object/-/object-3.0.2.tgz#da8e34b59248782405955ce89d534056d97ccc32"
+  integrity sha512-qwSa2F2/Y8AoqoFxBictPUgp6cSwnOSo56d8LDkktpj9p/R837+jDyo6ow+f/41J7xCpxoUwg0/pBnxiGTfJIg==
 
-"@liuli-util/tree@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.npmjs.org/@liuli-util/tree/-/tree-2.4.0.tgz#765bb4094ce8a9877e1c15c05612a3f0ab811dc8"
-  integrity sha512-uW7DsR8SdqwgTxynNkPIy+G6fhaSSIduJWvvEst8jMlN9+aBUXY6n3TYgX+uAdB8ICLyX2SnxDeyRYGB/kMexA==
+"@liuli-util/tree@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@liuli-util/tree/-/tree-3.0.2.tgz#63c95a2fd7756682834d6b22cd508064ba7d0067"
+  integrity sha512-09NkUw2EIEyHOiDvcFb6QL6DXmPXzIZoHHMof+O+0G7u9fOgCM/6lkh5MTEI1hjCW4yOEg2eSd+d9rpd5Sl7+Q==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
