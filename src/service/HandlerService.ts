@@ -89,10 +89,10 @@ export class HandlerService {
       )
       return
     }
-    const fileName = resource.id + '.' + resource.file_extension
+    const fileName = resource.title + '.' + resource.file_extension
     const filePath = path.resolve(
       appConfig.programProfilePath,
-      'resources',
+      'tmp/edited_resources',
       fileName,
     )
     await resourceActionApi.watch(resource.id)
