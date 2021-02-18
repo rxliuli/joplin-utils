@@ -17,6 +17,7 @@ import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { OpenFileService } from '../util/OpenFileService'
 import { i18nLoader } from '../util/constant'
 import { safePromise } from '../util/safePromise'
+import { AsyncArray } from '@liuli-util/async'
 
 /**
  * other service
@@ -41,11 +42,11 @@ export class HandlerService {
     await noteActionApi.stopWatching(noteId)
     this.openResourceMap.deleteByKey(noteId)
     const resourceIdList = this.openResourceMap.getByKey(noteId)
-    await Promise.all(
-      resourceIdList.map((resourceId) =>
-        resourceActionApi.stopWatching(resourceId),
-      ),
-    )
+    await AsyncArray.forEach(resourceIdList, async (resourceId) => {
+      await resourceActionApi.stopWatching(resourceId)
+      console.log('resourceActionApi.stopWatching(resourceId): ', resourceId)
+    })
+    this.openResourceMap.deleteByKey(noteId)
     vscode.window.showInformationMessage(
       i18nLoader.get(
         'Turn off monitoring of attachment resources in the note [{{title}}]',
@@ -107,7 +108,7 @@ export class HandlerService {
           resource.title,
       )
     }
-    this.openResourceMap.set(id, resource.id)
+    this.openResourceMap.set(noteId!, resource.id)
     // await this.openFileService.openFileByOS(filePath)
     await this.openFileService.openByVSCode(filePath)
   }
