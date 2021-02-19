@@ -38,7 +38,7 @@ export class HandlerService {
       return
     }
     console.log('close note: ', noteId)
-    const note = await noteApi.get(noteId)
+    // const note = await noteApi.get(noteId)
     await noteActionApi.stopWatching(noteId)
     this.openResourceMap.deleteByKey(noteId)
     const resourceIdList = this.openResourceMap.getByKey(noteId)
@@ -47,14 +47,14 @@ export class HandlerService {
       console.log('resourceActionApi.stopWatching(resourceId): ', resourceId)
     })
     this.openResourceMap.deleteByKey(noteId)
-    vscode.window.showInformationMessage(
-      i18nLoader.get(
-        'Turn off monitoring of attachment resources in the note [{{title}}]',
-        {
-          title: note.title,
-        },
-      ),
-    )
+    // vscode.window.showInformationMessage(
+    //   i18nLoader.get(
+    //     'Turn off monitoring of attachment resources in the note [{{title}}]',
+    //     {
+    //       title: note.title,
+    //     },
+    //   ),
+    // )
   }
 
   async uriHandler(uri: Uri) {
