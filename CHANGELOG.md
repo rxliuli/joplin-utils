@@ -1,5 +1,12 @@
 # Release Notes
 
+## 0.4.2
+
+- Disable prompt message when closing notes
+- Fix bug that notes <=> resources mapping relationship is not saved when listening to resources
+- Upgrade toolkit version of @liuli-util/*
+- Fix the bug that the listener file location is wrong when modifying attached resources
+
 ## 0.4.1
 
 - No longer include suffixes in names when uploading images and creating attachments
