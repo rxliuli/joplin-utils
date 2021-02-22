@@ -1,3 +1,4 @@
+import * as vscode from 'vscode'
 import { TextDocument, Uri } from 'vscode'
 import {
   noteActionApi,
@@ -9,8 +10,6 @@ import {
 import { parse } from 'querystring'
 import { JoplinNoteCommandService } from './JoplinNoteCommandService'
 import { FolderOrNote } from '../model/FolderOrNote'
-import * as vscode from 'vscode'
-import path = require('path')
 import { appConfig } from '../config/AppConfig'
 import { BiMultiMap } from '../util/BiMultiMap'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
@@ -18,6 +17,7 @@ import { OpenFileService } from '../util/OpenFileService'
 import { i18nLoader } from '../util/constant'
 import { safePromise } from '../util/safePromise'
 import { AsyncArray } from '@liuli-util/async'
+import path = require('path')
 
 /**
  * other service
