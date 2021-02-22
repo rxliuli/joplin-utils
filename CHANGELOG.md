@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.4.3
+
+- Remove sentry.io's error report support
+
 ## 0.4.2
 
 - Disable prompt message when closing notes
