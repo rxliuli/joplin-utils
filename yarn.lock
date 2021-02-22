@@ -1112,6 +1112,16 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@liuli-util/array@^2.5.3":
+  version "2.5.3"
+  resolved "https://registry.npmjs.org/@liuli-util/array/-/array-2.5.3.tgz#7ef32c19e578da13f61c428e1e0167f48cbc4d25"
+  integrity sha512-NpDftErROT0LECWcc2kVp9Nv0pOOEXbQwX6tyD3AizpZJ5L4ksX7tKUyOxary3tWGJhSmuNSLLQm7Fg+Zw9lug==
+
+"@liuli-util/async@^2.5.4":
+  version "2.5.4"
+  resolved "https://registry.npmjs.org/@liuli-util/async/-/async-2.5.4.tgz#3da3e39f063ffab5f40fad81847380034bb280ce"
+  integrity sha512-xJaKr1HAJrhcn1N9Rogt1aq8npwEX7Qm0HJ5yYv6C/wELvUlP47Dj7Cw/lENuKadfQmqL254/PzUm7eVaeEqLQ==
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
