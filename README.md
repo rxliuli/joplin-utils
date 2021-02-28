@@ -3,8 +3,6 @@
 > [English](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/README.md), [简体中文](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/README.ZH_CN.md)  
 > [VSCode Plugin Marketplace](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin&ssr=false#overview)
 
-The integration of joplin in VSCode currently allows direct operations on directories and notes, while supporting the search function.
-
 ## Overview
 
 `joplin-vscode-plugin` offers editing and management of Joplin notes with the power and flexibility of VSCode.
