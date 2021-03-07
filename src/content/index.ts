@@ -52,7 +52,7 @@ async function main() {
   }
   const settings = await getSettings()
   if (!settings) {
-    await browser.runtime.openOptionsPage()
+    await browser.runtime.sendMessage({ action: 'openOptionsPage' })
     return
   }
   // console.log('settings: ', settings)
