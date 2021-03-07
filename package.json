@@ -46,14 +46,14 @@
     "ts-node": "^9.0.0",
     "tslib": "^2.0.3",
     "typedoc": "^0.19.2",
-    "typescript": "^4.0.5"
+    "typescript": "^4.0.5",
+    "shx": "^0.3.3"
   },
   "dependencies": {
     "axios": "^0.21.0",
-    "form-data": "^3.0.0",
-    "node-fetch": "^2.6.1",
     "query-string": "^6.13.7",
-    "shx": "^0.3.3"
+    "form-data": "^3.0.0",
+    "node-fetch": "^2.6.1"
   },
   "husky": {
     "hooks": {
