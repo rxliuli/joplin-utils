@@ -1,0 +1,30 @@
+{
+  "name": "joplin-google-search-intergration",
+  "version": "0.1.0",
+  "description": "将 Joplin 搜索集成到 Google 搜索结果中",
+  "background": {
+    "scripts": [
+      "background/index.ts"
+    ]
+  },
+  "content_scripts": [
+    {
+      "js": [
+        "content/index.ts"
+      ],
+      "matches": [
+        "https://www.google.com/search?q=*"
+      ]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "pages/popup/index.html"
+  },
+  "icons": {
+    "16": "public/get_started16.png",
+    "32": "public/get_started32.png",
+    "48": "public/get_started48.png",
+    "128": "public/get_started128.png"
+  },
+  "manifest_version": 2
+}
