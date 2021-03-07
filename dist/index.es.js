@@ -241,17 +241,13 @@ var NoteApi = /** @class */ (function () {
             return ajax.get("/notes/" + id + "/tags", __assign({}, others));
         }, { id: id });
     };
-    /**
-     * TODO 目前这里不指定 fields 时会发生错误，这应该是个 bug
-     * @link https://discourse.joplinapp.org/t/pre-release-1-4-is-now-available-for-testing/12247/14?u=rxliuli
-     * @param id
-     */
-    NoteApi.prototype.resourcesById = function (id) {
+    NoteApi.prototype.resourcesById = function (id, fields) {
+        if (fields === void 0) { fields = ['id', 'title']; }
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, PageUtil.pageToAllList(function (_a) {
                         var id = _a.id, others = __rest(_a, ["id"]);
-                        return ajax.get("/notes/" + id + "/resources", __assign({ fields: ['id', 'title'] }, others));
+                        return ajax.get("/notes/" + id + "/resources", __assign({ fields: fields }, others));
                     }, { id: id })];
             });
         });
