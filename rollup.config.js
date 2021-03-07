@@ -14,19 +14,19 @@ const isProduction = process.env.NODE_ENV === 'production'
 // Aliases for module resolution
 const aliases = isProduction
   ? [
-    {
-      find: 'react',
-      // Use the production build
-      replacement: require.resolve('react/esm/react.production.min.js'),
-    },
-    {
-      find: 'react-dom',
-      // Use the production build
-      replacement: require.resolve(
-        'react-dom/esm/react-dom.production.min.js',
-      ),
-    },
-  ]
+      {
+        find: 'react',
+        // Use the production build
+        replacement: require.resolve('react/esm/react.production.min.js'),
+      },
+      {
+        find: 'react-dom',
+        // Use the production build
+        replacement: require.resolve(
+          'react-dom/esm/react-dom.production.min.js',
+        ),
+      },
+    ]
   : []
 
 export default {
@@ -34,7 +34,7 @@ export default {
   output: {
     dir: 'dist',
     format: 'esm',
-    chunkFileNames: 'chunks/[name]-[hash].js',
+    // chunkFileNames: 'chunks/[name]-[hash].js',
   },
   plugins: [
     chromeExtension({

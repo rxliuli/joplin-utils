@@ -23,6 +23,8 @@
     "react": "npm:@esm-bundle/react@^17.0.1-fix.0",
     "react-dom": "npm:@esm-bundle/react-dom@^17.0.1",
     "react-hook-form": "^6.15.4",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.2.0",
     "react-use": "^17.1.1",
     "webextension-polyfill": "^0.7.0"
   },
@@ -34,6 +36,9 @@
     "@rollup/plugin-replace": "^2.4.1",
     "@rollup/plugin-typescript": "^8.1.0",
     "@types/jest": "^26.0.19",
+    "@types/react-router": "^5.1.12",
+    "@types/react-router-config": "^5.0.2",
+    "@types/react-router-dom": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
     "cross-env": "^7.0.3",
