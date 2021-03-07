@@ -10,6 +10,17 @@ function createRhs() {
   return $rhs
 }
 
+function createLi(note: SearchNote) {
+  const $li = document.createElement('li')
+  const $a = document.createElement('a')
+  $a.href = 'javascript:void(0)'
+  $a.text = note.title
+  $a.addEventListener('click', async () => {
+    await noteActionApi.openAndWatch(note.id)
+  })
+  $li.appendChild($a)
+  return $li
+}
 
 /**
  * 渲染搜索结果到页面上
@@ -21,17 +32,9 @@ export function renderNoteResult(noteList: SearchNote[]) {
     return
   }
 
-  function createLi(note: SearchNote) {
-    const $li = document.createElement('li')
-    const $a = document.createElement('a')
-    $a.href = 'javascript:void(0)'
-    $a.text = note.title
-    $a.addEventListener('click', async () => {
-      await noteActionApi.openAndWatch(note.id)
-    })
-    $li.appendChild($a)
-    return $li
-  }
-
-  noteList.map(createLi).forEach(($el) => $rhs.appendChild($el))
+  const $ul = document.createElement('ul')
+  $ul.style.width = '100%'
+  $ul.style.marginRight = '28px'
+  noteList.map(createLi).forEach(($el) => $ul.appendChild($el))
+  $rhs.appendChild($ul)
 }
