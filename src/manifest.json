@@ -13,13 +13,12 @@
         "content/index.ts"
       ],
       "matches": [
-        "https://www.google.com/search?q=*"
+        "https://www.google.com/search?*",
+        "https://www.google.com.hk/search?*"
       ]
     }
   ],
-  "browser_action": {
-    "default_popup": "pages/popup/index.html"
-  },
+  "options_page": "pages/options/index.html",
   "icons": {
     "16": "public/get_started16.png",
     "32": "public/get_started32.png",

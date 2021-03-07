@@ -40,7 +40,9 @@ export default {
     // Adds a Chrome extension reloader during watch mode
     simpleReloader(),
     alias({ entries: aliases }),
-    resolve(),
+    resolve({
+      browser: true,
+    }),
     commonjs(),
     json(),
     typescript(),

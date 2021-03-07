@@ -1,5 +1,7 @@
 import type { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { parse } from 'query-string'
+import { config, noteActionApi, searchApi, TypeEnum } from 'joplin-api'
+import { JoplinNoteUtil } from './util/JoplinNoteUtil'
 
 Reflect.set(window, 'console', new Proxy(console, {
   get(target: Console, p: PropertyKey): any {
@@ -20,55 +22,69 @@ function parseSearchKeyword(): string | null {
   return keyword
 }
 
-// /**
-//  * 搜索 Joplin 的笔记
-//  */
-// async function searchJoplin(
-//   keyword: string,
-// ): Promise<Pick<NoteProperties, 'id' | 'title'>[]> {
-//   const res = await searchApi.search({
-//     query: keyword,
-//     type: TypeEnum.Note,
-//     limit: 10,
-//     fields: ['id', 'title'],
-//     order_by: 'user_updated_time',
-//   })
-//   return res.items
-// }
+type SearchNote = Pick<NoteProperties, 'id' | 'title'>
+
+/**
+ * 搜索 Joplin 的笔记
+ */
+async function searchJoplin(
+  keyword: string,
+): Promise<SearchNote[]> {
+  const res = await searchApi.search({
+    query: keyword,
+    type: TypeEnum.Note,
+    limit: 10,
+    fields: ['id', 'title'],
+    order_by: 'user_updated_time',
+  })
+  return res.items.map(item => ({ ...item, title: JoplinNoteUtil.trimTitleStart(item.title) }))
+}
+
+function createRhs() {
+  const $rcht = document.querySelector('#rcnt')!
+  const $rhs = document.createElement('div') as HTMLDivElement
+  $rhs.id = 'rhs'
+  $rhs.style.marginLeft = '892px'
+  $rcht.insertBefore($rhs, $rcht.lastElementChild)
+  return $rhs
+}
 
 /**
  * 渲染搜索结果到页面上
  */
-function renderNoteResult(noteList: { id: string; title: string }[]) {
-  const $sider = document.getElementById('rhs')
-  if ($sider === null) {
-    throw new Error('网页结构发生了变化')
+function renderNoteResult(noteList: SearchNote[]) {
+  const $rhs = document.querySelector('#rhs') || createRhs()
+  if ($rhs === null) {
+    console.error('网页结构发生了变化')
+    return
   }
 
-  function createLi(note: Pick<NoteProperties, 'id' | 'title'>) {
+  function createLi(note: SearchNote) {
     const $li = document.createElement('li')
     const $a = document.createElement('a')
-    $a.href = '#'
+    $a.href = 'javascript:void(0)'
     $a.text = note.title
     $a.addEventListener('click', async () => {
-      // await noteActionApi.openAndWatch(note.id)
+      await noteActionApi.openAndWatch(note.id)
     })
     $li.appendChild($a)
     return $li
   }
 
-  noteList.map(createLi).forEach(($el) => $sider.appendChild($el))
+  noteList.map(createLi).forEach(($el) => $rhs.appendChild($el))
 }
 
 async function init() {
   const keyword = parseSearchKeyword()
+  console.log('keyword: ', keyword)
   if (keyword === null) {
     return
   }
-  console.log('keyword: ', keyword)
-  // searchJoplin(keyword)
+  config.token = ''
+  const noteList = await searchJoplin(keyword)
+  console.log('noteList: ', noteList)
   window.addEventListener('load', () => {
-    renderNoteResult([{ id: '1', title: 'VSCode VS WebStorm' }])
+    renderNoteResult(noteList)
   })
 }
 
