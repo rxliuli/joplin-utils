@@ -2,6 +2,7 @@
   "name": "joplin-google-search-intergration",
   "description": "将 Joplin 搜索集成到 Google 搜索结果中",
   "version": "0.1.0",
+  "manifest_version": 2,
   "license": "MIT",
   "keywords": [
     "chrome-extension",
