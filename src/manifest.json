@@ -2,6 +2,9 @@
   "name": "joplin-google-search-intergration",
   "version": "0.1.0",
   "description": "将 Joplin 搜索集成到 Google 搜索结果中",
+  "permissions": [
+    "storage"
+  ],
   "background": {
     "scripts": [
       "background/index.ts"

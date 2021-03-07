@@ -1,7 +1,9 @@
-import type { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { parse } from 'query-string'
-import { config, noteActionApi, searchApi, TypeEnum } from 'joplin-api'
+import { config, searchApi, TypeEnum } from 'joplin-api'
 import { JoplinNoteUtil } from './util/JoplinNoteUtil'
+import { renderNoteResult } from './renderNoteResult'
+import { SearchNote } from './model/SearchNote'
+import { Settings } from '../pages/options/model/Settings'
 
 Reflect.set(window, 'console', new Proxy(console, {
   get(target: Console, p: PropertyKey): any {
@@ -22,8 +24,6 @@ function parseSearchKeyword(): string | null {
   return keyword
 }
 
-type SearchNote = Pick<NoteProperties, 'id' | 'title'>
-
 /**
  * 搜索 Joplin 的笔记
  */
@@ -40,47 +40,24 @@ async function searchJoplin(
   return res.items.map(item => ({ ...item, title: JoplinNoteUtil.trimTitleStart(item.title) }))
 }
 
-function createRhs() {
-  const $rcht = document.querySelector('#rcnt')!
-  const $rhs = document.createElement('div') as HTMLDivElement
-  $rhs.id = 'rhs'
-  $rhs.style.marginLeft = '892px'
-  $rcht.insertBefore($rhs, $rcht.lastElementChild)
-  return $rhs
+async function getSettings(): Promise<Settings | undefined> {
+  return (await browser.storage.local.get('settings')).settings
 }
 
-/**
- * 渲染搜索结果到页面上
- */
-function renderNoteResult(noteList: SearchNote[]) {
-  const $rhs = document.querySelector('#rhs') || createRhs()
-  if ($rhs === null) {
-    console.error('网页结构发生了变化')
-    return
-  }
-
-  function createLi(note: SearchNote) {
-    const $li = document.createElement('li')
-    const $a = document.createElement('a')
-    $a.href = 'javascript:void(0)'
-    $a.text = note.title
-    $a.addEventListener('click', async () => {
-      await noteActionApi.openAndWatch(note.id)
-    })
-    $li.appendChild($a)
-    return $li
-  }
-
-  noteList.map(createLi).forEach(($el) => $rhs.appendChild($el))
-}
-
-async function init() {
+async function main() {
   const keyword = parseSearchKeyword()
   console.log('keyword: ', keyword)
   if (keyword === null) {
     return
   }
-  config.token = ''
+  const settings = await getSettings()
+  if (!settings) {
+    await browser.runtime.openOptionsPage()
+    return
+  }
+  // console.log('settings: ', settings)
+  config.token = settings.token
+  config.port = settings.port
   const noteList = await searchJoplin(keyword)
   console.log('noteList: ', noteList)
   window.addEventListener('load', () => {
@@ -88,4 +65,4 @@ async function init() {
   })
 }
 
-init()
+main()
