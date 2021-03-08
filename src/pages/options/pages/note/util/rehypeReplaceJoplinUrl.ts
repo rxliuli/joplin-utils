@@ -3,6 +3,7 @@ import visit from 'unist-util-visit'
 import { Node } from 'unist'
 import { RenderNote } from './render'
 import { noteViewState } from '../NoteView.state'
+import { getNoteRoute } from './getNoteRoute'
 
 /**
  * 替换 url
@@ -17,7 +18,7 @@ export function replaceUrl(href: string, note: RenderNote): string {
       return `http://localhost:41184/resources/${id}/file?token=${noteViewState.settings?.token}`
     }
     console.log('noteId: ', id)
-    return `chrome-extension://gmkdjdbgpnfppnolhplppjfidknejkbm/pages/options/index.html#/note/${id}`
+    return getNoteRoute(id)
   }
   console.log(href)
   return href
