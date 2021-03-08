@@ -11,10 +11,9 @@ const Settings: React.FC = () => {
       port: 41184,
     },
   })
-  useMount(
-    async () => {
-      console.log((await storage.get()))
-    })
+  useMount(async () => {
+    console.log(await storage.get())
+  })
 
   async function onSubmit(data: Settings) {
     console.log('data: ', data)
@@ -25,18 +24,28 @@ const Settings: React.FC = () => {
 
   return (
     <div className={css.root}>
-      <h1>设置</h1>
+      <h1>Settings</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label htmlFor={'token'}>令牌: </label>
-          <input ref={register({ required: true })} name={'token'} id={'token'} type={'password'} />
+          <label htmlFor={'token'}>Token: </label>
+          <input
+            ref={register({ required: true })}
+            name={'token'}
+            id={'token'}
+            type={'password'}
+          />
         </div>
         <div>
-          <label htmlFor={'port'}>端口：</label>
-          <input ref={register({ required: true })} name={'port'} id={'port'} type={'number'} />
+          <label htmlFor={'port'}>Port：</label>
+          <input
+            ref={register({ required: true })}
+            name={'port'}
+            id={'port'}
+            type={'number'}
+          />
         </div>
         <div>
-          <button type={'submit'}>提交</button>
+          <button type={'submit'}>Submit</button>
         </div>
       </form>
     </div>

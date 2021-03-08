@@ -1,6 +1,6 @@
 {
   "name": "joplin-search-integration",
-  "description": "将 Joplin 搜索集成到搜索结果中",
+  "description": "When using the search, related Joplin notes are also displayed in the search results",
   "version": "0.1.0",
   "manifest_version": 2,
   "license": "MIT",
