@@ -4,14 +4,19 @@ import { JoplinNoteUtil } from './util/JoplinNoteUtil'
 import { renderNoteResult } from './renderNoteResult'
 import { SearchNote } from './model/SearchNote'
 import { getSettings } from './util/getSettings'
+import { ActionTypeEnum } from '../background/model/ActionTypeEnum'
 
-Reflect.set(window, 'console', new Proxy(console, {
-  get(target: Console, p: PropertyKey): any {
-    return (...args: never[]) => {
-      Reflect.get(target, p)('[joplin] ', ...args)
-    }
-  },
-}))
+Reflect.set(
+  window,
+  'console',
+  new Proxy(console, {
+    get(target: Console, p: PropertyKey): any {
+      return (...args: never[]) => {
+        Reflect.get(target, p)('[joplin] ', ...args)
+      }
+    },
+  }),
+)
 
 /**
  * 解析搜索参数
@@ -27,9 +32,7 @@ function parseSearchKeyword(): string | null {
 /**
  * 搜索 Joplin 的笔记
  */
-async function searchJoplin(
-  keyword: string,
-): Promise<SearchNote[]> {
+async function searchJoplin(keyword: string): Promise<SearchNote[]> {
   const res = await searchApi.search({
     query: keyword,
     type: TypeEnum.Note,
@@ -37,7 +40,10 @@ async function searchJoplin(
     fields: ['id', 'title'],
     order_by: 'user_updated_time',
   })
-  return res.items.map(item => ({ ...item, title: JoplinNoteUtil.trimTitleStart(item.title) }))
+  return res.items.map((item) => ({
+    ...item,
+    title: JoplinNoteUtil.trimTitleStart(item.title),
+  }))
 }
 
 async function main() {
@@ -48,7 +54,9 @@ async function main() {
   }
   const settings = await getSettings()
   if (!settings) {
-    await browser.runtime.sendMessage({ action: 'openOptionsPage' })
+    await browser.runtime.sendMessage({
+      action: ActionTypeEnum.OpenOptionsPage,
+    })
     return
   }
   // console.log('settings: ', settings)

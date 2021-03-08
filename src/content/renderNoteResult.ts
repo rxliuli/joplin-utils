@@ -1,5 +1,5 @@
-import { noteActionApi } from 'joplin-api'
 import { SearchNote } from './model/SearchNote'
+import { ActionTypeEnum } from '../background/model/ActionTypeEnum'
 
 function createRhs() {
   const $rcht = document.querySelector('#rcnt')!
@@ -16,7 +16,10 @@ function createLi(note: SearchNote) {
   $a.href = 'javascript:void(0)'
   $a.text = note.title
   $a.addEventListener('click', async () => {
-    await noteActionApi.openAndWatch(note.id)
+    await browser.runtime.sendMessage({
+      action: ActionTypeEnum.OpenNote,
+      data: { id: note.id },
+    })
   })
   $li.appendChild($a)
   return $li
