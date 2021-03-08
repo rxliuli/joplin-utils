@@ -4,22 +4,27 @@
   "version": "0.1.0",
   "manifest_version": 2,
   "license": "MIT",
-  "keywords": [
-    "chrome-extension",
-    "web-extension"
-  ],
   "scripts": {
     "build": "rollup -c",
     "release": "cross-env NODE_ENV=production rollup -c",
     "start": "rollup -c -w",
     "test": "jest"
   },
+  "keywords": [
+    "chrome-extension",
+    "web-extension"
+  ],
+  "jest": {
+    "preset": "ts-jest"
+  },
   "dependencies": {
     "@types/chrome": "^0.0.127",
     "@types/firefox-webext-browser": "^82.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "highlight.js": "^10.6.0",
     "joplin-api": "^0.2.5",
+    "markdown-it": "^12.0.4",
     "prettier": "^2.2.1",
     "react": "npm:@esm-bundle/react@^17.0.1-fix.0",
     "react-dom": "npm:@esm-bundle/react-dom@^17.0.1",
@@ -27,6 +32,13 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.2.0",
     "react-use": "^17.1.1",
+    "rehype-highlight": "^4.1.0",
+    "rehype-stringify": "^8.0.0",
+    "remark-gfm": "^1.0.0",
+    "remark-html": "^13.0.1",
+    "remark-parse": "^9.0.0",
+    "remark-rehype": "^8.0.0",
+    "unified": "^9.2.1",
     "webextension-polyfill": "^0.7.0"
   },
   "devDependencies": {
@@ -37,6 +49,7 @@
     "@rollup/plugin-replace": "^2.4.1",
     "@rollup/plugin-typescript": "^8.1.0",
     "@types/jest": "^26.0.19",
+    "@types/markdown-it": "^12.0.1",
     "@types/react-router": "^5.1.12",
     "@types/react-router-config": "^5.0.2",
     "@types/react-router-dom": "^5.1.7",

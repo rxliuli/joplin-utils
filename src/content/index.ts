@@ -3,7 +3,7 @@ import { config, searchApi, TypeEnum } from 'joplin-api'
 import { JoplinNoteUtil } from './util/JoplinNoteUtil'
 import { renderNoteResult } from './renderNoteResult'
 import { SearchNote } from './model/SearchNote'
-import { Settings } from '../pages/options/model/Settings'
+import { getSettings } from './util/getSettings'
 
 Reflect.set(window, 'console', new Proxy(console, {
   get(target: Console, p: PropertyKey): any {
@@ -38,10 +38,6 @@ async function searchJoplin(
     order_by: 'user_updated_time',
   })
   return res.items.map(item => ({ ...item, title: JoplinNoteUtil.trimTitleStart(item.title) }))
-}
-
-async function getSettings(): Promise<Settings | undefined> {
-  return (await browser.storage.local.get('settings')).settings
 }
 
 async function main() {
