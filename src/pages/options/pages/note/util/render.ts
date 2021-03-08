@@ -3,17 +3,27 @@ import remarkParse from 'remark-parse'
 import remark2rehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 import rehypePrism from '@mapbox/rehype-prism'
+import { rehypeReplaceJoplinUrl } from './rehypeReplaceJoplinUrl'
+import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
+import { ResourceGetRes } from 'joplin-api/dist/modal/ResourceGetRes'
 
-const processor = unified()
-  .use(remarkParse)
-  .use(remark2rehype)
-  .use(rehypePrism)
-  .use(rehypeStringify)
+export type RenderNote = Pick<NoteProperties, 'id' | 'title' | 'body'> & {
+  resourceList: ResourceGetRes[]
+}
 
 /**
  * 渲染一个 markdown 字符串为 html
- * @param md
+ * @param note
  */
-export function render(md: string): string {
-  return processor.processSync(md).contents.toString()
+export function render(note: RenderNote): string {
+  const processor = unified()
+    .use(remarkParse)
+    .use(remark2rehype)
+    .use(rehypeReplaceJoplinUrl, note)
+    .use(rehypePrism)
+    .use(rehypeStringify)
+
+  return processor
+    .processSync(note.title + '\n' + note.body)
+    .contents.toString()
 }
