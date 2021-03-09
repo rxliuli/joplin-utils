@@ -1,4 +1,9 @@
 .markdownView {
+    min-height: 100vh;
+    background-color: #33342D;
+}
+
+.markdownContent {
     font-size: 16px;
     max-width: 888px;
     margin: auto;

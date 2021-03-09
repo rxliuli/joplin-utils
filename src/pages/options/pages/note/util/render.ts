@@ -20,7 +20,7 @@ export function render(note: RenderNote): string {
     .use(remarkParse)
     .use(remark2rehype)
     .use(rehypeReplaceJoplinUrl, note)
-    .use(rehypePrism)
+    .use(rehypePrism, { ignoreMissing: true })
     .use(rehypeStringify)
 
   return processor
