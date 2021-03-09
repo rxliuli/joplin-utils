@@ -1,6 +1,3 @@
 declare module '*.module.css'
-declare module 'rehype-highlight'
 declare module '@mapbox/rehype-prism'
-declare module 'rehype-urls'
 declare module 'hast-util-has-property'
-declare module 'stdopt'

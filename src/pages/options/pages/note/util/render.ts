@@ -6,6 +6,7 @@ import rehypePrism from '@mapbox/rehype-prism'
 import { rehypeReplaceJoplinUrl } from './rehypeReplaceJoplinUrl'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { ResourceGetRes } from 'joplin-api/dist/modal/ResourceGetRes'
+import remarkGfm from 'remark-gfm'
 
 export type RenderNote = Pick<NoteProperties, 'id' | 'title' | 'body'> & {
   resourceList: ResourceGetRes[]
@@ -18,6 +19,7 @@ export type RenderNote = Pick<NoteProperties, 'id' | 'title' | 'body'> & {
 export function render(note: RenderNote): string {
   const processor = unified()
     .use(remarkParse)
+    .use(remarkGfm)
     .use(remark2rehype)
     .use(rehypeReplaceJoplinUrl, note)
     .use(rehypePrism, { ignoreMissing: true })
