@@ -11024,9 +11024,9 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rollup-plugin-chrome-extension@^3.4.0:
+rollup-plugin-chrome-extension@^3.5.4:
   version "3.5.4"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-chrome-extension/-/rollup-plugin-chrome-extension-3.5.4.tgz#4e4fe039bc4cfa97085c483208b2e5c2b3738c23"
+  resolved "https://registry.npmjs.org/rollup-plugin-chrome-extension/-/rollup-plugin-chrome-extension-3.5.4.tgz#4e4fe039bc4cfa97085c483208b2e5c2b3738c23"
   integrity sha512-z76FtDj8uUMTi33FQxAJKMbtBVO8bFip+Lrctns1fxGfu+jE/C5xhlzNuTFd2su+r6xNIHaNSTWOUaDt099O1w==
   dependencies:
     ajv "^6.11.0"
