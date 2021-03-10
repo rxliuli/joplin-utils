@@ -1112,15 +1112,15 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@liuli-util/array@^2.5.3":
-  version "2.5.3"
-  resolved "https://registry.npmjs.org/@liuli-util/array/-/array-2.5.3.tgz#7ef32c19e578da13f61c428e1e0167f48cbc4d25"
-  integrity sha512-NpDftErROT0LECWcc2kVp9Nv0pOOEXbQwX6tyD3AizpZJ5L4ksX7tKUyOxary3tWGJhSmuNSLLQm7Fg+Zw9lug==
+"@liuli-util/array@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.npmjs.org/@liuli-util/array/-/array-3.1.0.tgz#2d3623d8c0b568a5e274a6a59583ec9b6bec17b6"
+  integrity sha512-U2qWEaSlEBUYzO0WL6i0SuAO+6KiRRS5GsH1/6As0f1KHYQNhXNkIbLZjVyEm2AKl08ve5RfKw7c9lMIweF6wg==
 
-"@liuli-util/async@^2.5.4":
-  version "2.5.4"
-  resolved "https://registry.npmjs.org/@liuli-util/async/-/async-2.5.4.tgz#3da3e39f063ffab5f40fad81847380034bb280ce"
-  integrity sha512-xJaKr1HAJrhcn1N9Rogt1aq8npwEX7Qm0HJ5yYv6C/wELvUlP47Dj7Cw/lENuKadfQmqL254/PzUm7eVaeEqLQ==
+"@liuli-util/async@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.npmjs.org/@liuli-util/async/-/async-3.1.1.tgz#dd96e9924b5e87704e7929086de3ff9a8857f185"
+  integrity sha512-1CT1mopFdJLsBxo9zpLOIICn+KYbrDl+aSCeExrJvHlW59Sh8kdsF4kXFzql8uxo1kNEDmTZlxoH3CSFxfnIrg==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -11703,11 +11703,6 @@ utila@~0.4:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/utila/-/utila-0.4.0.tgz#8a16a05d445657a3aea5eecc5b12a4fa5379772c"
   integrity sha1-ihagXURWV6Oupe7MWxKk+lN5dyw=
-
-utility-types@^3.10.0:
-  version "3.10.0"
-  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.10.0.tgz#ea4148f9a741015f05ed74fd615e1d20e6bed82b"
-  integrity sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==
 
 utils-merge@1.0.1:
   version "1.0.1"

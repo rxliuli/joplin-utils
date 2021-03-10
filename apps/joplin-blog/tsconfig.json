@@ -12,7 +12,8 @@
     "declaration": true,
     "declarationMap": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
   "exclude": [
     "gulpfile.ts",

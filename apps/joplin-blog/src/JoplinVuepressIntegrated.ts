@@ -9,8 +9,7 @@ import { i18nLoader } from './util/constant'
 import { JoplinMarkdownUtil } from './util/JoplinMarkdownUtil'
 import { DateTime } from 'luxon'
 import { BaseJoplinIntegrated } from './BaseJoplinIntegrated'
-import { parallelAsyncArray } from '@liuli-util/async/dist/AsyncArray'
-import { asyncLimiting } from '@liuli-util/async'
+import { AsyncArray, asyncLimiting } from '@liuli-util/async'
 import { arrayToMap } from '@liuli-util/array'
 
 export interface JoplinVuepressIntegratedConfig {
@@ -46,12 +45,12 @@ export class JoplinVuepressIntegrated implements BaseJoplinIntegrated {
       console.log(`${i18nLoader.getText('convertNote')} [${item.title}]`)
       return await this.convertNote(item, resourceList)
     }, 10)
-    const fileNoteList = await parallelAsyncArray.map(noteList, fn)
+    const fileNoteList = await AsyncArray.map(noteList, fn)
     //写入笔记
     const hexoPostPath = path.resolve(this.config.rootPath, 'blog/_posts')
     await remove(hexoPostPath)
     await mkdirp(hexoPostPath)
-    await parallelAsyncArray.forEach(fileNoteList, async (item) => {
+    await AsyncArray.forEach(fileNoteList, async (item) => {
       console.log(`${i18nLoader.getText('writeNote')} [${item.title}]`)
       await writeFile(
         path.resolve(hexoPostPath, item.id + '.md'),
@@ -68,7 +67,7 @@ export class JoplinVuepressIntegrated implements BaseJoplinIntegrated {
     )
     await remove(resourcePath)
     await mkdirp(resourcePath)
-    await parallelAsyncArray.forEach(resourceList, async (item) => {
+    await AsyncArray.forEach(resourceList, async (item) => {
       console.log(`${i18nLoader.getText('copyResource')} [${item.title}]`)
 
       const fileName = item.id + '.' + item.file_extension
