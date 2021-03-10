@@ -7,7 +7,7 @@
     "packages": [
       "apps/*",
       "libs/*",
-      "tutorials/*"
+      "examples/*"
     ]
   },
   "husky": {
@@ -20,6 +20,15 @@
       "prettier --ignore-path .eslintignore --write",
       "git add"
     ]
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 80,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always",
+    "endOfLine": "lf"
   },
   "devDependencies": {
     "husky": "^4.3.0",
