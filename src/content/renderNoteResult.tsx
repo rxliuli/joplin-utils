@@ -1,6 +1,6 @@
 import { SearchNote } from './model/SearchNote'
-import { render } from 'react-dom'
 import React from 'react'
+import { render } from 'react-dom'
 import JoplinNoteList from './component/JoplinNoteList'
 
 function createRhs() {
@@ -21,6 +21,10 @@ export function renderNoteResult(noteList: SearchNote[]) {
     console.error('网页结构发生了变化')
     return
   }
+  const $root = document.createElement('div')
+  $root.className = 'joplin-root'
+  $rhs.appendChild($root)
 
-  render(<JoplinNoteList noteList={noteList} />, $rhs)
+  console.log('$rhs: ', $rhs, $root)
+  render(<JoplinNoteList noteList={noteList} />, $root)
 }

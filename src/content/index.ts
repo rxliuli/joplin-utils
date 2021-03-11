@@ -6,18 +6,6 @@ import { SearchNote } from './model/SearchNote'
 import { getSettings } from './util/getSettings'
 import { ActionTypeEnum } from '../background/model/ActionTypeEnum'
 
-Reflect.set(
-  window,
-  'console',
-  new Proxy(console, {
-    get(target: Console, p: PropertyKey): any {
-      return (...args: never[]) => {
-        Reflect.get(target, p)('[joplin] ', ...args)
-      }
-    },
-  }),
-)
-
 /**
  * 解析搜索参数
  */
