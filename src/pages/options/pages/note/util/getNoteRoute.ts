@@ -3,5 +3,8 @@
  * @param id
  */
 export function getNoteRoute(id: string) {
+  if (!window?.browser?.runtime) {
+    return ''
+  }
   return browser.runtime.getURL(`/pages/options/index.html#/note/${id}`)
 }

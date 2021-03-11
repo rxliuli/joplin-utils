@@ -1,10 +1,8 @@
 import * as React from 'react'
 import { render, RenderNote } from '../util/render'
 import './markdown.css'
-import './node-dark.css'
-import 'prismjs/themes/prism-dark.css'
+import 'prismjs/themes/prism-funky.css'
 import css from './MarkdownView.module.css'
-import classNames from 'classnames'
 
 type MarkdownViewProps = {
   note: RenderNote
@@ -13,10 +11,12 @@ type MarkdownViewProps = {
 const MarkdownView: React.FC<MarkdownViewProps> = (props) => {
   return (
     <div className={css.markdownView}>
-      <div
-        className={classNames(css.markdownContent, 'markdown', 'node-dark')}
-        dangerouslySetInnerHTML={{ __html: render(props.note) }}
-      />
+      <div className={css.markdownContent}>
+        <div
+          className={'markdown-body'}
+          dangerouslySetInnerHTML={{ __html: render(props.note) }}
+        />
+      </div>
     </div>
   )
 }
