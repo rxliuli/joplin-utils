@@ -1,3 +1,5 @@
+> Migrate to: https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-vscode-plugin
+
 # joplin-vscode-plugin
 
 > [English](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/README.md), [简体中文](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/README.ZH_CN.md)  
