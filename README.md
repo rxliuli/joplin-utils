@@ -1,5 +1,3 @@
-> Migrate to: https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-blog
-
 # joplin-blog
 
 ## Scenario
