@@ -1,5 +1,3 @@
-> Migrate to: https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-api
-
 # joplin api
 
 > [Online API documentation](https://rxliuli.com/joplin-api), [Reference API documentation](https://joplinapp.org/api/)
