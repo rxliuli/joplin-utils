@@ -1,7 +1,7 @@
 {
   "name": "joplin-search-integration",
   "description": "When using the search, related Joplin notes are also displayed in the search results",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "manifest_version": 2,
   "license": "MIT",
   "scripts": {
