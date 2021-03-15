@@ -5,12 +5,9 @@ import { SearchNote } from '../model/SearchNote'
 import { render } from 'react-dom'
 import JoplinNoteList from '../component/JoplinNoteList'
 
-export class GoogleSearchEngineAdapter implements BaseSearchEngineAdapter {
-  matches: string[] = [
-    'https://www.google.com/search?*',
-    'https://www.google.com.hk/search?*',
-  ]
-  name = 'google'
+export class BingSearchEngineAdapter implements BaseSearchEngineAdapter {
+  matches: string[] = ['https://www.bing.com/search?*']
+  name = 'bing'
 
   parseKeyword(): string | null {
     const keyword = parse(location.search).q
@@ -21,23 +18,14 @@ export class GoogleSearchEngineAdapter implements BaseSearchEngineAdapter {
   }
 
   createRhs(): HTMLElement {
-    const $rcht = document.querySelector('#rcnt')!
-    const $rhs = document.createElement('div') as HTMLDivElement
-    $rhs.id = 'rhs'
-    $rhs.style.marginLeft = '892px'
-    $rcht.insertBefore($rhs, $rcht.lastElementChild)
-    return $rhs
+    const $context = document.querySelector('#b_context')!
+    const $li = document.createElement('li') as HTMLLIElement
+    $context.insertBefore($li, $context.lastElementChild)
+    return $li
   }
 
-  /**
-   * 渲染搜索结果到页面上
-   */
   renderNoteResult(noteList: SearchNote[]): void {
-    const $rhs = document.querySelector('#rhs') || this.createRhs()
-    if ($rhs === null) {
-      console.error('网页结构发生了变化')
-      return
-    }
+    const $rhs = this.createRhs()
     const $root = document.createElement('div')
     $root.className = 'joplin-root'
     $rhs.appendChild($root)

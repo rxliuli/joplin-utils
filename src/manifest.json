@@ -1,14 +1,21 @@
 {
-  "permissions": ["storage"],
+  "permissions": [
+    "storage"
+  ],
   "background": {
-    "scripts": ["background/index.ts"]
+    "scripts": [
+      "background/index.ts"
+    ]
   },
   "content_scripts": [
     {
-      "js": ["content/index.ts"],
+      "js": [
+        "content/index.ts"
+      ],
       "matches": [
         "https://www.google.com/search?*",
-        "https://www.google.com.hk/search?*"
+        "https://www.google.com.hk/search?*",
+        "https://www.bing.com/search?*"
       ]
     }
   ],
