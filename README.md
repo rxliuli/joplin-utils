@@ -1,4 +1,4 @@
-# joplin Search Integration
+# Joplin Search Integration
 
 ## Introduction
 
