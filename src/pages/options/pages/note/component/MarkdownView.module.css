@@ -1,18 +1,21 @@
 .markdownView {
-    min-height: 100vh;
-    background-color: #33342D;
+  min-height: 100vh;
+  background-color: #1e1e1e;
 }
 
 .markdownContent {
-    font-size: 16px;
-    max-width: 888px;
-    margin: auto;
+  max-width: 888px;
+  background-color: #0d1117;
+  padding: 32px;
+  margin: 0 auto;
+  border: 1px solid rgb(52, 52, 52);
+  border-radius: 6px;
 }
 
-code:not([class^="language-"]) {
-    padding: .2em .4em;
-    margin: 0;
-    font-size: 85%;
-    background-color: rgba(27, 31, 35, 0.05);
-    border-radius: 6px;
+code:not([class^='language-']) {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27, 31, 35, 0.05);
+  border-radius: 6px;
 }
