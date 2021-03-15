@@ -1,5 +1,3 @@
-> Migrate to: https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-search-integration
-
 # TypeScript React Chrome Extension Boilerplate
 
 A basic TypeScript React Chrome Extension boilerplate that gets you started quickly. It supports TypeScript, [ESM compatible React](https://medium.com/@joeldenning/an-esm-bundle-for-any-npm-package-5f850db0e04d) and automatic reloading during development. Jest, ESLint and Prettier included, all bundled using [Rollup](https://rollupjs.org/guide/en/).
