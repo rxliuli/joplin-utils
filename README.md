@@ -15,8 +15,7 @@ Currently supported search engines include
 
 ## Contribute
 
-If you want to add new search engine support, you can raise an issue, or fork it and then modify it to mention PR (very
-simple)
+If you want to add new search engine support, you can raise an issue, or fork it and then modify it to mention PR (very simple)
 
 1. in manifest.json add the url of matching search engine
 2. implement BaseSearchEngineAdapter interface
