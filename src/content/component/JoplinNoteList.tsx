@@ -15,17 +15,20 @@ const JoplinNoteList: React.FC<JoplinNoteListProps> = (props) => {
   }
 
   return (
-    <ul>
-      {props.noteList.map((note) => {
-        return (
-          <li key={note.id}>
-            <a href={'javascript:void(0)'} onClick={() => onOpenNote(note)}>
-              {note.title}
-            </a>
-          </li>
-        )
-      })}
-    </ul>
+    <div>
+      <h4 style={{ margin: '8px 0' }}>Joplin related notes</h4>
+      <ul>
+        {props.noteList.map((note) => {
+          return (
+            <li key={note.id}>
+              <a href={'javascript:void(0)'} onClick={() => onOpenNote(note)}>
+                {note.title}
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
   )
 }
 
