@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.4 - 2020-03-16
+
+- fix [exporting error](https://github.com/rxliuli/joplin-blog/issues/5)
+- fix [mistake correct](https://github.com/rxliuli/joplin-blog/issues/6)
+
 ## v0.1.3 - 2020-03-10
 
 - HexoIntegrated compatibility markdown images render path, ref: https://github.com/rxliuli/joplin-blog/pull/4
