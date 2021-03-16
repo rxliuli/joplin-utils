@@ -1,9 +1,13 @@
 # CHANGELOG
 
+## v0.1.5 - 2020-03-16
+
+- Fix README update being overwritten error
+
 ## v0.1.4 - 2020-03-16
 
-- fix [exporting error](https://github.com/rxliuli/joplin-blog/issues/5)
-- fix [mistake correct](https://github.com/rxliuli/joplin-blog/issues/6)
+- Fix [exporting error](https://github.com/rxliuli/joplin-blog/issues/5)
+- Fix [mistake correct](https://github.com/rxliuli/joplin-blog/issues/6)
 
 ## v0.1.3 - 2020-03-10
 
@@ -11,7 +15,7 @@
 
 ## v0.1.2 - 2020-01-01
 
-- fixed passing tag from config instead of hard-coded to blog
+- Fixed passing tag from config instead of hard-coded to blog
 
 ## v0.1.1 - 2020-12-31
 
