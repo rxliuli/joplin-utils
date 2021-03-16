@@ -18,7 +18,7 @@ export interface JoplinHexoIntegratedConfig {
   token: string
   port: number
   tag: string
-  stickyTopIdList: string[]
+  stickyTopIdList?: string[]
 }
 
 /**
@@ -113,7 +113,7 @@ export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
       tags,
       date: note.createdTime,
       updated: note.updatedTime,
-      sticky: this.config.stickyTopIdList.includes(note.id)
+      sticky: this.config.stickyTopIdList?.includes(note.id)
         ? Number.MAX_SAFE_INTEGER
         : undefined,
     })
