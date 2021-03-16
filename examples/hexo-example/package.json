@@ -23,6 +23,6 @@
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^2.0.0",
     "hexo-theme-landscape": "^0.0.3",
-    "joplin-blog": "^0.1.1"
+    "joplin-blog": "*"
   }
 }
