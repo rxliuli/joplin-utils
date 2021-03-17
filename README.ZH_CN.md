@@ -1,5 +1,7 @@
 # joplin 搜索集成
 
+> [GitHub](https://github.com/rxliuli/joplin-search-intergration), [Chrome 商店](https://chrome.google.com/webstore/detail/joplin-search-integration/mcjkdcifkhjenpfjacnbhpdcnjknjkhj)
+
 ## 简介
 
 使用搜索时，相关的乔普林笔记也会显示在搜索结果中。

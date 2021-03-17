@@ -1,5 +1,7 @@
 # Joplin Search Integration
 
+> [GitHub](https://github.com/rxliuli/joplin-search-intergration), [Chrome Store](https://chrome.google.com/webstore/detail/joplin-search-integration/mcjkdcifkhjenpfjacnbhpdcnjknjkhj)
+
 ## Introduction
 
 When using search, related Joplin notes are also displayed in the search results.
