@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.1.4 - 2021-03-17
+
+- fix: fix the display problem when the system is not in dark mode
+- fix: Fix the problem that the background of the code is not pure black
+
 ## 0.1.3 - 2021-03-17
 
 - Update the icon of the plugin
