@@ -56,6 +56,6 @@ hexo
 
 ### joplin 个人文件夹在哪儿？
 
-一般而言，如果你使用便携程序，它应该就是程序目录下的 `./JoplinProfile` 目录，你应该可以在其中看到 `resources、_templates、_tmp` 目录。
+一般而言，如果你使用便携程序，它应该就是程序目录下的 `./JoplinProfile` 目录，你应该可以在其中看到 `resources、templates、tmp` 目录。
 
 ![joplinProfilePath](https://img.rxliuli.com/20210316092834.png)

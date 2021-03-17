@@ -58,6 +58,6 @@ You can usually see it in **Tools > Options > Web Clipper**
 ### Where is the joplin personal folder?
 
 Generally speaking, if you are using a portable program, it should be in the program directory `. /JoplinProfile`
-directory, where you should see the `resources,_templates,_tmp` directories.
+directory, where you should see the `resources,templates,tmp` directories.
 
 ![joplinProfilePath](https://img.rxliuli.com/20210316092834.png)
