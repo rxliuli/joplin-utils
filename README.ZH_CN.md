@@ -1,6 +1,7 @@
 # joplin 搜索集成
 
-> [GitHub](https://github.com/rxliuli/joplin-search-intergration), [Chrome 商店](https://chrome.google.com/webstore/detail/joplin-search-integration/mcjkdcifkhjenpfjacnbhpdcnjknjkhj)
+> [GitHub](https://github.com/rxliuli/joplin-search-intergration),
+> [Chrome 商店](https://chrome.google.com/webstore/detail/joplin-search-integration/mcjkdcifkhjenpfjacnbhpdcnjknjkhj)
 
 ## 简介
 
@@ -25,7 +26,8 @@
 
 ## 贡献
 
-如果你希望添加新的搜索引擎支持，可以提出 issue，或者 fork 后修改提 PR（非常简单）
+如果你希望添加新的搜索引擎支持，可以提出 issue，或者 fork 后修改提 PR（非常简单
+）
 
 1. 在 manifest.json 添加匹配的搜索引擎的 url
 2. 实现 BaseSearchEngineAdapter 接口
