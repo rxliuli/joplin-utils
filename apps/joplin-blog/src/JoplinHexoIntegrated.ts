@@ -97,7 +97,7 @@ export class JoplinHexoIntegrated implements BaseJoplinIntegrated {
       (item) => item.id,
       (item) => {
         if (item.type === TypeEnum.Resource) {
-          return `../resource/${item.id}.${item.file_extension}`
+          return `/resource/${item.id}.${item.file_extension}`
         }
         return `/p/${item.id}`
       },
