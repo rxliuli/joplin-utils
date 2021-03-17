@@ -13,7 +13,7 @@ const MarkdownView: React.FC<MarkdownViewProps> = (props) => {
     <div className={css.markdownView}>
       <div className={css.markdownContent}>
         <div
-          className={'markdown-body'}
+          className={'markdown-body dark'}
           dangerouslySetInnerHTML={{ __html: render(props.note) }}
         />
       </div>

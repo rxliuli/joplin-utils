@@ -3,10 +3,6 @@
   background-color: #1e1e1e;
 }
 
-.markdownView *:not(pre, code) {
-  background-color: black;
-}
-
 .markdownContent {
   max-width: 888px;
   background-color: #0d1117;
@@ -14,6 +10,11 @@
   margin: 0 auto;
   border: 1px solid rgb(52, 52, 52);
   border-radius: 6px;
+}
+
+.markdownView .markdownContent pre,
+.markdownView .markdownContent code {
+  background-color: black;
 }
 
 code:not([class^='language-']) {
