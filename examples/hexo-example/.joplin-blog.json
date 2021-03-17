@@ -1,11 +1,8 @@
 {
   "type": "hexo",
   "rootPath": ".",
-  "joplinProfilePath": "C:\\Users\\rxliuli\\Program\\JoplinDev\\JoplinProfile",
-  "token": "48d8173206ceb72db8640d68c44ee5f7b3d8c8ec8b96978a5f141787f03365c479d2ee54fa4bec0bba8beac5dc09c3f6776f579b86934e55d62d847a1108ffb5",
-  "port": 41184,
-  "tag": "blog",
-  "stickyTopIdList": [
-    "327da0d2b678402bbb8fbdc2030be4e0"
-  ]
+  "joplinProfilePath": "C:/Users/rxliuli/.config/joplindev-desktop",
+  "token": "06194dc2ca2273bb2a506ca6b7b43fc4ab4f1341853de456e34988bd97aab714c5ab91aae0bc0c97da47a475ec47f074b08468d2a847d3f9a8d96428191a99a9",
+  "port": 27583,
+  "tag": "blog"
 }
