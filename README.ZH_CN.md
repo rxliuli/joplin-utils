@@ -13,6 +13,14 @@
 - Bing
 - Baidu
 
+## 常见问题
+
+### token/port 指的是什么，在哪儿可以找到？
+
+一般可以在 **工具 > 选项 > 网页剪辑器** 中看到
+
+![joplin web clipper](https://img.rxliuli.com/20210316092547.png)
+
 ## 贡献
 
 如果你希望添加新的搜索引擎支持，可以提出 issue，或者 fork 后修改提 PR（非常简单）
