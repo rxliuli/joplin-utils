@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.6 - 2020-03-17
+
+- test: modified the configuration of the hexo example, delete the custom stickyTopIdList and permalink
+- revert: "hexo intergrated compatibility markdown", fix: https://github.com/rxliuli/joplin-blog/issues/7
+- docs: Update the description of joplinProfilePath in README
+
 ## v0.1.5 - 2020-03-16
 
 - Fix README update being overwritten error
