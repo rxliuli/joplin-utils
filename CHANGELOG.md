@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.1.3
+
+- Update the icon of the plugin
+- Update the document, add FAQs and related links
+
 ## 0.1.2
 
 - Implement new search engine support: Bing/Baidu
