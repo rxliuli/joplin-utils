@@ -3,6 +3,10 @@
   background-color: #1e1e1e;
 }
 
+.markdownView *:not(pre, code) {
+  background-color: black;
+}
+
 .markdownContent {
   max-width: 888px;
   background-color: #0d1117;
