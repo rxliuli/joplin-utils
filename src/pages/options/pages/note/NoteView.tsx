@@ -6,10 +6,9 @@ import { getSettings } from '../../../../content/util/getSettings'
 import { useHistory, useParams } from 'react-router'
 import { noteViewState } from './NoteView.state'
 import { RenderNote } from './util/render'
+import { JoplinNoteUtil } from '../../../../content/util/JoplinNoteUtil'
 
-type NoteViewProps = {}
-
-const NoteView: React.FC<NoteViewProps> = () => {
+const NoteView: React.FC = () => {
   const history = useHistory()
   const { id } = useParams<{ id: string }>()
   const noteState = useAsync(async () => {
@@ -22,6 +21,7 @@ const NoteView: React.FC<NoteViewProps> = () => {
     config.token = settings.token
     config.port = settings.port
     const note = await noteApi.get(id, ['id', 'title', 'body'])
+    document.title = JoplinNoteUtil.trimTitleStart(note.title)
     const resourceList = await noteApi.resourcesById(id)
     return {
       ...note,
