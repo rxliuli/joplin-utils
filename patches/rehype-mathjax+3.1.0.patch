@@ -1,0 +1,12 @@
+diff --git a/node_modules/rehype-mathjax/lib/renderer.js b/node_modules/rehype-mathjax/lib/renderer.js
+index 1a6c927..a724d53 100644
+--- a/node_modules/rehype-mathjax/lib/renderer.js
++++ b/node_modules/rehype-mathjax/lib/renderer.js
+@@ -1,6 +1,6 @@
+ const mathjax = require('mathjax-full/js/mathjax').mathjax
+ const register = require('mathjax-full/js/handlers/html').RegisterHTMLHandler
+-const fromDom = require('hast-util-from-dom')
++const fromDom = require('hast-util-from-dom').default
+ const toText = require('hast-util-to-text')
+ const createAdaptor = require('./adaptor')
+ 

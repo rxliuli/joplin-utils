@@ -5,6 +5,7 @@
   "manifest_version": 2,
   "license": "MIT",
   "scripts": {
+    "postinstall": "patch-package",
     "build": "rollup -c",
     "release": "cross-env NODE_ENV=production rollup -c",
     "start": "rollup -c -w",
@@ -78,6 +79,7 @@
     "eslint-plugin-react": "^7.21.5",
     "jest": "^26.6.3",
     "jest-chrome": "^0.7.0",
+    "patch-package": "^6.4.7",
     "postcss": "^8.2.7",
     "rollup": "^2.35.1",
     "rollup-plugin-chrome-extension": "^3.5.4",
