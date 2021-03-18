@@ -7,6 +7,9 @@ import { rehypeReplaceJoplinUrl } from './rehypeReplaceJoplinUrl'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { ResourceGetRes } from 'joplin-api/dist/modal/ResourceGetRes'
 import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+import rehypeMathjax from 'rehype-mathjax'
+import 'rehype-mathjax/svg'
 
 export type RenderNote = Pick<NoteProperties, 'id' | 'title' | 'body'> & {
   resourceList: ResourceGetRes[]
@@ -20,8 +23,10 @@ export function render(note: RenderNote): string {
   const processor = unified()
     .use(remarkParse)
     .use(remarkGfm)
+    .use(remarkMath)
     .use(remark2rehype)
     .use(rehypeReplaceJoplinUrl, note)
+    .use(rehypeMathjax, {})
     .use(rehypePrism, { ignoreMissing: true })
     .use(rehypeStringify)
 
