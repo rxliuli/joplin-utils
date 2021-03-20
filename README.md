@@ -25,6 +25,13 @@ You can usually see it in **Tools > Options > Web Clipper**
 
 ![joplin web clipper](https://img.rxliuli.com/20210316092547.png)
 
+### No search results in Brave browser
+
+In fact, Brave will block resources from other domains by default, so you can
+turn it off on the Google search site.
+
+![joplin web clipper](https://img.rxliuli.com/20210320142144.png)
+
 ## Contribute
 
 If you want to add new search engine support, you can raise an issue, or fork it

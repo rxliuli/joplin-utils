@@ -24,6 +24,12 @@
 
 ![joplin web clipper](https://img.rxliuli.com/20210316092547.png)
 
+### 在 Brave 浏览器中没有搜索结果
+
+实际上是 Brave 会默认阻止其他域的资源，所以在 Google 搜索网站关闭它即可。
+
+![joplin web clipper](https://img.rxliuli.com/20210320142144.png)
+
 ## 贡献
 
 如果你希望添加新的搜索引擎支持，可以提出 issue，或者 fork 后修改提 PR（非常简单
