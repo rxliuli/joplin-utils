@@ -3,6 +3,7 @@ import { useMount } from 'react-use'
 import css from './Settings.module.css'
 import { useForm } from 'react-hook-form'
 import { Settings } from '../../model/Settings'
+import { config, noteApi } from 'joplin-api'
 
 const storage = browser.storage.local
 const Settings: React.FC = () => {
@@ -20,6 +21,17 @@ const Settings: React.FC = () => {
     await storage.set({
       settings: data,
     })
+    try {
+      config.token = data.token
+      config.port = data.port
+      await noteApi.list({
+        fields: ['id'],
+        limit: 1,
+      })
+      alert('Token/port settings successes')
+    } catch (e) {
+      alert('Token/port settings failed')
+    }
   }
 
   return (
