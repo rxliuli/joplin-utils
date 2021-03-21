@@ -1,12 +1,13 @@
 import * as React from 'react'
 import MarkdownView from './component/MarkdownView'
 import { useAsync } from 'react-use'
-import { config, noteApi } from 'joplin-api'
+import { config, noteActionApi, noteApi } from 'joplin-api'
 import { getSettings } from '../../../../content/util/getSettings'
 import { useHistory, useParams } from 'react-router'
 import { noteViewState } from './NoteView.state'
 import { RenderNote } from './util/render'
 import { JoplinNoteUtil } from '../../../../content/util/JoplinNoteUtil'
+import css from './NoteView.module.css'
 
 const NoteView: React.FC = () => {
   const history = useHistory()
@@ -28,7 +29,19 @@ const NoteView: React.FC = () => {
       resourceList,
     } as RenderNote
   })
-  return <div>{noteState.value && <MarkdownView note={noteState.value} />}</div>
+
+  async function onClick() {
+    await noteActionApi.openAndWatch(id)
+  }
+
+  return (
+    <div className={css.noteView}>
+      <button onClick={onClick} className={css.control}>
+        在编辑器中打开
+      </button>
+      <div>{noteState.value && <MarkdownView note={noteState.value} />}</div>
+    </div>
+  )
 }
 
 export default NoteView

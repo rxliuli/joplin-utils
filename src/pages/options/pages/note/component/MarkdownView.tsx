@@ -10,13 +10,11 @@ type MarkdownViewProps = {
 
 const MarkdownView: React.FC<MarkdownViewProps> = (props) => {
   return (
-    <div className={css.markdownView}>
-      <div className={css.markdownContent}>
-        <div
-          className={'markdown-body dark'}
-          dangerouslySetInnerHTML={{ __html: render(props.note) }}
-        />
-      </div>
+    <div className={css.markdownContent}>
+      <div
+        className={'markdown-body dark'}
+        dangerouslySetInnerHTML={{ __html: render(props.note) }}
+      />
     </div>
   )
 }
