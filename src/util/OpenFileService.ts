@@ -13,14 +13,17 @@ export class OpenFileService {
       (fileName.endsWith('km') &&
         vscode.extensions.getExtension('eighthundreds.vscode-mindmap'))
     ) {
-      await vscode.commands.executeCommand('vscode.open', Uri.file(filePath))
+      await vscode.commands.executeCommand(
+        'vscode.open',
+        Uri.file(path.resolve(filePath)),
+      )
       return
     }
 
     if (!existsSync(filePath)) {
       return
     }
-    vscode.env.openExternal(Uri.file(filePath))
+    vscode.env.openExternal(Uri.file(path.resolve(filePath)))
   }
 
   async openFileByOS(filePath: string) {
