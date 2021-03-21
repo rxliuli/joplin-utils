@@ -9,6 +9,8 @@ Attachment-related operation optimization
 - When opening an attachment, determine if the title does not contain a suffix before splicing the suffix
 - If you check that the attached resource is markdown/drawio/km/svg or something like that, try to open it with vscode
 
+![gif](https://github.com/rxliuli/joplin-vscode-plugin/raw/master/docs/_media/attachment.gif)
+
 ## 0.4.3
 
 - Remove sentry.io's error report support
