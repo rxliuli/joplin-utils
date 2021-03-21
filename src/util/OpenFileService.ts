@@ -8,9 +8,9 @@ export class OpenFileService {
   async openByVSCode(filePath: string) {
     const fileName = path.basename(filePath)
     if (
-      (fileName.endsWith('drawio') &&
+      ((fileName.endsWith('.drawio') || fileName.endsWith('.drawio.svg')) &&
         vscode.extensions.getExtension('hediet.vscode-drawio')) ||
-      (fileName.endsWith('km') &&
+      ((fileName.endsWith('.km') || fileName.endsWith('.km.svg')) &&
         vscode.extensions.getExtension('eighthundreds.vscode-mindmap'))
     ) {
       await vscode.commands.executeCommand(
