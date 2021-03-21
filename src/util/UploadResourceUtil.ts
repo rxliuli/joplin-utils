@@ -30,7 +30,7 @@ export class UploadResourceUtil {
 
   static async uploadFileByPath(filePath: string) {
     const param = {
-      title: path.parse(filePath).name,
+      title: path.basename(filePath),
       data: createReadStream(path.resolve(filePath)),
     }
     console.log('uploadFileFromExplorer begin: ', filePath, param.title)
