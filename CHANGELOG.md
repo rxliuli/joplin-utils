@@ -1,5 +1,14 @@
 # Release Notes
 
+## 0.4.4
+
+Attachment-related operation optimization
+
+- When creating an attachment resource, insert it as an image if it is an svg
+- Create an attachment with a title that is always the full name of the file
+- When opening an attachment, determine if the title does not contain a suffix before splicing the suffix
+- If you check that the attached resource is markdown/drawio/km/svg or something like that, try to open it with vscode
+
 ## 0.4.3
 
 - Remove sentry.io's error report support
@@ -8,7 +17,7 @@
 
 - Disable prompt message when closing notes
 - Fix bug that notes <=> resources mapping relationship is not saved when listening to resources
-- Upgrade toolkit version of @liuli-util/*
+- Upgrade toolkit version of @liuli-util/\*
 - Fix the bug that the listener file location is wrong when modifying attached resources
 
 ## 0.4.1
@@ -73,8 +82,8 @@ Added [documentation for recommended vscode extensions](https://rxliuli.com/jopl
 ## 0.1.10
 
 - Support clicking joplin-related links in the editor, including
-    - Attached resource files, use the system default program to open
-    - Quote notes, use Joplin to open in a new tab
+  - Attached resource files, use the system default program to open
+  - Quote notes, use Joplin to open in a new tab
 - Fixed the problem that Joplin attachment resources could not be opened in markdown preview
 
 ## 0.1.7
