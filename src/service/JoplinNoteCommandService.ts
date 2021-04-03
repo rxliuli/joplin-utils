@@ -142,7 +142,7 @@ export class JoplinNoteCommandService {
     item: FolderOrNote = this.config.noteListTreeView.selection[0],
   ) {
     console.log('joplinNote.copyLink: ', item)
-    const label = JoplinNoteUtil.trimTitleStart(item.label!)
+    const label = JoplinNoteUtil.trimTitleStart(item.label!.trim())
     const url = `[${label}](:/${item.id})`
     vscode.env.clipboard.writeText(url)
   }
