@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.4.5
+
+- fix: Fix the line wrapping problem caused by the `\r` character at the end of the line that may appear when copying the internal reference of the note
+
 ## 0.4.4
 
 Attachment-related operation optimization
