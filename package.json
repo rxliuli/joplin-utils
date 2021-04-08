@@ -169,6 +169,11 @@
         "command": "joplinNote.removeResource",
         "title": "%commands.joplinNote.removeResource%",
         "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.showCurrentlyOpenNote",
+        "title": "%commands.joplinNote.showCurrentlyOpenNote%",
+        "category": "Joplin"
       }
     ],
     "menus": {
