@@ -1,5 +1,9 @@
 # 更新记录
 
+## v0.2.6 - 2021-04-14
+
+- fix: 修复 joplin searchApi.search 与 PageUtil.pageToAllList 不能同时使用的错误 ref: https://github.com/rxliuli/joplin-api/issues/4
+
 ## v0.2.5 - 2021-03-07
 
 - 修复打包后 dist 目录不存在的错误
