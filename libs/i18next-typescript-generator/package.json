@@ -1,0 +1,29 @@
+{
+  "name": "i18next-typescript-generator",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "liuli-cli clean && tsc -p tsconfig.bin.json && liuli-cli build",
+    "start": "ts-node src/bin.ts gen --input tests/i18n"
+  },
+  "bin": {
+    "i18next-ts-gen": "dist/bin.js"
+  },
+  "jest": {
+    "preset": "ts-jest"
+  },
+  "dependencies": {
+    "@liuli-util/array": "^3.2.0",
+    "@liuli-util/async": "^3.2.0",
+    "commander": "^7.2.0",
+    "fs-extra": "^9.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.20.7",
+    "@types/fs-extra": "^9.0.11",
+    "@liuli-util/cli": "^3.2.1"
+  }
+}
