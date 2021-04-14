@@ -415,7 +415,7 @@
     "entities": "^2.1.0",
     "fs-extra": "^9.0.1",
     "i18next": "^19.8.4",
-    "joplin-api": "^0.2.1",
+    "joplin-api": "^0.2.6",
     "lodash": "^4.17.20",
     "markdown-it": "^12.0.3",
     "open": "^7.3.0",
