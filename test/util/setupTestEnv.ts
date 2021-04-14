@@ -3,5 +3,5 @@ import { config } from '../../src'
 export function setupTestEnv() {
   config.port = 27583
   config.token =
-    '303c85ce19d4eaf23e23ae7817e36043ae0fcf57bf6699b646c796189f1fa65b31ecbc394e48e8840fd9ca643aacc6067a3e5abdbe8b52b7d231a06545241457'
+    '83b1ba8f63663441ed4cd513d2a2797e46e1348dac70e630001eea1989be10510d0ffe11530dbffbccf4bb23b97d2035b3f830939a0f8ac905b26b51ffbf62e3'
 }

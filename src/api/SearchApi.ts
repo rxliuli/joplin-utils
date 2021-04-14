@@ -4,6 +4,7 @@ import { ajax } from '../util/ajax'
 import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
 import { NoteProperties } from '../modal/NoteProperties'
+import { CommonType } from '../modal/CommonType'
 
 class SearchApi {
   private static readonly TypeEnumMap: Record<TypeEnum, string> = {
@@ -25,14 +26,12 @@ class SearchApi {
   }
 
   async search<K extends keyof NoteProperties>(
-    param: { query: string; type?: TypeEnum } & PageParam<
-      Pick<NoteProperties, K>
-    > &
+    param: { query: string; type?: TypeEnum } & PageParam<NoteProperties> &
       FieldsParam<K>,
-  ) {
+  ): Promise<PageRes<Pick<NoteProperties, K> & CommonType>> {
     SearchApi.TypeEnumMap['8'] = ''
     const { type, ...others } = param
-    return ajax.get<PageRes<Pick<NoteProperties, K>>>('/search', {
+    return ajax.get<PageRes<Pick<NoteProperties, K> & CommonType>>('/search', {
       ...others,
       type: SearchApi.TypeEnumMap[type!],
     })

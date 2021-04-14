@@ -1,5 +1,5 @@
 import { resourceApi } from '../../src'
-import { pathExistsSync, writeFileSync, createReadStream } from 'fs-extra'
+import { createReadStream, pathExistsSync, writeFileSync } from 'fs-extra'
 import { resolve } from 'path'
 import FormData from 'form-data'
 import axios from 'axios'
@@ -25,6 +25,14 @@ describe('test ResourceApi', () => {
     const res = await resourceApi.get(id)
     console.log(res)
     expect(res.id).toBe(id)
+  })
+  it('test get filename', async () => {
+    const res = await resourceApi.get('f580edb594b848a580447e4719e8e9cb', [
+      'id',
+      'filename',
+    ])
+    console.log(res)
+    expect(res.filename).not.toBe('')
   })
 
   describe('diff fetch and axios', () => {
