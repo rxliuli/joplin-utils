@@ -22,6 +22,14 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 80,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "endOfLine": "crlf"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/rxliuli/joplin-api"
