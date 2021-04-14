@@ -8,6 +8,7 @@
     "joplin-blog": "dist/bin.js"
   },
   "scripts": {
+    "prebuild": "yarn gen:i18n",
     "build": "gulp clean && tsc && gulp addCliBanner",
     "pub": "yarn build && yarn",
     "watch": "tsc -w",

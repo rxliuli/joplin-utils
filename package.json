@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "setup": "lerna run build --include-dependencies --stream"
+  },
   "workspaces": {
     "packages": [
       "apps/*",
