@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "liuli-cli clean && tsc -p tsconfig.bin.json && liuli-cli build",
+    "build": "liuli-cli clean && tsc -p tsconfig.bin.json && liuli-cli addCliBanner && liuli-cli build",
     "start": "ts-node src/bin.ts gen --input tests/i18n"
   },
   "bin": {

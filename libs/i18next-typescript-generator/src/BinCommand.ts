@@ -7,7 +7,10 @@ export class BinCommand {
   /**
    * 生成类型定义
    */
-  async gen(options: { input: string }) {
+  async gen(options: { input?: string }) {
+    if (!options.input) {
+      return
+    }
     const i18nFolderPath = path.resolve(options.input)
     const list = await readdir(i18nFolderPath)
     const i18nJsonPathList = list
