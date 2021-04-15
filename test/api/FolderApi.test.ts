@@ -6,7 +6,6 @@ describe('test FolderApi', () => {
   describe('basic test', () => {
     it('test list', async () => {
       const res = await folderApi.list({
-        fields: ['note_count'] as any,
         limit: 1,
       })
       console.log(res)
@@ -71,7 +70,6 @@ describe('test FolderApi', () => {
     it('create folder for root', async () => {
       const res = await folderApi.create({
         title: '测试从根目录创建',
-        parent_id: '',
       })
       await folderApi.remove(res.id)
     })
@@ -88,7 +86,7 @@ describe('test FolderApi', () => {
       expect(res.parent_id).toBe(data.folderId)
       await folderApi.remove(createRes.id)
     })
-    it('测试递归获取目录及笔记', async function () {
+    it('测试递归获取目录及笔记', async function() {
       const folderList = await folderApi.listAll()
       console.log(JSON.stringify(folderList, null, 2))
       expect(folderList.length).toBeGreaterThan(0)

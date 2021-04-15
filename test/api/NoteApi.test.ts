@@ -1,4 +1,4 @@
-import { folderApi, noteApi, PageUtil } from '../../src'
+import { folderApi, noteApi, PageUtil, resourceApi } from '../../src'
 import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
 import { createTestResource } from './CreateTestResource'
 
@@ -65,9 +65,13 @@ describe('test JoplinApi', () => {
       const resourceList = await noteApi.resourcesById(data.noteId)
       console.log(resourceList)
       expect(resourceList.length).toBe(1)
-      // await resourceApi.remove(resource.id)
+      await resourceApi.remove(resource.id)
     })
     it('test resourcesById by fields', async () => {
+      const resourceRes = await createTestResource()
+      const noteRes = await noteApi.get(data.noteId, ['id', 'title', 'body'])
+      noteRes.body += `[res](:/${resourceRes.id})`
+      await noteApi.update(noteRes)
       const [resource] = await noteApi.resourcesById(data.noteId, [
         'id',
         'title',

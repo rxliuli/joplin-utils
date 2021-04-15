@@ -26,8 +26,11 @@ describe('test ResourceApi', () => {
     console.log(res)
     expect(res.id).toBe(id)
   })
-  it('test get filename', async () => {
-    const res = await resourceApi.get('f580edb594b848a580447e4719e8e9cb', [
+  /**
+   * TODO 一个官方未修复的 bug，参考：https://github.com/laurent22/joplin/issues/4575
+   */
+  it.skip('test get filename', async () => {
+    const res = await resourceApi.get(id, [
       'id',
       'filename',
     ])

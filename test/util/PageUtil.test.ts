@@ -11,7 +11,7 @@ describe('测试 PageUtil', function () {
       fields: ['id'],
     })
     console.log('noteList.length: ', noteList.length, noteList)
-    expect(noteList.length).toBeGreaterThan(0)
+    expect(noteList.length).toBeGreaterThanOrEqual(0)
   })
   it('测试搜索笔记', async () => {
     const res = await PageUtil.pageToAllList(searchApi.search, {

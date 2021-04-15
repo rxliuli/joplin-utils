@@ -16,7 +16,7 @@ class FolderExtApi {
    * @param id
    */
   async path(id: string): Promise<FolderGetRes[]> {
-    if (id) {
+    if (!id) {
       return []
     }
     const res = await folderApi.get(id)
