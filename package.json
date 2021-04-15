@@ -7,17 +7,15 @@
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c rollup.config.js",
-    "build:dev": "yarn build && yarn unlink && yarn link",
-    "clean": "shx rm -rf dist/",
+    "build": "shx rm -rf dist/ && rollup -c rollup.config.js",
     "dev": "rollup -w -c build/rollup.config.js",
-    "docs": "typedoc --out docs src",
-    "postdocs": "shx cp .nojekyll docs/",
-    "predeploy": "yarn docs",
+    "predeploy": "typedoc --out docs src && shx cp .nojekyll docs/",
     "deploy": "gh-pages -d docs -t true",
     "postdeploy": "shx rm -rf docs",
-    "format": "prettier --write src/**/*.ts",
     "test": "jest --all"
+  },
+  "jest": {
+    "preset": "ts-jest"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
