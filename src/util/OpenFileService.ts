@@ -8,19 +8,22 @@ export class OpenFileService {
   async openByVSCode(filePath: string) {
     const fileName = path.basename(filePath)
     if (
-      (fileName.endsWith('drawio') &&
+      ((fileName.endsWith('.drawio') || fileName.endsWith('.drawio.svg')) &&
         vscode.extensions.getExtension('hediet.vscode-drawio')) ||
-      (fileName.endsWith('km') &&
+      ((fileName.endsWith('.km') || fileName.endsWith('.km.svg')) &&
         vscode.extensions.getExtension('eighthundreds.vscode-mindmap'))
     ) {
-      await vscode.commands.executeCommand('vscode.open', Uri.file(filePath))
+      await vscode.commands.executeCommand(
+        'vscode.open',
+        Uri.file(path.resolve(filePath)),
+      )
       return
     }
 
     if (!existsSync(filePath)) {
       return
     }
-    vscode.env.openExternal(Uri.file(filePath))
+    vscode.env.openExternal(Uri.file(path.resolve(filePath)))
   }
 
   async openFileByOS(filePath: string) {

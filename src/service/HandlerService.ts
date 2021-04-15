@@ -82,7 +82,7 @@ export class HandlerService {
       return
     }
     const resource = await safePromise(
-      resourceApi.get(id, ['id', 'title', 'file_extension']),
+      resourceApi.get(id, ['id', 'title', 'filename', 'file_extension']),
     )
     if (!resource) {
       vscode.window.showWarningMessage(
@@ -90,7 +90,12 @@ export class HandlerService {
       )
       return
     }
-    const fileName = resource.title + '.' + resource.file_extension
+    // 如果标题包含后缀则不再拼接后缀名（后缀名其实也是不准的）
+    const fileName =
+      resource.filename ||
+      (/\..*$/.test(resource.title)
+        ? resource.title
+        : resource.title + '.' + resource.file_extension)
     const filePath = path.resolve(
       appConfig.programProfilePath,
       'tmp/edited_resources',

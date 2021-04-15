@@ -142,7 +142,7 @@ export class JoplinNoteCommandService {
     item: FolderOrNote = this.config.noteListTreeView.selection[0],
   ) {
     console.log('joplinNote.copyLink: ', item)
-    const label = JoplinNoteUtil.trimTitleStart(item.label!)
+    const label = JoplinNoteUtil.trimTitleStart(item.label!.trim())
     const url = `[${label}](:/${item.id})`
     vscode.env.clipboard.writeText(url)
   }
@@ -291,9 +291,13 @@ export class JoplinNoteCommandService {
       await mkdirp(dir)
     }
     await createEmptyFile(filePath)
-    const { res, markdownLink } = await UploadResourceUtil.uploadFileByPath(
+    let { res, markdownLink } = await UploadResourceUtil.uploadFileByPath(
       filePath,
     )
+    // 如果是 svg 图片则作为图片插入
+    if (path.extname(filePath) === '.svg') {
+      markdownLink = '!' + markdownLink
+    }
     await uploadResourceService.insertUrlByActiveEditor(markdownLink)
     if (await pathExists(filePath)) {
       await remove(filePath)

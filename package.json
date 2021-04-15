@@ -2,7 +2,7 @@
   "name": "joplin-vscode-plugin",
   "displayName": "joplin-vscode-plugin",
   "description": "%package.description%",
-  "version": "0.4.3",
+  "version": "0.4.5",
   "publisher": "rxliuli",
   "engines": {
     "vscode": "^1.45.0"
@@ -168,6 +168,11 @@
       {
         "command": "joplinNote.removeResource",
         "title": "%commands.joplinNote.removeResource%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.showCurrentlyOpenNote",
+        "title": "%commands.joplinNote.showCurrentlyOpenNote%",
         "category": "Joplin"
       }
     ],
@@ -410,7 +415,7 @@
     "entities": "^2.1.0",
     "fs-extra": "^9.0.1",
     "i18next": "^19.8.4",
-    "joplin-api": "^0.2.1",
+    "joplin-api": "^0.2.6",
     "lodash": "^4.17.20",
     "markdown-it": "^12.0.3",
     "open": "^7.3.0",
