@@ -12,7 +12,8 @@
     "predeploy": "typedoc --out docs src && shx cp .nojekyll docs/",
     "deploy": "gh-pages -d docs -t true",
     "postdeploy": "shx rm -rf docs",
-    "test": "jest --all"
+    "test": "jest --all",
+    "ci": "yarn build"
   },
   "jest": {
     "preset": "ts-jest"
