@@ -9,7 +9,8 @@
   "scripts": {
     "build": "shx rm -rf dist/ && rollup -c rollup.config.js",
     "dev": "rollup -w -c build/rollup.config.js",
-    "predeploy": "typedoc --out docs src && shx cp .nojekyll docs/",
+    "docs": "typedoc --out docs src && shx cp .nojekyll docs/",
+    "predeploy": "yarn docs",
     "deploy": "gh-pages -d docs -t true",
     "postdeploy": "shx rm -rf docs",
     "test": "jest --all",
