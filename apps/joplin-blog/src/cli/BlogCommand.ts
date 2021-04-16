@@ -5,7 +5,7 @@ import {
   VuepressIntegrated,
   VuepressIntegratedConfig,
 } from '../blog/VuepressIntegrated'
-import { I18n, i18n } from '../util/I18n'
+import { i18n } from '../util/I18n'
 import path from 'path'
 
 class BlogCommand {
@@ -30,11 +30,13 @@ class BlogCommand {
   }
 
   async gen() {
-    await i18n.load(await I18n.getLanguage())
+    await i18n.load(await i18n.getLanguage())
     const configPath = path.resolve('.joplin-blog.json')
-    console.log('configPath: ', configPath)
+    // console.log('configPath: ', configPath)
     if (!(await pathExists(configPath))) {
-      console.log(i18n.t('notFoundConfig'))
+      console.error(
+        i18n.t("blog.Can't find configuration file _joplin-blog_json"),
+      )
       return
     }
     await BlogCommand.getJoplinIntegrated(configPath)

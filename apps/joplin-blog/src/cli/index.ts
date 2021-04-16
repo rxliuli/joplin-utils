@@ -1,12 +1,19 @@
 import { Command } from 'commander'
 import { blogCliCommand } from './BlogCommand'
-
-new Command()
-  .addCommand(
-    new Command('blog')
-      .description('根据 Joplin 中的笔记生成 blog 所需的文件')
-      .action(blogCliCommand.gen.bind(blogCliCommand)),
-  )
-  .description('joplin-blog')
-  .action(blogCliCommand.gen.bind(blogCliCommand))
-  .parse()
+import { i18n } from '../util/I18n'
+;(async () => {
+  await i18n.load(await i18n.getLanguage())
+  new Command()
+    .addCommand(
+      new Command('blog')
+        .description(
+          i18n.t(
+            'blog.Generate the files needed for the blog based on the notes in Joplin',
+          ),
+        )
+        .action(blogCliCommand.gen.bind(blogCliCommand)),
+    )
+    .description('joplin-blog')
+    .action(blogCliCommand.gen.bind(blogCliCommand))
+    .parse()
+})()

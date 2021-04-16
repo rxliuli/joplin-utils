@@ -9,10 +9,8 @@ export enum LanguageEnum {
   EN_US = 'en',
 }
 
-export class I18n {
-  constructor() {}
-
-  static async getLanguage(): Promise<LanguageEnum> {
+class I18n {
+  async getLanguage(): Promise<LanguageEnum> {
     const language = await osLocale()
     /**
      * os-locale => i18next 的语言类型字符串映射

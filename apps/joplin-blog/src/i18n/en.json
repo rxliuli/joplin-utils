@@ -1,11 +1,6 @@
 {
-  "hello": "hello",
-  "key": "yeah, {{what}} is {{how}}",
-  "footer": {
-    "copyright": "Some copyrights"
-  },
-  "notFoundConfig": "Can't find configuration file .joplin-blog.json",
-  "writeNote": "Writing note",
-  "convertNote": "Converting note",
-  "copyResource": "Copying resource"
+  "blog": {
+    "Generate the files needed for the blog based on the notes in Joplin": "Generate the files needed for the blog based on the notes in Joplin",
+    "Can't find configuration file _joplin-blog_json": "Can't find configuration file .joplin-blog.json"
+  }
 }
