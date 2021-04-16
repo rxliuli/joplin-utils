@@ -12,3 +12,5 @@ dist
 **/__tests__/resource/
 wallaby.js
 **/i18n/**/index.d.ts
+**/tests/**/temp
+**/__tests__/**/temp

@@ -1,2 +1,4 @@
-export * from './JoplinHexoIntegrated'
-export * from './JoplinVuepressIntegrated'
+// 新的 api
+export * from './blog/HexoIntegrated'
+export * from './blog/Application'
+export * from './blog/SingleNoteHandler'

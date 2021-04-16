@@ -1,17 +1,14 @@
 import { pathExists, readJson } from 'fs-extra'
 import * as path from 'path'
-import {
-  JoplinHexoIntegrated,
-  JoplinHexoIntegratedConfig,
-} from './JoplinHexoIntegrated'
 import { i18nLoader } from './util/constant'
 import { LanguageEnum } from './util/I18nLoader'
-import osLocale = require('os-locale')
+import { Application, ApplicationConfig } from './blog/Application'
+import { HexoIntegrated, HexoIntegratedConfig } from './blog/HexoIntegrated'
 import {
-  JoplinVuepressIntegrated,
-  JoplinVuepressIntegratedConfig,
-} from './JoplinVuepressIntegrated'
-import { BaseJoplinIntegrated } from './BaseJoplinIntegrated'
+  VuepressIntegrated,
+  VuepressIntegratedConfig,
+} from './blog/VuepressIntegrated'
+import osLocale = require('os-locale')
 
 async function getLanguageEnum(): Promise<LanguageEnum> {
   const language = await osLocale()
@@ -22,19 +19,23 @@ async function getLanguageEnum(): Promise<LanguageEnum> {
 }
 
 async function getJoplinIntegrated(configPath: string) {
-  const config = (await readJson(configPath)) as
-    | JoplinHexoIntegratedConfig
-    | JoplinVuepressIntegratedConfig
-  let instance: BaseJoplinIntegrated
+  const config = (await readJson(configPath)) as ApplicationConfig & {
+    type: 'hexo' | 'vuepress'
+  } & (HexoIntegratedConfig | {})
   switch (config.type) {
     case 'hexo':
-      instance = new JoplinHexoIntegrated(config)
+      await new Application(
+        config,
+        new HexoIntegrated(config as HexoIntegratedConfig),
+      ).gen()
       break
     case 'vuepress':
-      instance = new JoplinVuepressIntegrated(config)
+      await new Application(
+        config,
+        new VuepressIntegrated(config as VuepressIntegratedConfig),
+      ).gen()
       break
   }
-  return instance
 }
 
 async function main() {
@@ -45,8 +46,7 @@ async function main() {
     console.log(i18nLoader.getText('notFoundConfig'))
     return
   }
-  const instance = await getJoplinIntegrated(configPath)
-  await instance.handle()
+  await getJoplinIntegrated(configPath)
 }
 
 main()
