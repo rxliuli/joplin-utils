@@ -21,6 +21,10 @@ describe('测试 Builder', () => {
       })
       expect(res).toBe(`[key: 'hello {{name}}', params: {name: string|number}]`)
     })
+    it("测试包含特殊字符 ' 时", () => {
+      const res = handler.buildKey({ key: "I'm li" })
+      expect(res).toBe("[key: 'I'm li']")
+    })
   })
   describe('测试 build', () => {
     const res = handler.build([

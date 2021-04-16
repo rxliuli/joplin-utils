@@ -22,7 +22,10 @@ export class TranslateHandler {
     if (!config.params) {
       return `[key: '${config.key}']`
     }
-    return `[key: '${config.key}', params: ${this.buildParams(config.params)}]`
+    return `[key: '${config.key.replaceAll(
+      "'",
+      "\\'",
+    )}', params: ${this.buildParams(config.params)}]`
   }
 
   /**
