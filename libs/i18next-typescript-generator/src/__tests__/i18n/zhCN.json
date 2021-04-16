@@ -1,4 +1,12 @@
 {
+  "test": {
+    "hello": "你好",
+    "params": "是的, {{what}} 是 {{how}}",
+    "footer": {
+      "copyright": "一些版权"
+    },
+    "special": "特殊字符"
+  },
   "hello": "你好",
   "key": "是的, {{what}} 是 {{how}}",
   "footer": {

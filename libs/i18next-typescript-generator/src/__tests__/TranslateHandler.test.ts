@@ -1,4 +1,4 @@
-import { TranslateHandler, TranslateKeyConfig } from '../src'
+import { TranslateHandler, TranslateKeyConfig } from '../index'
 
 describe('测试 Builder', () => {
   const handler = new (class extends TranslateHandler {

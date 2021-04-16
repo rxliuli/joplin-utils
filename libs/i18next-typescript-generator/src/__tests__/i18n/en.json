@@ -1,4 +1,12 @@
 {
+  "test": {
+    "hello": "hello",
+    "params": "yeah, {{what}} is {{how}}",
+    "footer": {
+      "copyright": "Some copyrights"
+    },
+    "special.characters": "special.characters"
+  },
   "hello": "hello",
   "key": "yeah, {{what}} is {{how}}",
   "footer": {

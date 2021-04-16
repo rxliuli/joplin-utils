@@ -1,5 +1,5 @@
 import * as path from 'path'
-import { BinCommand } from '../src/BinCommand'
+import { BinCommand } from '../BinCommand'
 
 describe('测试 BinCommand', () => {
   const command = new BinCommand()

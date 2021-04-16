@@ -22,8 +22,8 @@ export class TranslateHandler {
     if (!config.params) {
       return `[key: '${config.key}']`
     }
-    return `[key: '${config.key.replaceAll(
-      "'",
+    return `[key: '${config.key.replace(
+      new RegExp("'", 'g'),
       "\\'",
     )}', params: ${this.buildParams(config.params)}]`
   }

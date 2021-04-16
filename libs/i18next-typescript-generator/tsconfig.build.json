@@ -14,5 +14,9 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "Node"
-  }
+  },
+  "exclude": [
+    "src/__tests__",
+    "dist"
+  ]
 }
