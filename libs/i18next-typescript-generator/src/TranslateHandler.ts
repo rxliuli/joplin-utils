@@ -19,13 +19,11 @@ export class TranslateHandler {
    * @param config
    */
   protected buildKey(config: TranslateKeyConfig): string {
+    const key = config.key.replace(new RegExp("'", 'g'), "\\'")
     if (!config.params) {
-      return `[key: '${config.key}']`
+      return `[key: '${key}']`
     }
-    return `[key: '${config.key.replace(
-      new RegExp("'", 'g'),
-      "\\'",
-    )}', params: ${this.buildParams(config.params)}]`
+    return `[key: '${key}', params: ${this.buildParams(config.params)}]`
   }
 
   /**

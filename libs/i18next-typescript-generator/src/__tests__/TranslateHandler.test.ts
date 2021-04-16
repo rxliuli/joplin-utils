@@ -23,7 +23,7 @@ describe('测试 Builder', () => {
     })
     it("测试包含特殊字符 ' 时", () => {
       const res = handler.buildKey({ key: "I'm li" })
-      expect(res).toBe("[key: 'I'm li']")
+      expect(res).toBe("[key: 'I\\'m li']")
     })
   })
   describe('测试 build', () => {
