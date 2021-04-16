@@ -3,7 +3,6 @@ import path from 'path'
 import { mkdirp, pathExists, remove } from 'fs-extra'
 import { BaseSingleNoteHandler, SingleNoteHandler } from './SingleNoteHandler'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
-import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { ResourceWriter } from './ResourceWriter'
 
 export class HexoSingleNoteHandler implements BaseSingleNoteHandler {
@@ -14,7 +13,7 @@ export class HexoSingleNoteHandler implements BaseSingleNoteHandler {
   meta(note: CommonNote & { tags: CommonTag[] }): object {
     return {
       layout: 'post',
-      title: JoplinMarkdownUtil.trimTitleStart(note.title),
+      title: note.title,
       abbrlink: note.id,
       tags: note.tags
         .map((tag) => tag.title)

@@ -2,6 +2,7 @@ import { AsyncArray, asyncLimiting } from '@liuli-util/async'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import path from 'path'
 import { config, noteApi, PageUtil, searchApi, TypeEnum } from 'joplin-api'
+import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 
 export interface BaseIntegrated {
   /**
@@ -89,7 +90,12 @@ export class Application {
     //获取所有笔记及其相关的资源和标签
     const arr = await this.filter()
     console.log(`一共有 ${arr.length} 个笔记需要处理`)
-    const noteList = await new AsyncArray(arr).map(
+    const noteList = await new AsyncArray(
+      arr.map((note) => ({
+        ...note,
+        title: JoplinMarkdownUtil.trimTitle(note.title),
+      })),
+    ).map(
       asyncLimiting(async (note) => {
         console.log('正在读取笔记附件与标签: ', note.title)
         const [resources, tags] = await Promise.all([

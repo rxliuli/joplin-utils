@@ -3,7 +3,6 @@ import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import path from 'path'
 import { mkdirp, pathExists, remove } from 'fs-extra'
 import { BaseSingleNoteHandler, SingleNoteHandler } from './SingleNoteHandler'
-import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { DateTime } from 'luxon'
 import { ResourceWriter } from './ResourceWriter'
 
@@ -13,7 +12,7 @@ export class VuepressSingleNoteHandler implements BaseSingleNoteHandler {
   meta(note: CommonNote & { tags: CommonTag[] }): object {
     const formatter = 'yyyy-MM-dd hh:mm:ss'
     return {
-      title: JoplinMarkdownUtil.trimTitleStart(note.title),
+      title: note.title,
       permalink: `/p/${note.id}`,
       tags: note.tags
         .map((tag) => tag.title)
