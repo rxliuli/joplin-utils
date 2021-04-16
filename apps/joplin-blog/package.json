@@ -8,6 +8,7 @@
     "joplin-blog": "dist/bin.js"
   },
   "scripts": {
+    "start": "ts-node src/bin.ts -h",
     "prebuild": "yarn gen:i18n",
     "build": "liuli-cli clean && tsc -p tsconfig.build.json && liuli-cli addCliBanner",
     "pub": "yarn build && yarn",
@@ -43,6 +44,7 @@
   "dependencies": {
     "@liuli-util/array": "^3.1.0",
     "@liuli-util/async": "^3.1.1",
+    "commander": "^7.2.0",
     "fs-extra": "^9.0.1",
     "i18next": "^19.8.4",
     "joplin-api": "^0.2.7",
