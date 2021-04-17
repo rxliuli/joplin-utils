@@ -10,13 +10,14 @@ import {
 } from '../blog/VuepressIntegrated'
 import path from 'path'
 import { pathExists, readJson } from 'fs-extra'
-import { i18n } from '../util/I18n'
+import { i18n, LanguageEnum } from '../util/I18n'
 import { figletPromise } from '../util/utils'
 import ora from 'ora'
 import { Command } from 'commander'
 
 type JoplinBlogConfig = ApplicationConfig & {
   type: 'hexo' | 'vuepress'
+  language?: LanguageEnum
 } & (HexoIntegratedConfig | {})
 
 class BlogCommanderProgram {
@@ -48,11 +49,11 @@ class BlogCommanderProgram {
 
   async main() {
     console.log(await figletPromise('joplin-blog'))
-    await i18n.load(await i18n.getLanguage())
     const config = await this.checkConfig()
     if (!config) {
       return
     }
+    await i18n.load(config.language || (await i18n.getLanguage()))
     const application = await BlogCommanderProgram.getBlogApplication(config)
     await this.gen(application)
   }
@@ -121,12 +122,16 @@ class BlogCommanderProgram {
   }
 }
 
-export const blogCommandProgram = new BlogCommanderProgram()
+export const blogCommanderProgram = new BlogCommanderProgram()
 
-export const blogCommander = new Command('blog')
-  .description(
-    i18n.t(
-      'blog.Generate the files needed for the blog based on the notes in Joplin',
-    ),
-  )
-  .action(blogCommandProgram.main.bind(blogCommandProgram))
+/**
+ * 之所以使用函数的形式是因为 i18n 必须先异步初始化
+ */
+export const blogCommander = () =>
+  new Command('blog')
+    .description(
+      i18n.t(
+        'blog.Generate the files needed for the blog based on the notes in Joplin',
+      ),
+    )
+    .action(blogCommanderProgram.main.bind(blogCommanderProgram))
