@@ -1,6 +1,6 @@
 {
   "name": "vuepress-example",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "main": "index.js",
   "license": "MIT",
   "private": true,
@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@vuepress/theme-blog": "^2.3.3",
-    "joplin-blog": "*",
+    "joplin-blog": "^0.2.0",
     "vuepress": "^1.7.1"
   }
 }

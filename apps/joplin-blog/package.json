@@ -1,6 +1,6 @@
 {
   "name": "joplin-blog",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
@@ -36,7 +36,7 @@
     "gulp": "^4.0.2",
     "gulp-header": "^2.0.9",
     "gulp-typescript": "^6.0.0-alpha.1",
-    "i18next-typescript-generator": "*",
+    "i18next-typescript-generator": "^0.1.1",
     "jest": "^26.6.3",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
