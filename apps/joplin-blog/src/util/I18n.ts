@@ -36,11 +36,12 @@ class I18n {
           translation: zhCN,
         },
       },
+      nsSeparator: false,
     })
   }
 
   t(...args: TranslateParams): string {
-    return i18next.t(args[0], args[1])
+    return i18next.t(args[0], args[1] as any)
   }
 }
 

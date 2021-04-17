@@ -31,7 +31,7 @@ class BlogCommanderProgram {
         integrated = new VuepressIntegrated(config as VuepressIntegratedConfig)
         break
       default:
-        throw new Error('不支持的博客类型')
+        throw new Error(i18n.t('blog.Unsupported blog type'))
     }
     return new Application(config, integrated)
   }
@@ -61,17 +61,17 @@ class BlogCommanderProgram {
   async gen(app: Application) {
     const checkInfo = await app.check()
     if (checkInfo !== true) {
-      console.error('测试 joplin 服务失败: ', checkInfo)
+      console.error(i18n.t('blog.Failed to test joplin service: '), checkInfo)
       return
     }
     const spinner = ora({
       color: 'blue',
     })
 
-    spinner.start('开始过滤 joplin 笔记')
+    spinner.start(i18n.t('blog.Start filtering joplin notes'))
     const arr = await app.filter()
     if (arr.length === 0) {
-      spinner.warn('没有需要处理的笔记').stopAndPersist()
+      spinner.warn(i18n.t('blog.No notes to be processed')).stopAndPersist()
       return
     }
     spinner.stopAndPersist({
@@ -80,44 +80,66 @@ class BlogCommanderProgram {
       }),
     })
 
-    spinner.start('开始读取笔记附件与标签')
+    spinner.start(i18n.t('blog.Start reading note attachments and tags'))
     const noteList = await app.readNoteAttachmentsAndTags(arr, (options) => {
-      spinner.text = `[${options.rate}/${options.all}] 正在读取笔记附件与标签: ${options.title}`
+      spinner.text = i18n.t(
+        'blog.[{{rate}}/{{all}}] is reading note attachments and tags: {{title}}',
+        options,
+      )
     })
-    spinner.text = '结束读取笔记附件与标签'
+    spinner.text = i18n.t('blog.End reading note attachments and tags')
     spinner.stopAndPersist()
 
-    spinner.start('开始框架初始化动作')
+    spinner.start(i18n.t('blog.Start frame initialization action'))
     await app.handler.init()
     spinner.stopAndPersist({
-      text: '结束框架初始化动作',
+      text: i18n.t('blog.End frame initialization action'),
     })
 
-    spinner.start('开始解析笔记中的 Joplin 内部链接与附件资源')
+    spinner.start(
+      i18n.t(
+        'blog.Start parsing the Joplin internal links and attachment resources in the notes',
+      ),
+    )
     const replaceContentNoteList = app.parseAndWriteNotes(
       noteList,
       (options) => {
-        spinner.text = `[${options.rate}/${options.all}] 正在解析笔记中的 Joplin 内部链接与附件资源: ${options.title}`
+        spinner.text = i18n.t(
+          'blog.[{{rate}}/{{all}}] is parsing the Joplin internal links and attachment resources in the notes: {{title}}',
+          options,
+        )
       },
     )
     spinner.stopAndPersist({
-      text: '结束解析笔记中的 Joplin 内部链接与附件资源',
+      text: i18n.t(
+        'blog.End of parsing the Joplin internal links and attachment resources in the notes',
+      ),
     })
 
-    spinner.start('开始写入笔记到本地文件')
+    spinner.start(i18n.t('blog.Start writing notes to a local file'))
     await app.writeNote(replaceContentNoteList, (options) => {
-      spinner.text = `${options.rate}/${options.all} 正在写入笔记到本地文件: ${options.title}`
+      spinner.text = i18n.t(
+        'blog.{{rate}}/{{all}} Writing notes to local file: {{title}}',
+        options,
+      )
     })
-    spinner.stopAndPersist({ text: '结束写入笔记到本地文件' })
+    spinner.stopAndPersist({
+      text: i18n.t('blog.End writing notes to local file'),
+    })
 
-    spinner.start('开始复制附件资源')
+    spinner.start(i18n.t('blog.Start copying attachment resources'))
     await app.copyResources(noteList, (options) => {
-      spinner.text = `${options.rate}/${options.all} 正在复制附件资源: ${options.title}`
+      spinner.text = i18n.t(
+        'blog.{{rate}}/{{all}} Copying attachment resource: {{title}}',
+        options,
+      )
     })
-    spinner.stopAndPersist({ text: '结束复制附件资源' })
+    spinner.stopAndPersist({
+      text: i18n.t('blog.End Copying Attachment Resources'),
+    })
 
     spinner.start().stopAndPersist({
-      text: '结束生成博客',
+      text: i18n.t('blog.End generating blog'),
     })
   }
 }
