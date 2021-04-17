@@ -1,5 +1,12 @@
 # 开发
 
+## 环境要求
+
+- nodejs >= v12
+- joplin >= v1.4
+- vscode
+- 全局依赖: yarn, lerna
+
 ## 启动开发环境
 
 下载并初始化
