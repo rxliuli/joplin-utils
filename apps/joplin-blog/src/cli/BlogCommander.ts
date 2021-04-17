@@ -20,7 +20,7 @@ type JoplinBlogConfig = ApplicationConfig & {
   language?: LanguageEnum
 } & (HexoIntegratedConfig | {})
 
-class BlogCommanderProgram {
+export class BlogCommanderProgram {
   private static async getBlogApplication(config: JoplinBlogConfig) {
     let integrated: BaseIntegrated
     switch (config.type) {
@@ -144,8 +144,6 @@ class BlogCommanderProgram {
   }
 }
 
-export const blogCommanderProgram = new BlogCommanderProgram()
-
 /**
  * 之所以使用函数的形式是因为 i18n 必须先异步初始化
  */
@@ -156,4 +154,4 @@ export const blogCommander = () =>
         'blog.Generate the files needed for the blog based on the notes in Joplin',
       ),
     )
-    .action(blogCommanderProgram.main.bind(blogCommanderProgram))
+    .action(() => new BlogCommanderProgram().main())
