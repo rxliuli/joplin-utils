@@ -1,4 +1,3 @@
-import { pathExists, readJson } from 'fs-extra'
 import {
   Application,
   ApplicationConfig,
@@ -9,15 +8,17 @@ import {
   VuepressIntegrated,
   VuepressIntegratedConfig,
 } from '../blog/VuepressIntegrated'
-import { i18n } from '../util/I18n'
 import path from 'path'
+import { pathExists, readJson } from 'fs-extra'
+import { i18n } from '../util/I18n'
+import { figletPromise } from '../util/utils'
 import ora from 'ora'
 
 type JoplinBlogConfig = ApplicationConfig & {
   type: 'hexo' | 'vuepress'
 } & (HexoIntegratedConfig | {})
 
-class BlogCommand {
+export class BlogCommand {
   private static async getBlogApplication(config: JoplinBlogConfig) {
     let integrated: BaseIntegrated
     switch (config.type) {
@@ -45,6 +46,7 @@ class BlogCommand {
   }
 
   async gen() {
+    console.log(await figletPromise('joplin-blog'))
     await i18n.load(await i18n.getLanguage())
     const config = await this.checkConfig()
     if (!config) {

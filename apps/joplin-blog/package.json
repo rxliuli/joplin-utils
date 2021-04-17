@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@liuli-util/cli": "^3.2.1",
+    "@types/figlet": "^1.5.0",
     "@types/fs-extra": "^9.0.6",
     "@types/gulp": "^4.0.7",
     "@types/gulp-header": "^2.0.0",
@@ -45,6 +46,7 @@
     "@liuli-util/array": "^3.1.0",
     "@liuli-util/async": "^3.1.1",
     "commander": "^7.2.0",
+    "figlet": "^1.5.0",
     "fs-extra": "^9.0.1",
     "i18next": "^19.8.4",
     "joplin-api": "^0.2.7",
