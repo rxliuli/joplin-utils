@@ -4,7 +4,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "setup": "lerna run build --include-dependencies --stream"
+    "clean": "lerna clean -y && rm -rf node_modules",
+    "setup": "lerna run pub --include-dependencies --stream"
   },
   "workspaces": {
     "packages": [

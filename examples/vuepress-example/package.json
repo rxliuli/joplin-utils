@@ -5,8 +5,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "docs:dev": "vuepress dev blog",
-    "docs:build": "vuepress build blog",
+    "dev": "vuepress dev blog",
+    "build": "vuepress build blog",
     "imp": "joplin-blog"
   },
   "devDependencies": {

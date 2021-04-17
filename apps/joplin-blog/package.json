@@ -11,7 +11,7 @@
     "start": "ts-node src/bin.ts -h",
     "prebuild": "yarn gen:i18n",
     "build": "liuli-cli clean && tsc -p tsconfig.build.json && liuli-cli addCliBanner",
-    "pub": "yarn build && yarn",
+    "pub": "yarn build && lerna clean -y && yarn",
     "watch": "tsc -w -p tsconfig.build.json",
     "dev": "ts-node src/bin.ts",
     "gen:i18n": "i18next-dts-gen gen --input src/i18n"
