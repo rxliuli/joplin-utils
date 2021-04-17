@@ -56,16 +56,25 @@ describe('测试 loadI18n', () => {
     const res = i18n.t('test.special.characters')
     expect(res).not.toBe('特殊字符')
   })
+  /**
+   * 由于我禁用了这种情况下生成类型定义，所以无法测试（会引起类型错误）
+   */
   it('测试嵌套参数', () => {
+    //   expect(
+    //     i18n.t('test.Nested parameters {{options.name}}', {
+    //       'options.name': 'liuli',
+    //     }),
+    //   ).toBe('test.Nested parameters ')
+    //   expect(
+    //     i18n.t('test.Nested parameters {{options.name}}', {
+    //       options: { name: 'liuli' },
+    //     } as any),
+    //   ).toBe('test.Nested parameters liuli')
+  })
+  it('测试包含 :', () => {
+    expect(i18n.t('test.Contains a colon:')).toBe('')
     expect(
-      i18n.t('test.Nested parameters {{options.name}}', {
-        'options.name': 'liuli',
-      }),
-    ).toBe('test.Nested parameters ')
-    expect(
-      i18n.t('test.Nested parameters {{options.name}}', {
-        options: { name: 'liuli' },
-      } as any),
-    ).toBe('test.Nested parameters liuli')
+      i18n.t('test.Contains a colon:' as any, { nsSeparator: false } as any),
+    ).toBe('包含冒号:')
   })
 })

@@ -7,7 +7,7 @@
     },
     "special.characters": "special.characters",
     "I'm liuli": "I'm liuli",
-    "Nested parameters {{options.name}}": "Nested parameters {{options.name}}"
+    "Contains a colon:": "包含冒号:"
   },
   "hello": "hello",
   "key": "yeah, {{what}} is {{how}}",
