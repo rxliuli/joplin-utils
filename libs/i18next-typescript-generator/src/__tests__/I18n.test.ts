@@ -27,7 +27,7 @@ class I18n {
   }
 
   t(...args: TranslateParams): string {
-    return i18next.t(args[0], args[1])
+    return i18next.t(args[0], args[1] as any)
   }
 }
 
@@ -55,5 +55,17 @@ describe('测试 loadI18n', () => {
   it('测试特殊字符', () => {
     const res = i18n.t('test.special.characters')
     expect(res).not.toBe('特殊字符')
+  })
+  it('测试嵌套参数', () => {
+    expect(
+      i18n.t('test.Nested parameters {{options.name}}', {
+        'options.name': 'liuli',
+      }),
+    ).toBe('test.Nested parameters ')
+    expect(
+      i18n.t('test.Nested parameters {{options.name}}', {
+        options: { name: 'liuli' },
+      } as any),
+    ).toBe('test.Nested parameters liuli')
   })
 })

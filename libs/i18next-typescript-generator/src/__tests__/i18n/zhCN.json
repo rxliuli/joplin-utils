@@ -6,7 +6,8 @@
       "copyright": "一些版权"
     },
     "special": "特殊字符",
-    "I'm liuli": "我是琉璃"
+    "I'm liuli": "我是琉璃",
+    "Nested parameters {{options.name}}": "嵌套参数 {{options.name}}"
   },
   "hello": "你好",
   "key": "是的, {{what}} 是 {{how}}",

@@ -6,7 +6,8 @@
       "copyright": "Some copyrights"
     },
     "special.characters": "special.characters",
-    "I'm liuli": "I'm liuli"
+    "I'm liuli": "I'm liuli",
+    "Nested parameters {{options.name}}": "Nested parameters {{options.name}}"
   },
   "hello": "hello",
   "key": "yeah, {{what}} is {{how}}",

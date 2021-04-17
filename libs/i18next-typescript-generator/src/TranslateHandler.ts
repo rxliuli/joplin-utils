@@ -9,8 +9,21 @@ export interface TranslateKeyConfig {
 }
 
 export class TranslateHandler {
+  static replaceSpecialCharacters(key: string): string {
+    return key.replace(new RegExp("'", 'g'), "\\'")
+  }
+
   protected buildParams(params: string[]) {
-    const res = params.map((s) => `${s}: string|number`).join('\n')
+    const res = params
+      .map((key) => {
+        if (key.includes('.')) {
+          throw new Error('目前尚不不支持嵌套参数')
+        }
+        return `'${TranslateHandler.replaceSpecialCharacters(
+          key,
+        )}': string|number`
+      })
+      .join('\n')
     return '{' + res + '}'
   }
 
@@ -19,7 +32,7 @@ export class TranslateHandler {
    * @param config
    */
   protected buildKey(config: TranslateKeyConfig): string {
-    const key = config.key.replace(new RegExp("'", 'g'), "\\'")
+    const key = TranslateHandler.replaceSpecialCharacters(config.key)
     if (!config.params) {
       return `[key: '${key}']`
     }
