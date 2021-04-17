@@ -3,6 +3,7 @@ import { prompt } from 'enquirer'
 import { pathExists, readdir, writeJSON } from 'fs-extra'
 import path from 'path'
 import { BaseCommanderProgram } from './BaseCommanderProgram'
+import { HexoInstance } from '../util/HexoInstance'
 
 /**
  * 博客的配置初始化
@@ -59,7 +60,7 @@ export class InitConfigProgram implements BaseCommanderProgram {
 }
 
 /**
- * 初始化一些 hexo 博客项目
+ * 初始化 hexo 博客项目
  */
 export class InitHexoProjectProgram implements BaseCommanderProgram {
   async main() {
@@ -75,6 +76,17 @@ export class InitHexoProjectProgram implements BaseCommanderProgram {
     } else if ((await readdir(rootPath)).length !== 0) {
       // 目录不是空的
     }
+    // 初始化 hexo 项目
+    const hexoInstance = new HexoInstance({ rootPath })
+    await hexoInstance.init()
+    await this.initConfig()
+  }
+
+  /**
+   * 初始化一些配置
+   */
+  async initConfig() {
+    throw new Error()
   }
 }
 
