@@ -1,6 +1,7 @@
 {
   "blog": {
     "Generate the files needed for the blog based on the notes in Joplin": "Generate the files needed for the blog based on the notes in Joplin",
-    "Can't find configuration file _joplin-blog_json": "Can't find configuration file .joplin-blog.json"
+    "Can't find configuration file _joplin-blog_json": "Can't find configuration file .joplin-blog.json",
+    "Filter to get {{length}} notes to be processed": "Filter to get {{length}} notes to be processed"
   }
 }
