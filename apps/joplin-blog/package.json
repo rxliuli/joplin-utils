@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@liuli-util/cli": "^3.2.1",
+    "@types/command-exists": "^1.2.0",
     "@types/figlet": "^1.5.0",
     "@types/fs-extra": "^9.0.6",
     "@types/gulp": "^4.0.7",
@@ -33,6 +34,7 @@
     "@types/luxon": "^1.25.0",
     "@types/node": "^12.19.11",
     "@types/prettier": "^2.2.3",
+    "@types/shelljs": "^0.8.8",
     "gulp": "^4.0.2",
     "gulp-header": "^2.0.9",
     "gulp-typescript": "^6.0.0-alpha.1",
@@ -45,6 +47,7 @@
   "dependencies": {
     "@liuli-util/array": "^3.1.0",
     "@liuli-util/async": "^3.1.1",
+    "command-exists": "^1.2.9",
     "commander": "^7.2.0",
     "enquirer": "^2.3.6",
     "figlet": "^1.5.0",
@@ -60,6 +63,7 @@
     "remark-gfm": "^1.0.0",
     "remark-parse": "^9.0.0",
     "remark-stringify": "^9.0.1",
+    "shelljs": "^0.8.4",
     "unified": "^9.2.0",
     "unist-util-map": "^2.0.1",
     "unist-util-visit": "^2.0.3",
