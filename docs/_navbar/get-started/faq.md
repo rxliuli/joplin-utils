@@ -28,4 +28,17 @@ After checking joplin configuration items, restart VSCode.
 
 ## Clicking on the sidebar fails to open the note
 
-Please use the last version [v1.0.224](https://github.com/laurent22/joplin/releases/tag/v1.0.224), because it contains several new APIs, such as opening notes according to noteId in VSCode .
+There may be multiple reasons for this problem
+
+1. Please use version v1.4 or higher, because it contains the necessary [action api](https://discourse.joplinapp.org/t/hope-that-the-web-api-adds-the-following-features-to-support-the-development-of-third-party-extensions/9277/11?u=rxliuli) , For example, open notes based on noteId in VSCode
+2. The current version is Joplin Desktop. The plug-in does not support CLI, because it does not include the above action api. Reference: <https://discourse.joplinapp.org/t/action-api-not-setup-in-1-6-4-cli/16735>
+3. Check whether the following command can be executed normally, if it still cannot be opened in the editor, you may want to ask @laurent22
+
+   ```sh
+   curl --location --request POST 'http://localhost:27584/services/externalEditWatcher?token=***' \
+   --header 'Content-Type: application/json' \
+   --data-raw '{
+    "action": "openAndWatch",
+    "noteId": "257f6a9dacc1409580ee526d50ac4d49"
+   }'
+   ```

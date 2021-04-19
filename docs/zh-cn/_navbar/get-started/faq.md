@@ -8,7 +8,7 @@
 curl http://127.0.0.1:41184/ping
 ```
 
-## 点击后没有在 VSCode 中打开
+## 点击后在其他编辑器中打开
 
 请参考官方的默认外部编辑器设置：[How can I edit my note in an external text editor?](https://joplinapp.org/faq/#how-can-i-edit-my-note-in-an-external-text-editor)
 
@@ -24,4 +24,17 @@ curl http://127.0.0.1:41184/ping
 
 ## 在侧边栏中点击无法打开笔记
 
-请使用版本 [v1.0.224](https://github.com/laurent22/joplin/releases/tag/v1.0.224) 或更高，因为它包含了必须的几个新 API，例如在 VSCode 中根据 noteId 打开笔记。
+这个问题可能有多个原因
+
+1. 请使用版本 v1.4 或更高，因为它包含了必须的 [action api](https://discourse.joplinapp.org/t/hope-that-the-web-api-adds-the-following-features-to-support-the-development-of-third-party-extensions/9277/11?u=rxliuli)，例如在 VSCode 中根据 noteId 打开笔记
+2. 当前版本是 Joplin Desktop，该插件并不支持 CLI，因为它并不包含上述的 action api，参考: <https://discourse.joplinapp.org/t/action-api-not-setup-in-1-6-4-cli/16735>
+3. 检查下面命令是否能够正常执行，如果仍然无法在编辑器中打开，可能要询问 @laurent22
+
+   ```sh
+   curl --location --request POST 'http://localhost:27584/services/externalEditWatcher?token=***' \
+   --header 'Content-Type: application/json' \
+   --data-raw '{
+    "action": "openAndWatch",
+    "noteId": "257f6a9dacc1409580ee526d50ac4d49"
+   }'
+   ```
