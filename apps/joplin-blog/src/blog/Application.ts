@@ -40,7 +40,7 @@ export interface ApplicationConfig {
   tag: string
 }
 
-type ProcessHook = (options: {
+export type ProcessHook = (options: {
   rate: number
   all: number
   title: string

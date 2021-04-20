@@ -1,42 +1,59 @@
 import path from 'path'
+import git from 'isomorphic-git'
+import http from 'isomorphic-git/http/node'
+import * as fs from 'fs'
+import { ProcessHook } from '../blog/Application'
+import { installDeps } from './utils'
 
-interface HexoInstanceConfig {
+export interface HexoInstanceConfig {
   rootPath: string
 }
 
 export class HexoInstance {
-  constructor(private config: HexoInstanceConfig) {
+  constructor(readonly config: HexoInstanceConfig) {
     this.config.rootPath = path.resolve(this.config.rootPath)
+    this.config = Object.freeze(this.config)
   }
+
+  static readonly remoteUrl = 'https://github.com/rxliuli/hexo-starter'
 
   /**
    * 初始化一个 hexo 项目
    */
-  async init() {
-    throw new Error()
+  async init(onProcess: ProcessHook) {
+    await git.clone({
+      url: HexoInstance.remoteUrl,
+      dir: this.config.rootPath,
+      fs,
+      http,
+      onProgress: (info) =>
+        onProcess({
+          title: info.phase,
+          rate: info.loaded,
+          all: info.total,
+        }),
+    })
   }
 
   /**
    * 检查是否为 hexo 项目
    */
-  async check() {
-    throw new Error()
-  }
+  // async check() {
+  //   const rootPath = this.config.rootPath
+  //   const pkgJsonPath = path.resolve(rootPath, 'package.json')
+  //   const configPath = path.resolve(rootPath, '_config.yml')
+  //   if (
+  //     (await AsyncArray.map([pkgJsonPath, configPath], pathExists)).includes(
+  //       false,
+  //     )
+  //   ) {
+  //     return false
+  //   }
+  //   const pkgJson = await readJson(pkgJsonPath)
+  //   return pkgJson.hexo
+  // }
 
-  /**
-   * 生成配置
-   * @param key
-   */
-  async getConfig(key: string): Promise<string> {
-    throw new Error()
-  }
-
-  /**
-   * 设置配置
-   * @param key
-   * @param val
-   */
-  async setConfig(key: string, val: string) {
-    throw new Error()
+  async installDeps() {
+    await installDeps(this.config.rootPath)
   }
 }

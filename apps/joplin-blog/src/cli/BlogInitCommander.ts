@@ -1,9 +1,11 @@
 import { Command } from 'commander'
 import { prompt } from 'enquirer'
-import { pathExists, readdir, writeJSON } from 'fs-extra'
+import { mkdirp, pathExists, readdir, writeJSON } from 'fs-extra'
 import path from 'path'
 import { BaseCommanderProgram } from './BaseCommanderProgram'
 import { HexoInstance } from '../util/HexoInstance'
+import ora from 'ora'
+import { execCommand, resetGit } from '../util/utils'
 
 /**
  * 博客的配置初始化
@@ -63,30 +65,44 @@ export class InitConfigProgram implements BaseCommanderProgram {
  * 初始化 hexo 博客项目
  */
 export class InitHexoProjectProgram implements BaseCommanderProgram {
+  constructor(private hexoInstance: HexoInstance) {}
+
+  private readonly spinner = ora({ color: 'blue' })
+
   async main() {
-    const config: { rootPath: string } = await prompt({
-      type: 'input',
-      name: 'rootPath',
-      message: '选择初始化 hexo 的目录，默认为当前目录',
-      initial: '.',
-    })
-    const rootPath = path.resolve(config.rootPath)
+    const rootPath = this.hexoInstance.config.rootPath
+    console.log('目录不存在: ', rootPath, !(await pathExists(rootPath)))
     if (!(await pathExists(rootPath))) {
-      // 目录不存在
+      console.info('目录不存在，已自动创建')
+      await mkdirp(rootPath)
     } else if ((await readdir(rootPath)).length !== 0) {
-      // 目录不是空的
+      console.error('目录不是空的，已经终止命令')
+      return
     }
     // 初始化 hexo 项目
     const hexoInstance = new HexoInstance({ rootPath })
-    await hexoInstance.init()
-    await this.initConfig()
+    this.spinner.start('开始生成 hexo 项目')
+    await hexoInstance.init((options) => {
+      this.spinner.text = `正在生成 hexo 项目: ${options.title} ${
+        options.rate
+      }${options.all ? `/${options.all}` : ''}`
+    })
+    this.spinner.stopAndPersist({ text: '结束生成 hexo 项目' })
+
+    this.spinner.start('安装依赖，可能需要较长的时间')
+    await hexoInstance.installDeps()
+    this.spinner.stopAndPersist({ text: '结束安装依赖' })
+
+    await this.resetGit()
+
+    await execCommand(rootPath, 'yarn server', {
+      silent: false,
+    })
   }
 
-  /**
-   * 初始化一些配置
-   */
-  async initConfig() {
-    throw new Error()
+  async resetGit() {
+    const rootPath = this.hexoInstance.config.rootPath
+    await resetGit(rootPath)
   }
 }
 
@@ -97,9 +113,18 @@ export const blogInitCommander = () =>
         .description('初始化 .joplin-blog.json 配置')
         .action(() => new InitConfigProgram().main()),
     )
-    // .addCommand(
-    //   new Command('hexo')
-    //     .description('初始化 hexo 博客目录')
-    //     .action(() => new InitHexoProjectProgram().main()),
-    // )
+    .addCommand(
+      new Command('hexo')
+        .description('初始化 hexo 博客目录')
+        .option('-d, --dir <path>', '初始化 hexo 的目录，默认为当前目录', '.')
+        .action(async (options: { dir?: string }) => {
+          await new InitHexoProjectProgram(
+            new HexoInstance({
+              rootPath: options.dir || '.',
+            }),
+          ).main()
+        }),
+    )
     .description('一些相关的初始化动作')
+
+blogInitCommander().parse()

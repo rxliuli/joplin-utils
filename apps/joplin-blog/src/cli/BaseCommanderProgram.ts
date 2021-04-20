@@ -2,5 +2,5 @@ export interface BaseCommanderProgram {
   /**
    * 入口函数
    */
-  main(): Promise<void>
+  main: (...args: any[]) => Promise<void>
 }
