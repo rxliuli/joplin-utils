@@ -9,19 +9,13 @@
     "strict": true,
     "rootDir": "src",
     "outDir": "dist",
-    "declaration": true,
-    "declarationMap": true,
+    "declaration": false,
+    "declarationMap": false,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "moduleResolution": "Node"
+    "skipLibCheck": true
   },
   "exclude": [
     "dist"
-  ],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+  ]
 }

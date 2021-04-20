@@ -126,5 +126,3 @@ export const blogInitCommander = () =>
         }),
     )
     .description('一些相关的初始化动作')
-
-blogInitCommander().parse()
