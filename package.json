@@ -32,7 +32,7 @@
     "singleQuote": true,
     "trailingComma": "all",
     "arrowParens": "always",
-    "endOfLine": "lf"
+    "endOfLine": "crlf"
   },
   "devDependencies": {
     "jest": "^26.6.3",
