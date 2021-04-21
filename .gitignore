@@ -8,3 +8,4 @@ yarn-error.log
 dist
 .cache
 *.tgz
+.vscode/launch.json
