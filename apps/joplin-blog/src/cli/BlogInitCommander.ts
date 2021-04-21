@@ -71,7 +71,6 @@ export class InitHexoProjectProgram implements BaseCommanderProgram {
 
   async main() {
     const rootPath = this.hexoInstance.config.rootPath
-    console.log('目录不存在: ', rootPath, !(await pathExists(rootPath)))
     if (!(await pathExists(rootPath))) {
       console.info('目录不存在，已自动创建')
       await mkdirp(rootPath)

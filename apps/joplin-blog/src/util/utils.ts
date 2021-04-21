@@ -89,8 +89,8 @@ export async function resetGit(rootPath: string) {
     ...repo,
     message: 'Initial Commit',
     author: {
-      name: 'rxliuli',
-      email: 'rxliuli@gmail.com',
+      name: 'joplin-blog',
+      email: 'joplin@blog.com',
     },
   })
 }
