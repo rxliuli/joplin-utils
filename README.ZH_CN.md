@@ -5,15 +5,15 @@
 
 ## 概述
 
-`joplin-vscode-plugin` 以 VSCode 的强大和灵活性提供对 Joplin 笔记的编辑和管理。
+joplin-vscode-plugin 提供在 vscode 中管理 joplin 笔记的功能，包括常见的查看、编辑笔记，管理笔记的标签，添加、修改附件，内部链接、搜索等功能。
 
-Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，共享笔记、笔记本、标签等。`joplin-vscode-plugin` 连接到相同的 REST 端点，可以在不离开编辑器的情况下自由地对你的笔记进行修改。
+Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，共享笔记、笔记本、标签等。joplin-vscode-plugin 连接到相同的 REST 端点，可以在不离开编辑器的情况下查看和修改笔记。
 
 > 为什么会有这个插件？阅读 [我的动机](_navbar/other/why) 了解开发它的原因。
 >
 > 它能做什么？[路线图](../other/roadmap) 列出了现有和计划中的功能。
 >
-> 没听说过 [乔普林](https://joplinapp.org/)？你错过了一个伟大的 [开源同步笔记应用](https://joplinapp.org/)。
+> 没听说过 [乔普林](https://joplinapp.org/)？你错过了一个不错的 [开源同步笔记应用](https://joplinapp.org/)。
 
 ## 要求
 
@@ -24,7 +24,7 @@ Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，�
 
 ## 安装 Joplin VSCode 插件
 
-在 VSCode 市场中搜索 "Joplin"。找到 "joplin-vscode-plugin" 并点击安装。
+在 VSCode 市场中搜索 joplin。找到 joplin-vscode-plugin 并点击安装。
 
 ![安装插件](../../../_media/install-plugin.png)
 
@@ -56,32 +56,24 @@ Joplin 程序的个人目录
 
 ## 重新启动 VSCode
 
-目前配置编辑不会触发一个新的连接。只需关闭 VSCode，下次启动时它就会连接到 Joplin。
+目前配置编辑后不会自动重新连接，需要关闭 VSCode，下次启动时它就会连接到 Joplin。
 
----
+## 开始使用
 
-## 说你好乔普林
-
-输入关键和弦<kbd>Ctrl</kbd>+<kbd>J</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd>，然后庆祝。 :tada: 这个热键组合激活了 _View: 显示 Joplin_ 命令，打开侧边栏，显示所有的笔记本。
+输入快捷键 `Ctrl+J Ctrl+J`，然后庆祝 :tada:。这个快捷键组合激活了 `view: show joplin` 命令，打开侧边栏，显示所有的笔记本。
 
 ![预览](https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200623085740.png)
 
-##用途
+## 功能
 
-您的所有笔记和记事本都可以在侧边栏中找到。展开笔记本可以看到下面的副笔记本和笔记。
+您的所有笔记和记事本都可以在侧边栏中找到，展开笔记本可以看到下面的子笔记本和笔记。
 
-点击一个笔记，在编辑器中打开一个工作副本。保存它以将更改推送回 Joplin。
+点击一个笔记，在编辑器中打开一个工作副本，保存它以将修改推送回 Joplin。
 
-你可以随心所欲地创建、编辑和删除 "笔记 "和 "笔记本"。而且它甚至没有停止。现在权力是你的了。🦸♀️
-
-> 提示。探索在命令调色板中输入 "joplin "的结果，找出我没有告诉你的伟大功能。
+你可以随心所欲地创建、编辑和删除 **笔记** 和 **笔记本**，一切都在 VSCode 中不间断的完成。🦸♀️
 
 ## 命令和键绑定
 
-VSCode 有很多键绑定。为了避免与所有内置的设置发生冲突，我们只声明了一个理想的键，<kbd>Ctrl</kbd>+<kbd>J</kbd>，并将其转化为键和弦的触发器。
+VSCode 有很多快捷键键绑定，为了避免与内置的快捷键冲突，我们假定了一个快捷键前缀 `Ctrl+J`，在后面继续添加二步快捷键键。
 
-> 声称<kbd>Ctrl</kbd>+<kbd>J</kbd>取代了`workbench.action.togglePanel`(_View: Toggle Panel_)的原生绑定。为了你的方便，已经在<kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd>处添加了一个合理的替换绑定。
-
-在命令调色板中输入 "Joplin"(<kbd>Ctrl</kbd>+<kbd>P</kbd>)，可以看到所有可用的新命令。其中一些命令已经有键绑定。在<kbd>Ctrl</kbd>+<kbd>J</kbd>命名空间下分配新的绑定，以满足您的需求。
-
-通过www.DeepL.com/Translator（免费版）翻译
+提示：探索在命令调色板中输入 `joplin` 的结果，找出我没有告诉你的伟大功能。

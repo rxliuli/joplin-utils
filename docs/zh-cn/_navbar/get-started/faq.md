@@ -38,3 +38,15 @@ curl http://127.0.0.1:41184/ping
     "noteId": "257f6a9dacc1409580ee526d50ac4d49"
    }'
    ```
+
+## Windows 10 无法上传剪切版图片
+
+可能是没有安装 powershell，在 CMD 中输入 powershell 检查
+
+```sh
+powershell
+```
+
+![powershell](https://user-images.githubusercontent.com/24560368/115563663-5d855c00-a2ea-11eb-8b08-dfa7dd773601.png)
+
+如果提示 `spawn powershell ENOENT` 则需要安装 powershell，参考：[在 Windows 上安装 PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)

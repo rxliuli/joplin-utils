@@ -42,3 +42,15 @@ There may be multiple reasons for this problem
     "noteId": "257f6a9dacc1409580ee526d50ac4d49"
    }'
    ```
+
+## Windows 10 cannot upload a cut version of the picture
+
+Powershell may not be installed, enter powershell in CMD to check
+
+```sh
+powershell
+```
+
+![powershell](https://user-images.githubusercontent.com/24560368/115563663-5d855c00-a2ea-11eb-8b08-dfa7dd773601.png)
+
+If you are prompted to `spawn powershell ENOENT`, you need to install powershell, refer to: [Install PowerShell on Windows](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)
