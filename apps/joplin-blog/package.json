@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "ts-node src/bin.ts -h",
-    "build": "rimraf dist && rollup -c rollup.config.js",
+    "build": "liuli-cli clean && rollup -c rollup.config.js && liuli-cli addCliBanner",
     "pub": "yarn build && lerna clean -y && yarn",
     "dev": "ts-node src/bin.ts",
     "gen:i18n": "i18next-dts-gen gen --input src/i18n"
@@ -40,7 +40,6 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "i18next-typescript-generator": "^0.1.1",
     "jest": "^26.6.3",
-    "rimraf": "^3.0.2",
     "rollup": "^2.45.2",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
