@@ -21,13 +21,15 @@
 ## 启动项目
 
 1. 使用 vscode 打开项目
-2. 修改 _.vscode/launch.json_ 配置，修改以下配置项
+2. `cp .vscode/_launch.json .vscode/launch.json`
+3. 修改 _.vscode/launch.json_ 配置，修改以下配置项
    > 个人建议同时启动 joplin electron 项目，避免在真实的个人笔记上进行测试，插件可能错误的破坏真实笔记。
    - `configurations/env`
-     - `JOPLIN_TOKEN`
-     - `JOPLIN_PORT`
-3. 使用 `yarn watch` 启动 tsc 监视模式
-4. 使用 `F5` 运行调试模式
+     - `JOPLIN_TOKEN`: web clipper 的验证令牌
+     - `JOPLIN_PORT`: 端口，开发环境一般是 `27584`
+     - `JOPLIN_PROFILE_PATH`: 个人配置目录，开发环境应该是 `~/.config/joplin-desktop`，但注意需要使用完全路径
+4. 使用 `yarn watch` 启动 tsc 监视模式
+5. 使用 `F5` 运行调试模式
 
 ## 项目结构
 

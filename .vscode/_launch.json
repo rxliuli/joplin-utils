@@ -11,6 +11,7 @@
       "env": {
         "DEBUG": "true",
         "JOPLIN_TOKEN": "",
+        "JOPLIN_PROFILE_PATH": "",
         "JOPLIN_PORT": "27584"
       }
     },
