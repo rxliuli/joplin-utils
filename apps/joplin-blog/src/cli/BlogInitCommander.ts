@@ -1,11 +1,11 @@
 import { Command } from 'commander'
 import { prompt } from 'enquirer'
-import { mkdirp, pathExists, readdir, writeJSON } from 'fs-extra'
+import { mkdirp, pathExists, readdir, remove, writeJSON } from 'fs-extra'
 import path from 'path'
 import { BaseCommanderProgram } from './BaseCommanderProgram'
 import { HexoInstance } from '../util/HexoInstance'
 import ora from 'ora'
-import { execCommand, resetGit } from '../util/utils'
+import { execCommand } from '../util/utils'
 
 /**
  * 博客的配置初始化
@@ -99,10 +99,20 @@ export class InitHexoProjectProgram implements BaseCommanderProgram {
     })
   }
 
+  /**
+   * 其实这里只需要删除 clone 下来的 .git 目录就好了
+   */
   async resetGit() {
     const rootPath = this.hexoInstance.config.rootPath
-    await resetGit(rootPath)
+    await remove(path.resolve(rootPath, '.git'))
   }
+}
+
+/**
+ * 部署 hexo 项目打包后的静态资源
+ */
+export class DeployStaticProgram implements BaseCommanderProgram {
+  async main(): Promise<void> {}
 }
 
 export const blogInitCommander = () =>

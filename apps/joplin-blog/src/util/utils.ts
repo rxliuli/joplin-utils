@@ -6,6 +6,7 @@ import { remove } from 'fs-extra'
 import path from 'path'
 import fs from 'fs'
 import { AsyncArray } from '@liuli-util/async'
+import { publish } from 'gh-pages'
 
 /**
  * 生成一个字符画
@@ -93,4 +94,40 @@ export async function resetGit(rootPath: string) {
       email: 'joplin@blog.com',
     },
   })
+}
+
+/**
+ * 部署到远端
+ * @param basePath
+ * @param config
+ */
+export function deploy(
+  basePath: string,
+  config: {
+    user: string
+    repo: string
+    token: string
+  },
+) {
+  const repo = config.repo || `${config.user}.github.io`
+  return new Promise<void>((resolve, reject) =>
+    publish(
+      basePath,
+      {
+        repo: `https://${config.token}@github.com/${config.user}/${repo}.git`,
+        user: {
+          name: 'joplin-blog',
+          email: 'joplin@blog.com',
+        },
+        git: ''
+      },
+      (err) => {
+        if (err) {
+          reject(err)
+          return
+        }
+        resolve()
+      },
+    ),
+  )
 }
