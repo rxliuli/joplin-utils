@@ -1,5 +1,17 @@
 # 更新记录
 
+## v0.3.0
+
+- test: 禁用掉测试将父目录指向子级的作死行为
+- fix: 修复 JoplinApiGenerator 导出的对象方法没有绑定 this 的问题（主要因为需要 this.ajax）
+- fix: 修复 ajax.request 函数读取错误的 config 的问题
+- build: 删除 wallaby 配置文件，该项目不适合使用所见即所得测试，因为会产生副作用（数据库）
+- build: 将中文 README 重命名为大写下划线风格
+- build: 将 jest 单独的配置文件删除出去
+- refactor: 将 api 重构为支持生成所有的 api 对象的方式，同时兼容之前的全局配置模式
+- build: 将 docs npm script 暴露出来以供 ci 使用
+- build: 添加 GitHub Actions 自动发布 npm 包
+
 ## v0.2.7
 
 - build: 修改 jest 测试启动器，将 joplin token 从环境变量读取
