@@ -662,6 +662,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@liuli-util/object@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@liuli-util/object/-/object-3.2.0.tgz#45462f9e64e6feb4afa1e1d984006f41373a9457"
+  integrity sha512-ROyqHUGW0tDK9uiK6JY/Wa8cC9hLhRhp6wbpazE5h+tAdjcg3rVz97gQJQUoI2vmC9FsxfgZRzlLsL91PO6D5w==
+
 "@rollup/pluginutils@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-3.1.0.tgz#706b4524ee6dc8b103b3c995533e5ad680c02b9b"

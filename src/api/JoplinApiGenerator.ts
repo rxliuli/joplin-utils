@@ -10,6 +10,7 @@ import { SearchApi } from './SearchApi'
 import { TagApi } from './TagApi'
 import { FolderApi } from './FolderApi'
 import { JoplinApi } from './JoplinApi'
+import { ClassUtil } from '@liuli-util/object'
 
 export class JoplinApiGenerator {
   private config: Config = new Config()
@@ -36,6 +37,10 @@ export class JoplinApiGenerator {
 }
 
 export const config = new JoplinApiGenerator()
+Object.entries(config).forEach(([k, v]) => {
+  Reflect.set(config, k, ClassUtil.bindMethodThis(v))
+})
+
 export const {
   ajax,
   folderApi,
