@@ -1,12 +1,14 @@
 // noinspection ES6PreferShortImport
 import { TypeEnum } from '../modal/TypeEnum'
-import { ajax } from '../util/ajax'
+import { Ajax } from '../util/ajax'
 import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
 import { NoteProperties } from '../modal/NoteProperties'
 import { CommonType } from '../modal/CommonType'
 
-class SearchApi {
+export class SearchApi {
+  constructor(private ajax: Ajax) {}
+
   private static readonly TypeEnumMap: Record<TypeEnum, string> = {
     [TypeEnum.Note]: 'note',
     [TypeEnum.Folder]: 'folder',
@@ -31,11 +33,12 @@ class SearchApi {
   ): Promise<PageRes<Pick<NoteProperties, K> & CommonType>> {
     SearchApi.TypeEnumMap['8'] = ''
     const { type, ...others } = param
-    return ajax.get<PageRes<Pick<NoteProperties, K> & CommonType>>('/search', {
-      ...others,
-      type: SearchApi.TypeEnumMap[type!],
-    })
+    return this.ajax.get<PageRes<Pick<NoteProperties, K> & CommonType>>(
+      '/search',
+      {
+        ...others,
+        type: SearchApi.TypeEnumMap[type!],
+      },
+    )
   }
 }
-
-export const searchApi = new SearchApi()

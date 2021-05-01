@@ -1,9 +1,15 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es2017", "esnext.array", "es2015.iterable"],
+    "lib": [
+      "es2017",
+      "esnext.array",
+      "es2015.iterable"
+    ],
     "paths": {
-      "*": ["types/*"]
+      "*": [
+        "types/*"
+      ]
     },
     "module": "esnext",
     "declaration": true,
@@ -16,8 +22,14 @@
     "esModuleInterop": true,
     // 引入辅助函数集
     "importHelpers": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "noEmit": true
   },
-  "include": ["./src/**/*.ts"],
-  "exclude": ["./dist", "./node_modules"]
+  "include": [
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "./dist",
+    "./node_modules"
+  ]
 }

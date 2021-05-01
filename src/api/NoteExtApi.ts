@@ -1,15 +1,20 @@
-import { noteApi } from './NoteApi'
+import { NoteApi } from './NoteApi'
 // noinspection ES6PreferShortImport
 import { IntBool } from '../types/IntBool'
+import { Ajax } from '../util/ajax'
 
-class NoteExtApi {
+export class NoteExtApi {
+  private noteApi = new NoteApi(this.ajax)
+
+  constructor(private ajax: Ajax) {}
+
   /**
    * 重命名笔记
    * @param id
    * @param title
    */
   rename(id: string, title: string) {
-    return noteApi.update({ id, title })
+    return this.noteApi.update({ id, title })
   }
 
   /**
@@ -18,7 +23,7 @@ class NoteExtApi {
    * @param parentId
    */
   move(id: string, parentId: string) {
-    return noteApi.update({ id, parent_id: parentId })
+    return this.noteApi.update({ id, parent_id: parentId })
   }
 
   /**
@@ -27,15 +32,13 @@ class NoteExtApi {
    * @param completed
    */
   async toggleTodo(id: string, completed?: IntBool) {
-    const note = await noteApi.get(id, ['id', 'is_todo', 'todo_completed'])
+    const note = await this.noteApi.get(id, ['id', 'is_todo', 'todo_completed'])
     if (!note.is_todo) {
       return
     }
-    await noteApi.update({
+    await this.noteApi.update({
       id: note.id,
       todo_completed: completed || (note.todo_completed === 0 ? 1 : 0),
     })
   }
 }
-
-export const noteExtApi = new NoteExtApi()

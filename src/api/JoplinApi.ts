@@ -1,10 +1,12 @@
 // noinspection ES6PreferShortImport
-import { config } from '../util/config'
-import { request } from '../util/ajax'
+import { Ajax } from '../util/ajax'
 
-class JoplinApi {
-  private static async pingPort(port: number) {
-    const res = await request<string>({
+export class JoplinApi {
+  constructor(private ajax: Ajax) {
+  }
+
+  private async pingPort(port: number) {
+    const res = await this.ajax.request<string>({
       url: `http://localhost:${port}/ping`,
       method: 'get',
       responseType: 'text',
@@ -24,7 +26,7 @@ class JoplinApi {
     const list = await Promise.all(
       JoplinApi.range(41184, 41194 + 1).filter(async (port) => {
         try {
-          return await JoplinApi.pingPort(port)
+          return await this.pingPort(port)
         } catch (e) {
           return false
         }
@@ -37,9 +39,6 @@ class JoplinApi {
   }
 
   async ping(): Promise<boolean> {
-    console.log('config port: ', config.port)
-    return JoplinApi.pingPort(config.port)
+    return this.pingPort(this.ajax.config.port)
   }
 }
-
-export const joplinApi = new JoplinApi()

@@ -1,6 +1,4 @@
-class Config {
-  port = 41184
-  token = ''
+export class Config {
+  port: number = 41184
+  token: string = ''
 }
-
-export const config = new Config()
