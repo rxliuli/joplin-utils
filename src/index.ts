@@ -8,8 +8,9 @@ export * from './api/NoteActionApi'
 export * from './api/ResourceActionApi'
 export * from './api/NoteExtApi'
 export * from './api/FolderExtApi'
+export * from './api/JoplinApiGenerator'
 
 export * from './util/config'
-export * from './util/PageUtil'
 
+export * from './util/PageUtil'
 export * from './modal/TypeEnum'

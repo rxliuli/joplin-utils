@@ -1,5 +1,8 @@
 import axios from 'axios'
-import { ApiUtil } from './ApiUtil'
+import { stringify } from 'query-string'
+import { Config } from './config'
+import fetch from 'node-fetch'
+import FormData from 'form-data'
 
 export type Method =
   | 'get'
@@ -31,7 +34,7 @@ export type ResponseType =
   | 'text'
   | 'stream'
 
-interface Config {
+interface AjaxConfig {
   url: string
   method?: Method
   data?: any
@@ -48,78 +51,104 @@ type FlipOptional<T> = Required<Pick<T, OptionalKeys<T>>> &
   ? { [K in keyof O]: O[K] }
   : never
 
-const defaultConfig: FlipOptional<Config> = {
+const defaultConfig: FlipOptional<AjaxConfig> = {
   method: 'get',
   data: undefined,
   headers: {},
   responseType: 'json',
 }
 
-/**
- * 封装 ajax 请求
- * @param config
- */
-export async function request<R>(config: Config) {
-  const mergeConfig = { ...defaultConfig, ...config }
-  return (
-    await axios.request({
-      url: mergeConfig.url,
-      method: mergeConfig.method,
-      data: mergeConfig.data,
-      headers: mergeConfig.headers,
-      responseType: mergeConfig.responseType,
-    })
-  ).data as R
-}
+export class Ajax {
+  constructor(public readonly config: Config) {}
 
-class Ajax {
+  /**
+   * 封装 ajax 请求
+   * @param config
+   */
+  async request<R>(config: AjaxConfig) {
+    const mergeConfig = { ...defaultConfig, ...this.config }
+    return (
+      await axios.request({
+        url: mergeConfig.url,
+        method: mergeConfig.method,
+        data: mergeConfig.data,
+        headers: mergeConfig.headers,
+        responseType: mergeConfig.responseType,
+      })
+    ).data as R
+  }
+
+  baseUrl(url: string, param?: object) {
+    const query = stringify(
+      {
+        ...param,
+        ...this.config,
+      },
+      {
+        arrayFormat: 'comma',
+      },
+    )
+    return `http://localhost:${this.config.port}${url}?${query}`
+  }
+
   get<R>(
     url: string,
     data?: any,
-    config?: Omit<Config, 'url' | 'data' | 'method'>,
+    config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
   ) {
-    return request<R>({
-      url: ApiUtil.baseUrl(url, data),
+    return this.request<R>({
+      url: this.baseUrl(url, data),
       ...config,
       method: 'get',
     })
   }
+
   post<R>(
     url: string,
     data?: any,
-    config?: Omit<Config, 'url' | 'data' | 'method'>,
+    config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
   ) {
-    return request<R>({
-      url: ApiUtil.baseUrl(url),
+    return this.request<R>({
+      url: this.baseUrl(url),
       data,
       ...config,
       method: 'post',
     })
   }
+
   put<R>(
     url: string,
     data?: any,
-    config?: Omit<Config, 'url' | 'data' | 'method'>,
+    config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
   ) {
-    return request<R>({
-      url: ApiUtil.baseUrl(url),
+    return this.request<R>({
+      url: this.baseUrl(url),
       data,
       ...config,
       method: 'put',
     })
   }
+
   delete<R>(
     url: string,
     data?: any,
-    config?: Omit<Config, 'url' | 'data' | 'method'>,
+    config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
   ) {
-    return request<R>({
-      url: ApiUtil.baseUrl(url),
+    return this.request<R>({
+      url: this.baseUrl(url),
       data,
       ...config,
       method: 'delete',
     })
   }
-}
 
-export const ajax = new Ajax()
+  async postFormData(url: string, data: object) {
+    const fd = new FormData()
+    Object.entries(data).forEach(([k, v]) => fd.append(k, v))
+    const resp = await fetch(this.baseUrl(url), {
+      method: 'post',
+      body: fd,
+    })
+    return await resp.json()
+  }
+}

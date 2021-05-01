@@ -1,18 +1,18 @@
 import { ResourceProperties } from '../modal/ResourceProperties'
 import { ResourceGetRes } from '../modal/ResourceGetRes'
 import FormData from 'form-data'
-import fetch from 'node-fetch'
-import { ajax } from '../util/ajax'
-import { ApiUtil } from '../util/ApiUtil'
 import { ReadStream } from 'fs'
 import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
 import { CommonType } from '../modal/CommonType'
+import { Ajax } from '../util/ajax'
 
 /**
  * 附件资源相关 api
  */
-class ResourceApi {
+export class ResourceApi {
+  constructor(private ajax: Ajax) {}
+
   async list(): Promise<PageRes<ResourceGetRes>>
   async list<K extends keyof ResourceProperties>(
     pageParam: PageParam<ResourceProperties> & FieldsParam<K>,
@@ -20,7 +20,7 @@ class ResourceApi {
   async list(
     pageParam?: PageParam<ResourceProperties> & FieldsParam<ResourceGetRes>,
   ) {
-    return await ajax.get<PageRes<ResourceGetRes>>('/resources', pageParam)
+    return await this.ajax.get<PageRes<ResourceGetRes>>('/resources', pageParam)
   }
 
   async get(id: string): Promise<ResourceGetRes>
@@ -30,7 +30,7 @@ class ResourceApi {
   async get<
     K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>
   >(id: string, fields?: K[]) {
-    return await ajax.get<ResourceGetRes>(`/resources/${id}`, { fields })
+    return await this.ajax.get<ResourceGetRes>(`/resources/${id}`, { fields })
   }
 
   /**
@@ -43,16 +43,15 @@ class ResourceApi {
     const fd = new FormData()
     fd.append('props', JSON.stringify({ title: param.title }))
     fd.append('data', param.data)
-    const resp = await fetch(ApiUtil.baseUrl('/resources'), {
-      method: 'post',
-      body: fd,
-    })
-    return (await resp.json()) as ResourceGetRes
+    return (await this.ajax.postFormData('/resources', {
+      props: JSON.stringify({ title: param.title }),
+      data: param.data,
+    })) as ResourceGetRes
   }
 
   async update(param: Pick<ResourceProperties, 'id' | 'title'>) {
     const { id, ...others } = param
-    return await ajax.put<ResourceGetRes>(`/resources/${id}`, others)
+    return await this.ajax.put<ResourceGetRes>(`/resources/${id}`, others)
   }
 
   /**
@@ -61,7 +60,7 @@ class ResourceApi {
    * @param id
    */
   async remove(id: string) {
-    return await ajax.delete(`/resources/${id}`)
+    return await this.ajax.delete(`/resources/${id}`)
   }
 
   /**
@@ -69,7 +68,7 @@ class ResourceApi {
    * @param id
    */
   async fileByResourceId(id: string) {
-    const resp = await ajax.get<any>(
+    const resp = await this.ajax.get<any>(
       `/resources/${id}/file`,
       {},
       {
@@ -79,5 +78,3 @@ class ResourceApi {
     return Buffer.from(resp, 'binary')
   }
 }
-
-export const resourceApi = new ResourceApi();

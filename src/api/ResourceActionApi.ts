@@ -1,4 +1,4 @@
-import { ajax } from '../util/ajax'
+import { Ajax } from '../util/ajax'
 
 enum ActionEnum {
   OpenAndWatch = 'openAndWatch',
@@ -7,29 +7,29 @@ enum ActionEnum {
   NoteIsWatched = 'isWatched',
 }
 
-class ResourceActionApi {
+export class ResourceActionApi {
+  constructor(private ajax: Ajax) {}
+
   openAndWatch(resourceId: string) {
-    return ResourceActionApi.baseAction(ActionEnum.OpenAndWatch, resourceId)
+    return this.baseAction(ActionEnum.OpenAndWatch, resourceId)
   }
 
   watch(resourceId: string) {
-    return ResourceActionApi.baseAction(ActionEnum.Watch, resourceId)
+    return this.baseAction(ActionEnum.Watch, resourceId)
   }
 
   stopWatching(resourceId: string) {
-    return ResourceActionApi.baseAction(ActionEnum.StopWatching, resourceId)
+    return this.baseAction(ActionEnum.StopWatching, resourceId)
   }
 
   async noteIsWatched(resourceId: string) {
-    return ResourceActionApi.baseAction(ActionEnum.NoteIsWatched, resourceId)
+    return this.baseAction(ActionEnum.NoteIsWatched, resourceId)
   }
 
-  private static async baseAction(action: ActionEnum, resourceId: string) {
-    return ajax.post('/services/resourceEditWatcher', {
+  private async baseAction(action: ActionEnum, resourceId: string) {
+    return this.ajax.post('/services/resourceEditWatcher', {
       action,
       resourceId,
     })
   }
 }
-
-export const resourceActionApi = new ResourceActionApi()

@@ -1,4 +1,4 @@
-import { ajax } from '../util/ajax'
+import { Ajax } from '../util/ajax'
 
 enum ActionEnum {
   OpenAndWatch = 'openAndWatch',
@@ -6,13 +6,15 @@ enum ActionEnum {
   NoteIsWatched = 'noteIsWatched',
 }
 
-class NoteActionApi {
+export class NoteActionApi {
+  constructor(private ajax: Ajax) {}
+
   openAndWatch(noteId: string) {
-    return NoteActionApi.baseAction(ActionEnum.OpenAndWatch, noteId)
+    return this.baseAction(ActionEnum.OpenAndWatch, noteId)
   }
 
   stopWatching(noteId: string) {
-    return NoteActionApi.baseAction(ActionEnum.StopWatching, noteId)
+    return this.baseAction(ActionEnum.StopWatching, noteId)
   }
 
   /**
@@ -24,19 +26,13 @@ class NoteActionApi {
   }
 
   async isWatch(noteId: string) {
-    return NoteActionApi.baseAction(ActionEnum.NoteIsWatched, noteId)
+    return this.baseAction(ActionEnum.NoteIsWatched, noteId)
   }
 
-  private static async baseAction(action: ActionEnum, noteId: string) {
-    return ajax.post('/services/externalEditWatcher', {
+  private async baseAction(action: ActionEnum, noteId: string) {
+    return this.ajax.post('/services/externalEditWatcher', {
       action,
       noteId,
     })
   }
 }
-
-/**
- * @deprecated 已废弃，请使用 {@link noteActionApi}
- */
-export const actionApi = new NoteActionApi()
-export const noteActionApi = new NoteActionApi()

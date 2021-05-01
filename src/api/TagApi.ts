@@ -2,41 +2,46 @@ import { TagProperties } from '../modal/TagProperties'
 import { TagGetRes } from '../modal/TagGetRes'
 import { NoteGetRes } from '../modal/NoteGetRes'
 import { NoteTagRelated } from '../modal/NoteTagRelated'
-import { ajax } from '../util/ajax'
 import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
+import { Ajax } from '../util/ajax'
 
-class TagApi {
+export class TagApi {
+  constructor(private ajax: Ajax) {}
+
   async list(): Promise<PageRes<TagGetRes>>
   async list<K extends keyof TagProperties>(
     pageParam: PageParam<TagProperties> & FieldsParam<K>,
   ): Promise<PageRes<Pick<TagProperties, K>>>
   async list(pageParam?: PageParam<TagProperties>) {
-    return await ajax.get<PageRes<TagGetRes>>('/tags', pageParam)
+    return await this.ajax.get<PageRes<TagGetRes>>('/tags', pageParam)
   }
 
   async get(id: string) {
-    return await ajax.get<TagGetRes>(`/tags/${id}`)
+    return await this.ajax.get<TagGetRes>(`/tags/${id}`)
   }
 
   async create(param: Pick<TagProperties, 'title'>) {
-    return await ajax.post<TagGetRes>('/tags', param)
+    return await this.ajax.post<TagGetRes>('/tags', param)
   }
 
   async update(param: Pick<TagProperties, 'id' | 'title'>) {
     const { id, ...others } = param
-    return await ajax.post<TagGetRes>(`/tags/${id}`, others)
+    return await this.ajax.post<TagGetRes>(`/tags/${id}`, others)
   }
 
   async remove(id: string) {
-    return await ajax.delete<TagProperties>(`/tags/${id}`)
+    return await this.ajax.delete<TagProperties>(`/tags/${id}`)
   }
 
   async notesByTagId({
     id,
     ...others
   }: { id: string } & PageParam<TagProperties>) {
-    return await ajax.get<PageRes<NoteGetRes[]>>(`/tags/${id}/notes`, others)
+    return await this.ajax.get<PageRes<NoteGetRes[]>>(
+      `/tags/${id}/notes`,
+      others,
+    )
   }
 
   /**
@@ -45,14 +50,15 @@ class TagApi {
    * @param noteId
    */
   async addTagByNoteId(tagId: string, noteId: string) {
-    return await ajax.post<NoteTagRelated | null>(`/tags/${tagId}/notes/`, {
-      id: noteId,
-    })
+    return await this.ajax.post<NoteTagRelated | null>(
+      `/tags/${tagId}/notes/`,
+      {
+        id: noteId,
+      },
+    )
   }
 
   async removeTagByNoteId(tagId: string, noteId: string) {
-    return await ajax.delete<void>(`/tags/${tagId}/notes/${noteId}`)
+    return await this.ajax.delete<void>(`/tags/${tagId}/notes/${noteId}`)
   }
 }
-
-export const tagApi = new TagApi()

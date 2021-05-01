@@ -1,14 +1,19 @@
-import { folderApi } from './FolderApi'
 import { FolderGetRes } from '../modal/FolderGetRes'
+import { Ajax } from '../util/ajax'
+import { FolderApi } from './FolderApi'
 
-class FolderExtApi {
+export class FolderExtApi {
+  private folderApi = new FolderApi(this.ajax)
+
+  constructor(private ajax: Ajax) {}
+
   /**
    * 重命名目录
    * @param id
    * @param title
    */
   rename(id: string, title: string) {
-    return folderApi.update({ id, title })
+    return this.folderApi.update({ id, title })
   }
 
   /**
@@ -19,7 +24,7 @@ class FolderExtApi {
     if (!id) {
       return []
     }
-    const res = await folderApi.get(id)
+    const res = await this.folderApi.get(id)
     if (!res.parent_id) {
       return [res]
     }
@@ -39,8 +44,6 @@ class FolderExtApi {
     if (parentPathFolderList.some((folder) => id === folder.id)) {
       throw new Error('Cannot move directory to subdirectory')
     }
-    await folderApi.update({ id, parent_id: parentId })
+    await this.folderApi.update({ id, parent_id: parentId })
   }
 }
-
-export const folderExtApi = new FolderExtApi()

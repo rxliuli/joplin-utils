@@ -3,10 +3,10 @@ import { createReadStream, pathExistsSync, writeFileSync } from 'fs-extra'
 import { resolve } from 'path'
 import FormData from 'form-data'
 import axios from 'axios'
-import { ApiUtil } from '../../src/util/ApiUtil'
 import fetch from 'node-fetch'
 import { readFileSync } from 'fs'
 import { createTestResource } from './CreateTestResource'
+import { ajax } from '../../dist'
 
 describe('test ResourceApi', () => {
   let id: string
@@ -30,10 +30,7 @@ describe('test ResourceApi', () => {
    * TODO 一个官方未修复的 bug，参考：https://github.com/laurent22/joplin/issues/4575
    */
   it.skip('test get filename', async () => {
-    const res = await resourceApi.get(id, [
-      'id',
-      'filename',
-    ])
+    const res = await resourceApi.get(id, ['id', 'filename'])
     console.log(res)
     expect(res.filename).not.toBe('')
   })
@@ -59,7 +56,7 @@ describe('test ResourceApi', () => {
 
     it('test create by fetch', async () => {
       const fd = getFormData()
-      const resp = await fetch(ApiUtil.baseUrl('/resources'), {
+      const resp = await fetch(ajax.baseUrl('/resources'), {
         method: 'post',
         body: fd,
       })
@@ -69,7 +66,7 @@ describe('test ResourceApi', () => {
     it.skip('test create by axios', async () => {
       const fd = getFormData()
       const resp = await axios.post(
-        ApiUtil.baseUrl('/resources'),
+        ajax.baseUrl('/resources'),
         fd.getBuffer(),
         {
           headers: fd.getHeaders(),
