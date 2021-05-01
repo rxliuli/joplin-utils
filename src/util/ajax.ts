@@ -63,10 +63,10 @@ export class Ajax {
 
   /**
    * 封装 ajax 请求
-   * @param config
+   * @param ajaxConfig
    */
-  async request<R>(config: AjaxConfig) {
-    const mergeConfig = { ...defaultConfig, ...this.config }
+  async request<R>(ajaxConfig: AjaxConfig) {
+    const mergeConfig = { ...defaultConfig, ...ajaxConfig }
     return (
       await axios.request({
         url: mergeConfig.url,
