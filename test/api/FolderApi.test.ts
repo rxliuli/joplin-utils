@@ -73,7 +73,7 @@ describe('test FolderApi', () => {
       })
       await folderApi.remove(res.id)
     })
-    it('test move', async () => {
+    it.skip('test move', async () => {
       //TODO 目前不能将 parent_id 指向子级，否则会出现致命性的错误
       const createRes = await folderApi.create({
         title: '测试从根目录创建',
@@ -86,7 +86,7 @@ describe('test FolderApi', () => {
       expect(res.parent_id).toBe(data.folderId)
       await folderApi.remove(createRes.id)
     })
-    it('测试递归获取目录及笔记', async function() {
+    it('测试递归获取目录及笔记', async function () {
       const folderList = await folderApi.listAll()
       console.log(JSON.stringify(folderList, null, 2))
       expect(folderList.length).toBeGreaterThan(0)
