@@ -1,11 +1,18 @@
 import { Command } from 'commander'
 import { prompt } from 'enquirer'
-import { mkdirp, pathExists, readdir, remove, writeJSON } from 'fs-extra'
+import {
+  mkdirp,
+  pathExists,
+  readdir,
+  readJSON,
+  remove,
+  writeJSON,
+} from 'fs-extra'
 import path from 'path'
 import { BaseCommanderProgram } from './BaseCommanderProgram'
 import { HexoInstance } from '../util/HexoInstance'
 import ora from 'ora'
-import { execCommand } from '../util/utils'
+import { deploy, execCommand } from '../util/utils'
 
 /**
  * 博客的配置初始化
@@ -112,7 +119,14 @@ export class InitHexoProjectProgram implements BaseCommanderProgram {
  * 部署 hexo 项目打包后的静态资源
  */
 export class DeployStaticProgram implements BaseCommanderProgram {
-  async main(): Promise<void> {}
+  async main(): Promise<void> {
+    const config = await readJSON(path.resolve('./.joplin-blog.json'))
+    await deploy(path.resolve('./public'), {
+      user: config.deploy.user,
+      repo: config.deploy.repo,
+      token: config.deploy.token,
+    })
+  }
 }
 
 export const blogInitCommander = () =>
@@ -135,3 +149,8 @@ export const blogInitCommander = () =>
         }),
     )
     .description('一些相关的初始化动作')
+
+export const blogDeployCommander = () =>
+  new Command('deploy')
+    .description('部署 hexo 项目打包后的静态资源到 GitHub Pages')
+    .action(() => new DeployStaticProgram().main())
