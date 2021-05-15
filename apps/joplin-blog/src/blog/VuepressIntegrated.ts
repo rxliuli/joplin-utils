@@ -1,7 +1,6 @@
 import { BaseIntegrated } from './Application'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import path from 'path'
-import { mkdirp, pathExists, remove } from 'fs-extra'
 import {
   JoplinNoteHandler,
   JoplinNoteHandlerLinkConverter,
@@ -48,20 +47,7 @@ export class VuepressIntegrated implements BaseIntegrated {
   constructor(private config: VuepressIntegratedConfig) {}
 
   async init() {
-    const postPath = path.resolve(this.config.rootPath, 'blog/_posts')
-    const resourcePath = path.resolve(
-      this.config.rootPath,
-      'blog/.vuepress/public/resource',
-    )
-
-    async function clean(dirPath: string) {
-      if (await pathExists(dirPath)) {
-        await remove(dirPath)
-      }
-      await mkdirp(dirPath)
-    }
-
-    await Promise.all([clean(postPath), clean(resourcePath)])
+    await this.resourceWriter.clean()
   }
 
   parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {

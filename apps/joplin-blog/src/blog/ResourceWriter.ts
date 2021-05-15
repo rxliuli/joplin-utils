@@ -1,5 +1,5 @@
 import path from 'path'
-import { copyFile, writeFile } from 'fs-extra'
+import { copyFile, mkdirp, pathExists, remove, writeFile } from 'fs-extra'
 import { CommonNote } from '../model/CommonNote'
 
 interface ResourceWriterConfig {
@@ -25,5 +25,19 @@ export class ResourceWriter {
       path.resolve(this.config.postPath, note.id + '.md'),
       note.text,
     )
+  }
+
+  async clean() {
+    const postPath = path.resolve(this.config.postPath)
+    const resourcePath = path.resolve(this.config.resourcePath)
+
+    async function clean(dirPath: string) {
+      if (await pathExists(dirPath)) {
+        await remove(dirPath)
+      }
+      await mkdirp(dirPath)
+    }
+
+    await Promise.all([clean(postPath), clean(resourcePath)])
   }
 }

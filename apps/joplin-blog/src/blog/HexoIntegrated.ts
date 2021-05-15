@@ -1,6 +1,5 @@
 import { BaseIntegrated } from './Application'
 import path from 'path'
-import { mkdirp, pathExists, remove } from 'fs-extra'
 import {
   JoplinNoteHandler,
   JoplinNoteHandlerLinkConverter,
@@ -49,17 +48,7 @@ export class HexoIntegrated implements BaseIntegrated {
   constructor(private config: HexoIntegratedConfig) {}
 
   async init() {
-    const postPath = path.resolve(this.config.rootPath, 'source/_posts')
-    const resourcePath = path.resolve(this.config.rootPath, 'source/resource')
-
-    async function clean(dirPath: string) {
-      if (await pathExists(dirPath)) {
-        await remove(dirPath)
-      }
-      await mkdirp(dirPath)
-    }
-
-    await Promise.all([clean(postPath), clean(resourcePath)])
+    await this.resourceWriter.clean()
   }
 
   parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
