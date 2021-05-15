@@ -2,11 +2,16 @@ import { BaseIntegrated } from './Application'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import path from 'path'
 import { mkdirp, pathExists, remove } from 'fs-extra'
-import { BaseSingleNoteHandler, SingleNoteHandler } from './SingleNoteHandler'
+import {
+  JoplinNoteHandler,
+  JoplinNoteHandlerLinkConverter,
+} from './JoplinNoteHandler'
 import { DateTime } from 'luxon'
 import { ResourceWriter } from './ResourceWriter'
+import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 
-export class VuepressSingleNoteHandler implements BaseSingleNoteHandler {
+export class VuepressSingleNoteHandler
+  implements JoplinNoteHandlerLinkConverter {
   constructor(private config: Pick<VuepressIntegratedConfig, 'tag'>) {}
 
   meta(note: CommonNote & { tags: CommonTag[] }): object {
@@ -59,12 +64,18 @@ export class VuepressIntegrated implements BaseIntegrated {
     await Promise.all([clean(postPath), clean(resourcePath)])
   }
 
-  private readonly singleNoteHandler = new SingleNoteHandler(
-    new VuepressSingleNoteHandler(this.config),
-  )
-
   parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
-    return this.singleNoteHandler.handle(note)
+    const vuepressSingleNoteHandler = new VuepressSingleNoteHandler(this.config)
+    return JoplinMarkdownUtil.addMeta(
+      JoplinNoteHandler.format(
+        JoplinNoteHandler.convertLink(
+          JoplinNoteHandler.parse(note.body),
+          note,
+          vuepressSingleNoteHandler,
+        ),
+      ),
+      vuepressSingleNoteHandler.meta(note),
+    )
   }
 
   private readonly resourceWriter = new ResourceWriter({

@@ -2,28 +2,21 @@ import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import unified from 'unified'
 import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
-import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import visit from 'unist-util-visit'
 import { Link } from 'mdast'
 import unistUtilMap from 'unist-util-map'
 import remarkGfm from 'remark-gfm'
 import { format, Options } from 'prettier'
+import { Node } from 'unist'
 
-export interface BaseSingleNoteHandler {
-  meta(note: CommonNote & { tags: CommonTag[] }): object
-
+export interface JoplinNoteHandlerLinkConverter {
   convertNote(id: string): string
 
   convertResource(resource: CommonResource): string
 }
 
-/**
- * 单个笔记的处理工具
- */
-export class SingleNoteHandler {
-  constructor(private handler: BaseSingleNoteHandler) {}
-
-  private readonly md = unified()
+export class JoplinNoteHandler {
+  static readonly md = unified()
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkStringify, {
@@ -32,11 +25,15 @@ export class SingleNoteHandler {
       incrementListMarker: false,
     })
 
-  handle(
-    note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
-  ): string {
-    const node = this.md.parse(note.body)
+  static parse(content: string) {
+    return this.md.parse(content)
+  }
 
+  static convertLink(
+    node: Node,
+    note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
+    converter: JoplinNoteHandlerLinkConverter,
+  ) {
     function getLink() {
       const res: string[] = []
       visit(node, ['link', 'image'], (node: Link) => {
@@ -54,13 +51,13 @@ export class SingleNoteHandler {
     }, new Map<string, CommonResource>())
     const idLinkMap = linkIdList.reduce((res, id) => {
       const link = resourceMap.has(id)
-        ? this.handler.convertResource(resourceMap.get(id)!)
-        : this.handler.convertNote(id)
+        ? converter.convertResource(resourceMap.get(id)!)
+        : converter.convertNote(id)
       res.set(id, link)
       return res
     }, new Map<string, string>())
 
-    const tree = unistUtilMap(node, (node) => {
+    return unistUtilMap(node, (node) => {
       if (node.type !== 'link' && node.type !== 'image') {
         return node
       }
@@ -73,13 +70,12 @@ export class SingleNoteHandler {
         url: idLinkMap.get(link.url.slice(2)),
       } as Link
     })
+  }
 
-    return JoplinMarkdownUtil.addMeta(
-      format(this.md.stringify(tree), {
-        parser: 'markdown',
-        tabWidth: 2,
-      } as Options),
-      this.handler.meta(note),
-    )
+  static format(node: Node) {
+    return format(this.md.stringify(node), {
+      parser: 'markdown',
+      tabWidth: 2,
+    } as Options)
   }
 }

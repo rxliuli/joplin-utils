@@ -1,11 +1,15 @@
 import { BaseIntegrated } from './Application'
 import path from 'path'
 import { mkdirp, pathExists, remove } from 'fs-extra'
-import { BaseSingleNoteHandler, SingleNoteHandler } from './SingleNoteHandler'
+import {
+  JoplinNoteHandler,
+  JoplinNoteHandlerLinkConverter,
+} from './JoplinNoteHandler'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { ResourceWriter } from './ResourceWriter'
+import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 
-export class HexoSingleNoteHandler implements BaseSingleNoteHandler {
+export class HexoSingleNoteHandler implements JoplinNoteHandlerLinkConverter {
   constructor(
     private config: Pick<HexoIntegratedConfig, 'stickyTopIdList' | 'tag'>,
   ) {}
@@ -58,12 +62,18 @@ export class HexoIntegrated implements BaseIntegrated {
     await Promise.all([clean(postPath), clean(resourcePath)])
   }
 
-  private readonly singleNoteHandler = new SingleNoteHandler(
-    new HexoSingleNoteHandler(this.config),
-  )
-
   parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
-    return this.singleNoteHandler.handle(note)
+    const hexoSingleNoteHandler = new HexoSingleNoteHandler(this.config)
+    return JoplinMarkdownUtil.addMeta(
+      JoplinNoteHandler.format(
+        JoplinNoteHandler.convertLink(
+          JoplinNoteHandler.parse(note.body),
+          note,
+          hexoSingleNoteHandler,
+        ),
+      ),
+      hexoSingleNoteHandler.meta(note),
+    )
   }
 
   private readonly resourceWriter = new ResourceWriter({
