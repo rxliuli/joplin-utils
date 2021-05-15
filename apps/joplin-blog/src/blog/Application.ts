@@ -4,6 +4,7 @@ import path from 'path'
 import { config, noteApi, PageUtil, searchApi, TypeEnum } from 'joplin-api'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { uniqueBy } from '@liuli-util/array'
+import { PromiseUtil } from '../util/PromiseUtil'
 
 export interface BaseIntegrated {
   /**
@@ -40,11 +41,23 @@ export interface ApplicationConfig {
   tag: string
 }
 
-export type ProcessHook = (options: {
+export type ProcessInfo = {
   rate: number
   all: number
   title: string
-}) => void
+}
+export type ProcessHook = (options: ProcessInfo) => void
+
+type ProcessEvents = {
+  process: ProcessHook
+}
+
+export interface GeneratorEvents {
+  copyResources: ProcessHook
+  parseAndWriteNotes: ProcessHook
+  writeNote: ProcessHook
+  readNoteAttachmentsAndTags: ProcessHook
+}
 
 /**
  * 入口程序
@@ -93,67 +106,61 @@ export class Application {
     }
   }
 
-  async gen() {
-    await this.check()
-    //获取所有笔记及其相关的资源和标签
-    const arr = await this.filter()
-    console.log(`一共有 ${arr.length} 个笔记需要处理`)
-    //读取笔记附件与标签
-    const noteList = await this.readNoteAttachmentsAndTags(arr, (options) => {
-      console.log(
-        `${options.rate}/${options.all} 正在读取笔记附件与标签: `,
-        options.title,
+  gen() {
+    return PromiseUtil.warpOnEvent(async (events: GeneratorEvents) => {
+      await this.check()
+      //获取所有笔记及其相关的资源和标签
+      const arr = await this.filter()
+      console.log(`一共有 ${arr.length} 个笔记需要处理`)
+      //读取笔记附件与标签
+      const noteList = await this.readNoteAttachmentsAndTags(arr).on(
+        'process',
+        events.readNoteAttachmentsAndTags,
       )
-    })
-    //初始化
-    await this.handler.init()
-    //解析并写入笔记
-    const replaceContentNoteList = await this.parseAndWriteNotes(
-      noteList,
-      (options) => {
-        console.log(
-          `${options.rate}/${options.all} 正在解析笔记中的 Joplin 内部链接与附件资源: ${options.title}`,
-          options.title,
-        )
-      },
-    )
-    await this.writeNote(replaceContentNoteList, (options) => {
-      console.log(
-        `${options.rate}/${options.all} 正在写入笔记: ${options.title}`,
-        options.title,
+      //初始化
+      await this.handler.init()
+      //解析并写入笔记
+      const replaceContentNoteList = await this.parseAndWriteNotes(noteList).on(
+        'process',
+        events.parseAndWriteNotes,
       )
-    })
-    //复制资源
-    await this.copyResources(noteList, (options) => {
-      console.log(
-        `${options.rate}/${options.all} 正在处理资源: ${options.title}`,
+      await this.writeNote(replaceContentNoteList).on(
+        'process',
+        events.writeNote,
       )
+      //复制资源
+      await this.copyResources(noteList).on('process', events.copyResources)
     })
   }
 
-  async copyResources(
+  copyResources(
     noteList: (CommonNote & {
       resources: CommonResource[]
       tags: CommonTag[]
     })[],
-    process: ProcessHook,
   ) {
-    let i = 0
-    const resourceList = uniqueBy(
-      noteList.flatMap((item) => item.resources),
-      (resource) => resource.id,
-    )
-    await AsyncArray.forEach(
-      resourceList,
-      asyncLimiting(async (resource: CommonResource) => {
-        i++
-        process({ rate: i, all: resourceList.length, title: resource.title })
-        const fileName = resource.id + '.' + resource.file_extension
-        await this.handler.copy(
-          path.resolve(this.config.joplinProfilePath, 'resources', fileName),
-        )
-      }, 10),
-    )
+    return PromiseUtil.warpOnEvent(async (events: ProcessEvents) => {
+      let i = 0
+      const resourceList = uniqueBy(
+        noteList.flatMap((item) => item.resources),
+        (resource) => resource.id,
+      )
+      await AsyncArray.forEach(
+        resourceList,
+        asyncLimiting(async (resource: CommonResource) => {
+          i++
+          events.process({
+            rate: i,
+            all: resourceList.length,
+            title: resource.title,
+          })
+          const fileName = resource.id + '.' + resource.file_extension
+          await this.handler.copy(
+            path.resolve(this.config.joplinProfilePath, 'resources', fileName),
+          )
+        }, 10),
+      )
+    })
   }
 
   parseAndWriteNotes(
@@ -161,55 +168,57 @@ export class Application {
       resources: CommonResource[]
       tags: CommonTag[]
     })[],
-    process: ProcessHook,
   ) {
-    return noteList.map((note, i) => {
-      process({ rate: i, all: noteList.length, title: note.title })
-      return {
-        ...note,
-        text: this.handler.parse(note),
-      }
-    })
-  }
-
-  async writeNote(
-    noteList: (CommonNote & { text: string })[],
-    process: (options: { rate: number; all: number; title: string }) => void,
-  ) {
-    let i = 0
-    await AsyncArray.forEach(noteList, async (item) => {
-      i++
-      process({ rate: i, all: noteList.length, title: item.title })
-      await this.handler.write(item)
-      return item
-    })
-  }
-
-  async readNoteAttachmentsAndTags(arr: CommonNote[], process: ProcessHook) {
-    let i = 0
-    return new AsyncArray(
-      arr.map((note) => ({
-        ...note,
-        title: JoplinMarkdownUtil.trimTitle(note.title),
-      })),
-    ).map(
-      asyncLimiting(async (note) => {
-        i++
-        process({
-          rate: i,
-          all: arr.length,
-          title: note.title,
-        })
-        const [resources, tags] = await Promise.all([
-          noteApi.resourcesById(note.id, ['id', 'title', 'file_extension']),
-          noteApi.tagsById(note.id),
-        ])
+    return PromiseUtil.warpOnEvent(async (events: ProcessEvents) =>
+      noteList.map((note, i) => {
+        events.process({ rate: i, all: noteList.length, title: note.title })
         return {
           ...note,
-          resources: resources as CommonResource[],
-          tags: tags as CommonTag[],
+          text: this.handler.parse(note),
         }
-      }, 10),
+      }),
     )
+  }
+
+  writeNote(noteList: (CommonNote & { text: string })[]) {
+    return PromiseUtil.warpOnEvent(async (events: ProcessEvents) => {
+      let i = 0
+      await AsyncArray.forEach(noteList, async (item) => {
+        i++
+        events.process({ rate: i, all: noteList.length, title: item.title })
+        await this.handler.write(item)
+        return item
+      })
+    })
+  }
+
+  readNoteAttachmentsAndTags(arr: CommonNote[]) {
+    return PromiseUtil.warpOnEvent(async (events: ProcessEvents) => {
+      let i = 0
+      return new AsyncArray(
+        arr.map((note) => ({
+          ...note,
+          title: JoplinMarkdownUtil.trimTitle(note.title),
+        })),
+      ).map(
+        asyncLimiting(async (note) => {
+          i++
+          events.process({
+            rate: i,
+            all: arr.length,
+            title: note.title,
+          })
+          const [resources, tags] = await Promise.all([
+            noteApi.resourcesById(note.id, ['id', 'title', 'file_extension']),
+            noteApi.tagsById(note.id),
+          ])
+          return {
+            ...note,
+            resources: resources as CommonResource[],
+            tags: tags as CommonTag[],
+          }
+        }, 10),
+      )
+    })
   }
 }

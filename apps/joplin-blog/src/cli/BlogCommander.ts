@@ -81,12 +81,14 @@ export class BlogCommanderProgram {
     })
 
     spinner.start(i18n.t('blog.Start reading note attachments and tags'))
-    const noteList = await app.readNoteAttachmentsAndTags(arr, (options) => {
-      spinner.text = i18n.t(
-        'blog.[{{rate}}/{{all}}] is reading note attachments and tags: {{title}}',
-        options,
-      )
-    })
+    const noteList = await app
+      .readNoteAttachmentsAndTags(arr)
+      .on('process', (options) => {
+        spinner.text = i18n.t(
+          'blog.[{{rate}}/{{all}}] is reading note attachments and tags: {{title}}',
+          options,
+        )
+      })
     spinner.text = i18n.t('blog.End reading note attachments and tags')
     spinner.stopAndPersist()
 
@@ -101,15 +103,14 @@ export class BlogCommanderProgram {
         'blog.Start parsing the Joplin internal links and attachment resources in the notes',
       ),
     )
-    const replaceContentNoteList = app.parseAndWriteNotes(
-      noteList,
-      (options) => {
+    const replaceContentNoteList = await app
+      .parseAndWriteNotes(noteList)
+      .on('process', (options) => {
         spinner.text = i18n.t(
           'blog.[{{rate}}/{{all}}] is parsing the Joplin internal links and attachment resources in the notes: {{title}}',
           options,
         )
-      },
-    )
+      })
     spinner.stopAndPersist({
       text: i18n.t(
         'blog.End of parsing the Joplin internal links and attachment resources in the notes',
@@ -117,7 +118,7 @@ export class BlogCommanderProgram {
     })
 
     spinner.start(i18n.t('blog.Start writing notes to a local file'))
-    await app.writeNote(replaceContentNoteList, (options) => {
+    await app.writeNote(replaceContentNoteList).on('process', (options) => {
       spinner.text = i18n.t(
         'blog.{{rate}}/{{all}} Writing notes to local file: {{title}}',
         options,
@@ -128,7 +129,7 @@ export class BlogCommanderProgram {
     })
 
     spinner.start(i18n.t('blog.Start copying attachment resources'))
-    await app.copyResources(noteList, (options) => {
+    await app.copyResources(noteList).on('process', (options) => {
       spinner.text = i18n.t(
         'blog.{{rate}}/{{all}} Copying attachment resource: {{title}}',
         options,
