@@ -1,6 +1,6 @@
-import unified = require('unified')
-import visit = require('unist-util-visit')
-import unistUtilMap = require('unist-util-map')
+import unified from 'unified'
+import visit from 'unist-util-visit'
+import unistUtilMap from 'unist-util-map'
 import { Link } from 'mdast'
 import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
