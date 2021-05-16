@@ -1,6 +1,7 @@
 {
   "name": "wiki-docsify-example",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
     "imp": "joplin-blog wiki",
     "deploy": "gh-pages -d docs -e wiki/docsify -a"

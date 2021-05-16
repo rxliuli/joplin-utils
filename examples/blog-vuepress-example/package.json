@@ -1,8 +1,6 @@
 {
   "name": "blog-vuepress-example",
   "version": "0.2.0",
-  "main": "index.js",
-  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "vuepress dev blog",
