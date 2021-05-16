@@ -13,8 +13,8 @@ timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-#url: http://127.0.0.1:8080/joplin-blog/blog/hexo/
-root: /
+url: http://127.0.0.1:4000/joplin-blog/blog/hexo/
+root: /joplin-blog/blog/hexo/
 permalink: /p/:abbrlink/
 permalink_defaults: :year/:month/:day/:title/
 pretty_urls:
@@ -41,7 +41,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -56,6 +56,9 @@ prismjs:
   preprocess: true
   line_number: true
   tab_replace: ''
+marked:
+  prependRoot: true
+  postAsset: true
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
