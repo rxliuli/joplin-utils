@@ -2,28 +2,41 @@
 
 ## 场景
 
-你是否和吾辈一样烦恼同时维护笔记和博客的同步麻烦，如果你使用 joplin 作为笔记工具，而使用 hexo 作为博客生成器的话，你可以选择这个工具来连接它们。
+将 Joplin 笔记发布为静态网站的 CLI 工具，目前支持 blog/wiki 两种形式，框架支持 hexo/vuepress/docsify。
+
+- blog
+  - hexo：由于 hexo 部署到网站子目录非常麻烦，故此处并未演示
+  - [vuepress](https://rxliuli.com/joplin-blog/blog/vuepress/)
+- wiki
+  - [vuepress](https://rxliuli.com/joplin-blog/wiki/vuepress/p/947da6a714854075af6e07835de4a719.html)
+  - [docsify](https://rxliuli.com/joplin-blog/wiki/docsify/#/p/947da6a714854075af6e07835de4a719)
+
+![blog demo](docs/blog.png)
+![wiki demo](docs/wiki.png)
+
+## 要求
+
+- 安装 nodejs 和 yarn
+- 了解命令行
+- 了解 VSCode
 
 ## 使用
 
-方式 1
-
-1. 添加配置文件 `.joplin-blog.json`（具体配置参考 [配置](#配置)）
-2. 使用命令导出笔记为博客 `npx joplin-blog`
-
-方式 2
-
-1. 在命令行导航到 hexo 博客目录
+1. 在命令行导航到相关目录
 2. 添加依赖 `yarn add -D joplin-blog`
 3. 添加配置文件 `.joplin-blog.json`（具体配置参考 [配置](#配置)）
-4. 添加一个 npm script 脚本文件 `"imp": "joplin-blog"`
-5. 运行命令 `yarn imp`
-6. 可以看到 `source/_posts` 目录下已经包含了所有导出的笔记
+4. 添加一个 npm script 脚本文件 `"gen": "joplin-blog blog"`（如果是要生成 wiki 则 `"gen": "joplin-blog wiki"`）
+5. 运行命令 `yarn gen`
+6. 然后可以看到相关目录已经包含了笔记和附件资源
 
 ## 示例
 
-- [hexo](https://github.com/rxliuli/joplin-blog/tree/master/tutorials/hexo-example)
-- [vuepress](https://github.com/rxliuli/joplin-blog/tree/master/tutorials/vuepress-example)
+支持的框架在 examples 目录中均有示例，你可以将之 clone 到本地查看。
+
+- [blog hexo](https://github.com/rxliuli/joplin-blog/tree/master/examples/blog-hexo-example)
+- [blog vuepress](https://github.com/rxliuli/joplin-blog/tree/master/examples/blog-vuepress-example)
+- [wiki vuepress](https://github.com/rxliuli/joplin-blog/tree/master/examples/wiki-vuepress-example)
+- [wiki docsify](https://github.com/rxliuli/joplin-blog/tree/master/examples/wiki-docsify-example)
 
 ## 配置
 
@@ -31,7 +44,7 @@
 
 | 配置                | 类型            | 说明                                      |
 | ------------------- | --------------- | ----------------------------------------- |
-| `type`              | `hexo/vuepress` | 集成博客的类型                            |
+| `type`              | `hexo/vuepress/docsify` | 集成博客的类型                            |
 | `rootPath`          | `string`        | hexo/vuepress 目录，一般应该为 `.`        |
 | `joplinProfilePath` | `string`        | joplin 个人文件夹                         |
 | `token`             | `string`        | joplin web clipper 的 token               |
@@ -56,6 +69,6 @@ hexo
 
 ### joplin 个人文件夹在哪儿？
 
-一般而言，如果你使用便携程序，它应该就是程序目录下的 `./JoplinProfile` 目录，你应该可以在其中看到 `resources、_templates、_tmp` 目录。
+一般而言，如果你使用便携程序，它应该就是程序目录下的 `./JoplinProfile` 目录，你应该可以在其中看到 `resources、templates、tmp` 目录。
 
 ![joplinProfilePath](https://img.rxliuli.com/20210316092834.png)

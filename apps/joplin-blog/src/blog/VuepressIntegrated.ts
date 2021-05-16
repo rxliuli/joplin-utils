@@ -50,7 +50,7 @@ export class VuepressIntegrated implements BaseIntegrated {
 
   async init() {
     await this.resourceWriter.clean()
-    await mkdirp(path.resolve(this.config.rootPath, 'blog/_posts/resource'))
+    await mkdirp(path.resolve(this.config.rootPath, '_posts/resource'))
   }
 
   parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
@@ -68,8 +68,8 @@ export class VuepressIntegrated implements BaseIntegrated {
   }
 
   private readonly resourceWriter = new ResourceWriter({
-    postPath: path.resolve(this.config.rootPath, 'blog/_posts'),
-    resourcePath: path.resolve(this.config.rootPath, 'blog/_posts/resource'),
+    postPath: path.resolve(this.config.rootPath, '_posts'),
+    resourcePath: path.resolve(this.config.rootPath, '_posts/resource'),
   })
 
   copy = this.resourceWriter.copy.bind(this.resourceWriter)

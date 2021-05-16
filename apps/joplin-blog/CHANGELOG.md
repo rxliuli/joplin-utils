@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.3.0
+
+- feat(joplin-blog): 支持生成 wiki(docsify/vuepress)
+- fix(joplin-blog): 修复 vuepress 不支持部署到网站子目录的错误
+- chore(examples): 添加 wiki 的示例项目
+
 ## v0.2.0
 
 - Completely refactor the code
