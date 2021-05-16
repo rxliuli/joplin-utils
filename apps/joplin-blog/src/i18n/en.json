@@ -22,5 +22,29 @@
     "{{rate}}/{{all}} Copying attachment resource: {{title}}": "{{rate}}/{{all}} Copying attachment resource: {{title}}",
     "End Copying Attachment Resources": "End Copying Attachment Resources",
     "End generating blog": "End generating blog"
+  },
+  "wiki": {
+    "Generate the files needed by the wiki based on the notes in Joplin": "Generate the files needed by the wiki based on the notes in Joplin",
+    "Can't find configuration file _joplin-blog_json": "Can't find configuration file .joplin-blog.json",
+    "Filter to get {{length}} notes to be processed": "Filter to get {{length}} notes to be processed",
+    "Unsupported wiki framework": "Unsupported wiki framework",
+    "Failed to test joplin service: ": "Failed to test joplin service: ",
+    "Start filtering joplin notes": "Start filtering joplin notes",
+    "No notes to be processed": "No notes to be processed",
+    "Start reading note attachments and tags": "Start reading note attachments and tags",
+    "[{{rate}}/{{all}}] is reading note attachments and tags: {{title}}": "[{{rate}}/{{all}}] is reading note attachments and tags: {{title}}",
+    "End reading note attachments and tags": "End reading note attachments and tags",
+    "Start frame initialization action": "Start frame initialization action",
+    "End frame initialization action": "End frame initialization action",
+    "Start parsing the Joplin internal links and attachment resources in the notes": "Start parsing the Joplin internal links and attachment resources in the notes",
+    "[{{rate}}/{{all}}] is parsing the Joplin internal links and attachment resources in the notes: {{title}}": "[{{rate}}/{{all}}] is parsing the Joplin internal links and attachment resources in the notes: {{title}}",
+    "End of parsing the Joplin internal links and attachment resources in the notes": "End of parsing the Joplin internal links and attachment resources in the notes",
+    "Start writing notes to a local file": "Start writing notes to a local file",
+    "{{rate}}/{{all}} Writing notes to local file: {{title}}": "{{rate}}/{{all}} Writing notes to local file: {{title}}",
+    "End writing notes to local file": "End writing notes to local file",
+    "Start copying attachment resources": "Start copying attachment resources",
+    "{{rate}}/{{all}} Copying attachment resource: {{title}}": "{{rate}}/{{all}} Copying attachment resource: {{title}}",
+    "End Copying Attachment Resources": "End Copying Attachment Resources",
+    "End generating wiki": "End generating wiki"
   }
 }
