@@ -7,7 +7,7 @@ import { TypeEnum } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
 import { HandlerService } from './service/HandlerService'
 import { checkJoplinServer } from './util/checkJoplinServer'
-import * as MarkdownIt from 'markdown-it'
+import MarkdownIt from 'markdown-it'
 import { useJoplinLink } from './util/useJoplinLink'
 import { uploadResourceService } from './service/UploadResourceService'
 import { MDDocumentLinkProvider, MDHoverProvider } from './model/EditorProvider'
@@ -60,6 +60,8 @@ export async function activate(context: vscode.ExtensionContext) {
   registerCommand('joplinNote.rename', joplinNoteCommandService.rename)
   registerCommand('joplinNote.copyLink', joplinNoteCommandService.copyLink)
   registerCommand('joplinNote.remove', joplinNoteCommandService.remove)
+  registerCommand('joplinNote.move', joplinNoteCommandService.move)
+  registerCommand('joplinNote.paste', joplinNoteCommandService.paste)
   registerCommand(
     'joplinNote.toggleTodoState',
     joplinNoteCommandService.toggleTodoState,

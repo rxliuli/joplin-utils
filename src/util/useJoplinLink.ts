@@ -1,4 +1,4 @@
-import * as MarkdownIt from 'markdown-it'
+import MarkdownIt from 'markdown-it'
 import { TypeEnum } from 'joplin-api'
 import { JoplinLinkRegex, JoplinResourceRegex } from './constant'
 

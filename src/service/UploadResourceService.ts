@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 import { window } from 'vscode'
 import { globalState } from '../state/GlobalState'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
-import { i18nLoader } from '../util/constant'
+import { i18n } from '../util/I18n'
 
 export class UploadResourceService {
   async uploadImageFromClipboard() {
@@ -12,7 +12,7 @@ export class UploadResourceService {
     )
     if (!clipboardImage.isExistFile) {
       vscode.window.showWarningMessage(
-        i18nLoader.get('Clipboard does not contain picture!'),
+        i18n.t('Clipboard does not contain picture!'),
       )
       return
     }
@@ -51,9 +51,7 @@ export class UploadResourceService {
       file.fsPath,
     )
     await this.insertUrlByActiveEditor(markdownLink)
-    vscode.window.showInformationMessage(
-      i18nLoader.get('file uploaded successfully'),
-    )
+    vscode.window.showInformationMessage(i18n.t('file uploaded successfully'))
   }
 
   insertUrlByActiveEditor(text: string) {
@@ -68,7 +66,7 @@ export class UploadResourceService {
   get editor(): vscode.TextEditor {
     const editor = vscode.window.activeTextEditor
     if (!editor) {
-      window.showErrorMessage(i18nLoader.get('No active editor'))
+      window.showErrorMessage(i18n.t('No active editor'))
     }
     return editor as vscode.TextEditor
   }

@@ -14,10 +14,10 @@ import { appConfig } from '../config/AppConfig'
 import { BiMultiMap } from '../util/BiMultiMap'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { OpenFileService } from '../util/OpenFileService'
-import { i18nLoader } from '../util/constant'
 import { safePromise } from '../util/safePromise'
 import { AsyncArray } from '@liuli-util/async'
 import path = require('path')
+import { i18n } from '../util/I18n'
 
 /**
  * other service
@@ -68,7 +68,7 @@ export class HandlerService {
         await this.openResource(id)
         break
       default:
-        vscode.window.showErrorMessage(i18nLoader.get('Unprocessable link'))
+        vscode.window.showErrorMessage(i18n.t('Unprocessable link'))
     }
   }
 
@@ -77,7 +77,7 @@ export class HandlerService {
   async openResource(id: string) {
     if (!appConfig.programProfilePath) {
       vscode.window.showWarningMessage(
-        i18nLoader.get("Please set up Joplin's personal directory"),
+        i18n.t("Please set up Joplin's personal directory"),
       )
       return
     }
@@ -85,9 +85,7 @@ export class HandlerService {
       resourceApi.get(id, ['id', 'title', 'filename', 'file_extension']),
     )
     if (!resource) {
-      vscode.window.showWarningMessage(
-        i18nLoader.get('Resource does not exist'),
-      )
+      vscode.window.showWarningMessage(i18n.t('Resource does not exist'))
       return
     }
     // 如果标题包含后缀则不再拼接后缀名（后缀名其实也是不准的）
@@ -109,7 +107,7 @@ export class HandlerService {
     const isWatch = await resourceActionApi.noteIsWatched(resource.id)
     if (isWatch) {
       vscode.window.showInformationMessage(
-        i18nLoader.get('Start monitoring attachment resource modification: ') +
+        i18n.t('Start monitoring attachment resource modification: ') +
           resource.title,
       )
     }
@@ -120,7 +118,7 @@ export class HandlerService {
 
   async openNote(id: string) {
     if (!id) {
-      vscode.window.showWarningMessage(i18nLoader.get('id cannot be empty'))
+      vscode.window.showWarningMessage(i18n.t('id cannot be empty'))
       return
     }
     const item = await safePromise(
@@ -133,7 +131,7 @@ export class HandlerService {
       ]),
     )
     if (!item) {
-      vscode.window.showWarningMessage(i18nLoader.get('Note does not exist'))
+      vscode.window.showWarningMessage(i18n.t('Note does not exist'))
       return
     }
     await this.joplinNoteCommandService.openNote(

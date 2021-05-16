@@ -24,8 +24,9 @@ import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { uploadResourceService } from './UploadResourceService'
 import { difference } from 'lodash'
 import { TagGetRes } from 'joplin-api/dist/modal/TagGetRes'
-import { i18nLoader } from '../util/constant'
 import { HandlerService } from './HandlerService'
+import { CommonType } from 'joplin-api/dist/modal/CommonType'
+import { i18n } from '../util/I18n'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -67,10 +68,10 @@ export class JoplinNoteCommandService {
     console.log('joplinNote.create: ', item, parentFolderId)
 
     const title = await vscode.window.showInputBox({
-      placeHolder: i18nLoader.get(
+      placeHolder: i18n.t(
         'Please enter what you want to create {{type}} name',
         {
-          type: i18nLoader.get(type === TypeEnum.Folder ? 'folder' : 'note'),
+          type: i18n.t(type === TypeEnum.Folder ? 'folder' : 'note'),
         },
       ),
     })
@@ -97,11 +98,11 @@ export class JoplinNoteCommandService {
     console.log('joplinNote.remove: ', item)
     const folderOrNote = item.item
     if (appConfig.deleteConfirm) {
-      const confirmMsg = i18nLoader.get('confirm')
-      const cancelMsg = i18nLoader.get('cancel')
+      const confirmMsg = i18n.t('confirm')
+      const cancelMsg = i18n.t('cancel')
       const res = await vscode.window.showQuickPick([confirmMsg, cancelMsg], {
-        placeHolder: i18nLoader.get('delete or not {{type}} [{{title}}]', {
-          type: i18nLoader.get(
+        placeHolder: i18n.t('delete or not {{type}} [{{title}}]', {
+          type: i18n.t(
             folderOrNote.type_ === TypeEnum.Folder
               ? 'folder'
               : (folderOrNote as JoplinListNote).is_todo
@@ -124,7 +125,7 @@ export class JoplinNoteCommandService {
   async rename(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
     console.log('joplinNote.rename: ', item)
     const title = await vscode.window.showInputBox({
-      placeHolder: i18nLoader.get('Please enter a new name'),
+      placeHolder: i18n.t('Please enter a new name'),
       value: item.item.title,
     })
     if (!title) {
@@ -167,8 +168,11 @@ export class JoplinNoteCommandService {
         focus: true,
       })
     }, 17)
-    await new Promise((resolve) =>
-      setTimeout(() => resolve(clearInterval(interval)), 500),
+    await new Promise<void>((resolve) =>
+      setTimeout(() => {
+        clearInterval(interval)
+        resolve()
+      }, 500),
     )
   }
 
@@ -181,7 +185,7 @@ export class JoplinNoteCommandService {
     }
 
     const searchQuickPickBox = vscode.window.createQuickPick<SearchNoteItem>()
-    searchQuickPickBox.placeholder = i18nLoader.get('Please enter key words')
+    searchQuickPickBox.placeholder = i18n.t('Please enter key words')
     searchQuickPickBox.canSelectMany = false
     searchQuickPickBox.items = await this.loadLastNoteList()
 
@@ -274,10 +278,10 @@ export class JoplinNoteCommandService {
   async createResource() {
     const globalStoragePath = globalState.context.globalStorageUri.fsPath
     const title = await vscode.window.showInputBox({
-      placeHolder: i18nLoader.get(
+      placeHolder: i18n.t(
         'Please enter what you want to create {{type}} name',
         {
-          type: i18nLoader.get('attachment'),
+          type: i18n.t('attachment'),
         },
       ),
       value: '',
@@ -303,7 +307,7 @@ export class JoplinNoteCommandService {
       await remove(filePath)
     }
     vscode.window.showInformationMessage(
-      i18nLoader.get('Attachment resource created successfully'),
+      i18n.t('Attachment resource created successfully'),
     )
     await this.handlerService.openResource(res.id)
   }
@@ -374,7 +378,7 @@ export class JoplinNoteCommandService {
     )
 
     const selectItems = await vscode.window.showQuickPick(items, {
-      placeHolder: i18nLoader.get('Please select a tag for this note'),
+      placeHolder: i18n.t('Please select a tag for this note'),
       canPickMany: true,
     })
     if (!selectItems) {
@@ -392,7 +396,7 @@ export class JoplinNoteCommandService {
 
   async createTag() {
     const title = await vscode.window.showInputBox({
-      placeHolder: i18nLoader.get('Please enter the name of the new tag'),
+      placeHolder: i18n.t('Please enter the name of the new tag'),
     })
     if (!title) {
       return
@@ -401,7 +405,7 @@ export class JoplinNoteCommandService {
       title,
     })
     vscode.window.showInformationMessage(
-      i18nLoader.get('Create tag [{{title}}] success', {
+      i18n.t('Create tag [{{title}}] success', {
         title,
       }),
     )
@@ -416,16 +420,28 @@ export class JoplinNoteCommandService {
         } as vscode.QuickPickItem & { tag: TagGetRes }),
     )
     const selectItem = await vscode.window.showQuickPick(items, {
-      placeHolder: i18nLoader.get('Please select the tag to delete'),
+      placeHolder: i18n.t('Please select the tag to delete'),
     })
     if (!selectItem) {
       return
     }
     await tagApi.remove(selectItem.tag.id)
     vscode.window.showInformationMessage(
-      i18nLoader.get('Remove tag [{{title}}] success', {
+      i18n.t('Remove tag [{{title}}] success', {
         title: selectItem.tag.title,
       }),
     )
   }
+
+  private clipboard?: CommonType & { id: string }
+
+  /**
+   * 移动
+   */
+  move() {}
+
+  /**
+   * 粘贴
+   */
+  paste() {}
 }

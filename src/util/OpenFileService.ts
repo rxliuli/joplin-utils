@@ -1,5 +1,5 @@
 import { existsSync } from 'fs-extra'
-import * as open from 'open'
+import open from 'open'
 import * as vscode from 'vscode'
 import { Uri } from 'vscode'
 import * as path from 'path'
