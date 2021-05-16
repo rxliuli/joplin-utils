@@ -3,11 +3,11 @@ import {
   ApplicationConfig,
   BaseIntegrated,
 } from '../blog/Application'
-import { HexoIntegrated, HexoIntegratedConfig } from '../blog/HexoIntegrated'
+import { BlogHexoIntegrated, BlogHexoIntegratedConfig } from '../blog/BlogHexoIntegrated'
 import {
-  VuepressIntegrated,
-  VuepressIntegratedConfig,
-} from '../blog/VuepressIntegrated'
+  BlogVuepressIntegrated,
+  BlogVuepressIntegratedConfig,
+} from '../blog/BlogVuepressIntegrated'
 import path from 'path'
 import { pathExists, readJson } from 'fs-extra'
 import { i18n, LanguageEnum } from '../util/I18n'
@@ -18,17 +18,17 @@ import { Command } from 'commander'
 type JoplinBlogConfig = ApplicationConfig & {
   type: 'hexo' | 'vuepress'
   language?: LanguageEnum
-} & (HexoIntegratedConfig | {})
+} & (BlogHexoIntegratedConfig | {})
 
 export class BlogCommanderProgram {
   private static async getBlogApplication(config: JoplinBlogConfig) {
     let integrated: BaseIntegrated
     switch (config.type) {
       case 'hexo':
-        integrated = new HexoIntegrated(config as HexoIntegratedConfig)
+        integrated = new BlogHexoIntegrated(config as BlogHexoIntegratedConfig)
         break
       case 'vuepress':
-        integrated = new VuepressIntegrated(config as VuepressIntegratedConfig)
+        integrated = new BlogVuepressIntegrated(config as BlogVuepressIntegratedConfig)
         break
       default:
         throw new Error(i18n.t('blog.Unsupported blog type'))

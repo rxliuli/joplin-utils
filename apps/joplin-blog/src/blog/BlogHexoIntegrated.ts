@@ -8,9 +8,9 @@ import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { ResourceWriter } from './ResourceWriter'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 
-export class HexoSingleNoteHandler implements JoplinNoteHandlerLinkConverter {
+class BlogHexoSingleNoteHandler implements JoplinNoteHandlerLinkConverter {
   constructor(
-    private config: Pick<HexoIntegratedConfig, 'stickyTopIdList' | 'tag'>,
+    private config: Pick<BlogHexoIntegratedConfig, 'stickyTopIdList' | 'tag'>,
   ) {}
 
   meta(note: CommonNote & { tags: CommonTag[] }): object {
@@ -38,21 +38,21 @@ export class HexoSingleNoteHandler implements JoplinNoteHandlerLinkConverter {
   }
 }
 
-export interface HexoIntegratedConfig {
+export interface BlogHexoIntegratedConfig {
   tag: string
   rootPath: string
   stickyTopIdList?: string[]
 }
 
-export class HexoIntegrated implements BaseIntegrated {
-  constructor(private config: HexoIntegratedConfig) {}
+export class BlogHexoIntegrated implements BaseIntegrated {
+  constructor(private config: BlogHexoIntegratedConfig) {}
 
   async init() {
     await this.resourceWriter.clean()
   }
 
   parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
-    const hexoSingleNoteHandler = new HexoSingleNoteHandler(this.config)
+    const hexoSingleNoteHandler = new BlogHexoSingleNoteHandler(this.config)
     return JoplinMarkdownUtil.addMeta(
       JoplinNoteHandler.format(
         JoplinNoteHandler.convertLink(

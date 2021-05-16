@@ -1,5 +1,4 @@
 import * as yaml from 'yaml'
-import { treeMap } from '@liuli-util/tree'
 
 export class JoplinMarkdownUtil {
   /**
@@ -21,38 +20,6 @@ export class JoplinMarkdownUtil {
       new RegExp('[\r\n]'),
       '',
     )
-  }
-
-  static buildList(tree: ListNode[], urlMap: (id: string) => string): string {
-    return treeMap(
-      tree,
-      (item, path): ListNode & { text: string } => {
-        const prefix = '  '.repeat(path.length - 1) + '- '
-        const suffix = '\n'
-        let text: string
-        if (!item.children) {
-          text = prefix + `[${item.title}](${urlMap(item.id)})` + suffix
-        } else {
-          text =
-            prefix +
-            item.title +
-            suffix +
-            item.children
-              .map((sub: ListNode & { text: string }) => sub.text)
-              .join('')
-        }
-        return {
-          ...item,
-          text,
-        }
-      },
-      {
-        id: 'id',
-        children: 'children',
-      },
-    )
-      .map((item) => item.text)
-      .join('')
   }
 }
 

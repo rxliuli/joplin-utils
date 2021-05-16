@@ -2,8 +2,8 @@ import { Application } from '../Application'
 import path from 'path'
 import { writeFile } from 'fs-extra'
 import { config, noteApi } from 'joplin-api'
-import { HexoIntegrated } from '../HexoIntegrated'
-import { VuepressIntegrated } from '../VuepressIntegrated'
+import { BlogHexoIntegrated } from '../BlogHexoIntegrated'
+import { BlogVuepressIntegrated } from '../BlogVuepressIntegrated'
 import { GeneratorEventsImpl } from './util/GeneratorEventsImpl'
 
 describe('测试 Application', () => {
@@ -15,7 +15,7 @@ describe('测试 Application', () => {
   it('单独测试 HexoIntegrated', async () => {
     config.token = joplinConfig.token
     config.port = joplinConfig.port
-    const hexoHandler = new HexoIntegrated({
+    const hexoHandler = new BlogHexoIntegrated({
       tag: 'blog',
       rootPath: path.resolve(__dirname, 'temp/hexo-example'),
     })
@@ -57,7 +57,7 @@ describe('测试 Application', () => {
           'C:/Users/rxliuli/.config/joplindev-desktop',
         ),
       },
-      new HexoIntegrated({
+      new BlogHexoIntegrated({
         tag: 'blog',
         rootPath: path.resolve(__dirname, 'temp/hexo-example'),
       }),
@@ -84,7 +84,7 @@ describe('测试 Application', () => {
           'C:/Users/rxliuli/.config/joplindev-desktop',
         ),
       },
-      new VuepressIntegrated({
+      new BlogVuepressIntegrated({
         rootPath: path.resolve(__dirname, 'temp/vuepress-example'),
         tag: 'blog',
       }),

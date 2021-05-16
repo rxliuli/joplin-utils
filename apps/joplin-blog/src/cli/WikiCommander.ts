@@ -3,7 +3,7 @@ import {
   ApplicationConfig,
   BaseIntegrated,
 } from '../blog/Application'
-import { HexoIntegratedConfig } from '../blog/HexoIntegrated'
+import { BlogHexoIntegratedConfig } from '../blog/BlogHexoIntegrated'
 import path from 'path'
 import { pathExists, readJson } from 'fs-extra'
 import { i18n, LanguageEnum } from '../util/I18n'
@@ -22,7 +22,7 @@ import {
 type JoplinBlogConfig = ApplicationConfig & {
   type: 'docsify' | 'vuepress'
   language?: LanguageEnum
-} & (HexoIntegratedConfig | {})
+} & (BlogHexoIntegratedConfig | {})
 
 export class BlogCommanderProgram {
   private static async getBlogApplication(config: JoplinBlogConfig) {

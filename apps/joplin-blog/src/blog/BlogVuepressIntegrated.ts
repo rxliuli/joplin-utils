@@ -10,10 +10,8 @@ import { ResourceWriter } from './ResourceWriter'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { mkdirp } from 'fs-extra'
 
-export class VuepressSingleNoteHandler
-  implements JoplinNoteHandlerLinkConverter
-{
-  constructor(private config: Pick<VuepressIntegratedConfig, 'tag'>) {}
+class BlogVuepressSingleNoteHandler implements JoplinNoteHandlerLinkConverter {
+  constructor(private config: Pick<BlogVuepressIntegratedConfig, 'tag'>) {}
 
   meta(note: CommonNote & { tags: CommonTag[] }): object {
     const formatter = 'yyyy-MM-dd hh:mm:ss'
@@ -37,7 +35,7 @@ export class VuepressSingleNoteHandler
   }
 }
 
-export interface VuepressIntegratedConfig {
+export interface BlogVuepressIntegratedConfig {
   /**
    * hexo 的根目录
    */
@@ -45,8 +43,8 @@ export interface VuepressIntegratedConfig {
   tag: string
 }
 
-export class VuepressIntegrated implements BaseIntegrated {
-  constructor(private config: VuepressIntegratedConfig) {}
+export class BlogVuepressIntegrated implements BaseIntegrated {
+  constructor(private config: BlogVuepressIntegratedConfig) {}
 
   async init() {
     await this.resourceWriter.clean()
@@ -54,7 +52,9 @@ export class VuepressIntegrated implements BaseIntegrated {
   }
 
   parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
-    const vuepressSingleNoteHandler = new VuepressSingleNoteHandler(this.config)
+    const vuepressSingleNoteHandler = new BlogVuepressSingleNoteHandler(
+      this.config,
+    )
     return JoplinMarkdownUtil.addMeta(
       JoplinNoteHandler.format(
         JoplinNoteHandler.convertLink(
