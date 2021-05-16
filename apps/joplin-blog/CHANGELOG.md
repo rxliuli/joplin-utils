@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.3.2
+
+- refactor(joplin-blog): Expose more functions in srcindex to facilitate third-party calls
+
 ## v0.3.1
 
 - fix(joplin-blog): fix missing internationalization file
