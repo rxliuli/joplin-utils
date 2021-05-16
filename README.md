@@ -6,7 +6,7 @@ CLI tool to publish Joplin notes as a static website, currently supports both bl
 hexo/vuepress/docsify.
 
 - blog
-  - hexo: because hexo deployment to the site subdirectory is very troublesome, so this is not demonstrated here
+  - [hexo](https://rxliuli.com/joplin-blog/blog/hexo/)
   - [vuepress](https://rxliuli.com/joplin-blog/blog/vuepress/)
 - wiki
   - [vuepress](https://rxliuli.com/joplin-blog/wiki/vuepress/p/947da6a714854075af6e07835de4a719.html)

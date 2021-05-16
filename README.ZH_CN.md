@@ -5,7 +5,7 @@
 将 Joplin 笔记发布为静态网站的 CLI 工具，目前支持 blog/wiki 两种形式，框架支持 hexo/vuepress/docsify。
 
 - blog
-  - hexo：由于 hexo 部署到网站子目录非常麻烦，故此处并未演示
+  - [hexo](https://rxliuli.com/joplin-blog/blog/hexo/)
   - [vuepress](https://rxliuli.com/joplin-blog/blog/vuepress/)
 - wiki
   - [vuepress](https://rxliuli.com/joplin-blog/wiki/vuepress/p/947da6a714854075af6e07835de4a719.html)
