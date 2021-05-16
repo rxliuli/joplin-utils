@@ -34,7 +34,7 @@ export class HexoSingleNoteHandler implements JoplinNoteHandlerLinkConverter {
   }
 
   convertResource(resource: CommonResource): string {
-    return `/resource/${resource.id}.${resource.file_extension}`
+    return `resource/${resource.id}.${resource.file_extension}`
   }
 }
 
