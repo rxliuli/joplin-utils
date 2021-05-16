@@ -13,8 +13,8 @@ timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://127.0.0.1:8080/
-root: /public/
+url: http://127.0.0.1:8080/joplin-blog/blog/hexo/
+root: /joplin-blog/blog/hexo/
 permalink: /p/:abbrlink/
 permalink_defaults: :year/:month/:day/:title/
 pretty_urls:
