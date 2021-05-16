@@ -6646,33 +6646,6 @@ joplin-api@^0.2.7:
     node-fetch "^2.6.1"
     query-string "^6.13.7"
 
-joplin-blog@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/joplin-blog/-/joplin-blog-0.2.0.tgz#fd011fc43d58daaf463e09e57749ebf8dfca84ab"
-  integrity sha512-gDlfvFuC+gBcrxqJRSGaVbO3JDHMNWG/WiuGSLx3rRYpxjsAR+NjC5tjbqUvllEcdAx+LIK2xbCia9EMQW8WZw==
-  dependencies:
-    "@liuli-util/array" "^3.1.0"
-    "@liuli-util/async" "^3.1.1"
-    commander "^7.2.0"
-    enquirer "^2.3.6"
-    figlet "^1.5.0"
-    fs-extra "^9.0.1"
-    i18next "^19.8.4"
-    joplin-api "^0.2.7"
-    lodash "^4.17.20"
-    luxon "^1.25.0"
-    mdast "^3.0.0"
-    ora "^5.4.0"
-    os-locale "^5.0.0"
-    prettier "^2.2.1"
-    remark-gfm "^1.0.0"
-    remark-parse "^9.0.0"
-    remark-stringify "^9.0.1"
-    unified "^9.2.0"
-    unist-util-map "^2.0.1"
-    unist-util-visit "^2.0.3"
-    yaml "^1.10.0"
-
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
