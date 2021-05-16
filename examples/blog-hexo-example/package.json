@@ -5,9 +5,9 @@
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
+    "deploy": "hexo deploy",
     "server": "hexo server",
-    "imp": "joplin-blog",
-    "deploy": "gh-pages -d public -e blog/hexo -a"
+    "imp": "joplin-blog"
   },
   "hexo": {
     "version": "5.4.0"
