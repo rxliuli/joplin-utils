@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.3.1
+
+- fix(joplin-blog): fix missing internationalization file
+- fix(joplin-blog): Uniformly change the example generation command imp => gen
+- fix(joplin-blog): fix a redundant space in the Joplin generated docsify sidebar configuration
+- fix(blog-hexo-example): fix the bug that hexo cannot be deployed to a subdirectory of the site
+
 ## v0.3.0
 
 - feat(joplin-blog): support generate wiki(docsify/vuepress)
