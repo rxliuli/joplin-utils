@@ -2,9 +2,9 @@
 
 ## v0.3.0
 
-- feat(joplin-blog): 支持生成 wiki(docsify/vuepress)
-- fix(joplin-blog): 修复 vuepress 不支持部署到网站子目录的错误
-- chore(examples): 添加 wiki 的示例项目
+- feat(joplin-blog): support generate wiki(docsify/vuepress)
+- fix(joplin-blog): fix bug that vuepress does not support deploying to subdirectories of websites
+- chore(examples): add wiki example projects
 
 ## v0.2.0
 
