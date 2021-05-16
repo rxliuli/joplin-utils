@@ -22,7 +22,6 @@
     "preset": "ts-jest"
   },
   "devDependencies": {
-    "@types/unist": "^2.0.3",
     "@liuli-util/cli": "^3.2.1",
     "@rollup/plugin-json": "^4.1.0",
     "@types/figlet": "^1.5.0",
@@ -33,6 +32,7 @@
     "@types/node": "^12.19.11",
     "@types/prettier": "^2.2.3",
     "@types/shelljs": "^0.8.8",
+    "@types/unist": "^2.0.3",
     "i18next-typescript-generator": "^0.1.1",
     "jest": "^26.6.3",
     "rollup": "^2.45.2",
@@ -46,6 +46,7 @@
   "dependencies": {
     "@liuli-util/array": "^3.1.0",
     "@liuli-util/async": "^3.1.1",
+    "@liuli-util/tree": "^3.2.0",
     "commander": "^7.2.0",
     "enquirer": "^2.3.6",
     "figlet": "^1.5.0",

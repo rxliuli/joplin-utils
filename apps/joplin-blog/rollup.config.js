@@ -11,11 +11,13 @@ export default [
         // 打包名称
         file: './dist/index.js',
         format: 'cjs',
+        sourcemap: true,
       },
       {
         // 打包名称
         file: './dist/index.esm.js',
         format: 'esm',
+        sourcemap: true,
       },
     ],
     plugins: [
@@ -31,6 +33,7 @@ export default [
         // 打包名称
         file: './dist/bin.js',
         format: 'cjs',
+        sourcemap: true,
       },
     ],
     plugins: [

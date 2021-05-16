@@ -1,9 +1,10 @@
-import { Application, GeneratorEvents, ProcessInfo } from '../Application'
+import { Application } from '../Application'
 import path from 'path'
 import { writeFile } from 'fs-extra'
 import { config, noteApi } from 'joplin-api'
 import { HexoIntegrated } from '../HexoIntegrated'
 import { VuepressIntegrated } from '../VuepressIntegrated'
+import { GeneratorEventsImpl } from './util/GeneratorEventsImpl'
 
 describe('测试 Application', () => {
   const joplinConfig: typeof config = {
@@ -45,35 +46,6 @@ describe('测试 Application', () => {
     })
     await writeFile(path.resolve(__dirname, 'temp/test.md'), res)
   })
-
-  class GeneratorEventsImpl implements GeneratorEvents {
-    copyResources(options: ProcessInfo): void {
-      console.log(
-        `${options.rate}/${options.all} 正在读取笔记附件与标签: `,
-        options.title,
-      )
-    }
-
-    parseAndWriteNotes(options: ProcessInfo): void {
-      console.log(
-        `${options.rate}/${options.all} 正在解析笔记中的 Joplin 内部链接与附件资源: ${options.title}`,
-        options.title,
-      )
-    }
-
-    readNoteAttachmentsAndTags(options: ProcessInfo): void {
-      console.log(
-        `${options.rate}/${options.all} 正在写入笔记: ${options.title}`,
-        options.title,
-      )
-    }
-
-    writeNote(options: ProcessInfo): void {
-      console.log(
-        `${options.rate}/${options.all} 正在处理资源: ${options.title}`,
-      )
-    }
-  }
 
   it('集成 HexoIntegrated', async () => {
     const application = new Application(

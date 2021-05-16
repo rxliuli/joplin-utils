@@ -4,12 +4,13 @@ import remarkGfm from 'remark-gfm'
 import remarkStringify from 'remark-stringify'
 import { format, Options } from 'prettier'
 
+const md = unified().use(remarkParse).use(remarkGfm).use(remarkStringify, {
+  bullet: '-',
+  fences: true,
+  incrementListMarker: false,
+})
+
 it('测试任务列表序列化', () => {
-  const md = unified().use(remarkParse).use(remarkGfm).use(remarkStringify, {
-    bullet: '-',
-    fences: true,
-    incrementListMarker: false,
-  })
   const text = `
 # test
 
@@ -22,4 +23,12 @@ it('测试任务列表序列化', () => {
   console.log(text)
   console.log(res)
   console.log(format(res, { parser: 'markdown', tabWidth: 2 } as Options))
+})
+it('查看 list 的 ast', async () => {
+  const node = md.parse(`
+- 1
+  - [2](/2)
+- [3](/3)
+  `)
+  // await writeJson(path.resolve(__dirname, 'temp/list.json'), node)
 })
