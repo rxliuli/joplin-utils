@@ -2,7 +2,7 @@
   "name": "wiki-docsify-example",
   "version": "1.0.0",
   "scripts": {
-    "gen": "joplin-blog wiki",
+    "imp": "joplin-blog wiki",
     "deploy": "gh-pages -d docs -e wiki/docsify -a"
   },
   "devDependencies": {

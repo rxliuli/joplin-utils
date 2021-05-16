@@ -1,10 +1,6 @@
-- test
-  - test-sub
-    - [test sub note](/p/c2352daf56804756ac1b9d9b606e06c1)
-  - [test parent note](/p/fc5aec9c44f74dd1bd97f78f8a33f644)
-- Welcome! (Desktop)
-  - [1. Welcome to Joplin! 🗒️](/p/947da6a714854075af6e07835de4a719)
-  - [2. Importing and exporting notes ↔️](/p/c16050a5f0b047129ffd5f407596b1c1)
-  - [3. Synchronising your notes 🔄](/p/8b0b2061c3a649cca9206211c361c682)
-  - [4. Tips 💡](/p/779a2c2fda2041b892f1b96c7161ab5a)
-  - [5. Privacy](/p/ac38b5f5cb6c47aea14eac3fb30505e3)
+  - Welcome! (Desktop)
+    - [1. Welcome to Joplin! 🗒️](/p/947da6a714854075af6e07835de4a719)
+    - [2. Importing and exporting notes ↔️](/p/c16050a5f0b047129ffd5f407596b1c1)
+    - [3. Synchronising your notes 🔄](/p/8b0b2061c3a649cca9206211c361c682)
+    - [4. Tips 💡](/p/779a2c2fda2041b892f1b96c7161ab5a)
+    - [5. Privacy](/p/ac38b5f5cb6c47aea14eac3fb30505e3)
