@@ -27,7 +27,7 @@ export class JoplinMarkdownUtil {
     return treeMap(
       tree,
       (item, path): ListNode & { text: string } => {
-        const prefix = '  '.repeat(path.length) + '- '
+        const prefix = '  '.repeat(path.length - 1) + '- '
         const suffix = '\n'
         let text: string
         if (!item.children) {
