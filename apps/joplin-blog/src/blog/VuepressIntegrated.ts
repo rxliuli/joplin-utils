@@ -8,9 +8,11 @@ import {
 import { DateTime } from 'luxon'
 import { ResourceWriter } from './ResourceWriter'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
+import { mkdirp } from 'fs-extra'
 
 export class VuepressSingleNoteHandler
-  implements JoplinNoteHandlerLinkConverter {
+  implements JoplinNoteHandlerLinkConverter
+{
   constructor(private config: Pick<VuepressIntegratedConfig, 'tag'>) {}
 
   meta(note: CommonNote & { tags: CommonTag[] }): object {
@@ -31,7 +33,7 @@ export class VuepressSingleNoteHandler
   }
 
   convertResource(resource: CommonResource): string {
-    return `/resource/${resource.id}.${resource.file_extension}`
+    return `./resource/${resource.id}.${resource.file_extension}`
   }
 }
 
@@ -48,6 +50,7 @@ export class VuepressIntegrated implements BaseIntegrated {
 
   async init() {
     await this.resourceWriter.clean()
+    await mkdirp(path.resolve(this.config.rootPath, 'blog/_posts/resource'))
   }
 
   parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
@@ -66,10 +69,7 @@ export class VuepressIntegrated implements BaseIntegrated {
 
   private readonly resourceWriter = new ResourceWriter({
     postPath: path.resolve(this.config.rootPath, 'blog/_posts'),
-    resourcePath: path.resolve(
-      this.config.rootPath,
-      'blog/.vuepress/public/resource',
-    ),
+    resourcePath: path.resolve(this.config.rootPath, 'blog/_posts/resource'),
   })
 
   copy = this.resourceWriter.copy.bind(this.resourceWriter)
