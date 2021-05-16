@@ -7,15 +7,15 @@ title: Hexo
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: joplin-hexo
 language: en
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://example.com/child' and root as '/child/'
-url: http://example.com
-root: /
-permalink: :year/:month/:day/:title/
+url: http://127.0.0.1:8080/
+root: /public/
+permalink: /p/:abbrlink/
 permalink_defaults: :year/:month/:day/:title/
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -98,7 +98,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
