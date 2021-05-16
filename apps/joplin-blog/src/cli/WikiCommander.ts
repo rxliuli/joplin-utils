@@ -14,6 +14,10 @@ import {
   WikiDocsifyIntegrated,
   WikiDocsifyIntegratedConfig,
 } from '../wiki/WikiDocsifyIntegrated'
+import {
+  WikiVuepressIntegrated,
+  WikiVuepressIntegratedConfig,
+} from '../wiki/WikiVuepressIntegrated'
 
 type JoplinBlogConfig = ApplicationConfig & {
   type: 'docsify' | 'vuepress'
@@ -29,6 +33,9 @@ export class BlogCommanderProgram {
           config as WikiDocsifyIntegratedConfig,
         )
         break
+      case 'vuepress':
+        integrated = new WikiVuepressIntegrated(config as WikiVuepressIntegratedConfig)
+        break
       default:
         throw new Error(i18n.t('blog.Unsupported blog type'))
     }
@@ -39,7 +46,7 @@ export class BlogCommanderProgram {
     const configPath = path.resolve('.joplin-blog.json')
     if (!(await pathExists(configPath))) {
       console.error(
-        i18n.t("blog.Can't find configuration file _joplin-blog_json"),
+        i18n.t('blog.Can\'t find configuration file _joplin-blog_json'),
       )
       return false
     }

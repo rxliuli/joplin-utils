@@ -7,10 +7,8 @@ import {
 import { ResourceWriter } from '../blog/ResourceWriter'
 import path from 'path'
 import { writeFile } from 'fs-extra'
-import { folderApi, PageUtil, searchApi, TypeEnum } from 'joplin-api'
-import { groupBy } from '@liuli-util/array'
-import { treeFilter, treeMap } from '@liuli-util/tree'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
+import { WikiUtil } from './WikiUtil'
 
 class WikiDocsifySingleNoteHandler implements JoplinNoteHandlerLinkConverter {
   convertNote(id: string): string {
@@ -39,51 +37,7 @@ export class WikiDocsifyIntegrated implements BaseIntegrated {
   }
 
   async buildSidebar() {
-    const folderList = await folderApi.listAll()
-    const noteList = await PageUtil.pageToAllList((pageParam) =>
-      searchApi.search({
-        ...(pageParam as any),
-        fields: [
-          'id',
-          'title',
-          'body',
-          'user_created_time',
-          'user_updated_time',
-          'parent_id',
-        ],
-        type: TypeEnum.Note,
-        query: `tag:${this.config.tag}`,
-      }),
-    )
-    const noteGroupMap = groupBy(
-      noteList.map((note) => ({
-        ...note,
-        title: JoplinMarkdownUtil.trimTitle(note.title),
-        type_: TypeEnum.Note,
-      })),
-      (note) => note.parent_id,
-    )
-    const options = {
-      id: 'id',
-      children: 'children',
-    } as const
-    const tree = treeFilter(
-      treeMap(
-        folderList,
-        (item) => {
-          const noteChildren = noteGroupMap.get(item.id) || []
-          return {
-            ...item,
-            children: [...(item.children || []), ...noteChildren],
-          }
-        },
-        options,
-      ),
-      (item) =>
-        item.type_ === TypeEnum.Note ||
-        (item.type_ === TypeEnum.Folder && item.children!.length !== 0),
-      options,
-    )
+    const tree = await WikiUtil.getJoplinSidebar(this.config.tag)
     return JoplinMarkdownUtil.buildList(tree, (id) => `/p/${id}`)
   }
 

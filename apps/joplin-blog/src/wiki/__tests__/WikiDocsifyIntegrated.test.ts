@@ -5,7 +5,7 @@ import { WikiDocsifyIntegrated } from '../WikiDocsifyIntegrated'
 import { GeneratorEventsImpl } from '../../blog/__tests__/util/GeneratorEventsImpl'
 
 describe('测试 WikiDocsifyInterated', () => {
-  const joplinConfig: typeof config = {
+  const joplinConfig: Pick<typeof config, 'token' | 'port'> = {
     token: process.env.token!,
     port: Number.parseInt(process.env.port!),
   }

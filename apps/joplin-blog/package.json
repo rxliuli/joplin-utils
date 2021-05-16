@@ -46,6 +46,7 @@
   "dependencies": {
     "@liuli-util/array": "^3.1.0",
     "@liuli-util/async": "^3.1.1",
+    "@liuli-util/object": "^3.2.0",
     "@liuli-util/tree": "^3.2.0",
     "commander": "^7.2.0",
     "enquirer": "^2.3.6",
