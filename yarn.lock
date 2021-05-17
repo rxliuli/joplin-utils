@@ -1246,6 +1246,11 @@
   resolved "https://registry.yarnpkg.com/@liuli-util/object/-/object-3.0.2.tgz#da8e34b59248782405955ce89d534056d97ccc32"
   integrity sha512-qwSa2F2/Y8AoqoFxBictPUgp6cSwnOSo56d8LDkktpj9p/R837+jDyo6ow+f/41J7xCpxoUwg0/pBnxiGTfJIg==
 
+"@liuli-util/object@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@liuli-util/object/-/object-3.2.0.tgz#45462f9e64e6feb4afa1e1d984006f41373a9457"
+  integrity sha512-ROyqHUGW0tDK9uiK6JY/Wa8cC9hLhRhp6wbpazE5h+tAdjcg3rVz97gQJQUoI2vmC9FsxfgZRzlLsL91PO6D5w==
+
 "@liuli-util/tree@^3.0.2":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@liuli-util/tree/-/tree-3.0.2.tgz#63c95a2fd7756682834d6b22cd508064ba7d0067"
@@ -5370,11 +5375,12 @@ jest@^26.6.3:
     import-local "^3.0.2"
     jest-cli "^26.6.3"
 
-joplin-api@^0.2.6:
-  version "0.2.6"
-  resolved "https://registry.npmjs.org/joplin-api/-/joplin-api-0.2.6.tgz#27ab7b76e6bce04a10d4a149acf7ee6e03eeca40"
-  integrity sha512-V8K0Wto0ahCoBM3cVd1oXfuda4+PURYoW5GwZUF4cyjANeQQ4HqdYxJAgu+i9sT08T0wP+JjQbovsC7zsAHNfA==
+joplin-api@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/joplin-api/-/joplin-api-0.3.0.tgz#5d1c95ff06bada291c2e8f219318202e003bb549"
+  integrity sha512-r9LTbY7f6VXzXYRALXv6g5NPMZZRQhWKGIzfeQqWGdmAyN2LkLUwrlf/ILJKv+f0lSmy6lFC7DfEa29HgAJcHA==
   dependencies:
+    "@liuli-util/object" "^3.2.0"
     axios "^0.21.0"
     form-data "^3.0.0"
     node-fetch "^2.6.1"

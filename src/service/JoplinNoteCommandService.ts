@@ -3,6 +3,7 @@ import * as vscode from 'vscode'
 import { QuickPickItem, TreeView } from 'vscode'
 import {
   config,
+  folderExtApi,
   noteActionApi,
   noteApi,
   noteExtApi,
@@ -25,7 +26,6 @@ import { uploadResourceService } from './UploadResourceService'
 import { difference } from 'lodash'
 import { TagGetRes } from 'joplin-api/dist/modal/TagGetRes'
 import { HandlerService } from './HandlerService'
-import { CommonType } from 'joplin-api/dist/modal/CommonType'
 import { i18n } from '../util/I18n'
 
 export class JoplinNoteCommandService {
@@ -433,15 +433,43 @@ export class JoplinNoteCommandService {
     )
   }
 
-  private clipboard?: CommonType & { id: string }
+  private clipboard: FolderOrNote | null = null
 
   /**
-   * 移动
+   * 剪切
    */
-  move() {}
+  cut(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
+    console.log('joplinNote.cut: ', item)
+    this.clipboard = item
+  }
 
   /**
    * 粘贴
    */
-  paste() {}
+  async paste(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
+    const clipboard = this.clipboard?.item
+    console.log('paste: ', clipboard, item.item)
+    if (
+      !clipboard ||
+      !item ||
+      clipboard.id === item.id ||
+      item.item.type_ !== TypeEnum.Folder
+    ) {
+      return
+    }
+    if (clipboard.type_ === TypeEnum.Folder) {
+      const paths = await folderExtApi.path(item.id)
+      console.log('paths: ', paths)
+      if (paths.some((item) => item.id === clipboard.id)) {
+        console.log('不能移动到子目录')
+        return
+      }
+      await folderExtApi.move(clipboard.id, item.id)
+    } else {
+      await noteExtApi.move(clipboard.id, item.id)
+    }
+    await this.config.noteViewProvider.refresh()
+    console.log('粘贴完成')
+    this.clipboard = null
+  }
 }

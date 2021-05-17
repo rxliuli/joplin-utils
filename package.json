@@ -97,6 +97,16 @@
         "category": "Joplin"
       },
       {
+        "command": "joplinNote.cut",
+        "title": "%commands.joplinNote.cut%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.paste",
+        "title": "%commands.joplinNote.paste%",
+        "category": "Joplin"
+      },
+      {
         "command": "joplinNote.remove",
         "title": "%commands.joplinNote.remove%",
         "icon": {
@@ -229,6 +239,16 @@
           "command": "joplinNote.manageTags",
           "when": "view == joplin-note && viewItem != joplinNote.folder",
           "group": "joplinNote@7"
+        },
+        {
+          "command": "joplinNote.cut",
+          "when": "view == joplin-note",
+          "group": "joplinNote@8"
+        },
+        {
+          "command": "joplinNote.paste",
+          "when": "view == joplin-note && viewItem == joplinNote.folder",
+          "group": "joplinNote@9"
         }
       ],
       "editor/context": [
@@ -307,6 +327,14 @@
       {
         "command": "joplinNote.manageTags",
         "key": "ctrl+j ctrl+m"
+      },
+      {
+        "command": "joplinNote.cut",
+        "key": "ctrl+x"
+      },
+      {
+        "command": "joplinNote.paste",
+        "key": "ctrl+v"
       }
     ],
     "configuration": {
@@ -415,7 +443,7 @@
     "entities": "^2.1.0",
     "fs-extra": "^9.0.1",
     "i18next": "^19.8.4",
-    "joplin-api": "^0.2.6",
+    "joplin-api": "^0.3.0",
     "lodash": "^4.17.20",
     "markdown-it": "^12.0.3",
     "open": "^7.3.0",
