@@ -1,6 +1,6 @@
 # Contribute
 
-> [English](./CONTRIBUTING.md), [中文](./CONTRIBUTING.ZH_CN.md)
+> [English](CONTRIBUTING.md), [中文](CONTRIBUTING.ZH_CN.md)
 
 Any community contributions are welcome and need to comply with the [Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)
 
