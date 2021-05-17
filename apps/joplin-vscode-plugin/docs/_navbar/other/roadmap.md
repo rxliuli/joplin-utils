@@ -1,0 +1,48 @@
+# Roadmap
+
+- Edit
+  - [x] Paste image automatically upload to joplin and get link to insert
+    - [x] Support editor right-click menu to paste clipboard images
+  - [x] Solve the problem that joplin ref link can't be opened by `ctrl+click` in the editor
+  - [x] Editor custom breadcrumbs, automatically expand the left sidebar when clicked -- give up, it's not really necessary
+  - [ ] support for displaying `.drawio/.km` files as images directly in markdown
+  - [x] Integrate with joplin v1.5 to directly preview video, audio, and PDF attachments. -- Determine infeasibility
+- Optimization
+  - [ ] Add references directly in the code editor -- use search box to select
+  - [ ] Implement note multi-selection feature
+  - [ ] Add outline title sidebar (waiting for api support, or implement <https://github.com/microsoft/vscode/issues/97095> by yourself)
+    - [ ] Note title outline
+    - [ ] Attachment resources and citation notes for notes
+    - [ ] Timeline functionality for notes
+  - [ ] Handle vscode not opening `.drawio` from links (may also include `.km` mind maps)
+  - [x] enable special right-click menu and icons for todo
+  - [x] support creating attachments directly in notes, mainly to create code files directly
+  - [x] Fix bug `Cannot read property 'globalStoragePath' of undefined` when uploading images from clipboard
+  - [x] Optimize message internationalization
+  - [x] Add development related documentation
+  - [x] Fix the problem that notes in the root directory cannot be displayed
+  - [x] Support viewing attached resources in external applications
+    - [x] Automatically monitor changes when opening attached resources, using `child_process` returned by `open` -- by joplin
+  - [x] Show the 20 most recently edited historical notes by default when searching
+  - [x] Some suggestions for writing Markdown documents using VSCode, see: [Personal experience sharing: Using VSCode + Joplin as a note taking tool](:/9648f44ae78240d386481d449c583fc0)
+  - [x] should allow dragging notes or directories -- vscode api doesn't support it
+  - [x] Note/directory renaming appears directly in place in the input box -- vscode api does not support
+- Tagging related
+  - [x] Add tags to notes
+  - [x] Remove tags for notes
+  - [x] Rename tags
+- Organizing vscode api usage
+- Create joplin-chars
+  - [ ] Optimize performance
+  - [ ] integrate it into joplin using plugins
+  - [x] [Notes relationship diagram](https://echarts.apache.org/examples/zh/editor.html?c=graph)
+  - [x] [Notes directory size analysis diagram](https://echarts.apache.org/examples/zh/editor.html?c=treemap-disk)
+  - [x] [word cloud](https://github.com/ecomfe/echarts-wordcloud)
+  - [x] timeline timeline
+- Create joplin-blog
+  - [ ] Improving performance
+  - [ ] Optimize ux
+  - [x] Export specified notes to hexo blog
+  - [x] Resolve inline image issue
+  - [x] Resolve attachment resource issue
+  - [x] Solve the problem of internal reference notes

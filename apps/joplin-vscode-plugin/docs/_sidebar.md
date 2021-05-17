@@ -1,0 +1,5 @@
+- [Quick Start](_navbar/get-started/quick-start.md)
+- [FAQ](_navbar/get-started/faq.md)
+- [Detailed configuration](_navbar/get-started/configuration.md)
+- [Recommended extension](_navbar/get-started/recommended-extension.md)
+- [Limitations](_navbar/get-started/limitations.md)
