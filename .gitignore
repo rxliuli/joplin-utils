@@ -1,0 +1,12 @@
+node_modules/
+.rpt2_cache/
+
+# Editor directories and files
+.idea
+.vscode
+.history
+
+# build dist
+*.tgz
+dist/
+**/__tests__/temp

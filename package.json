@@ -1,0 +1,42 @@
+{
+  "name": "joplin-utils",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "clean": "lerna run clean --parallel && lerna clean -y && rimraf node_modules",
+    "setup": "yarn && lerna run build --include-dependencies --stream && yarn"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "printWidth": 80,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "arrowParens": "always",
+    "endOfLine": "crlf"
+  },
+  "workspaces": {
+    "packages": [
+      "libs/*",
+      "apps/*",
+      "examples/*"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "yarn commitlint --edit $1"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx,css,md,json}": [
+      "prettier --ignore-path .eslintignore --write",
+      "git add"
+    ]
+  }
+}
