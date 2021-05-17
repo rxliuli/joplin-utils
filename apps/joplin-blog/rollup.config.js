@@ -4,17 +4,14 @@ import json from '@rollup/plugin-json'
 /** @type {import('rollup').RollupOptions} */
 export default [
   {
-    // 入口文件
     input: './src/index.ts',
     output: [
       {
-        // 打包名称
         file: './dist/index.js',
         format: 'cjs',
         sourcemap: true,
       },
       {
-        // 打包名称
         file: './dist/index.esm.js',
         format: 'esm',
         sourcemap: true,
@@ -26,11 +23,9 @@ export default [
     ],
   },
   {
-    // 入口文件
     input: './src/bin.ts',
     output: [
       {
-        // 打包名称
         file: './dist/bin.js',
         format: 'cjs',
         sourcemap: true,
@@ -38,7 +33,12 @@ export default [
     ],
     plugins: [
       typescript({
-        tsconfig: './tsconfig.build.bin.json',
+        tsconfigOverride: {
+          compilerOptions: {
+            declaration: false,
+            declarationMap: false,
+          },
+        },
       }),
       json(),
       // terser(), // minifies generated bundles
