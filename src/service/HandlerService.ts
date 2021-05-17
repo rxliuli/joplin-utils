@@ -16,8 +16,8 @@ import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { OpenFileService } from '../util/OpenFileService'
 import { safePromise } from '../util/safePromise'
 import { AsyncArray } from '@liuli-util/async'
-import path = require('path')
 import { i18n } from '../util/I18n'
+import path from 'path'
 
 /**
  * other service

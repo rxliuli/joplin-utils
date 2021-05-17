@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
-    "outDir": "out",
+    "module": "ESNext",
+    "target": "ES2015",
+    "outDir": "dist",
     "lib": ["es6", "ESNext", "DOM"],
     "sourceMap": true,
     "rootDir": "src",
-    "strict": true /* enable all strict type-checking options */,
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+    "strict": true,
+    /* enable all strict type-checking options */ "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "noEmit": true
     /* Additional Checks */
     // "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
     // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */

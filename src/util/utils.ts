@@ -7,7 +7,7 @@ import * as fs from 'fs'
 import { FoundRefT, RefT, WorkspaceCache } from '../types'
 import { isInCodeSpan, isInFencedCodeBlock } from './externalUtils'
 import MarkdownIt from 'markdown-it'
-import Token = require('markdown-it/lib/token')
+import Token from 'markdown-it/lib/token'
 
 export { sortPaths }
 

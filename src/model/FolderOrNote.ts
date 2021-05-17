@@ -1,10 +1,10 @@
 import * as vscode from 'vscode'
 import { TreeItemCollapsibleState } from 'vscode'
-import path = require('path')
 import { FolderListAllRes } from 'joplin-api/dist/modal/FolderListAllRes'
 import { CommonType } from 'joplin-api/dist/modal/CommonType'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { TypeEnum } from 'joplin-api'
+import path from 'path'
 
 export type JoplinListFolder = FolderListAllRes & CommonType
 export type JoplinListNote = Pick<

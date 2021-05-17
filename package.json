@@ -9,16 +9,17 @@
   },
   "icon": "resources/icon.png",
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
-    "compile": "tsc -p ./ && yarn copy",
-    "copy": "shx cp -rf src/util/clipboard out/util",
+    "prepublish": "esbuild",
+    "copy": "shx cp -rf src/util/clipboard dist",
+    "preesbuild-base": "yarn copy",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "tsc && yarn esbuild-base -- --sourcemap",
+    "esbuild-watch": "yarn esbuild-base -- --sourcemap --watch",
     "lint": "eslint src --ext ts",
-    "watch": "tsc -watch -p ./",
     "watch:md": "rollup -c ./src/markdown/rollup.config.js -w",
     "server": "parcel src/markdown/tag-preview.html",
-    "pretest": "yarn run compile && yarn run lint",
-    "test": "node ./out/test/runTest.js",
-    "pack": "vsce package"
+    "pretest": "yarn run build && yarn run lint",
+    "test": "node ./out/test/runTest.js"
   },
   "categories": [
     "Notebooks"
@@ -31,7 +32,7 @@
     "onView:joplin-note",
     "onUri"
   ],
-  "main": "./out/extension.js",
+  "main": "./dist/extension.js",
   "jest": {
     "preset": "ts-jest"
   },
@@ -404,9 +405,6 @@
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
-    "@rollup/plugin-multi-entry": "^4.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.0",
-    "@rollup/plugin-sucrase": "^3.1.0",
     "@types/fs-extra": "^9.0.5",
     "@types/glob": "^7.1.3",
     "@types/jest": "^26.0.19",
@@ -418,6 +416,7 @@
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
     "copyfiles": "^2.4.1",
+    "esbuild": "^0.11.23",
     "eslint": "^7.15.0",
     "glob": "^7.1.6",
     "husky": "4.3.8",
@@ -425,7 +424,6 @@
     "lint-staged": "^10.5.4",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.2.1",
-    "rollup": "^2.34.2",
     "shx": "^0.3.3",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
