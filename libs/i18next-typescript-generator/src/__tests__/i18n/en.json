@@ -1,0 +1,21 @@
+{
+  "test": {
+    "hello": "hello",
+    "params": "yeah, {{what}} is {{how}}",
+    "footer": {
+      "copyright": "Some copyrights"
+    },
+    "special.characters": "special.characters",
+    "I'm liuli": "I'm liuli",
+    "Contains a colon:": "包含冒号:"
+  },
+  "hello": "hello",
+  "key": "yeah, {{what}} is {{how}}",
+  "footer": {
+    "copyright": "Some copyrights"
+  },
+  "notFoundConfig": "Can't find configuration file .joplin-blog.json",
+  "writeNote": "Writing note",
+  "convertNote": "Converting note",
+  "copyResource": "Copying resource"
+}

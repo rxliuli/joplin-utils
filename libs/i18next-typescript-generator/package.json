@@ -1,0 +1,31 @@
+{
+  "name": "i18next-typescript-generator",
+  "version": "0.1.1",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "liuli-cli clean && tsc -p tsconfig.build.json && liuli-cli addCliBanner && liuli-cli build",
+    "start": "ts-node src/bin.ts gen --input src/__tests__/i18n",
+    "pub": "yarn build && lerna clean -y && yarn"
+  },
+  "bin": {
+    "i18next-dts-gen": "dist/bin.js"
+  },
+  "jest": {
+    "preset": "ts-jest"
+  },
+  "dependencies": {
+    "@liuli-util/array": "^3.2.0",
+    "@liuli-util/async": "^3.2.0",
+    "commander": "^7.2.0",
+    "fs-extra": "^9.1.0"
+  },
+  "devDependencies": {
+    "@liuli-util/cli": "^3.2.1",
+    "@types/fs-extra": "^9.0.11",
+    "@types/node": "^12.20.7"
+  }
+}
