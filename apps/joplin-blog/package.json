@@ -9,6 +9,7 @@
     "joplin-blog": "dist/bin.js"
   },
   "scripts": {
+    "setup": "yarn gen:i18n",
     "start": "ts-node src/bin.ts -h",
     "build": "liuli-cli clean && rollup -c rollup.config.js && liuli-cli addCliBanner",
     "pub": "yarn build && lerna clean -y && yarn",
@@ -66,6 +67,5 @@
     "unist-util-map": "^2.0.1",
     "unist-util-visit": "^2.0.3",
     "yaml": "^1.10.0"
-  },
-  "gitHead": "515a84020c67cf8201461dbcc2f8404366af2667"
+  }
 }
