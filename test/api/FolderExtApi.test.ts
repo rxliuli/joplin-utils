@@ -2,7 +2,7 @@ import { folderApi, folderExtApi } from '../../src'
 import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
 
 describe('test FolderExtApi', () => {
-  initTestFolderAndNote()
+  const data = initTestFolderAndNote()
   it('test move', async () => {
     const createParentRes = await folderApi.create({
       title: '测试目录 1',
@@ -16,5 +16,10 @@ describe('test FolderExtApi', () => {
       folderExtApi.move(createParentRes.id, createRes.id),
     ).rejects.toThrowError()
     await expect(folderExtApi.move(createRes.id, '')).resolves
+  })
+  it('test path', async () => {
+    const paths = await folderExtApi.path(data.folderId)
+    expect(paths.length).toBe(1)
+    expect(paths[0].id).toBe(data.folderId)
   })
 })
