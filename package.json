@@ -3,8 +3,11 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "postinstall": "patch-package",
     "clean": "lerna run clean --parallel && lerna clean -y && rimraf node_modules",
-    "setup": "yarn && lerna run build --include-dependencies --stream && yarn"
+    "runstream": "lerna run --include-dependencies --stream",
+    "setup": "yarn && yarn runstream setup && yarn",
+    "build": "yarn runstream build"
   },
   "prettier": {
     "tabWidth": 2,
@@ -38,5 +41,14 @@
       "prettier --ignore-path .eslintignore --write",
       "git add"
     ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.5.1",
+    "prettier": "^2.2.1",
+    "patch-package": "^6.4.7",
+    "type-fest": "^1.1.1"
   }
 }

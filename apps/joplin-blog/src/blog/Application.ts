@@ -187,7 +187,6 @@ export class Application {
         i++
         events.process({ rate: i, all: noteList.length, title: item.title })
         await this.handler.write(item)
-        return item
       })
     })
   }

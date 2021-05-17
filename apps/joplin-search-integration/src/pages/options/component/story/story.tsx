@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Annotations, BaseStory } from '@storybook/addons'
-import { StoryFnReactReturnType } from '@storybook/react/dist/client/preview/types'
 import { Meta, Story } from '@storybook/react'
+import { StoryFnReactReturnType } from '@storybook/react/dist/ts3.9/client/preview/types'
 
 /**
  * Create a typed story of a given component
@@ -13,14 +13,17 @@ import { Meta, Story } from '@storybook/react'
  * export const story2 = of({})
  */
 export function story<T>(Component: React.ComponentType<T>) {
-    return {
-        meta(meta: Meta<T>): Meta<T> {
-            return { ...meta, component: Component }
-        },
-        of(annotations: Annotations<T, StoryFnReactReturnType> & Pick<BaseStory<any, any>, 'storyName'> = {}) {
-            const copy: Story<T> = (props: T) => <Component {...props} />
-            Object.assign(copy, annotations)
-            return copy
-        },
-    }
+  return {
+    meta(meta: Meta<T>): Meta<T> {
+      return { ...meta, component: Component }
+    },
+    of(
+      annotations: Annotations<T, StoryFnReactReturnType> &
+        Pick<BaseStory<any, any>, 'storyName'> = {},
+    ) {
+      const copy: Story<T> = (props: T) => <Component {...props} />
+      Object.assign(copy, annotations)
+      return copy
+    },
+  }
 }
