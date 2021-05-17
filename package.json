@@ -10,7 +10,7 @@
   "icon": "resources/icon.png",
   "scripts": {
     "prepublish": "esbuild",
-    "copy": "shx cp -rf src/util/clipboard dist",
+    "copy": "shx cp -rf src/util/clipboard dist/clipboard",
     "preesbuild-base": "yarn copy",
     "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
     "esbuild": "tsc && yarn esbuild-base -- --sourcemap",
