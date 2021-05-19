@@ -27,6 +27,8 @@ import { difference } from 'lodash-es'
 import { TagGetRes } from 'joplin-api/dist/modal/TagGetRes'
 import { HandlerService } from './HandlerService'
 import { i18n } from '../util/I18n'
+import { TagUseService } from './TagUseService'
+import { sortBy } from '@liuli-util/array'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -346,6 +348,13 @@ export class JoplinNoteCommandService {
     )
   }
 
+  private readonly tagUseService = new TagUseService(
+    path.resolve(
+      globalState.context.globalStorageUri.fsPath,
+      'joplin-vscode-plugin.sqlite',
+    ),
+  )
+
   /**
    * 管理标签
    * 有两种模式
@@ -367,8 +376,16 @@ export class JoplinNoteCommandService {
     const oldSelectIdList = (await noteApi.tagsById(noteId)).map(
       (tag) => tag.id,
     )
+
+    const lastUseTimeMap = await this.tagUseService.getMap()
     const selectTagSet = new Set(oldSelectIdList)
-    const items = (await PageUtil.pageToAllList(tagApi.list)).map(
+    const items = sortBy(
+      await PageUtil.pageToAllList(tagApi.list),
+      (item) =>
+        -(selectTagSet.has(item.id)
+          ? Date.now()
+          : lastUseTimeMap.get(item.id)?.lastUseTime ?? 0),
+    ).map(
       (tag) =>
         ({
           label: tag.title,
@@ -392,6 +409,7 @@ export class JoplinNoteCommandService {
     await Promise.all(
       deleteIdList.map((id) => tagApi.removeTagByNoteId(id, noteId)),
     )
+    await this.tagUseService.save(selectItems.map((item) => item.tag))
   }
 
   async createTag() {

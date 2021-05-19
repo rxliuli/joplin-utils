@@ -428,6 +428,7 @@
     "vscode-test": "^1.4.1"
   },
   "dependencies": {
+    "@liuli-util/array": "^3.2.2",
     "@liuli-util/async": "^3.2.2",
     "@liuli-util/object": "^3.2.2",
     "@liuli-util/tree": "^3.2.2",
