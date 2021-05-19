@@ -1,5 +1,5 @@
 ---
-name: Feature request joplin-vscode
+name: Feature request joplin-vscode-plugin
 about: Suggest an idea for this project
 title: ''
 labels: enhancement, joplin-vscode-plugin
