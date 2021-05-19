@@ -441,6 +441,7 @@ export class JoplinNoteCommandService {
   cut(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
     console.log('joplinNote.cut: ', item)
     this.clipboard = item
+    vscode.window.showInformationMessage(i18n.t('cut-success'))
   }
 
   /**
@@ -461,7 +462,7 @@ export class JoplinNoteCommandService {
       const paths = await folderExtApi.path(item.id)
       console.log('paths: ', paths)
       if (paths.some((item) => item.id === clipboard.id)) {
-        console.log('不能移动到子目录')
+        vscode.window.showWarningMessage(i18n.t('paste-error-canTPasteSub'))
         return
       }
       await folderExtApi.move(clipboard.id, item.id)
@@ -469,7 +470,7 @@ export class JoplinNoteCommandService {
       await noteExtApi.move(clipboard.id, item.id)
     }
     await this.config.noteViewProvider.refresh()
-    console.log('粘贴完成')
+    vscode.window.showInformationMessage(i18n.t('paste-success'))
     this.clipboard = null
   }
 }

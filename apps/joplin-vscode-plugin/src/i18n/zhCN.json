@@ -24,5 +24,8 @@
   "Clipboard does not contain picture!": "剪贴板不包含图片",
   "file uploaded successfully": "文件上传成功",
   "No active editor": "当前没有激活的编辑器",
-  "Resource does not exist": "资源不存在"
+  "Resource does not exist": "资源不存在",
+  "cut-success": "剪切成功",
+  "paste-success": "粘贴成功",
+  "paste-error-canTPasteSub": "不能粘贴到子目录中"
 }

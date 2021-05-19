@@ -25,5 +25,8 @@
   "file uploaded successfully": "file uploaded successfully",
   "No active editor": "No active editor",
   "Resource [{{title}}] does not exist": "Resource [{{title}}] does not exist",
-  "Resource does not exist": "Resource does not exist"
+  "Resource does not exist": "Resource does not exist",
+  "cut-success": "Cut successfully",
+  "paste-success": "Paste successfully",
+  "paste-error-canTPasteSub": "Can't paste into a subdirectory"
 }
