@@ -10,13 +10,16 @@
   "icon": "resources/icon.png",
   "scripts": {
     "setup": "yarn gen-i18n",
-    "build": "rollup -c",
+    "build": "tsc && rollup -c",
     "watch": "rollup -cw",
     "pack": "yarn build && vsce package --yarn",
     "gen-i18n": "i18next-dts-gen gen --input src/i18n",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "docs:deploy": "yarn docs:build && gh-pages -d docs/.vuepress/dist -e /joplin-vscode-plugin -a"
+    "docs:deploy": "yarn docs:build && gh-pages -d docs/.vuepress/dist -e /joplin-vscode-plugin -a",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "tsc && yarn esbuild-base -- --sourcemap",
+    "esbuild-watch": "yarn esbuild-base -- --sourcemap --watch"
   },
   "categories": [
     "Notebooks"
@@ -417,6 +420,7 @@
     "@typescript-eslint/parser": "^4.9.1",
     "builtin-modules": "^3.2.0",
     "copyfiles": "^2.4.1",
+    "esbuild": "^0.12.1",
     "eslint": "^7.15.0",
     "gh-pages": "^3.1.0",
     "glob": "^7.1.6",
@@ -446,7 +450,7 @@
     "entities": "^2.1.0",
     "fs-extra": "^9.0.1",
     "i18next": "^19.8.4",
-    "joplin-api": "^0.3.0",
+    "joplin-api": "0.3.0",
     "lodash-es": "^4.17.21",
     "markdown-it": "^12.0.3",
     "open": "^7.3.0",
