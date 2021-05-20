@@ -12,6 +12,7 @@
     "setup": "yarn gen-i18n",
     "build": "rollup -c",
     "watch": "rollup -cw",
+    "pack": "yarn build && vsce package --yarn",
     "gen-i18n": "i18next-dts-gen gen --input src/i18n"
   },
   "categories": [
@@ -418,6 +419,7 @@
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "rollup": "^2.48.0",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-node-externals": "^2.2.0",
     "rollup-plugin-typescript2": "^0.30.0",
     "shx": "^0.3.3",
