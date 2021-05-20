@@ -324,11 +324,13 @@
       },
       {
         "command": "joplinNote.cut",
-        "key": "ctrl+x"
+        "key": "ctrl+x",
+        "when": "focusedView == joplin-note"
       },
       {
         "command": "joplinNote.paste",
-        "key": "ctrl+v"
+        "key": "ctrl+v",
+        "when": "focusedView == joplin-note"
       }
     ],
     "configuration": {
