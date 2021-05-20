@@ -1,8 +1,15 @@
 # Release Notes
 
+## 0.5.0
+
+- feat: implement cut-and-paste function for moving notes, directory location
+- build: use rollup to pack and reduce the extension size to 500k
+- feat: Manage the list of tabs for notes by **Selected => Recently Used => Other**
+
 ## 0.4.5
 
-- fix: Fix the line wrapping problem caused by the `\r` character at the end of the line that may appear when copying the internal reference of the note
+- fix: Fix the line wrapping problem caused by the `\r` character at the end of the line that may appear when copying
+  the internal reference of the note
 
 ## 0.4.4
 
@@ -88,8 +95,8 @@ Added [documentation for recommended vscode extensions](https://rxliuli.com/jopl
 ## 0.1.10
 
 - Support clicking joplin-related links in the editor, including
-  - Attached resource files, use the system default program to open
-  - Quote notes, use Joplin to open in a new tab
+    - Attached resource files, use the system default program to open
+    - Quote notes, use Joplin to open in a new tab
 - Fixed the problem that Joplin attachment resources could not be opened in markdown preview
 
 ## 0.1.7
