@@ -8,11 +8,11 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "setup": "yarn build",
-    "build": "shx rm -rf dist/ && rollup -c rollup.config.js",
-    "dev": "rollup -w -c build/rollup.config.js",
+    "build": "liuli-cli clean && liuli-cli build pkg",
+    "dev": "liuli-cli build pkg -w",
     "docs": "typedoc --out docs src && shx cp .nojekyll docs/",
     "predeploy": "yarn docs",
-    "deploy": "gh-pages -d docs -t true",
+    "deploy": "gh-pages -d docs -e /joplin-api -a",
     "postdeploy": "shx rm -rf docs",
     "test": "jest --all",
     "ci": "yarn build"
@@ -36,28 +36,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rxliuli/joplin-api"
+    "url": "https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-api"
   },
   "devDependencies": {
+    "@liuli-util/cli": "^3.4.0",
     "@types/form-data": "^2.5.0",
     "@types/fs-extra": "^9.0.4",
     "@types/jest": "^26.0.15",
     "@types/node-fetch": "^2.5.7",
-    "@types/rollup": "^0.54.0",
     "fs-extra": "^9.0.1",
     "gh-pages": "^3.1.0",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
     "lint-staged": "^10.5.1",
     "prettier": "^2.1.2",
-    "rollup": "^2.33.2",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.29.0",
     "shx": "^0.3.3",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.0.0",
     "tslib": "^2.0.3",
-    "typedoc": "^0.19.2",
+    "typedoc": "^0.20.36",
     "typescript": "^4.2.4"
   },
   "dependencies": {

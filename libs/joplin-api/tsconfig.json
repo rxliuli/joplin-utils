@@ -23,7 +23,9 @@
     // 引入辅助函数集
     "importHelpers": true,
     "moduleResolution": "node",
-    "noEmit": true
+    "noEmit": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true
   },
   "include": [
     "./src/**/*.ts"
