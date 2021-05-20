@@ -16,14 +16,14 @@
     "gen-i18n": "i18next-dts-gen gen --input src/i18n",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "docs:deploy": "gh-pages -d docs/.vuepress/dist -e /joplin-vscode-plugin -a"
+    "docs:deploy": "yarn docs:build && gh-pages -d docs/.vuepress/dist -e /joplin-vscode-plugin -a"
   },
   "categories": [
     "Notebooks"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/rxliuli/joplin-vscode-plugin.git"
+    "url": "https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-vscode-plugin"
   },
   "activationEvents": [
     "onView:joplin-note",

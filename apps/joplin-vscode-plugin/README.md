@@ -1,6 +1,6 @@
 # joplin-vscode-plugin
 
-> [English](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/README.md), [简体中文](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/README.ZH_CN.md)  
+> [English](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/), [简体中文](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/zh/)  
 > [![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin) VSCode Plugin Marketplace](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin)
 
 ## Overview
@@ -81,5 +81,3 @@ VSCode has _a lot_ of keybindings. To avoid constantly clashing with all the bui
 > Claiming <kbd>Ctrl</kbd>+<kbd>J</kbd> displaced the native binding for `workbench.action.togglePanel` (_View: Toggle Panel_). For your convenience a sane replacement binding is already added at <kbd>Ctrl</kbd>+<kbd>K</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd>.
 
 Type `Joplin` into the Command Palette (<kbd>Ctrl</kbd>+<kbd>P</kbd>) to see all the new commands available to you. Some of them already have keybindings. Assign new bindings under the <kbd>Ctrl</kbd>+<kbd>J</kbd> namespace to fit your needs.
-
-> You can check the documentation to learn more: [Document website](https://rxliuli.com/joplin-vscode-plugin/)

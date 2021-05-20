@@ -1,6 +1,6 @@
 # joplin-vscode-plugin
 
-> [English](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/README.md), [简体中文](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/README.ZH_CN.md)  
+> [English](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/), [简体中文](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/zh/)  
 > [![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin) VSCode 插件商店](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin&ssr=false#overview)
 
 ## 概述
