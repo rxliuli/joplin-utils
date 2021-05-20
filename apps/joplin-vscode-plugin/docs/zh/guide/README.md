@@ -23,7 +23,7 @@ Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，�
 
 在 VSCode 市场中搜索 joplin。找到 joplin-vscode-plugin 并点击安装。
 
-![安装插件](../../../_media/install-plugin.png)
+![安装插件](../../images/install-plugin.png)
 
 ## 配置
 
@@ -49,7 +49,7 @@ Joplin 程序的个人目录
 
 一般而言，如果你使用便携程序，它应该就是程序目录下的 `./JoplinProfile` 目录，你应该可以在其中看到 _resources_、_templates_、_tmp_ 目录。
 
-![安装插件](../../../_media/install-plugin.png)
+![安装插件](../../images/joplin-settings.png)
 
 ## 重新启动 VSCode
 

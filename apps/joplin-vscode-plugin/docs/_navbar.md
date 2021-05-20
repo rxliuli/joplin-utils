@@ -1,5 +1,0 @@
-- [Intro](_navbar/get-started/quick-start.md)
-- [Other](_navbar/other/why.md)
-- Translations
-  - [English](/)
-  - [中文](/zh-cn/)

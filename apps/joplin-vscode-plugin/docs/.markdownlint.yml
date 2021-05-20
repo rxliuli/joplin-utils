@@ -1,8 +1,0 @@
-# 禁止显示同名的标题警告，因为 yaml 头信息的 title 和 h1 标题一定会冲突
-MD025: false
-# 禁止显示超过 80 个字符的行文本，一段内容本来就很容易超过 80 个字符，至于一行，网页有自动换行的吧？
-MD013: false
-MD041: false
-# 允许部分内联 HTML，这里需要使用 code，避免 code 嵌套无法编写的问题
-MD033:
-  allowed_elements: [code, iframe]

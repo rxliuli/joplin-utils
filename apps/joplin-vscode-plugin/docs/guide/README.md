@@ -23,7 +23,7 @@ Joplin Web Clipper is designed to communicate with browser extensions by sharing
 
 Search for "Joplin" in the VSCode Marketplace. Find "joplin-vscode-plugin" and click Install.
 
-![install plugin](../../_media/install-plugin.png)
+![install plugin](../images/install-plugin.png)
 
 ## Configure
 
@@ -49,7 +49,7 @@ This setting is required if you wish to use attachment-related features.
 
 In general, if you are using a portable application, it should be the `. /JoplinProfile` directory, in which you should see the _resources_, _templates_, and _tmp_ directories.
 
-![install plugin](../../_media/joplin-settings.png)
+![install plugin](../images/joplin-settings.png)
 
 ## Restart VSCode
 

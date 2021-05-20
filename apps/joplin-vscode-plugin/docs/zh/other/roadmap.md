@@ -41,7 +41,7 @@
   - [x] timeline 时间线
 - 创造 joplin-blog
   - [ ] 提高性能
-  - [ ] 优化 ux
+  - [x] 优化 ux
   - [x] 导出指定笔记到 hexo blog
   - [x] 解决内嵌图片的问题
   - [x] 解决附件资源的问题

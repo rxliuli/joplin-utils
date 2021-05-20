@@ -13,7 +13,10 @@
     "build": "rollup -c",
     "watch": "rollup -cw",
     "pack": "yarn build && vsce package --yarn",
-    "gen-i18n": "i18next-dts-gen gen --input src/i18n"
+    "gen-i18n": "i18next-dts-gen gen --input src/i18n",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:deploy": "gh-pages -d docs/.vuepress/dist -e /joplin-vscode-plugin -a"
   },
   "categories": [
     "Notebooks"
@@ -415,6 +418,7 @@
     "builtin-modules": "^3.2.0",
     "copyfiles": "^2.4.1",
     "eslint": "^7.15.0",
+    "gh-pages": "^3.1.0",
     "glob": "^7.1.6",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
@@ -429,7 +433,8 @@
     "typescript": "^4.2.4",
     "utility-types": "^3.10.0",
     "vscode-nls-dev": "^3.3.2",
-    "vscode-test": "^1.4.1"
+    "vscode-test": "^1.4.1",
+    "vuepress": "^1.8.2"
   },
   "dependencies": {
     "@liuli-util/array": "^3.2.2",

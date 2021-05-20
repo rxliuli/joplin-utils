@@ -1,13 +1,13 @@
-# Introduction
-
-Integrating joplin in VSCode, currently allows direct operations on directories and notes, and supports search functions.
-
-![Preview](https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200623085740.png)
-
-## Features
-
-- There is a tab in VSCode to display the directory tree
-- Create/update/delete directories/notes in VSCode
-- Click to edit directly in VSCode
-- Search all notes in VSCode
-- When you click on the Joplin notes tab in VSCode, the left directory will be automatically expanded
+---
+home: true
+heroImage: /images/logo.png
+heroText: Joplin Vscode Plugin
+tagline: The integration of joplin in VSCode currently allows direct operations on directories and notes, while supporting the search function.
+actionText: Quick Start →
+actionLink: /guide/
+features:
+  - title: VSCode's professional editing function and its ecology
+  - title: Joplin's powerful search and synchronization functions
+  - title: Open source + free
+footer: MIT Licensed | Copyright © 2021-present rxliuli
+---
