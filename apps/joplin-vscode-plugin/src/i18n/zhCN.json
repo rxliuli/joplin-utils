@@ -27,5 +27,9 @@
   "Resource does not exist": "资源不存在",
   "cut-success": "剪切成功",
   "paste-success": "粘贴成功",
+  "paste-error-clipboardNotFound": "没有选择要剪切的笔记或目录",
+  "paste-error-itemNotFound": "没有选择要粘贴的目录",
+  "paste-error-targetNotDir": "粘贴的目标不是目录",
+  "paste-error-targetNotThis": "不能将目录粘贴到目录本身",
   "paste-error-canTPasteSub": "不能粘贴到子目录中"
 }

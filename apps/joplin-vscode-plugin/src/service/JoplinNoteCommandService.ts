@@ -467,13 +467,21 @@ export class JoplinNoteCommandService {
    */
   async paste(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
     const clipboard = this.clipboard?.item
-    console.log('paste: ', clipboard, item.item)
-    if (
-      !clipboard ||
-      !item ||
-      clipboard.id === item.id ||
-      item.item.type_ !== TypeEnum.Folder
-    ) {
+    console.log('paste: ', clipboard, item)
+    if (!clipboard) {
+      vscode.window.showWarningMessage(i18n.t('paste-error-clipboardNotFound'))
+      return
+    }
+    if (!item) {
+      vscode.window.showWarningMessage(i18n.t('paste-error-itemNotFound'))
+      return
+    }
+    if (item.item.type_ !== TypeEnum.Folder) {
+      vscode.window.showWarningMessage(i18n.t('paste-error-targetNotDir'))
+      return
+    }
+    if (clipboard.id === item.id) {
+      vscode.window.showWarningMessage(i18n.t('paste-error-targetNotThis'))
       return
     }
     if (clipboard.type_ === TypeEnum.Folder) {
