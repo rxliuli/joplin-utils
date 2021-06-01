@@ -2,8 +2,7 @@
 
 ## Introduction
 
-CLI tool to publish Joplin notes as a static website, currently supports both blog/wiki forms, framework supports
-hexo/vuepress/docsify.
+CLI tool to publish Joplin notes as a static website, currently supports both blog/wiki forms, framework supports hexo/vuepress/docsify.
 
 - blog
   - [hexo](https://rxliuli.com/joplin-blog/blog/hexo/)
@@ -54,14 +53,11 @@ public
 
 hexo
 
-| configuration     | type       | description                 |
-| ----------------- | ---------- | --------------------------- |
-| `stickyTopIdList` | `string[]` | topped notes id (only works |
+| configuration     | type       | description                                                                                                             |
+| ----------------- | ---------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `stickyTopIdList` | `string[]` | Topped note id (only valid under [fluid topic](https://github.com/fluid-dev/hexo-theme-fluid/blob/master/README_en.md)) |
 
-under [fluid topics](https://github.com/fluid-dev/hexo-theme-fluid/blob/master/README_en.md) (only works
-under [fluid topics]()) |
-
-I've shared over 170 notes with this tool, [blog address (Chinese)](https://blog.rxliuli.com/)
+I've shared over 190 notes with this tool, [blog address (Chinese)](https://blog.rxliuli.com/)
 
 ## FAQ
 

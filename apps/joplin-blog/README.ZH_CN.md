@@ -11,8 +11,8 @@
   - [vuepress](https://rxliuli.com/joplin-blog/wiki/vuepress/p/947da6a714854075af6e07835de4a719.html)
   - [docsify](https://rxliuli.com/joplin-blog/wiki/docsify/#/p/947da6a714854075af6e07835de4a719)
 
-![blog demo](docs/blog.png)
-![wiki demo](docs/wiki.png)
+![blog demo](https://raw.githubusercontent.com/rxliuli/joplin-utils/master/apps/joplin-blog/docs/blog.png)
+![wiki demo](https://raw.githubusercontent.com/rxliuli/joplin-utils/master/apps/joplin-blog/docs/wiki.png)
 
 ## 要求
 
@@ -57,7 +57,7 @@ hexo
 | ----------------- | ---------- | ----------------------------------------------------------------------------------------------------------------- |
 | `stickyTopIdList` | `string[]` | 置顶的笔记 id（仅在 [fluid 主题](https://github.com/fluid-dev/hexo-theme-fluid/blob/master/README_en.md) 下生效） |
 
-我用这个工具分享了 170 多篇笔记，[博客地址（中文）](https://blog.rxliuli.com/)
+我用这个工具分享了 190 多篇笔记，[博客地址（中文）](https://blog.rxliuli.com/)
 
 ## 常见问题
 
