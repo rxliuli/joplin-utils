@@ -12,8 +12,8 @@ hexo/vuepress/docsify.
   - [vuepress](https://rxliuli.com/joplin-blog/wiki/vuepress/p/947da6a714854075af6e07835de4a719.html)
   - [docsify](https://rxliuli.com/joplin-blog/wiki/docsify/#/p/947da6a714854075af6e07835de4a719)
 
-![blog demo](docs/blog.png)
-![wiki demo](docs/wiki.png)
+![blog demo](https://raw.githubusercontent.com/rxliuli/joplin-utils/master/apps/joplin-blog/docs/blog.png)
+![wiki demo](https://raw.githubusercontent.com/rxliuli/joplin-utils/master/apps/joplin-blog/docs/wiki.png)
 
 ## Requirements
 
