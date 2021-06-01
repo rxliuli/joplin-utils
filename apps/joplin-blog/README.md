@@ -12,8 +12,8 @@ hexo/vuepress/docsify.
   - [vuepress](https://rxliuli.com/joplin-blog/wiki/vuepress/p/947da6a714854075af6e07835de4a719.html)
   - [docsify](https://rxliuli.com/joplin-blog/wiki/docsify/#/p/947da6a714854075af6e07835de4a719)
 
-![blog demo](docs/blog.png)
-![wiki demo](docs/wiki.png)
+![blog demo](https://raw.githubusercontent.com/rxliuli/joplin-utils/master/apps/joplin-blog/docs/blog.png)
+![wiki demo](https://raw.githubusercontent.com/rxliuli/joplin-utils/master/apps/joplin-blog/docs/wiki.png)
 
 ## Requirements
 
@@ -69,11 +69,11 @@ I've shared over 170 notes with this tool, [blog address (Chinese)](https://blog
 
 You can usually see it in **Tools > Options > Web Clipper**
 
-! [joplin web clipper](https://img.rxliuli.com/20210316092547.png)
+![joplin web clipper](https://img.rxliuli.com/20210316092547.png)
 
 ### Where is the joplin personal folder?
 
 Generally speaking, if you are using a portable program, it should be in the program directory in the `. /JoplinProfile`
 directory, and you should see the `resources, templates, tmp` directory in there.
 
-! [joplinProfilePath](https://img.rxliuli.com/20210316092834.png)
+![joplinProfilePath](https://img.rxliuli.com/20210316092834.png)
