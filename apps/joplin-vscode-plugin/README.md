@@ -9,9 +9,9 @@
 
 Joplin Web Clipper is designed to communicate with browser extensions by sharing Notes, Notebooks, Tags, etc. through a REST web API. `joplin-vscode-plugin` connects to that same REST endpoint to freely make changes to your notes without ever leaving the editor.
 
-> Why does this plugin exist? Read [my motivation](https://rxliuli.com/joplin-vscode-plugin/#/_navbar/other/why) for developing it.
+> Why does this plugin exist? Read [my motivation](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/zh/other/) for developing it.
 >
-> What can it do? The [roadmap](https://rxliuli.com/joplin-vscode-plugin/#/_navbar/other/roadmap) lists both existing and planned features.
+> What can it do? The [roadmap](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/other/roadmap.html) lists both existing and planned features.
 >
 > Never heard of [Joplin](https://joplinapp.org/)? You're missing out on a great [opensource synchronized note taking app](https://joplinapp.org/).
 
@@ -52,7 +52,7 @@ This setting is required if you wish to use attachment-related features.
 
 In general, if you are using a portable application, it should be the `. /JoplinProfile` directory, in which you should see the _resources_, _templates_, and _tmp_ directories.
 
-![install plugin](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/docs/_media/joplin-settings.png?raw=true)
+![settings plugin](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/docs/_media/joplin-settings.png?raw=true)
 
 ## Restart VSCode
 
@@ -63,6 +63,8 @@ Currently configuration edits do not trigger a fresh connection. Simply close VS
 ## Say Hello Joplin
 
 Type the key chord <kbd>Ctrl</kbd>+<kbd>J</kbd> <kbd>Ctrl</kbd>+<kbd>J</kbd> and celebrate. :tada: That hotkey combo activates the _View: Show Joplin_ command, opening the Sidebar to reveal all your Notebooks.
+
+![preview](https://cdn.jsdelivr.net/gh/rxliuli/img-bed/20200623085740.png)
 
 ## Usage
 

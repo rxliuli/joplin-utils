@@ -9,9 +9,9 @@ joplin-vscode-plugin 提供在 vscode 中管理 joplin 笔记的功能，包括�
 
 Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，共享笔记、笔记本、标签等。joplin-vscode-plugin 连接到相同的 REST 端点，可以在不离开编辑器的情况下查看和修改笔记。
 
-> 为什么会有这个插件？阅读 [我的动机](_navbar/other/why) 了解开发它的原因。
+> 为什么会有这个插件？阅读 [我的动机](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/zh/other/) 了解开发它的原因。
 >
-> 它能做什么？[路线图](../other/roadmap) 列出了现有和计划中的功能。
+> 它能做什么？[路线图](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/zh/other/roadmap.html) 列出了现有和计划中的功能。
 >
 > 没听说过 [乔普林](https://joplinapp.org/)？你错过了一个不错的 [开源同步笔记应用](https://joplinapp.org/)。
 
@@ -26,7 +26,7 @@ Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，�
 
 在 VSCode 市场中搜索 joplin。找到 joplin-vscode-plugin 并点击安装。
 
-![安装插件](../../../_media/install-plugin.png)
+![安装插件](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/docs/_media/install-plugin.png?raw=true)
 
 ## 配置
 
@@ -52,7 +52,7 @@ Joplin 程序的个人目录
 
 一般而言，如果你使用便携程序，它应该就是程序目录下的 `./JoplinProfile` 目录，你应该可以在其中看到 _resources_、_templates_、_tmp_ 目录。
 
-![安装插件](../../../_media/install-plugin.png)
+![设置插件](https://github.com/rxliuli/joplin-vscode-plugin/blob/master/docs/_media/joplin-settings.png?raw=true)
 
 ## 重新启动 VSCode
 
