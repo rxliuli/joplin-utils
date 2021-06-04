@@ -1,15 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "es2017",
-      "esnext.array",
-      "es2015.iterable"
-    ],
+    "lib": ["es2017", "esnext.array", "es2015.iterable", "DOM"],
     "paths": {
-      "*": [
-        "types/*"
-      ]
+      "*": ["types/*"]
     },
     "module": "esnext",
     "declaration": true,
@@ -27,11 +21,6 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true
   },
-  "include": [
-    "./src/**/*.ts"
-  ],
-  "exclude": [
-    "./dist",
-    "./node_modules"
-  ]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["./dist", "./node_modules"]
 }

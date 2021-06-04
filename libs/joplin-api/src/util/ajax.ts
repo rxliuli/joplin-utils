@@ -1,8 +1,14 @@
 import axios from 'axios'
 import { stringify } from 'query-string'
 import { Config } from './config'
-import fetch from 'node-fetch'
-import FormData from 'form-data'
+
+if (!fetch) {
+  Reflect.set(window, 'fetch', require('node-fetch'))
+}
+
+if (!FormData) {
+  Reflect.set(window, 'FormData', require('form-data'))
+}
 
 export type Method =
   | 'get'
