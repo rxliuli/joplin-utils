@@ -2,14 +2,6 @@ import axios from 'axios'
 import { stringify } from 'query-string'
 import { Config } from './config'
 
-if (!fetch) {
-  Reflect.set(window, 'fetch', require('node-fetch'))
-}
-
-if (!FormData) {
-  Reflect.set(window, 'FormData', require('form-data'))
-}
-
 export type Method =
   | 'get'
   | 'GET'
@@ -64,6 +56,12 @@ const defaultConfig: FlipOptional<AjaxConfig> = {
   responseType: 'json',
 }
 
+const globalValue: any =
+  (typeof globalThis !== 'undefined' && globalThis) ||
+  (typeof self !== 'undefined' && self) ||
+  (typeof global !== 'undefined' && global) ||
+  {}
+
 export class Ajax {
   constructor(public readonly config: Config) {}
 
@@ -72,6 +70,13 @@ export class Ajax {
    * @param ajaxConfig
    */
   async request<R>(ajaxConfig: AjaxConfig) {
+    if (typeof fetch === 'undefined') {
+      const fetchPolyfill = await import('node-fetch')
+      Reflect.set(globalValue, 'fetch', fetchPolyfill)
+    }
+    if (typeof FormData === 'undefined') {
+      Reflect.set(globalValue, 'FormData', (await import('form-data')).default)
+    }
     const mergeConfig = { ...defaultConfig, ...ajaxConfig }
     return (
       await axios.request({
