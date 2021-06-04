@@ -4,7 +4,7 @@
   "description": "joplin ts/js data api",
   "license": "mit",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "setup": "yarn build",
