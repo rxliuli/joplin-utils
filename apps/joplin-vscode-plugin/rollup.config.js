@@ -7,13 +7,11 @@ import copy from 'rollup-plugin-copy'
 
 export default {
   input: 'src/extension.ts',
-  output: [
-    {
-      file: 'dist/extension.js',
-      format: 'cjs',
-      sourcemap: true,
-    },
-  ],
+  output: {
+    dir: 'dist/',
+    format: 'cjs',
+    sourcemap: true,
+  },
   external: ['vscode'],
   plugins: [
     copy({
