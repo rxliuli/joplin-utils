@@ -33,10 +33,10 @@
 
 支持的框架在 examples 目录中均有示例，你可以将之 clone 到本地查看。
 
-- [blog hexo](https://github.com/rxliuli/joplin-blog/tree/master/examples/blog-hexo-example)
-- [blog vuepress](https://github.com/rxliuli/joplin-blog/tree/master/examples/blog-vuepress-example)
-- [wiki vuepress](https://github.com/rxliuli/joplin-blog/tree/master/examples/wiki-vuepress-example)
-- [wiki docsify](https://github.com/rxliuli/joplin-blog/tree/master/examples/wiki-docsify-example)
+- [blog hexo](https://github.com/rxliuli/joplin-utils/tree/master/examples/blog-hexo-example)
+- [blog vuepress](https://github.com/rxliuli/joplin-utils/tree/master/examples/blog-vuepress-example)
+- [wiki vuepress](https://github.com/rxliuli/joplin-utils/tree/master/examples/wiki-vuepress-example)
+- [wiki docsify](https://github.com/rxliuli/joplin-utils/tree/master/examples/wiki-docsify-example)
 
 ## 配置
 
