@@ -36,9 +36,9 @@ export class JoplinApiGenerator {
   readonly tagApi = new TagApi(this.ajax)
 }
 
-export const config = new JoplinApiGenerator()
-Object.entries(config).forEach(([k, v]) => {
-  Reflect.set(config, k, ClassUtil.bindMethodThis(v))
+const joplinApiGenerator = new JoplinApiGenerator()
+Object.entries(joplinApiGenerator).forEach(([k, v]) => {
+  Reflect.set(joplinApiGenerator, k, ClassUtil.bindMethodThis(v))
 })
 
 export const {
@@ -53,10 +53,15 @@ export const {
   resourceApi,
   searchApi,
   tagApi,
-} = config
+} = joplinApiGenerator
 
+/**
+ * 兼容之前的类型
+ */
+export const config: Pick<JoplinApiGenerator, 'token' | 'port'> =
+  joplinApiGenerator
 
 /**
  * @deprecated 已废弃，请使用 {@link noteActionApi}
  */
-export const { noteActionApi: actionApi } = config
+export const { noteActionApi: actionApi } = joplinApiGenerator

@@ -10419,7 +10419,7 @@ jest@^26.6.3:
     import-local "^3.0.2"
     jest-cli "^26.6.3"
 
-joplin-api@^0.2.5, joplin-api@^0.2.7:
+joplin-api@^0.2.5:
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/joplin-api/-/joplin-api-0.2.8.tgz#e9c4f650735937be6c06137d8156ef047f2eb8e3"
   integrity sha512-N4rvJh7GMtzYaHUsa+javKloFPrzJX+tm+v5agu6VPGU35yjKmTSTfbk2+GMV0ZNBlierraZztp7KKonhzckog==
