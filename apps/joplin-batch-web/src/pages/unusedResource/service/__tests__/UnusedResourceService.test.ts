@@ -1,4 +1,4 @@
-import { Config } from 'joplin-api'
+import { Config, PageUtil } from 'joplin-api'
 import { UnusedResourceService } from '../UnusedResourceService'
 import { joplinApiGenerator } from '../../../../constants/joplinApiGenerator'
 
@@ -20,5 +20,10 @@ describe('测试 UnusedResourceService', () => {
       expect(await unusedResourceService.checkUsed(unusedId)).toBeFalsy()
     })
   })
-  it('基本示例', () => {})
+  it('测试获取所有附件资源', async () => {
+    const list = await PageUtil.pageToAllList(
+      joplinApiGenerator.resourceApi.list.bind(joplinApiGenerator.resourceApi),
+    )
+    console.log(list)
+  })
 })

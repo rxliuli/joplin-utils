@@ -1860,10 +1860,20 @@
   resolved "https://registry.yarnpkg.com/@liuli-util/array/-/array-3.2.2.tgz#49b8711f8c8b593b3a94339bafa77f66691de5db"
   integrity sha512-EQoL/50Q2XaiD23WdiZWz2XKKfuYW1yGbJWMFPs540MqDg++7gx37+lS+g6ig9UyhoRi2xKdPEo7pfnIRnSL4w==
 
+"@liuli-util/array@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@liuli-util/array/-/array-3.2.3.tgz#0367569a2350571c60970bf2746486000363ef5c"
+  integrity sha512-w2ziXhw6KESx171PHrU3DCGEEFBaxRWOZNjZfaeZ2+kEizHXnVNYQs/cNi4NXzRmAGGp6QUuHFjuSoCmhAM8Ag==
+
 "@liuli-util/async@^3.2.2":
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@liuli-util/async/-/async-3.2.2.tgz#b65896024473eea55efae7af43e9d96b95e357c7"
   integrity sha512-9s4BJah17Y/BlWEIlX6/OOImMMcpYK1umKAksUXkb83TZSnnz+B+L8R1pEl5Iwh1k8jTWEcGJfCQRByArVlqTQ==
+
+"@liuli-util/async@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@liuli-util/async/-/async-3.2.3.tgz#322fe7122bbcdf1743ad373277b3e14c2de8e9df"
+  integrity sha512-yE5pNScslAWktGyFUOlzY9U4n0LCyeBLUrDKQs/FKGQJXv+lEug7+U16LWyZEwF5hvVV9NrusgRN1w0VZOey7A==
 
 "@liuli-util/cli@^3.4.0":
   version "3.4.0"
@@ -1882,6 +1892,13 @@
     rollup-plugin-typescript2 "^0.29.0"
     typescript "^4.1.3"
 
+"@liuli-util/dom@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@liuli-util/dom/-/dom-3.2.3.tgz#a837ebb4437f11baeb81df49a9b92213a7d6038a"
+  integrity sha512-T34LJT9iqzaiS7JBxXVpChDPXw3vTqOU+JpYXuJFYdXqXkRXPT789iU7eDcQLBhr76lwCKip6G8G1l3cGsCORQ==
+  dependencies:
+    "@liuli-util/array" "^3.2.3"
+
 "@liuli-util/object@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@liuli-util/object/-/object-3.2.0.tgz#45462f9e64e6feb4afa1e1d984006f41373a9457"
@@ -1891,6 +1908,11 @@
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@liuli-util/object/-/object-3.2.2.tgz#3cc35fe03b93d1204e34d0b44a12747c0db3c27d"
   integrity sha512-j4BsDh1WzdR8/PXj/87vqFrPu3SV6C1/g72qsrB6fKlVKuEKHa69DE8gTjF90p8Iw+OJcGgaDzQDcUJBDZR67w==
+
+"@liuli-util/object@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@liuli-util/object/-/object-3.2.3.tgz#8b089a769983585ea7f497ffbf03a49accccd043"
+  integrity sha512-fMp6H0N5YGMuLCgk2k7mhQ3jvGcEGba+pjXBvKlOQXXE4HowkIIGCai7klf6WvBQ87quBP53uVw/9Pqziif+MA==
 
 "@liuli-util/tree@^3.2.2":
   version "3.2.2"
@@ -9542,6 +9564,11 @@ immer@8.0.1:
   version "8.0.1"
   resolved "https://registry.yarnpkg.com/immer/-/immer-8.0.1.tgz#9c73db683e2b3975c424fb0572af5889877ae656"
   integrity sha512-aqXhGP7//Gui2+UrEtvxZxSquQVXTpZ7KDxfCcKAF3Vysvw0CViVaW9RZ1j1xlIYqaaaipBoqdqeibkc18PNvA==
+
+immer@^9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.2.tgz#83e4593df9914acaecfd9fac6a8601ef44d883fc"
+  integrity sha512-mkcmzLtIfSp40vAqteRr1MbWNSoI7JE+/PB36FNPoSfJ9RQRmNKuTYCjKkyXyuq3Dgn07HuJBrwJd4ZSk2yUbw==
 
 import-cwd@^2.0.0:
   version "2.1.0"
