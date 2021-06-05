@@ -71,8 +71,7 @@ export class Ajax {
    */
   async request<R>(ajaxConfig: AjaxConfig) {
     if (typeof fetch === 'undefined') {
-      const fetchPolyfill = await import('node-fetch')
-      Reflect.set(globalValue, 'fetch', fetchPolyfill)
+      Reflect.set(globalValue, 'fetch', (await import('node-fetch')).default)
     }
     if (typeof FormData === 'undefined') {
       Reflect.set(globalValue, 'FormData', (await import('form-data')).default)
