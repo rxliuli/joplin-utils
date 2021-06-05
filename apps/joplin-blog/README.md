@@ -73,3 +73,10 @@ Generally speaking, if you are using a portable program, it should be in the pro
 directory, and you should see the `resources, templates, tmp` directory in there.
 
 ![joplinProfilePath](https://img.rxliuli.com/20210316092834.png)
+
+### Why did the note id of the exported blog, wiki change?
+
+Some possible reasons are
+
+- Export jex and then import jex, all notes here are created operations, refer to: <https://discourse.joplinapp.org/t/when-will-joplin-modify-the-id-of-the-note/17806>
+- Notes conflict when syncing
