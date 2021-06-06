@@ -7,8 +7,7 @@
   "scripts": {
     "build": "rollup -c",
     "release": "cross-env NODE_ENV=production rollup -c",
-    "start": "rollup -c -w",
-    "test": "jest",
+    "dev": "rollup -cw",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -51,6 +50,7 @@
     "webextension-polyfill": "^0.7.0"
   },
   "devDependencies": {
+    "@liuli-util/cli": "^3.4.2",
     "@babel/core": "^7.13.8",
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-commonjs": "^17.0.0",

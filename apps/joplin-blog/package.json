@@ -23,7 +23,7 @@
     "preset": "ts-jest"
   },
   "devDependencies": {
-    "@liuli-util/cli": "^3.4.0",
+    "@liuli-util/cli": "^3.4.2",
     "@types/figlet": "^1.5.0",
     "@types/fs-extra": "^9.0.6",
     "@types/jest": "^26.0.19",

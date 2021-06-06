@@ -7,10 +7,11 @@ import zip from 'rollup-plugin-zip'
 import json from '@rollup/plugin-json'
 import postcss from 'rollup-plugin-postcss'
 import replace from '@rollup/plugin-replace'
+import { define } from '@liuli-util/cli'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-export default {
+export default define({
   input: 'src/manifest.json',
   output: {
     dir: 'dist',
@@ -39,4 +40,4 @@ export default {
     // Outputs a zip file in ./releases
     isProduction && zip({ dir: 'releases' }),
   ],
-}
+})
