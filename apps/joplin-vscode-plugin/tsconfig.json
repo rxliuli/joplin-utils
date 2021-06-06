@@ -16,5 +16,16 @@
     // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
     // "noUnusedParameters": true,  /* Report errors on unused parameters. */
   },
-  "exclude": ["node_modules", ".vscode-test", "test", "src/markdown"]
+  "exclude": [
+    "node_modules",
+    ".vscode-test",
+    "test",
+    "src/markdown",
+    "rollup.config.ts"
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }

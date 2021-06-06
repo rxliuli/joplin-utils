@@ -8,6 +8,7 @@ import json from '@rollup/plugin-json'
 import postcss from 'rollup-plugin-postcss'
 import replace from '@rollup/plugin-replace'
 import { defineConfig } from '@liuli-util/cli'
+import { RollupOptions } from 'rollup'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -40,4 +41,4 @@ export default defineConfig({
     // Outputs a zip file in ./releases
     isProduction && zip({ dir: 'releases' }),
   ],
-})
+} as RollupOptions)

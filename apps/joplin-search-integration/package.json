@@ -5,9 +5,9 @@
   "manifest_version": 2,
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c",
-    "release": "cross-env NODE_ENV=production rollup -c",
-    "dev": "rollup -cw",
+    "build": "liuli-cli build config",
+    "release": "cross-env NODE_ENV=production yarn build",
+    "dev": "liuli-cli build config -w",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -45,13 +45,14 @@
     "remark-math": "^4.0.0",
     "remark-parse": "^9.0.0",
     "remark-rehype": "^8.0.0",
+    "rollup": "^2.51.0",
     "unified": "^9.2.1",
     "unist-util-visit": "^2.0.3",
     "webextension-polyfill": "^0.7.0"
   },
   "devDependencies": {
-    "@liuli-util/cli": "^3.4.3",
     "@babel/core": "^7.13.8",
+    "@liuli-util/cli": "^3.5.0",
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-json": "^4.1.0",
@@ -79,7 +80,7 @@
     "jest": "^26.6.3",
     "jest-chrome": "^0.7.0",
     "postcss": "^8.2.7",
-    "rollup": "^2.35.1",
+    "rollup": "^2.51.0",
     "rollup-plugin-chrome-extension": "^3.5.4",
     "rollup-plugin-empty-dir": "^1.0.4",
     "rollup-plugin-postcss": "^4.0.0",

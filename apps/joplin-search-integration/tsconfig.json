@@ -10,5 +10,10 @@
     "noUnusedLocals": true,
     "strict": true,
     "target": "es2018"
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }
