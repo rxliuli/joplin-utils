@@ -40,7 +40,7 @@
     "url": "https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-api"
   },
   "devDependencies": {
-    "@liuli-util/cli": "^3.4.2",
+    "@liuli-util/cli": "^3.4.3",
     "@types/form-data": "^2.5.0",
     "@types/fs-extra": "^9.0.4",
     "@types/jest": "^26.0.15",

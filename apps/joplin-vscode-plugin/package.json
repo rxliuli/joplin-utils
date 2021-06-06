@@ -402,7 +402,7 @@
     }
   },
   "devDependencies": {
-    "@liuli-util/cli": "^3.4.2",
+    "@liuli-util/cli": "^3.4.3",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
