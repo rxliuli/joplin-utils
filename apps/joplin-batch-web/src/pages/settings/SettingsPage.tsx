@@ -1,7 +1,8 @@
 import * as React from 'react'
-import { Button, Card, Form, Input } from 'antd'
+import { Button, Card, Form, Input, message } from 'antd'
 import { Config } from 'joplin-api'
 import { useLocalStorage } from 'react-use'
+import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 
 type SettingsPageProps = {}
 
@@ -14,7 +15,13 @@ export const SettingsPage: React.FC<SettingsPageProps> = () => {
     }
     const values = form.getFieldsValue()
     console.log('onFinish: ', values)
-    setSettings(values)
+    try {
+      await joplinApiGenerator.noteApi.list({ limit: 1 })
+      setSettings(values)
+      message.success('设置成功')
+    } catch (e) {
+      message.error('无法访问 joplin web clipper api')
+    }
   }
 
   const [settings, setSettings] = useLocalStorage<Config>('settings')
@@ -47,7 +54,9 @@ export const SettingsPage: React.FC<SettingsPageProps> = () => {
           <Input type={'number'} />
         </Form.Item>
         <Form.Item>
-          <Button htmlType={'submit'}>提交</Button>
+          <Button type={'primary'} htmlType={'submit'}>
+            提交
+          </Button>
         </Form.Item>
       </Form>
     </Card>
