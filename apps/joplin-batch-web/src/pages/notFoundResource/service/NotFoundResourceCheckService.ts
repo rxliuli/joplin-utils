@@ -1,8 +1,8 @@
 import { JoplinApiGenerator, PageUtil } from 'joplin-api'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
-import CheckNoteResourceWorker from './CheckNoteResourceWorker?worker'
+import CheckNoteResourceWorker from './JoplinMarkdownUtilWorker?worker'
 import { wrap } from 'comlink'
-import type { checkNoteResource } from './CheckNoteResourceWorker'
+import type { checkNoteResource } from './JoplinMarkdownUtilWorker'
 import { AsyncArray } from '@liuli-util/async'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { PromiseUtil } from '../../../common/PromiseUtil'
@@ -49,7 +49,7 @@ export class NotFoundResourceCheckService {
         await AsyncArray.map(noteList, async (item) => {
           const res = {
             ...item,
-            resources: await this.worker.check(item.body),
+            resources: await this.worker.parseInternalLink(item.body),
           }
           rate++
           events.parse({

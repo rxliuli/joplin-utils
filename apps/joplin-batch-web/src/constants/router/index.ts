@@ -21,6 +21,6 @@ export const routeList: (RouteConfig & { title: string })[] = [
   {
     path: '/notFoundResource',
     component: lazy(() => import('../../pages/notFoundResource')),
-    title: '检查笔记中引用失效的资源',
+    title: '检查笔记中失效的资源引用',
   },
 ]

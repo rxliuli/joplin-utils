@@ -7,7 +7,7 @@ import type { ResourceProperties } from 'joplin-api/dist/modal/ResourcePropertie
 import type { Link } from 'mdast'
 import visit from 'unist-util-visit'
 
-export class CheckNoteResourceWorker {
+export class JoplinMarkdownUtilWorker {
   private static readonly md = unified()
     .use(remarkParse)
     .use(remarkGfm)
@@ -18,12 +18,14 @@ export class CheckNoteResourceWorker {
     })
 
   /**
-   * 获取 markdown 中所有引用的附件资源
+   * 解析 markdown 中所有引用的附件资源
    * @param content
    */
-  check(content: string): Pick<ResourceProperties, 'id' | 'title'>[] {
+  parseInternalLink(
+    content: string,
+  ): Pick<ResourceProperties, 'id' | 'title'>[] {
     const res: Pick<ResourceProperties, 'id' | 'title'>[] = []
-    visit(CheckNoteResourceWorker.md.parse(content), (node) => {
+    visit(JoplinMarkdownUtilWorker.md.parse(content), (node) => {
       if (node.type !== 'link' && node.type !== 'image') {
         return
       }
@@ -42,6 +44,6 @@ export class CheckNoteResourceWorker {
   }
 }
 
-export const checkNoteResource = new CheckNoteResourceWorker()
+export const checkNoteResource = new JoplinMarkdownUtilWorker()
 
 expose(checkNoteResource)

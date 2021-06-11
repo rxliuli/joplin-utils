@@ -1,7 +1,7 @@
-import { checkNoteResource } from '../CheckNoteResourceWorker'
+import { checkNoteResource } from '../JoplinMarkdownUtilWorker'
 
 it('测试 checkNoteResource', () => {
-  const res = checkNoteResource.check(`
+  const res = checkNoteResource.parseInternalLink(`
     # 测试笔记
 
 测试内容
