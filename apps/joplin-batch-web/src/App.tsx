@@ -4,6 +4,7 @@ import { routeList } from './constants/router'
 import { Layout, Menu } from 'antd'
 import css from './App.module.css'
 import { Link } from 'react-router-dom'
+import { Suspense } from 'react'
 
 type AppProps = {}
 
@@ -21,7 +22,7 @@ export const App: React.FC<AppProps> = () => {
         </Menu>
       </Layout.Sider>
       <Layout.Content className={css.main}>
-        {renderRoutes(routeList)}
+        <Suspense fallback={'loading...'}>{renderRoutes(routeList)}</Suspense>
       </Layout.Content>
     </Layout>
   )

@@ -7,9 +7,7 @@ import { App } from './App'
 ReactDOM.render(
   <React.StrictMode>
     <HashRouter>
-      <Suspense fallback={'loading...'}>
-        <App />
-      </Suspense>
+      <App />
     </HashRouter>
   </React.StrictMode>,
   document.getElementById('root'),
