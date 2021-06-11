@@ -16,10 +16,13 @@ export const SettingsPage: React.FC<SettingsPageProps> = () => {
     const values = form.getFieldsValue()
     console.log('onFinish: ', values)
     try {
+      joplinApiGenerator.token = values.token
+      joplinApiGenerator.port = values.port
       await joplinApiGenerator.noteApi.list({ limit: 1 })
       setSettings(values)
       message.success('设置成功')
     } catch (e) {
+      console.error(e)
       message.error('无法访问 joplin web clipper api')
     }
   }
