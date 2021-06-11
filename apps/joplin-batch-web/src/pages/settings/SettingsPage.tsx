@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Button, Form, Input } from 'antd'
+import { Button, Card, Form, Input } from 'antd'
 import { Config } from 'joplin-api'
 import { useLocalStorage } from 'react-use'
 
@@ -20,7 +20,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = () => {
   const [settings, setSettings] = useLocalStorage<Config>('settings')
 
   return (
-    <div>
+    <Card>
       <h2>安全设置</h2>
       <Form
         form={form}
@@ -50,6 +50,6 @@ export const SettingsPage: React.FC<SettingsPageProps> = () => {
           <Button htmlType={'submit'}>提交</Button>
         </Form.Item>
       </Form>
-    </div>
+    </Card>
   )
 }
