@@ -3,13 +3,14 @@ import { AsyncArray, asyncLimiting } from '@liuli-util/async'
 import { PageUtil } from 'joplin-api'
 import { PromiseUtil } from '../../../common/PromiseUtil'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
+
 export type ProcessInfo = {
   rate: number
   all: number
   title: string
 }
 
-type ProcessEvents = {
+export type ProcessEvents = {
   process(options: ProcessInfo): void
 }
 

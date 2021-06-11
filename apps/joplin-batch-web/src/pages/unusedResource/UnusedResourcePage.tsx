@@ -3,7 +3,7 @@ import { Button, Card, Image, List, message, SpinProps } from 'antd'
 import { useState } from 'react'
 import { UnusedResourceService } from './service/UnusedResourceService'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
-import { useAsyncFn, useLocalStorage, useMount } from 'react-use'
+import { useAsyncFn } from 'react-use'
 import { Config } from 'joplin-api'
 import { downloadUrl, proxyStorage } from '@liuli-util/dom'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
@@ -30,12 +30,6 @@ export const UnusedResourcePage: React.FC<UnusedResourcePageProps> = () => {
   const [list, setList] = useState<
     Pick<ResourceProperties, 'id' | 'title' | 'mime'>[]
   >([])
-  const [settings] = useLocalStorage<Config>('settings')
-  useMount(() => {
-    joplinApiGenerator.token = settings!.token
-    joplinApiGenerator.port = settings!.port
-  })
-
   const [loadingMsg, setLoadingMsg] = useState('')
   const [state, onCheck] = useAsyncFn(async () => {
     try {

@@ -1,6 +1,5 @@
 import { RouteConfig } from 'react-router-config'
 import { lazy } from 'react'
-import UnusedResourcePage from '../../pages/unusedResource'
 
 export const routeList: (RouteConfig & { title: string })[] = [
   {
@@ -16,7 +15,12 @@ export const routeList: (RouteConfig & { title: string })[] = [
   },
   {
     path: '/unusedResource',
-    component: UnusedResourcePage,
+    component: lazy(() => import('../../pages/unusedResource')),
     title: '检查未使用的附件资源',
+  },
+  {
+    path: '/notFoundResource',
+    component: lazy(() => import('../../pages/notFoundResource')),
+    title: '检查笔记中引用失效的资源',
   },
 ]

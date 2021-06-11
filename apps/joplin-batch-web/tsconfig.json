@@ -3,7 +3,7 @@
     "target": "ES2015",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
