@@ -1,6 +1,6 @@
 import * as React from 'react'
-import ReactMarkdown from 'react-markdown'
 import { Card } from 'antd'
+import MarkdownIt from 'markdown-it'
 
 type HomePageProps = {}
 
@@ -15,10 +15,12 @@ const content = `# joplin-batch-web
 cli 的形式不太适合这种场景，例如需要预览异常的附件或笔记，在命令行下比较麻烦。
 `
 
+const markdownIt = new MarkdownIt()
+
 export const HomePage: React.FC<HomePageProps> = () => {
   return (
     <Card>
-      <ReactMarkdown>{content}</ReactMarkdown>
+      <div dangerouslySetInnerHTML={{ __html: markdownIt.render(content) }} />
     </Card>
   )
 }
