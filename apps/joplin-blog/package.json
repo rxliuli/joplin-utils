@@ -1,6 +1,6 @@
 {
   "name": "joplin-blog",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "module": "dist/index.esm.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@liuli-util/array": "^3.2.2",
-    "@liuli-util/async": "^3.2.2",
+    "@liuli-util/async": "^3.2.3",
     "@liuli-util/object": "^3.2.2",
     "@liuli-util/tree": "^3.2.2",
     "commander": "^7.2.0",
