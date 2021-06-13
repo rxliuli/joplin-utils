@@ -1,8 +1,12 @@
 # CHANGELOG
 
+## v0.3.3
+
+- fix(joplin-blog): Fix the error that asyncLimit will print numbers when running commands
+
 ## v0.3.2
 
-- refactor(joplin-blog): Expose more functions in srcindex to facilitate third-party calls
+- refactor(joplin-blog): Expose more functions in src/index to facilitate third-party calls
 
 ## v0.3.1
 

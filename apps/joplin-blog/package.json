@@ -1,6 +1,6 @@
 {
   "name": "joplin-blog",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "module": "dist/index.esm.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
