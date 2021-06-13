@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@liuli-util/array": "^3.2.2",
-    "@liuli-util/async": "^3.2.2",
+    "@liuli-util/async": "^3.2.3",
     "@liuli-util/object": "^3.2.2",
     "@liuli-util/tree": "^3.2.2",
     "commander": "^7.2.0",
