@@ -427,7 +427,6 @@
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-node-externals": "^2.2.0",
     "rollup-plugin-typescript2": "^0.30.0",
-    "shx": "^0.3.3",
     "ts-jest": "^26.4.4",
     "tslib": "^2.0.3",
     "type-fest": "^1.1.1",

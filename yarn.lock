@@ -2451,6 +2451,14 @@
   resolved "https://registry.yarnpkg.com/@liuli-util/object/-/object-3.2.3.tgz#8b089a769983585ea7f497ffbf03a49accccd043"
   integrity sha512-fMp6H0N5YGMuLCgk2k7mhQ3jvGcEGba+pjXBvKlOQXXE4HowkIIGCai7klf6WvBQ87quBP53uVw/9Pqziif+MA==
 
+"@liuli-util/shell@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@liuli-util/shell/-/shell-0.1.1.tgz#ea7fdd58155b0dbe3f4583fab074ec5dfba3f8cf"
+  integrity sha512-IMiYPpskigNXh2uvO4oc1/eNA6qPx7OZTlaSu8zpESHjfRgOpmD0+Dgc9ZL7CuGrs5MKt7E6WZgbE7Ej9BxRrQ==
+  dependencies:
+    commander "^7.0.0"
+    fs-extra "^10.0.0"
+
 "@liuli-util/tree@^3.2.2":
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/@liuli-util/tree/-/tree-3.2.3.tgz#e5eb2a7fc0bda878043a51f383c967c10093c661"
@@ -12621,7 +12629,7 @@ minimist-options@4.1.0:
     is-plain-obj "^1.1.0"
     kind-of "^6.0.3"
 
-minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5:
+minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
@@ -16321,14 +16329,6 @@ shiki@^0.9.3:
   dependencies:
     onigasm "^2.2.5"
     vscode-textmate "^5.2.0"
-
-shx@^0.3.3:
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/shx/-/shx-0.3.3.tgz#681a88c7c10db15abe18525349ed474f0f1e7b9f"
-  integrity sha512-nZJ3HFWVoTSyyB+evEKjJ1STiixGztlqwKLTUNV5KqMWtGey9fTd4KU1gdZ1X9BV6215pswQ/Jew9NsuS/fNDA==
-  dependencies:
-    minimist "^1.2.3"
-    shelljs "^0.8.4"
 
 side-channel@^1.0.4:
   version "1.0.4"

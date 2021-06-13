@@ -8,12 +8,12 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "setup": "yarn build",
-    "build": "liuli-cli clean && liuli-cli build pkg",
+    "build": "rm dist && liuli-cli build pkg",
     "dev": "liuli-cli build pkg -w",
-    "docs": "typedoc --out docs src && shx cp .nojekyll docs/",
+    "docs": "typedoc --out docs src && cp .nojekyll docs/",
     "predeploy": "yarn docs",
     "deploy": "gh-pages -d docs -e /joplin-api -a",
-    "postdeploy": "shx rm -rf docs",
+    "postdeploy": "rm docs",
     "test": "jest --all",
     "ci": "yarn build"
   },
@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "@liuli-util/cli": "^3.5.0",
+    "@liuli-util/shell": "^0.1.1",
     "@types/form-data": "^2.5.0",
     "@types/fs-extra": "^9.0.4",
     "@types/jest": "^26.0.15",
@@ -51,7 +52,6 @@
     "jest": "^26.6.3",
     "lint-staged": "^10.5.1",
     "prettier": "^2.1.2",
-    "shx": "^0.3.3",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.0.0",
     "tslib": "^2.0.3",
