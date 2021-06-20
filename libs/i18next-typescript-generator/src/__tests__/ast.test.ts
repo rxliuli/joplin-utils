@@ -8,14 +8,7 @@ import {
   SyntaxKind,
 } from 'typescript'
 import path from 'path'
-import {
-  Project,
-  StructureKind,
-  WriterFunction,
-  WriterFunctionOrValue,
-  Writers,
-} from 'ts-morph'
-import { TranslateHandler } from '../TranslateHandler'
+import { Project, StructureKind, Writers } from 'ts-morph'
 import { WriterFunctionUtil } from '../util/WriterFunctionUtil'
 
 class TypeScriptASTUtil {

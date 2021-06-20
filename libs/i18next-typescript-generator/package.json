@@ -9,7 +9,7 @@
   "scripts": {
     "setup": "yarn pub",
     "build": "rm dist && liuli-cli build cli",
-    "start": "ts-node src/bin.ts gen --input src/__tests__/i18n",
+    "start": "ts-node src/bin.ts --input src/service/__tests__/i18n",
     "pub": "yarn build && lerna clean -y && yarn"
   },
   "bin": {
@@ -19,6 +19,7 @@
     "preset": "ts-jest"
   },
   "dependencies": {
+    "@liuli-util/tree": "^3.2.3",
     "@liuli-util/array": "^3.2.3",
     "@liuli-util/async": "^3.2.3",
     "commander": "^7.2.0",
