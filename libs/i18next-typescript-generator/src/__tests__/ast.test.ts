@@ -16,6 +16,7 @@ import {
   Writers,
 } from 'ts-morph'
 import { TranslateHandler } from '../TranslateHandler'
+import { WriterFunctionUtil } from '../util/WriterFunctionUtil'
 
 class TypeScriptASTUtil {
   static toString(...nodes: Node[]) {
@@ -26,27 +27,6 @@ class TypeScriptASTUtil {
       factory.createNodeArray(nodes),
       sourceFile,
     )
-  }
-}
-
-class WriterUtil {
-  static tuple(
-    tokens: { name: string; value: WriterFunctionOrValue }[],
-  ): WriterFunction {
-    return (writer) => {
-      writer.write('[')
-      for (let token of tokens) {
-        writer.write(token.name)
-        writer.write(': ')
-        if (typeof token.value === 'function') {
-          token.value(writer)
-        } else {
-          writer.write(token.value.toString())
-        }
-        writer.write(', ')
-      }
-      writer.write(']')
-    }
   }
 }
 
@@ -130,9 +110,9 @@ describe('使用 ts-morph', () => {
               {
                 kind: StructureKind.TypeAlias,
                 name: 'S',
-                type: WriterUtil.tuple([
-                  { name: 'key', value: Writers.unionType("'liuli'", "'rx'") },
-                  { name: 'age', value: 'number' },
+                type: WriterFunctionUtil.tuple([
+                  { name: 'key', type: Writers.unionType("'liuli'", "'rx'") },
+                  { name: 'age', type: 'number' },
                 ]),
               },
             ],
@@ -149,20 +129,20 @@ describe('使用 ts-morph', () => {
           name: 'I18nextTranslateParams',
           isExported: true,
           type: Writers.unionType(
-            WriterUtil.tuple([
+            WriterFunctionUtil.tuple([
               {
                 name: 'key',
-                value: "'test.hello'",
+                type: "'test.hello'",
               },
             ]),
-            WriterUtil.tuple([
+            WriterFunctionUtil.tuple([
               {
                 name: 'key',
-                value: "'test.params'",
+                type: "'test.params'",
               },
               {
                 name: 'params',
-                value: Writers.object({
+                type: Writers.object({
                   what: Writers.unionType('string', 'number'),
                   how: Writers.unionType('string', 'number'),
                 }),
