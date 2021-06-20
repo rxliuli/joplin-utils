@@ -1,27 +1,23 @@
 import { WriterFunctionUtil } from '../WriterFunctionUtil'
-import {
-  Project,
-  StructureKind,
-  WriterFunction,
-  WriterFunctionOrValue,
-} from 'ts-morph'
-import { areSame } from './areSame'
+import { Project, StructureKind, WriterFunction } from 'ts-morph'
+import { areSame } from '../areSame'
+
+export function print(type: WriterFunction) {
+  const project = new Project()
+  const sourceFile = project.createSourceFile('', {
+    statements: [
+      {
+        kind: StructureKind.TypeAlias,
+        name: 'S',
+        type,
+      },
+    ],
+  })
+  sourceFile.print()
+  return sourceFile.getText()
+}
 
 describe('测试 WriterFunctionUtil', () => {
-  function print(type: WriterFunction) {
-    const project = new Project()
-    const sourceFile = project.createSourceFile('', {
-      statements: [
-        {
-          kind: StructureKind.TypeAlias,
-          name: 'S',
-          type,
-        },
-      ],
-    })
-    sourceFile.print()
-    return sourceFile.getText()
-  }
   describe('测试 tuple', () => {
     it('基本示例', () => {
       const txt = print(

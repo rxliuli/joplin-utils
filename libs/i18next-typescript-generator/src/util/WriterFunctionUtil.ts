@@ -1,4 +1,9 @@
-import { WriterFunction, WriterFunctionOrValue } from 'ts-morph'
+import {
+  UnionTypeNode,
+  WriterFunction,
+  WriterFunctionOrValue,
+  Writers,
+} from 'ts-morph'
 
 type NativeTypeLiteral = 'string' | 'number' | 'boolean'
 
@@ -8,14 +13,14 @@ type NativeTypeLiteral = 'string' | 'number' | 'boolean'
 export class WriterFunctionUtil {
   /**
    * tuple 类型
-   * @param tokens
+   * @param types
    */
   static tuple(
-    tokens: { name: string; type: NativeTypeLiteral | WriterFunctionOrValue }[],
+    types: { name: string; type: NativeTypeLiteral | WriterFunctionOrValue }[],
   ): WriterFunction {
     return (writer) => {
       writer.write('[')
-      for (let token of tokens) {
+      for (let token of types) {
         writer.write(token.name)
         writer.write(': ')
         if (typeof token.type === 'function') {
@@ -43,5 +48,25 @@ export class WriterFunctionUtil {
       writer.write(type.replace(new RegExp("'", 'g'), "\\'"))
       writer.write("'")
     }
+  }
+
+  /**
+   * 对 {@link Writers#union} 的增强
+   * 当数组为空时返回 never
+   * 当数组只有一个给元素时返回第一个元素
+   * 否则返回 union
+   * @param types
+   */
+  static union(
+    types: NativeTypeLiteral | WriterFunctionOrValue[],
+  ): string | WriterFunction {
+    if (types.length < 1) {
+      return 'never'
+    }
+    if (types.length === 1) {
+      const type = types[0]
+      return typeof type === 'function' ? type : type.toString()
+    }
+    return (Writers.unionType as any)(...types)
   }
 }

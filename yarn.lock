@@ -7671,6 +7671,11 @@ downshift@^6.0.15:
     prop-types "^15.7.2"
     react-is "^17.0.2"
 
+dts-minify@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/dts-minify/-/dts-minify-0.2.3.tgz#c70cf307cbcf74ad11d9ec80a0e239f6dde1b5c9"
+  integrity sha512-njGBE4h3j6QnDxT8cxKhNHLvk/e5C4jM2OKgmX1oBJk/DI13LxtjJz2NbUNcNciDMLUUNCzUxEfuKl0Df95rtw==
+
 duplexer2@~0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.1.4.tgz#8b12dab878c0d69e3e7891051662a32fc6bddcc1"
