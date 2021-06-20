@@ -5,6 +5,7 @@ import { writeFile } from 'fs-extra'
 import path from 'path'
 import { AsyncArray } from '@liuli-util/async'
 import { Watcher } from './Watcher'
+import ora from 'ora'
 
 export class GeneratorCommandProgram {
   /**
@@ -22,14 +23,16 @@ export class GeneratorCommandProgram {
 
   // noinspection JSMethodCanBeStatic
   private async exec(dirPath: string) {
+    const spinner = ora({ color: 'blue' })
+    const dtsPath = path.join(dirPath, 'index.d.ts')
+    spinner.start(`开始生成类型定义: ${dtsPath}`)
     const scanner = new Scanner()
     const parser = new Parser()
     const generator = new Generator()
     const locales = await scanner.scan(dirPath)
     const configs = parser.parse(locales)
     const code = generator.generate(configs)
-    const dtsPath = path.join(dirPath, 'index.d.ts')
     await writeFile(dtsPath, code)
-    console.log('类型定义生成完成: ', dtsPath)
+    spinner.stopAndPersist({ text: `结束生成类型定义: ${dtsPath}` })
   }
 }

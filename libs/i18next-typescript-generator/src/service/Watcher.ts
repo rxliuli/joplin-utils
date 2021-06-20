@@ -14,7 +14,12 @@ export class Watcher {
         depth: 1,
       },
     ).on('all', async (eventName, filePath, status) => {
-      await _callback(path.dirname(filePath))
+      switch (eventName) {
+        case 'add':
+        case 'change':
+        case 'unlink':
+          await _callback(path.dirname(filePath))
+      }
     })
   }
 }
