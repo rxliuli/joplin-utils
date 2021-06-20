@@ -1,6 +1,6 @@
 {
-  "name": "i18next-typescript-generator",
-  "version": "0.1.1",
+  "name": "@liuli-util/i18next-dts-gen",
+  "version": "0.2.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,6 +19,7 @@
     "preset": "ts-jest"
   },
   "dependencies": {
+    "i18next": "^19.8.4",
     "@liuli-util/tree": "^3.2.3",
     "@liuli-util/array": "^3.2.3",
     "@liuli-util/async": "^3.2.3",

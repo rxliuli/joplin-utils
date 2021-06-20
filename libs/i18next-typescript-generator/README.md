@@ -1,61 +1,63 @@
 # i18next-typescript-generator
 
-## 简介
+## Introduction
 
-i18next 的 typescript 类型定义生成器，可以从多个语言翻译 json 文件中生成类型定义，支持嵌套对象与参数。
+i18next's typescript type definition generator can generate type definitions from multiple language translation json files, supporting nested objects and parameters.
 
-## 使用
+## Use
 
 ```shell
 $ i18next-dts-gen -h
 Usage: bin [options] [command]
 
 Options:
-  -h, --help      display help for command
+  -h, --help display help for command
 
 Commands:
-  gen [options]   根据 json 生成 .d.ts 类型定义
-  help [command]  display help for command
+  gen [options] Generate .d.ts type definition from json
+  help [command] display help for command
 ```
 
-示例
+Example
 
 ```shell
-i18next-dts-gen gen --input src/__tests__/i18n # 扫描这个目录下的 json 文件并生成 index.d.ts 类型定义
+i18next-dts-gen gen --input src/__tests__/i18n # Scan this directory for json files and generate index.d.ts type definitions
 ```
 
-## 动机
+## Motivation
 
-为什么已经有了很多第三方的类型定义生成器，甚至最新版 i18next 官方已经推出了 typescript 解决方案，吾辈还要写这个呢？
+Why should I write this when there are already many third-party type definition generators, and even the latest version of i18next has an official typescript solution?
 
-简而言之，都不完善。
+In short, they are not perfect.
 
-先从 i18next 官方的解决方案说起，它是将 json 文件替换为 ts 文件，但不能支持参数和嵌套对象。
+Let's start with the official i18next solution, which replaces json files with ts files, but does not support parameters and nested objects.
 
-Pass: 最新版似乎利用了 typescript 4.2 的递归类型和模板字符串类型来保证类型安全，但这实际上是不怎么好用的。另外只有 react-i18next 是可用的。
-
-> 参考：
+> Note: The latest version seems to take advantage of typescript 4.2's recursive types and template string types for type safety, but this doesn't actually work very well. Also only react-i18next is available.
 >
 > - [i18next typescript support](https://react.i18next.com/latest/typescript)
-> - [StackOverflow i18next 的类型定义](https://stackoverflow.com/questions/58277973/how-to-type-check-i18n-dictionaries-with-typescript/58308279#58308279)
+> - [StackOverflow type definition for i18next](https://stackoverflow.com/questions/58277973/how-to-type-check-i18n-dictionaries-with-typescript) /58308279#58308279)
 
-再来说 [i18next-typescript](https://github.com/LFDM/i18next-typescript) 这个第三方库，几乎能满足吾辈的需求了，除了一点：支持对象参数。还有像是 Jack 菊苣的 [i18n-codegen](https://github.com/Jack-Works/i18n-codegen)，代码设计上非常优雅，但同样的，不支持 react 之外的生态。
+Then [i18next-typescript](https://github.com/LFDM/i18next-typescript), a third-party library, almost meets my needs, except for one thing: support for object parameters. There is also something like Jack Chicory's [i18n-codegen](https://github.com/Jack-Works/i18n-codegen), which is very elegant in code design, but again, does not support ecologies other than react.
 
-另外，就吾辈而言，认为使用生成器生成简单的类型要比从类型系统上支持这种功能更加容易，也更加合理。
+Also, as far as I'm concerned, I think it's easier and more reasonable to use generators to generate simple types than to support such features from the type system.
 
-## 设计
+## Design
 
-![架构图](./docs/images/架构图.drawio.svg)
-![流程图](./docs/images/流程图.drawio.svg)
+![schema](. /docs/images/architecture-diagram.drawio.svg)
+![flowchart](. /docs/images/flowchart.drawio.svg)
 
 ## FAQ
 
-### 是否支持 i18next 的全部特性？
+### Are all features of i18next supported?
 
-否，这里支持的仅为 i18next 的一个子集。
+No, only a subset of i18next is supported here.
 
-- [x] 为多个本地化 json 配置文件生成类型定义
-- [x] 嵌套对象
-- [ ] 不支持配置命名空间、嵌套的分割字符串，我们认为约定大于配置
-- [ ] 不支持 json 之外的配置文件，我们认为 json 文件对于非开发者都更友好，而且在需要时开发者更容易处理
-- [ ] 不支持 i18next 命名空间，即将翻译文件分割
+- [x] Generate type definitions for multiple localized json profiles
+- [x] Include parameters are supported
+  - [ ] Object parameters are not supported
+- [ x] Nested keys are supported
+- [ ] does not support configuration namespaces, nested split strings, and we consider conventions over configuration
+- [ ] Configuration files other than json are not supported, we believe json files are more friendly to non-developers and easier for developers to handle when needed
+- [ ] i18next namespaces are not supported, i.e. translation file splitting
+
+Translated with www.DeepL.com/Translator (free version)
