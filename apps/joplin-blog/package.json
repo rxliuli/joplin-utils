@@ -14,7 +14,7 @@
     "build": "rm dist && liuli-cli build cli",
     "pub": "yarn build && lerna clean -y && yarn",
     "dev": "ts-node src/bin.ts",
-    "gen-i18n": "i18next-dts-gen gen --input src/i18n"
+    "gen-i18n": "i18next-dts-gen --input src/i18n"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -47,7 +47,6 @@
     "@liuli-util/object": "^3.2.2",
     "@liuli-util/tree": "^3.2.2",
     "commander": "^7.2.0",
-    "enquirer": "^2.3.6",
     "figlet": "^1.5.0",
     "fs-extra": "^9.0.1",
     "i18next": "^19.8.4",
