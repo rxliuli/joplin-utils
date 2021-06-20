@@ -1,0 +1,13 @@
+{
+  "cli": {
+    "option": {
+      "input": "Directory containing one or more translation files",
+      "watch": "Whether to use watch mode"
+    },
+    "description": "Generate .d.ts type definitions from json"
+  },
+  "generator": {
+    "begin": "[{{time}}] Start generating type definition: {{dtsPath}}",
+    "end": "[{{time}}] Ends generating type definition: {{dtsPath}}"
+  }
+}

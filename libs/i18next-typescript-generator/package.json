@@ -9,7 +9,7 @@
   "scripts": {
     "setup": "yarn pub",
     "build": "rm dist && liuli-cli build cli",
-    "start": "ts-node src/bin.ts --input src/service/__tests__/i18n -w",
+    "start": "ts-node src/bin.ts --input src/i18n -w",
     "pub": "yarn build && lerna clean -y && yarn"
   },
   "bin": {
@@ -23,12 +23,15 @@
     "@liuli-util/array": "^3.2.3",
     "@liuli-util/async": "^3.2.3",
     "ora": "^5.4.0",
+    "luxon": "^1.25.0",
+    "os-locale": "^5.0.0",
     "commander": "^7.2.0",
     "fs-extra": "^9.1.0",
     "ts-morph": "^11.0.0",
     "chokidar": "^3.5.2"
   },
   "devDependencies": {
+    "@types/luxon": "^1.25.0",
     "@liuli-util/test": "^3.2.3",
     "@liuli-util/cli": "^3.5.0",
     "@liuli-util/shell": "^0.1.1",

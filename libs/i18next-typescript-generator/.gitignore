@@ -1,2 +1,1 @@
-src/__tests__/i18n/index.d.ts
-src/service/__tests__/i18n/index.d.ts
+**/i18n/index.d.ts
