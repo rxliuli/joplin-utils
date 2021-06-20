@@ -1,5 +1,0 @@
-export * from './service/GeneratorCommand'
-export * from './service/Generator'
-export * from './service/Parser'
-export * from './service/Scanner'
-export * from './service/Watcher'

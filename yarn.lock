@@ -2446,6 +2446,23 @@
   dependencies:
     "@liuli-util/array" "^3.2.3"
 
+"@liuli-util/i18next-dts-gen@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@liuli-util/i18next-dts-gen/-/i18next-dts-gen-0.2.0.tgz#1d8f27d216242b9f68c4358917f609f430dbaadc"
+  integrity sha512-cXXv+yK0w1UKU3C2pwz2Xye+FE+w3QuSqPUM/PGz9JoKjRo2bJVi/6D9hxQEQAFsEGLB5BRi4SMmAsRrOQTMdA==
+  dependencies:
+    "@liuli-util/array" "^3.2.3"
+    "@liuli-util/async" "^3.2.3"
+    "@liuli-util/tree" "^3.2.3"
+    chokidar "^3.5.2"
+    commander "^7.2.0"
+    fs-extra "^10.0.0"
+    i18next "^19.8.4"
+    luxon "^1.25.0"
+    ora "^5.4.0"
+    os-locale "^5.0.0"
+    ts-morph "^11.0.0"
+
 "@liuli-util/object@^3.2.0", "@liuli-util/object@^3.2.2", "@liuli-util/object@^3.2.3":
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/@liuli-util/object/-/object-3.2.3.tgz#8b089a769983585ea7f497ffbf03a49accccd043"
@@ -2458,11 +2475,6 @@
   dependencies:
     commander "^7.0.0"
     fs-extra "^10.0.0"
-
-"@liuli-util/test@^3.2.3":
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/@liuli-util/test/-/test-3.2.3.tgz#330413451b1bb0b34a0d66090ee08f9ee19dd36a"
-  integrity sha512-fWsFqEKSeht2ZyoguFb4ww7+iYFvhLweT8esP+rI2GGGKXZ1wmN5u2Ud2XH+hHq3A0IaXLkgWQkj250mDMS1mg==
 
 "@liuli-util/tree@^3.2.2", "@liuli-util/tree@^3.2.3":
   version "3.2.3"
@@ -3555,7 +3567,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/fs-extra@^9.0.11", "@types/fs-extra@^9.0.4", "@types/fs-extra@^9.0.5", "@types/fs-extra@^9.0.6":
+"@types/fs-extra@^9.0.4", "@types/fs-extra@^9.0.5", "@types/fs-extra@^9.0.6":
   version "9.0.11"
   resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-9.0.11.tgz#8cc99e103499eab9f347dbc6ca4e99fb8d2c2b87"
   integrity sha512-mZsifGG4QeQ7hlkhO56u7zt/ycBgGxSVsFI/6lGTU34VtwkiqrrSDgw0+ygs8kFGWcXnFQWMrzF2h7TtDFNixA==
@@ -3767,7 +3779,7 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.2.tgz#1e94476db57ec93a372c7f7d29aa5707cfb92339"
   integrity sha512-sld7b/xmFum66AAKuz/rp/CUO8+98fMpyQ3SBfzzBNGMd/1iHBTAg9oyAvcYlAj46bpc74r91jSw2iFdnx29nw==
 
-"@types/node@^12.19.11", "@types/node@^12.20.7":
+"@types/node@^12.19.11":
   version "12.20.14"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.20.14.tgz#9caf7eea0df08b406829889cc015256a6d81ab10"
   integrity sha512-iFJOS5Q470FF+r4Ol2pSley7/wCNVqf+jgjhtxLLaJcDs+To2iCxlXIkJXrGLD9w9G/oJ9ibySu7z92DCwr7Pg==
@@ -3801,11 +3813,6 @@
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.2.3.tgz#ef65165aea2924c9359205bf748865b8881753c0"
   integrity sha512-PijRCG/K3s3w1We6ynUKdxEc5AcuuH3NBmMDP8uvKVp6X43UY7NQlTzczakXP3DJR0F4dfNQIGjU2cUeRYs2AA==
-
-"@types/prettier@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.3.0.tgz#2e8332cc7363f887d32ec5496b207d26ba8052bb"
-  integrity sha512-hkc1DATxFLQo4VxPDpMH1gCkPpBbpOoJ/4nhuXw4n63/0R6bCpQECj4+K226UJ4JO/eJQz+1mC2I7JsWanAdQw==
 
 "@types/pretty-hrtime@^1.0.0":
   version "1.0.0"
@@ -7690,11 +7697,6 @@ downshift@^6.0.15:
     compute-scroll-into-view "^1.0.17"
     prop-types "^15.7.2"
     react-is "^17.0.2"
-
-dts-minify@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/dts-minify/-/dts-minify-0.2.3.tgz#c70cf307cbcf74ad11d9ec80a0e239f6dde1b5c9"
-  integrity sha512-njGBE4h3j6QnDxT8cxKhNHLvk/e5C4jM2OKgmX1oBJk/DI13LxtjJz2NbUNcNciDMLUUNCzUxEfuKl0Df95rtw==
 
 duplexer2@~0.1.4:
   version "0.1.4"
@@ -14318,7 +14320,7 @@ prettier@^1.18.2, prettier@^1.19.1:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
   integrity sha512-s7PoyDv/II1ObgQunCbB9PdLmUcBZcnWOcxDh7O0N/UwDEsHyqkW+Qh28jW+mVuCdx7gLB0BotYI1Y6uI9iyew==
 
-prettier@^2.1.2, prettier@^2.2.1, prettier@^2.3.1:
+prettier@^2.1.2, prettier@^2.2.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.1.tgz#76903c3f8c4449bc9ac597acefa24dc5ad4cbea6"
   integrity sha512-p+vNbgpLjif/+D+DwAZAbndtRrR0md0MwfmOVN9N+2RgyACMT+7tfaRnT+WDPkqnuVwleyuBIG2XBxKDme3hPA==
