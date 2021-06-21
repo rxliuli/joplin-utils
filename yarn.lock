@@ -2476,6 +2476,15 @@
     commander "^7.0.0"
     fs-extra "^10.0.0"
 
+"@liuli-util/shell@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@liuli-util/shell/-/shell-0.2.0.tgz#747b2c2d44eaf8defc4dedb6b6e78c7ed4025ad3"
+  integrity sha512-I6+fkIFzhU6u66lYZ2uEbuEmfc0pDUoF3GP/vPmLO/91Jea6DC5ieHBuvCz/ck7O9dfOg0Zo5ab7Z3koDV98xA==
+  dependencies:
+    "@liuli-util/async" "^3.2.3"
+    commander "^7.0.0"
+    fs-extra "^10.0.0"
+
 "@liuli-util/tree@^3.2.2", "@liuli-util/tree@^3.2.3":
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/@liuli-util/tree/-/tree-3.2.3.tgz#e5eb2a7fc0bda878043a51f383c967c10093c661"
