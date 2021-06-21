@@ -41,13 +41,14 @@ export const NotFoundResourceCheckPage: React.FC<NotFoundResourceCheckPageProps>
     }
 
     return (
-      <Card>
-        <h2>检查笔记中引用失效的资源</h2>
-        <Button onClick={onCheck}>检查</Button>
+      <Card
+        title={'检查笔记中引用失效的资源'}
+        extra={<Button onClick={onCheck}>检查</Button>}
+      >
         <List
           dataSource={list}
           locale={{
-            emptyText: '没有找到任何未使用的附件资源',
+            emptyText: '没有找到任何引用失效的资源',
           }}
           renderItem={(item) => (
             <List.Item

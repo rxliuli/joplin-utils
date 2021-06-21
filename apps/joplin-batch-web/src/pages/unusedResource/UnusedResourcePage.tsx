@@ -55,9 +55,10 @@ export const UnusedResourcePage: React.FC<UnusedResourcePageProps> = () => {
   }
 
   return (
-    <Card>
-      <h2>检查未使用的资源</h2>
-      <Button onClick={onCheck}>检查</Button>
+    <Card
+      title={'检查未使用的资源'}
+      extra={<Button onClick={onCheck}>检查</Button>}
+    >
       <List
         dataSource={list}
         locale={{
