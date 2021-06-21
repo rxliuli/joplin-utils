@@ -23,4 +23,9 @@ export const routeList: (RouteConfig & { title: string })[] = [
     component: lazy(() => import('../../pages/notFoundResource')),
     title: '检查笔记中失效的资源引用',
   },
+  {
+    path: '/convertExternalLink',
+    component: lazy(() => import('../../pages/convertExternalLink')),
+    title: '转换外部链接为内部引用笔记',
+  },
 ]

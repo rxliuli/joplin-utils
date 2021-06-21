@@ -1,0 +1,10 @@
+:root {
+  --indent: 12px;
+}
+
+.sub1 {
+  margin-left: calc(var(--indent));
+}
+.sub2 {
+  margin-left: calc(var(--indent) * 2);
+}
