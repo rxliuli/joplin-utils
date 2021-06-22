@@ -24,6 +24,7 @@
     "title": "检查未使用的资源",
     "listEmptyText": "没有找到任何未使用的附件资源",
     "action": {
+      "removeAll": "删除全部",
       "check": "检查",
       "remove": "删除",
       "download": "下载"

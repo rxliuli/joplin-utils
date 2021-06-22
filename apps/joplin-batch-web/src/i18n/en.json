@@ -24,6 +24,7 @@
     "title": "Check for unused resources",
     "listEmptyText": "No unused attachment resources were found",
     "action": {
+      "removeAll": "Delete all",
       "check": "Check",
       "remove": "Remove",
       "download": "Download"

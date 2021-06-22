@@ -20,7 +20,7 @@ export const App: React.FC<AppProps> = () => {
   return (
     <Layout className={css.app}>
       <Layout.Sider className={css.sider} width="max-content">
-        <h2 className={css.logo}>Joplin Batch Web</h2>
+        <h2 className={css.logo}>Joplin Batch</h2>
         <Menu>
           {list.map((item) => (
             <Menu.Item key={item.path as string}>

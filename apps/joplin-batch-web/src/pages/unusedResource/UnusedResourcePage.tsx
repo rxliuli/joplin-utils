@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Button, Card, Image, List, message, SpinProps } from 'antd'
+import { Button, Card, Image, List, message, Space, SpinProps } from 'antd'
 import { useState } from 'react'
 import { UnusedResourceService } from './service/UnusedResourceService'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
@@ -9,6 +9,7 @@ import { downloadUrl, proxyStorage } from '@liuli-util/dom'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import produce from 'immer'
 import { i18n } from '../../common/I18n'
+import { AsyncArray, asyncLimiting } from '@liuli-util/async'
 
 type UnusedResourcePageProps = {}
 
@@ -55,13 +56,29 @@ export const UnusedResourcePage: React.FC<UnusedResourcePageProps> = () => {
     await downloadUrl(buildResourceUrl(id))
   }
 
+  const [onRemoveAllState, onRemoveAll] = useAsyncFn(async () => {
+    await AsyncArray.forEach(list, async (item) => {
+      await joplinApiGenerator.resourceApi.remove(item.id)
+    })
+    setList([])
+  }, [list])
+
   return (
     <Card
       title={i18n.t('unusedResource.title')}
       extra={
-        <Button onClick={onCheck}>
-          {i18n.t('unusedResource.action.check')}
-        </Button>
+        <Space>
+          <Button onClick={onCheck}>
+            {i18n.t('unusedResource.action.check')}
+          </Button>
+          <Button
+            danger={true}
+            loading={onRemoveAllState.loading}
+            onClick={onRemoveAll}
+          >
+            {i18n.t('unusedResource.action.removeAll')}
+          </Button>
+        </Space>
       }
     >
       <List
