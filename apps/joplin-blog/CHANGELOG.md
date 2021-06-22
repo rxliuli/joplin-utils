@@ -2,7 +2,7 @@
 
 ## v0.4.0
 
-- feat(joplin-blog): 使用 worker_threads 解析和转换 markdown 避免阻塞主线程
+- feat(joplin-blog): Use worker_threads to parse and convert markdown to avoid blocking the main thread
 
 ## v0.3.3
 
