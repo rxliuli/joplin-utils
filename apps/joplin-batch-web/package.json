@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "setup": "yarn i18next-dts-gen --input src/i18n",
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",

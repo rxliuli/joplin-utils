@@ -11389,6 +11389,34 @@ joplin-api@^0.2.5:
     node-fetch "^2.6.1"
     query-string "^6.13.7"
 
+joplin-blog@^0.3.0:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/joplin-blog/-/joplin-blog-0.3.3.tgz#6cf25c02c2cbc53dbbbd489aab82a4a315f0e9fa"
+  integrity sha512-P0ItQfnUkzUUC9iTodOI7Lq3jfrrHBXGl43IYnG5cb+cGaoxTRTFQAtj2Ao4XQVgicCmnRCzhWSiG871od0I0Q==
+  dependencies:
+    "@liuli-util/array" "^3.2.2"
+    "@liuli-util/async" "^3.2.3"
+    "@liuli-util/object" "^3.2.2"
+    "@liuli-util/tree" "^3.2.2"
+    commander "^7.2.0"
+    enquirer "^2.3.6"
+    figlet "^1.5.0"
+    fs-extra "^9.0.1"
+    i18next "^19.8.4"
+    joplin-api "^0.3.0"
+    luxon "^1.25.0"
+    mdast "^3.0.0"
+    ora "^5.4.0"
+    os-locale "^5.0.0"
+    prettier "^2.2.1"
+    remark-gfm "^1.0.0"
+    remark-parse "^9.0.0"
+    remark-stringify "^9.0.1"
+    unified "^9.2.0"
+    unist-util-map "^2.0.1"
+    unist-util-visit "^2.0.3"
+    yaml "^1.10.0"
+
 js-cookie@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"

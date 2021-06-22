@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "patch-package",
+    "setup": "yarn && yarn runstream setup && yarn",
     "clean": "lerna run clean --parallel && lerna clean -y && rimraf node_modules",
     "runstream": "lerna run --include-dependencies --stream",
-    "setup": "yarn && yarn runstream setup && yarn",
     "build": "yarn runstream build",
     "docs:deploy": "gh-pages -d docs"
   },
