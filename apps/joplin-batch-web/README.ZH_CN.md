@@ -15,3 +15,12 @@
 ### 为什么不使用 cli 的形式
 
 cli 的形式不太适合这种场景，例如需要预览异常的附件或笔记，在命令行下比较麻烦。
+
+### 如何使用它
+
+1. 打开 joplin 桌面版
+2. 启用网页剪辑器
+3. 在 [设置](https://joplin-utils.rxliuli.com/joplin-batch-web/#/settings) 页面填写配置
+4. 导航到相关功能页面
+
+![guide](https://github.com/rxliuli/joplin-utils/raw/dev/apps/joplin-batch-web/docs/images/guide.gif)
