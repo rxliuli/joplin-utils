@@ -10,13 +10,7 @@
       希望能够将之前的 blog 链接转换为内部的 `:/id` 链接以保证永不过期
 - [ ] 检查是否存在没有父级目录的笔记（一般是错误）
 
-## FAQ
-
-### 为什么不使用 cli 的形式
-
-cli 的形式不太适合这种场景，例如需要预览异常的附件或笔记，在命令行下比较麻烦。
-
-### 如何使用它
+### 开始
 
 1. 打开 joplin 桌面版
 2. 启用网页剪辑器
@@ -24,3 +18,13 @@ cli 的形式不太适合这种场景，例如需要预览异常的附件或笔�
 4. 导航到相关功能页面
 
 ![guide](https://github.com/rxliuli/joplin-utils/raw/dev/apps/joplin-batch-web/docs/images/guide.gif)
+
+## FAQ
+
+### 为什么不使用 cli 的形式
+
+cli 的形式不太适合这种场景，例如需要预览异常的附件或笔记，在命令行下比较麻烦。
+
+### 它会记录我的笔记数据么
+
+网站是全本地工作的，没有后端服务器，如果你仍然担忧，可以检查源代码 [joplin-batch-web](https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-batch-web)
