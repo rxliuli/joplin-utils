@@ -72,6 +72,7 @@ export const UnusedResourcePage: React.FC<UnusedResourcePageProps> = () => {
             {i18n.t('unusedResource.action.check')}
           </Button>
           <Button
+            disabled={list.length === 0}
             danger={true}
             loading={onRemoveAllState.loading}
             onClick={onRemoveAll}
