@@ -1,10 +1,6 @@
 {
-  "menu": {
-    "home": "Home",
-    "settings": "Settings",
-    "unusedResource": "Check for unused attachment resources",
-    "notFoundResource": "Check for invalid resource references in notes",
-    "convertExternalLink": "Convert external links to internally referenced notes"
+  "home": {
+    "title": "Home"
   },
   "settings": {
     "title": "Security Settings",
@@ -51,6 +47,14 @@
     },
     "msg": {
       "success": "Conversion complete"
+    }
+  },
+  "checkParentNotebook": {
+    "title": "Check notes without parent directory",
+    "listEmptyText": "No abnormal notes found in the parent directory",
+    "action": {
+      "check": "Check",
+      "open": "Open"
     }
   }
 }

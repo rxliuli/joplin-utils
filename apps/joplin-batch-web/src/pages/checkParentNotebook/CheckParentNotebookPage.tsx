@@ -5,6 +5,7 @@ import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { CheckParentNotebookService } from './service/CheckParentNotebookService'
 import { useState } from 'react'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
+import { i18n } from '../../common/I18n'
 
 type CheckParentNotebookPageProps = {}
 
@@ -32,20 +33,24 @@ export const CheckParentNotebookPage: React.FC<CheckParentNotebookPageProps> = (
 
   return (
     <Card
-      title={'检查没有父级目录的笔记'}
+      title={i18n.t('checkParentNotebook.title')}
       extra={
         <Button loading={onCheckState.loading} onClick={onCheck}>
-          检查
+          {i18n.t('checkParentNotebook.action.check')}
         </Button>
       }
     >
       <List
         dataSource={list}
-        locale={{ emptyText: '没有检查到父目录异常的笔记' }}
+        locale={{ emptyText: i18n.t('checkParentNotebook.listEmptyText') }}
         renderItem={(item) => (
           <List.Item
             id={item.id}
-            extra={<Button onClick={() => onRemove(item.id)}>删除</Button>}
+            extra={
+              <Button onClick={() => onRemove(item.id)}>
+                {i18n.t('checkParentNotebook.action.remove')}
+              </Button>
+            }
           >
             <Typography.Text>{item.title}</Typography.Text>
           </List.Item>

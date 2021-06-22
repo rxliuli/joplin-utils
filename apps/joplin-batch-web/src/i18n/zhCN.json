@@ -1,10 +1,6 @@
 {
-  "menu": {
-    "home": "首页",
-    "settings": "设置",
-    "unusedResource": "检查未使用的附件资源",
-    "notFoundResource": "检查笔记中失效的资源引用",
-    "convertExternalLink": "转换外部链接为内部引用笔记"
+  "home": {
+    "title": "首页"
   },
   "settings": {
     "title": "安全设置",
@@ -51,6 +47,14 @@
     },
     "msg": {
       "success": "转换完成"
+    }
+  },
+  "checkParentNotebook": {
+    "title": "检查没有父级目录的笔记",
+    "listEmptyText": "没有检查到父目录异常的笔记",
+    "action": {
+      "check": "检查",
+      "remove": "删除"
     }
   }
 }
