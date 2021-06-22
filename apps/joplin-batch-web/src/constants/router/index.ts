@@ -31,4 +31,9 @@ export const routeList = () =>
       component: lazy(() => import('../../pages/convertExternalLink')),
       title: i18n.t('menu.convertExternalLink'),
     },
+    {
+      path: '/checkParentNotebook',
+      component: lazy(() => import('../../pages/checkParentNotebook')),
+      title: '检查没有父级目录的笔记',
+    },
   ] as RouteMenuConfig[]
