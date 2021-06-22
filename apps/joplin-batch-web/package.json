@@ -3,9 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "setup": "cp README.md public/",
     "dev": "vite",
-    "build": "yarn setup && tsc && vite build",
+    "build": "tsc && vite build",
     "serve": "vite preview",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d dist -e /joplin-batch-web -a",
