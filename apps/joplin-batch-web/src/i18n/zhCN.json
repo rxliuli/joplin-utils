@@ -1,0 +1,55 @@
+{
+  "menu": {
+    "home": "首页",
+    "settings": "设置",
+    "unusedResource": "检查未使用的附件资源",
+    "notFoundResource": "检查笔记中失效的资源引用",
+    "convertExternalLink": "转换外部链接为内部引用笔记"
+  },
+  "settings": {
+    "title": "安全设置",
+    "form": {
+      "token": "授权令牌",
+      "port": "端口"
+    },
+    "action": {
+      "submit": "提交"
+    },
+    "msg": {
+      "success": "设置成功",
+      "error": "无法访问 joplin web clipper api"
+    }
+  },
+  "unusedResource": {
+    "title": "检查未使用的资源",
+    "listEmptyText": "没有找到任何未使用的附件资源",
+    "action": {
+      "check": "检查",
+      "remove": "删除",
+      "download": "下载"
+    },
+    "msg": {
+      "process": "[{{rate}}/{{all}}] 正在检查资源 {{title}}",
+      "error": "请检查 joplin token/port 配置"
+    }
+  },
+  "notFoundResource": {
+    "title": "检查笔记中引用失效的资源",
+    "listEmptyText": "没有找到任何引用失效的资源",
+    "unknownFileName": "未知文件名 {{id}}",
+    "action": {
+      "check": "检查",
+      "open": "打开"
+    }
+  },
+  "convertExternalLink": {
+    "title": "转换外部链接为内部引用笔记",
+    "action": {
+      "convert": "转换",
+      "open": "打开"
+    },
+    "msg": {
+      "success": "转换完成"
+    }
+  }
+}

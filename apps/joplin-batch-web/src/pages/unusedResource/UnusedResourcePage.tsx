@@ -8,6 +8,7 @@ import { Config } from 'joplin-api'
 import { downloadUrl, proxyStorage } from '@liuli-util/dom'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import produce from 'immer'
+import { i18n } from '../../common/I18n'
 
 type UnusedResourcePageProps = {}
 
@@ -36,12 +37,12 @@ export const UnusedResourcePage: React.FC<UnusedResourcePageProps> = () => {
       const list = await unusedResourceService
         .getUnusedResource()
         .on('process', (info) => {
-          setLoadingMsg(`[${info.rate}/${info.all}] 正在检查资源 ${info.title}`)
+          setLoadingMsg(i18n.t('unusedResource.msg.process', info))
         })
       console.log('list: ', list)
       setList(list)
     } catch (e) {
-      message.error('请检查 joplin token/port 配置')
+      message.error(i18n.t('unusedResource.msg.error'))
     }
   })
 
@@ -56,20 +57,28 @@ export const UnusedResourcePage: React.FC<UnusedResourcePageProps> = () => {
 
   return (
     <Card
-      title={'检查未使用的资源'}
-      extra={<Button onClick={onCheck}>检查</Button>}
+      title={i18n.t('unusedResource.title')}
+      extra={
+        <Button onClick={onCheck}>
+          {i18n.t('unusedResource.action.check')}
+        </Button>
+      }
     >
       <List
         dataSource={list}
         locale={{
-          emptyText: '没有找到任何未使用的附件资源',
+          emptyText: i18n.t('unusedResource.listEmptyText'),
         }}
         renderItem={(item) => (
           <List.Item
             key={item.id}
             actions={[
-              <Button onClick={() => onRemoveResource(item.id)}>删除</Button>,
-              <Button onClick={() => onOpenResource(item.id)}>下载</Button>,
+              <Button onClick={() => onRemoveResource(item.id)}>
+                {i18n.t('unusedResource.action.remove')}
+              </Button>,
+              <Button onClick={() => onOpenResource(item.id)}>
+                {i18n.t('unusedResource.action.download')}
+              </Button>,
             ]}
             extra={
               item.mime.startsWith('image/') && (

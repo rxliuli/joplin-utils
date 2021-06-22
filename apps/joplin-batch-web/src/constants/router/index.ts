@@ -1,31 +1,34 @@
 import { RouteConfig } from 'react-router-config'
 import { lazy } from 'react'
+import { i18n } from '../../common/I18n'
 
-export const routeList: (RouteConfig & { title: string })[] = [
-  {
-    path: '/',
-    component: lazy(() => import('../../pages/home')),
-    exact: true,
-    title: '首页',
-  },
-  {
-    path: '/settings',
-    component: lazy(() => import('../../pages/settings')),
-    title: '设置',
-  },
-  {
-    path: '/unusedResource',
-    component: lazy(() => import('../../pages/unusedResource')),
-    title: '检查未使用的附件资源',
-  },
-  {
-    path: '/notFoundResource',
-    component: lazy(() => import('../../pages/notFoundResource')),
-    title: '检查笔记中失效的资源引用',
-  },
-  {
-    path: '/convertExternalLink',
-    component: lazy(() => import('../../pages/convertExternalLink')),
-    title: '转换外部链接为内部引用笔记',
-  },
-]
+export type RouteMenuConfig = RouteConfig & { title: string }
+export const routeList = () =>
+  [
+    {
+      path: '/',
+      component: lazy(() => import('../../pages/home')),
+      exact: true,
+      title: i18n.t('menu.home'),
+    },
+    {
+      path: '/settings',
+      component: lazy(() => import('../../pages/settings')),
+      title: i18n.t('menu.settings'),
+    },
+    {
+      path: '/unusedResource',
+      component: lazy(() => import('../../pages/unusedResource')),
+      title: i18n.t('menu.unusedResource'),
+    },
+    {
+      path: '/notFoundResource',
+      component: lazy(() => import('../../pages/notFoundResource')),
+      title: i18n.t('menu.notFoundResource'),
+    },
+    {
+      path: '/convertExternalLink',
+      component: lazy(() => import('../../pages/convertExternalLink')),
+      title: i18n.t('menu.convertExternalLink'),
+    },
+  ] as RouteMenuConfig[]

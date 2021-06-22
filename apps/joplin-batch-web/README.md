@@ -1,17 +1,17 @@
 # joplin-batch-web
 
-处理一些 Joplin 本身不支持的批量操作，以可视化界面的形式展现出来。
+Handles some batch operations that are not supported by Joplin itself, and presents them as a visual interface.
 
-- [x] 检查是否存在没有引用的附件资源
-      一些没有使用的附件资源没有被及时清理
-- [x] 检查引用的附件资源不存在的情况
-      一些正在使用的附件可能由于各种原因不存在了
-- [x] 转换外部链接为内部笔记引用
-      希望能够将之前的 blog 链接转换为内部的 `:/id` 链接以保证永不过期
-- [ ] 检查是否存在没有父级目录的笔记（一般是错误）
+- [x] Check for unreferenced attachment resources
+      Some unused attachment resources are not cleaned up in time
+- [x] Check for referenced attachment resources that do not exist
+      Some attachments that are being used may not exist for various reasons
+- [x] Convert external links to internal note references
+      Would like to be able to convert previous blog links to internal `:/id` links to ensure they never expire
+- [ ] Check for notes that don't have a parent directory (usually an error)
 
 ## FAQ
 
-### 为什么不使用 cli 的形式
+### Why not use the cli form
 
-cli 的形式不太适合这种场景，例如需要预览异常的附件或笔记，在命令行下比较麻烦。
+The cli form is not very suitable for this scenario, e.g. when you need to preview unusual attachments or notes, which is more troublesome at the command line.

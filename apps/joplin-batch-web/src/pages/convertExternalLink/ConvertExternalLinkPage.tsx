@@ -24,6 +24,7 @@ import produce from 'immer'
 import { wait } from '@liuli-util/async'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { DOMEditorUtil } from '../../common/DOMEditorUtil'
+import { i18n } from '../../common/I18n'
 
 type ConvertExternalLinkPageProps = {}
 
@@ -46,7 +47,9 @@ export const MatchNoteList: React.FC<MatchNoteListProps> = (props) => {
         <List.Item key={matchNote.id}>
           <Space>
             <Typography.Text>{matchNote.title}</Typography.Text>
-            <Button onClick={() => onConvertNote(matchNote)}>转换</Button>
+            <Button onClick={() => onConvertNote(matchNote)}>
+              {i18n.t('convertExternalLink.action.convert')}
+            </Button>
           </Space>
         </List.Item>
       )}
@@ -98,7 +101,7 @@ export const ConvertExternalLinkPage: React.FC<ConvertExternalLinkPageProps> = (
       }),
     )
     setList((list) => list.filter(filterEmptyUrlsNote))
-    message.success('转换完成')
+    message.success(i18n.t('convertExternalLink.msg.success'))
   }
 
   async function onOpenNote(id: string) {
@@ -106,7 +109,7 @@ export const ConvertExternalLinkPage: React.FC<ConvertExternalLinkPageProps> = (
   }
 
   return (
-    <Card title={'转换外部链接为内部引用笔记'}>
+    <Card title={i18n.t('convertExternalLink.title')}>
       <Input.Search
         onSearch={onSearch}
         allowClear={true}
@@ -119,7 +122,11 @@ export const ConvertExternalLinkPage: React.FC<ConvertExternalLinkPageProps> = (
         renderItem={(note, noteIndex) => (
           <List.Item
             key={note.id}
-            extra={[<Button onClick={() => onOpenNote(note.id)}>打开</Button>]}
+            extra={[
+              <Button onClick={() => onOpenNote(note.id)}>
+                {i18n.t('convertExternalLink.action.open')}
+              </Button>,
+            ]}
           >
             <Typography.Title level={4}>{note.title}</Typography.Title>
             <List

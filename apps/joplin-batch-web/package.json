@@ -8,7 +8,8 @@
     "build": "yarn setup && tsc && vite build",
     "serve": "vite preview",
     "predeploy": "yarn build",
-    "deploy": "gh-pages -d dist -e /joplin-batch-web -a"
+    "deploy": "gh-pages -d dist -e /joplin-batch-web -a",
+    "gen-i18n": "i18next-dts-gen --input src/i18n -w"
   },
   "jest": {
     "preset": "ts-jest"
@@ -18,6 +19,7 @@
     "@liuli-util/dom": "^3.2.3",
     "antd": "^4.16.1",
     "comlink": "^4.3.1",
+    "i18next": "^20.3.2",
     "immer": "^9.0.2",
     "joplin-api": "^0.3.0",
     "markdown-it": "^12.0.6",

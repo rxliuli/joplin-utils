@@ -1,0 +1,55 @@
+{
+  "menu": {
+    "home": "Home",
+    "settings": "Settings",
+    "unusedResource": "Check for unused attachment resources",
+    "notFoundResource": "Check for invalid resource references in notes",
+    "convertExternalLink": "Convert external links to internally referenced notes"
+  },
+  "settings": {
+    "title": "Security Settings",
+    "form": {
+      "token": "Authorization token",
+      "port": "Port"
+    },
+    "action": {
+      "submit": "Submit"
+    },
+    "msg": {
+      "success": "Setup was successful",
+      "error": "Unable to access joplin web clipper api"
+    }
+  },
+  "unusedResource": {
+    "title": "Check for unused resources",
+    "listEmptyText": "No unused attachment resources were found",
+    "action": {
+      "check": "Check",
+      "remove": "Remove",
+      "download": "Download"
+    },
+    "msg": {
+      "process": "[{{rate}}/{{all}}] is checking for resources {{title}}",
+      "error": "Please check joplin token/port configuration"
+    }
+  },
+  "notFoundResource": {
+    "title": "Check notes for references to a failed resource",
+    "listEmptyText": "No reference to a failed resource was found",
+    "unknownFileName": "Unknown file name {{id}}",
+    "action": {
+      "check": "Check",
+      "open": "Open"
+    }
+  },
+  "convertExternalLink": {
+    "title": "Convert External Link to Internal Reference Notes",
+    "action": {
+      "convert": "Convert",
+      "open": "Open"
+    },
+    "msg": {
+      "success": "Conversion complete"
+    }
+  }
+}

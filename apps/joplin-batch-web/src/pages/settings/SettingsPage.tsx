@@ -3,6 +3,7 @@ import { Button, Card, Form, Input, message } from 'antd'
 import { Config } from 'joplin-api'
 import { useLocalStorage } from 'react-use'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
+import { i18n } from '../../common/I18n'
 
 type SettingsPageProps = {}
 
@@ -20,10 +21,10 @@ export const SettingsPage: React.FC<SettingsPageProps> = () => {
       joplinApiGenerator.port = values.port
       await joplinApiGenerator.noteApi.list({ limit: 1 })
       setSettings(values)
-      message.success('设置成功')
+      message.success(i18n.t('settings.msg.success'))
     } catch (e) {
       console.error(e)
-      message.error('无法访问 joplin web clipper api')
+      message.error(i18n.t('settings.msg.error'))
     }
   }
 
@@ -31,7 +32,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = () => {
 
   return (
     <Card>
-      <h2>安全设置</h2>
+      <h2>{i18n.t('settings.title')}</h2>
       <Form
         form={form}
         onFinish={onFinish}
@@ -44,21 +45,21 @@ export const SettingsPage: React.FC<SettingsPageProps> = () => {
       >
         <Form.Item
           name={'token' as keyof Config}
-          label={'Token'}
+          label={i18n.t('settings.form.token')}
           rules={[{ required: true }]}
         >
           <Input type={'password'} />
         </Form.Item>
         <Form.Item
           name={'port' as keyof Config}
-          label={'Port'}
+          label={i18n.t('settings.form.port')}
           rules={[{ required: true }]}
         >
           <Input type={'number'} />
         </Form.Item>
         <Form.Item>
           <Button type={'primary'} htmlType={'submit'}>
-            提交
+            {i18n.t('settings.action.submit')}
           </Button>
         </Form.Item>
       </Form>
