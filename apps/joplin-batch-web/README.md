@@ -10,7 +10,7 @@ Handles some batch operations that are not supported by Joplin itself, and prese
       Some attachments that are being used may not exist for various reasons
 - [x] Convert external links to internal note references
       Would like to be able to convert previous blog links to internal `:/id` links to ensure they never expire
-- [ ] Check for notes that don't have a parent directory (usually an error)
+- [x] Check for notes that don't have a parent directory (usually an error)
 
 ### Getting Started
 
