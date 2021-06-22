@@ -13,7 +13,7 @@ export interface BaseIntegrated {
    */
   parse(
     note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
-  ): string
+  ): Promise<string> | string
 
   /**
    * 初始化操作
@@ -170,13 +170,16 @@ export class Application {
     })[],
   ) {
     return PromiseUtil.warpOnEvent(async (events: ProcessEvents) =>
-      noteList.map((note, i) => {
-        events.process({ rate: i, all: noteList.length, title: note.title })
-        return {
-          ...note,
-          text: this.handler.parse(note),
-        }
-      }),
+      AsyncArray.map(
+        noteList,
+        asyncLimiting(async (note, i) => {
+          events.process({ rate: i, all: noteList.length, title: note.title })
+          return {
+            ...note,
+            text: await this.handler.parse(note),
+          }
+        }, 10),
+      ),
     )
   }
 

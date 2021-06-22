@@ -1,14 +1,11 @@
 import { BaseIntegrated } from './Application'
 import path from 'path'
-import {
-  JoplinNoteHandler,
-  JoplinNoteHandlerLinkConverter,
-} from './JoplinNoteHandler'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { ResourceWriter } from './ResourceWriter'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
+import { convertJoplinNote } from './JoplinNoteHandler.worker'
 
-class BlogHexoSingleNoteHandler implements JoplinNoteHandlerLinkConverter {
+class BlogHexoSingleNoteHandler {
   constructor(
     private config: Pick<BlogHexoIntegratedConfig, 'stickyTopIdList' | 'tag'>,
   ) {}
@@ -28,14 +25,6 @@ class BlogHexoSingleNoteHandler implements JoplinNoteHandlerLinkConverter {
         : undefined,
     }
   }
-
-  convertNote(id: string): string {
-    return `/p/${id}`
-  }
-
-  convertResource(resource: CommonResource): string {
-    return `/resource/${resource.id}.${resource.file_extension}`
-  }
 }
 
 export interface BlogHexoIntegratedConfig {
@@ -51,17 +40,15 @@ export class BlogHexoIntegrated implements BaseIntegrated {
     await this.resourceWriter.clean()
   }
 
-  parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
-    const hexoSingleNoteHandler = new BlogHexoSingleNoteHandler(this.config)
+  async parse(
+    note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
+  ) {
     return JoplinMarkdownUtil.addMeta(
-      JoplinNoteHandler.format(
-        JoplinNoteHandler.convertLink(
-          JoplinNoteHandler.parse(note.body),
-          note,
-          hexoSingleNoteHandler,
-        ),
-      ),
-      hexoSingleNoteHandler.meta(note),
+      await convertJoplinNote(note, {
+        note: '/p/{id}',
+        resource: '/resource/{id}.{file_extension}',
+      }),
+      new BlogHexoSingleNoteHandler(this.config).meta(note),
     )
   }
 

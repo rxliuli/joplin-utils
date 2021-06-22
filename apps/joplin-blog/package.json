@@ -1,19 +1,19 @@
 {
   "name": "joplin-blog",
   "version": "0.3.3",
-  "module": "dist/index.esm.js",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "module": "dist/esm/index.js",
+  "main": "dist/cjs/index.js",
+  "types": "dist/esm/index.d.ts",
   "license": "MIT",
   "bin": {
-    "joplin-blog": "dist/bin.js"
+    "joplin-blog": "dist/cjs/bin.js"
   },
   "scripts": {
     "setup": "yarn gen-i18n",
     "start": "ts-node src/bin.ts -h",
-    "build": "rm dist && liuli-cli build cli",
+    "build": "rm dist && rollup -c",
+    "dev": "rollup -cw",
     "pub": "yarn build && lerna clean -y && yarn",
-    "dev": "ts-node src/bin.ts",
     "gen-i18n": "i18next-dts-gen --input src/i18n"
   },
   "publishConfig": {
@@ -23,6 +23,13 @@
     "preset": "ts-jest"
   },
   "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "rollup": "^2.52.2",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-add-shebang": "^0.3.1",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-node-externals": "^2.2.0",
+    "rollup-plugin-worker-threads": "^0.1.0",
     "@liuli-util/cli": "^3.5.0",
     "@liuli-util/shell": "^0.1.1",
     "@types/figlet": "^1.5.0",
@@ -42,6 +49,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "comlink": "^4.3.1",
     "@liuli-util/array": "^3.2.2",
     "@liuli-util/async": "^3.2.3",
     "@liuli-util/object": "^3.2.2",

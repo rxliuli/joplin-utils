@@ -1,16 +1,13 @@
 import { BaseIntegrated } from './Application'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import path from 'path'
-import {
-  JoplinNoteHandler,
-  JoplinNoteHandlerLinkConverter,
-} from './JoplinNoteHandler'
 import { DateTime } from 'luxon'
 import { ResourceWriter } from './ResourceWriter'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { mkdirp } from 'fs-extra'
+import { convertJoplinNote } from './JoplinNoteHandler.worker'
 
-class BlogVuepressSingleNoteHandler implements JoplinNoteHandlerLinkConverter {
+class BlogVuepressSingleNoteHandler {
   constructor(private config: Pick<BlogVuepressIntegratedConfig, 'tag'>) {}
 
   meta(note: CommonNote & { tags: CommonTag[] }): object {
@@ -24,14 +21,6 @@ class BlogVuepressSingleNoteHandler implements JoplinNoteHandlerLinkConverter {
       date: DateTime.fromMillis(note.createdTime).toFormat(formatter),
       updated: DateTime.fromMillis(note.updatedTime).toFormat(formatter),
     }
-  }
-
-  convertNote(id: string): string {
-    return `/p/${id}`
-  }
-
-  convertResource(resource: CommonResource): string {
-    return `./resource/${resource.id}.${resource.file_extension}`
   }
 }
 
@@ -51,19 +40,15 @@ export class BlogVuepressIntegrated implements BaseIntegrated {
     await mkdirp(path.resolve(this.config.rootPath, '_posts/resource'))
   }
 
-  parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
-    const vuepressSingleNoteHandler = new BlogVuepressSingleNoteHandler(
-      this.config,
-    )
+  async parse(
+    note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
+  ) {
     return JoplinMarkdownUtil.addMeta(
-      JoplinNoteHandler.format(
-        JoplinNoteHandler.convertLink(
-          JoplinNoteHandler.parse(note.body),
-          note,
-          vuepressSingleNoteHandler,
-        ),
-      ),
-      vuepressSingleNoteHandler.meta(note),
+      await convertJoplinNote(note, {
+        note: '/p/{id}',
+        resource: './resource/{id}.{file_extension}',
+      }),
+      new BlogVuepressSingleNoteHandler(this.config).meta(note),
     )
   }
 

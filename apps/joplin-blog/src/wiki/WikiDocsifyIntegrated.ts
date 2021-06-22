@@ -1,25 +1,12 @@
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { BaseIntegrated } from '../blog/Application'
-import {
-  JoplinNoteHandler,
-  JoplinNoteHandlerLinkConverter,
-} from '../blog/JoplinNoteHandler'
 import { ResourceWriter } from '../blog/ResourceWriter'
 import path from 'path'
 import { writeFile } from 'fs-extra'
 import { ListNode } from '../util/JoplinMarkdownUtil'
 import { WikiUtil } from './WikiUtil'
 import { treeMap } from '@liuli-util/tree'
-
-class WikiDocsifySingleNoteHandler implements JoplinNoteHandlerLinkConverter {
-  convertNote(id: string): string {
-    return `/p/${id}`
-  }
-
-  convertResource(resource: CommonResource): string {
-    return `../resource/${resource.id}.${resource.file_extension}`
-  }
-}
+import { convertJoplinNote } from '../blog/JoplinNoteHandler.worker'
 
 export interface WikiDocsifyIntegratedConfig {
   tag: string
@@ -42,17 +29,13 @@ export class WikiDocsifyIntegrated implements BaseIntegrated {
     return buildList(tree, (id) => `/p/${id}`)
   }
 
-  parse(
+  async parse(
     note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
-  ): string {
-    const wikiDocsifySingleNoteHandler = new WikiDocsifySingleNoteHandler()
-    return JoplinNoteHandler.format(
-      JoplinNoteHandler.convertLink(
-        JoplinNoteHandler.parse(note.body),
-        note,
-        wikiDocsifySingleNoteHandler,
-      ),
-    )
+  ) {
+    return await convertJoplinNote(note, {
+      note: '/p/{id}',
+      resource: '../resource/{id}.{file_extension}',
+    })
   }
 
   private readonly resourceWriter = new ResourceWriter({
