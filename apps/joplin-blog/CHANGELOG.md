@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.4.0
+
+- feat(joplin-blog): 使用 worker_threads 解析和转换 markdown 避免阻塞主线程
+
 ## v0.3.3
 
 - fix(joplin-blog): Fix the error that asyncLimit will print numbers when running commands
