@@ -37,8 +37,8 @@
     "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
-    "@liuli-util/shell": "^0.2.0",
     "@babel/preset-env": "^7.14.5",
+    "@liuli-util/shell": "^0.2.0",
     "@types/jest": "^26.0.23",
     "@types/markdown-it": "^12.0.2",
     "@types/node": "14",
