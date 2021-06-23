@@ -21,7 +21,7 @@
     ".vscode-test",
     "test",
     "src/markdown",
-    "rollup.config.ts"
+    "rollup.config.js"
   ],
   "ts-node": {
     "compilerOptions": {

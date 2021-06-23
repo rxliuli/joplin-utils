@@ -4,9 +4,9 @@ import json from '@rollup/plugin-json'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import copy from 'rollup-plugin-copy'
-import { RollupOptions } from 'rollup'
+import { defineConfig } from 'rollup'
 
-export default {
+export default defineConfig({
   input: 'src/extension.ts',
   output: {
     dir: 'dist/',
@@ -26,4 +26,4 @@ export default {
     externals(),
     json(),
   ],
-} as RollupOptions
+})
