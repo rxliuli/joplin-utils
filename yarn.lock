@@ -15998,10 +15998,10 @@ rollup-plugin-typescript2@^0.30.0:
     resolve "1.20.0"
     tslib "2.1.0"
 
-rollup-plugin-worker-threads@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-worker-threads/-/rollup-plugin-worker-threads-0.1.0.tgz#7f8bc9a0582018e03fae5c9b148f555713041e93"
-  integrity sha512-YeS+yAXrLzf6jUUzg4L5ngTThI6/xWzmdqHnqCJKuADPAeCZS29YcviDmMCFcIrLy3LjxDwBQWGNkBXSnMr+Qw==
+rollup-plugin-worker-threads@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-worker-threads/-/rollup-plugin-worker-threads-0.1.1.tgz#20dfda895f69e890474007d0c4436037e6466d09"
+  integrity sha512-bFZX7Ryaf3TyoJevBxdLkMbeNV3FTGeI3Sak5IorTY9FwwCR7Hf1W4TrDbghNS/21v3XYUo05+LTYgclNmxoUw==
   dependencies:
     "@rollup/pluginutils" "^4.1.0"
 
