@@ -45,4 +45,4 @@ After `v0.1.10`, the function of adding attachments has been added. You can add 
 
 You can see **Copy Link** in the right-click menu on the notes, click it to copy it to the clipboard.
 
-![Copy Notes Link](. /images/copy-link.gif)
+![Copy Notes Link](../images/copy-link.gif)
