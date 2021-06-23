@@ -4,9 +4,9 @@ import json from '@rollup/plugin-json'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import copy from 'rollup-plugin-copy'
-import { defineConfig } from '@liuli-util/cli'
+import { RollupOptions } from 'rollup'
 
-export default defineConfig({
+export default {
   input: 'src/extension.ts',
   output: {
     dir: 'dist/',
@@ -26,4 +26,4 @@ export default defineConfig({
     externals(),
     json(),
   ],
-})
+} as RollupOptions
