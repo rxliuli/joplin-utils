@@ -30,7 +30,7 @@ module.exports = {
           '/guide/': [
             '',
             'faq',
-            'configuration',
+            'feature',
             'recommended-extension',
             'limitations',
           ],
@@ -88,7 +88,7 @@ module.exports = {
           '/zh/guide/': [
             '',
             'faq',
-            'configuration',
+            'feature',
             'recommended-extension',
             'limitations',
           ],

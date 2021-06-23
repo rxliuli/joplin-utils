@@ -1,4 +1,4 @@
-# Detailed configuration
+# Other features
 
 ## Configuration table
 
@@ -19,6 +19,15 @@
 |                      |                | `en`           | English                                                 |
 |                      |                | `zh`           | Simple Chinese                                          |
 
+## Hot key
+
+- `f2`: Rename notes or directories
+- `delete`: delete notes or directories
+- `ctrl+alt+u`: upload pictures from clipboard
+- `ctrl+alt+e`: upload image from file chooser
+- `ctrl+alt+shift+e`: add attachments from the file selector
+- `ctrl+j ctrl+o`: search notes
+
 ## Paste picture
 
 After `v0.1.7`, a new image paste function has been added. You can upload images to Joplin through the right-click menu, commands or shortcut keys and paste the link into VSCode.
@@ -32,11 +41,8 @@ After `v0.1.10`, the function of adding attachments has been added. You can add 
 
 1. `ctrl+alt+shift+e` select the file to be added as an attachment
 
-## hot key
+## Copy Notes Link
 
-- `f2`: Rename notes or directories
-- `delete`: delete notes or directories
-- `ctrl+alt+u`: upload pictures from clipboard
-- `ctrl+alt+e`: upload image from file chooser
-- `ctrl+alt+shift+e`: add attachments from the file selector
-- `ctrl+j ctrl+o`: search notes
+You can see **Copy Link** in the right-click menu on the notes, click it to copy it to the clipboard.
+
+![Copy Notes Link](. /images/copy-link.gif)
