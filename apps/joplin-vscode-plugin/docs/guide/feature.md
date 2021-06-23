@@ -41,8 +41,10 @@ After `v0.1.10`, the function of adding attachments has been added. You can add 
 
 1. `ctrl+alt+shift+e` select the file to be added as an attachment
 
-## Copy Notes Link
+## Link notes
 
 You can see **Copy Link** in the right-click menu on the notes, click it to copy it to the clipboard.
 
-![Copy Notes Link](../images/copy-link.gif)
+![Link notes](../images/copy-link.gif)
+
+Use `Ctrl+click` to open to other notes.

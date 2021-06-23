@@ -55,8 +55,10 @@
 
 在 `v0.3.0` 之后支持创建标签，命令是 `> Joplin: Create tag`。
 
-## 复制笔记链接
+## 链接笔记
 
 在笔记上右键菜单可以看到 **复制链接**，点击即复制到剪切板。
 
-![复制笔记链接](../../images/copy-link.gif)
+![Link notes](../../images/copy-link.gif)
+
+使用 `Ctrl+单击` 打开到其他笔记中。
