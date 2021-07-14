@@ -9,7 +9,7 @@
 
 Joplin Web Clipper is designed to communicate with browser extensions by sharing Notes, Notebooks, Tags, etc. through a REST web API. `joplin-vscode-plugin` connects to that same REST endpoint to freely make changes to your notes without ever leaving the editor.
 
-> Why does this plugin exist? Read [my motivation](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/zh/other/) for developing it.
+> Why does this plugin exist? Read [my motivation](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/other/) for developing it.
 >
 > What can it do? The [roadmap](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/other/roadmap.html) lists both existing and planned features.
 >
