@@ -3,17 +3,24 @@ import {
   ApplicationConfig,
   BaseIntegrated,
 } from '../blog/Application'
-import { BlogHexoIntegrated, BlogHexoIntegratedConfig } from '../blog/BlogHexoIntegrated'
+import {
+  BlogHexoIntegrated,
+  BlogHexoIntegratedConfig,
+} from '../blog/BlogHexoIntegrated'
 import {
   BlogVuepressIntegrated,
   BlogVuepressIntegratedConfig,
 } from '../blog/BlogVuepressIntegrated'
 import path from 'path'
 import { pathExists, readJson } from 'fs-extra'
-import { i18n, LanguageEnum } from '../util/I18n'
 import { figletPromise } from '../util/utils'
 import ora from 'ora'
 import { Command } from 'commander'
+import { LanguageEnum } from '@liuli-util/i18next-util'
+import { i18n } from '../constants/i18n'
+import zhCN from '../i18n/zhCN.json'
+import en from '../i18n/en.json'
+import { getLanguage } from '../util/getLanguage'
 
 type JoplinBlogConfig = ApplicationConfig & {
   type: 'hexo' | 'vuepress'
@@ -28,7 +35,9 @@ export class BlogCommanderProgram {
         integrated = new BlogHexoIntegrated(config as BlogHexoIntegratedConfig)
         break
       case 'vuepress':
-        integrated = new BlogVuepressIntegrated(config as BlogVuepressIntegratedConfig)
+        integrated = new BlogVuepressIntegrated(
+          config as BlogVuepressIntegratedConfig,
+        )
         break
       default:
         throw new Error(i18n.t('blog.Unsupported blog type'))
@@ -53,7 +62,7 @@ export class BlogCommanderProgram {
     if (!config) {
       return
     }
-    await i18n.load(config.language || (await i18n.getLanguage()))
+    await i18n.changeLang(config.language || (await getLanguage()))
     const application = await BlogCommanderProgram.getBlogApplication(config)
     await this.gen(application)
   }

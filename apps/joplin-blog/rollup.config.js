@@ -1,4 +1,4 @@
-import { defineConfig, RollupOptions } from 'rollup'
+import { defineConfig } from 'rollup'
 import typescript from 'rollup-plugin-typescript2'
 import { workerThreadsSuffix } from 'rollup-plugin-worker-threads'
 import shebang from 'rollup-plugin-add-shebang'

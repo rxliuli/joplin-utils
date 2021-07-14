@@ -6,7 +6,6 @@ import {
 import { BlogHexoIntegratedConfig } from '../blog/BlogHexoIntegrated'
 import path from 'path'
 import { pathExists, readJson } from 'fs-extra'
-import { i18n, LanguageEnum } from '../util/I18n'
 import { figletPromise } from '../util/utils'
 import ora from 'ora'
 import { Command } from 'commander'
@@ -18,6 +17,9 @@ import {
   WikiVuepressIntegrated,
   WikiVuepressIntegratedConfig,
 } from '../wiki/WikiVuepressIntegrated'
+import { i18n } from '../constants/i18n'
+import { getLanguage } from '../util/getLanguage'
+import { LanguageEnum } from '@liuli-util/i18next-util'
 
 type JoplinBlogConfig = ApplicationConfig & {
   type: 'docsify' | 'vuepress'
@@ -61,7 +63,7 @@ export class BlogCommanderProgram {
     if (!config) {
       return
     }
-    await i18n.load(config.language || (await i18n.getLanguage()))
+    await i18n.changeLang(config.language || (await getLanguage()))
     const application = await BlogCommanderProgram.getBlogApplication(config)
     await this.gen(application)
   }

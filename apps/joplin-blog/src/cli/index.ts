@@ -1,9 +1,12 @@
 import { Command } from 'commander'
 import { blogCommander, BlogCommanderProgram } from './BlogCommander'
-import { i18n } from '../util/I18n'
 import { wikiCommander } from './WikiCommander'
+import { i18n } from '../constants/i18n'
+import { getLanguage } from '../util/getLanguage'
+import en from '../i18n/en.json'
+import zhCN from '../i18n/zhCN.json'
 ;(async () => {
-  await i18n.load(await i18n.getLanguage())
+  await i18n.init({ en, zhCN }, await getLanguage())
 
   new Command()
     .addCommand(blogCommander())

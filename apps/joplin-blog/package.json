@@ -23,6 +23,7 @@
     "preset": "ts-jest"
   },
   "devDependencies": {
+    "@liuli-util/i18next-util": "^0.1.0",
     "@rollup/plugin-json": "^4.1.0",
     "rollup": "^2.52.2",
     "rollup-plugin-typescript2": "^0.30.0",
