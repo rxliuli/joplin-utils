@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 import { window } from 'vscode'
 import { globalState } from '../state/GlobalState'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
-import { i18n } from '../util/I18n'
+import { i18n } from '../constants/i18n'
 
 export class UploadResourceService {
   async uploadImageFromClipboard() {

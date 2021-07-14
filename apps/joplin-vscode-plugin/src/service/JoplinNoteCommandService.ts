@@ -26,9 +26,9 @@ import { uploadResourceService } from './UploadResourceService'
 import { difference } from 'lodash-es'
 import { TagGetRes } from 'joplin-api/dist/modal/TagGetRes'
 import { HandlerService } from './HandlerService'
-import { i18n } from '../util/I18n'
 import { TagUseService } from './TagUseService'
 import { sortBy } from '@liuli-util/array'
+import { i18n } from '../constants/i18n'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
