@@ -16,7 +16,7 @@
     "preset": "ts-jest"
   },
   "dependencies": {
-    "@liuli-util/i18next-util": "*",
+    "@liuli-util/i18next-util": "^0.1.0",
     "@liuli-util/async": "^3.2.3",
     "@liuli-util/tree": "^3.2.3",
     "@liuli-util/dom": "^3.2.3",

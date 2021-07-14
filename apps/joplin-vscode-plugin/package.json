@@ -437,6 +437,7 @@
     "vuepress": "^1.8.2"
   },
   "dependencies": {
+    "@liuli-util/i18next-util": "^0.1.0",
     "@liuli-util/array": "^3.2.2",
     "@liuli-util/async": "^3.2.2",
     "@liuli-util/object": "^3.2.2",
