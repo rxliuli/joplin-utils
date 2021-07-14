@@ -42,14 +42,14 @@ The supported frameworks have examples in the examples directory, which you can 
 
 public
 
-| configuration       | type                    | description                                            |
-| ------------------- | ----------------------- | ------------------------------------------------------ |
-| `type`              | `hexo/vuepress/docsify` | type of integrated blog                                |
-| `rootPath`          | `string`                | hexo/vuepress directory, which should normally be `. ` |
-| `joplinProfilePath` | `string`                | joplin personal folder                                 |
-| `token`             | `string`                | joplin web clipper's token                             |
-| `port`              | `number`                | the port of the joplin web clipper, usually `41184`    |
-| `tag`               | `string`                | joplin's blog tag                                      |
+| configuration       | type                    | description                                           |
+| ------------------- | ----------------------- | ----------------------------------------------------- |
+| `type`              | `hexo/vuepress/docsify` | type of integrated blog                               |
+| `rootPath`          | `string`                | hexo/vuepress directory, which should normally be `.` |
+| `joplinProfilePath` | `string`                | joplin personal folder                                |
+| `token`             | `string`                | joplin web clipper's token                            |
+| `port`              | `number`                | the port of the joplin web clipper, usually `41184`   |
+| `tag`               | `string`                | joplin's blog tag                                     |
 
 hexo
 
