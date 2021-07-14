@@ -3,7 +3,7 @@ import { Button, Card, Form, Input, message } from 'antd'
 import { Config } from 'joplin-api'
 import { useLocalStorage } from 'react-use'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
-import { i18n } from '../../common/I18n'
+import { i18n } from '../../constants/i18n'
 
 type SettingsPageProps = {}
 

@@ -1,30 +1,18 @@
 import * as React from 'react'
-import {
-  Button,
-  Card,
-  Form,
-  Input,
-  List,
-  message,
-  Space,
-  Typography,
-} from 'antd'
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
+import { Button, Card, Input, List, message, Space, Typography } from 'antd'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
-import { useAsyncFn, useMount } from 'react-use'
+import { useAsyncFn } from 'react-use'
 import {
   ConvertExternalLinkService,
   MappingContentLink,
   NoteModel,
 } from './service/ConvertExternalLinkService'
 import css from './ConvertExternalLinkPage.module.css'
-import { noteActionApi } from 'joplin-api'
 import { JoplinMarkdownUtil } from 'joplin-blog/src/util/JoplinMarkdownUtil'
 import produce from 'immer'
-import { wait } from '@liuli-util/async'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
-import { DOMEditorUtil } from '../../common/DOMEditorUtil'
-import { i18n } from '../../common/I18n'
+import { i18n } from '../../constants/i18n'
 
 type ConvertExternalLinkPageProps = {}
 

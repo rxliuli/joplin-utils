@@ -2421,10 +2421,28 @@
   resolved "https://registry.yarnpkg.com/@liuli-util/async/-/async-3.2.3.tgz#322fe7122bbcdf1743ad373277b3e14c2de8e9df"
   integrity sha512-yE5pNScslAWktGyFUOlzY9U4n0LCyeBLUrDKQs/FKGQJXv+lEug7+U16LWyZEwF5hvVV9NrusgRN1w0VZOey7A==
 
-"@liuli-util/cli@^3.4.0", "@liuli-util/cli@^3.7.0":
+"@liuli-util/cli@^3.4.0":
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/@liuli-util/cli/-/cli-3.7.0.tgz#049b64c40c20041215ff831dcc6251e9e02a1b00"
   integrity sha512-saLolgF+tStQG9eo/zW72idAiEO94aHzAFjMkibq8v5wwI6IO7A7y+BXKutZ45h2f4+X4Dpsq7bXVn2Tfa1aGQ==
+  dependencies:
+    "@rollup/plugin-json" "^4.1.0"
+    builtin-modules "^3.2.0"
+    commander "^7.0.0"
+    fs-extra "^10.0.0"
+    inquirer "^8.1.0"
+    lodash "^4.17.21"
+    rollup "^2.51.2"
+    rollup-plugin-add-shebang "^0.3.1"
+    rollup-plugin-auto-external "^2.0.0"
+    rollup-plugin-node-externals "^2.2.0"
+    rollup-plugin-terser "^7.0.2"
+    rollup-plugin-typescript2 "^0.30.0"
+
+"@liuli-util/cli@^3.7.1":
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/@liuli-util/cli/-/cli-3.7.1.tgz#dc53db86137779c0824b9d860026b47cb2447c61"
+  integrity sha512-1kAPnSjTya5P5hMIr/ECNA37kRik6yZZvk36/IDX+KdJnhMNBYtCD8p21Gihs5ckkvJBXBgd0MQMeAKBRsfRig==
   dependencies:
     "@rollup/plugin-json" "^4.1.0"
     builtin-modules "^3.2.0"
@@ -2472,14 +2490,6 @@
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@liuli-util/prettier-standard-config/-/prettier-standard-config-0.1.0.tgz#d51cf2e788c03fccc19cce6f7da75262ee65c0d2"
   integrity sha512-y0dbvdhqHtwo77kwFukn7HVdaojGgimmDM+QP3JB3SlLjdwePb7wLjr9UKqk3eNMFa3v5oIFGzEgK9L2mK7dWw==
-
-"@liuli-util/shell@^0.1.1":
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@liuli-util/shell/-/shell-0.1.1.tgz#ea7fdd58155b0dbe3f4583fab074ec5dfba3f8cf"
-  integrity sha512-IMiYPpskigNXh2uvO4oc1/eNA6qPx7OZTlaSu8zpESHjfRgOpmD0+Dgc9ZL7CuGrs5MKt7E6WZgbE7Ej9BxRrQ==
-  dependencies:
-    commander "^7.0.0"
-    fs-extra "^10.0.0"
 
 "@liuli-util/shell@^0.2.0":
   version "0.2.0"

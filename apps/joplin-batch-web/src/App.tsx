@@ -6,15 +6,17 @@ import { Layout, Menu } from 'antd'
 import css from './App.module.css'
 import { Link } from 'react-router-dom'
 import { useMount } from 'react-use'
-import { i18n } from './common/I18n'
 import { getLanguage } from './common/getLanguage'
+import { i18n } from './constants/i18n'
+import zhCN from './i18n/zhCN.json'
+import en from './i18n/en.json'
 
 type AppProps = {}
 
 export const App: React.FC<AppProps> = () => {
   const [list, setList] = useState<RouteMenuConfig[]>([])
   useMount(async () => {
-    await i18n.load(getLanguage())
+    await i18n.init({ en, zhCN }, getLanguage())
     setList(routeList())
   })
   return (

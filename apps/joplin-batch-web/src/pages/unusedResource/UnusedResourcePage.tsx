@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Button, Card, Image, List, message, Space, SpinProps } from 'antd'
 import { useState } from 'react'
+import { Button, Card, Image, List, message, Space, SpinProps } from 'antd'
 import { UnusedResourceService } from './service/UnusedResourceService'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { useAsyncFn } from 'react-use'
@@ -8,8 +8,8 @@ import { Config } from 'joplin-api'
 import { downloadUrl, proxyStorage } from '@liuli-util/dom'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import produce from 'immer'
-import { i18n } from '../../common/I18n'
-import { AsyncArray, asyncLimiting } from '@liuli-util/async'
+import { AsyncArray } from '@liuli-util/async'
+import { i18n } from '../../constants/i18n'
 
 type UnusedResourcePageProps = {}
 

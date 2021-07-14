@@ -1,6 +1,6 @@
 import { RouteConfig } from 'react-router-config'
 import { lazy } from 'react'
-import { i18n } from '../../common/I18n'
+import { i18n } from '../i18n'
 
 export type RouteMenuConfig = RouteConfig & { title: string }
 export const routeList = () =>

@@ -1,11 +1,11 @@
 import * as React from 'react'
-import { Button, Card, List, message, Space, Typography } from 'antd'
+import { useState } from 'react'
+import { Button, Card, List, Typography } from 'antd'
 import { useAsyncFn } from 'react-use'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { CheckParentNotebookService } from './service/CheckParentNotebookService'
-import { useState } from 'react'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
-import { i18n } from '../../common/I18n'
+import { i18n } from '../../constants/i18n'
 
 type CheckParentNotebookPageProps = {}
 
