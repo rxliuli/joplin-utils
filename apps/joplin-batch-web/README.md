@@ -1,4 +1,4 @@
-# joplin-batch-web
+\# joplin-batch-web
 
 ## Overview
 
@@ -20,6 +20,8 @@ Handles some batch operations that are not supported by Joplin itself, and prese
 4. Navigate to the relevant function page
 
 ![guide](https://github.com/rxliuli/joplin-utils/raw/master/apps/joplin-batch-web/docs/images/guide.gif)
+
+> If you want to participate in the development or run locally, you can refer to [Participate in the project](./docs/dev.md)
 
 ## FAQ
 
