@@ -5,11 +5,11 @@
 CLI tool to publish Joplin notes as a static website, currently supports both blog/wiki forms, framework supports hexo/vuepress/docsify.
 
 - blog
-  - [hexo](https://rxliuli.com/joplin-blog/blog/hexo/)
-  - [vuepress](https://rxliuli.com/joplin-blog/blog/vuepress/)
+  - [hexo](https://joplin-utils.rxliuli.com/blog/hexo/)
+  - [vuepress](https://joplin-utils.rxliuli.com/blog/vuepress/)
 - wiki
-  - [vuepress](https://rxliuli.com/joplin-blog/wiki/vuepress/p/947da6a714854075af6e07835de4a719.html)
-  - [docsify](https://rxliuli.com/joplin-blog/wiki/docsify/#/p/947da6a714854075af6e07835de4a719)
+  - [vuepress](https://joplin-utils.rxliuli.com/wiki/vuepress/)
+  - [docsify](https://joplin-utils.rxliuli.com/wiki/docsify/)
 
 ![blog demo](https://raw.githubusercontent.com/rxliuli/joplin-utils/master/apps/joplin-blog/docs/blog.png)
 ![wiki demo](https://raw.githubusercontent.com/rxliuli/joplin-utils/master/apps/joplin-blog/docs/wiki.png)
