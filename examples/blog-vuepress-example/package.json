@@ -6,7 +6,7 @@
     "dev": "vuepress dev blog",
     "build": "vuepress build blog",
     "gen": "joplin-blog",
-    "deploy": "gh-pages -d blog/.vuepress/dist -e blog/vuepress -a"
+    "docs:deploy": "gh-pages -d blog/.vuepress/dist -e blog/vuepress -a"
   },
   "devDependencies": {
     "@vuepress/theme-blog": "^2.3.3",

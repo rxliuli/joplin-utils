@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "gen": "joplin-blog wiki",
-    "deploy": "gh-pages -d docs -e wiki/docsify -a"
+    "docs:deploy": "gh-pages -d docs -e wiki/docsify -a"
   },
   "devDependencies": {
     "joplin-blog": "^0.4.0",

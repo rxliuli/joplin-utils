@@ -6,7 +6,7 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "gen": "joplin-blog wiki",
-    "deploy": "gh-pages -d docs/.vuepress/dist -e wiki/vuepress -a"
+    "docs:deploy": "gh-pages -d docs/.vuepress/dist -e wiki/vuepress -a"
   },
   "devDependencies": {
     "vuepress": "^1.8.2",
