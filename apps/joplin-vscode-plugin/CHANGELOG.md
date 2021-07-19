@@ -2,19 +2,19 @@
 
 ## 0.5.2
 
-- chore(joplin-vscode-plugin): 删除不需要的 markdown 目录
-- refactor(joplin-vscode-plugin): 在 joplin-vscode-plugin 项目中实用 @liuli-util/i18next-util
-- docs(joplin-vscode-plugin): 修复错误的引用链接
-- chore(joplin-vscode-plugin): 使用 rollup 替代 liuli-cli 打包，因为 rollup 合并了辅助函数 defineConfig 的需求
-- docs(joplin-vscode-plugin): 更新链接笔记的 gif，包含跳转的演示
-- docs(joplin-vscode-plugin): 修复 gif 链接错误
-- fix(joplin-vscode-plugin): 修复 rollup.config.ts 的一个类型不兼容错误
-- docs(joplin-vscode-plugin): 添加复制笔记链接的 gif 演示
-- chore(joplin-vscode-plugin): 修改打包配置，为支持动态导入使用 dir 而非 file 出口选项，删除 esbuild 打包配置
-- docs(joplin-vscode-plugin): 更新文档中的引用和图片链接错误
-- feat(joplin-vscode-plugin): 在粘贴时添加更友好的提示信息
-- build(joplin-vscode-plugin): 由于 rollup 无法捆绑 monorepo 的依赖项，所以添加使用 esbuild 进行捆绑的脚本
-- feat(joplin-vscode-plugin): 修改 registerCommand 添加错误捕获，并将之添加到输出面板中便于用户反馈问题
+- chore(joplin-vscode-plugin): remove unneeded markdown directories
+- refactor(joplin-vscode-plugin): utility @liuli-util/i18next-util in the joplin-vscode-plugin project
+- docs(joplin-vscode-plugin): fix wrong reference links
+- chore(joplin-vscode-plugin): use rollup instead of liuli-cli for packaging, since rollup merges the need for defineConfig helper function
+- docs(joplin-vscode-plugin): update the linked notes gif to include a jumping demo
+- docs(joplin-vscode-plugin): fix gif link error
+- fix(joplin-vscode-plugin): fix a type incompatibility bug in rollup.config.ts
+- docs(joplin-vscode-plugin): add a gif demo for copying notes links
+- chore(joplin-vscode-plugin): change package configuration to use dir instead of file export option to support dynamic import, remove esbuild package configuration
+- docs(joplin-vscode-plugin): update references and image linking errors in documentation
+- feat(joplin-vscode-plugin): add a more friendly message when pasting
+- build(joplin-vscode-plugin): add script for bundling with esbuild since rollup cannot bundle monorepo dependencies
+- feat(joplin-vscode-plugin): modify registerCommand to add error catching and add it to the output panel for user feedback
 
 ## 0.5.1
 
