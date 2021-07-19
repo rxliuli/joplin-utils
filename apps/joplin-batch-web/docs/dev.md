@@ -21,7 +21,7 @@ There are two main areas
 ## Start the project
 
 1. Run the `yarn setup` command in the project root directory
-2. Navigate to _cd apps/joplin-batch-web_. 3.
+2. Navigate to `cd apps/joplin-batch-web`
 3. Run the `yarn dev` command to start the local development environment
 
 ## Project structure
