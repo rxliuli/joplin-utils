@@ -1,5 +1,21 @@
 # Release Notes
 
+## 0.5.2
+
+- chore(joplin-vscode-plugin): 删除不需要的 markdown 目录
+- refactor(joplin-vscode-plugin): 在 joplin-vscode-plugin 项目中实用 @liuli-util/i18next-util
+- docs(joplin-vscode-plugin): 修复错误的引用链接
+- chore(joplin-vscode-plugin): 使用 rollup 替代 liuli-cli 打包，因为 rollup 合并了辅助函数 defineConfig 的需求
+- docs(joplin-vscode-plugin): 更新链接笔记的 gif，包含跳转的演示
+- docs(joplin-vscode-plugin): 修复 gif 链接错误
+- fix(joplin-vscode-plugin): 修复 rollup.config.ts 的一个类型不兼容错误
+- docs(joplin-vscode-plugin): 添加复制笔记链接的 gif 演示
+- chore(joplin-vscode-plugin): 修改打包配置，为支持动态导入使用 dir 而非 file 出口选项，删除 esbuild 打包配置
+- docs(joplin-vscode-plugin): 更新文档中的引用和图片链接错误
+- feat(joplin-vscode-plugin): 在粘贴时添加更友好的提示信息
+- build(joplin-vscode-plugin): 由于 rollup 无法捆绑 monorepo 的依赖项，所以添加使用 esbuild 进行捆绑的脚本
+- feat(joplin-vscode-plugin): 修改 registerCommand 添加错误捕获，并将之添加到输出面板中便于用户反馈问题
+
 ## 0.5.1
 
 - docs: I want to migrate to a new warehouse, update the link in the document
@@ -99,8 +115,8 @@ Added [documentation for recommended vscode extensions](https://rxliuli.com/jopl
 ## 0.1.10
 
 - Support clicking joplin-related links in the editor, including
-    - Attached resource files, use the system default program to open
-    - Quote notes, use Joplin to open in a new tab
+  - Attached resource files, use the system default program to open
+  - Quote notes, use Joplin to open in a new tab
 - Fixed the problem that Joplin attachment resources could not be opened in markdown preview
 
 ## 0.1.7
