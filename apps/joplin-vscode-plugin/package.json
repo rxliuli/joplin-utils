@@ -13,7 +13,7 @@
     "build": "rollup -c",
     "dev": "rollup -cw",
     "pack": "yarn build && vsce package --yarn",
-    "gen-i18n": "i18next-dts-gen --input src/i18n",
+    "gen-i18n": "i18next-dts-gen --dirs src/i18n",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:deploy": "yarn docs:build && gh-pages -d docs/.vuepress/dist -e /joplin-vscode-plugin -a"
@@ -432,12 +432,12 @@
     "typescript": "^4.2.4",
     "utility-types": "^3.10.0",
     "vscode-nls-dev": "^3.3.2",
-    "@liuli-util/i18next-dts-gen": "^0.2.0",
+    "@liuli-util/i18next-dts-gen": "^0.3.0",
     "vscode-test": "^1.4.1",
     "vuepress": "^1.8.2"
   },
   "dependencies": {
-    "@liuli-util/i18next-util": "^0.1.0",
+    "@liuli-util/i18next-util": "^0.2.0",
     "@liuli-util/array": "^3.2.2",
     "@liuli-util/async": "^3.2.2",
     "@liuli-util/object": "^3.2.2",

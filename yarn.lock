@@ -2672,10 +2672,10 @@
   dependencies:
     "@liuli-util/array" "^3.2.3"
 
-"@liuli-util/i18next-dts-gen@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@liuli-util/i18next-dts-gen/-/i18next-dts-gen-0.2.0.tgz#1d8f27d216242b9f68c4358917f609f430dbaadc"
-  integrity sha512-cXXv+yK0w1UKU3C2pwz2Xye+FE+w3QuSqPUM/PGz9JoKjRo2bJVi/6D9hxQEQAFsEGLB5BRi4SMmAsRrOQTMdA==
+"@liuli-util/i18next-dts-gen@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@liuli-util/i18next-dts-gen/-/i18next-dts-gen-0.3.0.tgz#d9fe41c03eac306767ae0c7862749cf29337b65f"
+  integrity sha512-mdV+BjPjSgpS3ao2dDCJqx+G8+nfsOHo2U7yuNsPI97j68+EI5e/YRb2Kx5j/znv6vKq0KjUMZvrIINBdzmmfw==
   dependencies:
     "@liuli-util/array" "^3.2.3"
     "@liuli-util/async" "^3.2.3"
@@ -2689,10 +2689,10 @@
     os-locale "^5.0.0"
     ts-morph "^11.0.0"
 
-"@liuli-util/i18next-util@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@liuli-util/i18next-util/-/i18next-util-0.1.0.tgz#b25f9deee7159043d93701a5e70fb215a3c2eaec"
-  integrity sha512-L/4N725yL03Ugo61L/BtkrfrqHUOhy47I1cSCaOG2CZ26sBWlSDbyrutfenoZKvMiz0/+6lKGQMRrWvUJTSx2g==
+"@liuli-util/i18next-util@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@liuli-util/i18next-util/-/i18next-util-0.2.0.tgz#69a202b3a6b8d29e425bedef6cbc5007c38bad7e"
+  integrity sha512-A7kuUfPllg+KiUWTK8v5odPO/YJtClEk/GuUgPPdEuKPLaTHcKmcQnYWhpAyFrsRpY+UPBrkvyT6Gj2ssnCzUA==
 
 "@liuli-util/object@^3.2.0", "@liuli-util/object@^3.2.2", "@liuli-util/object@^3.2.3":
   version "3.2.3"

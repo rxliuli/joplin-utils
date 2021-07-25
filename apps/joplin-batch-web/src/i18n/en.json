@@ -1,60 +1,30 @@
 {
-  "home": {
-    "title": "Home"
-  },
-  "settings": {
-    "title": "Security Settings",
-    "form": {
-      "token": "Authorization token",
-      "port": "Port"
-    },
-    "action": {
-      "submit": "Submit"
-    },
-    "msg": {
-      "success": "Setup was successful",
-      "error": "Unable to access joplin web clipper api"
-    }
-  },
-  "unusedResource": {
-    "title": "Check for unused resources",
-    "listEmptyText": "No unused attachment resources were found",
-    "action": {
-      "removeAll": "Delete all",
-      "check": "Check",
-      "remove": "Remove",
-      "download": "Download"
-    },
-    "msg": {
-      "process": "[{{rate}}/{{all}}] is checking for resources {{title}}",
-      "error": "Please check joplin token/port configuration"
-    }
-  },
-  "notFoundResource": {
-    "title": "Check notes for references to a failed resource",
-    "listEmptyText": "No reference to a failed resource was found",
-    "unknownFileName": "Unknown file name {{id}}",
-    "action": {
-      "check": "Check",
-      "open": "Open"
-    }
-  },
-  "convertExternalLink": {
-    "title": "Convert External Link to Internal Reference Notes",
-    "action": {
-      "convert": "Convert",
-      "open": "Open"
-    },
-    "msg": {
-      "success": "Conversion complete"
-    }
-  },
-  "checkParentNotebook": {
-    "title": "Check notes without parent directory",
-    "listEmptyText": "No abnormal notes found in the parent directory",
-    "action": {
-      "check": "Check",
-      "open": "Open"
-    }
-  }
+  "home.title": "Home",
+  "settings.title": "Security Settings",
+  "settings.form.token": "Authorization token",
+  "settings.form.port": "Port",
+  "settings.action.submit": "Submit",
+  "settings.msg.success": "Setup was successful",
+  "settings.msg.error": "Unable to access joplin web clipper api",
+  "unusedResource.title": "Check for unused resources",
+  "unusedResource.listEmptyText": "No unused attachment resources were found",
+  "unusedResource.action.removeAll": "Delete all",
+  "unusedResource.action.check": "Check",
+  "unusedResource.action.remove": "Remove",
+  "unusedResource.action.download": "Download",
+  "unusedResource.msg.process": "[{{rate}}/{{all}}] is checking for resources {{title}}",
+  "unusedResource.msg.error": "Please check joplin token/port configuration",
+  "notFoundResource.title": "Check notes for references to a failed resource",
+  "notFoundResource.listEmptyText": "No reference to a failed resource was found",
+  "notFoundResource.unknownFileName": "Unknown file name {{id}}",
+  "notFoundResource.action.check": "Check",
+  "notFoundResource.action.open": "Open",
+  "convertExternalLink.title": "Convert External Link to Internal Reference Notes",
+  "convertExternalLink.action.convert": "Convert",
+  "convertExternalLink.action.open": "Open",
+  "convertExternalLink.msg.success": "Conversion complete",
+  "checkParentNotebook.title": "Check notes without parent directory",
+  "checkParentNotebook.listEmptyText": "No abnormal notes found in the parent directory",
+  "checkParentNotebook.action.check": "Check",
+  "checkParentNotebook.action.open": "Open"
 }

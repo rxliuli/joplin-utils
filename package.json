@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "npx simple-git-hooks",
     "setup": "yarn && yarn runstream setup && yarn",
-    "clean": "lerna run clean --parallel && lerna clean -y && rimraf node_modules",
+    "clean": "lerna clean -y && lerna exec -- rimraf dist && rimraf node_modules",
     "runstream": "lerna run --include-dependencies --stream",
     "build": "yarn runstream build",
     "docs:deploy": "gh-pages -d docs"

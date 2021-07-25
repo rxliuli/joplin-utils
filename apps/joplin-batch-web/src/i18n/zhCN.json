@@ -1,60 +1,30 @@
 {
-  "home": {
-    "title": "首页"
-  },
-  "settings": {
-    "title": "安全设置",
-    "form": {
-      "token": "授权令牌",
-      "port": "端口"
-    },
-    "action": {
-      "submit": "提交"
-    },
-    "msg": {
-      "success": "设置成功",
-      "error": "无法访问 joplin web clipper api"
-    }
-  },
-  "unusedResource": {
-    "title": "检查未使用的资源",
-    "listEmptyText": "没有找到任何未使用的附件资源",
-    "action": {
-      "removeAll": "删除全部",
-      "check": "检查",
-      "remove": "删除",
-      "download": "下载"
-    },
-    "msg": {
-      "process": "[{{rate}}/{{all}}] 正在检查资源 {{title}}",
-      "error": "请检查 joplin token/port 配置"
-    }
-  },
-  "notFoundResource": {
-    "title": "检查笔记中引用失效的资源",
-    "listEmptyText": "没有找到任何引用失效的资源",
-    "unknownFileName": "未知文件名 {{id}}",
-    "action": {
-      "check": "检查",
-      "open": "打开"
-    }
-  },
-  "convertExternalLink": {
-    "title": "转换外部链接为内部引用笔记",
-    "action": {
-      "convert": "转换",
-      "open": "打开"
-    },
-    "msg": {
-      "success": "转换完成"
-    }
-  },
-  "checkParentNotebook": {
-    "title": "检查没有父级目录的笔记",
-    "listEmptyText": "没有检查到父目录异常的笔记",
-    "action": {
-      "check": "检查",
-      "remove": "删除"
-    }
-  }
+  "home.title": "首页",
+  "settings.title": "安全设置",
+  "settings.form.token": "授权令牌",
+  "settings.form.port": "端口",
+  "settings.action.submit": "提交",
+  "settings.msg.success": "设置成功",
+  "settings.msg.error": "无法访问 joplin web clipper api",
+  "unusedResource.title": "检查未使用的资源",
+  "unusedResource.listEmptyText": "没有找到任何未使用的附件资源",
+  "unusedResource.action.removeAll": "删除全部",
+  "unusedResource.action.check": "检查",
+  "unusedResource.action.remove": "删除",
+  "unusedResource.action.download": "下载",
+  "unusedResource.msg.process": "[{{rate}}/{{all}}] 正在检查资源 {{title}}",
+  "unusedResource.msg.error": "请检查 joplin token/port 配置",
+  "notFoundResource.title": "检查笔记中引用失效的资源",
+  "notFoundResource.listEmptyText": "没有找到任何引用失效的资源",
+  "notFoundResource.unknownFileName": "未知文件名 {{id}}",
+  "notFoundResource.action.check": "检查",
+  "notFoundResource.action.open": "打开",
+  "convertExternalLink.title": "转换外部链接为内部引用笔记",
+  "convertExternalLink.action.convert": "转换",
+  "convertExternalLink.action.open": "打开",
+  "convertExternalLink.msg.success": "转换完成",
+  "checkParentNotebook.title": "检查没有父级目录的笔记",
+  "checkParentNotebook.listEmptyText": "没有检查到父目录异常的笔记",
+  "checkParentNotebook.action.check": "检查",
+  "checkParentNotebook.action.remove": "删除"
 }

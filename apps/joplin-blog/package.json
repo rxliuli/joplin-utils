@@ -14,7 +14,7 @@
     "build": "rm dist && rollup -c",
     "dev": "rollup -cw",
     "pub": "yarn build && lerna clean -y && yarn",
-    "gen-i18n": "i18next-dts-gen --input src/i18n"
+    "gen-i18n": "i18next-dts-gen --dirs src/i18n"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -23,7 +23,7 @@
     "preset": "ts-jest"
   },
   "devDependencies": {
-    "@liuli-util/i18next-util": "^0.1.0",
+    "@liuli-util/i18next-util": "^0.2.0",
     "@rollup/plugin-json": "^4.1.0",
     "rollup": "^2.52.2",
     "rollup-plugin-typescript2": "^0.30.0",
@@ -42,7 +42,6 @@
     "@types/prettier": "^2.2.3",
     "@types/shelljs": "^0.8.8",
     "@types/unist": "^2.0.3",
-    "@liuli-util/i18next-dts-gen": "^0.2.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
@@ -50,6 +49,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "@liuli-util/i18next-dts-gen": "^0.3.0",
     "comlink": "^4.3.1",
     "@liuli-util/array": "^3.2.2",
     "@liuli-util/async": "^3.2.3",
