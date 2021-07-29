@@ -103,7 +103,7 @@ export class BlogCommanderProgram {
     spinner.stopAndPersist()
 
     spinner.start(i18n.t('wiki.Start frame initialization action'))
-    await app.handler.init()
+    await app.handler.init?.()
     spinner.stopAndPersist({
       text: i18n.t('wiki.End frame initialization action'),
     })

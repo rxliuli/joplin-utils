@@ -5,6 +5,7 @@ import { config, noteApi, PageUtil, searchApi, TypeEnum } from 'joplin-api'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { uniqueBy } from '@liuli-util/array'
 import { PromiseUtil } from '../util/PromiseUtil'
+import { copyFile, mkdirp, writeFile } from 'fs-extra'
 
 export interface BaseIntegrated {
   /**
@@ -19,19 +20,16 @@ export interface BaseIntegrated {
    * 初始化操作
    * 例如清空自动生成的目录
    */
-  init(): Promise<void>
+  init?(): Promise<void>
 
   /**
-   * 根据框架将笔记写入指定位置
-   * @param note
+   * 笔记写入的相对位置
    */
-  write(note: CommonNote & { text: string }): Promise<void>
-
+  readonly notePath: string
   /**
-   * 复制资源到笔记指定位置
-   * @param resourcePath
+   * 复制资源的相对位置
    */
-  copy(resourcePath: string): Promise<void>
+  readonly resourcePath: string
 }
 
 export interface ApplicationConfig {
@@ -118,7 +116,11 @@ export class Application {
         events.readNoteAttachmentsAndTags,
       )
       //初始化
-      await this.handler.init()
+      await Promise.all([
+        mkdirp(this.handler.notePath),
+        mkdirp(this.handler.resourcePath),
+      ])
+      await this.handler.init?.()
       //解析并写入笔记
       const replaceContentNoteList = await this.parseAndWriteNotes(noteList).on(
         'process',
@@ -155,8 +157,9 @@ export class Application {
             title: resource.title,
           })
           const fileName = resource.id + '.' + resource.file_extension
-          await this.handler.copy(
+          await copyFile(
             path.resolve(this.config.joplinProfilePath, 'resources', fileName),
+            path.resolve(this.handler.resourcePath, fileName),
           )
         }, 10),
       )
@@ -189,7 +192,10 @@ export class Application {
       await AsyncArray.forEach(noteList, async (item) => {
         i++
         events.process({ rate: i, all: noteList.length, title: item.title })
-        await this.handler.write(item)
+        await writeFile(
+          path.resolve(this.handler.notePath, item.id + '.md'),
+          item.text,
+        )
       })
     })
   }

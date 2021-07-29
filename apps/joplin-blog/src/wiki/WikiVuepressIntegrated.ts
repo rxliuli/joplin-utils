@@ -1,6 +1,5 @@
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { BaseIntegrated } from '../blog/Application'
-import { ResourceWriter } from '../blog/ResourceWriter'
 import path from 'path'
 import { mkdirp, writeJson } from 'fs-extra'
 import { treeMap } from '@liuli-util/tree'
@@ -18,12 +17,10 @@ export class WikiVuepressIntegrated implements BaseIntegrated {
   constructor(private readonly config: WikiVuepressIntegratedConfig) {}
 
   async init() {
-    await this.resourceWriter.clean()
     const sidebarConfigPath = path.resolve(
       this.config.rootPath,
       '.vuepress/sidebar.json',
     )
-    await mkdirp(path.resolve(this.config.rootPath, 'p/resource'))
     await mkdirp(path.dirname(sidebarConfigPath))
     await writeJson(sidebarConfigPath, await this.buildSidebar(), {
       spaces: 2,
@@ -58,11 +55,6 @@ export class WikiVuepressIntegrated implements BaseIntegrated {
     })
   }
 
-  private readonly resourceWriter = new ResourceWriter({
-    postPath: path.resolve(this.config.rootPath, 'p'),
-    resourcePath: path.resolve(this.config.rootPath, 'p/resource'),
-  })
-
-  copy = this.resourceWriter.copy.bind(this.resourceWriter)
-  write = this.resourceWriter.write.bind(this.resourceWriter)
+  notePath = path.resolve(this.config.rootPath, 'p')
+  resourcePath = path.resolve(this.config.rootPath, 'p/resource')
 }

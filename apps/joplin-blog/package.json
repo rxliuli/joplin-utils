@@ -9,7 +9,7 @@
     "joplin-blog": "dist/cjs/bin.js"
   },
   "scripts": {
-    "setup": "yarn gen-i18n",
+    "setup": "yarn gen-i18n && yarn pub",
     "start": "ts-node src/bin.ts -h",
     "build": "rm dist && rollup -c",
     "dev": "rollup -cw",

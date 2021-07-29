@@ -18,8 +18,6 @@ import ora from 'ora'
 import { Command } from 'commander'
 import { LanguageEnum } from '@liuli-util/i18next-util'
 import { i18n } from '../constants/i18n'
-import zhCN from '../i18n/zhCN.json'
-import en from '../i18n/en.json'
 import { getLanguage } from '../util/getLanguage'
 
 type JoplinBlogConfig = ApplicationConfig & {
@@ -102,7 +100,7 @@ export class BlogCommanderProgram {
     spinner.stopAndPersist()
 
     spinner.start(i18n.t('blog.Start frame initialization action'))
-    await app.handler.init()
+    await app.handler.init?.()
     spinner.stopAndPersist({
       text: i18n.t('blog.End frame initialization action'),
     })

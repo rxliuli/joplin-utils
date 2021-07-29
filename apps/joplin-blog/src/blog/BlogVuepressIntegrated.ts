@@ -2,9 +2,7 @@ import { BaseIntegrated } from './Application'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import path from 'path'
 import { DateTime } from 'luxon'
-import { ResourceWriter } from './ResourceWriter'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
-import { mkdirp } from 'fs-extra'
 import { convertJoplinNote } from './JoplinNoteHandler.worker'
 
 class BlogVuepressSingleNoteHandler {
@@ -35,11 +33,6 @@ export interface BlogVuepressIntegratedConfig {
 export class BlogVuepressIntegrated implements BaseIntegrated {
   constructor(private config: BlogVuepressIntegratedConfig) {}
 
-  async init() {
-    await this.resourceWriter.clean()
-    await mkdirp(path.resolve(this.config.rootPath, '_posts/resource'))
-  }
-
   async parse(
     note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
   ) {
@@ -52,11 +45,6 @@ export class BlogVuepressIntegrated implements BaseIntegrated {
     )
   }
 
-  private readonly resourceWriter = new ResourceWriter({
-    postPath: path.resolve(this.config.rootPath, '_posts'),
-    resourcePath: path.resolve(this.config.rootPath, '_posts/resource'),
-  })
-
-  copy = this.resourceWriter.copy.bind(this.resourceWriter)
-  write = this.resourceWriter.write.bind(this.resourceWriter)
+  notePath = path.resolve(this.config.rootPath, '_posts')
+  resourcePath = path.resolve(this.config.rootPath, '_posts/resource')
 }

@@ -1,7 +1,6 @@
 import { BaseIntegrated } from './Application'
 import path from 'path'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
-import { ResourceWriter } from './ResourceWriter'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { convertJoplinNote } from './JoplinNoteHandler.worker'
 
@@ -36,10 +35,6 @@ export interface BlogHexoIntegratedConfig {
 export class BlogHexoIntegrated implements BaseIntegrated {
   constructor(private config: BlogHexoIntegratedConfig) {}
 
-  async init() {
-    await this.resourceWriter.clean()
-  }
-
   async parse(
     note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
   ) {
@@ -52,11 +47,6 @@ export class BlogHexoIntegrated implements BaseIntegrated {
     )
   }
 
-  private readonly resourceWriter = new ResourceWriter({
-    postPath: path.resolve(this.config.rootPath, `source/_posts/`),
-    resourcePath: path.resolve(this.config.rootPath, 'source/resource'),
-  })
-
-  copy = this.resourceWriter.copy.bind(this.resourceWriter)
-  write = this.resourceWriter.write.bind(this.resourceWriter)
+  notePath = path.resolve(this.config.rootPath, `source/_posts/`)
+  resourcePath = path.resolve(this.config.rootPath, 'source/resource')
 }

@@ -1,6 +1,5 @@
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { BaseIntegrated } from '../blog/Application'
-import { ResourceWriter } from '../blog/ResourceWriter'
 import path from 'path'
 import { writeFile } from 'fs-extra'
 import { ListNode } from '../util/JoplinMarkdownUtil'
@@ -17,7 +16,6 @@ export class WikiDocsifyIntegrated implements BaseIntegrated {
   constructor(private readonly config: WikiDocsifyIntegratedConfig) {}
 
   async init() {
-    await this.resourceWriter.clean()
     await writeFile(
       path.resolve(this.config.rootPath, '_sidebar.md'),
       await this.buildSidebar(),
@@ -38,13 +36,8 @@ export class WikiDocsifyIntegrated implements BaseIntegrated {
     })
   }
 
-  private readonly resourceWriter = new ResourceWriter({
-    postPath: path.resolve(this.config.rootPath, `p/`),
-    resourcePath: path.resolve(this.config.rootPath, 'resource/'),
-  })
-
-  copy = this.resourceWriter.copy.bind(this.resourceWriter)
-  write = this.resourceWriter.write.bind(this.resourceWriter)
+  notePath = path.resolve(this.config.rootPath, `p/`)
+  resourcePath = path.resolve(this.config.rootPath, 'resource/')
 }
 
 export function buildList(
