@@ -24,7 +24,7 @@
     "@types/jest": "^26.0.23",
     "ts-jest": "^27.0.3",
     "@types/fs-extra": "^9.0.11",
-    "rollup": "^2.52.1",
+    "rollup": "^2.55.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
