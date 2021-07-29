@@ -38,7 +38,7 @@ export class BlogCommanderProgram {
         )
         break
       default:
-        throw new Error(i18n.t('blog.Unsupported blog type'))
+        throw new Error(i18n.t('blog.generate.errorType'))
     }
     return new Application(config, integrated)
   }
@@ -46,9 +46,7 @@ export class BlogCommanderProgram {
   async checkConfig(): Promise<JoplinBlogConfig | false> {
     const configPath = path.resolve('.joplin-blog.json')
     if (!(await pathExists(configPath))) {
-      console.error(
-        i18n.t("blog.Can't find configuration file _joplin-blog_json"),
-      )
+      console.error(i18n.t('common.notFoundConfig'))
       return false
     }
     return (await readJson(configPath)) as JoplinBlogConfig
@@ -68,93 +66,75 @@ export class BlogCommanderProgram {
   async gen(app: Application) {
     const checkInfo = await app.check()
     if (checkInfo !== true) {
-      console.error(i18n.t('blog.Failed to test joplin service: '), checkInfo)
+      console.error(i18n.t('common.joplinServiceError'), checkInfo)
       return
     }
     const spinner = ora({
       color: 'blue',
     })
 
-    spinner.start(i18n.t('blog.Start filtering joplin notes'))
+    spinner.start(i18n.t('common.filter.begin'))
     const arr = await app.filter()
     if (arr.length === 0) {
-      spinner.warn(i18n.t('blog.No notes to be processed')).stopAndPersist()
+      spinner.warn(i18n.t('common.filter.empty')).stopAndPersist()
       return
     }
     spinner.stopAndPersist({
-      text: i18n.t(`blog.Filter to get {{length}} notes to be processed`, {
+      text: i18n.t(`common.filter.end`, {
         length: arr.length,
       }),
     })
 
-    spinner.start(i18n.t('blog.Start reading note attachments and tags'))
+    spinner.start(i18n.t('common.readResourceAndTag.begin'))
     const allNoteList = await app
       .readNoteAttachmentsAndTags(arr)
       .on('process', (options) => {
-        spinner.text = i18n.t(
-          'blog.[{{rate}}/{{all}}] is reading note attachments and tags: {{title}}',
-          options,
-        )
+        spinner.text = i18n.t('common.readResourceAndTag.process', options)
       })
-    spinner.text = i18n.t('blog.End reading note attachments and tags')
+    spinner.text = i18n.t('common.readResourceAndTag.end')
     spinner.stopAndPersist()
 
-    spinner.start(i18n.t('blog.Start frame initialization action'))
+    spinner.start(i18n.t('common.init.begin'))
     await app.initDir()
     await app.handler.init?.()
     spinner.stopAndPersist({
-      text: i18n.t('blog.End frame initialization action'),
+      text: i18n.t('common.init.end'),
     })
 
     // noinspection DuplicatedCode
-    spinner.start(i18n.t('common.cacheBegin'))
+    spinner.start(i18n.t('common.cache.begin'))
     const { noteList, updateCache } = await app.cache(allNoteList)
     const skipCount = allNoteList.length - noteList.length
-    spinner.stopAndPersist({ text: i18n.t('common.cacheEnd', { skipCount }) })
+    spinner.stopAndPersist({ text: i18n.t('common.cache.end', { skipCount }) })
 
-    spinner.start(
-      i18n.t(
-        'blog.Start parsing the Joplin internal links and attachment resources in the notes',
-      ),
-    )
+    spinner.start(i18n.t('common.parse.begin'))
     const replaceContentNoteList = await app
       .parseAndWriteNotes(noteList)
       .on('process', (options) => {
-        spinner.text = i18n.t(
-          'blog.[{{rate}}/{{all}}] is parsing the Joplin internal links and attachment resources in the notes: {{title}}',
-          options,
-        )
+        spinner.text = i18n.t('common.parse.process', options)
       })
     spinner.stopAndPersist({
-      text: i18n.t(
-        'blog.End of parsing the Joplin internal links and attachment resources in the notes',
-      ),
+      text: i18n.t('common.parse.end'),
     })
 
-    spinner.start(i18n.t('blog.Start writing notes to a local file'))
+    spinner.start(i18n.t('common.writeNote.begin'))
     await app.writeNote(replaceContentNoteList).on('process', (options) => {
-      spinner.text = i18n.t(
-        'blog.{{rate}}/{{all}} Writing notes to local file: {{title}}',
-        options,
-      )
+      spinner.text = i18n.t('common.writeNote.process', options)
     })
     spinner.stopAndPersist({
-      text: i18n.t('blog.End writing notes to local file'),
+      text: i18n.t('common.writeNote.end'),
     })
 
-    spinner.start(i18n.t('blog.Start copying attachment resources'))
+    spinner.start(i18n.t('common.copyResource.begin'))
     await app.copyResources(noteList).on('process', (options) => {
-      spinner.text = i18n.t(
-        'blog.{{rate}}/{{all}} Copying attachment resource: {{title}}',
-        options,
-      )
+      spinner.text = i18n.t('common.copyResource.process', options)
     })
     spinner.stopAndPersist({
-      text: i18n.t('blog.End Copying Attachment Resources'),
+      text: i18n.t('common.copyResource.end'),
     })
 
     spinner.start().stopAndPersist({
-      text: i18n.t('blog.End generating blog'),
+      text: i18n.t('blog.generate.end'),
     })
     await updateCache()
   }
@@ -165,9 +145,5 @@ export class BlogCommanderProgram {
  */
 export const blogCommander = () =>
   new Command('blog')
-    .description(
-      i18n.t(
-        'blog.Generate the files needed for the blog based on the notes in Joplin',
-      ),
-    )
+    .description(i18n.t('blog.description'))
     .action(() => new BlogCommanderProgram().main())
