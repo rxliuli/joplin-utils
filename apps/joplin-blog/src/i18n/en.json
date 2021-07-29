@@ -1,4 +1,6 @@
 {
+  "common.cacheBegin": "Checking cache",
+  "common.cacheEnd": "{{skipCount}} cached notes have been skipped",
   "blog.Generate the files needed for the blog based on the notes in Joplin": "Generate the files needed for the blog based on the notes in Joplin",
   "blog.Can't find configuration file _joplin-blog_json": "Can't find configuration file .joplin-blog.json",
   "blog.Filter to get {{length}} notes to be processed": "Filter to get {{length}} notes to be processed",

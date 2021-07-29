@@ -3,9 +3,17 @@ import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import path from 'path'
 import { config, noteApi, PageUtil, searchApi, TypeEnum } from 'joplin-api'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
-import { uniqueBy } from '@liuli-util/array'
+import { diffBy, uniqueBy } from '@liuli-util/array'
 import { PromiseUtil } from '../util/PromiseUtil'
-import { copyFile, mkdirp, writeFile } from 'fs-extra'
+import {
+  copyFile,
+  mkdirp,
+  pathExists,
+  readJson,
+  remove,
+  writeFile,
+  writeJson,
+} from 'fs-extra'
 
 export interface BaseIntegrated {
   /**
@@ -104,6 +112,48 @@ export class Application {
     }
   }
 
+  /**
+   * 初始化资源目录
+   */
+  async initDir() {
+    await remove(this.handler.resourcePath)
+    await Promise.all([
+      mkdirp(this.handler.notePath),
+      mkdirp(this.handler.resourcePath),
+    ])
+  }
+
+  async cache<T extends CommonNote>(allNoteList: T[]) {
+    const cachePath = path.resolve(__dirname, '.joplin-cache.json')
+    const cacheList: CacheNote[] = (await pathExists(cachePath))
+      ? await readJson(cachePath)
+      : []
+    const { left: removeNoteList, common: existNoteList } = diffBy(
+      cacheList,
+      allNoteList,
+      (item) => item.id,
+    )
+    const existNoteIdSet = new Set(existNoteList.map((item) => item.id))
+    const { common: noChangeNoteList } = diffBy(
+      cacheList.filter((item) => existNoteIdSet.has(item.id)),
+      allNoteList.filter((item) => existNoteIdSet.has(item.id)),
+      (item) => item.updatedTime,
+    )
+    await AsyncArray.forEach(removeNoteList, async (item) => {
+      await remove(path.resolve(this.handler.notePath, item.id + '.md'))
+    })
+    const noChangeNoteIdSet = new Set(noChangeNoteList.map((item) => item.id))
+    const noteList = allNoteList.filter(
+      (item) => !noChangeNoteIdSet.has(item.id),
+    )
+    return {
+      noteList,
+      async updateCache() {
+        await writeJson(cachePath, allNoteList)
+      },
+    }
+  }
+
   gen() {
     return PromiseUtil.warpOnEvent(async (events: GeneratorEvents) => {
       await this.check()
@@ -111,16 +161,14 @@ export class Application {
       const arr = await this.filter()
       console.log(`一共有 ${arr.length} 个笔记需要处理`)
       //读取笔记附件与标签
-      const noteList = await this.readNoteAttachmentsAndTags(arr).on(
+      const allNoteList = await this.readNoteAttachmentsAndTags(arr).on(
         'process',
         events.readNoteAttachmentsAndTags,
       )
       //初始化
-      await Promise.all([
-        mkdirp(this.handler.notePath),
-        mkdirp(this.handler.resourcePath),
-      ])
+      await this.initDir()
       await this.handler.init?.()
+      const { noteList, updateCache } = await this.cache(allNoteList)
       //解析并写入笔记
       const replaceContentNoteList = await this.parseAndWriteNotes(noteList).on(
         'process',
@@ -132,6 +180,7 @@ export class Application {
       )
       //复制资源
       await this.copyResources(noteList).on('process', events.copyResources)
+      await updateCache()
     })
   }
 
@@ -230,3 +279,5 @@ export class Application {
     })
   }
 }
+
+type CacheNote = Pick<CommonNote, 'id' | 'updatedTime'>

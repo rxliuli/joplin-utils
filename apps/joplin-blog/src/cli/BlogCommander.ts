@@ -88,7 +88,7 @@ export class BlogCommanderProgram {
     })
 
     spinner.start(i18n.t('blog.Start reading note attachments and tags'))
-    const noteList = await app
+    const allNoteList = await app
       .readNoteAttachmentsAndTags(arr)
       .on('process', (options) => {
         spinner.text = i18n.t(
@@ -100,10 +100,17 @@ export class BlogCommanderProgram {
     spinner.stopAndPersist()
 
     spinner.start(i18n.t('blog.Start frame initialization action'))
+    await app.initDir()
     await app.handler.init?.()
     spinner.stopAndPersist({
       text: i18n.t('blog.End frame initialization action'),
     })
+
+    // noinspection DuplicatedCode
+    spinner.start(i18n.t('common.cacheBegin'))
+    const { noteList, updateCache } = await app.cache(allNoteList)
+    const skipCount = allNoteList.length - noteList.length
+    spinner.stopAndPersist({ text: i18n.t('common.cacheEnd', { skipCount }) })
 
     spinner.start(
       i18n.t(
@@ -149,6 +156,7 @@ export class BlogCommanderProgram {
     spinner.start().stopAndPersist({
       text: i18n.t('blog.End generating blog'),
     })
+    await updateCache()
   }
 }
 

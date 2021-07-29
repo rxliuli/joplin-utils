@@ -1,4 +1,6 @@
 {
+  "common.cacheBegin": "正在检查缓存",
+  "common.cacheEnd": "已跳过 {{skipCount}} 个缓存的笔记",
   "blog.Generate the files needed for the blog based on the notes in Joplin": "根据 Joplin 中的笔记生成 blog 所需的文件",
   "blog.Can't find configuration file _joplin-blog_json": "找不到配置文件 .joplin-blog.json",
   "blog.Filter to get {{length}} notes to be processed": "过滤得到 {{length}} 条需要处理的笔记",
