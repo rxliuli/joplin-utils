@@ -13,14 +13,17 @@ const plugins = [
   externals(),
   workerThreadsSuffix(),
 ]
+const external = ['comlink/dist/umd/node-adapter']
 export default defineConfig([
   {
     input: 'src/bin.ts',
     output: { dir: 'dist/cjs', format: 'cjs', sourcemap: true },
+    external,
     plugins: [...plugins, shebang()],
   },
   {
     input: 'src/index.ts',
+    external,
     output: [
       { dir: 'dist/cjs', format: 'cjs', sourcemap: true },
       { dir: 'dist/esm', format: 'esm', sourcemap: true },
