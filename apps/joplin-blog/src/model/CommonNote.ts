@@ -9,7 +9,7 @@ export type CommonNote = Pick<NoteProperties, 'id' | 'title' | 'body'> & {
 
 export type CommonResource = Pick<
   ResourceProperties,
-  'id' | 'file_extension' | 'title'
+  'id' | 'file_extension' | 'title' | 'user_updated_time'
 >
 
 export type CommonTag = Pick<TagProperties, 'id' | 'title'>

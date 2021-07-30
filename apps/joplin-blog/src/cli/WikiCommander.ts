@@ -105,7 +105,8 @@ export class BlogCommanderProgram {
     })
 
     spinner.start(i18n.t('common.cache.begin'))
-    const { noteList, updateCache } = await app.cache(allNoteList)
+    const { noteList, resourceList, skipResourceCount, updateCache } =
+      await app.cache(allNoteList)
     const skipCount = allNoteList.length - noteList.length
     spinner.stopAndPersist({ text: i18n.t('common.cache.end', { skipCount }) })
 
@@ -127,8 +128,15 @@ export class BlogCommanderProgram {
       text: i18n.t('common.writeNote.end'),
     })
 
+    if (skipResourceCount !== 0) {
+      spinner.stopAndPersist({
+        text: i18n.t('common.cache.resource.skip', {
+          skipCount: skipResourceCount,
+        }),
+      })
+    }
     spinner.start(i18n.t('common.copyResource.begin'))
-    await app.copyResources(noteList).on('process', (options) => {
+    await app.copyResources(resourceList).on('process', (options) => {
       spinner.text = i18n.t('common.copyResource.process', options)
     })
     spinner.stopAndPersist({

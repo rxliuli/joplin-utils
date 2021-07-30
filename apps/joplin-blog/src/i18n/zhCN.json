@@ -11,6 +11,7 @@
   "common.init.end": "结束框架初始化动作",
   "common.cache.begin": "正在检查缓存",
   "common.cache.end": "已跳过 {{skipCount}} 个缓存的笔记",
+  "common.cache.resource.skip": "已跳过 {{skipCount}} 个缓存的资源",
   "common.parse.begin": "开始解析笔记中的 Joplin 内部链接与附件资源",
   "common.parse.process": "[{{rate}}/{{all}}] 正在解析笔记中的 Joplin 内部链接与附件资源: {{title}}",
   "common.parse.end": "结束解析笔记中的 Joplin 内部链接与附件资源",

@@ -3,17 +3,11 @@ import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import path from 'path'
 import { config, noteApi, PageUtil, searchApi, TypeEnum } from 'joplin-api'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
-import { diffBy, uniqueBy } from '@liuli-util/array'
+import { uniqueBy } from '@liuli-util/array'
 import { PromiseUtil } from '../util/PromiseUtil'
-import {
-  copyFile,
-  mkdirp,
-  pathExists,
-  readJson,
-  remove,
-  writeFile,
-  writeJson,
-} from 'fs-extra'
+import { copyFile, mkdirp, readdir, remove, writeFile } from 'fs-extra'
+import { CacheUtil } from '../util/CacheUtil'
+import { cacheCommanderProgram } from '../cli/CacheCommander'
 
 export interface BaseIntegrated {
   /**
@@ -116,40 +110,54 @@ export class Application {
    * 初始化资源目录
    */
   async initDir() {
-    await remove(this.handler.resourcePath)
     await Promise.all([
       mkdirp(this.handler.notePath),
       mkdirp(this.handler.resourcePath),
     ])
   }
 
-  async cache<T extends CommonNote>(allNoteList: T[]) {
-    const cachePath = path.resolve(__dirname, '.joplin-cache.json')
-    const cacheList: CacheNote[] = (await pathExists(cachePath))
-      ? await readJson(cachePath)
-      : []
-    const { left: removeNoteList, common: existNoteList } = diffBy(
-      cacheList,
-      allNoteList,
-      (item) => item.id,
-    )
-    const existNoteIdSet = new Set(existNoteList.map((item) => item.id))
-    const { common: noChangeNoteList } = diffBy(
-      cacheList.filter((item) => existNoteIdSet.has(item.id)),
-      allNoteList.filter((item) => existNoteIdSet.has(item.id)),
-      (item) => item.updatedTime,
-    )
-    await AsyncArray.forEach(removeNoteList, async (item) => {
+  async cache<
+    T extends CommonNote & {
+      resources: CommonResource[]
+      tags: CommonTag[]
+    },
+  >(allNoteList: T[]) {
+    const cache = await cacheCommanderProgram.read()
+    const noteDiff = CacheUtil.diff({
+      old: cache.note,
+      new: allNoteList,
+      id: (item) => item.id,
+      updateTime: (item) => item.updatedTime,
+    })
+    await AsyncArray.forEach(noteDiff.remove, async (item) => {
       await remove(path.resolve(this.handler.notePath, item.id + '.md'))
     })
-    const noChangeNoteIdSet = new Set(noChangeNoteList.map((item) => item.id))
-    const noteList = allNoteList.filter(
-      (item) => !noChangeNoteIdSet.has(item.id),
+    const allResourceList = uniqueBy(
+      allNoteList.flatMap((item) => item.resources),
+      (resource) => resource.id,
     )
+    const resourceDiff = CacheUtil.diff({
+      old: cache.resource,
+      new: allResourceList,
+      id: (item) => item.id,
+      updateTime: (item) => item.user_updated_time,
+    })
+    const removeIdSet = new Set(resourceDiff.remove.map((item) => item.id))
+    const removeResourceFileNameList = (
+      await readdir(this.handler.resourcePath)
+    ).filter((fileName) => removeIdSet.has(path.basename(fileName)))
+    await AsyncArray.forEach(removeResourceFileNameList, async (fileName) => {
+      await remove(path.resolve(this.handler.resourcePath, fileName))
+    })
     return {
-      noteList,
+      noteList: noteDiff.update,
+      resourceList: resourceDiff.update,
+      skipResourceCount: allResourceList.length - resourceDiff.update.length,
       async updateCache() {
-        await writeJson(cachePath, allNoteList)
+        await cacheCommanderProgram.write({
+          note: allNoteList,
+          resource: allResourceList,
+        })
       },
     }
   }
@@ -168,7 +176,9 @@ export class Application {
       //初始化
       await this.initDir()
       await this.handler.init?.()
-      const { noteList, updateCache } = await this.cache(allNoteList)
+      const { noteList, resourceList, updateCache } = await this.cache(
+        allNoteList,
+      )
       //解析并写入笔记
       const replaceContentNoteList = await this.parseAndWriteNotes(noteList).on(
         'process',
@@ -179,23 +189,14 @@ export class Application {
         events.writeNote,
       )
       //复制资源
-      await this.copyResources(noteList).on('process', events.copyResources)
+      await this.copyResources(resourceList).on('process', events.copyResources)
       await updateCache()
     })
   }
 
-  copyResources(
-    noteList: (CommonNote & {
-      resources: CommonResource[]
-      tags: CommonTag[]
-    })[],
-  ) {
+  copyResources(resourceList: CommonResource[]) {
     return PromiseUtil.warpOnEvent(async (events: ProcessEvents) => {
       let i = 0
-      const resourceList = uniqueBy(
-        noteList.flatMap((item) => item.resources),
-        (resource) => resource.id,
-      )
       await AsyncArray.forEach(
         resourceList,
         asyncLimiting(async (resource: CommonResource) => {
@@ -266,7 +267,12 @@ export class Application {
             title: note.title,
           })
           const [resources, tags] = await Promise.all([
-            noteApi.resourcesById(note.id, ['id', 'title', 'file_extension']),
+            noteApi.resourcesById(note.id, [
+              'id',
+              'title',
+              'file_extension',
+              'user_updated_time',
+            ]),
             noteApi.tagsById(note.id),
           ])
           return {
@@ -279,5 +285,3 @@ export class Application {
     })
   }
 }
-
-type CacheNote = Pick<CommonNote, 'id' | 'updatedTime'>

@@ -20,22 +20,16 @@ describe('测试 Application', () => {
       rootPath: path.resolve(__dirname, 'temp/hexo-example'),
     })
     const noteId = '21a3eba7f4b445ccbc123bf52831d387'
-    const {
-      user_created_time,
-      user_updated_time,
-      ...note
-    } = await noteApi.get(noteId, [
-      'id',
-      'title',
-      'body',
-      'user_created_time',
-      'user_updated_time',
-    ])
+    const { user_created_time, user_updated_time, ...note } = await noteApi.get(
+      noteId,
+      ['id', 'title', 'body', 'user_created_time', 'user_updated_time'],
+    )
     const tags = await noteApi.tagsById(noteId)
     const resources = await noteApi.resourcesById(noteId, [
       'id',
       'title',
       'file_extension',
+      'user_updated_time',
     ])
     const res = hexoHandler.parse({
       ...note,

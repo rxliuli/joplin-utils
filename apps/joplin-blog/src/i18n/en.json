@@ -12,6 +12,7 @@
   "common.init.end": "End frame initialization action",
   "common.cache.begin": "Checking cache",
   "common.cache.end": "{{skipCount}} cached notes have been skipped",
+  "common.cache.resource.skip": "{{skipCount}} cached resources have been skipped",
   "common.parse.begin": "Start parsing the Joplin internal links and attachment resources in the notes",
   "common.parse.process": "[{{rate}}/{{all}}] is parsing the Joplin internal links and attachment resources in the notes: {{title}}",
   "common.parse.end": "End of parsing the Joplin internal links and attachment resources in the notes",
