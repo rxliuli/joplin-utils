@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.5.1
+
+- fix(joplin-blog): Fix the bug that i18next-util is not placed in runtime dependency
+
 ## 0.5.0
 
 - feat(joplin-blog): add internationalization configuration of cache command
