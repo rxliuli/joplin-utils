@@ -9,11 +9,11 @@
     "joplin-blog": "dist/cjs/bin.js"
   },
   "scripts": {
-    "setup": "yarn gen-i18n && yarn pub",
+    "setup": "yarn run gen-i18n && yarn run pub",
     "start": "ts-node src/bin.ts -h",
     "build": "rm dist && rollup -c",
     "dev": "rollup -cw",
-    "pub": "yarn build && lerna clean -y && yarn",
+    "pub": "yarn run build && lerna clean -y && yarn install",
     "gen-i18n": "i18next-dts-gen --dirs src/i18n"
   },
   "publishConfig": {

@@ -3,14 +3,14 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "setup": "yarn i18n:build",
+    "setup": "yarn run i18n:build",
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "predeploy": "yarn build",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d dist -e /joplin-batch-web -a",
     "i18n:build": "i18next-dts-gen --dirs src/i18n",
-    "i18n:dev": "yarn i18n:build -w"
+    "i18n:dev": "yarn run i18n:build -w"
   },
   "jest": {
     "preset": "ts-jest"

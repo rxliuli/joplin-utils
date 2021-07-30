@@ -10,3 +10,4 @@ node_modules/
 *.tgz
 dist/
 **/__tests__/temp
+.ultra.cache.json

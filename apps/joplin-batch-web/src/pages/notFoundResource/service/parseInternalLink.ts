@@ -1,6 +1,6 @@
 import { expose } from 'comlink'
 import type { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
-import type { Link } from 'mdast'
+import type { Image, Link } from 'mdast'
 import visit from 'unist-util-visit'
 import { mdParser } from '../../../constants/mdParser'
 
@@ -16,14 +16,14 @@ export function parseInternalLink(
     if (node.type !== 'link' && node.type !== 'image') {
       return
     }
-    const link = node as Link
+    const link = node as Link | Image
     if (!link.url.startsWith(':/')) {
       return
     }
     res.push({
       id: link.url.slice(2),
       title: (link.type === 'link'
-        ? link.title ?? link.children[0].value
+        ? link.title ?? (link.children[0] as any).value
         : link.alt) as string,
     })
   })

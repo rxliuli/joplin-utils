@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
-    "release": "cross-env NODE_ENV=production yarn build",
+    "release": "cross-env NODE_ENV=production yarn run build",
     "dev": "rollup -cw",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

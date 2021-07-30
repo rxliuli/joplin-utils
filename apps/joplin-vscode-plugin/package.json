@@ -9,14 +9,14 @@
   },
   "icon": "resources/icon.png",
   "scripts": {
-    "setup": "yarn gen-i18n",
+    "setup": "yarn run gen-i18n",
     "build": "rollup -c",
     "dev": "rollup -cw",
-    "pack": "yarn build && vsce package --yarn",
+    "pack": "yarn run build && vsce package --yarn",
     "gen-i18n": "i18next-dts-gen --dirs src/i18n",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "docs:deploy": "yarn docs:build && gh-pages -d docs/.vuepress/dist -e /joplin-vscode-plugin -a"
+    "docs:deploy": "yarn run docs:build && gh-pages -d docs/.vuepress/dist -e /joplin-vscode-plugin -a"
   },
   "categories": [
     "Notebooks"

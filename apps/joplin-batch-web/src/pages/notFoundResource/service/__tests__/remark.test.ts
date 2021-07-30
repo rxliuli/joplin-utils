@@ -4,7 +4,7 @@ import remarkStringify from 'remark-stringify'
 import remarkGfm from 'remark-gfm'
 import data from '../data.json'
 import visit from 'unist-util-visit'
-import { Link } from 'mdast'
+import { Image, Link } from 'mdast'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 
 it('测试', () => {
@@ -18,14 +18,14 @@ it('测试', () => {
     if (node.type !== 'link' && node.type !== 'image') {
       return
     }
-    const link = node as Link
+    const link = node as Link | Image
     if (!link.url.startsWith(':/')) {
       return
     }
     res.push({
       id: link.url.slice(2),
       title: (link.type === 'link'
-        ? link.title ?? link.children[0].value
+        ? link.title ?? (link.children[0] as any).value
         : link.alt) as string,
     })
   })

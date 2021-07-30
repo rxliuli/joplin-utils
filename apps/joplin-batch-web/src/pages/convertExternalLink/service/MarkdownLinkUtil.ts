@@ -23,7 +23,7 @@ export class MarkdownLinkUtil {
         // console.log(link.children[0])
       }
       res.push({
-        title: link.children[0]?.value as string,
+        title: (link.children[0] as any)?.value as string,
         url: link.url as string,
       })
     })
@@ -53,7 +53,7 @@ export class MarkdownLinkUtil {
             value: '',
           })
         }
-        link.children[0].value = map.title
+        ;(link.children[0] as any).value = map.title
       }
     })
     return mdParser.stringify(node)
