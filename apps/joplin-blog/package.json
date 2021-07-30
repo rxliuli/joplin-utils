@@ -23,7 +23,7 @@
     "preset": "ts-jest"
   },
   "devDependencies": {
-    "@liuli-util/i18next-util": "^0.2.0",
+    "@liuli-util/i18next-dts-gen": "^0.3.0",
     "@rollup/plugin-json": "^4.1.0",
     "rollup": "^2.55.0",
     "rollup-plugin-typescript2": "^0.30.0",
@@ -49,7 +49,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@liuli-util/i18next-dts-gen": "^0.3.0",
+    "@liuli-util/i18next-util": "^0.2.0",
     "comlink": "^4.3.1",
     "@liuli-util/array": "^3.2.2",
     "@liuli-util/async": "^3.2.3",
