@@ -2,6 +2,7 @@ import { Command } from 'commander'
 import path from 'path'
 import { CommonNote, CommonResource } from '../model/CommonNote'
 import { pathExists, readJson, writeJson } from 'fs-extra'
+import { i18n } from '../constants/i18n'
 
 type CacheNote = Pick<CommonNote, 'id' | 'updatedTime'>
 type CacheResource = Pick<CommonResource, 'id' | 'user_updated_time'>
@@ -37,10 +38,10 @@ export const cacheCommanderProgram = new CacheCommanderProgram()
 
 export function cacheCommander() {
   return new Command('cache')
-    .description('缓存相关的功能')
+    .description(i18n.t('common.cache.description'))
     .addCommand(
       new Command('clean')
-        .description('清理缓存')
+        .description(i18n.t('common.cache.clean.description'))
         .action(cacheCommanderProgram.init.bind(cacheCommanderProgram)),
     )
 }

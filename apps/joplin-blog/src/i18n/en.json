@@ -22,6 +22,8 @@
   "common.copyResource.begin": "Start copying attachment resources",
   "common.copyResource.process": "{{rate}}/{{all}} Copying attachment resource: {{title}}",
   "common.copyResource.end": "End Copying Attachment Resources",
+  "common.cache.description": "Cache related functions",
+  "common.cache.clean.description": "Clear cache",
 
   "blog.description": "Generate the files needed for the blog based on the notes in Joplin",
   "blog.generate.errorType": "Unsupported blog type",
