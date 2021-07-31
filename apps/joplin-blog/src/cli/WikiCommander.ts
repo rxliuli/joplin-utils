@@ -26,7 +26,7 @@ type JoplinBlogConfig = ApplicationConfig & {
   language?: LanguageEnum
 } & (BlogHexoIntegratedConfig | {})
 
-export class BlogCommanderProgram {
+export class WikiCommanderProgram {
   private static async getBlogApplication(config: JoplinBlogConfig) {
     let integrated: BaseIntegrated
     switch (config.type) {
@@ -55,15 +55,26 @@ export class BlogCommanderProgram {
     return (await readJson(configPath)) as JoplinBlogConfig
   }
 
-  async main() {
-    console.log(await figletPromise('joplin-blog'))
+  async getApp() {
     const config = await this.checkConfig()
     if (!config) {
       return
     }
     await i18n.changeLang(config.language || (await getLanguage()))
-    const application = await BlogCommanderProgram.getBlogApplication(config)
-    await this.gen(application)
+    return await WikiCommanderProgram.getBlogApplication(config)
+  }
+
+  async main() {
+    console.log(await figletPromise('joplin-blog'))
+    const app = await this.getApp()
+    if (app) {
+      await this.gen(app)
+    }
+  }
+
+  async clean() {
+    const app = await this.getApp()
+    await app?.clean()
   }
 
   async gen(app: Application) {
@@ -154,7 +165,14 @@ export class BlogCommanderProgram {
 /**
  * 之所以使用函数的形式是因为 i18n 必须先异步初始化
  */
-export const wikiCommander = () =>
-  new Command('wiki')
+export const wikiCommander = () => {
+  const wikiCommanderProgram = new WikiCommanderProgram()
+  return new Command('wiki')
+    .addCommand(
+      new Command('clean')
+        .description(i18n.t('common.cache.clean'))
+        .action(() => wikiCommanderProgram.clean()),
+    )
     .description(i18n.t('wiki.description'))
-    .action(() => new BlogCommanderProgram().main())
+    .action(() => wikiCommanderProgram.main())
+}

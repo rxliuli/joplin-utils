@@ -5,7 +5,14 @@ import { config, noteApi, PageUtil, searchApi, TypeEnum } from 'joplin-api'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { uniqueBy } from '@liuli-util/array'
 import { PromiseUtil } from '../util/PromiseUtil'
-import { copyFile, mkdirp, readdir, remove, writeFile } from 'fs-extra'
+import {
+  copyFile,
+  emptydir,
+  mkdirp,
+  readdir,
+  remove,
+  writeFile,
+} from 'fs-extra'
 import { CacheUtil } from '../util/CacheUtil'
 import { cacheCommanderProgram } from '../cli/CacheCommander'
 
@@ -160,6 +167,14 @@ export class Application {
         })
       },
     }
+  }
+
+  async clean() {
+    await Promise.all([
+      emptydir(this.handler.notePath),
+      emptydir(this.handler.resourcePath),
+    ])
+    await cacheCommanderProgram.init()
   }
 
   gen() {

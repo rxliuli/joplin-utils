@@ -21,8 +21,7 @@
   "common.copyResource.begin": "开始复制附件资源",
   "common.copyResource.process": "{{rate}}/{{all}} 正在复制附件资源: {{title}}",
   "common.copyResource.end": "结束复制附件资源",
-  "common.cache.description": "缓存相关的功能",
-  "common.cache.clean.description": "清理缓存",
+  "common.cache.clean": "清理缓存",
 
   "blog.description": "根据 Joplin 中的笔记生成 blog 所需的文件",
   "blog.generate.errorType": "不支持的博客类型",
