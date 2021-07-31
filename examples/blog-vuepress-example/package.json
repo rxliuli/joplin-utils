@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@vuepress/theme-blog": "^2.3.3",
-    "joplin-blog": "^0.4.0",
+    "joplin-blog": "^0.6.0",
     "vuepress": "^1.7.1",
     "gh-pages": "^3.1.0"
   }
