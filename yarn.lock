@@ -1911,7 +1911,7 @@
     commander "^7.0.0"
     fs-extra "^10.0.0"
 
-"@liuli-util/tree@^3.2.2", "@liuli-util/tree@^3.2.3":
+"@liuli-util/tree@^3.2.2", "@liuli-util/tree@^3.2.3", "@liuli-util/tree@^3.2.5":
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/@liuli-util/tree/-/tree-3.2.5.tgz#6e919e64a30111ceb104ad1785f99240fdc542ad"
   integrity sha512-OwHf69cykLIo27o0cG90lI/3oLirAunq4fL3UhijXIwSFtKX4wuUg4UntBDJUQ8ZOAUIZ2jdk79MTiPsn/YWhg==

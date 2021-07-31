@@ -13,7 +13,9 @@
     "preset": "ts-jest"
   },
   "dependencies": {
-    "fs-extra": "^10.0.0"
+    "fs-extra": "^10.0.0",
+    "@liuli-util/tree": "^3.2.5",
+    "@liuli-util/array": "^3.2.5"
   },
   "devDependencies": {
     "@thejohnfreeman/joplin-plugin": "^2.0.1-4",
