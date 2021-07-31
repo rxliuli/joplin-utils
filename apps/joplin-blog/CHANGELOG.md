@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.6.0
+
+- feat(joplin-blog): Add a subcommand clean under the blog/wiki command to delete cached configuration files, notes and attachment resource directories
+
 ## 0.5.1
 
 - fix(joplin-blog): Fix the bug that i18next-util is not placed in runtime dependency
