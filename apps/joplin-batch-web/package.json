@@ -16,10 +16,10 @@
     "preset": "ts-jest"
   },
   "dependencies": {
-    "@liuli-util/i18next-util": "^0.2.0",
     "@liuli-util/async": "^3.2.3",
-    "@liuli-util/tree": "^3.2.3",
     "@liuli-util/dom": "^3.2.3",
+    "@liuli-util/i18next-util": "^0.2.0",
+    "@liuli-util/tree": "^3.2.3",
     "antd": "^4.16.1",
     "comlink": "^4.3.1",
     "i18next": "^20.3.2",
@@ -40,8 +40,8 @@
     "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
-    "@liuli-util/i18next-dts-gen": "^0.3.0",
     "@babel/preset-env": "^7.14.5",
+    "@liuli-util/i18next-dts-gen": "^0.3.0",
     "@liuli-util/shell": "^0.2.0",
     "@types/jest": "^26.0.23",
     "@types/markdown-it": "^12.0.2",

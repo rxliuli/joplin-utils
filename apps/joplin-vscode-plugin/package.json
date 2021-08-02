@@ -402,6 +402,7 @@
     }
   },
   "devDependencies": {
+    "@liuli-util/i18next-dts-gen": "^0.3.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
@@ -432,14 +433,13 @@
     "typescript": "^4.2.4",
     "utility-types": "^3.10.0",
     "vscode-nls-dev": "^3.3.2",
-    "@liuli-util/i18next-dts-gen": "^0.3.0",
     "vscode-test": "^1.4.1",
     "vuepress": "^1.8.2"
   },
   "dependencies": {
-    "@liuli-util/i18next-util": "^0.2.0",
     "@liuli-util/array": "^3.2.2",
     "@liuli-util/async": "^3.2.2",
+    "@liuli-util/i18next-util": "^0.2.0",
     "@liuli-util/object": "^3.2.2",
     "@liuli-util/tree": "^3.2.2",
     "@sentry/tracing": "^5.29.2",
