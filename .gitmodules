@@ -1,0 +1,4 @@
+[submodule "examples/blog-hexo-example/themes/next"]
+  path = examples/blog-hexo-example/themes/next
+  url = https://github.com/theme-next/hexo-theme-next
+  ignore = all
