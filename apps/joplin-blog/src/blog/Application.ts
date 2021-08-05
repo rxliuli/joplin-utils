@@ -133,8 +133,7 @@ export class Application {
     const noteDiff = CacheUtil.diff({
       old: cache.note,
       new: allNoteList,
-      id: (item) => item.id,
-      updateTime: (item) => item.updatedTime,
+      id: (item) => item.id + '-' + item.updatedTime,
     })
     await AsyncArray.forEach(noteDiff.remove, async (item) => {
       await remove(path.resolve(this.handler.notePath, item.id + '.md'))
@@ -146,8 +145,7 @@ export class Application {
     const resourceDiff = CacheUtil.diff({
       old: cache.resource,
       new: allResourceList,
-      id: (item) => item.id,
-      updateTime: (item) => item.user_updated_time,
+      id: (item) => item.id + '-' + item.user_updated_time,
     })
     const removeIdSet = new Set(resourceDiff.remove.map((item) => item.id))
     const removeResourceFileNameList = (
