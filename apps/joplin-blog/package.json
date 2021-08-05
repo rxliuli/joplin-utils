@@ -5,15 +5,13 @@
   "main": "dist/cjs/index.js",
   "types": "dist/esm/index.d.ts",
   "license": "MIT",
-  "bin": {
-    "joplin-blog": "dist/cjs/bin.js"
-  },
+  "bin": "dist/cjs/bin.js",
   "scripts": {
     "setup": "yarn run gen-i18n && yarn run pub",
     "start": "ts-node src/bin.ts -h",
     "build": "rm dist && rollup -c",
     "dev": "rollup -cw",
-    "pub": "yarn run build && lerna clean -y && yarn install",
+    "pub": "yarn run build && yarn install",
     "gen-i18n": "i18next-dts-gen --dirs src/i18n"
   },
   "publishConfig": {
@@ -23,16 +21,10 @@
     "preset": "ts-jest"
   },
   "devDependencies": {
-    "@liuli-util/i18next-dts-gen": "^0.3.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "rollup": "^2.55.0",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "rollup-plugin-add-shebang": "^0.3.1",
-    "rollup-plugin-auto-external": "^2.0.0",
-    "rollup-plugin-node-externals": "^2.2.0",
-    "rollup-plugin-worker-threads": "^0.1.1",
     "@liuli-util/cli": "^3.7.1",
+    "@liuli-util/i18next-dts-gen": "^0.3.0",
     "@liuli-util/shell": "^0.2.0",
+    "@rollup/plugin-json": "^4.1.0",
     "@types/figlet": "^1.5.0",
     "@types/fs-extra": "^9.0.6",
     "@types/jest": "^26.0.19",
@@ -43,18 +35,24 @@
     "@types/shelljs": "^0.8.8",
     "@types/unist": "^2.0.3",
     "jest": "^26.6.3",
+    "rollup": "^2.55.0",
+    "rollup-plugin-add-shebang": "^0.3.1",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-node-externals": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.30.0",
+    "rollup-plugin-worker-threads": "^0.1.1",
     "ts-jest": "^26.4.4",
     "ts-node": "^9.1.1",
     "type-fest": "^1.1.1",
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@liuli-util/i18next-util": "^0.2.0",
-    "comlink": "^4.3.1",
     "@liuli-util/array": "^3.2.2",
     "@liuli-util/async": "^3.2.3",
+    "@liuli-util/i18next-util": "^0.2.0",
     "@liuli-util/object": "^3.2.2",
     "@liuli-util/tree": "^3.2.2",
+    "comlink": "^4.3.1",
     "commander": "^7.2.0",
     "figlet": "^1.5.0",
     "fs-extra": "^9.0.1",
