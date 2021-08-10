@@ -7,16 +7,12 @@ import { CheckParentNotebookService } from './service/CheckParentNotebookService
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { i18n } from '../../constants/i18n'
 
-type CheckParentNotebookPageProps = {}
-
 const checkParentNotebookService = new CheckParentNotebookService()
 
 /**
  * 检查没有父级目录的笔记
  */
-export const CheckParentNotebookPage: React.FC<CheckParentNotebookPageProps> = (
-  props,
-) => {
+export const CheckParentNotebookPage: React.FC = () => {
   const [list, setList] = useState<
     Pick<NoteProperties, 'id' | 'title' | 'parent_id'>[]
   >([])

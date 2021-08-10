@@ -5,9 +5,7 @@ import { useLocalStorage } from 'react-use'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { i18n } from '../../constants/i18n'
 
-type SettingsPageProps = {}
-
-export const SettingsPage: React.FC<SettingsPageProps> = () => {
+export const SettingsPage: React.FC = () => {
   const [form] = Form.useForm<Config>()
 
   async function onFinish() {

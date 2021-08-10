@@ -15,6 +15,11 @@
   "jest": {
     "preset": "ts-jest"
   },
+  "eslintConfig": {
+    "extends": [
+      "@liuli-util/eslint-config-react-ts"
+    ]
+  },
   "dependencies": {
     "@liuli-util/async": "^3.2.3",
     "@liuli-util/dom": "^3.2.3",
@@ -41,6 +46,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.5",
+    "@liuli-util/eslint-config-react-ts": "^0.1.0",
     "@liuli-util/i18next-dts-gen": "^0.3.0",
     "@liuli-util/shell": "^0.2.0",
     "@types/jest": "^26.0.23",

@@ -6,12 +6,10 @@ import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { useAsyncFn } from 'react-use'
 import { Config } from 'joplin-api'
 import { downloadUrl, proxyStorage } from '@liuli-util/dom'
-import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import produce from 'immer'
 import { AsyncArray } from '@liuli-util/async'
 import { i18n } from '../../constants/i18n'
-
-type UnusedResourcePageProps = {}
+import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 
 const unusedResourceService = new UnusedResourceService(joplinApiGenerator)
 
@@ -28,7 +26,7 @@ const buildResourceUrl = resourceUrlBuilder(
 /**
  * 检查未使用的资源
  */
-export const UnusedResourcePage: React.FC<UnusedResourcePageProps> = () => {
+export const UnusedResourcePage: React.FC = () => {
   const [list, setList] = useState<
     Pick<ResourceProperties, 'id' | 'title' | 'mime'>[]
   >([])

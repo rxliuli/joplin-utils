@@ -11,9 +11,7 @@ import { i18n } from './constants/i18n'
 import zhCN from './i18n/zhCN.json'
 import en from './i18n/en.json'
 
-type AppProps = {}
-
-export const App: React.FC<AppProps> = () => {
+export const App: React.FC = () => {
   const [list, setList] = useState<RouteMenuConfig[]>([])
   useMount(async () => {
     await i18n.init({ en, zhCN }, getLanguage())

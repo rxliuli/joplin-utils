@@ -14,8 +14,6 @@ import produce from 'immer'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { i18n } from '../../constants/i18n'
 
-type ConvertExternalLinkPageProps = {}
-
 const convertExternalLinkService = new ConvertExternalLinkService()
 
 type MatchNoteListProps = {
@@ -49,9 +47,7 @@ const filterEmptyUrlsNote = (note: NoteModel) => note.urls.length !== 0
 /**
  * 转换外部链接为内部引用笔记
  */
-export const ConvertExternalLinkPage: React.FC<ConvertExternalLinkPageProps> = (
-  props,
-) => {
+export const ConvertExternalLinkPage: React.FC = () => {
   const [list, setList] = useState<NoteModel[]>([])
 
   const [onSearchState, onSearch] = useAsyncFn(async function onSearch(

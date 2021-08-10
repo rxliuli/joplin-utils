@@ -1,7 +1,7 @@
 import { ConditionalKeys, PromiseValue } from 'type-fest'
 import { wait } from '@liuli-util/async'
 
-type VoidFunc = ((...args: any[]) => void) | undefined
+type VoidFunc = (...args: never[]) => void
 
 export type OnEventPromise<T, E> = Promise<T> & {
   on<K extends ConditionalKeys<E, VoidFunc>>(
@@ -16,23 +16,26 @@ export class PromiseUtil {
    * @param executor
    */
   static warpOnEvent<
+    // eslint-disable-next-line
     F extends (events: any) => Promise<any>,
     E extends Parameters<F>[0],
     K extends ConditionalKeys<E, VoidFunc>,
   >(executor: F): OnEventPromise<PromiseValue<ReturnType<F>>, E> {
     const events: Partial<Pick<E, K>> = {}
-    const res = new Promise(async (resolve, reject) => {
-      await wait(0)
-      try {
-        resolve(await executor(events))
-      } catch (e) {
-        reject(e)
-      }
-    })
+    const res = wait(0).then(
+      () =>
+        new Promise((resolve, reject) => {
+          try {
+            resolve(executor(events))
+          } catch (e) {
+            reject(e)
+          }
+        }),
+    )
     Reflect.set(res, 'on', (type: K, callback: E[K]) => {
       events[type] = callback
       return res
     })
-    return res as any
+    return res as OnEventPromise<PromiseValue<ReturnType<F>>, E>
   }
 }

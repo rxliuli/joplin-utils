@@ -7,11 +7,9 @@ import README_ZH_CN from '../../../README.ZH_CN.md?raw'
 import css from './HomePage.module.css'
 import { LanguageEnum } from '@liuli-util/i18next-util'
 
-type HomePageProps = {}
-
 const markdownIt = new MarkdownIt()
 
-export const HomePage: React.FC<HomePageProps> = () => {
+export const HomePage: React.FC = () => {
   return (
     <Card>
       <div
