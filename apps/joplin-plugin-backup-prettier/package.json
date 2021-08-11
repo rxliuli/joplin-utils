@@ -13,6 +13,8 @@
     "preset": "ts-jest"
   },
   "dependencies": {
+    "@liuli-util/array": "^3.2.5",
+    "@liuli-util/tree": "^3.2.5",
     "fs-extra": "^10.0.0"
   },
   "devDependencies": {
