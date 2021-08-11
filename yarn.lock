@@ -2591,6 +2591,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@liuli-util/tree@npm:^3.2.5":
+  version: 3.2.6
+  resolution: "@liuli-util/tree@npm:3.2.6"
+  checksum: 3eb35366c9b638c924314e379bbd487f536f925cb28cd0dec0d37aadfa1f6ebba23b05f33cc0984d095ab0be2a657f6608708eb84aeb36318410b39583e6e9a2
+  languageName: node
+  linkType: hard
+
 "@mapbox/rehype-prism@npm:^0.6.0":
   version: 0.6.0
   resolution: "@mapbox/rehype-prism@npm:0.6.0"
@@ -15121,7 +15128,9 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "joplin-plugin-backup-prettier@workspace:apps/joplin-plugin-backup-prettier"
   dependencies:
+    "@liuli-util/array": ^3.2.5
     "@liuli-util/async": ^3.2.3
+    "@liuli-util/tree": ^3.2.5
     "@rollup/plugin-commonjs": ^19.0.0
     "@rollup/plugin-json": ^4.1.0
     "@rollup/plugin-node-resolve": ^13.0.0
