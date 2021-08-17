@@ -1,5 +1,27 @@
 # 更新记录
 
+## v0.3.1
+
+- chore: 删除无关的依赖，修复一些小问题
+- docs: 修复引用的 joplin 官方 api 文档链接失效的错误
+- chore: 将 lerna 替换为 yarn 2
+- chore: 更新依赖项 @liuli-util/cli 和 @liuli-util/shell
+- docs: 修正 joplin api 测试参考链接为新仓库
+- chore: 使用 @liuli-util/shell 替换 shx
+- refactor: 升级 @liuli-util/cli，使用 ts 配置文件
+- refactor: 升级 @liuli-util/cli，使用 defineConfig 替代 define 辅助函数
+- refactor: 升级 @liuli-util/cli，使用 define 辅助函数
+- chore: 升级 @liuli-util/cli
+- refactor: 使用 `import().default` 加载 `node-fetch` 的默认导出
+- refactor: 使用 import() 动态引入 polyfill 避免必然加载
+- chore: 将 ts 编译目标设置为 es2015 以使用 import()，修改 jest 运行时环境为 node（而非默认的 jsdom）
+- fix: 修复在 vite 中直接使用 `import 'node-fetch'` 引发的依赖找不到的错误（明明在 webpack 可以自动处理掉的）
+- fix: 修复 joplin-api 的 module 引用文件名错误的问题
+- refactor: 修改暴露的 config 变量的类型定义为 Config
+- docs: 修改因为仓库变动需要变更的链接
+- build: 修复迁移过来的子模块的基本打包问题
+- build: 移动 joplin-api 模块到 libs/joplin-api 目录并且删除 yarn.lock
+
 ## v0.3.0
 
 - test: 禁用掉测试将父目录指向子级的作死行为
