@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { stringify } from 'query-string'
 import { Config } from './config'
+import { globalValue } from './globalValue'
 
 export type Method =
   | 'get'
@@ -55,12 +56,6 @@ const defaultConfig: FlipOptional<AjaxConfig> = {
   headers: {},
   responseType: 'json',
 }
-
-const globalValue: any =
-  (typeof globalThis !== 'undefined' && globalThis) ||
-  (typeof self !== 'undefined' && self) ||
-  (typeof global !== 'undefined' && global) ||
-  {}
 
 export class Ajax {
   constructor(public readonly config: Config) {}

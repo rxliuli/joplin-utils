@@ -1,11 +1,11 @@
 import { ResourceProperties } from '../modal/ResourceProperties'
 import { ResourceGetRes } from '../modal/ResourceGetRes'
-import FormData from 'form-data'
-import { ReadStream } from 'fs'
+import type { ReadStream } from 'fs'
 import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
 import { CommonType } from '../modal/CommonType'
 import { Ajax } from '../util/ajax'
+import { globalValue } from '../util/globalValue'
 
 /**
  * 附件资源相关 api
@@ -25,10 +25,10 @@ export class ResourceApi {
 
   async get(id: string): Promise<ResourceGetRes>
   async get<
-    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>
+    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>,
   >(id: string, fields: K[]): Promise<Pick<ResourceProperties, K> & CommonType>
   async get<
-    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>
+    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>,
   >(id: string, fields?: K[]) {
     return await this.ajax.get<ResourceGetRes>(`/resources/${id}`, { fields })
   }
@@ -40,9 +40,12 @@ export class ResourceApi {
    * @param param
    */
   async create(param: { data: ReadStream; title: string }) {
+    if (typeof FormData === 'undefined') {
+      Reflect.set(globalValue, 'FormData', (await import('form-data')).default)
+    }
     const fd = new FormData()
     fd.append('props', JSON.stringify({ title: param.title }))
-    fd.append('data', param.data)
+    fd.append('data', param.data as any)
     return (await this.ajax.postFormData('/resources', {
       props: JSON.stringify({ title: param.title }),
       data: param.data,
