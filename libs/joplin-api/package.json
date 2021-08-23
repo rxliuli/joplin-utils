@@ -1,12 +1,13 @@
 {
   "name": "joplin-api",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "joplin ts/js data api",
   "license": "mit",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "scripts": {
+    "prepublishOnly": "yarn build",
     "setup": "yarn build",
     "build": "rm dist && liuli-cli build pkg",
     "dev": "liuli-cli build pkg -w",
@@ -24,8 +25,10 @@
     ]
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   },
+  "homepage": "https://joplin-utils.rxliuli.com/joplin-api",
   "repository": {
     "type": "git",
     "url": "https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-api"

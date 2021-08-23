@@ -4,10 +4,9 @@ about: Create a report to help us improve
 title: ''
 labels: bug, joplin-vscode-plugin
 assignees: ''
-
 ---
 
-- [ ] I checked [FAQ](https://rxliuli.com/joplin-vscode-plugin/#/_navbar/get-started/faq)
+- [ ] I checked [FAQ](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/guide/faq.html)
 
 **Describe the bug**
 A clear and concise description of what the bug is.

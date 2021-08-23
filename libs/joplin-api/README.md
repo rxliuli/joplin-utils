@@ -1,10 +1,11 @@
 # joplin api
 
-> [API documentation](https://joplin-utils.rxliuli.com/joplin-api/), [Reference Joplin API documentation](https://joplinapp.org/api/)
+> [API documentation](https://joplin-utils.rxliuli.com/joplin-api/), [Joplin official document](https://joplinapp.org/api/overview/)
 
 ## Introduction
 
-Joplin api's js package, written in ts, provides a complete type definition, including all currently exposed api in the document.
+Joplin api's js package, written in ts, provides a complete type definition, including all currently exposed api in the
+document.
 
 ## Quick Start
 
@@ -37,7 +38,8 @@ console.log(res)
 ## Conventional name
 
 - Use class to encapsulate API, for example note related API is encapsulated in `NoteApi` class.
-- Keep the same naming for the same function meaning. For example, the note list is `NoteApi.list`. The following is a complete comparison table
+- Keep the same naming for the same function meaning. For example, the note list is `NoteApi.list`. The following is a
+  complete comparison table
 
 | Meaning   | Naming   | Examples         |
 | --------- | -------- | ---------------- |
@@ -47,8 +49,11 @@ console.log(res)
 | Modify    | `update` | `noteApi.update` |
 | Remove    | `remove` | `noteApi.remove` |
 
-- There are some special cases, such as APIs involving multiple entities, the naming is generally `operation entity + by + according to entity`, for example, the API to get the tag list according to the note id is `noteApi.tagsById`
+- There are some special cases, such as APIs involving multiple entities, the naming is
+  generally `operation entity + by + according to entity`, for example, the API to get the tag list according to the
+  note id is `noteApi.tagsById`
 
 ## some problems
 
-- The `get` method should not report an error, if it does not exist it should return `null` instead of throwing an exception
+- The `get` method should not report an error, if it does not exist it should return `null` instead of throwing an
+  exception
