@@ -40,20 +40,24 @@ export class FolderApi {
     } as FolderListRecursionGetTree)
   }
 
-  async get(id: string) {
+  async get(id: string): Promise<FolderGetRes> {
     return this.ajax.get<FolderGetRes>(`/folders/${id}`)
   }
 
-  async create(param: RequiredField<Partial<FolderProperties>, 'title'>) {
+  async create(
+    param: RequiredField<Partial<FolderProperties>, 'title'>,
+  ): Promise<FolderCreateRes> {
     return this.ajax.post<FolderCreateRes>(`/folders`, param)
   }
 
-  async update(param: RequiredField<Partial<FolderProperties>, 'id'>) {
+  async update(
+    param: RequiredField<Partial<FolderProperties>, 'id'>,
+  ): Promise<FolderUpdateRes> {
     const { id, ...others } = param
     return this.ajax.put<FolderUpdateRes>(`/folders/${id}`, others)
   }
 
-  async remove(id: string) {
+  async remove(id: string): Promise<string> {
     return this.ajax.delete<string>(`/folders/${id}`)
   }
 

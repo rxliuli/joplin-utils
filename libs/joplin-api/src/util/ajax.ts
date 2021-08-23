@@ -36,7 +36,7 @@ interface AjaxConfig {
   url: string
   method?: Method
   data?: any
-  headers?: object
+  headers?: Record<string, string>
   responseType?: ResponseType
 }
 
@@ -76,16 +76,7 @@ export class Ajax {
     if (typeof FormData === 'undefined') {
       Reflect.set(globalValue, 'FormData', (await import('form-data')).default)
     }
-    const mergeConfig = { ...defaultConfig, ...ajaxConfig }
-    return (
-      await axios.request({
-        url: mergeConfig.url,
-        method: mergeConfig.method,
-        data: mergeConfig.data,
-        headers: mergeConfig.headers,
-        responseType: mergeConfig.responseType,
-      })
-    ).data as R
+    return (await axios.request({ ...defaultConfig, ...ajaxConfig })).data as R
   }
 
   baseUrl(url: string, param?: object) {

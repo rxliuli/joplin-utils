@@ -1,6 +1,7 @@
 import { FolderGetRes } from '../modal/FolderGetRes'
 import { Ajax } from '../util/ajax'
 import { FolderApi } from './FolderApi'
+import { FolderUpdateRes } from '../modal/FolderUpdateRes'
 
 export class FolderExtApi {
   private folderApi = new FolderApi(this.ajax)
@@ -12,7 +13,7 @@ export class FolderExtApi {
    * @param id
    * @param title
    */
-  rename(id: string, title: string) {
+  rename(id: string, title: string): Promise<FolderUpdateRes> {
     return this.folderApi.update({ id, title })
   }
 
@@ -36,7 +37,7 @@ export class FolderExtApi {
    * @param id
    * @param parentId
    */
-  async move(id: string, parentId: string) {
+  async move(id: string, parentId: string): Promise<void> {
     if (id === parentId) {
       return
     }

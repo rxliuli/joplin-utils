@@ -8,6 +8,7 @@
     "clean": "yarn workspaces foreach -p exec rimraf dist release",
     "docs:deploy": "gh-pages -d docs"
   },
+  "eslintConfig": {},
   "prettier": "@liuli-util/prettier-standard-config",
   "workspaces": {
     "packages": [

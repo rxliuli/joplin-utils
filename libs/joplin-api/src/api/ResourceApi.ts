@@ -19,17 +19,17 @@ export class ResourceApi {
   ): Promise<PageRes<Pick<ResourceProperties, K>>>
   async list(
     pageParam?: PageParam<ResourceProperties> & FieldsParam<ResourceGetRes>,
-  ) {
+  ): Promise<PageRes<ResourceGetRes>> {
     return await this.ajax.get<PageRes<ResourceGetRes>>('/resources', pageParam)
   }
 
   async get(id: string): Promise<ResourceGetRes>
   async get<
-    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>
+    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>,
   >(id: string, fields: K[]): Promise<Pick<ResourceProperties, K> & CommonType>
   async get<
-    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>
-  >(id: string, fields?: K[]) {
+    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>,
+  >(id: string, fields?: K[]): Promise<ResourceGetRes> {
     return await this.ajax.get<ResourceGetRes>(`/resources/${id}`, { fields })
   }
 
@@ -39,7 +39,10 @@ export class ResourceApi {
    * The "data" field is required, while the "props" one is not. If not specified, default values will be used.
    * @param param
    */
-  async create(param: { data: ReadStream; title: string }) {
+  async create(param: {
+    data: ReadStream
+    title: string
+  }): Promise<ResourceGetRes> {
     const fd = new FormData()
     fd.append('props', JSON.stringify({ title: param.title }))
     fd.append('data', param.data)
@@ -49,7 +52,9 @@ export class ResourceApi {
     })) as ResourceGetRes
   }
 
-  async update(param: Pick<ResourceProperties, 'id' | 'title'>) {
+  async update(
+    param: Pick<ResourceProperties, 'id' | 'title'>,
+  ): Promise<ResourceGetRes> {
     const { id, ...others } = param
     return await this.ajax.put<ResourceGetRes>(`/resources/${id}`, others)
   }
@@ -59,7 +64,7 @@ export class ResourceApi {
    * @link https://discourse.joplinapp.org/t/pre-release-1-4-is-now-available-for-testing/12247/15?u=rxliuli
    * @param id
    */
-  async remove(id: string) {
+  async remove(id: string): Promise<void> {
     return await this.ajax.delete(`/resources/${id}`)
   }
 
@@ -67,8 +72,8 @@ export class ResourceApi {
    * Gets the actual file associated with this resource.
    * @param id
    */
-  async fileByResourceId(id: string) {
-    const resp = await this.ajax.get<any>(
+  async fileByResourceId(id: string): Promise<Buffer> {
+    const resp = await this.ajax.get<never>(
       `/resources/${id}/file`,
       {},
       {

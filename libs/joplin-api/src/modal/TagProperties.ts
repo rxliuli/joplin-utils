@@ -1,3 +1,3 @@
 import { BaseProperties } from './BaseProperties'
 
-export interface TagProperties extends BaseProperties {}
+export type TagProperties = BaseProperties

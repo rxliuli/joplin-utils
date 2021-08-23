@@ -25,7 +25,7 @@ export class NoteApi {
   ): Promise<PageRes<Pick<NoteProperties, K>>>
   async list(
     pageParam?: PageParam<NoteProperties> & FieldsParam<keyof NoteGetRes>,
-  ) {
+  ): Promise<PageRes<NoteGetRes>> {
     return this.ajax.get<PageRes<NoteGetRes>>('/notes', pageParam)
   }
 
@@ -34,24 +34,31 @@ export class NoteApi {
     id: string,
     fields?: K[],
   ): Promise<Pick<NoteProperties, K> & CommonType>
-  async get(id: string, fields?: (keyof NoteGetRes)[]) {
+  async get(
+    id: string,
+    fields?: (keyof NoteGetRes)[],
+  ): Promise<NoteGetRes & CommonType> {
     return this.ajax.get<NoteGetRes & CommonType>(`/notes/${id}`, { fields })
   }
 
-  async create(param: RequiredField<Partial<NoteProperties>, 'title'>) {
+  async create(
+    param: RequiredField<Partial<NoteProperties>, 'title'>,
+  ): Promise<NoteCreateRes> {
     return this.ajax.post<NoteCreateRes>('/notes', param)
   }
 
-  async update(param: RequiredField<Partial<NoteProperties>, 'id'>) {
+  async update(
+    param: RequiredField<Partial<NoteProperties>, 'id'>,
+  ): Promise<NoteUpdateRes> {
     const { id, ...others } = param
     return await this.ajax.put<NoteUpdateRes>(`/notes/${id}`, others)
   }
 
-  async remove(id: string) {
+  async remove(id: string): Promise<void> {
     return this.ajax.delete(`/notes/${id}`)
   }
 
-  tagsById(id: string) {
+  tagsById(id: string): Promise<TagGetRes[]> {
     return PageUtil.pageToAllList(
       ({ id, ...others }) =>
         this.ajax.get<PageRes<TagGetRes>>(`/notes/${id}/tags`, { ...others }),
@@ -61,12 +68,15 @@ export class NoteApi {
 
   resourcesById(id: string): Promise<ResourceGetRes[]>
   resourcesById<
-    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>
+    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>,
   >(
     id: string,
     fields: K[],
   ): Promise<(Pick<ResourceProperties, K> & CommonType)[]>
-  async resourcesById(id: string, fields: string[] = ['id', 'title']) {
+  async resourcesById(
+    id: string,
+    fields: string[] = ['id', 'title'],
+  ): Promise<ResourceGetRes[]> {
     return PageUtil.pageToAllList(
       ({ id, ...others }) =>
         this.ajax.get<PageRes<ResourceGetRes>>(`/notes/${id}/resources`, {

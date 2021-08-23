@@ -17,20 +17,20 @@ export class TagApi {
     return await this.ajax.get<PageRes<TagGetRes>>('/tags', pageParam)
   }
 
-  async get(id: string) {
+  async get(id: string): Promise<TagGetRes> {
     return await this.ajax.get<TagGetRes>(`/tags/${id}`)
   }
 
-  async create(param: Pick<TagProperties, 'title'>) {
+  async create(param: Pick<TagProperties, 'title'>): Promise<TagGetRes> {
     return await this.ajax.post<TagGetRes>('/tags', param)
   }
 
-  async update(param: Pick<TagProperties, 'id' | 'title'>) {
+  async update(param: Pick<TagProperties, 'id' | 'title'>): Promise<TagGetRes> {
     const { id, ...others } = param
     return await this.ajax.post<TagGetRes>(`/tags/${id}`, others)
   }
 
-  async remove(id: string) {
+  async remove(id: string): Promise<TagProperties> {
     return await this.ajax.delete<TagProperties>(`/tags/${id}`)
   }
 

@@ -2,6 +2,7 @@ import { NoteApi } from './NoteApi'
 // noinspection ES6PreferShortImport
 import { IntBool } from '../types/IntBool'
 import { Ajax } from '../util/ajax'
+import { NoteUpdateRes } from '../modal/NoteUpdateRes'
 
 export class NoteExtApi {
   private noteApi = new NoteApi(this.ajax)
@@ -13,7 +14,7 @@ export class NoteExtApi {
    * @param id
    * @param title
    */
-  rename(id: string, title: string) {
+  rename(id: string, title: string): Promise<NoteUpdateRes> {
     return this.noteApi.update({ id, title })
   }
 
@@ -22,7 +23,7 @@ export class NoteExtApi {
    * @param id
    * @param parentId
    */
-  move(id: string, parentId: string) {
+  move(id: string, parentId: string): Promise<NoteUpdateRes> {
     return this.noteApi.update({ id, parent_id: parentId })
   }
 
@@ -31,7 +32,7 @@ export class NoteExtApi {
    * @param id
    * @param completed
    */
-  async toggleTodo(id: string, completed?: IntBool) {
+  async toggleTodo(id: string, completed?: IntBool): Promise<void> {
     const note = await this.noteApi.get(id, ['id', 'is_todo', 'todo_completed'])
     if (!note.is_todo) {
       return
