@@ -1,0 +1,13 @@
+{
+  "name": "website",
+  "packageManager": "yarn@3.0.0",
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "docs:deploy": "yarn run docs:build && gh-pages -d docs/.vuepress/dist -e /joplin-vscode-plugin -a"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0",
+    "vuepress": "^1.8.2"
+  }
+}
