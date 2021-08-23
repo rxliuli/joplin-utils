@@ -12,9 +12,7 @@
     "dev": "liuli-cli build pkg -w",
     "docs:dev": "yarn docs:build && live-server docs",
     "docs:build": "typedoc --out docs src && cp .nojekyll docs/",
-    "predeploy": "yarn docs:build",
-    "deploy": "gh-pages -d docs -e /joplin-api -a",
-    "postdeploy": "rm docs",
+    "docs:deploy": "yarn docs:build && gh-pages -d docs -e /joplin-api -a",
     "test": "jest --all",
     "ci": "yarn build"
   },
