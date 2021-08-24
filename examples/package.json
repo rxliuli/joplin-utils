@@ -1,0 +1,11 @@
+{
+  "name": "joplin-examples",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "./blog-hexo-example",
+    "./blog-vuepress-example",
+    "./wiki-docsify-example",
+    "./wiki-vuepress-example"
+  ]
+}
