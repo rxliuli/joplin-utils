@@ -18,6 +18,13 @@
   background-color: #ffffff;
 }
 
+.header {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .main {
   margin: 24px;
   height: calc(100% - 24px * 2);
