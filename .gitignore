@@ -19,3 +19,4 @@ dist/
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+.yarn-cache.json
