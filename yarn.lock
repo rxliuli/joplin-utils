@@ -2542,6 +2542,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@liuli-util/string@npm:^3.2.7":
+  version: 3.2.7
+  resolution: "@liuli-util/string@npm:3.2.7"
+  checksum: cb1b2116c0186a522c8f8859b64409434dc9f7caf7374f9103dff6f8e7e765665e347d4958512dad7ec791713a5d61bd22269dcd48bef3e2e70038857ac7c0bd
+  languageName: node
+  linkType: hard
+
 "@liuli-util/tree@npm:^3.2.2, @liuli-util/tree@npm:^3.2.3":
   version: 3.2.5
   resolution: "@liuli-util/tree@npm:3.2.5"
@@ -13116,6 +13123,7 @@ fsevents@^1.2.7:
     "@liuli-util/i18next-dts-gen": ^0.3.0
     "@liuli-util/i18next-util": ^0.2.0
     "@liuli-util/shell": ^0.2.0
+    "@liuli-util/string": ^3.2.7
     "@liuli-util/tree": ^3.2.3
     "@types/jest": ^26.0.23
     "@types/markdown-it": ^12.0.2

@@ -13,8 +13,7 @@ export function convertLanguagePrefix(
     '/zh-CN/': LanguageEnum.ZhCN,
     '/en-US/': LanguageEnum.En,
   }
-  const res = LanguagePrefixMap[value as keyof typeof LanguagePrefixMap]
-  return res.endsWith('/') ? res.slice(0, res.length - 1) : res
+  return LanguagePrefixMap[value as keyof typeof LanguagePrefixMap]
 }
 
 export function useLanguage(): LanguageEnum {
@@ -24,7 +23,7 @@ export function useLanguage(): LanguageEnum {
     const regexp = /(\/.+?\/)/
     const res = regexp.exec(location.pathname)
     if (!res) {
-      history.push(convertLanguagePrefix(LanguageEnum.En) + '/')
+      history.push(convertLanguagePrefix(LanguageEnum.En))
       return LanguageEnum.En
     }
     return convertLanguagePrefix(res[0])

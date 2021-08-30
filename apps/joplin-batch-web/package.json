@@ -23,6 +23,7 @@
     "@liuli-util/async": "^3.2.3",
     "@liuli-util/dom": "^3.2.3",
     "@liuli-util/i18next-util": "^0.2.0",
+    "@liuli-util/string": "^3.2.7",
     "@liuli-util/tree": "^3.2.3",
     "antd": "^4.16.1",
     "comlink": "^4.3.1",
