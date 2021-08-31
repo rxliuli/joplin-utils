@@ -6,17 +6,15 @@ assignees:
   - rxliuli
 body:
   - type: checkboxes
-    id: terms
+    id: confirm
     attributes:
-      label: Code of Conduct
       options:
         - label: I checked [FAQ](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/guide/faq.html)
           required: true
   - type: dropdown
     id: app
     attributes:
-      label: app
-      description: What version of our software are you running?
+      label: The tool/kit where the error occurred
       options:
         - joplin-vscode-plugin
         - joplin-blog
@@ -28,31 +26,25 @@ body:
     id: desc
     attributes:
       label: Describe the bug
-      description: A clear and concise description of what the bug is.
-      placeholder:
-      value:
+      placeholder: A clear and concise description of what the bug is.
     validations:
       required: true
   - type: textarea
     id: steps
     attributes:
-      label: To Reproduce
-      description: |
-        Steps to reproduce the behavior:
+      label: Steps to reproduce the behavior
+      placeholder: |
         1. Go to '...'
         2. Click on '....'
         3. Scroll down to '....'
         4. See error
-      placeholder:
-      value:
     validations:
       required: true
   - type: textarea
     id: context
     attributes:
       label: Additional context
-      description: Add any other context about the problem here.
+      placeholder: Add any other context about the problem here.
       placeholder:
-      value:
     validations:
       required: false
