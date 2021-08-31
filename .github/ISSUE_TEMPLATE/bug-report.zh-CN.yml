@@ -16,7 +16,6 @@ body:
     id: app
     attributes:
       label: 发生错误的工具/包
-      description: 哪个东西发生了错误？
       options:
         - joplin-vscode-plugin
         - joplin-blog
@@ -28,7 +27,7 @@ body:
     id: desc
     attributes:
       label: 描述这个错误
-      description: 清晰简洁的错误描述
+      placeholder: 清晰简洁的错误描述
     validations:
       required: true
   - type: textarea
