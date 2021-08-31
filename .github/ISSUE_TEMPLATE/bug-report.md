@@ -1,74 +1,62 @@
-name: "\U0001F41E Bug report"
-description: Report an issue with joplin-utils
-labels: [pending triage]
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: [bug, triage]
+assignees:
+  - octocat
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
-  - type: textarea
-    id: bug-description
+  - type: input
+    id: contact
     attributes:
-      label: Describe the bug
-      description: A clear and concise description of what the bug is. If you intend to submit a PR for this issue, tell us in the description. Thanks!
-      placeholder: Bug description
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
     validations:
-      required: true
+      required: false
   - type: textarea
-    id: reproduction
+    id: what-happened
     attributes:
-      label: Reproduction
-      description: Please provide a link to a repo that can reproduce the problem you ran into. A [minimal reproduction](https://stackoverflow.com/help/minimal-reproducible-example) is required unless you are absolutely sure that the issue is obvious and the provided information is enough to understand the problem. If a report is vague (e.g. just a generic error message) and has no reproduction, it will receive a "need reproduction" label. If no reproduction is provided after 3 days, it will be auto-closed.
-      placeholder: Reproduction
-    validations:
-      required: true
-  - type: textarea
-    id: system-info
-    attributes:
-      label: System Info
-      description: Output of `npx envinfo --system --npmPackages vite,@vitejs/plugin-vue --binaries --browsers`
-      render: shell
-      placeholder: System, Binaries, Browsers
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+      value: "A bug happened!"
     validations:
       required: true
   - type: dropdown
-    id: package-manager
+    id: version
     attributes:
-      label: Used Package Manager
-      description: Select the used package manager
+      label: Version
+      description: What version of our software are you running?
       options:
-        - npm
-        - yarn
-        - pnpm
+        - 1.0.2 (Default)
+        - 1.0.3 (Edge)
     validations:
       required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
   - type: textarea
     id: logs
     attributes:
-      label: Logs
-      description: |
-        Optional if provided reproduction. Please try not to insert an image but copy paste the log text.
-
-        1. Run `vite` or `vite build` with the `--debug` flag.
-        2. Provide the error log here.
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
       render: shell
   - type: checkboxes
-    id: checkboxes
+    id: terms
     attributes:
-      label: Validations
-      description: Before submitting the issue, please make sure you do the following
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
       options:
-        - label: Follow our [Code of Conduct](https://github.com/vitejs/vite/blob/main/CODE_OF_CONDUCT.md)
-          required: true
-        - label: Read the [Contributing Guidelines](https://github.com/vitejs/vite/blob/main/CONTRIBUTING.md).
-          required: true
-        - label: Read the [docs](https://vitejs.dev/guide).
-          required: true
-        - label: Check that there isn't [already an issue](https://github.com/vitejs/vite/issues) that reports the same bug to avoid creating a duplicate.
-          required: true
-        - label: Make sure this is a Vite issue and not a framework-specific issue. For example, if it's a Vue SFC related bug, it should likely be reported to https://github.com/vuejs/vue-next instead.
-          required: true
-        - label: Check that this is a concrete bug. For Q&A open a [GitHub Discussion](https://github.com/vitejs/vite/discussions) or join our [Discord Chat Server](https://chat.vitejs.dev/).
-          required: true
-        - label: The provided reproduction is a [minimal reproducible example](https://stackoverflow.com/help/minimal-reproducible-example) of the bug.
+        - label: I agree to follow this project's Code of Conduct
           required: true
