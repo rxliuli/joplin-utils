@@ -32,16 +32,16 @@ body:
     validations:
       required: true
   - type: textarea
-      id: alternativePlan
-      attributes:
-        label: Describe alternatives you've considered
-        placeholder: A clear and concise description of any alternative solutions or features you've considered.
-      validations:
-        required: true
+    id: alternativePlan
+    attributes:
+      label: Describe alternatives you've considered
+      placeholder: A clear and concise description of any alternative solutions or features you've considered.
+    validations:
+      required: true
   - type: textarea
-      id: context
-      attributes:
-        label: Additional context
-        placeholder: Add any other context or screenshots about the feature request here.
-      validations:
-        required: false
+    id: context
+    attributes:
+      label: Additional context
+      placeholder: Add any other context or screenshots about the feature request here.
+    validations:
+      required: false
