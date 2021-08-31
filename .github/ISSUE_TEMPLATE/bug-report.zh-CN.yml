@@ -33,9 +33,8 @@ body:
   - type: textarea
     id: steps
     attributes:
-      label: 复现步骤
+      label: 复现错误的步骤
       placeholder: |
-        复现错误的步骤
         1. 进入 '...'
         2. 点击'....'
         3. 滚动到 '....'
