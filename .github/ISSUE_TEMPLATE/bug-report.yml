@@ -12,3 +12,34 @@ body:
       options:
         - label: I checked [FAQ](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/guide/faq.html)
           required: true
+  - type: dropdown
+    id: app
+    attributes:
+      label: app
+      description: What version of our software are you running?
+      options:
+        - joplin-vscode-plugin
+        - joplin-blog
+        - joplin-batch-web
+        - joplin-api
+    validations:
+      required: true
+  - type: textarea
+    id: desc
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+      placeholder:
+      value:
+    validations:
+      required: true
+
+ - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+      placeholder:
+      value:
+    validations:
+      required: false
