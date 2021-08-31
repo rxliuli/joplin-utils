@@ -1,4 +1,4 @@
-\# joplin-batch-web
+# joplin-batch-web
 
 ## Overview
 
