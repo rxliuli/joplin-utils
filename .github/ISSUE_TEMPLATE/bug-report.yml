@@ -33,3 +33,26 @@ body:
       value:
     validations:
       required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: To Reproduce
+      description: |
+        Steps to reproduce the behavior:
+        1. Go to '...'
+        2. Click on '....'
+        3. Scroll down to '....'
+        4. See error
+      placeholder:
+      value:
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+      placeholder:
+      value:
+    validations:
+      required: false
