@@ -24,3 +24,12 @@ body:
         - joplin-api
     validations:
       required: true
+  - type: textarea
+    id: desc
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+      placeholder:
+      value:
+    validations:
+      required: true
