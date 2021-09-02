@@ -13,7 +13,9 @@ export class TagApi {
   async list<K extends keyof TagProperties>(
     pageParam: PageParam<TagProperties> & FieldsParam<K>,
   ): Promise<PageRes<Pick<TagProperties, K>>>
-  async list(pageParam?: PageParam<TagProperties>) {
+  async list(
+    pageParam?: PageParam<TagProperties>,
+  ): Promise<PageRes<TagGetRes>> {
     return await this.ajax.get<PageRes<TagGetRes>>('/tags', pageParam)
   }
 
@@ -37,11 +39,8 @@ export class TagApi {
   async notesByTagId({
     id,
     ...others
-  }: { id: string } & PageParam<TagProperties>) {
-    return await this.ajax.get<PageRes<NoteGetRes[]>>(
-      `/tags/${id}/notes`,
-      others,
-    )
+  }: { id: string } & PageParam<TagProperties>): Promise<PageRes<NoteGetRes>> {
+    return await this.ajax.get<PageRes<NoteGetRes>>(`/tags/${id}/notes`, others)
   }
 
   /**
@@ -49,7 +48,10 @@ export class TagApi {
    * @param tagId
    * @param noteId
    */
-  async addTagByNoteId(tagId: string, noteId: string) {
+  async addTagByNoteId(
+    tagId: string,
+    noteId: string,
+  ): Promise<NoteTagRelated | null> {
     return await this.ajax.post<NoteTagRelated | null>(
       `/tags/${tagId}/notes/`,
       {
@@ -58,7 +60,7 @@ export class TagApi {
     )
   }
 
-  async removeTagByNoteId(tagId: string, noteId: string) {
+  async removeTagByNoteId(tagId: string, noteId: string): Promise<void> {
     return await this.ajax.delete<void>(`/tags/${tagId}/notes/${noteId}`)
   }
 }
