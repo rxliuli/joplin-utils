@@ -5,10 +5,9 @@
     "target": "ESNext",
     "strict": true,
     "moduleResolution": "Node",
-    "jsx": "react",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "esModuleInterop": true
   },
-  "exclude": ["src/**/__tests__"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"

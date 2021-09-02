@@ -1,62 +1,59 @@
 import joplin, {
   ExportModule,
   FileSystemItem,
-  ImportModule,
+  SettingItemType,
 } from 'joplin-plugin-api'
-import { copy, mkdirp, writeFile } from 'fs-extra'
-import * as path from 'path'
-
-function destDir(context: any) {
-  return context.destPath
-}
-
-function resourceDir(context: any) {
-  return context.destPath + '/resources'
-}
+import { ExportContext } from 'joplin-plugin-api/dist/api/types'
+import { Exporter } from './core/Exporter'
+import { config } from 'joplin-api'
 
 class DirExporter implements ExportModule {
-  description = 'Zip Export Directory'
-  format = 'zip'
+  description = 'Export Directory'
+  format = 'folder'
   target = FileSystemItem.Directory
   isNoteArchive = true
 
-  async onInit(context: any) {
-    await mkdirp(destDir(context))
-    await mkdirp(resourceDir(context))
+  async onInit(context: ExportContext) {
+    config.token = await joplin.settings.value('token')
+    config.port = await joplin.settings.value('port')
+    if (!config.token || !config.port) {
+      const dialogs = joplin.views.dialogs
+      const handle = await dialogs.create('error config')
+      await dialogs.setHtml(handle, 'No configuration token/port')
+      await dialogs.open(handle)
+      return
+    }
+    const exporter = new Exporter({
+      rootPath: context.destPath,
+    })
+    await exporter.export()
   }
 
-  async onProcessItem(context: any, _itemType: number, item: any) {
-    const filePath = destDir(context) + '/' + item.id + '.json'
-    const serialized = JSON.stringify(item)
-    await writeFile(filePath, serialized, 'utf8')
-  }
+  async onProcessItem(context: any, _itemType: number, item: any) {}
 
-  async onProcessResource(context: any, _resource: any, filePath: string) {
-    const destPath = resourceDir(context) + '/' + path.basename(filePath)
-    await copy(filePath, destPath)
-  }
+  async onProcessResource(context: any, _resource: any, filePath: string) {}
 
   async onClose(_context: any) {}
 }
 
-class DirImporter implements ImportModule {
-  description = 'Zip Import Directory'
-  format = 'zip'
-  sources = [FileSystemItem.Directory]
-  isNoteArchive = true
-
-  async onExec(context: any) {
-    // In this case importing is a lot more complicated due to the need to avoid
-    // duplicate IDs, to validate data and ensure note links and
-    // resources are still working properly.
-    // See InteropService_Importer_Raw for an example.
-    console.info('Not implemented! Importing from:', context)
-  }
-}
-
 joplin.plugins.register({
   onStart: async function () {
+    await joplin.settings.registerSettings({
+      token: {
+        label: 'token',
+        description: 'token',
+        type: SettingItemType.String,
+        public: true,
+        value: '',
+      },
+      port: {
+        label: 'port',
+        description: 'port',
+        type: SettingItemType.Int,
+        public: true,
+        value: 41184,
+      },
+    })
     await joplin.interop.registerExportModule(new DirExporter())
-    await joplin.interop.registerImportModule(new DirImporter())
   },
 })

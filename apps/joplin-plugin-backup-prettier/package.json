@@ -1,6 +1,6 @@
 {
   "name": "joplin-plugin-backup-prettier",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "scripts": {
     "dev": "rollup -cw",
     "build": "rollup -c"

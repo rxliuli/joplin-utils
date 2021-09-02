@@ -20,3 +20,4 @@ dist/
 !.yarn/versions
 .pnp.*
 .yarn-cache.json
+.temp

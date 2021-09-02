@@ -4,11 +4,12 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import copy from 'rollup-plugin-copy'
 import { defineConfig } from 'rollup'
+import json from '@rollup/plugin-json'
 
 export default defineConfig([
   {
     input: 'src/index.ts',
-    output: { file: 'dist/index.js', format: 'cjs', sourcemap: true },
+    output: { dir: 'dist', format: 'cjs', sourcemap: true },
     plugins: [
       copy({
         targets: [{ src: 'src/manifest.json', dest: 'dist' }],
@@ -17,6 +18,7 @@ export default defineConfig([
       nodeResolve({
         preferBuiltins: true,
       }),
+      json(),
       commonjs(),
       externals(),
     ],
