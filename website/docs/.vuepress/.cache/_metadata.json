@@ -1,0 +1,31 @@
+{
+  "hash": "9cd102c3",
+  "browserHash": "f1bc5e27",
+  "optimized": {
+    "vue": {
+      "file": "C:/Users/rxliuli/Code/Web/joplin-utils/apps/joplin-vscode-plugin/website/docs/.vuepress/.cache/vue.js",
+      "src": "C:/Users/rxliuli/Code/Web/joplin-utils/apps/joplin-vscode-plugin/website/node_modules/@vue/runtime-dom/dist/runtime-dom.esm-bundler.js",
+      "needsInterop": false
+    },
+    "vue-router": {
+      "file": "C:/Users/rxliuli/Code/Web/joplin-utils/apps/joplin-vscode-plugin/website/docs/.vuepress/.cache/vue-router.js",
+      "src": "C:/Users/rxliuli/Code/Web/joplin-utils/apps/joplin-vscode-plugin/website/node_modules/vue-router/dist/vue-router.esm-bundler.js",
+      "needsInterop": false
+    },
+    "@vuepress/shared": {
+      "file": "C:/Users/rxliuli/Code/Web/joplin-utils/apps/joplin-vscode-plugin/website/docs/.vuepress/.cache/@vuepress_shared.js",
+      "src": "C:/Users/rxliuli/Code/Web/joplin-utils/apps/joplin-vscode-plugin/website/node_modules/@vuepress/shared/lib/esm/index.js",
+      "needsInterop": false
+    },
+    "@vueuse/core": {
+      "file": "C:/Users/rxliuli/Code/Web/joplin-utils/apps/joplin-vscode-plugin/website/docs/.vuepress/.cache/@vueuse_core.js",
+      "src": "C:/Users/rxliuli/Code/Web/joplin-utils/apps/joplin-vscode-plugin/website/node_modules/@vueuse/core/index.esm.js",
+      "needsInterop": false
+    },
+    "nprogress": {
+      "file": "C:/Users/rxliuli/Code/Web/joplin-utils/apps/joplin-vscode-plugin/website/docs/.vuepress/.cache/nprogress.js",
+      "src": "C:/Users/rxliuli/Code/Web/joplin-utils/apps/joplin-vscode-plugin/website/node_modules/nprogress/nprogress.js",
+      "needsInterop": true
+    }
+  }
+}
