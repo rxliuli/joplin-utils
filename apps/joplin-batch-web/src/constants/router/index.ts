@@ -1,39 +1,46 @@
 import { RouteConfig } from 'react-router-config'
-import { lazy } from 'react'
 import { i18n } from '../i18n'
+import HomePage from '../../pages/home'
+import SettingsPage from '../../pages/settings'
+import UnusedResourcePage from '../../pages/unusedResource'
+import NotFoundResourceCheckPage from '../../pages/notFoundResource'
+import ConvertExternalLinkPage from '../../pages/convertExternalLink'
+import CheckParentNotebookPage from '../../pages/checkParentNotebook'
 
 export type RouteMenuConfig = RouteConfig & { title: string }
-export const routeList = () =>
-  [
+
+export function routeList(): RouteMenuConfig[] {
+  return [
     {
       path: '/',
-      component: lazy(() => import('../../pages/home')),
+      component: HomePage,
       exact: true,
       title: i18n.t('home.title'),
     },
     {
       path: '/settings',
-      component: lazy(() => import('../../pages/settings')),
+      component: SettingsPage,
       title: i18n.t('settings.title'),
     },
     {
       path: '/unusedResource',
-      component: lazy(() => import('../../pages/unusedResource')),
+      component: UnusedResourcePage,
       title: i18n.t('unusedResource.title'),
     },
     {
       path: '/notFoundResource',
-      component: lazy(() => import('../../pages/notFoundResource')),
+      component: NotFoundResourceCheckPage,
       title: i18n.t('notFoundResource.title'),
     },
     {
       path: '/convertExternalLink',
-      component: lazy(() => import('../../pages/convertExternalLink')),
+      component: ConvertExternalLinkPage,
       title: i18n.t('convertExternalLink.title'),
     },
     {
       path: '/checkParentNotebook',
-      component: lazy(() => import('../../pages/checkParentNotebook')),
+      component: CheckParentNotebookPage,
       title: i18n.t('checkParentNotebook.title'),
     },
   ] as RouteMenuConfig[]
+}
