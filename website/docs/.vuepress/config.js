@@ -115,6 +115,10 @@ module.exports = {
                 text: 'joplin-vscode-plugin',
                 link: '/zh/joplin-vscode-plugin/',
               },
+              {
+                text: 'joplin-batch-web',
+                link: '/zh/joplin-batch-web/',
+              },
             ],
           },
           {
@@ -205,6 +209,24 @@ module.exports = {
                   ],
                 },
               ],
+            },
+          ],
+          '/zh/joplin-batch-web/': [
+            {
+              text: '简介',
+              link: '/zh/joplin-batch-web/',
+            },
+            {
+              text: '其他功能',
+              link: '/zh/joplin-batch-web/feature',
+            },
+            {
+              text: '参与项目',
+              link: '/zh/joplin-batch-web/dev',
+            },
+            {
+              text: '在线网站',
+              link: 'https://joplin-utils.rxliuli.com/joplin-batch-web/#/zh-CN/',
             },
           ],
           '/zh/joplin-api/': [
