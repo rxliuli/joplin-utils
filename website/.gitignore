@@ -19,6 +19,6 @@ dist/
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
-.temp
-.vuepress/.cache
-dist
+docs/.vuepress/.temp
+docs/.vuepress/.cache
+docs/.vuepress/dist

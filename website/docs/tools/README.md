@@ -2,7 +2,7 @@
 
 ## general user
 
-- joplin-vscode-plugin
+- [joplin-vscode-plugin](../joplin-vscode-plugin)
 - joplin-blog
 - joplin-plugin-backup-prettier
 - joplin-batch-web
@@ -10,5 +10,5 @@
 
 ## Developer
 
-- joplin-api
+- [joplin-api](../joplin-api)
 - joplin-plugin-api

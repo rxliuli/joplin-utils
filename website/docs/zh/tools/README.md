@@ -2,7 +2,7 @@
 
 ## 普通用户
 
-- joplin-vscode-plugin
+- [joplin-vscode-plugin](../joplin-vscode-plugin)
 - joplin-blog
 - joplin-plugin-backup-prettier
 - joplin-batch-web
@@ -10,5 +10,5 @@
 
 ## 开发者
 
-- joplin-api
-- joplin-plugin-api
+- [joplin-api](../joplin-api)
+- [joplin-plugin-api](../joplin-plugin-api)
