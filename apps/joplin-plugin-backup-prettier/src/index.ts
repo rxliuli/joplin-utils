@@ -1,11 +1,14 @@
 import joplin, {
-  ExportModule,
   FileSystemItem,
+  ImportContext,
   SettingItemType,
 } from 'joplin-plugin-api'
 import { ExportContext } from 'joplin-plugin-api/dist/api/types'
 import { Exporter } from './core/Exporter'
 import { config } from 'joplin-api'
+import { Importer } from './core/Importer'
+import path from 'path'
+import { pathExists } from 'fs-extra'
 
 joplin.plugins.register({
   onStart: async function () {
@@ -25,6 +28,17 @@ joplin.plugins.register({
         value: 41184,
       },
     })
+
+    async function setupJoplinConfig() {
+      const token = await joplin.settings.value('token')
+      const port = await joplin.settings.value('port')
+      if (!token || !port) {
+        return false
+      }
+      config.token = token
+      config.port = port
+      return true
+    }
     await joplin.interop.registerExportModule({
       description: 'Export Directory',
       format: 'folder',
@@ -32,28 +46,38 @@ joplin.plugins.register({
       isNoteArchive: true,
 
       async onInit(context: ExportContext) {
-        const token = await joplin.settings.value('token')
-        const port = await joplin.settings.value('port')
-        if (!token || !port) {
+        if (!(await setupJoplinConfig())) {
           return
         }
-        config.token = token
-        config.port = port
         const exporter = new Exporter({
           rootPath: context.destPath,
         })
         await exporter.export()
       },
-
-      async onProcessItem(context: any, _itemType: number, item: any) {},
-
-      async onProcessResource(
-        context: any,
-        _resource: any,
-        filePath: string,
-      ) {},
-
+      async onProcessItem() {},
+      async onProcessResource() {},
       async onClose(_context: any) {},
+    })
+    await joplin.interop.registerImportModule({
+      description: 'Import Directory',
+      format: 'folder',
+      sources: [FileSystemItem.Directory],
+      isNoteArchive: false,
+
+      async onExec(context: ImportContext) {
+        if (!(await setupJoplinConfig())) {
+          console.warn('插件配置错误')
+          return
+        }
+        if (!(await pathExists(path.resolve(context.sourcePath, 'config')))) {
+          console.warn('导入目录不正确')
+          return
+        }
+        const importer = new Importer({
+          rootPath: context.sourcePath,
+        })
+        await importer.importArchive()
+      },
     })
   },
 })
