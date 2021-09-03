@@ -84,12 +84,16 @@ export class Exporter {
   async export() {
     await mkdirp(this.config.rootPath)
     const folderList = await this.listFolder()
+    console.log('读取目录')
     await this.writeFolder(folderList)
     const noteList = await this.listNote(folderList)
+    console.log('读取笔记')
     await this.writeNote(noteList)
     const resourceList = await this.listResource()
+    console.log('读取资源')
     await this.writeResource(resourceList)
     const { tagList, noteTagRelationList } = await this.tag()
+    console.log('读取标签')
     await this.writeConfig({
       folderList,
       noteList: noteList.map(({ body, ...item }) => item) as any,
