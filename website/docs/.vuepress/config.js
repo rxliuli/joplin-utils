@@ -39,7 +39,7 @@ module.exports = {
           },
           {
             text: 'GitHub',
-            link: 'https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-vscode-plugin',
+            link: 'https://github.com/rxliuli/joplin-utils',
           },
         ],
         sidebar: {
