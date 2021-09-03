@@ -16,7 +16,7 @@
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
     "out": "docs",
-    "readme": "README.md",
+    "readme": "README.ZH_CN.md",
     "gitRemote": "origin"
   },
   "ts-node": {

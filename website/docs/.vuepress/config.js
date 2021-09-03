@@ -31,6 +31,10 @@ module.exports = {
                 text: 'joplin-api',
                 link: '/joplin-api/',
               },
+              {
+                text: 'joplin-plugin-api',
+                link: '/zh/joplin-plugin-api/',
+              },
             ],
           },
           {
@@ -93,13 +97,10 @@ module.exports = {
             },
           ],
           '/joplin-api/': [
+            { text: 'Introduction', link: '' },
             {
-              text: 'README',
-              link: '/zh/joplin-api/',
-            },
-            {
-              text: 'api',
-              link: '/zh/joplin-api/modules.md',
+              text: 'API Doc',
+              link: 'https://joplin-utils.rxliuli.com/joplin-api/',
             },
           ],
         },
@@ -121,7 +122,11 @@ module.exports = {
             children: [
               {
                 text: 'joplin-api',
-                link: '/joplin-api/',
+                link: '/zh/joplin-api/',
+              },
+              {
+                text: 'joplin-plugin-api',
+                link: '/zh/joplin-plugin-api/',
               },
             ],
           },
@@ -200,6 +205,20 @@ module.exports = {
                   ],
                 },
               ],
+            },
+          ],
+          '/zh/joplin-api/': [
+            { text: '简介', link: '' },
+            {
+              text: 'API 文档',
+              link: 'https://joplin-utils.rxliuli.com/joplin-api/',
+            },
+          ],
+          '/zh/joplin-plugin-api/': [
+            { text: '简介', link: '' },
+            {
+              text: 'API 文档',
+              link: 'https://joplin-utils.rxliuli.com/joplin-plugin-api/',
             },
           ],
         },

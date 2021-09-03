@@ -1,5 +1,3 @@
-joplin-api / [Exports](modules.md)
-
 # joplin api
 
 > [API documentation](https://joplin-utils.rxliuli.com/joplin-api/), [Joplin official document](https://joplinapp.org/api/overview/)

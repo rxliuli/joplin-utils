@@ -10318,7 +10318,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"gh-pages@npm:^3.1.0, gh-pages@npm:^3.2.0":
+"gh-pages@npm:^3.1.0, gh-pages@npm:^3.2.0, gh-pages@npm:^3.2.3":
   version: 3.2.3
   resolution: "gh-pages@npm:3.2.3"
   dependencies:
@@ -13173,7 +13173,6 @@ fsevents@^1.2.7:
     "@liuli-util/cli": ^3.7.1
     "@liuli-util/eslint-config-ts": ^0.2.0
     "@liuli-util/object": ^3.2.3
-    "@liuli-util/shell": ^0.2.0
     "@types/form-data": ^2.5.0
     "@types/fs-extra": ^9.0.4
     "@types/jest": ^26.0.15
@@ -13185,11 +13184,11 @@ fsevents@^1.2.7:
     jest: ^26.6.3
     node-fetch: ^2.6.1
     query-string: ^6.13.7
+    rimraf: ^3.0.2
     ts-jest: ^26.4.4
     ts-node: ^9.0.0
     tslib: ^2.0.3
     typedoc: ^0.21.2
-    typedoc-plugin-markdown: ^3.10.4
     typescript: ^4.2.4
   languageName: unknown
   linkType: soft
@@ -13318,6 +13317,7 @@ fsevents@^1.2.7:
   dependencies:
     "@types/jest": ^26.0.23
     "@types/rollup-plugin-auto-external": ^2.0.1
+    gh-pages: ^3.2.3
     jest: ^26.6.3
     rimraf: ^3.0.2
     rollup: ^2.56.3
@@ -13328,7 +13328,7 @@ fsevents@^1.2.7:
     ts-jest: ^26.5.6
     ts-node: ^10.0.0
     type-fest: ^1.2.1
-    typedoc: ^0.21.0
+    typedoc: ^0.21.2
     typescript: ^4.3.4
   languageName: unknown
   linkType: soft
@@ -20997,37 +20997,6 @@ resolve@^2.0.0-next.3:
   version: 0.12.10
   resolution: "typedoc-default-themes@npm:0.12.10"
   checksum: 6e3a6f5aa3bfd0956b820077aec5c98a22494ed59dca5e36f179ca7f196508ab447043cc76fd02fb2b7d762a7bae82d33f8db605356e448b1a085bb45eb31360
-  languageName: node
-  linkType: hard
-
-"typedoc-plugin-markdown@npm:^3.10.4":
-  version: 3.10.4
-  resolution: "typedoc-plugin-markdown@npm:3.10.4"
-  dependencies:
-    handlebars: ^4.7.7
-  peerDependencies:
-    typedoc: ">=0.21.2"
-  checksum: ec80922c91fdf9aaae2663d1ad1e8e24f1096acb16b3d6845481423dd15cfb6ea837199607c172f4d7b283beaebea3d92b14318f5e28e3a0dc991d16f829b60e
-  languageName: node
-  linkType: hard
-
-"typedoc@npm:^0.21.0":
-  version: 0.21.6
-  resolution: "typedoc@npm:0.21.6"
-  dependencies:
-    glob: ^7.1.7
-    handlebars: ^4.7.7
-    lunr: ^2.3.9
-    marked: ^2.1.1
-    minimatch: ^3.0.0
-    progress: ^2.0.3
-    shiki: ^0.9.3
-    typedoc-default-themes: ^0.12.10
-  peerDependencies:
-    typescript: 4.0.x || 4.1.x || 4.2.x || 4.3.x
-  bin:
-    typedoc: bin/typedoc
-  checksum: 3a3a6d48df4b4fe1f525d4cad96059350248be6114005c548c29abddf12b7104642389e4f64f772bb788eda812ec71250033ffb530493f91c843fdffd700add4
   languageName: node
   linkType: hard
 

@@ -9,10 +9,8 @@
     "setup": "yarn build",
     "build": "rimraf dist && rollup -c",
     "dev": "rollup -cw",
-    "docs:server": "live-server docs",
-    "docs:dev": "typedoc --watch",
-    "docs:build": "rm docs && typedoc",
-    "docs:deploy": "yarn build && gh-pages -d docs/ -e / -a"
+    "docs:build": "rimraf docs && typedoc",
+    "docs:deploy": "yarn docs:build && gh-pages -d docs/ -e /joplin-plugin-api -a"
   },
   "jest": {
     "preset": "ts-jest"
@@ -20,6 +18,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "@types/rollup-plugin-auto-external": "^2.0.1",
+    "gh-pages": "^3.2.3",
     "jest": "^26.6.3",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.3",
@@ -30,7 +29,7 @@
     "ts-jest": "^26.5.6",
     "ts-node": "^10.0.0",
     "type-fest": "^1.2.1",
-    "typedoc": "^0.21.0",
+    "typedoc": "^0.21.2",
     "typescript": "^4.3.4"
   }
 }
