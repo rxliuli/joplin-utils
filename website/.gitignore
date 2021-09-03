@@ -19,3 +19,6 @@ dist/
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+.temp
+.cache
+dist

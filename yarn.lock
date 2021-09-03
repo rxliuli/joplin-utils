@@ -13189,6 +13189,7 @@ fsevents@^1.2.7:
     ts-node: ^9.0.0
     tslib: ^2.0.3
     typedoc: ^0.21.2
+    typedoc-plugin-markdown: ^3.10.4
     typescript: ^4.2.4
   languageName: unknown
   linkType: soft
@@ -20996,6 +20997,17 @@ resolve@^2.0.0-next.3:
   version: 0.12.10
   resolution: "typedoc-default-themes@npm:0.12.10"
   checksum: 6e3a6f5aa3bfd0956b820077aec5c98a22494ed59dca5e36f179ca7f196508ab447043cc76fd02fb2b7d762a7bae82d33f8db605356e448b1a085bb45eb31360
+  languageName: node
+  linkType: hard
+
+"typedoc-plugin-markdown@npm:^3.10.4":
+  version: 3.10.4
+  resolution: "typedoc-plugin-markdown@npm:3.10.4"
+  dependencies:
+    handlebars: ^4.7.7
+  peerDependencies:
+    typedoc: ">=0.21.2"
+  checksum: ec80922c91fdf9aaae2663d1ad1e8e24f1096acb16b3d6845481423dd15cfb6ea837199607c172f4d7b283beaebea3d92b14318f5e28e3a0dc991d16f829b60e
   languageName: node
   linkType: hard
 

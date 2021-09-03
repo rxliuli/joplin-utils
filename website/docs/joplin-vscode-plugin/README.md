@@ -6,9 +6,9 @@
 
 Joplin Web Clipper is designed to communicate with browser extensions by sharing Notes, Notebooks, Tags, etc. through a REST web API. `joplin-vscode-plugin` connects to that same REST endpoint to freely make changes to your notes without ever leaving the editor.
 
-> Why does this plugin exist? Read [my motivation](../other/README.md) for developing it.
+> Why does this plugin exist? Read [my motivation](other/README.md) for developing it.
 >
-> What can it do? The [roadmap](../other/roadmap.md) lists both existing and planned features.
+> What can it do? The [roadmap](other/roadmap.md) lists both existing and planned features.
 >
 > Never heard of [Joplin](https://joplinapp.org/)? You're missing out on a great [opensource synchronized note taking app](https://joplinapp.org/).
 
@@ -23,7 +23,7 @@ Joplin Web Clipper is designed to communicate with browser extensions by sharing
 
 Search for "Joplin" in the VSCode Marketplace. Find "joplin-vscode-plugin" and click Install.
 
-![install plugin](../images/install-plugin.png)
+![install plugin](/images/install-plugin.png)
 
 ## Configure
 
@@ -49,7 +49,7 @@ This setting is required if you wish to use attachment-related features.
 
 In general, if you are using a portable application, it should be the `. /JoplinProfile` directory, in which you should see the _resources_, _templates_, and _tmp_ directories.
 
-![install plugin](../images/joplin-settings.png)
+![install plugin](/images/joplin-settings.png)
 
 ## Restart VSCode
 

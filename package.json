@@ -13,7 +13,8 @@
   "workspaces": {
     "packages": [
       "libs/*",
-      "apps/*"
+      "apps/*",
+      "!website"
     ]
   },
   "commitlint": {

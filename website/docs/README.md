@@ -1,14 +1,17 @@
 ---
 home: true
 heroImage: /images/logo.png
-heroText: Joplin Vscode Plugin
-tagline: Provides the functions of managing joplin notes in vscode, including common viewing and editing notes, managing note tags, adding and modifying attachments, internal links, search and other functions.
+heroText: Joplin Utils
+tagline: Joplin-based peripheral community tool
 actions:
-  - text: Quick Start →
-    link: /guide/
+  - link: /tools/
+    text: see what's there →
 features:
-  - title: VSCode's professional editing function and its ecology
-  - title: Joplin's powerful search and synchronization functions
-  - title: Open source + free
+  - title: joplin-vscode-plugin
+    details: Provides the ability to manage joplin notes in vscode, combined with vscode's existing powerful editor and its ecosystem.
+  - title: joplin-blog
+    details: Publish notes with the specified tags as an online site, either as a blog or as a wiki
+  - title: joplin devtool
+    details: Some developer-related toolsets, including joplin-api/joplin-plugin-api
 footer: MIT Licensed | Copyright © 2021-present rxliuli
 ---

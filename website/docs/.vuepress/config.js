@@ -1,148 +1,203 @@
 module.exports = {
-  base: '/joplin-vscode-plugin/',
+  bundler: '@vuepress/vite',
   locales: {
     '/': {
       lang: 'en-US', // 将会被设置为 <html> 的 lang 属性
-      title: 'Joplin Vscode Plugin',
-      description:
-        'joplin-vscode-plugin offers editing and management of Joplin notes with the power and flexibility of VSCode.',
+      title: 'Joplin Utils',
     },
     '/zh/': {
       lang: 'zh-CN',
-      title: 'Joplin VSCode 插件',
-      description:
-        'joplin-vscode-plugin 提供在 vscode 中管理 joplin 笔记的功能，包括常见的查看、编辑笔记，管理笔记的标签，添加、修改附件，内部链接、搜索等功能。',
+      title: 'Joplin Utils',
     },
   },
   themeConfig: {
     locales: {
       '/': {
-        nav: [
+        navbar: [
           { text: 'Home', link: '/' },
-          { text: 'Guide', link: '/guide/' },
-          { text: 'Other', link: '/other/' },
+          {
+            text: 'Tools',
+            children: [
+              {
+                text: 'joplin-vscode-plugin',
+                link: '/joplin-vscode-plugin/',
+              },
+            ],
+          },
+          {
+            text: 'Developer',
+            children: [
+              {
+                text: 'joplin-api',
+                link: '/joplin-api/',
+              },
+            ],
+          },
           {
             text: 'GitHub',
             link: 'https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-vscode-plugin',
           },
         ],
         sidebar: {
-          '/guide/': [
-            '',
-            'faq',
-            'feature',
-            'recommended-extension',
-            'limitations',
+          '/joplin-vscode-plugin/': [
+            {
+              text: 'Guide',
+              children: [
+                '/joplin-vscode-plugin/',
+                '/joplin-vscode-plugin/guide/faq',
+                '/joplin-vscode-plugin/guide/feature',
+                '/joplin-vscode-plugin/guide/recommended-extension',
+                '/joplin-vscode-plugin/guide/limitations',
+              ],
+            },
+            {
+              text: 'Other',
+              children: [
+                '/joplin-vscode-plugin/other/',
+                '/joplin-vscode-plugin/other/roadmap.md',
+                {
+                  text: 'Joplin Forum',
+                  link: 'https://discourse.joplinapp.org/',
+                },
+                {
+                  text: 'VSCode',
+                  collapsable: false,
+                  children: [
+                    {
+                      text: 'VSCode Official Document',
+                      link: 'https://code.visualstudio.com/docs',
+                    },
+                  ],
+                },
+                {
+                  text: 'Markdown',
+                  collapsable: false,
+                  children: [
+                    {
+                      text: 'Markdown Guide (English)',
+                      link: 'https://www.markdownguide.org/',
+                    },
+                  ],
+                },
+                {
+                  text: 'VSCode + Markdown',
+                  collapsable: false,
+                  children: [
+                    {
+                      text: 'VSCode Markdown Official Document',
+                      link: 'https://code.visualstudio.com/docs/languages/markdown',
+                    },
+                  ],
+                },
+              ],
+            },
           ],
-          '/other/': [
-            '',
-            'roadmap',
+          '/joplin-api/': [
             {
-              title: 'Joplin Forum',
-              path: 'https://discourse.joplinapp.org/',
+              text: 'README',
+              link: '/zh/joplin-api/',
             },
             {
-              title: 'VSCode',
-              collapsable: false,
-              children: [
-                {
-                  title: 'VSCode Official Document',
-                  path: 'https://code.visualstudio.com/docs',
-                },
-              ],
-            },
-            {
-              title: 'Markdown',
-              collapsable: false,
-              children: [
-                {
-                  title: 'Markdown Guide (English)',
-                  path: 'https://www.markdownguide.org/',
-                },
-              ],
-            },
-            {
-              title: 'VSCode + Markdown',
-              collapsable: false,
-              children: [
-                {
-                  title: 'VSCode Markdown Official Document',
-                  path: 'https://code.visualstudio.com/docs/languages/markdown',
-                },
-              ],
+              text: 'api',
+              link: '/zh/joplin-api/modules.md',
             },
           ],
         },
       },
       '/zh/': {
-        nav: [
+        navbar: [
           { text: '首页', link: '/zh/' },
-          { text: '指南', link: '/zh/guide/' },
-          { text: '其他', link: '/zh/other/' },
+          {
+            text: '工具',
+            children: [
+              {
+                text: 'joplin-vscode-plugin',
+                link: '/zh/joplin-vscode-plugin/',
+              },
+            ],
+          },
+          {
+            text: '开发者',
+            children: [
+              {
+                text: 'joplin-api',
+                link: '/joplin-api/',
+              },
+            ],
+          },
           {
             text: 'GitHub',
-            link: 'https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-vscode-plugin',
+            link: 'https://github.com/rxliuli/joplin-utils',
           },
         ],
         sidebar: {
-          '/zh/guide/': [
-            '',
-            'faq',
-            'feature',
-            'recommended-extension',
-            'limitations',
-          ],
-          '/zh/other/': [
-            '',
-            'dev',
-            'roadmap',
+          '/zh/joplin-vscode-plugin/': [
             {
-              title: 'Joplin 论坛',
-              path: 'https://discourse.joplinapp.org/',
-            },
-            {
-              title: 'VSCode',
-              collapsable: false,
+              text: '指南',
               children: [
-                {
-                  title: 'VSCode 官方文档',
-                  path: 'https://code.visualstudio.com/docs',
-                },
-                {
-                  title: 'VSCode 中文翻译文档',
-                  path: 'https://jeasonstudio.gitbooks.io/vscode-cn-doc/',
-                },
+                '/zh/joplin-vscode-plugin/',
+                '/zh/joplin-vscode-plugin/guide/faq',
+                '/zh/joplin-vscode-plugin/guide/feature',
+                '/zh/joplin-vscode-plugin/guide/recommended-extension',
+                '/zh/joplin-vscode-plugin/guide/limitations',
               ],
             },
             {
-              title: 'Markdown',
-              collapsable: false,
+              text: '其他',
               children: [
+                '/zh/joplin-vscode-plugin/other/',
+                '/zh/joplin-vscode-plugin/other/dev.md',
+                '/zh/joplin-vscode-plugin/other/README.md',
+                '/zh/joplin-vscode-plugin/other/roadmap.md',
                 {
-                  title: 'Markdown 指南（英文）',
-                  path: 'https://www.markdownguide.org/',
+                  text: 'Joplin 论坛',
+                  link: 'https://discourse.joplinapp.org/',
                 },
                 {
-                  title: 'Markdown 指南（翻译）',
-                  path: 'https://www.markdown.xyz/',
-                },
-              ],
-            },
-            {
-              title: 'VSCode + Markdown',
-              collapsable: false,
-              children: [
-                {
-                  title: 'VSCode Markdown 官方文档',
-                  path: 'https://code.visualstudio.com/docs/languages/markdown',
-                },
-                {
-                  title: 'VSCode 搭建 markdown 写作环境',
-                  path: 'https://blog.rxliuli.com/p/43851eb5/',
+                  text: 'VSCode',
+                  collapsable: false,
+                  children: [
+                    {
+                      text: 'VSCode 官方文档',
+                      link: 'https://code.visualstudio.com/docs',
+                    },
+                    {
+                      text: 'VSCode 中文翻译文档',
+                      link: 'https://jeasonstudio.gitbooks.io/vscode-cn-doc/',
+                    },
+                  ],
                 },
                 {
-                  title: 'Markdown Extension Pack(吾辈发布的)',
-                  path: 'https://marketplace.visualstudio.com/items?itemName=rxliuli.markdown-extension-pack',
+                  text: 'Markdown',
+                  collapsable: false,
+                  children: [
+                    {
+                      text: 'Markdown 指南（英文）',
+                      link: 'https://www.markdownguide.org/',
+                    },
+                    {
+                      text: 'Markdown 指南（翻译）',
+                      link: 'https://www.markdown.xyz/',
+                    },
+                  ],
+                },
+                {
+                  text: 'VSCode + Markdown',
+                  collapsable: false,
+                  children: [
+                    {
+                      text: 'VSCode Markdown 官方文档',
+                      link: 'https://code.visualstudio.com/docs/languages/markdown',
+                    },
+                    {
+                      text: 'VSCode 搭建 markdown 写作环境',
+                      link: 'https://blog.rxliuli.com/p/43851eb5/',
+                    },
+                    {
+                      text: 'Markdown Extension Pack(吾辈发布的)',
+                      link: 'https://marketplace.visualstudio.com/items?itemName=rxliuli.markdown-extension-pack',
+                    },
+                  ],
                 },
               ],
             },

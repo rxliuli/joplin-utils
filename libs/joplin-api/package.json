@@ -12,7 +12,7 @@
     "build": "rm dist && liuli-cli build pkg",
     "dev": "liuli-cli build pkg -w",
     "docs:dev": "yarn docs:build && live-server docs",
-    "docs:build": "typedoc --out docs src && cp .nojekyll docs/",
+    "docs:build": "typedoc --plugin typedoc-plugin-markdown --out docs src",
     "docs:deploy": "yarn docs:build && gh-pages -d docs -e /joplin-api -a",
     "test": "jest --all",
     "ci": "yarn build"
@@ -53,6 +53,7 @@
     "ts-node": "^9.0.0",
     "tslib": "^2.0.3",
     "typedoc": "^0.21.2",
+    "typedoc-plugin-markdown": "^3.10.4",
     "typescript": "^4.2.4"
   },
   "dependencies": {
