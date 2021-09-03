@@ -2,9 +2,9 @@ import typescript from 'rollup-plugin-typescript2'
 import externals from 'rollup-plugin-node-externals'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import copy from 'rollup-plugin-copy'
 import { defineConfig } from 'rollup'
 import json from '@rollup/plugin-json'
+import copy from 'rollup-plugin-copy'
 
 export default defineConfig([
   {
@@ -12,7 +12,7 @@ export default defineConfig([
     output: { dir: 'dist', format: 'cjs', sourcemap: true },
     plugins: [
       copy({
-        targets: [{ src: 'src/manifest.json', dest: 'dist' }],
+        assets: [['src/manifest.json', 'manifest.json']],
       }),
       typescript(),
       nodeResolve({
