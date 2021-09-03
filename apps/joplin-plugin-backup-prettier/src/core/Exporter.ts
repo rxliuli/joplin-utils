@@ -4,11 +4,12 @@ import { treeMap, treeToList } from '@liuli-util/tree'
 import * as path from 'path'
 import { arrayToMap } from '@liuli-util/array'
 import { FolderListAllRes } from 'joplin-api/dist/modal/FolderListAllRes'
-import { AsyncArray } from '@liuli-util/async'
+import { AsyncArray, asyncLimiting } from '@liuli-util/async'
 import { mkdirp, writeFile, writeJson } from 'fs-extra'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import { TagProperties } from 'joplin-api/dist/modal/TagProperties'
+import { replaceFilename } from '../util/replaceFilename'
 
 type PageResValueType<T extends Promise<PageRes<any>>> = T extends Promise<
   PageRes<infer U>
@@ -114,13 +115,13 @@ export class Exporter {
     const newTree = treeMap(
       tree,
       (item, path) => {
-        const fileTilte =
+        const fileTitle =
           item.title +
           (folderSet.has(item.parent_id + item.title) ? '_' + item.id : '')
-        folderSet.add(item.parent_id + fileTilte)
+        folderSet.add(item.parent_id + fileTitle)
         return {
           ...item,
-          fileTitle: fileTilte,
+          fileTitle: fileTitle,
         } as typeof item & Pick<WriteFileProperty, 'fileTitle'>
       },
       options,
@@ -160,7 +161,7 @@ export class Exporter {
     const folderMap = arrayToMap(folderList, (item) => item.id)
     return noteList.map((item) => {
       const folderTitle =
-        item.title.replace(/\r/, '') +
+        replaceFilename(item.title) +
         (noteTitleSet.has(item.parent_id + item.title) ? '_' + item.id : '') +
         '.md'
       noteTitleSet.add(item.parent_id + item.title)
@@ -176,14 +177,12 @@ export class Exporter {
 
   async writeNote(list: ExportNote[]) {
     await AsyncArray.forEach(list, async (item) => {
-      console.log(
-        'write: ',
-        path.resolve(this.config.rootPath, 'notes', item.filePath),
+      const notePath = path.resolve(
+        this.config.rootPath,
+        'notes',
+        item.filePath,
       )
-      await writeFile(
-        path.resolve(this.config.rootPath, 'notes', item.filePath),
-        item.body,
-      )
+      await writeFile(notePath, item.body)
     })
   }
 
@@ -202,8 +201,10 @@ export class Exporter {
     return resourceList.map((item) => {
       const title =
         item.title +
-        (item.title.endsWith(item.file_extension) ? '' : item.file_extension)
-      console.log('title: ', title)
+        (item.title.endsWith(item.file_extension)
+          ? ''
+          : '.' + item.file_extension)
+      // console.log('title: ', title)
       const fileTitle = (noteTitleSet.has(title) ? item.id + '_' : '') + title
       return {
         ...item,
