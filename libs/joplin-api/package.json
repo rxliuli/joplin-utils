@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@liuli-util/cli": "^3.7.1",
-    "@liuli-util/eslint-config-ts": "^0.1.0",
+    "@liuli-util/eslint-config-ts": "^0.2.0",
     "@liuli-util/shell": "^0.2.0",
     "@types/form-data": "^2.5.0",
     "@types/fs-extra": "^9.0.4",
