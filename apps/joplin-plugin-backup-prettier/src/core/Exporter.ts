@@ -4,7 +4,7 @@ import { treeMap, treeToList } from '@liuli-util/tree'
 import * as path from 'path'
 import { arrayToMap } from '@liuli-util/array'
 import { FolderListAllRes } from 'joplin-api/dist/modal/FolderListAllRes'
-import { AsyncArray, asyncLimiting } from '@liuli-util/async'
+import { AsyncArray } from '@liuli-util/async'
 import { mkdirp, writeFile, writeJson } from 'fs-extra'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
@@ -34,7 +34,7 @@ async function readAll<F extends (...args: any[]) => Promise<PageRes<any>>>(
   return res
 }
 
-interface ExporterConfig {
+export interface ExporterConfig {
   rootPath: string
 }
 
@@ -42,8 +42,8 @@ type WriteFileProperty = {
   fileTitle: string
   filePath: string
 }
-type ExportFolder = FolderListAllRes & WriteFileProperty
-type ExportNote = Pick<
+export type ExportFolder = FolderListAllRes & WriteFileProperty
+export type ExportNote = Pick<
   NoteProperties,
   | 'id'
   | 'title'
@@ -56,7 +56,7 @@ type ExportNote = Pick<
 > &
   WriteFileProperty
 
-type ExportResource = Pick<
+export type ExportResource = Pick<
   ResourceProperties,
   | 'id'
   | 'title'
@@ -66,15 +66,23 @@ type ExportResource = Pick<
   | 'mime'
 > & { fileTitle: string }
 
-type ExportNoteTagRelation = {
+export type ExportNoteTagRelation = {
   tagId: string
   noteId: string
 }
 
-type ExportTag = Pick<
+export type ExportTag = Pick<
   TagProperties,
   'id' | 'title' | 'user_updated_time' | 'user_created_time'
 >
+
+export type ExportConfig = {
+  folderList: ExportFolder[]
+  noteList: Omit<ExportNote, 'body'>[]
+  resourceList: ExportResource[]
+  tagList: ExportTag[]
+  noteTagRelationList: ExportNoteTagRelation[]
+}
 
 /**
  * 导出程序
@@ -84,17 +92,18 @@ export class Exporter {
 
   async export() {
     await mkdirp(this.config.rootPath)
-    const folderList = await this.listFolder()
     console.log('读取目录')
+    const folderList = await this.listFolder()
     await this.writeFolder(folderList)
-    const noteList = await this.listNote(folderList)
     console.log('读取笔记')
+    const noteList = await this.listNote(folderList)
     await this.writeNote(noteList)
-    const resourceList = await this.listResource()
     console.log('读取资源')
+    const resourceList = await this.listResource()
     await this.writeResource(resourceList)
-    const { tagList, noteTagRelationList } = await this.tag()
     console.log('读取标签')
+    const { tagList, noteTagRelationList } = await this.tag()
+    console.log('写入配置')
     await this.writeConfig({
       folderList,
       noteList: noteList.map(({ body, ...item }) => item) as any,
@@ -114,7 +123,7 @@ export class Exporter {
     } as const
     const newTree = treeMap(
       tree,
-      (item, path) => {
+      (item) => {
         const fileTitle =
           item.title +
           (folderSet.has(item.parent_id + item.title) ? '_' + item.id : '')
@@ -223,10 +232,7 @@ export class Exporter {
     })
   }
 
-  async tag(): Promise<{
-    tagList: ExportTag[]
-    noteTagRelationList: ExportNoteTagRelation[]
-  }> {
+  async tag(): Promise<Pick<ExportConfig, 'tagList' | 'noteTagRelationList'>> {
     const tagList = await readAll(tagApi.list, {
       fields: ['id', 'title', 'user_updated_time', 'user_created_time'],
     })
@@ -244,13 +250,7 @@ export class Exporter {
     return { tagList, noteTagRelationList }
   }
 
-  async writeConfig(config: {
-    folderList: ExportFolder[]
-    noteList: ExportNote[]
-    resourceList: ExportResource[]
-    tagList: ExportTag[]
-    noteTagRelationList: ExportNoteTagRelation[]
-  }) {
+  async writeConfig(config: ExportConfig) {
     const configPath = path.resolve(this.config.rootPath, 'config')
     await mkdirp(configPath)
     await AsyncArray.forEach(Object.entries(config), async ([fileName, v]) => {

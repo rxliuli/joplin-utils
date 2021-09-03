@@ -2528,6 +2528,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@liuli-util/eslint-config-ts@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@liuli-util/eslint-config-ts@npm:0.2.0"
+  dependencies:
+    "@types/eslint": ^7
+    "@typescript-eslint/eslint-plugin": ^4.29.1
+    "@typescript-eslint/parser": ^4.29.1
+    eslint: ^7.32.0
+    eslint-config-prettier: ^8.3.0
+  peerDependencies:
+    typescript: ">=4"
+  checksum: 1b81b6339f6ab73be00dc8a61cc366571d987231d2e7ca10a001bdf4ff4e0a1ea4d5901bddf645a60e68c5edc25ced80080fb422c6e246b07ffe36b18d82e093
+  languageName: node
+  linkType: hard
+
 "@liuli-util/i18next-dts-gen@npm:^0.3.0":
   version: 0.3.0
   resolution: "@liuli-util/i18next-dts-gen@npm:0.3.0"
@@ -2562,6 +2577,13 @@ __metadata:
   version: 3.2.5
   resolution: "@liuli-util/object@npm:3.2.5"
   checksum: e45f3f47f66e2a99007728eaba2e3e0db35682ca0ce59917593061b6b9621aa33affd44c9a1f0722fe82b08c30caf4217ba34c68682eed405ee5add992d8ab3f
+  languageName: node
+  linkType: hard
+
+"@liuli-util/object@npm:^3.2.7":
+  version: 3.2.7
+  resolution: "@liuli-util/object@npm:3.2.7"
+  checksum: ea9759f3d6d3856874cb557ad4ec05eff1890d1b039538186e786c60a12eed03f8dfab3465bd13c233eeb3626a91930d3c861757c100d6ac6c009bd15652452d
   languageName: node
   linkType: hard
 
@@ -13149,7 +13171,7 @@ fsevents@^1.2.7:
   resolution: "joplin-api@workspace:libs/joplin-api"
   dependencies:
     "@liuli-util/cli": ^3.7.1
-    "@liuli-util/eslint-config-ts": ^0.1.0
+    "@liuli-util/eslint-config-ts": ^0.2.0
     "@liuli-util/object": ^3.2.3
     "@liuli-util/shell": ^0.2.0
     "@types/form-data": ^2.5.0
@@ -13316,6 +13338,7 @@ fsevents@^1.2.7:
   dependencies:
     "@liuli-util/array": ^3.2.5
     "@liuli-util/async": ^3.2.3
+    "@liuli-util/object": ^3.2.7
     "@liuli-util/tree": ^3.2.5
     "@rollup/plugin-commonjs": ^19.0.0
     "@rollup/plugin-json": ^4.1.0

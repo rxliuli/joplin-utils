@@ -1,15 +1,14 @@
-import { config } from 'joplin-api'
 import { Exporter } from '../Exporter'
 import path from 'path'
 import { mkdirp } from 'fs-extra'
+import { setupJoplinConfig } from './Importer.test'
 
 describe('测试 Export', () => {
   const exporter = new Exporter({
     rootPath: path.resolve(__dirname, '.temp'),
   })
   beforeAll(async () => {
-    config.token = process.env.token!
-    config.port = Number.parseInt(process.env.port!)
+    setupJoplinConfig()
     await mkdirp(exporter.config.rootPath)
   })
   it('测试 folder', async () => {
