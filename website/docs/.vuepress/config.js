@@ -58,7 +58,7 @@ module.exports = {
               text: 'Other',
               children: [
                 '/joplin-vscode-plugin/other/',
-                '/joplin-vscode-plugin/other/roadmap.md',
+                '/joplin-vscode-plugin/other/roadmap',
                 {
                   text: 'Joplin Forum',
                   link: 'https://discourse.joplinapp.org/',
@@ -155,9 +155,8 @@ module.exports = {
               text: '其他',
               children: [
                 '/zh/joplin-vscode-plugin/other/',
-                '/zh/joplin-vscode-plugin/other/dev.md',
-                '/zh/joplin-vscode-plugin/other/README.md',
-                '/zh/joplin-vscode-plugin/other/roadmap.md',
+                '/zh/joplin-vscode-plugin/other/dev',
+                '/zh/joplin-vscode-plugin/other/roadmap',
                 {
                   text: 'Joplin 论坛',
                   link: 'https://discourse.joplinapp.org/',
