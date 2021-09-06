@@ -233,10 +233,6 @@ module.exports = {
               link: '/zh/joplin-batch-web/feature',
             },
             {
-              text: '参与项目',
-              link: '/zh/joplin-batch-web/dev',
-            },
-            {
               text: '在线网站',
               link: 'https://joplin-utils.rxliuli.com/joplin-batch-web/#/zh-CN/',
             },
@@ -276,7 +272,7 @@ module.exports = {
             },
           ],
           '/zh/joplin-api/': [
-            { text: '简介', link: '' },
+            { text: '简介', link: '/zh/joplin-api/' },
             {
               text: 'NPM',
               link: 'https://www.npmjs.com/package/joplin-api',
@@ -287,7 +283,7 @@ module.exports = {
             },
           ],
           '/zh/joplin-plugin-api/': [
-            { text: '简介', link: '' },
+            { text: '简介', link: '/zh/joplin-plugin-api/' },
             {
               text: 'API 文档',
               link: 'https://joplin-utils.rxliuli.com/joplin-plugin-api/',

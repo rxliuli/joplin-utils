@@ -19,8 +19,6 @@
 
 ![guide](https://github.com/rxliuli/joplin-utils/raw/master/apps/joplin-batch-web/docs/images/guide.gif)
 
-> 如果您希望参与开发或在本地运行，可以参考 [参与项目](./dev.md)
-
 ## FAQ
 
 ### 为什么不使用 cli 的形式
