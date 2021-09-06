@@ -1,5 +1,7 @@
 # 安装指南
 
+> **待补充**
+
 ## 安装
 
 安装 joplin-blog 比较简单，如果你遇到了什么无法解决的问题，请在 github 提出 [issue](https://github.com/rxliuli/joplin-utils/issues)，吾辈会尽力帮你解决。

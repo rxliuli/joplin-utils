@@ -135,8 +135,17 @@ module.exports = {
             ],
           },
           {
-            text: 'GitHub',
-            link: 'https://github.com/rxliuli/joplin-utils',
+            text: '贡献',
+            children: [
+              {
+                text: '参与项目',
+                link: '/zh/dev/',
+              },
+              {
+                text: 'GitHub',
+                link: 'https://github.com/rxliuli/joplin-utils',
+              },
+            ],
           },
         ],
         sidebar: {
@@ -262,6 +271,12 @@ module.exports = {
               text: 'API 文档',
               link: 'https://joplin-utils.rxliuli.com/joplin-plugin-api/',
             },
+          ],
+          '/zh/dev/': [
+            { text: '简介', link: '/zh/dev/' },
+            '/zh/dev/doc',
+            '/zh/dev/dev',
+            '/zh/dev/require',
           ],
         },
       },
