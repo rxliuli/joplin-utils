@@ -116,6 +116,10 @@ module.exports = {
                 link: '/zh/joplin-vscode-plugin/',
               },
               {
+                text: 'joplin-blog',
+                link: '/zh/joplin-blog/',
+              },
+              {
                 text: 'joplin-batch-web',
                 link: '/zh/joplin-batch-web/',
               },
@@ -135,8 +139,17 @@ module.exports = {
             ],
           },
           {
-            text: 'GitHub',
-            link: 'https://github.com/rxliuli/joplin-utils',
+            text: '贡献',
+            children: [
+              {
+                text: '参与项目',
+                link: '/zh/dev/',
+              },
+              {
+                text: 'GitHub',
+                link: 'https://github.com/rxliuli/joplin-utils',
+              },
+            ],
           },
         ],
         sidebar: {
@@ -228,8 +241,46 @@ module.exports = {
               link: 'https://joplin-utils.rxliuli.com/joplin-batch-web/#/zh-CN/',
             },
           ],
+          '/zh/joplin-blog/': [
+            { text: '简介', link: '/zh/joplin-blog/' },
+            { text: '安装指南', link: '/zh/joplin-blog/guide' },
+            {
+              text: 'NPM',
+              link: 'https://www.npmjs.com/package/joplin-blog',
+            },
+            {
+              text: 'blog 示例',
+              children: [
+                {
+                  text: 'hexo',
+                  link: 'https://joplin-utils.rxliuli.com/blog/hexo/',
+                },
+                {
+                  text: 'vuepress',
+                  link: 'https://joplin-utils.rxliuli.com/blog/vuepress/',
+                },
+              ],
+            },
+            {
+              text: 'wiki 示例',
+              children: [
+                {
+                  text: 'vuepress',
+                  link: 'https://joplin-utils.rxliuli.com/wiki/vuepress/',
+                },
+                {
+                  text: 'docsify',
+                  link: 'https://joplin-utils.rxliuli.com/wiki/docsify/',
+                },
+              ],
+            },
+          ],
           '/zh/joplin-api/': [
             { text: '简介', link: '' },
+            {
+              text: 'NPM',
+              link: 'https://www.npmjs.com/package/joplin-api',
+            },
             {
               text: 'API 文档',
               link: 'https://joplin-utils.rxliuli.com/joplin-api/',
@@ -241,6 +292,12 @@ module.exports = {
               text: 'API 文档',
               link: 'https://joplin-utils.rxliuli.com/joplin-plugin-api/',
             },
+          ],
+          '/zh/dev/': [
+            { text: '简介', link: '/zh/dev/' },
+            '/zh/dev/doc',
+            '/zh/dev/dev',
+            '/zh/dev/require',
           ],
         },
       },
