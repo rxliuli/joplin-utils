@@ -115,6 +115,10 @@ module.exports = {
                 text: 'joplin-vscode-plugin',
                 link: '/zh/joplin-vscode-plugin/',
               },
+              {
+                text: 'joplin-blog',
+                link: '/zh/joplin-blog/',
+              },
             ],
           },
           {
@@ -203,6 +207,40 @@ module.exports = {
                       link: 'https://marketplace.visualstudio.com/items?itemName=rxliuli.markdown-extension-pack',
                     },
                   ],
+                },
+              ],
+            },
+          ],
+          '/zh/joplin-blog/': [
+            { text: '简介', link: '/zh/joplin-blog/' },
+            { text: '安装指南', link: '/zh/joplin-blog/guide' },
+            {
+              text: 'NPM',
+              link: 'https://www.npmjs.com/package/joplin-blog',
+            },
+            {
+              text: 'blog 示例',
+              children: [
+                {
+                  text: 'hexo',
+                  link: 'https://joplin-utils.rxliuli.com/blog/hexo/',
+                },
+                {
+                  text: 'vuepress',
+                  link: 'https://joplin-utils.rxliuli.com/blog/vuepress/',
+                },
+              ],
+            },
+            {
+              text: 'wiki 示例',
+              children: [
+                {
+                  text: 'vuepress',
+                  link: 'https://joplin-utils.rxliuli.com/wiki/vuepress/',
+                },
+                {
+                  text: 'docsify',
+                  link: 'https://joplin-utils.rxliuli.com/wiki/docsify/',
                 },
               ],
             },
