@@ -248,6 +248,10 @@ module.exports = {
           '/zh/joplin-api/': [
             { text: '简介', link: '' },
             {
+              text: 'NPM',
+              link: 'https://www.npmjs.com/package/joplin-api',
+            },
+            {
               text: 'API 文档',
               link: 'https://joplin-utils.rxliuli.com/joplin-api/',
             },
