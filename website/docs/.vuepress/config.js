@@ -38,8 +38,17 @@ module.exports = {
             ],
           },
           {
-            text: 'GitHub',
-            link: 'https://github.com/rxliuli/joplin-utils',
+            text: 'Contribute',
+            children: [
+              {
+                text: 'Getting involved',
+                link: '/dev/',
+              },
+              {
+                text: 'GitHub',
+                link: 'https://github.com/rxliuli/joplin-utils',
+              },
+            ],
           },
         ],
         sidebar: {
@@ -103,6 +112,12 @@ module.exports = {
               link: 'https://joplin-utils.rxliuli.com/joplin-api/',
             },
           ],
+          '/dev/': [
+            { text: 'Introduction', link: '/dev/'},
+            '/dev/doc',
+            '/dev/dev',
+            '/dev/require',
+          ]
         },
       },
       '/zh/': {
