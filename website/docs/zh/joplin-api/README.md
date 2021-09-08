@@ -34,7 +34,7 @@ console.log(res)
 | `config`            | 全局 joplin web clipper 配置                      |
 | `PageUtil`          | 分页相关的静态工具类，例如获取全量笔记列表        |
 
-## 约定俗称
+## 约定俗成
 
 - 使用 class 封装 API，例如 note 相关的 API 被封装在 `NoteApi` 类中。
 - 同一个功能含义保持统一的命名。例如笔记列表是 `NoteApi.list`。以下为完整对照表
@@ -52,7 +52,7 @@ console.log(res)
 ## 一些问题
 
 - `get` 方法不应该报错，如果不存在应该返回 `null` 而非抛出异常
-- 缺少常见的 `rename/move` 函数，而只有更加通用的 `update`
+- 缺少常见的 `rename/move` 函数，而只有更加通用的 `update` -- 已实现 `NoteExtApi/FolderExtApi`
 
 ## 其他
 
