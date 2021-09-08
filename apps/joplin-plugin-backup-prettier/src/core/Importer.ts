@@ -7,8 +7,8 @@ import {
   ExportResource,
   ExportTag,
 } from './Exporter'
-import { readFile, readJson } from 'fs-extra'
-import { AsyncArray, wait } from '@liuli-util/async'
+import { copy, readFile, readJson, writeFile, writeJson } from 'fs-extra'
+import { AsyncArray, asyncLimiting, wait } from '@liuli-util/async'
 import path from 'path'
 import { folderApi, noteApi, resourceApi, tagApi } from 'joplin-api'
 import { omit } from '@liuli-util/object'
@@ -18,7 +18,11 @@ import { createReadStream } from 'fs'
  * 导入程序
  */
 export class Importer {
-  constructor(readonly config: ExporterConfig) {}
+  constructor(
+    readonly config: ExporterConfig & {
+      profilePath: string
+    },
+  ) {}
 
   async importArchive() {
     console.log('读取配置')
@@ -65,34 +69,58 @@ export class Importer {
   }
 
   async listNote(noteList: Omit<ExportNote, 'body'>[]): Promise<ExportNote[]> {
-    return await AsyncArray.map(noteList, async (item) => {
-      const notePath = path.resolve(
-        this.config.rootPath,
-        'notes',
-        item.filePath,
-      )
-      return {
-        ...item,
-        body: await readFile(notePath, 'utf-8'),
-      } as ExportNote
-    })
+    return await AsyncArray.map(
+      noteList.filter((item) => item.id === '310a24392e1c4d27a6927c3dc7b34704'),
+      async (item) => {
+        const notePath = path.resolve(
+          this.config.rootPath,
+          'notes',
+          item.filePath,
+        )
+        return {
+          ...item,
+          body: await readFile(notePath, 'utf-8'),
+        } as ExportNote
+      },
+    )
   }
 
   async writeNote(noteList: ExportNote[]) {
-    await AsyncArray.forEach(noteList, async (item) => {
-      await noteApi.create(omit(item, 'fileTitle', 'filePath'))
-    })
+    const errorNoteList = await AsyncArray.filter(
+      noteList,
+      asyncLimiting(async (item) => {
+        try {
+          await noteApi.create(omit(item, 'fileTitle', 'filePath'))
+          return false
+        } catch (e) {
+          return true
+        }
+      }, 10),
+    )
+    await writeJson(path.resolve(__dirname, 'note-err.json'), errorNoteList)
   }
 
   async writeResource(resourceList: ExportResource[]) {
-    await AsyncArray.forEach(resourceList, async (item) => {
-      await resourceApi.create({
-        ...omit(item, 'fileTitle'),
-        data: createReadStream(
-          path.resolve(this.config.rootPath, 'resources', item.fileTitle),
-        ),
-      })
-    })
+    const errorResourceList = await AsyncArray.filter(
+      resourceList,
+      asyncLimiting(async (item) => {
+        try {
+          await resourceApi.create({
+            ...omit(item, 'fileTitle'),
+            data: createReadStream(
+              path.resolve(this.config.rootPath, 'resources', item.fileTitle),
+            ),
+          })
+          return false
+        } catch (e) {
+          return true
+        }
+      }, 10),
+    )
+    await writeJson(
+      path.resolve(__dirname, 'resource-err.json'),
+      errorResourceList,
+    )
   }
 
   async writeTag(tagList: ExportTag[]) {

@@ -1,6 +1,13 @@
 import { Importer } from '../Importer'
 import path from 'path'
-import { config, folderApi, noteApi, tagApi } from 'joplin-api'
+import {
+  config,
+  folderApi,
+  noteApi,
+  PageUtil,
+  resourceApi,
+  tagApi,
+} from 'joplin-api'
 import { ExportConfig } from '../Exporter'
 
 export function setupJoplinConfig() {
@@ -11,21 +18,40 @@ export function setupJoplinConfig() {
 describe('测试 Importer', () => {
   const importer = new Importer({
     rootPath: path.resolve(__dirname, '.temp'),
+    profilePath: path.resolve('C:/Users/rxliuli/.config/joplin-desktop'),
   })
   let readConfig: ExportConfig
   beforeAll(async () => {
     setupJoplinConfig()
-    await Promise.all(
-      (await folderApi.list()).items.map(({ id }) => folderApi.remove(id)),
-    )
-    await Promise.all(
-      (await noteApi.list()).items.map(({ id }) => noteApi.remove(id)),
-    )
-    await Promise.all(
-      (await tagApi.list()).items.map(({ id }) => tagApi.remove(id)),
-    )
     readConfig = await importer.readConfig()
   })
+
+  async function clean() {
+    // await Promise.all(
+    //   (
+    //     await PageUtil.pageToAllList(folderApi.list)
+    //   ).map(({ id }) => folderApi.remove(id)),
+    // )
+    // await Promise.all(
+    //   (
+    //     await PageUtil.pageToAllList(noteApi.list)
+    //   ).map(({ id }) => noteApi.remove(id)),
+    // )
+    // await Promise.all(
+    //   (
+    //     await PageUtil.pageToAllList(tagApi.list)
+    //   ).map(({ id }) => tagApi.remove(id)),
+    // )
+    await Promise.all(
+      (
+        await PageUtil.pageToAllList(resourceApi.list)
+      ).map(({ id }) => resourceApi.remove(id)),
+    )
+  }
+
+  it('clean', async () => {
+    await clean()
+  }, 100_000)
   it('测试 readConfig', async () => {
     console.log(readConfig)
   })
@@ -34,6 +60,16 @@ describe('测试 Importer', () => {
     console.log(res)
   })
   it('测试 importArchive', async () => {
-    await importer.importArchive()
-  })
+    console.log('读取配置')
+    const readConfig = await importer.readConfig()
+    // console.log('写入目录')
+    // await importer.writeFolder(readConfig.folderList)
+    // console.log('写入笔记')
+    // await importer.writeNote(await importer.listNote(readConfig.noteList))
+    console.log('写入资源')
+    await importer.writeResource(readConfig.resourceList)
+    // console.log('写入标签')
+    // await importer.writeTag(readConfig.tagList)
+    // await importer.writeNoteTagRelation(readConfig.noteTagRelationList)
+  }, 1000_000)
 })

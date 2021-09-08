@@ -1,6 +1,6 @@
 import { Exporter } from '../Exporter'
 import path from 'path'
-import { mkdirp } from 'fs-extra'
+import { mkdirp, remove } from 'fs-extra'
 import { setupJoplinConfig } from './Importer.test'
 
 describe('测试 Export', () => {
@@ -9,6 +9,7 @@ describe('测试 Export', () => {
   })
   beforeAll(async () => {
     setupJoplinConfig()
+    await remove(exporter.config.rootPath)
     await mkdirp(exporter.config.rootPath)
   })
   it('测试 folder', async () => {
