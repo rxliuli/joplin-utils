@@ -10,7 +10,7 @@
     "build": "rimraf dist && rollup -c",
     "dev": "rollup -cw",
     "docs:build": "rimraf docs && typedoc",
-    "docs:deploy": "yarn docs:build && gh-pages -d docs/ -e /joplin-plugin-api -a"
+    "docs:deploy": "yarn docs:build && gh-pages -d docs/ -e /api/joplin-plugin-api -a"
   },
   "jest": {
     "preset": "ts-jest"

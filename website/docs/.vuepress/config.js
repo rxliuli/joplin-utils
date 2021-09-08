@@ -109,15 +109,15 @@ module.exports = {
             { text: 'Introduction', link: '' },
             {
               text: 'API Doc',
-              link: 'https://joplin-utils.rxliuli.com/joplin-api/',
+              link: 'https://joplin-utils.rxliuli.com/api/joplin-api/',
             },
           ],
           '/dev/': [
-            { text: 'Introduction', link: '/dev/'},
+            { text: 'Introduction', link: '/dev/' },
             '/dev/doc',
             '/dev/dev',
             '/dev/require',
-          ]
+          ],
         },
       },
       '/zh/': {
@@ -294,14 +294,14 @@ module.exports = {
             },
             {
               text: 'API 文档',
-              link: 'https://joplin-utils.rxliuli.com/joplin-api/',
+              link: 'https://joplin-utils.rxliuli.com/api/joplin-api/',
             },
           ],
           '/zh/joplin-plugin-api/': [
             { text: '简介', link: '/zh/joplin-plugin-api/' },
             {
               text: 'API 文档',
-              link: 'https://joplin-utils.rxliuli.com/joplin-plugin-api/',
+              link: 'https://joplin-utils.rxliuli.com/api/joplin-plugin-api/',
             },
           ],
           '/zh/dev/': [

@@ -13,7 +13,7 @@
     "dev": "liuli-cli build pkg -w",
     "docs:dev": "yarn docs:build && live-server docs",
     "docs:build": "rimraf docs && typedoc",
-    "docs:deploy": "yarn docs:build && gh-pages -d docs/ -e /joplin-api -a"
+    "docs:deploy": "yarn docs:build && gh-pages -d docs/ -e /api/joplin-api -a"
   },
   "jest": {
     "preset": "ts-jest",
