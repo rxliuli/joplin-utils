@@ -42,12 +42,6 @@ export class ResourceApi {
   async create(
     param: { data: ReadStream } & Partial<ResourceProperties>,
   ): Promise<ResourceGetRes> {
-    if (typeof FormData === 'undefined') {
-      Reflect.set(globalValue, 'FormData', (await import('form-data')).default)
-    }
-    const fd = new FormData()
-    fd.append('props', JSON.stringify({ title: param.title }))
-    fd.append('data', param.data as any)
     return (await this.ajax.postFormData('/resources', {
       props: JSON.stringify({ title: param.title }),
       data: param.data,

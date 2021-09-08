@@ -64,17 +64,11 @@ export class Ajax {
    * 封装 ajax 请求
    * @param ajaxConfig
    */
-  async request<R>(ajaxConfig: AjaxConfig) {
-    if (typeof fetch === 'undefined') {
-      Reflect.set(globalValue, 'fetch', (await import('node-fetch')).default)
-    }
-    if (typeof FormData === 'undefined') {
-      Reflect.set(globalValue, 'FormData', (await import('form-data')).default)
-    }
+  async request<R>(ajaxConfig: AjaxConfig): Promise<R> {
     return (await axios.request({ ...defaultConfig, ...ajaxConfig })).data as R
   }
 
-  baseUrl(url: string, param?: object) {
+  baseUrl(url: string, param?: object): string {
     const query = stringify(
       {
         ...param,
@@ -91,7 +85,7 @@ export class Ajax {
     url: string,
     data?: any,
     config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
-  ) {
+  ): Promise<R> {
     return this.request<R>({
       url: this.baseUrl(url, data),
       ...config,
@@ -103,7 +97,7 @@ export class Ajax {
     url: string,
     data?: any,
     config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
-  ) {
+  ): Promise<R> {
     return this.request<R>({
       url: this.baseUrl(url),
       data,
@@ -116,7 +110,7 @@ export class Ajax {
     url: string,
     data?: any,
     config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
-  ) {
+  ): Promise<R> {
     return this.request<R>({
       url: this.baseUrl(url),
       data,
@@ -129,7 +123,7 @@ export class Ajax {
     url: string,
     data?: any,
     config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
-  ) {
+  ): Promise<R> {
     return this.request<R>({
       url: this.baseUrl(url),
       data,
@@ -138,7 +132,13 @@ export class Ajax {
     })
   }
 
-  async postFormData(url: string, data: object) {
+  async postFormData<T>(url: string, data: object): Promise<T> {
+    if (typeof fetch === 'undefined') {
+      Reflect.set(globalValue, 'fetch', (await import('node-fetch')).default)
+    }
+    if (typeof FormData === 'undefined') {
+      Reflect.set(globalValue, 'FormData', (await import('form-data')).default)
+    }
     const fd = new FormData()
     Object.entries(data).forEach(([k, v]) => fd.append(k, v))
     const resp = await fetch(this.baseUrl(url), {
