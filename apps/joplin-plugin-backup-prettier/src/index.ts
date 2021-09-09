@@ -39,6 +39,7 @@ joplin.plugins.register({
       config.port = port
       return true
     }
+
     await joplin.interop.registerExportModule({
       description: 'Export Directory',
       format: 'folder',
@@ -65,17 +66,11 @@ joplin.plugins.register({
       isNoteArchive: false,
 
       async onExec(context: ImportContext) {
-        if (!(await setupJoplinConfig())) {
-          console.warn('插件配置错误')
-          return
-        }
         if (!(await pathExists(path.resolve(context.sourcePath, 'config')))) {
           console.warn('导入目录不正确')
           return
         }
-        const importer = new Importer({
-          rootPath: context.sourcePath,
-        })
+        const importer = new Importer({ rootPath: context.sourcePath })
         await importer.importArchive()
       },
     })

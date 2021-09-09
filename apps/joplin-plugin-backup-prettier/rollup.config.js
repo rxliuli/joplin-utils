@@ -5,6 +5,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import { defineConfig } from 'rollup'
 import json from '@rollup/plugin-json'
 import copy from 'rollup-plugin-copy'
+import { tar } from '@liuli-util/rollup-plugin-tar'
 
 export default defineConfig([
   {
@@ -21,6 +22,14 @@ export default defineConfig([
       json(),
       commonjs(),
       externals(),
+      ...(process.env.ROLLUP_WATCH
+        ? []
+        : [
+            tar({
+              sourceDir: 'dist',
+              destPath: 'joplin-plugin-backup-prettier.jpl',
+            }),
+          ]),
     ],
   },
 ])

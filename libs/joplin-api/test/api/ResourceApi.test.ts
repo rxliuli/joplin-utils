@@ -1,7 +1,6 @@
 import { resourceApi } from '../../src'
 import { createReadStream, pathExistsSync, writeFileSync } from 'fs-extra'
 import { resolve } from 'path'
-import FormData from 'form-data'
 import axios from 'axios'
 import fetch from 'node-fetch'
 import { readFileSync } from 'fs'
@@ -44,35 +43,6 @@ describe('test ResourceApi', () => {
         data: createReadStream(path),
       })
       expect(json.title).toBe(title)
-    })
-
-    function getFormData() {
-      const fd = new FormData()
-      const title = 'image title'
-      fd.append('props', JSON.stringify({ title: title }))
-      fd.append('data', readFileSync(path))
-      return fd
-    }
-
-    it('test create by fetch', async () => {
-      const fd = getFormData()
-      const resp = await fetch(ajax.baseUrl('/resources'), {
-        method: 'post',
-        body: fd,
-      })
-      const json = await resp.json()
-      console.log('json: ', json)
-    })
-    it.skip('test create by axios', async () => {
-      const fd = getFormData()
-      const resp = await axios.post(
-        ajax.baseUrl('/resources'),
-        fd.getBuffer(),
-        {
-          headers: fd.getHeaders(),
-        },
-      )
-      console.log('resp.data: ', resp.data)
     })
   })
   it('test update', async () => {

@@ -18,7 +18,6 @@ export function setupJoplinConfig() {
 describe('测试 Importer', () => {
   const importer = new Importer({
     rootPath: path.resolve(__dirname, '.temp'),
-    profilePath: path.resolve('C:/Users/rxliuli/.config/joplin-desktop'),
   })
   let readConfig: ExportConfig
   beforeAll(async () => {

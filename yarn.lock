@@ -2594,6 +2594,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@liuli-util/rollup-plugin-tar@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@liuli-util/rollup-plugin-tar@npm:0.1.0"
+  dependencies:
+    glob-promise: ^4.2.0
+    tar: ^6.1.11
+  peerDependencies:
+    rollup: ^2.52.2
+  checksum: f722a8d8ebb261f93fca2148ae0479c44e2d3d0454e8e9f221f6b2aa8e02eed8e76178835578b90337845897a20ce6ad0f7cdfa3aa6615adf2c79c9062abcf12
+  languageName: node
+  linkType: hard
+
 "@liuli-util/shell@npm:^0.2.0":
   version: 0.2.0
   resolution: "@liuli-util/shell@npm:0.2.0"
@@ -10409,6 +10421,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"glob-promise@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "glob-promise@npm:4.2.0"
+  dependencies:
+    "@types/glob": ^7.1.3
+  peerDependencies:
+    glob: ^7.1.6
+  checksum: b77cf842b92b0db0c228baf382d793fdf8405e9aee788fb7977b6371c581bc01d8cbff734579dfd47de2bcc86b137c2803aaaf6ab4650167a718877aa6beb817
+  languageName: node
+  linkType: hard
+
 "glob-to-regexp@npm:^0.3.0":
   version: 0.3.0
   resolution: "glob-to-regexp@npm:0.3.0"
@@ -13340,6 +13363,7 @@ fsevents@^1.2.7:
     "@liuli-util/array": ^3.2.5
     "@liuli-util/async": ^3.2.3
     "@liuli-util/object": ^3.2.7
+    "@liuli-util/rollup-plugin-tar": ^0.1.0
     "@liuli-util/tree": ^3.2.5
     "@rollup/plugin-commonjs": ^19.0.0
     "@rollup/plugin-json": ^4.1.0
@@ -20336,6 +20360,20 @@ resolve@^2.0.0-next.3:
     mkdirp: ^1.0.3
     yallist: ^4.0.0
   checksum: 3cdd046da8ae72cbfe985591df95ce360e173cf023a9e25c8a584422d5096bfd1ee555fc4f1cf756c0bd062282d5fda19d95e291add117f334051a4898bd85bb
+  languageName: node
+  linkType: hard
+
+"tar@npm:^6.1.11":
+  version: 6.1.11
+  resolution: "tar@npm:6.1.11"
+  dependencies:
+    chownr: ^2.0.0
+    fs-minipass: ^2.0.0
+    minipass: ^3.0.0
+    minizlib: ^2.1.1
+    mkdirp: ^1.0.3
+    yallist: ^4.0.0
+  checksum: 5a016f5330f43815420797b87ade578e2ea60affd47439c988a3fc8f7bb6b36450d627c31ba6a839346fae248b4c8c12bb06bb0716211f37476838c7eff91f05
   languageName: node
   linkType: hard
 

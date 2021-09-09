@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@liuli-util/async": "^3.2.3",
+    "@liuli-util/rollup-plugin-tar": "^0.1.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.0",

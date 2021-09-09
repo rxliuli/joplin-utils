@@ -7,35 +7,33 @@ import {
   ExportResource,
   ExportTag,
 } from './Exporter'
-import { copy, readFile, readJson, writeFile, writeJson } from 'fs-extra'
+import { readFile, readJson } from 'fs-extra'
 import { AsyncArray, asyncLimiting, wait } from '@liuli-util/async'
 import path from 'path'
-import { folderApi, noteApi, resourceApi, tagApi } from 'joplin-api'
 import { omit } from '@liuli-util/object'
-import { createReadStream } from 'fs'
+import joplin from 'joplin-plugin-api'
+import { tagApi } from 'joplin-api'
 
 /**
  * 导入程序
  */
 export class Importer {
-  constructor(
-    readonly config: ExporterConfig & {
-      profilePath: string
-    },
-  ) {}
+  constructor(readonly config: ExporterConfig) {}
 
   async importArchive() {
     console.log('读取配置')
     const readConfig = await this.readConfig()
     console.log('写入目录')
     await this.writeFolder(readConfig.folderList)
-    console.log('写入笔记')
-    await this.writeNote(await this.listNote(readConfig.noteList))
     console.log('写入资源')
     await this.writeResource(readConfig.resourceList)
+    console.log('写入笔记')
+    await this.writeNote(await this.listNote(readConfig.noteList))
     console.log('写入标签')
     await this.writeTag(readConfig.tagList)
+    console.log('关联标签与笔记')
     await this.writeNoteTagRelation(readConfig.noteTagRelationList)
+    console.log('导入完成')
   }
 
   async readConfig(): Promise<ExportConfig> {
@@ -63,75 +61,91 @@ export class Importer {
     const createdIdSet = new Set<string>()
     await AsyncArray.forEach(folderList, async (item) => {
       await wait(() => !item.parent_id || createdIdSet.has(item.parent_id))
-      await folderApi.create(omit(item, 'fileTitle', 'filePath'))
+      console.log('writeFolder: ', item.title)
+      await joplin.data.post(
+        ['folders'],
+        null,
+        omit(item, 'fileTitle', 'filePath'),
+      )
       createdIdSet.add(item.id)
     })
   }
 
   async listNote(noteList: Omit<ExportNote, 'body'>[]): Promise<ExportNote[]> {
-    return await AsyncArray.map(
-      noteList.filter((item) => item.id === '310a24392e1c4d27a6927c3dc7b34704'),
-      async (item) => {
-        const notePath = path.resolve(
-          this.config.rootPath,
-          'notes',
-          item.filePath,
-        )
-        return {
-          ...item,
-          body: await readFile(notePath, 'utf-8'),
-        } as ExportNote
-      },
-    )
+    return await AsyncArray.map(noteList, async (item) => {
+      const notePath = path.resolve(
+        this.config.rootPath,
+        'notes',
+        item.filePath,
+      )
+      return {
+        ...item,
+        body: await readFile(notePath, 'utf-8'),
+      } as ExportNote
+    })
   }
 
   async writeNote(noteList: ExportNote[]) {
-    const errorNoteList = await AsyncArray.filter(
+    const start = Date.now()
+    let i = 0
+    const len = noteList.length
+    await AsyncArray.forEach(
       noteList,
       asyncLimiting(async (item) => {
-        try {
-          await noteApi.create(omit(item, 'fileTitle', 'filePath'))
-          return false
-        } catch (e) {
-          return true
-        }
+        console.log(`[${++i}/${len}] writeNote: `, item.title)
+        await joplin.data.post(
+          ['notes'],
+          null,
+          omit(item, 'fileTitle', 'filePath'),
+        )
       }, 10),
     )
-    await writeJson(path.resolve(__dirname, 'note-err.json'), errorNoteList)
+    console.log('writeNote end: ', Date.now() - start)
   }
 
   async writeResource(resourceList: ExportResource[]) {
-    const errorResourceList = await AsyncArray.filter(
+    await AsyncArray.forEach(
       resourceList,
       asyncLimiting(async (item) => {
-        try {
-          await resourceApi.create({
-            ...omit(item, 'fileTitle'),
-            data: createReadStream(
-              path.resolve(this.config.rootPath, 'resources', item.fileTitle),
-            ),
-          })
-          return false
-        } catch (e) {
-          return true
-        }
+        const resourcePath = path.resolve(
+          this.config.rootPath,
+          'resources',
+          item.fileTitle,
+        )
+        console.log('writeResource: ', resourcePath)
+        await joplin.data.post(
+          ['resources'],
+          null,
+          omit(item, 'fileTitle'), // Resource metadata
+          [
+            {
+              path: resourcePath, // Actual file
+            },
+          ],
+        )
       }, 10),
-    )
-    await writeJson(
-      path.resolve(__dirname, 'resource-err.json'),
-      errorResourceList,
     )
   }
 
   async writeTag(tagList: ExportTag[]) {
-    await AsyncArray.forEach(tagList, async (item) => {
-      await tagApi.create(item)
-    })
+    await AsyncArray.forEach(
+      tagList,
+      asyncLimiting(async (item) => {
+        console.log('writeTag: ', item.title)
+        await joplin.data.post(['tags'], null, item)
+      }, 10),
+    )
   }
 
   async writeNoteTagRelation(noteTagRelationList: ExportNoteTagRelation[]) {
-    await AsyncArray.forEach(noteTagRelationList, async (item) => {
-      await tagApi.addTagByNoteId(item.tagId, item.noteId)
-    })
+    await AsyncArray.forEach(
+      noteTagRelationList,
+      asyncLimiting(async (item) => {
+        console.log('writeNoteTagRelation: ', item.tagId, item.noteId)
+        await joplin.data.post(['tags', item.tagId, 'notes'], null, {
+          id: item.noteId,
+        })
+      }, 10),
+    )
   }
 }
