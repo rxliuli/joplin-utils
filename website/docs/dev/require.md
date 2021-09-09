@@ -30,7 +30,7 @@ yarn -v
 
 ## Register on GitHub
 
-To to the [GitHub website](https://github.com/), click 'sign up' and follow the instructions to create an account
+Go to the [GitHub website](https://github.com/), click 'sign up' and follow the instructions to create an account
 
 ## Install git
 

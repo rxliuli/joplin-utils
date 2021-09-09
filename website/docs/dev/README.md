@@ -2,7 +2,7 @@
 
 ## Introduction
 
-If you are somebody who likes to share and has a love of open source, whether you are a developer or not, you can contribute to the project
+If you are somebody who likes to share with others and has a love for open source, whether you are a developer or not, you can contribute to the project
 
 ## How to contribute
 
