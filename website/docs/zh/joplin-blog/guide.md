@@ -1,6 +1,6 @@
-# 零知识安装指南
+# 非开发者安装指南
 
-安装 joplin-blog 比较简单，如果你遇到了什么无法解决的问题，请在 github 提出 [issue](https://github.com/rxliuli/joplin-utils/issues)，吾辈会尽力帮你解决。
+即便不是开发者，也可以按照教程一步步安装 joplin-blog，如果你遇到了什么无法解决的问题，请在 github 提出 [issue](https://github.com/rxliuli/joplin-utils/issues)，吾辈会尽力帮你解决。
 
 ## 前置条件
 

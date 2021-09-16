@@ -22,6 +22,8 @@
 
 ## 使用
 
+> [非开发者安装指南](./guide.md)
+
 1. 在命令行导航到相关目录
 2. 添加依赖 `yarn add -D joplin-blog`
 3. 添加配置文件 `.joplin-blog.json`（具体配置参考 [配置](#配置)）
