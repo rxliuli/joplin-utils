@@ -254,7 +254,7 @@ module.exports = {
           ],
           '/zh/joplin-blog/': [
             { text: '简介', link: '/zh/joplin-blog/' },
-            { text: '安装指南', link: '/zh/joplin-blog/guide' },
+            '/zh/joplin-blog/guide',
             {
               text: 'NPM',
               link: 'https://www.npmjs.com/package/joplin-blog',
