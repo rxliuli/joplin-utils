@@ -22,6 +22,10 @@ module.exports = {
                 text: 'joplin-vscode-plugin',
                 link: '/joplin-vscode-plugin/',
               },
+              {
+                text: 'joplin-batch-web',
+                link: '/joplin-batch-web/',
+              },
             ],
           },
           {
@@ -103,6 +107,20 @@ module.exports = {
                   ],
                 },
               ],
+            },
+          ],
+          '/joplin-batch-web/': [
+            {
+              text: 'Introduction',
+              link: '/joplin-batch-web/',
+            },
+            {
+              text: 'Other functions',
+              link: '/joplin-batch-web/feature',
+            },
+            {
+              text: 'Online site',
+              link: 'https://joplin-utils.rxliuli.com/joplin-batch-web/#/en-US/',
             },
           ],
           '/joplin-api/': [
