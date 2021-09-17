@@ -120,7 +120,7 @@ module.exports = {
             },
             {
               text: 'Online site',
-              link: 'https://joplin-utils.rxliuli.com/joplin-batch-web/#/en-US/',
+              link: 'https://joplin-utils.rxliuli.com/web/joplin-batch-web/#/en-US/',
             },
           ],
           '/joplin-api/': [
@@ -267,7 +267,7 @@ module.exports = {
             },
             {
               text: '在线网站',
-              link: 'https://joplin-utils.rxliuli.com/joplin-batch-web/#/zh-CN/',
+              link: 'https://joplin-utils.rxliuli.com/web/joplin-batch-web/#/zh-CN/',
             },
           ],
           '/zh/joplin-blog/': [
