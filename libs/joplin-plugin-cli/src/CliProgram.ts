@@ -1,6 +1,6 @@
 import { build } from 'esbuild'
 import * as path from 'path'
-import { copy, readJson, writeJson } from 'fs-extra'
+import { copy, move, readJson, writeJson } from 'fs-extra'
 import { createArchive } from './utils/createArchive'
 import { watch } from 'chokidar'
 
@@ -60,6 +60,10 @@ export class CliProgram {
     await copy(
       path.resolve(__dirname, '../templates/joplin-plugin-template'),
       destPath,
+    )
+    await move(
+      path.resolve(destPath, '_.gitignore'),
+      path.resolve(destPath, '.gitignore'),
     )
     const pkgPath = path.resolve(destPath, 'package.json')
     await writeJson(
