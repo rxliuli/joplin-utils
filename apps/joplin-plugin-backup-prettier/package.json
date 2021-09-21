@@ -2,8 +2,8 @@
   "name": "joplin-plugin-backup-prettier",
   "version": "0.1.0",
   "scripts": {
-    "dev": "rollup -cw",
-    "build": "rollup -c"
+    "build": "jpl build",
+    "dev": "jpl build -w"
   },
   "license": "MIT",
   "keywords": [
@@ -30,6 +30,7 @@
     "@types/node": "^14.0.14",
     "jest": "^27.0.4",
     "joplin-plugin-api": "*",
+    "joplin-plugin-cli": "0.1.0",
     "rollup": "^2.55.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-gzip": "^2.5.0",
