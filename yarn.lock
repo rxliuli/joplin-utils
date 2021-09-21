@@ -14210,7 +14210,7 @@ fsevents@^1.2.7:
     fs-extra: ^10.0.0
     jest: ^27.0.4
     joplin-plugin-api: "*"
-    joplin-plugin-cli: 0.1.0
+    joplin-plugin-cli: 0.1.1
     rollup: ^2.55.0
     rollup-plugin-copy: ^3.4.0
     rollup-plugin-gzip: ^2.5.0
@@ -14222,7 +14222,7 @@ fsevents@^1.2.7:
   languageName: unknown
   linkType: soft
 
-"joplin-plugin-cli@0.1.0, joplin-plugin-cli@workspace:libs/joplin-plugin-cli":
+"joplin-plugin-cli@0.1.1, joplin-plugin-cli@workspace:libs/joplin-plugin-cli":
   version: 0.0.0-use.local
   resolution: "joplin-plugin-cli@workspace:libs/joplin-plugin-cli"
   dependencies:
@@ -14259,7 +14259,7 @@ fsevents@^1.2.7:
     fs-extra: ^10.0.0
     jest: ^27.2.1
     joplin-plugin-api: ^0.1.0
-    joplin-plugin-cli: 0.1.0
+    joplin-plugin-cli: 0.1.1
     prettier: ^2.4.1
     ts-jest: ^27.0.5
   languageName: unknown
