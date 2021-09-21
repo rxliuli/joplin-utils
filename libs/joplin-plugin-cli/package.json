@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "setup": "yarn build",
-    "build": "rimraf dist && esbuild --bundle src/bin.ts --platform=node --outdir=dist --external:esbuild",
-    "dev": "esbuild --bundle src/bin.ts --platform=node --outdir=dist --external:esbuild --watch",
+    "build": "rimraf dist && esbuild --format=cjs --bundle src/bin.ts --platform=node --outdir=dist --external:esbuild --banner:js='#!/usr/bin/env node\n'",
+    "dev": "esbuild --format=cjs src/bin.ts --platform=node --outdir=dist --watch --banner:js='#!/usr/bin/env node\n'",
     "start": "esno src/bin.ts"
   },
   "workspaces": [

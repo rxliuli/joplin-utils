@@ -13,11 +13,19 @@ cd test-plugin
 yarn build # 打包
 ```
 
-## 动机
+## FAQ
 
-### 为什么不使用官方的插件模板项目？
+### 动机
+
+为什么不使用官方的插件模板项目？
 
 最近前端打包工具发生了很大的变化，主要是 esbuild 和 swc 引发的性能革命（这样说一点都不为过），vue 作者放弃 webpack 而基于 esbuild 和 rollup 构建了新的跨框架工具 vite，所以我也更喜欢基于 esbuild 构建更快的工具。
+
+## 如何迁移现有插件？
+
+```sh
+yarn add -D joplin-plugin-api joplin-plugin-cli # 安装依赖
+```
 
 ## 参考
 
