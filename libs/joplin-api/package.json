@@ -26,7 +26,7 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  "homepage": "https://joplin-utils.rxliuli.com/joplin-api",
+  "homepage": "https://joplin-utils.rxliuli.com/api/joplin-api",
   "repository": {
     "type": "git",
     "url": "https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-api"

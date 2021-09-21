@@ -12,6 +12,15 @@
     "docs:build": "rimraf docs && typedoc",
     "docs:deploy": "yarn docs:build && gh-pages -d docs/ -e /api/joplin-plugin-api -a"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "homepage": "https://joplin-utils.rxliuli.com/api/joplin-plugin-api",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-plugin-api"
+  },
   "jest": {
     "preset": "ts-jest"
   },

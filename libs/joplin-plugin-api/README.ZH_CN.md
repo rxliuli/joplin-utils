@@ -8,4 +8,4 @@
 
 ### 和 @thejohnfreeman/joplin-plugin 有什么不同？
 
-这个包是 joplin-plugin-api 的灵感来源，但它将 joplin plugin 的类型定义与打包功能混合到一个包了，而这应该是两个包的。
+这个包是 joplin-plugin-api 的灵感来源，但它将 joplin plugin 的类型定义与打包功能混合到一个包了，而这应该是两个包的，而且它并未打包 ts 代码，这要求使用者的构建工具必须支持 ts。
