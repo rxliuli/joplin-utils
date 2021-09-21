@@ -4674,13 +4674,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.14.168":
-  version: 4.14.173
-  resolution: "@types/lodash@npm:4.14.173"
-  checksum: 8e5568816f71a800b92013582cfd72f3b693e49a74384e661d31013c344bf39d6ba056bcf36e6a33798af9fb9271eb38e774adeeb98d68fa09d5d45001ffe268
-  languageName: node
-  linkType: hard
-
 "@types/luxon@npm:^1.25.0":
   version: 1.27.1
   resolution: "@types/luxon@npm:1.27.1"
@@ -4812,13 +4805,6 @@ __metadata:
   version: 12.20.18
   resolution: "@types/node@npm:12.20.18"
   checksum: fb216b7088928a9ded2d6abb5edd18385ecf6e1336724a88beab59d5bdc7c6b116f2e2be85e444e7250cd459c036c61a344a3063ed1bf91a28be6124b0256877
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^12.20.6":
-  version: 12.20.25
-  resolution: "@types/node@npm:12.20.25"
-  checksum: 0df9f6ca83c0a7f79b31e33ba0bd0fd6a8df8ffeb0025fac4bbf9c8d37187f7ad275493c40796e990aba6ab51165e77da7eff634845db491ceb395d7fd99f7a6
   languageName: node
   linkType: hard
 
@@ -14243,8 +14229,6 @@ fsevents@^1.2.7:
     "@types/fs-extra": ^9.0.11
     "@types/inquirer": ^7.3.1
     "@types/jest": ^26.0.23
-    "@types/lodash": ^4.14.168
-    "@types/node": ^12.20.6
     "@types/tar": ^4.0.5
     chokidar: ^3.5.2
     commander: ^7.0.0
@@ -14257,9 +14241,7 @@ fsevents@^1.2.7:
     rimraf: ^3.0.2
     tar: ^6.1.11
     ts-jest: ^26.5.6
-    ts-node: ^10.0.0
     type-fest: ^1.2.1
-    typedoc: ^0.21.0
     typescript: ^4.3.4
   bin:
     joplin-plugin-cli: dist/bin.js
@@ -15316,15 +15298,6 @@ fsevents@^1.2.7:
   bin:
     marked: bin/marked
   checksum: 1f520ee847911284d7992966aeb46bd9fba09f1f6ada753cb20b0ad5c0d802accd07ef1596abe45d9221cac6bdc106d7487e39dee1249b345b71a354e124a13d
-  languageName: node
-  linkType: hard
-
-"marked@npm:^3.0.2":
-  version: 3.0.4
-  resolution: "marked@npm:3.0.4"
-  bin:
-    marked: bin/marked
-  checksum: 2c31fab4d3a65a84895ad26e25b238baf93453ff8344df83bf79f4940636fde5bd744747261eba468f773f21124d7da10b2cf40d4101dbe71aa885f04e61db7b
   languageName: node
   linkType: hard
 
@@ -20368,17 +20341,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"shiki@npm:^0.9.8":
-  version: 0.9.11
-  resolution: "shiki@npm:0.9.11"
-  dependencies:
-    jsonc-parser: ^3.0.0
-    onigasm: ^2.2.5
-    vscode-textmate: 5.2.0
-  checksum: b979ed6fb80f20844e879a1a1296cfd584da8a6f5337d411ad2ca906186640867fe59923bb0cd0b460cfedd0e3cb3f680be84093fbbf9d8994735ec9d82d73bf
-  languageName: node
-  linkType: hard
-
 "side-channel@npm:^1.0.4":
   version: 1.0.4
   resolution: "side-channel@npm:1.0.4"
@@ -22011,26 +21973,6 @@ resolve@^2.0.0-next.3:
   version: 0.12.10
   resolution: "typedoc-default-themes@npm:0.12.10"
   checksum: 6e3a6f5aa3bfd0956b820077aec5c98a22494ed59dca5e36f179ca7f196508ab447043cc76fd02fb2b7d762a7bae82d33f8db605356e448b1a085bb45eb31360
-  languageName: node
-  linkType: hard
-
-"typedoc@npm:^0.21.0":
-  version: 0.21.9
-  resolution: "typedoc@npm:0.21.9"
-  dependencies:
-    glob: ^7.1.7
-    handlebars: ^4.7.7
-    lunr: ^2.3.9
-    marked: ^3.0.2
-    minimatch: ^3.0.0
-    progress: ^2.0.3
-    shiki: ^0.9.8
-    typedoc-default-themes: ^0.12.10
-  peerDependencies:
-    typescript: 4.0.x || 4.1.x || 4.2.x || 4.3.x || 4.4.x
-  bin:
-    typedoc: bin/typedoc
-  checksum: e45ff292332e3ebabe84b49f00baf4af494a45f2fb9fd8bca30b2495959d974c154646dcca51486b79e9beb4ca736cf67117024a866947f7f31d6bebab327a5c
   languageName: node
   linkType: hard
 
