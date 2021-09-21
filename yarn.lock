@@ -2465,25 +2465,48 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@liuli-util/cli@npm:^3.7.1":
-  version: 3.7.1
-  resolution: "@liuli-util/cli@npm:3.7.1"
+"@liuli-util/cli-joplin-plugin-cli@workspace:libs/joplin-plugin-cli":
+  version: 0.0.0-use.local
+  resolution: "@liuli-util/cli-joplin-plugin-cli@workspace:libs/joplin-plugin-cli"
   dependencies:
-    "@rollup/plugin-json": ^4.1.0
-    builtin-modules: ^3.2.0
+    "@liuli-util/cli": ^3.7.0
+    "@types/fs-extra": ^9.0.11
+    "@types/inquirer": ^7.3.1
+    "@types/jest": ^26.0.23
+    "@types/lodash": ^4.14.168
+    "@types/node": ^12.20.6
+    commander: ^7.0.0
+    esbuild: ^0.12.28
+    fs-extra: ^10.0.0
+    gh-pages: ^3.2.3
+    inquirer: ^8.1.0
+    jest: ^26.6.3
+    rimraf: ^3.0.2
+    ts-jest: ^26.5.6
+    ts-node: ^10.0.0
+    type-fest: ^1.2.1
+    typedoc: ^0.21.0
+    typescript: ^4.3.4
+  bin:
+    cli-name: dist/bin.js
+  languageName: unknown
+  linkType: soft
+
+"@liuli-util/cli@npm:^3.7.0, @liuli-util/cli@npm:^3.9.1":
+  version: 3.9.1
+  resolution: "@liuli-util/cli@npm:3.9.1"
+  dependencies:
+    "@liuli-util/liuli-cli-plugin-build": ^0.1.0
+    "@liuli-util/liuli-cli-plugin-generate": ^0.1.1
+    "@liuli-util/liuli-cli-plugin-sync": ^0.1.1
+    chalk: ^4.1.2
     commander: ^7.0.0
     fs-extra: ^10.0.0
     inquirer: ^8.1.0
     lodash: ^4.17.21
-    rollup: ^2.51.2
-    rollup-plugin-add-shebang: ^0.3.1
-    rollup-plugin-auto-external: ^2.0.0
-    rollup-plugin-node-externals: ^2.2.0
-    rollup-plugin-terser: ^7.0.2
-    rollup-plugin-typescript2: ^0.30.0
   bin:
     liuli-cli: dist/bin.js
-  checksum: 9ce1ec8708ca6c0d747f2b81945feaccc4ac188acaae13b3b3e4d4fb15064a57955a0dbddbf13eca189b81ced5aa66cc021fcefb84442d42ead32545b1122052
+  checksum: 335269d8f2306122413915a9456b7bc95574b7a50f8c3d61849eea9142cf8cee3b22c5a91d496866422c27c0ff55e84423d3bbfd6f0d8a1d88408af0428a89e0
   languageName: node
   linkType: hard
 
@@ -2570,6 +2593,57 @@ __metadata:
   peerDependencies:
     i18next: ^20.3.3
   checksum: 5fe3310cb5fd11a5c509ab356f0546e753c1e9c4cb780b0d0cce962509931b588f6dfdfbbc59dbcc16cf18da099306d379f92318b81cda16b30292f8acf9e409
+  languageName: node
+  linkType: hard
+
+"@liuli-util/liuli-cli-plugin-build@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@liuli-util/liuli-cli-plugin-build@npm:0.1.0"
+  dependencies:
+    "@rollup/plugin-json": ^4.1.0
+    builtin-modules: ^3.2.0
+    chalk: ^4.1.2
+    commander: ^7.0.0
+    fs-extra: ^10.0.0
+    inquirer: ^8.1.0
+    lodash: ^4.17.21
+    rollup: ^2.51.2
+    rollup-plugin-add-shebang: ^0.3.1
+    rollup-plugin-auto-external: ^2.0.0
+    rollup-plugin-node-externals: ^2.2.0
+    rollup-plugin-terser: ^7.0.2
+    rollup-plugin-typescript2: ^0.30.0
+  bin:
+    build: dist/bin.js
+  checksum: 7aba032311f1fdd3d9d644d73594f874713f4e3510269a3e8fe3ab6abf9579263dcd595107cbcf0f92dc7e88007d99f5c9d63782963334e85e6806e0e7714702
+  languageName: node
+  linkType: hard
+
+"@liuli-util/liuli-cli-plugin-generate@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@liuli-util/liuli-cli-plugin-generate@npm:0.1.1"
+  dependencies:
+    "@liuli-util/liuli-cli-plugin-sync": ^0.1.1
+    commander: ^7.0.0
+    fs-extra: ^10.0.0
+    inquirer: ^8.1.0
+  bin:
+    generate: dist/bin.js
+  checksum: 04d02c0b5467f7e8a4e2b4ce79b65d0b136ff8a82e44d959ec6fed009c18a9bd8ae464eda79d10682ff7953661c3b9ac161c9d725a60acd023238b333736274c
+  languageName: node
+  linkType: hard
+
+"@liuli-util/liuli-cli-plugin-sync@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@liuli-util/liuli-cli-plugin-sync@npm:0.1.1"
+  dependencies:
+    commander: ^7.0.0
+    fs-extra: ^10.0.0
+    inquirer: ^8.1.0
+    lodash: ^4.17.21
+  bin:
+    sync: dist/bin.js
+  checksum: d38da21a2810d35cc8915301959b47ca7c893d08f7f96f524da7ddc4f5c1b22e34c243580b842858ebe78615ea0587777c73e1bd83866081a9e285b43b9b8165
   languageName: node
   linkType: hard
 
@@ -4331,6 +4405,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/inquirer@npm:^7.3.1":
+  version: 7.3.3
+  resolution: "@types/inquirer@npm:7.3.3"
+  dependencies:
+    "@types/through": "*"
+    rxjs: ^6.4.0
+  checksum: f79a333a1b2f08f5c16da88e2a0afbad95ba24e9cadddec069947489836aeae59f7ea8c9484979c71c2adc475bba57d6763e461f3355720d0836ca152f7f2ca4
+  languageName: node
+  linkType: hard
+
 "@types/is-function@npm:^1.0.0":
   version: 1.0.0
   resolution: "@types/is-function@npm:1.0.0"
@@ -4414,6 +4498,13 @@ __metadata:
   version: 4.14.171
   resolution: "@types/lodash@npm:4.14.171"
   checksum: 9dcaca4bdef3783bd643d4d9ff1f89230b34eb88bfa6d49fb6984414ce187d2d9d793fa1fbab791e6ab9dafa97559b4b38fc727ff85eb62968cb21c0c6e8787e
+  languageName: node
+  linkType: hard
+
+"@types/lodash@npm:^4.14.168":
+  version: 4.14.173
+  resolution: "@types/lodash@npm:4.14.173"
+  checksum: 8e5568816f71a800b92013582cfd72f3b693e49a74384e661d31013c344bf39d6ba056bcf36e6a33798af9fb9271eb38e774adeeb98d68fa09d5d45001ffe268
   languageName: node
   linkType: hard
 
@@ -4539,6 +4630,13 @@ __metadata:
   version: 12.20.18
   resolution: "@types/node@npm:12.20.18"
   checksum: fb216b7088928a9ded2d6abb5edd18385ecf6e1336724a88beab59d5bdc7c6b116f2e2be85e444e7250cd459c036c61a344a3063ed1bf91a28be6124b0256877
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^12.20.6":
+  version: 12.20.25
+  resolution: "@types/node@npm:12.20.25"
+  checksum: 0df9f6ca83c0a7f79b31e33ba0bd0fd6a8df8ffeb0025fac4bbf9c8d37187f7ad275493c40796e990aba6ab51165e77da7eff634845db491ceb395d7fd99f7a6
   languageName: node
   linkType: hard
 
@@ -4742,6 +4840,15 @@ __metadata:
   version: 1.0.8
   resolution: "@types/tapable@npm:1.0.8"
   checksum: 01f77d47bac8aaeee7ed298e8e74eb012a28f920106c3c359e1f2730512cd810f2c6165cd2cd769422ae1064e2bf1072778b27fb5ec1973e18c35e2cc1ed5c8d
+  languageName: node
+  linkType: hard
+
+"@types/through@npm:*":
+  version: 0.0.30
+  resolution: "@types/through@npm:0.0.30"
+  dependencies:
+    "@types/node": "*"
+  checksum: f78ead4bb253d9ce7e173fb3895a61d3bfc7c368246e886cfc79e16c65ed88b3acfe7812c06e72bfde54d6a25b9b1af4fc09072ee9353627093159d403003d59
   languageName: node
   linkType: hard
 
@@ -6931,7 +7038,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.1":
+"chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.1, chalk@npm:^4.1.2":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -9032,6 +9139,15 @@ __metadata:
   version: 0.35.6
   resolution: "es6-shim@npm:0.35.6"
   checksum: 4ed9ceb017826032ea403eef82c4af97275f4e62590f8e31f8af823056a573ce096007c179718f72ce9d5a35c658ce887668a79e341fd1b64f09c2d905d0f1d5
+  languageName: node
+  linkType: hard
+
+"esbuild@npm:^0.12.28":
+  version: 0.12.28
+  resolution: "esbuild@npm:0.12.28"
+  bin:
+    esbuild: bin/esbuild
+  checksum: fc9d3b80521e2e2f93794899f62fa36c14c7c8038f2c227d586601da5f8801b80e52db28c3fb7b99a8865adba09758d7953edb45d095ce0137bc076eb791f57b
   languageName: node
   linkType: hard
 
@@ -13193,7 +13309,7 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "joplin-api@workspace:libs/joplin-api"
   dependencies:
-    "@liuli-util/cli": ^3.7.1
+    "@liuli-util/cli": ^3.9.1
     "@liuli-util/eslint-config-ts": ^0.2.0
     "@liuli-util/object": ^3.2.3
     "@types/form-data": ^2.5.0
@@ -13284,7 +13400,7 @@ fsevents@^1.2.7:
   dependencies:
     "@liuli-util/array": ^3.2.2
     "@liuli-util/async": ^3.2.3
-    "@liuli-util/cli": ^3.7.1
+    "@liuli-util/cli": ^3.9.1
     "@liuli-util/i18next-dts-gen": ^0.3.0
     "@liuli-util/i18next-util": ^0.2.0
     "@liuli-util/object": ^3.2.2
@@ -13391,7 +13507,7 @@ fsevents@^1.2.7:
   resolution: "joplin-search-integration@workspace:apps/joplin-search-integration"
   dependencies:
     "@babel/core": ^7.13.8
-    "@liuli-util/cli": ^3.7.1
+    "@liuli-util/cli": ^3.9.1
     "@mapbox/rehype-prism": ^0.6.0
     "@rollup/plugin-alias": ^3.1.1
     "@rollup/plugin-commonjs": ^17.0.0
@@ -13685,6 +13801,13 @@ fsevents@^1.2.7:
   bin:
     json5: lib/cli.js
   checksum: 7f75dd797151680a4e14c4224c1343b32a43272aa6e6333ddec2b0822df4ea116971689b251879a1248592da24f7929902c13f83d7390c3f3d44f18e8e9719f5
+  languageName: node
+  linkType: hard
+
+"jsonc-parser@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "jsonc-parser@npm:3.0.0"
+  checksum: 373632ab71f773ce6081dd70297c40fbb05aacde07ab8a5852c78c0a13d1fadb7ad886202e87bfc0168dd78568cda2d4eb36e785dac330f93e5e772d7a67f33f
   languageName: node
   linkType: hard
 
@@ -14412,6 +14535,15 @@ fsevents@^1.2.7:
   bin:
     marked: bin/marked
   checksum: 1f520ee847911284d7992966aeb46bd9fba09f1f6ada753cb20b0ad5c0d802accd07ef1596abe45d9221cac6bdc106d7487e39dee1249b345b71a354e124a13d
+  languageName: node
+  linkType: hard
+
+"marked@npm:^3.0.2":
+  version: 3.0.4
+  resolution: "marked@npm:3.0.4"
+  bin:
+    marked: bin/marked
+  checksum: 2c31fab4d3a65a84895ad26e25b238baf93453ff8344df83bf79f4940636fde5bd744747261eba468f773f21124d7da10b2cf40d4101dbe71aa885f04e61db7b
   languageName: node
   linkType: hard
 
@@ -19017,7 +19149,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"rxjs@npm:^6.6.7":
+"rxjs@npm:^6.4.0, rxjs@npm:^6.6.7":
   version: 6.6.7
   resolution: "rxjs@npm:6.6.7"
   dependencies:
@@ -19431,6 +19563,17 @@ resolve@^2.0.0-next.3:
     onigasm: ^2.2.5
     vscode-textmate: 5.2.0
   checksum: 453c0c4e78ab6d5e31ac3b50dc76eab2634a5d0e2ad546053adaed12ec5f8f54cac54e2edd715f62012671c02b936fab774df171fc71fe055e228cbb17c472be
+  languageName: node
+  linkType: hard
+
+"shiki@npm:^0.9.8":
+  version: 0.9.11
+  resolution: "shiki@npm:0.9.11"
+  dependencies:
+    jsonc-parser: ^3.0.0
+    onigasm: ^2.2.5
+    vscode-textmate: 5.2.0
+  checksum: b979ed6fb80f20844e879a1a1296cfd584da8a6f5337d411ad2ca906186640867fe59923bb0cd0b460cfedd0e3cb3f680be84093fbbf9d8994735ec9d82d73bf
   languageName: node
   linkType: hard
 
@@ -21035,6 +21178,26 @@ resolve@^2.0.0-next.3:
   version: 0.12.10
   resolution: "typedoc-default-themes@npm:0.12.10"
   checksum: 6e3a6f5aa3bfd0956b820077aec5c98a22494ed59dca5e36f179ca7f196508ab447043cc76fd02fb2b7d762a7bae82d33f8db605356e448b1a085bb45eb31360
+  languageName: node
+  linkType: hard
+
+"typedoc@npm:^0.21.0":
+  version: 0.21.9
+  resolution: "typedoc@npm:0.21.9"
+  dependencies:
+    glob: ^7.1.7
+    handlebars: ^4.7.7
+    lunr: ^2.3.9
+    marked: ^3.0.2
+    minimatch: ^3.0.0
+    progress: ^2.0.3
+    shiki: ^0.9.8
+    typedoc-default-themes: ^0.12.10
+  peerDependencies:
+    typescript: 4.0.x || 4.1.x || 4.2.x || 4.3.x || 4.4.x
+  bin:
+    typedoc: bin/typedoc
+  checksum: e45ff292332e3ebabe84b49f00baf4af494a45f2fb9fd8bca30b2495959d974c154646dcca51486b79e9beb4ca736cf67117024a866947f7f31d6bebab327a5c
   languageName: node
   linkType: hard
 
