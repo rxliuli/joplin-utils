@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.1.2
+
+<!--hash:38edb79333b3633aa07b77cc623bf409e4c10d41-->
+
+- docs: 更新迁移指南和实际性能对比
+
 ## 0.1.1
 
 <!--hash:793f49ea7d915f9b45ad1c9d018a6fc5a53a443d-->

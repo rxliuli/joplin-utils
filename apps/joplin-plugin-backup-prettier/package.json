@@ -30,7 +30,7 @@
     "@types/node": "^14.0.14",
     "jest": "^27.0.4",
     "joplin-plugin-api": "*",
-    "joplin-plugin-cli": "0.1.1",
+    "joplin-plugin-cli": "0.1.2",
     "rollup": "^2.55.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-gzip": "^2.5.0",
