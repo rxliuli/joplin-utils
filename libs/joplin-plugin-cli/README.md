@@ -49,6 +49,9 @@ The front-end packaging tools have changed a lot lately, mainly due to the perfo
    yarn build
    ```
 
+4. replace all `import joplin from 'api'` with `import joplin from 'joplin-plugin-api'` in the code
+5. Delete the `api` directory, `webpack.config.js`
+
 ## Reference
 
 - [Performance comparison of packaging tools](https://esbuild.github.io/)

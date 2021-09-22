@@ -49,6 +49,9 @@ yarn build # 打包
    yarn build
    ```
 
+4. 替换代码中所有的 `import joplin from 'api'` 为 `import joplin from 'joplin-plugin-api'`
+5. 删除 `api` 目录、`webpack.config.js`
+
 ## 参考
 
 - [打包工具性能对比](https://esbuild.github.io/)
