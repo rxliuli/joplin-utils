@@ -5,7 +5,7 @@
 - [joplin-vscode-plugin](../joplin-vscode-plugin/): joplin 在 vscode 中的集成插件，向 joplin 开放 vscode 的功能和生态
 - [joplin-blog](../joplin-blog/): 从 joplin 生成你的 blog 或 wiki 网站，只需要在一个地方维护所有的数据
 - joplin-plugin-backup-prettier: 以人类可读的方式备份你的数据（目前正在开发）
-- [joplin-batch-web](../joplin-batch-web/)
+- [joplin-batch-web](../joplin-batch-web/): 以可视化界面的形式处理一些 Joplin 本身不支持的批量操作，例如删除没有使用的附件
 - joplin-search-integration: 在 Google、百度搜索中查看 joplin 中相关的笔记（目前缺少维护和更新）
 
 ## 开发者
