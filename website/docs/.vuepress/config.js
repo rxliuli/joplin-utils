@@ -1,3 +1,6 @@
+/**
+ * @type import('vuepress-vite').AppConfig
+ */
 module.exports = {
   bundler: '@vuepress/vite',
   locales: {
@@ -10,6 +13,9 @@ module.exports = {
       title: 'Joplin Utils',
     },
   },
+  /**
+   * @type import('@vuepress/theme-default').DefaultThemeData
+   */
   themeConfig: {
     locales: {
       '/': {
@@ -166,6 +172,10 @@ module.exports = {
                 link: '/zh/joplin-api/',
               },
               {
+                text: 'joplin-plugin-cli',
+                link: '/zh/joplin-plugin-cli/',
+              },
+              {
                 text: 'joplin-plugin-api',
                 link: '/zh/joplin-plugin-api/',
               },
@@ -313,6 +323,13 @@ module.exports = {
             {
               text: 'API 文档',
               link: 'https://joplin-utils.rxliuli.com/api/joplin-api/',
+            },
+          ],
+          '/zh/joplin-plugin-cli/': [
+            { text: '简介', link: '/zh/joplin-plugin-cli/' },
+            {
+              text: 'NPM',
+              link: 'https://www.npmjs.com/package/joplin-plugin-cli',
             },
           ],
           '/zh/joplin-plugin-api/': [

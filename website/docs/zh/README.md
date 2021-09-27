@@ -12,6 +12,6 @@ features:
   - title: joplin-blog
     details: 将指定标签的笔记发布为在线网站，可以选择 blog 或 wiki 的形式
   - title: joplin devtool
-    details: 开发者相关的一些工具集，包括 joplin-api/joplin-plugin-api
+    details: 开发者相关的一些工具集，包括 joplin-api/joplin-plugin-cli
 footer: MIT Licensed | Copyright © 2021-present rxliuli
 ---
