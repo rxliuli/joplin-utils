@@ -37,7 +37,7 @@
     ]
   },
   "devDependencies": {
-    "@liuli-util/cli": "^3.9.1",
+    "@liuli-util/cli": "^3.11.1",
     "@liuli-util/eslint-config-ts": "^0.2.0",
     "@types/form-data": "^2.5.0",
     "@types/fs-extra": "^9.0.4",
@@ -54,7 +54,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
-    "@liuli-util/object": "^3.2.3",
+    "@liuli-util/object": "^3.2.7",
     "axios": "^0.21.0",
     "form-data": "^3.0.0",
     "node-fetch": "^2.6.1",

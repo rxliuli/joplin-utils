@@ -13,13 +13,13 @@
     "preset": "ts-jest"
   },
   "dependencies": {
-    "@liuli-util/array": "^3.2.5",
+    "@liuli-util/array": "^3.2.7",
     "@liuli-util/object": "^3.2.7",
-    "@liuli-util/tree": "^3.2.5",
+    "@liuli-util/tree": "^3.2.7",
     "fs-extra": "^10.0.0"
   },
   "devDependencies": {
-    "@liuli-util/async": "^3.2.3",
+    "@liuli-util/async": "^3.2.7",
     "@liuli-util/rollup-plugin-tar": "^0.1.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-json": "^4.1.0",

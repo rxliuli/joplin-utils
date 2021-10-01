@@ -431,11 +431,11 @@
     "vscode-test": "^1.4.1"
   },
   "dependencies": {
-    "@liuli-util/array": "^3.2.2",
-    "@liuli-util/async": "^3.2.2",
+    "@liuli-util/array": "^3.2.7",
+    "@liuli-util/async": "^3.2.7",
     "@liuli-util/i18next-util": "^0.2.0",
-    "@liuli-util/object": "^3.2.2",
-    "@liuli-util/tree": "^3.2.2",
+    "@liuli-util/object": "^3.2.7",
+    "@liuli-util/tree": "^3.2.7",
     "@sentry/tracing": "^5.29.2",
     "cross-path-sort": "^1.0.0",
     "entities": "^2.1.0",

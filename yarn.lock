@@ -2641,44 +2641,76 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@liuli-util/array@npm:^3.2.2, @liuli-util/array@npm:^3.2.3, @liuli-util/array@npm:^3.2.5":
+"@liuli-util/array@npm:^3.2.3":
   version: 3.2.5
   resolution: "@liuli-util/array@npm:3.2.5"
   checksum: d5d4c8635192f56173dd21cbe3c346d1efcba36949f643baf636935745b64e0f206b2d9f7968426a534f4cb97b4a94b0aa91ac950c067a8935774a7f096cfb3a
   languageName: node
   linkType: hard
 
-"@liuli-util/async@npm:^3.2.2, @liuli-util/async@npm:^3.2.3":
+"@liuli-util/array@npm:^3.2.7":
+  version: 3.2.7
+  resolution: "@liuli-util/array@npm:3.2.7"
+  checksum: 7525b75c7d850cca8f874b15ce38dc4bb20266e47dcdeb2f3e992ec533b109911ac4a342223bd52be0ecb58fe6d0142de2de93f32e3d68e106a9de31e9d35fc4
+  languageName: node
+  linkType: hard
+
+"@liuli-util/async@npm:^3.2.3":
   version: 3.2.5
   resolution: "@liuli-util/async@npm:3.2.5"
   checksum: 27e2742fb4063580633837e1fc1f18a6b46a55f70a767b258c89898c6140416c3cc50d5ef113ccb785a194bd6e0560f2d72725a2918002cd4ad9f06e35866406
   languageName: node
   linkType: hard
 
-"@liuli-util/cli@npm:^3.9.1":
-  version: 3.9.1
-  resolution: "@liuli-util/cli@npm:3.9.1"
-  dependencies:
-    "@liuli-util/liuli-cli-plugin-build": ^0.1.0
-    "@liuli-util/liuli-cli-plugin-generate": ^0.1.1
-    "@liuli-util/liuli-cli-plugin-sync": ^0.1.1
-    chalk: ^4.1.2
-    commander: ^7.0.0
-    fs-extra: ^10.0.0
-    inquirer: ^8.1.0
-    lodash: ^4.17.21
-  bin:
-    liuli-cli: dist/bin.js
-  checksum: 335269d8f2306122413915a9456b7bc95574b7a50f8c3d61849eea9142cf8cee3b22c5a91d496866422c27c0ff55e84423d3bbfd6f0d8a1d88408af0428a89e0
+"@liuli-util/async@npm:^3.2.7":
+  version: 3.2.7
+  resolution: "@liuli-util/async@npm:3.2.7"
+  checksum: 94a867f0a001969c83c2474d4f9c189fc95c4c57b4ea71ad545eaaeb082bd0ff63da8a2c241bae55c1a474dc3accbb1b4888c77946df2ef16bb0c5cad9fb0cb8
   languageName: node
   linkType: hard
 
-"@liuli-util/dom@npm:^3.2.3":
-  version: 3.2.5
-  resolution: "@liuli-util/dom@npm:3.2.5"
+"@liuli-util/cli@npm:^3.11.1":
+  version: 3.11.1
+  resolution: "@liuli-util/cli@npm:3.11.1"
   dependencies:
-    "@liuli-util/array": ^3.2.5
-  checksum: edb653819c328e1eecb1a68ced5d501143936beaab7ac31ca8ffd3fb0bea290ac9aff4d28e510509f593cfdd784f291fa6c0ebac07244a01511ad8d56e0b3960
+    "@liuli-util/commitlint-standard-config": ^0.1.6
+    "@liuli-util/eslint-config-react-ts": ^0.1.0
+    "@liuli-util/eslint-config-ts": ^0.2.0
+    "@liuli-util/prettier-standard-config": ^0.1.0
+    chokidar: ^3.5.2
+    commander: ^8.2.0
+    enquirer: ^2.3.6
+    esbuild: ^0.13.2
+    fs-extra: ^10.0.0
+    glob: ^7.2.0
+    glob-promise: ^4.2.0
+    json5: ^2.2.0
+    lodash-es: ^4.17.21
+    spinnies: ^0.5.1
+    ts-morph: ^12.0.0
+  bin:
+    liuli-cli: dist/bin.js
+  checksum: 93a11f80bcfe8b1d256dee8ae3b0b5b145209c959a5b97376471bd97e825adf3f3b544cae9e791e22050db657be964c642d8e84e2c996b4474641d9c97891bc8
+  languageName: node
+  linkType: hard
+
+"@liuli-util/commitlint-standard-config@npm:^0.1.6":
+  version: 0.1.6
+  resolution: "@liuli-util/commitlint-standard-config@npm:0.1.6"
+  dependencies:
+    "@commitlint/config-conventional": ^12.1.4
+  peerDependencies:
+    "@commitlint/cli": ^12.1.4
+  checksum: 0526e797e71eed1c1275bec4e51bf8aa97df6b88006a42c1be3dd9773f5a3112e8d800b740f0890a70cb329704d10f2e97a4368f70f6c78262862df1c312f6b2
+  languageName: node
+  linkType: hard
+
+"@liuli-util/dom@npm:^3.2.7":
+  version: 3.2.7
+  resolution: "@liuli-util/dom@npm:3.2.7"
+  dependencies:
+    "@liuli-util/array": ^3.2.7
+  checksum: 2dc6aa8c19a3017ddfcefbe0700f561abd6a7a9c743ead21fb9a48e5bcf6b3e0aa83450e3d1a81a1c9ab442e330fb425d4eefe8ca7b719e4fcaeebf71b90c9fb
   languageName: node
   linkType: hard
 
@@ -2759,58 +2791,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@liuli-util/liuli-cli-plugin-build@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "@liuli-util/liuli-cli-plugin-build@npm:0.1.0"
-  dependencies:
-    "@rollup/plugin-json": ^4.1.0
-    builtin-modules: ^3.2.0
-    chalk: ^4.1.2
-    commander: ^7.0.0
-    fs-extra: ^10.0.0
-    inquirer: ^8.1.0
-    lodash: ^4.17.21
-    rollup: ^2.51.2
-    rollup-plugin-add-shebang: ^0.3.1
-    rollup-plugin-auto-external: ^2.0.0
-    rollup-plugin-node-externals: ^2.2.0
-    rollup-plugin-terser: ^7.0.2
-    rollup-plugin-typescript2: ^0.30.0
-  bin:
-    build: dist/bin.js
-  checksum: 7aba032311f1fdd3d9d644d73594f874713f4e3510269a3e8fe3ab6abf9579263dcd595107cbcf0f92dc7e88007d99f5c9d63782963334e85e6806e0e7714702
-  languageName: node
-  linkType: hard
-
-"@liuli-util/liuli-cli-plugin-generate@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "@liuli-util/liuli-cli-plugin-generate@npm:0.1.1"
-  dependencies:
-    "@liuli-util/liuli-cli-plugin-sync": ^0.1.1
-    commander: ^7.0.0
-    fs-extra: ^10.0.0
-    inquirer: ^8.1.0
-  bin:
-    generate: dist/bin.js
-  checksum: 04d02c0b5467f7e8a4e2b4ce79b65d0b136ff8a82e44d959ec6fed009c18a9bd8ae464eda79d10682ff7953661c3b9ac161c9d725a60acd023238b333736274c
-  languageName: node
-  linkType: hard
-
-"@liuli-util/liuli-cli-plugin-sync@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "@liuli-util/liuli-cli-plugin-sync@npm:0.1.1"
-  dependencies:
-    commander: ^7.0.0
-    fs-extra: ^10.0.0
-    inquirer: ^8.1.0
-    lodash: ^4.17.21
-  bin:
-    sync: dist/bin.js
-  checksum: d38da21a2810d35cc8915301959b47ca7c893d08f7f96f524da7ddc4f5c1b22e34c243580b842858ebe78615ea0587777c73e1bd83866081a9e285b43b9b8165
-  languageName: node
-  linkType: hard
-
-"@liuli-util/object@npm:^3.2.0, @liuli-util/object@npm:^3.2.2, @liuli-util/object@npm:^3.2.3":
+"@liuli-util/object@npm:^3.2.0":
   version: 3.2.5
   resolution: "@liuli-util/object@npm:3.2.5"
   checksum: e45f3f47f66e2a99007728eaba2e3e0db35682ca0ce59917593061b6b9621aa33affd44c9a1f0722fe82b08c30caf4217ba34c68682eed405ee5add992d8ab3f
@@ -2867,17 +2848,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@liuli-util/tree@npm:^3.2.2, @liuli-util/tree@npm:^3.2.3":
+"@liuli-util/tree@npm:^3.2.3":
   version: 3.2.5
   resolution: "@liuli-util/tree@npm:3.2.5"
   checksum: b67c8ef7b3030db7ed6ec44b08c19f927290fd18dcfa313e7c48f1d0bcb0dfe244161bac771426af787052673753c7797ef9dfae6150457feca68cad10e599bd
   languageName: node
   linkType: hard
 
-"@liuli-util/tree@npm:^3.2.5":
-  version: 3.2.6
-  resolution: "@liuli-util/tree@npm:3.2.6"
-  checksum: c52e71d92190d9ef995d2f84d5b1109fa65017f16aa0082ab3e1ae5f5ae71e144a53fc197ff6a863ca3fe154672cc0ae0f7bcb713d6f167ca129d802b2b2ae07
+"@liuli-util/tree@npm:^3.2.7":
+  version: 3.2.7
+  resolution: "@liuli-util/tree@npm:3.2.7"
+  checksum: d0e8c196fa7e0167fb9dd45e970a43a2f9de8faba65c894d7a215fdb3bf59d0e8f6e1f1704514742db41eed46bdcfb797ca5a1c876af6b0887e092c51d41838d
   languageName: node
   linkType: hard
 
@@ -4303,6 +4284,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ts-morph/common@npm:~0.11.0":
+  version: 0.11.0
+  resolution: "@ts-morph/common@npm:0.11.0"
+  dependencies:
+    fast-glob: ^3.2.7
+    minimatch: ^3.0.4
+    mkdirp: ^1.0.4
+    path-browserify: ^1.0.1
+  checksum: dfe6fefbff58e09a2712704cdc645d64fc3e8e1a7567ef445d079d1c72294a25eb5862c66f02ed43f54fa7c19de85a0360a08fdfaf07b31930b19c58423bbe21
+  languageName: node
+  linkType: hard
+
 "@tsconfig/node10@npm:^1.0.7":
   version: 1.0.8
   resolution: "@tsconfig/node10@npm:1.0.8"
@@ -4805,6 +4798,13 @@ __metadata:
   version: 12.20.18
   resolution: "@types/node@npm:12.20.18"
   checksum: fb216b7088928a9ded2d6abb5edd18385ecf6e1336724a88beab59d5bdc7c6b116f2e2be85e444e7250cd459c036c61a344a3063ed1bf91a28be6124b0256877
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^16.10.2":
+  version: 16.10.2
+  resolution: "@types/node@npm:16.10.2"
+  checksum: bb2d7a22bd2c0862de6f07511b4dc5e516acedea0983211066be5a630e02632b77bb1ed2105afe4af12d0ff74ebbcc05b9901397e91887d5a887be8d35ac7905
   languageName: node
   linkType: hard
 
@@ -7258,7 +7258,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.1, chalk@npm:^4.1.2":
+"chalk@npm:^4.0.0, chalk@npm:^4.1.0, chalk@npm:^4.1.1":
   version: 4.1.2
   resolution: "chalk@npm:4.1.2"
   dependencies:
@@ -7467,7 +7467,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cli-cursor@npm:^3.1.0":
+"cli-cursor@npm:^3.0.0, cli-cursor@npm:^3.1.0":
   version: 3.1.0
   resolution: "cli-cursor@npm:3.1.0"
   dependencies:
@@ -7783,6 +7783,13 @@ __metadata:
   version: 7.2.0
   resolution: "commander@npm:7.2.0"
   checksum: 8d690ff13b0356df7e0ebbe6c59b4712f754f4b724d4f473d3cc5b3fdcf978e3a5dc3078717858a2ceb50b0f84d0660a7f22a96cdc50fb877d0c9bb31593d23a
+  languageName: node
+  linkType: hard
+
+"commander@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "commander@npm:8.2.0"
+  checksum: 31a1d9c5cb7ad3fd108cc8375e3b15c57145b9785bfa6952993d1786d2b05d6739b795b6317b47cd64e954d140b98ef483e33586c62f5f11d359c0f7356cd49f
   languageName: node
   linkType: hard
 
@@ -9362,12 +9369,96 @@ __metadata:
   languageName: node
   linkType: hard
 
+"esbuild-android-arm64@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-android-arm64@npm:0.13.3"
+  checksum: 7a8be36096bf679c98a0af7eb1750606ec4298b15e3d6c97ad877e02a27e58c92818a11f52f01a1e88277d78a652a212c37514250b53dfee1a0db9d7183ee31f
+  languageName: node
+  linkType: hard
+
+"esbuild-darwin-64@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-darwin-64@npm:0.13.3"
+  checksum: 88af01ed49dacacb5749e78443c2e7dab813550dc3ee9208251519da49eed705658113aabe87af593a56f10290f94dea152cf60e99b1d858b012db680ab1f03c
+  languageName: node
+  linkType: hard
+
+"esbuild-darwin-arm64@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-darwin-arm64@npm:0.13.3"
+  checksum: 534433017dba76e9dddb4cb1eb883fc9a86f3f0813b146ac09775e874ddb46da959ee5109b2b33f729524d3e060e86b5715a898db17b76f9c2472f272cf77c45
+  languageName: node
+  linkType: hard
+
+"esbuild-freebsd-64@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-freebsd-64@npm:0.13.3"
+  checksum: fe2ba646cbb0c55befdfa40520475c1c4b218f664f1b524657473622015bc0f4ae267c19a49e40e99c5cd2f7fce3d6394831af23f26ef612e335bd96e1a79015
+  languageName: node
+  linkType: hard
+
+"esbuild-freebsd-arm64@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-freebsd-arm64@npm:0.13.3"
+  checksum: 6a5a0a9738b44f8d39d26d3d580f1910f3a45aa40c4759fff899ef58cbce24e0ee6554137ca355fbfeb4e0df45f4865a787bc506efee2fb3689c20adab97b614
+  languageName: node
+  linkType: hard
+
+"esbuild-linux-32@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-linux-32@npm:0.13.3"
+  checksum: fa0188a11791d664c857c797fc89ac580ba0a6be3ee13179abbb74539ab58bbd9b8fe78e11b65c3327b6138717b616c87308424aeabe8a59fdcf9b0cd953283a
+  languageName: node
+  linkType: hard
+
+"esbuild-linux-64@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-linux-64@npm:0.13.3"
+  checksum: 1dfc1471df66b59914d1943f9c522a0ef1df92a7b86169bda6202802bf1daae0064206976d23995d362e48daffe57b3bc5ab8deac4defb17cd7d8c5c51bed8dc
+  languageName: node
+  linkType: hard
+
+"esbuild-linux-arm64@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-linux-arm64@npm:0.13.3"
+  checksum: faa96b52362b56c2a22f6f412a27f7cc3e656947d79f21418eb8d985bbf03dd0ba12f1e545522326a23913765c112d070f86c105ca6fd952b29c957dd1c237da
+  languageName: node
+  linkType: hard
+
+"esbuild-linux-arm@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-linux-arm@npm:0.13.3"
+  checksum: 99585480abd153e17d1771f09fb908843831e35e8dca607ee14dbcf99a1e5ea9d53a46d5637a24defbe17fba2c9eaddbe3cc27855a5b7edd0e2b2651edd4df0c
+  languageName: node
+  linkType: hard
+
+"esbuild-linux-mips64le@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-linux-mips64le@npm:0.13.3"
+  checksum: b63fce078689298ee92bcaf02ddc6eddf9ed1149ccb5b3707efe2a13cf6179a31717f27cfedc37f4c949fab9735f49a4b232c451fee86fe956b7bd36a29ca902
+  languageName: node
+  linkType: hard
+
+"esbuild-linux-ppc64le@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-linux-ppc64le@npm:0.13.3"
+  checksum: ed754097ee00e51e19fe466fda86fb7676b3fa4526f7db539f970e8c2422a6aac4fd34e4003f678a7a35a88e2cf69ee0edf06d66ea2c11e6cdc4b69f93c6cce2
+  languageName: node
+  linkType: hard
+
 "esbuild-node-loader@npm:^0.3.1":
   version: 0.3.1
   resolution: "esbuild-node-loader@npm:0.3.1"
   dependencies:
     esbuild: ^0.12.6
   checksum: e46f9e107c461609d0c91a7590a628e4695e14dcfe78e8b73b725a442b70e97007648956e667d6b6b306fd1f9b66d88685a0fb5009403defec47caf0b4f8ed9e
+  languageName: node
+  linkType: hard
+
+"esbuild-openbsd-64@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-openbsd-64@npm:0.13.3"
+  checksum: 2b41bdbbc154ac96cf48299d72dd4dabfcc2adcbce561645b0076392ff486dd20bbba478bbc3a770c4f5c311e27eed6e4e57da223a84b806b973c13d8681dddf
   languageName: node
   linkType: hard
 
@@ -9379,6 +9470,34 @@ __metadata:
   peerDependencies:
     esbuild: ">=0.12 <1"
   checksum: 7c58b5e33055a71f93ab199170ece46838001b99925dbc8296dbea6675178d5bc51afe9bafe1e01e381fb448fda0cbb1dea1731559c7a3aefa8a3761a94d6d18
+  languageName: node
+  linkType: hard
+
+"esbuild-sunos-64@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-sunos-64@npm:0.13.3"
+  checksum: 807cb4dd82f7028431460c89ab1ae5837aeadd03cedf641ce4582a98f5cfd663916ce2cbebd13d8615163e61c744a52120dd8e06c25137b77cc42c9fc4651096
+  languageName: node
+  linkType: hard
+
+"esbuild-windows-32@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-windows-32@npm:0.13.3"
+  checksum: d80a70e97fdbe8f13c0dd9171ae83b58138560d118c8526ff3598a716c5097c6adfe142d9821a14c703556febe8e446572ae248b9ca15ee8685c9931234034da
+  languageName: node
+  linkType: hard
+
+"esbuild-windows-64@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-windows-64@npm:0.13.3"
+  checksum: fa242a0effbf71eb2342f9dfff27b08752c680ed6767532ba35daefc1b16b921d16a3777156b0e2318965961e74b00e2ae012e3ea25e9b7b2fcaf4bfa3f4821a
+  languageName: node
+  linkType: hard
+
+"esbuild-windows-arm64@npm:0.13.3":
+  version: 0.13.3
+  resolution: "esbuild-windows-arm64@npm:0.13.3"
+  checksum: 0258d964cf43b845db0b0017e4e8b482960c9385e9d990231e7f1820e2d96fc061ae7d8caa222eac0990e5e861f34e77148f9809140058e7141749056c0ffbba
   languageName: node
   linkType: hard
 
@@ -9397,6 +9516,65 @@ __metadata:
   bin:
     esbuild: bin/esbuild
   checksum: 9826ac2158d6c7f7e26848ca596126e3eb712a65e768aa597ad121f8af5c5602cb1bd68c39f71234e8d02a69cc0a0d7ed366a08e628d15481dca7c40c4c60a8b
+  languageName: node
+  linkType: hard
+
+"esbuild@npm:^0.13.2":
+  version: 0.13.3
+  resolution: "esbuild@npm:0.13.3"
+  dependencies:
+    esbuild-android-arm64: 0.13.3
+    esbuild-darwin-64: 0.13.3
+    esbuild-darwin-arm64: 0.13.3
+    esbuild-freebsd-64: 0.13.3
+    esbuild-freebsd-arm64: 0.13.3
+    esbuild-linux-32: 0.13.3
+    esbuild-linux-64: 0.13.3
+    esbuild-linux-arm: 0.13.3
+    esbuild-linux-arm64: 0.13.3
+    esbuild-linux-mips64le: 0.13.3
+    esbuild-linux-ppc64le: 0.13.3
+    esbuild-openbsd-64: 0.13.3
+    esbuild-sunos-64: 0.13.3
+    esbuild-windows-32: 0.13.3
+    esbuild-windows-64: 0.13.3
+    esbuild-windows-arm64: 0.13.3
+  dependenciesMeta:
+    esbuild-android-arm64:
+      optional: true
+    esbuild-darwin-64:
+      optional: true
+    esbuild-darwin-arm64:
+      optional: true
+    esbuild-freebsd-64:
+      optional: true
+    esbuild-freebsd-arm64:
+      optional: true
+    esbuild-linux-32:
+      optional: true
+    esbuild-linux-64:
+      optional: true
+    esbuild-linux-arm:
+      optional: true
+    esbuild-linux-arm64:
+      optional: true
+    esbuild-linux-mips64le:
+      optional: true
+    esbuild-linux-ppc64le:
+      optional: true
+    esbuild-openbsd-64:
+      optional: true
+    esbuild-sunos-64:
+      optional: true
+    esbuild-windows-32:
+      optional: true
+    esbuild-windows-64:
+      optional: true
+    esbuild-windows-arm64:
+      optional: true
+  bin:
+    esbuild: bin/esbuild
+  checksum: a7bba26e98e5341ef06d87bbeb4548b31e0e155eda1929758c9eea387e1a25fc11ddfa4696d2f7fae0974c79d2021448c24f5d2d5ff8c01d0917953aeb62c897
   languageName: node
   linkType: hard
 
@@ -10005,7 +10183,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.0.3, fast-glob@npm:^3.1.1, fast-glob@npm:^3.2.5":
+"fast-glob@npm:^3.0.3, fast-glob@npm:^3.1.1, fast-glob@npm:^3.2.5, fast-glob@npm:^3.2.7":
   version: 3.2.7
   resolution: "fast-glob@npm:3.2.7"
   dependencies:
@@ -10835,6 +11013,20 @@ fsevents@^1.2.7:
     once: ^1.3.0
     path-is-absolute: ^1.0.0
   checksum: 173245e6f9ccf904309eb7ef4a44a11f3bf68e9e341dff5a28b5db0dd7123b7506daf41497f3437a0710f57198187b758c2351eeaabce4d16935e956920da6a4
+  languageName: node
+  linkType: hard
+
+"glob@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "glob@npm:7.2.0"
+  dependencies:
+    fs.realpath: ^1.0.0
+    inflight: ^1.0.4
+    inherits: 2
+    minimatch: ^3.0.4
+    once: ^1.3.0
+    path-is-absolute: ^1.0.0
+  checksum: 478b40e38be5a3d514e64950e1e07e0ac120585add6a37c98d0ed24d72d9127d734d2a125786073c8deb687096e84ae82b641c441a869ada3a9cc91b68978632
   languageName: node
   linkType: hard
 
@@ -13942,7 +14134,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jest-worker@npm:^26.2.1, jest-worker@npm:^26.5.0, jest-worker@npm:^26.6.2":
+"jest-worker@npm:^26.5.0, jest-worker@npm:^26.6.2":
   version: 26.6.2
   resolution: "jest-worker@npm:26.6.2"
   dependencies:
@@ -14028,9 +14220,9 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "joplin-api@workspace:libs/joplin-api"
   dependencies:
-    "@liuli-util/cli": ^3.9.1
+    "@liuli-util/cli": ^3.11.1
     "@liuli-util/eslint-config-ts": ^0.2.0
-    "@liuli-util/object": ^3.2.3
+    "@liuli-util/object": ^3.2.7
     "@types/form-data": ^2.5.0
     "@types/fs-extra": ^9.0.4
     "@types/jest": ^26.0.15
@@ -14069,14 +14261,14 @@ fsevents@^1.2.7:
   resolution: "joplin-batch-web@workspace:apps/joplin-batch-web"
   dependencies:
     "@babel/preset-env": ^7.14.5
-    "@liuli-util/async": ^3.2.3
-    "@liuli-util/dom": ^3.2.3
+    "@liuli-util/async": ^3.2.7
+    "@liuli-util/dom": ^3.2.7
     "@liuli-util/eslint-config-react-ts": ^0.1.0
     "@liuli-util/i18next-dts-gen": ^0.3.0
     "@liuli-util/i18next-util": ^0.2.0
     "@liuli-util/shell": ^0.2.0
     "@liuli-util/string": ^3.2.7
-    "@liuli-util/tree": ^3.2.3
+    "@liuli-util/tree": ^3.2.7
     "@types/jest": ^26.0.23
     "@types/markdown-it": ^12.0.2
     "@types/node": 14
@@ -14117,14 +14309,14 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "joplin-blog@workspace:apps/joplin-blog"
   dependencies:
-    "@liuli-util/array": ^3.2.2
-    "@liuli-util/async": ^3.2.3
-    "@liuli-util/cli": ^3.9.1
+    "@liuli-util/array": ^3.2.7
+    "@liuli-util/async": ^3.2.7
+    "@liuli-util/cli": ^3.11.1
     "@liuli-util/i18next-dts-gen": ^0.3.0
     "@liuli-util/i18next-util": ^0.2.0
-    "@liuli-util/object": ^3.2.2
+    "@liuli-util/object": ^3.2.7
     "@liuli-util/shell": ^0.2.0
-    "@liuli-util/tree": ^3.2.2
+    "@liuli-util/tree": ^3.2.7
     "@rollup/plugin-json": ^4.1.0
     "@types/figlet": ^1.5.0
     "@types/fs-extra": ^9.0.6
@@ -14195,11 +14387,11 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "joplin-plugin-backup-prettier@workspace:apps/joplin-plugin-backup-prettier"
   dependencies:
-    "@liuli-util/array": ^3.2.5
-    "@liuli-util/async": ^3.2.3
+    "@liuli-util/array": ^3.2.7
+    "@liuli-util/async": ^3.2.7
     "@liuli-util/object": ^3.2.7
     "@liuli-util/rollup-plugin-tar": ^0.1.0
-    "@liuli-util/tree": ^3.2.5
+    "@liuli-util/tree": ^3.2.7
     "@rollup/plugin-commonjs": ^19.0.0
     "@rollup/plugin-json": ^4.1.0
     "@rollup/plugin-node-resolve": ^13.0.0
@@ -14226,9 +14418,11 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "joplin-plugin-cli@workspace:libs/joplin-plugin-cli"
   dependencies:
+    "@liuli-util/cli": ^3.11.1
     "@types/fs-extra": ^9.0.11
     "@types/inquirer": ^7.3.1
     "@types/jest": ^26.0.23
+    "@types/node": ^16.10.2
     "@types/tar": ^4.0.5
     chokidar: ^3.5.2
     commander: ^7.0.0
@@ -14270,7 +14464,7 @@ fsevents@^1.2.7:
   resolution: "joplin-search-integration@workspace:apps/joplin-search-integration"
   dependencies:
     "@babel/core": ^7.13.8
-    "@liuli-util/cli": ^3.9.1
+    "@liuli-util/cli": ^3.11.1
     "@mapbox/rehype-prism": ^0.6.0
     "@rollup/plugin-alias": ^3.1.1
     "@rollup/plugin-commonjs": ^17.0.0
@@ -14361,12 +14555,12 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "joplin-vscode-plugin@workspace:apps/joplin-vscode-plugin"
   dependencies:
-    "@liuli-util/array": ^3.2.2
-    "@liuli-util/async": ^3.2.2
+    "@liuli-util/array": ^3.2.7
+    "@liuli-util/async": ^3.2.7
     "@liuli-util/i18next-dts-gen": ^0.3.0
     "@liuli-util/i18next-util": ^0.2.0
-    "@liuli-util/object": ^3.2.2
-    "@liuli-util/tree": ^3.2.2
+    "@liuli-util/object": ^3.2.7
+    "@liuli-util/tree": ^3.2.7
     "@rollup/plugin-commonjs": ^19.0.0
     "@rollup/plugin-json": ^4.1.0
     "@rollup/plugin-node-resolve": ^13.0.0
@@ -19770,20 +19964,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"rollup-plugin-terser@npm:^7.0.2":
-  version: 7.0.2
-  resolution: "rollup-plugin-terser@npm:7.0.2"
-  dependencies:
-    "@babel/code-frame": ^7.10.4
-    jest-worker: ^26.2.1
-    serialize-javascript: ^4.0.0
-    terser: ^5.0.0
-  peerDependencies:
-    rollup: ^2.0.0
-  checksum: f79b851c6f7b06555d3a8ce7a4e32abd2b7cb8318e89fb8db73e662fa6e3af1a59920e881d111efc65a7437fd9582b61b1f4859b6fd839ba948616829d92432d
-  languageName: node
-  linkType: hard
-
 "rollup-plugin-typescript2@npm:^0.30.0":
   version: 0.30.0
   resolution: "rollup-plugin-typescript2@npm:0.30.0"
@@ -19869,7 +20049,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.38.5, rollup@npm:^2.51.2, rollup@npm:^2.55.0":
+"rollup@npm:^2.38.5, rollup@npm:^2.55.0":
   version: 2.55.1
   resolution: "rollup@npm:2.55.1"
   dependencies:
@@ -20614,6 +20794,17 @@ resolve@^2.0.0-next.3:
   bin:
     sre: bin/sre
   checksum: a2c710c02946098c85a6a61e5a6ffc0c2d1b3d06a78c3a9ea8fdb94ccdf38aa489e4f4e5f3ea3135ed6911f3411fa07eac4ec334d8e9089dc907e411847cdce4
+  languageName: node
+  linkType: hard
+
+"spinnies@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "spinnies@npm:0.5.1"
+  dependencies:
+    chalk: ^2.4.2
+    cli-cursor: ^3.0.0
+    strip-ansi: ^5.2.0
+  checksum: 399ba89d9113e4656a422538bd71090159eb11d2ffe55d6f7b29ea1e91acf3c78abfad672e86aae338e26f322d800c581b7e0d6e49a957676df8208cdae7bf53
   languageName: node
   linkType: hard
 
@@ -21368,7 +21559,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"terser@npm:^5.0.0, terser@npm:^5.3.4":
+"terser@npm:^5.3.4":
   version: 5.7.1
   resolution: "terser@npm:5.7.1"
   dependencies:
@@ -21760,6 +21951,16 @@ resolve@^2.0.0-next.3:
     "@ts-morph/common": ~0.10.1
     code-block-writer: ^10.1.1
   checksum: 007cbfabe1bafa8901603ba069997ca3af349548e5e973d37784776eafcb692fa03eac46fa662b226c2a891409f7739177a1ebd56e561950f24e52c22bf376a5
+  languageName: node
+  linkType: hard
+
+"ts-morph@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "ts-morph@npm:12.0.0"
+  dependencies:
+    "@ts-morph/common": ~0.11.0
+    code-block-writer: ^10.1.1
+  checksum: 43d4e83c897c37d24b5f938117c67a7feb3af60375a8131ba29a7c4539c6fc553179a9a4373ce6d39ecf5cb4bec68b9fad296c17030b7bf592d8137daf280760
   languageName: node
   linkType: hard
 

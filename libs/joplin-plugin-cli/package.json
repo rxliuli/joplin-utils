@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "setup": "yarn build",
-    "build": "rimraf dist && esbuild --format=cjs --bundle src/bin.ts --platform=node --outdir=dist --external:esbuild --banner:js='#!/usr/bin/env node\n'",
-    "dev": "esbuild --format=cjs src/bin.ts --platform=node --outdir=dist --watch --banner:js='#!/usr/bin/env node\n'",
+    "build": "rimraf dist && liuli-cli build cli",
+    "dev": "liuli-cli build cli -w",
     "start": "esno src/bin.ts"
   },
   "workspaces": [
@@ -27,12 +27,14 @@
     "preset": "ts-jest"
   },
   "dependencies": {
+    "@liuli-util/cli": "^3.11.1",
     "esbuild": "^0.12.28"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.11",
     "@types/inquirer": "^7.3.1",
     "@types/jest": "^26.0.23",
+    "@types/node": "^16.10.2",
     "@types/tar": "^4.0.5",
     "chokidar": "^3.5.2",
     "commander": "^7.0.0",
