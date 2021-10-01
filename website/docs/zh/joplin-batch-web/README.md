@@ -10,11 +10,11 @@
       希望能够将之前的 blog 链接转换为内部的 `:/id` 链接以保证永不过期
 - [x] 检查是否存在没有父级目录的笔记（一般是错误）
 
-### 开始
+## 开始
 
 1. 打开 joplin 桌面版
 2. 启用网页剪辑器
-3. 在 [设置](https://joplin-utils.rxliuli.com/joplin-batch-web/#/settings) 页面填写配置
+3. 在 [设置](https://joplin-utils.rxliuli.com/web/joplin-batch-web/#/zh-CN/settings) 页面填写配置
 4. 导航到相关功能页面
 
 ![guide](https://github.com/rxliuli/joplin-utils/raw/master/apps/joplin-batch-web/docs/images/guide.gif)

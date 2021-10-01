@@ -7,11 +7,11 @@ Performs some batch operations not currently handled by Joplin and displays them
 - [x] Convert external links to internal note references - so that external links can be converted to internal `:/id` references, ensuring that they will never expire
 - [x] Check to see if there are any notes outside of a parent notebook (usually due to an error)
 
-### Start
+## Start
 
 1. Open the Joplin desktop application
 2. Enable Web Clipper
-3. On the [settings](https://joplin-utils.rxliuli.com/joplin-batch-web/#/settings) page, fill in the configuration options
+3. On the [settings](https://joplin-utils.rxliuli.com/web/joplin-batch-web/#/en-US/settings) page, fill in the configuration options
 4. Navigate to your required function page
 
 ![guide](https://github.com/rxliuli/joplin-utils/raw/master/apps/joplin-batch-web/docs/images/guide.gif)
