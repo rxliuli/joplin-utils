@@ -11,7 +11,7 @@ export interface CacheConfig {
 }
 
 class CacheCommanderProgram {
-  private readonly cachePath = path.resolve(__dirname, '.joplin-cache.json')
+  private cachePath = path.resolve('.joplin-cache.json')
   private readonly defaultCacheConfig: CacheConfig = {
     note: [],
     resource: [],

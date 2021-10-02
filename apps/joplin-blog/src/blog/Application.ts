@@ -39,6 +39,11 @@ export interface BaseIntegrated {
    * 复制资源的相对位置
    */
   readonly resourcePath: string
+  /**
+   * 格式化标题
+   * @param id
+   */
+  formatFileName?(id: string): string
 }
 
 export interface ApplicationConfig {
@@ -136,7 +141,12 @@ export class Application {
       id: (item) => item.id + '-' + item.updatedTime,
     })
     await AsyncArray.forEach(noteDiff.remove, async (item) => {
-      await remove(path.resolve(this.handler.notePath, item.id + '.md'))
+      await remove(
+        path.resolve(
+          this.handler.notePath,
+          (this.handler.formatFileName ?? ((id) => id))(item.id) + '.md',
+        ),
+      )
     })
     const allResourceList = uniqueBy(
       allNoteList.flatMap((item) => item.resources),
@@ -256,7 +266,10 @@ export class Application {
         i++
         events.process({ rate: i, all: noteList.length, title: item.title })
         await writeFile(
-          path.resolve(this.handler.notePath, item.id + '.md'),
+          path.resolve(
+            this.handler.notePath,
+            (this.handler.formatFileName ?? ((id) => id))(item.id) + '.md',
+          ),
           item.text,
         )
       })
