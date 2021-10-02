@@ -19,9 +19,13 @@ import { Command } from 'commander'
 import { LanguageEnum } from '@liuli-util/i18next-util'
 import { i18n } from '../constants/i18n'
 import { getLanguage } from '../util/getLanguage'
+import {
+  BlogJekyllIntegrated,
+  BlogJekyllIntegratedConfig,
+} from '../blog/BlogJekyllIntegrated'
 
 type JoplinBlogConfig = ApplicationConfig & {
-  type: 'hexo' | 'vuepress'
+  type: 'hexo' | 'vuepress' | 'jekyll'
   language?: LanguageEnum
 } & (BlogHexoIntegratedConfig | {})
 
@@ -35,6 +39,11 @@ export class BlogCommanderProgram {
       case 'vuepress':
         integrated = new BlogVuepressIntegrated(
           config as BlogVuepressIntegratedConfig,
+        )
+        break
+      case 'jekyll':
+        integrated = new BlogVuepressIntegrated(
+          config as BlogJekyllIntegratedConfig,
         )
         break
       default:
