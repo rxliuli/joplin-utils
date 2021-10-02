@@ -14327,6 +14327,7 @@ fsevents@^1.2.7:
     "@types/prettier": ^2.2.3
     "@types/shelljs": ^0.8.8
     "@types/unist": ^2.0.3
+    builtin-modules: ^3.2.0
     comlink: ^4.3.1
     commander: ^7.2.0
     figlet: ^1.5.0
