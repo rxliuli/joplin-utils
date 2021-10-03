@@ -298,6 +298,10 @@ module.exports = {
                   text: 'vuepress',
                   link: 'https://joplin-utils.rxliuli.com/blog/vuepress/',
                 },
+                {
+                  text: 'jeykll',
+                  link: 'https://joplin-utils.rxliuli.com/blog/jeykll/',
+                },
               ],
             },
             {

@@ -1298,14 +1298,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@liuli-util/array@npm:^3.2.2":
+"@liuli-util/array@npm:^3.2.2, @liuli-util/array@npm:^3.2.7":
   version: 3.2.7
   resolution: "@liuli-util/array@npm:3.2.7"
   checksum: 7525b75c7d850cca8f874b15ce38dc4bb20266e47dcdeb2f3e992ec533b109911ac4a342223bd52be0ecb58fe6d0142de2de93f32e3d68e106a9de31e9d35fc4
   languageName: node
   linkType: hard
 
-"@liuli-util/async@npm:^3.2.3":
+"@liuli-util/async@npm:^3.2.3, @liuli-util/async@npm:^3.2.7":
   version: 3.2.7
   resolution: "@liuli-util/async@npm:3.2.7"
   checksum: 94a867f0a001969c83c2474d4f9c189fc95c4c57b4ea71ad545eaaeb082bd0ff63da8a2c241bae55c1a474dc3accbb1b4888c77946df2ef16bb0c5cad9fb0cb8
@@ -1321,7 +1321,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@liuli-util/object@npm:^3.2.2, @liuli-util/object@npm:^3.2.3":
+"@liuli-util/object@npm:^3.2.2, @liuli-util/object@npm:^3.2.3, @liuli-util/object@npm:^3.2.7":
   version: 3.2.7
   resolution: "@liuli-util/object@npm:3.2.7"
   checksum: ea9759f3d6d3856874cb557ad4ec05eff1890d1b039538186e786c60a12eed03f8dfab3465bd13c233eeb3626a91930d3c861757c100d6ac6c009bd15652452d
@@ -1345,7 +1345,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@liuli-util/tree@npm:^3.2.2":
+"@liuli-util/tree@npm:^3.2.2, @liuli-util/tree@npm:^3.2.7":
   version: 3.2.7
   resolution: "@liuli-util/tree@npm:3.2.7"
   checksum: d0e8c196fa7e0167fb9dd45e970a43a2f9de8faba65c894d7a215fdb3bf59d0e8f6e1f1704514742db41eed46bdcfb797ca5a1c876af6b0887e092c51d41838d
@@ -1399,6 +1399,13 @@ __metadata:
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
   checksum: 8fe4d006e90422883a4fa9339dd05a83ff626806262e1710cee5758d493e8cbddf2db81c0e4690636dc840b02c9fda62877866ea774ebd07c1777ed5fafbdec6
+  languageName: node
+  linkType: hard
+
+"@types/gh-pages@npm:^3":
+  version: 3.2.0
+  resolution: "@types/gh-pages@npm:3.2.0"
+  checksum: 20586247e03a1d650032b74269ad00973b6ff9d2bf48e48251b27fa12fcf253e396b54d2e0841383009e66049546f3ce01062902941494949eed46d16b280e2a
   languageName: node
   linkType: hard
 
@@ -5746,7 +5753,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"gh-pages@npm:^3.1.0":
+"gh-pages@npm:^3.1.0, gh-pages@npm:^3.2.3":
   version: 3.2.3
   resolution: "gh-pages@npm:3.2.3"
   dependencies:
@@ -7461,6 +7468,39 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"joplin-blog@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "joplin-blog@npm:0.7.0"
+  dependencies:
+    "@liuli-util/array": ^3.2.7
+    "@liuli-util/async": ^3.2.7
+    "@liuli-util/i18next-util": ^0.2.0
+    "@liuli-util/object": ^3.2.7
+    "@liuli-util/tree": ^3.2.7
+    comlink: ^4.3.1
+    commander: ^7.2.0
+    figlet: ^1.5.0
+    fs-extra: ^9.0.1
+    i18next: ^19.8.4
+    joplin-api: ^0.3.0
+    luxon: ^1.25.0
+    mdast: ^3.0.0
+    ora: ^5.4.0
+    os-locale: ^5.0.0
+    prettier: ^2.2.1
+    remark-gfm: ^1.0.0
+    remark-parse: ^9.0.0
+    remark-stringify: ^9.0.1
+    unified: ^9.2.0
+    unist-util-map: ^2.0.1
+    unist-util-visit: ^2.0.3
+    yaml: ^1.10.0
+  bin:
+    joplin-blog: dist/cjs/bin.js
+  checksum: 63c1f60ae9f36305b55bbe17c6a84538e1b304d9e732a7349ddaf85eac62427805871a666f34e099402017d1bb8815e5062b976e9ffbb3cf14d3a1d8a138a7a4
+  languageName: node
+  linkType: hard
+
 "joplin-examples@workspace:.":
   version: 0.0.0-use.local
   resolution: "joplin-examples@workspace:."
@@ -8786,6 +8826,16 @@ fsevents@~2.3.2:
   checksum: 972fc50869e922d80d66eeb91ad39fd2e107241e0c791fc914e76578e4f7f3dfe3bf007020dd4d7ed4d0ffd69d9aa2238a9f8bbb4d160bd6eb3f35dde0c2c513
   languageName: node
   linkType: hard
+
+"myblog@workspace:blog-jeykll-example":
+  version: 0.0.0-use.local
+  resolution: "myblog@workspace:blog-jeykll-example"
+  dependencies:
+    "@types/gh-pages": ^3
+    gh-pages: ^3.2.3
+    joplin-blog: ^0.7.0
+  languageName: unknown
+  linkType: soft
 
 "nan@npm:^2.12.1":
   version: 2.15.0

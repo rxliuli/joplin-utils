@@ -7,6 +7,7 @@ CLI tool to publish Joplin notes as a static website, currently supports both bl
 - blog
   - [hexo](https://joplin-utils.rxliuli.com/blog/hexo/)
   - [vuepress](https://joplin-utils.rxliuli.com/blog/vuepress/)
+  - [jeykll](https://joplin-utils.rxliuli.com/blog/jeykll/)
 - wiki
   - [vuepress](https://joplin-utils.rxliuli.com/wiki/vuepress/)
   - [docsify](https://joplin-utils.rxliuli.com/wiki/docsify/)
@@ -35,6 +36,7 @@ The supported frameworks have examples in the examples directory, which you can 
 
 - [blog hexo](https://github.com/rxliuli/joplin-utils/tree/master/examples/blog-hexo-example)
 - [blog vuepress](https://github.com/rxliuli/joplin-utils/tree/master/examples/blog-vuepress-example)
+- [blog jeykll](https://github.com/rxliuli/joplin-utils/tree/master/examples/blog-jeykll-example)
 - [wiki vuepress](https://github.com/rxliuli/joplin-utils/tree/master/examples/wiki-vuepress-example)
 - [wiki docsify](https://github.com/rxliuli/joplin-utils/tree/master/examples/wiki-docsify-example)
 

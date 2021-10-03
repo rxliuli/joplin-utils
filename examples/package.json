@@ -6,6 +6,7 @@
     "./blog-hexo-example",
     "./blog-vuepress-example",
     "./wiki-docsify-example",
-    "./wiki-vuepress-example"
+    "./wiki-vuepress-example",
+    "./blog-jeykll-example"
   ]
 }

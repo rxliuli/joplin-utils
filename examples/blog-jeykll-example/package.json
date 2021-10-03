@@ -1,0 +1,17 @@
+{
+  "name": "myblog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "gen": "joplin-blog blog",
+    "dev": "bundle exec jekyll serve",
+    "build": "bundle exec jekyll build",
+    "deploy": "gh-pages -d _site -e blog/jeykll -a"
+  },
+  "devDependencies": {
+    "@types/gh-pages": "^3",
+    "gh-pages": "^3.2.3",
+    "joplin-blog": "^0.7.0"
+  }
+}

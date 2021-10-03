@@ -2,11 +2,12 @@
 
 ## 场景
 
-将 Joplin 笔记发布为静态网站的 CLI 工具，目前支持 blog/wiki 两种形式，框架支持 hexo/vuepress/docsify。
+将 Joplin 笔记发布为静态网站的 CLI 工具，目前支持 blog/wiki 两种形式，框架支持 hexo/vuepress/jeykll/docsify。
 
 - blog
   - [hexo](https://joplin-utils.rxliuli.com/blog/hexo/)
   - [vuepress](https://joplin-utils.rxliuli.com/blog/vuepress/)
+  - [jeykll](https://joplin-utils.rxliuli.com/blog/jeykll/)
 - wiki
   - [vuepress](https://joplin-utils.rxliuli.com/wiki/vuepress/)
   - [docsify](https://joplin-utils.rxliuli.com/wiki/docsify/)
@@ -35,6 +36,7 @@
 
 - [blog hexo](https://github.com/rxliuli/joplin-utils/tree/master/examples/blog-hexo-example)
 - [blog vuepress](https://github.com/rxliuli/joplin-utils/tree/master/examples/blog-vuepress-example)
+- [blog jeykll](https://github.com/rxliuli/joplin-utils/tree/master/examples/blog-jeykll-example)
 - [wiki vuepress](https://github.com/rxliuli/joplin-utils/tree/master/examples/wiki-vuepress-example)
 - [wiki docsify](https://github.com/rxliuli/joplin-utils/tree/master/examples/wiki-docsify-example)
 
