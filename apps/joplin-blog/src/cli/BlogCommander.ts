@@ -42,7 +42,7 @@ export class BlogCommanderProgram {
         )
         break
       case 'jekyll':
-        integrated = new BlogVuepressIntegrated(
+        integrated = new BlogJekyllIntegrated(
           config as BlogJekyllIntegratedConfig,
         )
         break
