@@ -17,7 +17,7 @@ dist/
 !.yarn/releases
 !.yarn/plugins
 !.yarn/sdks
-!.yarn/versions
+#!.yarn/versions
 .pnp.*
 .yarn-cache.json
 .temp
