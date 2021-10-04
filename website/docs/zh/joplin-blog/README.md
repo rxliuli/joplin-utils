@@ -46,14 +46,14 @@
 
 公共
 
-| 配置                | 类型                    | 说明                                      |
-| ------------------- | ----------------------- | ----------------------------------------- |
-| `type`              | `hexo/vuepress/docsify` | 集成博客的类型                            |
-| `rootPath`          | `string`                | hexo/vuepress 目录，一般应该为 `.`        |
-| `joplinProfilePath` | `string`                | joplin 个人文件夹                         |
-| `token`             | `string`                | joplin web clipper 的 token               |
-| `port`              | `number`                | joplin web clipper 的端口，一般是 `41184` |
-| `tag`               | `string`                | joplin 的博客标签                         |
+| 配置                | 类型                           | 说明                                      |
+| ------------------- | ------------------------------ | ----------------------------------------- |
+| `type`              | `hexo/vuepress/docsify/jeykll` | 集成框架的类型                            |
+| `rootPath`          | `string`                       | hexo/vuepress 目录，一般应该为 `.`        |
+| `joplinProfilePath` | `string`                       | joplin 个人文件夹                         |
+| `token`             | `string`                       | joplin web clipper 的 token               |
+| `port`              | `number`                       | joplin web clipper 的端口，一般是 `41184` |
+| `tag`               | `string`                       | 根据标签过滤需要导出的笔记                |
 
 hexo
 
@@ -83,3 +83,7 @@ hexo
 
 - 导出 jex 然后再导入 jex，这里的笔记全部都是创建操作，参考：<https://discourse.joplinapp.org/t/when-will-joplin-modify-the-id-of-the-note/17806>
 - 同步时笔记发生冲突
+
+### 如何导出全部的笔记
+
+设置 `"tag": ""` 以不做任何过滤导出所有标签的笔记。
