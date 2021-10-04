@@ -192,6 +192,10 @@ module.exports = {
                 text: 'GitHub',
                 link: 'https://github.com/rxliuli/joplin-utils',
               },
+              {
+                text: 'Joplin 论坛',
+                link: 'https://discourse.joplinapp.org/',
+              },
             ],
           },
         ],
@@ -213,10 +217,6 @@ module.exports = {
                 '/zh/joplin-vscode-plugin/other/',
                 '/zh/joplin-vscode-plugin/other/dev',
                 '/zh/joplin-vscode-plugin/other/roadmap',
-                {
-                  text: 'Joplin 论坛',
-                  link: 'https://discourse.joplinapp.org/',
-                },
                 {
                   text: 'VSCode',
                   collapsable: false,

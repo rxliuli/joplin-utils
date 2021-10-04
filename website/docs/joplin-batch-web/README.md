@@ -25,3 +25,5 @@ The format of a CLI application is not always suitable in certain scenarios, suc
 ### Will it record my note data?
 
 The website runs entirely locally, there is no backend server. If you are still concerned you can check out the source code [joplin-batch-web](https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-batch-web)
+
+<!-- TODO -->
