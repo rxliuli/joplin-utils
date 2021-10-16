@@ -32,7 +32,7 @@ export const CheckParentNotebookPage: React.FC = () => {
       title={i18n.t('checkParentNotebook.title')}
       extra={
         <Button loading={onCheckState.loading} onClick={onCheck}>
-          {i18n.t('checkParentNotebook.action.check')}
+          {i18n.t('common.action.check')}
         </Button>
       }
     >
@@ -44,7 +44,7 @@ export const CheckParentNotebookPage: React.FC = () => {
             id={item.id}
             extra={
               <Button onClick={() => onRemove(item.id)}>
-                {i18n.t('checkParentNotebook.action.remove')}
+                {i18n.t('common.action.remove')}
               </Button>
             }
           >

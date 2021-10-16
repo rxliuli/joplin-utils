@@ -19,7 +19,7 @@ function resourceUrlBuilder(getConfig: () => Config | null | undefined) {
     `http://localhost:${settings?.port}/resources/${id}/file?token=${settings?.token}`
 }
 
-const buildResourceUrl = resourceUrlBuilder(
+export const buildResourceUrl = resourceUrlBuilder(
   () => proxyStorage<{ settings: Config }>(localStorage).settings,
 )
 
@@ -66,9 +66,7 @@ export const UnusedResourcePage: React.FC = () => {
       title={i18n.t('unusedResource.title')}
       extra={
         <Space>
-          <Button onClick={onCheck}>
-            {i18n.t('unusedResource.action.check')}
-          </Button>
+          <Button onClick={onCheck}>{i18n.t('common.action.check')}</Button>
           <Button
             disabled={list.length === 0}
             danger={true}
@@ -90,10 +88,10 @@ export const UnusedResourcePage: React.FC = () => {
             key={item.id}
             actions={[
               <Button onClick={() => onRemoveResource(item.id)}>
-                {i18n.t('unusedResource.action.remove')}
+                {i18n.t('common.action.remove')}
               </Button>,
               <Button onClick={() => onOpenResource(item.id)}>
-                {i18n.t('unusedResource.action.download')}
+                {i18n.t('common.action.download')}
               </Button>,
             ]}
             extra={

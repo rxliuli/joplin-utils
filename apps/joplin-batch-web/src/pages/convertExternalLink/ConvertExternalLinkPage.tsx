@@ -108,7 +108,7 @@ export const ConvertExternalLinkPage: React.FC = () => {
             key={note.id}
             extra={[
               <Button onClick={() => onOpenNote(note.id)}>
-                {i18n.t('convertExternalLink.action.open')}
+                {i18n.t('common.action.open')}
               </Button>,
             ]}
           >

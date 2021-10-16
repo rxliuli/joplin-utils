@@ -41,11 +41,7 @@ export const NotFoundResourceCheckPage: React.FC = () => {
   return (
     <Card
       title={i18n.t('notFoundResource.title')}
-      extra={
-        <Button onClick={onCheck}>
-          {i18n.t('notFoundResource.action.check')}
-        </Button>
-      }
+      extra={<Button onClick={onCheck}>{i18n.t('common.action.check')}</Button>}
     >
       <List
         dataSource={list}
@@ -57,7 +53,7 @@ export const NotFoundResourceCheckPage: React.FC = () => {
             key={item.id}
             actions={[
               <Button onClick={() => openNote(item.id)}>
-                {i18n.t('notFoundResource.action.open')}
+                {i18n.t('common.action.open')}
               </Button>,
             ]}
           >

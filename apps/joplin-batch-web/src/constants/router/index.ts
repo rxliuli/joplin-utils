@@ -6,6 +6,7 @@ import UnusedResourcePage from '../../pages/unusedResource'
 import NotFoundResourceCheckPage from '../../pages/notFoundResource'
 import ConvertExternalLinkPage from '../../pages/convertExternalLink'
 import CheckParentNotebookPage from '../../pages/checkParentNotebook'
+import FixFileExtensionPage from '../../pages/fixFileExtendsion'
 
 export type RouteMenuConfig = RouteConfig & { title: string }
 
@@ -41,6 +42,11 @@ export function routeList(): RouteMenuConfig[] {
       path: '/checkParentNotebook',
       component: CheckParentNotebookPage,
       title: i18n.t('checkParentNotebook.title'),
+    },
+    {
+      path: '/fixFileExtension',
+      component: FixFileExtensionPage,
+      title: i18n.t('fixFileExtension.title'),
     },
   ] as RouteMenuConfig[]
 }
