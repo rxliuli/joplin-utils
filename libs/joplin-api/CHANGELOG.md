@@ -1,6 +1,20 @@
 # 更新记录
 
-## v0.3.1
+## 0.3.2
+
+- fix: 修复 ResourceApi.update 类型定义错误
+- fix: 修复 joplin-api/joplin-plugin-api homepage 配置错误的问题
+- refactor: 使用 joplin.data api 替代 joplin api（主要是为了处理文件上传的问题）
+- docs: 更新 api 文档发布位置，避免与手动编写的文档冲突
+- fix: 修复 postFormData 时 fetch/FormData 不存在的问题
+- docs: 将 joplin-api/joplin-plugin-api 的文档均生成 html 作为在线文档，整合文档中仅包含链接
+- fix: 修复 joplin-api 创建资源类型定义的问题（应该允许指定标题之外的其他元数据）
+- fix: 修复 tagApi.notesByTagId 的类型错误
+- chore: 更新文档发布相关的脚本
+- chore: 删除 joplin-api 的 prettier 配置及相关依赖，使用根目录统一的 @liuli-util/prettier 配置包
+- build: 修复 resource api 直接引入了 FormData 的问题
+
+## 0.3.1
 
 - chore: 删除无关的依赖，修复一些小问题
 - docs: 修复引用的 joplin 官方 api 文档链接失效的错误
@@ -22,7 +36,7 @@
 - build: 修复迁移过来的子模块的基本打包问题
 - build: 移动 joplin-api 模块到 libs/joplin-api 目录并且删除 yarn.lock
 
-## v0.3.0
+## 0.3.0
 
 - test: 禁用掉测试将父目录指向子级的作死行为
 - fix: 修复 JoplinApiGenerator 导出的对象方法没有绑定 this 的问题（主要因为需要 this.ajax）
@@ -34,28 +48,28 @@
 - build: 将 docs npm script 暴露出来以供 ci 使用
 - build: 添加 GitHub Actions 自动发布 npm 包
 
-## v0.2.7
+## 0.2.7
 
 - build: 修改 jest 测试启动器，将 joplin token 从环境变量读取
 - test: 修复一些单元测试的错误（仍遗留 4 个）
 
-## v0.2.6
+## 0.2.6
 
 - fix: 修复 joplin `searchApi.search` 与 `PageUtil.pageToAllList` 不能同时使用的错误
   ref: https://github.com/rxliuli/joplin-api/issues/4
 
-## v0.2.5
+## 0.2.5
 
 - 修复打包后 dist 目录不存在的错误
 
-## v0.2.4
+## 0.2.4
 
 - 修正开发时依赖 `shx` 被声明到 dependencies 的错误
 
-## v0.2.3
+## 0.2.3
 
 - 修正 `noteApi.resourcesById` 的类型，添加 fields 参数
 
-## v0.2.2
+## 0.2.2
 
 - 修复 `noteApi.get` 返回类型中没有声明 `type_` 字段的错误
