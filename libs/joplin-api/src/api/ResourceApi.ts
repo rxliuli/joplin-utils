@@ -5,7 +5,7 @@ import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
 import { CommonType } from '../modal/CommonType'
 import { Ajax } from '../util/ajax'
-import { globalValue } from '../util/globalValue'
+import { SetRequired } from 'type-fest'
 
 /**
  * 附件资源相关 api
@@ -50,7 +50,7 @@ export class ResourceApi {
   }
 
   async update(
-    param: Pick<ResourceProperties, 'id' | 'title'>,
+    param: SetRequired<Partial<ResourceProperties>, 'id'>,
   ): Promise<ResourceGetRes> {
     const { id, ...others } = param
     return await this.ajax.put<ResourceGetRes>(`/resources/${id}`, others)
