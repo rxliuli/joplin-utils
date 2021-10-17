@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import vitePluginImp from 'vite-plugin-imp'
+import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,6 +16,16 @@ export default defineConfig({
           style: (name) => `antd/es/${name}/style`,
         },
       ],
+    }),
+    VitePWA({
+      mode: 'development',
+      base: '/',
+      includeAssets: ['favicon.svg'],
+      manifest: {
+        name: 'PWA Basic',
+        short_name: 'PWA Basic',
+        theme_color: '#ffffff',
+      },
     }),
   ],
   css: {
