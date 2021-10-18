@@ -2,6 +2,10 @@
  * @type import('vuepress-vite').AppConfig
  */
 module.exports = {
+  head: [
+    ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
+    ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+  ],
   bundler: '@vuepress/vite',
   locales: {
     '/': {
@@ -365,6 +369,12 @@ module.exports = {
             placeholder: '搜索',
           },
         },
+      },
+    ],
+    [
+      '@vuepress/pwa',
+      {
+        skipWaiting: true,
       },
     ],
   ],
