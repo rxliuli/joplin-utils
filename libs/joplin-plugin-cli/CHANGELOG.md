@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.1.3
+
+<!--hash:67033e3ae6802ca43e4b9bbacb30e1ae17782b3c-->
+
+- fix: 修复监视模式下没有正确将依赖捆绑到 bundle 中的错误
+- feat: 添加一个使用 joplin-plugin-cli 的简单测试项目
+- chore: 更新 liuli-cli 提高打包性能（48s => 23s）
+- docs: 更新 README，添加之后的步骤
+- docs: 更新图片链接错误的问题
+
 ## 0.1.2
 
 <!--hash:38edb79333b3633aa07b77cc623bf409e4c10d41-->
