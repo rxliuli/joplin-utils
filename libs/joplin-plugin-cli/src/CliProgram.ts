@@ -21,6 +21,7 @@ export class CliProgram {
           sourcemap: 'external',
           format: 'cjs',
           watch: true,
+          bundle: true,
         }),
         watch(path.resolve(this.config.basePath, 'src/manifest.json')).on(
           'all',
