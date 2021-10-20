@@ -3,6 +3,7 @@ import * as path from 'path'
 import { copy, move, readJson, writeJson } from 'fs-extra'
 import { createArchive } from './utils/createArchive'
 import { watch } from 'chokidar'
+import { promise } from 'glob-promise'
 
 export class CliProgram {
   constructor(
@@ -12,10 +13,13 @@ export class CliProgram {
   ) {}
 
   async build(isWatch: boolean): Promise<void> {
+    const entryPoints = await promise(
+      path.resolve(this.config.basePath, 'src/*.ts'),
+    )
     if (isWatch) {
       await Promise.all([
         build({
-          entryPoints: [path.resolve(this.config.basePath, 'src/index.ts')],
+          entryPoints: entryPoints,
           outdir: path.resolve(this.config.basePath, 'dist'),
           platform: 'node',
           sourcemap: 'external',
@@ -36,7 +40,7 @@ export class CliProgram {
       return
     }
     await build({
-      entryPoints: [path.resolve(this.config.basePath, 'src/index.ts')],
+      entryPoints: entryPoints,
       bundle: true,
       outdir: path.resolve(this.config.basePath, 'dist'),
       platform: 'node',

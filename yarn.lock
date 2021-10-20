@@ -15084,7 +15084,19 @@ fsevents@^1.2.7:
   languageName: unknown
   linkType: soft
 
-"joplin-plugin-cli@0.1.2, joplin-plugin-cli@workspace:libs/joplin-plugin-cli":
+"joplin-plugin-cli@npm:0.1.2":
+  version: 0.1.2
+  resolution: "joplin-plugin-cli@npm:0.1.2"
+  dependencies:
+    esbuild: ^0.12.28
+  bin:
+    joplin-plugin-cli: dist/bin.js
+    jpl: dist/bin.js
+  checksum: c4d07ada461c68f7d797b8118f4bb5a53277168562021f0a2f0481612ac30227301c5a7da4828fa585770d92c4023f32abbeef34eb11a1659e0d408aaf8bb4d5
+  languageName: node
+  linkType: hard
+
+"joplin-plugin-cli@workspace:libs/joplin-plugin-cli":
   version: 0.0.0-use.local
   resolution: "joplin-plugin-cli@workspace:libs/joplin-plugin-cli"
   dependencies:
