@@ -1,0 +1,12 @@
+{
+  "manifest_version": 1,
+  "id": "rxliuli.joplin-plugin-hello-world",
+  "app_min_version": "2.4",
+  "version": "1.0.0",
+  "name": "hello-world",
+  "description": "An example plugin using joplin-plugin-cli",
+  "author": "rxliuli",
+  "homepage_url": "https://github.com/rxliuli/joplin-utils/blob/master/libs/joplin-plugin-cli/examples/hello-world",
+  "repository_url": "https://github.com/rxliuli/joplin-utils/blob/master/libs/joplin-plugin-cli/examples/hello-world",
+  "keywords": []
+}

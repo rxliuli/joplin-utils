@@ -15113,6 +15113,22 @@ fsevents@^1.2.7:
   languageName: unknown
   linkType: soft
 
+"joplin-plugin-hello-world@workspace:libs/joplin-plugin-cli/examples/hello-world":
+  version: 0.0.0-use.local
+  resolution: "joplin-plugin-hello-world@workspace:libs/joplin-plugin-cli/examples/hello-world"
+  dependencies:
+    "@types/fs-extra": ^9.0.11
+    "@types/jest": ^27.0.2
+    "@types/prettier": ^2
+    fs-extra: ^10.0.0
+    jest: ^27.2.1
+    joplin-plugin-api: ^0.1.0
+    joplin-plugin-cli: 0.1.2
+    prettier: ^2.4.1
+    ts-jest: ^27.0.5
+  languageName: unknown
+  linkType: soft
+
 "joplin-plugin-template@workspace:libs/joplin-plugin-cli/templates/joplin-plugin-template":
   version: 0.0.0-use.local
   resolution: "joplin-plugin-template@workspace:libs/joplin-plugin-cli/templates/joplin-plugin-template"
