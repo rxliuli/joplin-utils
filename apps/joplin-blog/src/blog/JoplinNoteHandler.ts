@@ -7,7 +7,7 @@ import { Link } from 'mdast'
 import unistUtilMap from 'unist-util-map'
 import remarkGfm from 'remark-gfm'
 import { format, Options } from 'prettier'
-import { Node } from 'unist'
+import type { Node } from 'unist'
 
 export interface JoplinNoteHandlerLinkConverter {
   convertNote(id: string): string

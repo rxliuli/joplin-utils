@@ -2382,22 +2382,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cspotcode/source-map-consumer@npm:0.8.0":
-  version: 0.8.0
-  resolution: "@cspotcode/source-map-consumer@npm:0.8.0"
-  checksum: 44428e50f896df065c3a22d6bddeac344f3e31af57cbc2ddf753a95addcabbe685d92e534f4dcde0cabbbcfbc122d1cb957785b36344d54c422b781a8d1a2a01
-  languageName: node
-  linkType: hard
-
-"@cspotcode/source-map-support@npm:0.6.1":
-  version: 0.6.1
-  resolution: "@cspotcode/source-map-support@npm:0.6.1"
-  dependencies:
-    "@cspotcode/source-map-consumer": 0.8.0
-  checksum: f5432af7de60ed490a3222e1ff97ef351084e65d71aa4eb40677cf055ed38cd4b28fb465e33efd8ad60518c2bb3779f9539886b1f303cd1fc5e91c0de5b1f2e6
-  languageName: node
-  linkType: hard
-
 "@ctrl/tinycolor@npm:^3.4.0":
   version: 3.4.0
   resolution: "@ctrl/tinycolor@npm:3.4.0"
@@ -4866,34 +4850,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tsconfig/node10@npm:^1.0.7":
-  version: 1.0.8
-  resolution: "@tsconfig/node10@npm:1.0.8"
-  checksum: d400f7b5c02acd74620f892c0f41cea39e7c1b5f7f272ad6f127f4b1fba23346b2d8e30d272731a733675494145f6aa74f9faf050390c034c7c553123ab979b3
-  languageName: node
-  linkType: hard
-
-"@tsconfig/node12@npm:^1.0.7":
-  version: 1.0.9
-  resolution: "@tsconfig/node12@npm:1.0.9"
-  checksum: fc1fb68a89d8a641953036d23d95fe68f69f74d37a499db20791b09543ad23afe7ae9ee0840eea92dd470bdcba69eef6f1ed3fe90ba64d763bcd3f738e364597
-  languageName: node
-  linkType: hard
-
-"@tsconfig/node14@npm:^1.0.0":
-  version: 1.0.1
-  resolution: "@tsconfig/node14@npm:1.0.1"
-  checksum: abd4e27d9ad712e1e229716a3dbf35d5cbb580d624a82d67414e7606cefd85d502e58800a2ab930d46a428fcfcb199436283b1a88e47d738ca1a5f7fd022ee74
-  languageName: node
-  linkType: hard
-
-"@tsconfig/node16@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@tsconfig/node16@npm:1.0.2"
-  checksum: d402706562444a173d48810d13fdf866c78f1b876ed8962eeac6c7cddf4e29e8aaa06dc28093219e3e9eb6316799cf4d9a7acba62c6a4e215ee0c94d83f9081f
-  languageName: node
-  linkType: hard
-
 "@types/babel__core@npm:^7.0.0, @types/babel__core@npm:^7.1.14, @types/babel__core@npm:^7.1.7":
   version: 7.1.15
   resolution: "@types/babel__core@npm:7.1.15"
@@ -5230,7 +5186,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:*, @types/lodash@npm:^4.14.166":
+"@types/lodash@npm:*":
   version: 4.14.171
   resolution: "@types/lodash@npm:4.14.171"
   checksum: 9dcaca4bdef3783bd643d4d9ff1f89230b34eb88bfa6d49fb6984414ce187d2d9d793fa1fbab791e6ab9dafa97559b4b38fc727ff85eb62968cb21c0c6e8787e
@@ -5534,29 +5490,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/rollup-plugin-auto-external@npm:^2.0.1":
-  version: 2.0.2
-  resolution: "@types/rollup-plugin-auto-external@npm:2.0.2"
-  dependencies:
-    rollup: ">=2.0.0"
-  checksum: 384af07e012a0b7421b6e96c8e2837a11e0f7065f4392f0d1572b9adf1e9a0061cd11e83f6d552643277d20d93bf8af84947701d2545c1b6bd69711e5d540059
-  languageName: node
-  linkType: hard
-
 "@types/scheduler@npm:*":
   version: 0.16.2
   resolution: "@types/scheduler@npm:0.16.2"
   checksum: 89a3a922f03609b61c270d534226791edeedcb1b06f0225d5543ac17830254624ef9d8a97ad05418e4ce549dd545bddf1ff28cb90658ff10721ad14556ca68a5
-  languageName: node
-  linkType: hard
-
-"@types/shelljs@npm:^0.8.8":
-  version: 0.8.9
-  resolution: "@types/shelljs@npm:0.8.9"
-  dependencies:
-    "@types/glob": "*"
-    "@types/node": "*"
-  checksum: aa3a42cdfe042fd56057b8ce319b48269c29e4984f02f5b753e959bdfc39f247872a640e850f7ab34232af4698d057f861335dc3bf9b7ea3786d5bb6d228054b
   languageName: node
   linkType: hard
 
@@ -6169,13 +6106,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn-walk@npm:^8.1.1":
-  version: 8.1.1
-  resolution: "acorn-walk@npm:8.1.1"
-  checksum: 42b218c6196dbda1a33090caa7f28690ca8bff3f1759b35aff0cd5999161e3d31ba327fe3374b7e20074ead5e0f29ae2a4867c3b7f24cd70cd08a2b4741fd175
-  languageName: node
-  linkType: hard
-
 "acorn@npm:^6.4.1":
   version: 6.4.2
   resolution: "acorn@npm:6.4.2"
@@ -6194,7 +6124,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.2.4, acorn@npm:^8.4.1":
+"acorn@npm:^8.2.4":
   version: 8.4.1
   resolution: "acorn@npm:8.4.1"
   bin:
@@ -7598,15 +7528,6 @@ __metadata:
   version: 3.0.0
   resolution: "builtin-status-codes@npm:3.0.0"
   checksum: c37bbba11a34c4431e56bd681b175512e99147defbe2358318d8152b3a01df7bf25e0305873947e5b350073d5ef41a364a22b37e48f1fb6d2fe6d5286a0f348c
-  languageName: node
-  linkType: hard
-
-"builtins@npm:^2.0.0":
-  version: 2.0.1
-  resolution: "builtins@npm:2.0.1"
-  dependencies:
-    semver: ^6.0.0
-  checksum: 7bcdeecea95ca2e8472f7f5d85ef2c602a67e7fde6efc6e879cf3b87d000e4cc02775dc640a38a1215d5d72bce56d7e4128810355c68481bd9b1ea1ac580c1e3
   languageName: node
   linkType: hard
 
@@ -14984,19 +14905,13 @@ fsevents@^1.2.7:
     "@liuli-util/i18next-dts-gen": ^0.3.0
     "@liuli-util/i18next-util": ^0.2.0
     "@liuli-util/object": ^3.2.7
-    "@liuli-util/shell": ^0.2.0
     "@liuli-util/tree": ^3.2.7
-    "@rollup/plugin-json": ^4.1.0
     "@types/figlet": ^1.5.0
     "@types/fs-extra": ^9.0.6
-    "@types/jest": ^26.0.19
-    "@types/lodash": ^4.14.166
     "@types/luxon": ^1.25.0
     "@types/node": ^12.19.11
     "@types/prettier": ^2.2.3
-    "@types/shelljs": ^0.8.8
     "@types/unist": ^2.0.3
-    builtin-modules: ^3.2.0
     comlink: ^4.3.1
     commander: ^7.2.0
     figlet: ^1.5.0
@@ -15012,12 +14927,7 @@ fsevents@^1.2.7:
     remark-gfm: ^1.0.0
     remark-parse: ^9.0.0
     remark-stringify: ^9.0.1
-    rollup: ^2.55.0
-    rollup-plugin-add-shebang: ^0.3.1
-    rollup-plugin-auto-external: ^2.0.0
-    rollup-plugin-node-externals: ^2.2.0
-    rollup-plugin-typescript2: ^0.30.0
-    rollup-plugin-worker-threads: ^0.1.1
+    rimraf: ^3.0.2
     ts-jest: ^26.4.4
     ts-node: ^9.1.1
     type-fest: ^1.1.1
@@ -15035,19 +14945,11 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "joplin-plugin-api@workspace:libs/joplin-plugin-api"
   dependencies:
-    "@types/jest": ^26.0.23
-    "@types/rollup-plugin-auto-external": ^2.0.1
+    "@liuli-util/cli": ^3.11.1
     gh-pages: ^3.2.3
     jest: ^26.6.3
     rimraf: ^3.0.2
-    rollup: ^2.56.3
-    rollup-plugin-auto-external: ^2.0.0
-    rollup-plugin-copy: ^3.4.0
-    rollup-plugin-node-externals: ^2.2.0
-    rollup-plugin-typescript2: ^0.30.0
     ts-jest: ^26.5.6
-    ts-node: ^10.0.0
-    type-fest: ^1.2.1
     typedoc: ^0.21.2
     typescript: ^4.3.4
   languageName: unknown
@@ -15782,18 +15684,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"load-json-file@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "load-json-file@npm:4.0.0"
-  dependencies:
-    graceful-fs: ^4.1.2
-    parse-json: ^4.0.0
-    pify: ^3.0.0
-    strip-bom: ^3.0.0
-  checksum: 6b48f6a0256bdfcc8970be2c57f68f10acb2ee7e63709b386b2febb6ad3c86198f840889cdbe71d28f741cbaa2f23a7771206b138cd1bdd159564511ca37c1d5
-  languageName: node
-  linkType: hard
-
 "loader-runner@npm:^2.4.0":
   version: 2.4.0
   resolution: "loader-runner@npm:2.4.0"
@@ -16033,7 +15923,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"magic-string@npm:^0.25.0, magic-string@npm:^0.25.3, magic-string@npm:^0.25.7":
+"magic-string@npm:^0.25.0, magic-string@npm:^0.25.7":
   version: 0.25.7
   resolution: "magic-string@npm:0.25.7"
   dependencies:
@@ -17229,7 +17119,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"normalize-package-data@npm:^2.3.2, normalize-package-data@npm:^2.5.0":
+"normalize-package-data@npm:^2.5.0":
   version: 2.5.0
   resolution: "normalize-package-data@npm:2.5.0"
   dependencies:
@@ -19991,17 +19881,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"read-pkg@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "read-pkg@npm:3.0.0"
-  dependencies:
-    load-json-file: ^4.0.0
-    normalize-package-data: ^2.3.2
-    path-type: ^3.0.0
-  checksum: 65acf2df89fbcd506b48b7ced56a255ba00adf7ecaa2db759c86cc58212f6fd80f1f0b7a85c848551a5d0685232e9b64f45c1fd5b48d85df2761a160767eeb93
-  languageName: node
-  linkType: hard
-
 "read-pkg@npm:^5.2.0":
   version: 5.2.0
   resolution: "read-pkg@npm:5.2.0"
@@ -20589,30 +20468,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"rollup-plugin-add-shebang@npm:^0.3.1":
-  version: 0.3.1
-  resolution: "rollup-plugin-add-shebang@npm:0.3.1"
-  dependencies:
-    magic-string: ^0.25.3
-    rollup-pluginutils: ^2.8.1
-  checksum: 4988b1d3423ac4f61fb881a3a9fe835aff0141830d344b40b8326c2c54274f37940db3044e5f000964fb7f8f1b880a70ff0bbee5a8ac8f182b0ee81c97eb0425
-  languageName: node
-  linkType: hard
-
-"rollup-plugin-auto-external@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "rollup-plugin-auto-external@npm:2.0.0"
-  dependencies:
-    builtins: ^2.0.0
-    read-pkg: ^3.0.0
-    safe-resolve: ^1.0.0
-    semver: ^5.5.0
-  peerDependencies:
-    rollup: ">=0.45.2"
-  checksum: 76df6c51c2cca40c164f55a3a3bc4b7cfa79bd22ea284e1657bd0867510af2998993b582b40c6d66479e8b070d905155d08a26d588f2647ec29cad5e1a4bdaa0
-  languageName: node
-  linkType: hard
-
 "rollup-plugin-chrome-extension@npm:^3.5.4":
   version: 3.5.7
   resolution: "rollup-plugin-chrome-extension@npm:3.5.7"
@@ -20734,17 +20589,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"rollup-plugin-worker-threads@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "rollup-plugin-worker-threads@npm:0.1.1"
-  dependencies:
-    "@rollup/pluginutils": ^4.1.0
-  peerDependencies:
-    rollup: ^2.52.2
-  checksum: c9545512501853679537a11c6b7b0e99c85d11e96495c6593bed5d4cfbe74b695ae0ee3e10e3459b307ba0bd8f7880e50f81266f6d0b4d5440814aec0c8d3892
-  languageName: node
-  linkType: hard
-
 "rollup-plugin-zip@npm:^1.0.1":
   version: 1.0.2
   resolution: "rollup-plugin-zip@npm:1.0.2"
@@ -20767,26 +20611,12 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"rollup-pluginutils@npm:^2.8.1, rollup-pluginutils@npm:^2.8.2":
+"rollup-pluginutils@npm:^2.8.2":
   version: 2.8.2
   resolution: "rollup-pluginutils@npm:2.8.2"
   dependencies:
     estree-walker: ^0.6.1
   checksum: 20947bec5a5dd68b5c5c8423911e6e7c0ad834c451f1a929b1f4e2bc08836ad3f1a722ef2bfcbeca921870a0a283f13f064a317dc7a6768496e98c9a641ba290
-  languageName: node
-  linkType: hard
-
-"rollup@npm:>=2.0.0, rollup@npm:^2.56.3":
-  version: 2.56.3
-  resolution: "rollup@npm:2.56.3"
-  dependencies:
-    fsevents: ~2.3.2
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  bin:
-    rollup: dist/bin/rollup
-  checksum: 6570e8f521014b943ea5910aee8406ee6826948c6f214272b809342fcfb1c7f4baec2e4bbcf8c182f29d1913bd088880a99aea16d1001e290213ae16505e3346
   languageName: node
   linkType: hard
 
@@ -20924,13 +20754,6 @@ resolve@^2.0.0-next.3:
   dependencies:
     ret: ~0.1.10
   checksum: 547d58aa5184cbef368fd5ed5f28d20f911614748c5da6b35f53fd6626396707587251e6e3d1e3010fd3ff1212e413841b8825eaa5f317017ca62a30899af31a
-  languageName: node
-  linkType: hard
-
-"safe-resolve@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "safe-resolve@npm:1.0.0"
-  checksum: a336b092c08044d4eb4006ca15bc19b1eec7bea63189b37ec4ebf3ec1a23df2b19cee38d11825a5901d94a25e9f3a26e01eb469ee225788e24b551af47e08ca2
   languageName: node
   linkType: hard
 
@@ -22026,13 +21849,6 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"strip-bom@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "strip-bom@npm:3.0.0"
-  checksum: 51201f50e021ef16672593d7434ca239441b7b760e905d9f33df6e4f3954ff54ec0e0a06f100d028af0982d6f25c35cd5cda2ce34eaebccd0250b8befb90d8f1
-  languageName: node
-  linkType: hard
-
 "strip-bom@npm:^4.0.0":
   version: 4.0.0
   resolution: "strip-bom@npm:4.0.0"
@@ -22796,42 +22612,6 @@ resolve@^2.0.0-next.3:
     "@ts-morph/common": ~0.11.0
     code-block-writer: ^10.1.1
   checksum: 43d4e83c897c37d24b5f938117c67a7feb3af60375a8131ba29a7c4539c6fc553179a9a4373ce6d39ecf5cb4bec68b9fad296c17030b7bf592d8137daf280760
-  languageName: node
-  linkType: hard
-
-"ts-node@npm:^10.0.0":
-  version: 10.2.1
-  resolution: "ts-node@npm:10.2.1"
-  dependencies:
-    "@cspotcode/source-map-support": 0.6.1
-    "@tsconfig/node10": ^1.0.7
-    "@tsconfig/node12": ^1.0.7
-    "@tsconfig/node14": ^1.0.0
-    "@tsconfig/node16": ^1.0.2
-    acorn: ^8.4.1
-    acorn-walk: ^8.1.1
-    arg: ^4.1.0
-    create-require: ^1.1.0
-    diff: ^4.0.1
-    make-error: ^1.1.1
-    yn: 3.1.1
-  peerDependencies:
-    "@swc/core": ">=1.2.50"
-    "@swc/wasm": ">=1.2.50"
-    "@types/node": "*"
-    typescript: ">=2.7"
-  peerDependenciesMeta:
-    "@swc/core":
-      optional: true
-    "@swc/wasm":
-      optional: true
-  bin:
-    ts-node: dist/bin.js
-    ts-node-cwd: dist/bin-cwd.js
-    ts-node-script: dist/bin-script.js
-    ts-node-transpile-only: dist/bin-transpile.js
-    ts-script: dist/bin-script-deprecated.js
-  checksum: 15755a09a97797036aed3672a9551a441958271c3e77a99714b41db3fcfc5829ae22aac3365d48bcf94f88a78c5cc8e3e2cd13240d948d19b7aa1a47f210bfe3
   languageName: node
   linkType: hard
 
