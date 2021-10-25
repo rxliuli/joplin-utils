@@ -3168,13 +3168,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@liuli-util/array@npm:^3.2.3":
-  version: 3.2.5
-  resolution: "@liuli-util/array@npm:3.2.5"
-  checksum: d5d4c8635192f56173dd21cbe3c346d1efcba36949f643baf636935745b64e0f206b2d9f7968426a534f4cb97b4a94b0aa91ac950c067a8935774a7f096cfb3a
-  languageName: node
-  linkType: hard
-
 "@liuli-util/array@npm:^3.2.7":
   version: 3.2.7
   resolution: "@liuli-util/array@npm:3.2.7"
@@ -3288,24 +3281,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@liuli-util/i18next-dts-gen@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "@liuli-util/i18next-dts-gen@npm:0.3.0"
+"@liuli-util/i18next-dts-gen@npm:^0.3.2":
+  version: 0.3.2
+  resolution: "@liuli-util/i18next-dts-gen@npm:0.3.2"
   dependencies:
-    "@liuli-util/array": ^3.2.3
-    "@liuli-util/async": ^3.2.3
-    "@liuli-util/tree": ^3.2.3
+    "@liuli-util/array": ^3.2.7
+    "@liuli-util/async": ^3.2.7
     chokidar: ^3.5.2
-    commander: ^7.2.0
+    commander: ^8.2.0
     fs-extra: ^10.0.0
-    i18next: ^19.8.4
-    luxon: ^1.25.0
-    ora: ^5.4.0
-    os-locale: ^5.0.0
-    ts-morph: ^11.0.0
+    i18next: ^21.0.1
+    os-locale: ^4.0.0
+    ts-morph: ^12.0.0
   bin:
     i18next-dts-gen: dist/bin.js
-  checksum: b7506a0c9cc6199db99507d089079c476a4685321cd6f3d117f982ef8b55b6d730cc88538e81a774dc7aaf7e769f3fc683cad3cbaab9be0b3dd3428c2155471e
+  checksum: 9bb190bda5e5b61867eedbcf66457e4735ab0bce80b33c78fa3d9ac7ed781d11b86f6a4a2e300a25d0bce31cea16a72cbe388286eafbf241886d50e4b19569a5
+  languageName: node
+  linkType: hard
+
+"@liuli-util/i18next-dts-gen@npm:^0.3.3":
+  version: 0.3.3
+  resolution: "@liuli-util/i18next-dts-gen@npm:0.3.3"
+  dependencies:
+    "@liuli-util/array": ^3.2.7
+    "@liuli-util/async": ^3.2.7
+    chokidar: ^3.5.2
+    commander: ^8.2.0
+    fs-extra: ^10.0.0
+    i18next: ^21.0.1
+    os-locale: ^4.0.0
+    ts-morph: ^12.0.0
+  bin:
+    i18next-dts-gen: dist/bin.js
+  checksum: ca6c307ca2d3ec240550bb71f63ba06ae41a35e3aa17183c5491eb767b90b05241a294ae997a56a93f6e91db016d2ff744e50b0dee90e6ccdd0b947e83410fee
   languageName: node
   linkType: hard
 
@@ -3336,6 +3344,15 @@ __metadata:
   version: 0.1.0
   resolution: "@liuli-util/prettier-standard-config@npm:0.1.0"
   checksum: 42181cd59d9f256a1dd1a3b8724358a435b8cdca174a225241106b695de180a0d36979ae1c62ac71ab399d47730da1f479c096a9fc8d5452678b694fc55d831a
+  languageName: node
+  linkType: hard
+
+"@liuli-util/rollup-plugin-i18next-dts-gen@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "@liuli-util/rollup-plugin-i18next-dts-gen@npm:0.1.0"
+  dependencies:
+    "@liuli-util/i18next-dts-gen": ^0.3.3
+  checksum: cc51132749f73be8e6fede58e9573db708a953a32f3103626049133b087b4582652b7ead70df43a999fb4fc78ab426ca76ab21e75c0f8b581588f2c90ebcde86
   languageName: node
   linkType: hard
 
@@ -3372,13 +3389,6 @@ __metadata:
   version: 3.2.7
   resolution: "@liuli-util/string@npm:3.2.7"
   checksum: cb1b2116c0186a522c8f8859b64409434dc9f7caf7374f9103dff6f8e7e765665e347d4958512dad7ec791713a5d61bd22269dcd48bef3e2e70038857ac7c0bd
-  languageName: node
-  linkType: hard
-
-"@liuli-util/tree@npm:^3.2.3":
-  version: 3.2.5
-  resolution: "@liuli-util/tree@npm:3.2.5"
-  checksum: b67c8ef7b3030db7ed6ec44b08c19f927290fd18dcfa313e7c48f1d0bcb0dfe244161bac771426af787052673753c7797ef9dfae6150457feca68cad10e599bd
   languageName: node
   linkType: hard
 
@@ -4823,18 +4833,6 @@ __metadata:
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
   checksum: 8fe4d006e90422883a4fa9339dd05a83ff626806262e1710cee5758d493e8cbddf2db81c0e4690636dc840b02c9fda62877866ea774ebd07c1777ed5fafbdec6
-  languageName: node
-  linkType: hard
-
-"@ts-morph/common@npm:~0.10.1":
-  version: 0.10.1
-  resolution: "@ts-morph/common@npm:0.10.1"
-  dependencies:
-    fast-glob: ^3.2.5
-    minimatch: ^3.0.4
-    mkdirp: ^1.0.4
-    path-browserify: ^1.0.1
-  checksum: 58d9f75ace30cdcd3db193664c6610f24a13ccab9550a58e4c0d86f52221af4d09a272a5ee389adf150f4b5254404b143d7fc46954a910f69c4653a138fd6e92
   languageName: node
   linkType: hard
 
@@ -7891,7 +7889,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:^3.4.1, chokidar@npm:^3.4.2, chokidar@npm:^3.5.2":
+"chokidar@npm:^3.4.1, chokidar@npm:^3.4.2, chokidar@npm:^3.5.1, chokidar@npm:^3.5.2":
   version: 3.5.2
   resolution: "chokidar@npm:3.5.2"
   dependencies:
@@ -8327,6 +8325,13 @@ __metadata:
   version: 7.2.0
   resolution: "commander@npm:7.2.0"
   checksum: 8d690ff13b0356df7e0ebbe6c59b4712f754f4b724d4f473d3cc5b3fdcf978e3a5dc3078717858a2ceb50b0f84d0660a7f22a96cdc50fb877d0c9bb31593d23a
+  languageName: node
+  linkType: hard
+
+"commander@npm:^8.0.0":
+  version: 8.3.0
+  resolution: "commander@npm:8.3.0"
+  checksum: 8b043bb8322ea1c39664a1598a95e0495bfe4ca2fad0d84a92d7d1d8d213e2a155b441d2470c8e08de7c4a28cf2bc6e169211c49e1b21d9f7edc6ae4d9356060
   languageName: node
   linkType: hard
 
@@ -10765,7 +10770,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.0.3, fast-glob@npm:^3.1.1, fast-glob@npm:^3.2.5, fast-glob@npm:^3.2.7":
+"fast-glob@npm:^3.0.3, fast-glob@npm:^3.1.1, fast-glob@npm:^3.2.7":
   version: 3.2.7
   resolution: "fast-glob@npm:3.2.7"
   dependencies:
@@ -12364,6 +12369,15 @@ fsevents@^1.2.7:
   dependencies:
     "@babel/runtime": ^7.12.0
   checksum: 87bb515479d8c8b4155638c52059ce59dac6d619625a7e31a8a44f89024d11882793129646d3ed62183a4f693f2bef10be8bdc2db5e7b420a114596d45493108
+  languageName: node
+  linkType: hard
+
+"i18next@npm:^21.0.1":
+  version: 21.3.3
+  resolution: "i18next@npm:21.3.3"
+  dependencies:
+    "@babel/runtime": ^7.12.0
+  checksum: 5ba58a660eb1c5fd290be7cc152b1622b82e047d1a2f18a4f911cc8d0bc58252683e502df4b8e88893da935f78c425d6a53865b68bb3ba1589d86c02ec380dd1
   languageName: node
   linkType: hard
 
@@ -14853,8 +14867,8 @@ fsevents@^1.2.7:
     "@liuli-util/async": ^3.2.7
     "@liuli-util/dom": ^3.2.7
     "@liuli-util/eslint-config-react-ts": ^0.1.0
-    "@liuli-util/i18next-dts-gen": ^0.3.0
     "@liuli-util/i18next-util": ^0.2.0
+    "@liuli-util/rollup-plugin-i18next-dts-gen": ^0.1.0
     "@liuli-util/shell": ^0.2.0
     "@liuli-util/string": ^3.2.7
     "@liuli-util/tree": ^3.2.7
@@ -14890,6 +14904,7 @@ fsevents@^1.2.7:
     unified: ^9.2.0
     unist-util-visit: ^2.0.3
     vite: ^2.3.5
+    vite-plugin-checker: ^0.3.4
     vite-plugin-imp: ^2.0.7
     vite-plugin-pwa: ^0.11.3
   languageName: unknown
@@ -14902,7 +14917,7 @@ fsevents@^1.2.7:
     "@liuli-util/array": ^3.2.7
     "@liuli-util/async": ^3.2.7
     "@liuli-util/cli": ^3.11.1
-    "@liuli-util/i18next-dts-gen": ^0.3.0
+    "@liuli-util/i18next-dts-gen": ^0.3.2
     "@liuli-util/i18next-util": ^0.2.0
     "@liuli-util/object": ^3.2.7
     "@liuli-util/tree": ^3.2.7
@@ -14986,19 +15001,7 @@ fsevents@^1.2.7:
   languageName: unknown
   linkType: soft
 
-"joplin-plugin-cli@npm:0.1.2":
-  version: 0.1.2
-  resolution: "joplin-plugin-cli@npm:0.1.2"
-  dependencies:
-    esbuild: ^0.12.28
-  bin:
-    joplin-plugin-cli: dist/bin.js
-    jpl: dist/bin.js
-  checksum: c4d07ada461c68f7d797b8118f4bb5a53277168562021f0a2f0481612ac30227301c5a7da4828fa585770d92c4023f32abbeef34eb11a1659e0d408aaf8bb4d5
-  languageName: node
-  linkType: hard
-
-"joplin-plugin-cli@workspace:libs/joplin-plugin-cli":
+"joplin-plugin-cli@^0.1.2, joplin-plugin-cli@workspace:libs/joplin-plugin-cli":
   version: 0.0.0-use.local
   resolution: "joplin-plugin-cli@workspace:libs/joplin-plugin-cli"
   dependencies:
@@ -15027,6 +15030,18 @@ fsevents@^1.2.7:
   languageName: unknown
   linkType: soft
 
+"joplin-plugin-cli@npm:0.1.2":
+  version: 0.1.2
+  resolution: "joplin-plugin-cli@npm:0.1.2"
+  dependencies:
+    esbuild: ^0.12.28
+  bin:
+    joplin-plugin-cli: dist/bin.js
+    jpl: dist/bin.js
+  checksum: c4d07ada461c68f7d797b8118f4bb5a53277168562021f0a2f0481612ac30227301c5a7da4828fa585770d92c4023f32abbeef34eb11a1659e0d408aaf8bb4d5
+  languageName: node
+  linkType: hard
+
 "joplin-plugin-hello-world@workspace:libs/joplin-plugin-cli/examples/hello-world":
   version: 0.0.0-use.local
   resolution: "joplin-plugin-hello-world@workspace:libs/joplin-plugin-cli/examples/hello-world"
@@ -15037,7 +15052,7 @@ fsevents@^1.2.7:
     fs-extra: ^10.0.0
     jest: ^27.2.1
     joplin-plugin-api: ^0.1.0
-    joplin-plugin-cli: 0.1.2
+    joplin-plugin-cli: ^0.1.2
     prettier: ^2.4.1
     ts-jest: ^27.0.5
   languageName: unknown
@@ -15157,9 +15172,10 @@ fsevents@^1.2.7:
   dependencies:
     "@liuli-util/array": ^3.2.7
     "@liuli-util/async": ^3.2.7
-    "@liuli-util/i18next-dts-gen": ^0.3.0
+    "@liuli-util/i18next-dts-gen": ^0.3.2
     "@liuli-util/i18next-util": ^0.2.0
     "@liuli-util/object": ^3.2.7
+    "@liuli-util/rollup-plugin-i18next-dts-gen": ^0.1.0
     "@liuli-util/tree": ^3.2.7
     "@rollup/plugin-commonjs": ^19.0.0
     "@rollup/plugin-json": ^4.1.0
@@ -15801,6 +15817,13 @@ fsevents@^1.2.7:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: 402fa16a1edd7538de5b5903a90228aa48eb5533986ba7fa26606a49db2572bf414ff73a2c9f5d5fd36b31c46a5d5c7e1527749c07cbcf965ccff5fbdf32c506
+  languageName: node
+  linkType: hard
+
+"lodash.pick@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "lodash.pick@npm:4.4.0"
+  checksum: a04c460b95d1aaa44e9513d1dacf72ea74d838da843e45831de9de64c303f13cdde1859702a6f4dcef417816898ffd47c6ae0614c957ac70245bed2809b8d2e2
   languageName: node
   linkType: hard
 
@@ -17465,6 +17488,17 @@ fsevents@^1.2.7:
   version: 0.3.0
   resolution: "os-browserify@npm:0.3.0"
   checksum: 6ff32cb1efe2bc6930ad0fd4c50e30c38010aee909eba8d65be60af55efd6cbb48f0287e3649b4e3f3a63dce5a667b23c187c4293a75e557f0d5489d735bcf52
+  languageName: node
+  linkType: hard
+
+"os-locale@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "os-locale@npm:4.0.0"
+  dependencies:
+    execa: ^1.0.0
+    lcid: ^3.0.0
+    mem: ^5.0.0
+  checksum: 1bae36cfc08fc9a214aa7e39cf525bbe1f9b64cf8d74cda1f98314d80a7cc7ff6f7e5e2d1997ecce1998722327806688b3f5527cade73af18f896dcfaa90f6d1
   languageName: node
   linkType: hard
 
@@ -22309,7 +22343,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"tiny-invariant@npm:^1.0.2":
+"tiny-invariant@npm:^1.0.2, tiny-invariant@npm:^1.1.0":
   version: 1.1.0
   resolution: "tiny-invariant@npm:1.1.0"
   checksum: 4587d58a2330d5904829277e8cec0b86d6c56b649f6ce9fedc39e8717a3af159b35e80a133794c40a86d70daf2613eed4454f1415cf070fed693c1c684c0c1ef
@@ -22592,16 +22626,6 @@ resolve@^2.0.0-next.3:
   bin:
     ts-jest: cli.js
   checksum: befac104bc0e6c919916e68f9ff66633c017a695e50c541bad7d89982e7c644ba540878f21fba205a0578dc75fc8f5360ac9e7f9cd5ca8d5c8dc04df5df91777
-  languageName: node
-  linkType: hard
-
-"ts-morph@npm:^11.0.0":
-  version: 11.0.3
-  resolution: "ts-morph@npm:11.0.3"
-  dependencies:
-    "@ts-morph/common": ~0.10.1
-    code-block-writer: ^10.1.1
-  checksum: 007cbfabe1bafa8901603ba069997ca3af349548e5e973d37784776eafcb692fa03eac46fa662b226c2a891409f7739177a1ebd56e561950f24e52c22bf376a5
   languageName: node
   linkType: hard
 
@@ -23477,6 +23501,33 @@ typescript@^3.9.5:
   languageName: node
   linkType: hard
 
+"vite-plugin-checker@npm:^0.3.4":
+  version: 0.3.4
+  resolution: "vite-plugin-checker@npm:0.3.4"
+  dependencies:
+    "@babel/code-frame": ^7.12.13
+    ansi-escapes: ^4.3.0
+    chalk: ^4.1.1
+    chokidar: ^3.5.1
+    commander: ^8.0.0
+    fast-glob: ^3.2.7
+    lodash.debounce: ^4.0.8
+    lodash.pick: ^4.4.0
+    npm-run-path: ^4.0.1
+    strip-ansi: ^6.0.0
+    tiny-invariant: ^1.1.0
+    vscode-languageclient: ^7.0.0
+    vscode-languageserver: ^7.0.0
+    vscode-languageserver-textdocument: ^1.0.1
+    vscode-uri: ^3.0.2
+  peerDependencies:
+    vite: ^2.0.0
+  bin:
+    vite-plugin-checker-vls: bin/vls
+  checksum: 0daa4d3adece412b83580dd5d71f18308ff77291acb5c5e6549b05b481a5e37cd1f3581e88d3594aee73d36e5543e3b6518ea885634ee6498c430cf021f5de1a
+  languageName: node
+  linkType: hard
+
 "vite-plugin-imp@npm:^2.0.7":
   version: 2.0.7
   resolution: "vite-plugin-imp@npm:2.0.7"
@@ -23537,6 +23588,59 @@ typescript@^3.9.5:
   languageName: node
   linkType: hard
 
+"vscode-jsonrpc@npm:6.0.0":
+  version: 6.0.0
+  resolution: "vscode-jsonrpc@npm:6.0.0"
+  checksum: 22c35873155a62e71c454ad71165683536361eaabc1f07af41cbfd83c4c3bbfe3b36b58faba2b059d8f20da61b645a8c687bdf449407196e0bdb0a080257ca69
+  languageName: node
+  linkType: hard
+
+"vscode-languageclient@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "vscode-languageclient@npm:7.0.0"
+  dependencies:
+    minimatch: ^3.0.4
+    semver: ^7.3.4
+    vscode-languageserver-protocol: 3.16.0
+  checksum: 3eabd90cb76159bcbabd0884c130a8bb9cd90a583c348730eee97e565cf939ea87e3033d7e58c94a3d8709fabf9d794e6316167bf7de1e7481882357dd02aa28
+  languageName: node
+  linkType: hard
+
+"vscode-languageserver-protocol@npm:3.16.0":
+  version: 3.16.0
+  resolution: "vscode-languageserver-protocol@npm:3.16.0"
+  dependencies:
+    vscode-jsonrpc: 6.0.0
+    vscode-languageserver-types: 3.16.0
+  checksum: 6a1ca737d826a710271b36d72c0833dfc8f78c68416725173892195d04b358ee8eb1095d5edfb7a62c7ea01128c762b9463ee8b6b1949efe060a43fe621ea62a
+  languageName: node
+  linkType: hard
+
+"vscode-languageserver-textdocument@npm:^1.0.1":
+  version: 1.0.2
+  resolution: "vscode-languageserver-textdocument@npm:1.0.2"
+  checksum: 6b8957d6ebce72f437aa05c49a23e229c1de557e171d6dc583a58b0effd925ae57fe2d59b542195af5bf689cd1a72f323519d248eb64c54c533c75002bcf3f87
+  languageName: node
+  linkType: hard
+
+"vscode-languageserver-types@npm:3.16.0":
+  version: 3.16.0
+  resolution: "vscode-languageserver-types@npm:3.16.0"
+  checksum: cc1bd68a7fe94152849e434cfc6fd8471f5c17198057fc6c95814d4b1655ab2b76d577b5fcd0f1f2a5df0285f054c96b9698e6d33e8183846f152d6e7d3ecc97
+  languageName: node
+  linkType: hard
+
+"vscode-languageserver@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "vscode-languageserver@npm:7.0.0"
+  dependencies:
+    vscode-languageserver-protocol: 3.16.0
+  bin:
+    installServerIntoExtension: bin/installServerIntoExtension
+  checksum: a36f66ab2f43ff3a754ccca5030ac3ec73cf373ab3d4d65c1de59895198b3abb3760691ada71fd7837e7dbda1eb14526420b4b91fe562facabfc568a2e58a88a
+  languageName: node
+  linkType: hard
+
 "vscode-nls-dev@npm:^3.3.2":
   version: 3.3.2
   resolution: "vscode-nls-dev@npm:3.3.2"
@@ -23582,6 +23686,13 @@ typescript@^3.9.5:
   version: 5.2.0
   resolution: "vscode-textmate@npm:5.2.0"
   checksum: 87c4786606cf7a49d78b690b37236f919db594ff81f1a405f9d9a0a9ee66ff3450fe51c0d8731f270268f7be550adffb6711a4bbc6f56d76b71abe41949817c7
+  languageName: node
+  linkType: hard
+
+"vscode-uri@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "vscode-uri@npm:3.0.2"
+  checksum: 2cdb88c12b9e25828fee570425fb7f19b19a71184330ae75271c22f25623d076cac98d584c1bdd2f7e42bda65aa71f2c61b9ecdb3e31c6b2e81fafd7f7ac1966
   languageName: node
   linkType: hard
 

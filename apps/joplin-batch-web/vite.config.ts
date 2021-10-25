@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import vitePluginImp from 'vite-plugin-imp'
 import { VitePWA } from 'vite-plugin-pwa'
+import { i18nextDtsGen } from '@liuli-util/rollup-plugin-i18next-dts-gen'
+import checker from 'vite-plugin-checker'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -27,6 +29,10 @@ export default defineConfig({
         theme_color: '#ffffff',
       },
     }),
+    i18nextDtsGen({
+      dirs: ['src/i18n'],
+    }),
+    checker({ typescript: true }),
   ],
   css: {
     preprocessorOptions: {
