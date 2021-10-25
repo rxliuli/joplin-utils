@@ -14819,7 +14819,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"joplin-api@*, joplin-api@^0.3.2, joplin-api@workspace:libs/joplin-api":
+"joplin-api@*, joplin-api@^0.3.3, joplin-api@workspace:libs/joplin-api":
   version: 0.0.0-use.local
   resolution: "joplin-api@workspace:libs/joplin-api"
   dependencies:
@@ -14885,7 +14885,7 @@ fsevents@^1.2.7:
     i18next: ^20.3.2
     immer: ^9.0.2
     jest: ^26.6.3
-    joplin-api: ^0.3.2
+    joplin-api: ^0.3.3
     less: ^4.1.1
     markdown-it: ^12.0.6
     mdast: ^3.0.0
@@ -14933,7 +14933,7 @@ fsevents@^1.2.7:
     fs-extra: ^9.0.1
     i18next: ^19.8.4
     jest: ^26.6.3
-    joplin-api: ^0.3.2
+    joplin-api: ^0.3.3
     luxon: ^1.25.0
     mdast: ^3.0.0
     ora: ^5.4.0
