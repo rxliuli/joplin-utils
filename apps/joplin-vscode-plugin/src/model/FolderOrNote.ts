@@ -23,8 +23,8 @@ export class FolderOrNote extends vscode.TreeItem {
     )
     const iconName = FolderOrNote.getIconName(item)
     this.iconPath = {
-      light: path.resolve(__dirname, `../../resources/light/${iconName}.svg`),
-      dark: path.resolve(__dirname, `../../resources/light/${iconName}.svg`),
+      light: path.resolve(__dirname, `../resources/light/${iconName}.svg`),
+      dark: path.resolve(__dirname, `../resources/dark/${iconName}.svg`),
     }
     if (item.type_ === TypeEnum.Note) {
       this.command = {
