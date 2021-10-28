@@ -1,5 +1,12 @@
 # Release Notes
 
+## 0.5.3
+
+- fix: Fix https://github.com/rxliuli/joplin-utils/issues/21
+- feat: use the rollup plugin of i18next-dts-gen
+- chore: remove unrelated dependencies, fix minor issues
+- docs(joplin-vscode-plugin): fix a minor issue with update description information
+
 ## 0.5.2
 
 - chore(joplin-vscode-plugin): remove unneeded markdown directories
