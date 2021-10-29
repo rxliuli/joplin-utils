@@ -21,16 +21,16 @@ export class NoteActionApi {
    * @deprecated 已废弃，请使用 {@link isWatch}
    * @param noteId
    */
-  async noteIsWatched(noteId: string): Promise<void> {
+  async noteIsWatched(noteId: string): Promise<boolean> {
     return this.isWatch(noteId)
   }
 
-  async isWatch(noteId: string): Promise<void> {
+  async isWatch(noteId: string): Promise<boolean> {
     return this.baseAction(ActionEnum.NoteIsWatched, noteId)
   }
 
-  private async baseAction(action: ActionEnum, noteId: string): Promise<void> {
-    return this.ajax.post<void>('/services/externalEditWatcher', {
+  private async baseAction(action: ActionEnum, noteId: string): Promise<any> {
+    return this.ajax.post<any>('/services/externalEditWatcher', {
       action,
       noteId,
     })

@@ -2,18 +2,16 @@
   "name": "joplin-vscode-plugin",
   "displayName": "joplin-vscode-plugin",
   "description": "%package.description%",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "publisher": "rxliuli",
   "engines": {
     "vscode": "^1.45.0"
   },
   "icon": "resources/icon.png",
   "scripts": {
-    "setup": "yarn run gen-i18n",
     "build": "rollup -c",
     "dev": "rollup -cw",
-    "pack": "yarn run build && vsce package --yarn",
-    "gen-i18n": "i18next-dts-gen --dirs src/i18n"
+    "pack": "yarn run build && vsce package --yarn"
   },
   "categories": [
     "Notebooks"
@@ -399,7 +397,8 @@
     }
   },
   "devDependencies": {
-    "@liuli-util/i18next-dts-gen": "^0.3.0",
+    "@liuli-util/i18next-dts-gen": "^0.3.2",
+    "@liuli-util/rollup-plugin-i18next-dts-gen": "^0.1.0",
     "@rollup/plugin-commonjs": "^19.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.0",

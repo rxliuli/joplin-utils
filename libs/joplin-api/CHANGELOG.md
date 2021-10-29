@@ -1,5 +1,9 @@
 # 更新记录
 
+## 0.3.3
+
+- fix: 修复 NoteActionApi/ResourceActionApi 类型定义错误
+
 ## 0.3.2
 
 - fix: 修复 ResourceApi.update 类型定义错误

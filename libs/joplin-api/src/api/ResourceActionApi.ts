@@ -22,12 +22,12 @@ export class ResourceActionApi {
     return this.baseAction(ActionEnum.StopWatching, resourceId)
   }
 
-  async noteIsWatched(resourceId: string): Promise<void> {
+  async noteIsWatched(resourceId: string): Promise<boolean> {
     return this.baseAction(ActionEnum.NoteIsWatched, resourceId)
   }
 
   private async baseAction(action: ActionEnum, resourceId: string) {
-    return this.ajax.post<void>('/services/resourceEditWatcher', {
+    return this.ajax.post<any>('/services/resourceEditWatcher', {
       action,
       resourceId,
     })

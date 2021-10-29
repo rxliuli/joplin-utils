@@ -5,6 +5,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import copy from 'rollup-plugin-copy'
 import { defineConfig } from 'rollup'
+import { i18nextDtsGen } from '@liuli-util/rollup-plugin-i18next-dts-gen'
 
 export default defineConfig({
   input: 'src/extension.ts',
@@ -25,5 +26,8 @@ export default defineConfig({
     commonjs(),
     externals(),
     json(),
+    i18nextDtsGen({
+      dirs: ['src/i18n'],
+    }),
   ],
 })
