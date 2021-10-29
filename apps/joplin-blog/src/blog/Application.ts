@@ -114,7 +114,7 @@ export class Application {
       await noteApi.list({ fields: ['id'], limit: 1 })
       return true
     } catch (e) {
-      return e
+      return e as Error
     }
   }
 
