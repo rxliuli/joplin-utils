@@ -3,7 +3,6 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "setup": "rm themes/next && git clone https://github.com/theme-next/hexo-theme-next themes/next",
     "build": "hexo generate",
     "clean": "hexo clean",
     "server": "hexo server",

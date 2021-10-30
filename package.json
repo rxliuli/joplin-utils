@@ -4,20 +4,13 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "npx simple-git-hooks",
-    "setup": "yarn changed foreach -pv --topological-dev run setup",
+    "setup-all": "nx run-many --target=setup --all",
+    "dep-graph": "nx dep-graph",
     "clean": "yarn workspaces foreach -pvA exec yarn dlx rimraf dist release node_modules",
     "docs:deploy": "gh-pages -d docs"
   },
   "eslintConfig": {},
   "prettier": "@liuli-util/prettier-standard-config",
-  "workspaces": {
-    "packages": [
-      "libs/*",
-      "apps/*",
-      "libs/joplin-plugin-cli/examples/*",
-      "!website"
-    ]
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -40,7 +33,11 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.55.0",
     "simple-git-hooks": "^2.5.1",
-    "type-fest": "^1.1.1"
+    "type-fest": "^1.1.1",
+    "@nrwl/workspace": "latest",
+    "@nrwl/cli": "latest",
+    "@nrwl/tao": "latest",
+    "typescript": "4.2.4"
   },
   "simple-git-hooks": {
     "pre-commit": "yarn lint-staged",
