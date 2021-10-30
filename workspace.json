@@ -13,10 +13,6 @@
       "root": "examples/blog-vuepress-example",
       "implicitDependencies": []
     },
-    "hexo-theme-next": {
-      "root": "examples/blog-hexo-example/themes/next",
-      "implicitDependencies": []
-    },
     "joplin-api": {
       "root": "libs/joplin-api",
       "implicitDependencies": []
@@ -55,10 +51,6 @@
     },
     "joplin-vscode-plugin": {
       "root": "apps/joplin-vscode-plugin",
-      "implicitDependencies": []
-    },
-    "website": {
-      "root": "website",
       "implicitDependencies": []
     },
     "wiki-docsify-example": {

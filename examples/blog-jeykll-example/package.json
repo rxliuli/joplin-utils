@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "gen": "joplin-blog blog",
-    "dev": "bundle exec jekyll serve",
-    "build": "bundle exec jekyll build",
+    "_dev": "bundle exec jekyll serve",
+    "_build": "bundle exec jekyll build",
     "deploy": "gh-pages -d _site -e blog/jeykll -a"
   },
   "devDependencies": {
