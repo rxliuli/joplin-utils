@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "setup": "yarn build",
-    "build": "rimraf dist && liuli-cli build cli",
-    "dev": "liuli-cli build cli -w",
+    "build": "rimraf dist && liuli-cli build single cli",
+    "dev": "liuli-cli build single cli -w",
     "start": "esno src/bin.ts"
   },
   "workspaces": [
@@ -27,8 +27,8 @@
     "url": "https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-plugin-cli"
   },
   "bin": {
-    "joplin-plugin-cli": "dist/bin.js",
-    "jpl": "dist/bin.js"
+    "joplin-plugin-cli": "./bin.js",
+    "jpl": "./bin.js"
   },
   "jest": {
     "preset": "ts-jest"

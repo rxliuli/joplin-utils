@@ -12,33 +12,14 @@ export class CliProgram {
     },
   ) {}
 
-  async build(isWatch: boolean): Promise<void> {
-    const entryPoints = await promise(
-      path.resolve(this.config.basePath, 'src/*.ts'),
+  private async copyManifest() {
+    await copy(
+      path.resolve(this.config.basePath, 'src/manifest.json'),
+      path.resolve(this.config.basePath, 'dist/manifest.json'),
     )
-    if (isWatch) {
-      await Promise.all([
-        build({
-          entryPoints: entryPoints,
-          outdir: path.resolve(this.config.basePath, 'dist'),
-          platform: 'node',
-          sourcemap: 'external',
-          format: 'cjs',
-          watch: true,
-          bundle: true,
-        }),
-        watch(path.resolve(this.config.basePath, 'src/manifest.json')).on(
-          'all',
-          async () => {
-            await copy(
-              path.resolve(this.config.basePath, 'src/manifest.json'),
-              path.resolve(this.config.basePath, 'dist/manifest.json'),
-            )
-          },
-        ),
-      ])
-      return
-    }
+  }
+
+  private async buildScripts(entryPoints: string[]) {
     await build({
       entryPoints: entryPoints,
       bundle: true,
@@ -47,10 +28,37 @@ export class CliProgram {
       sourcemap: 'external',
       format: 'cjs',
     })
-    await copy(
-      path.resolve(this.config.basePath, 'src/manifest.json'),
-      path.resolve(this.config.basePath, 'dist/manifest.json'),
+  }
+  private async buildScript(entryPoint: string) {
+    await build({
+      entryPoints: [entryPoint],
+      bundle: true,
+      outdir: path.resolve(this.config.basePath, 'dist'),
+      platform: 'node',
+      sourcemap: 'external',
+      format: 'cjs',
+    })
+  }
+
+  async build(isWatch: boolean): Promise<void> {
+    const entryPoints = await promise(
+      path.resolve(this.config.basePath, 'src/*.ts'),
     )
+    await Promise.all([this.buildScripts(entryPoints), this.copyManifest()])
+    if (isWatch) {
+      await watch(['src/manifest.json', 'src/*.ts'], {
+        cwd: this.config.basePath,
+      }).on('change', async (filePath) => {
+        if (filePath.endsWith('manifest.json')) {
+          await this.copyManifest()
+          console.info('copy manifest.json')
+        } else if (filePath.endsWith('.ts')) {
+          await this.buildScript(path.resolve(this.config.basePath, filePath))
+          console.info('buildScript: ', filePath)
+        }
+      })
+      return
+    }
     const pkgName = (
       await readJson(path.resolve(this.config.basePath, 'package.json'))
     ).name

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "types": "src/index.ts",
   "license": "MIT",
   "scripts": {
     "setup": "yarn build",
