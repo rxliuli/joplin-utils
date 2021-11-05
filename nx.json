@@ -16,16 +16,13 @@
       }
     }
   },
-  "implicitDependencies": {
-    "workspace.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
-    "tsconfig.base.json": "*",
-    "nx.json": "*"
-  },
   "targetDependencies": {
+    "setup": [
+      {
+        "target": "setup",
+        "projects": "dependencies"
+      }
+    ],
     "build": [
       {
         "target": "build",
