@@ -22,7 +22,8 @@
   },
   "activationEvents": [
     "onView:joplin-note",
-    "onUri"
+    "onUri",
+    "onCommand:joplinNote.search"
   ],
   "main": "./dist/extension.js",
   "jest": {
