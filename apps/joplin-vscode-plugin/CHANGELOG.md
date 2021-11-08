@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.6.0
+
+- feat: support waking up extensions with search shortcuts `c+j,c+o`
+- chore: remove separate eslint configuration file from project, fix vscode environment variable not using NODE_ENV
+- fix: fix setup/build errors in modules
+
 ## 0.5.3
 
 - fix: Fix https://github.com/rxliuli/joplin-utils/issues/21
