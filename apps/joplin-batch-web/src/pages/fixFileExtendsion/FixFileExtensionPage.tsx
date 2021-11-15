@@ -56,7 +56,7 @@ export const FixFileExtensionPage: React.FC = () => {
 
   return (
     <Card
-      title={i18n.t('unusedResource.title')}
+      title={i18n.t('fixFileExtension.title')}
       extra={
         <Space>
           <Button onClick={fetch}>{i18n.t('common.action.check')}</Button>
