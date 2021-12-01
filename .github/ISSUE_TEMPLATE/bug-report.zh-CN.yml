@@ -21,6 +21,7 @@ body:
         - joplin-blog
         - joplin-batch-web
         - joplin-api
+        - joplin-search-integration
     validations:
       required: true
   - type: textarea
