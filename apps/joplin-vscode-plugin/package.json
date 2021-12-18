@@ -16,6 +16,7 @@
   "categories": [
     "Notebooks"
   ],
+  "homepage": "https://joplin-utils.rxliuli.com/zh/joplin-vscode-plugin/",
   "repository": {
     "type": "git",
     "url": "https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-vscode-plugin"
