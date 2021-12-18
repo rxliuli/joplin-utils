@@ -2,9 +2,9 @@
   "name": "website",
   "version": "0.1.0",
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "docs:deploy": "yarn run docs:build && gh-pages -d docs/.vuepress/dist -a"
+    "docs-dev": "vuepress dev docs",
+    "docs-build": "vuepress build docs",
+    "docs-deploy": "yarn run docs:build && gh-pages -d docs/.vuepress/dist -a"
   },
   "devDependencies": {
     "@vuepress/plugin-pwa": "next",
