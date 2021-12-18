@@ -1,7 +1,6 @@
 # joplin-vscode-plugin
 
-> [English](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/), [简体中文](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/zh/)  
-> [![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin) VSCode Plugin Marketplace](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin)
+> [![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin) VSCode Plugin Marketplace](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin), [Website](https://joplin-utils.rxliuli.com/zh/joplin-vscode-plugin/)
 
 ## Overview
 
