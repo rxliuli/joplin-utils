@@ -30,6 +30,9 @@
     "preset": "ts-jest"
   },
   "contributes": {
+    "extensionKind": [
+      "ui"
+    ],
     "viewsContainers": {
       "activitybar": [
         {
