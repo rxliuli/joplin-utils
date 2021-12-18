@@ -9,7 +9,7 @@
       "args": ["--extensionDevelopmentPath=${workspaceFolder}"],
       "outFiles": ["${workspaceFolder}/out/**/*.js"],
       "env": {
-        "DEBUG": "true",
+        "JOPLIN_DEBUG": "true",
         "JOPLIN_TOKEN": "",
         "JOPLIN_PROFILE_PATH": "",
         "JOPLIN_PORT": "27584"
