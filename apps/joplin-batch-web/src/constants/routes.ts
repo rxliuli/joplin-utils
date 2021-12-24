@@ -1,12 +1,13 @@
 import { RouteConfig } from 'react-router-config'
-import { i18n } from '../i18n'
-import HomePage from '../../views/home'
-import SettingsPage from '../../views/settings'
-import UnusedResourcePage from '../../views/unusedResource'
-import NotFoundResourceCheckPage from '../../views/notFoundResource'
-import ConvertExternalLinkPage from '../../views/convertExternalLink'
-import CheckParentNotebookPage from '../../views/checkParentNotebook'
-import FixFileExtensionPage from '../../views/fixFileExtendsion'
+import HomePage from '../views/home'
+import { i18n } from './i18n'
+import SettingsPage from '../views/settings'
+import UnusedResourcePage from '../views/unusedResource'
+import NotFoundResourceCheckPage from '../views/notFoundResource'
+import ConvertExternalLinkPage from '../views/convertExternalLink'
+import CheckParentNotebookPage from '../views/checkParentNotebook'
+import FixFileExtensionPage from '../views/fixFileExtendsion'
+import CheckActionApiView from '../views/checkActionApi'
 
 export type RouteMenuConfig = RouteConfig & { title: string }
 
@@ -47,6 +48,11 @@ export function routeList(): RouteMenuConfig[] {
       path: '/fixFileExtension',
       component: FixFileExtensionPage,
       title: i18n.t('fixFileExtension.title'),
+    },
+    {
+      path: '/checkActionApi',
+      component: CheckActionApiView,
+      title: i18n.t('checkActionApi.title'),
     },
   ] as RouteMenuConfig[]
 }

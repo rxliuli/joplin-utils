@@ -4,7 +4,6 @@ import { Layout, Menu, Select } from 'antd'
 import css from './LayoutView.module.css'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { renderRoutes } from 'react-router-config'
-import { routeList } from '../../constants/router'
 import { useAsyncFn, useMount } from 'react-use'
 import { i18n } from '../../constants/i18n'
 import en from '../../i18n/en.json'
@@ -15,6 +14,7 @@ import {
   useLanguage,
 } from '../../common/hooks/useLanguage'
 import { PathUtil } from '@liuli-util/string'
+import { routeList } from '../../constants/routes'
 
 export const LayoutView: React.FC = () => {
   const language = useLanguage()

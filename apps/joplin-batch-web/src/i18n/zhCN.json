@@ -27,5 +27,7 @@
   "fixFileExtension.action.progress": "正在修复中...",
   "fixFileExtension.action.complete": "修复完成",
   "fixFileExtension.action.fix": "修复",
-  "fixFileExtension.tip": "猜测扩展名: "
+  "fixFileExtension.tip": "猜测扩展名: ",
+  "checkActionApi.title": "检查通过 API 打开笔记",
+  "checkActionApi.desc": "将随机在编辑器中打开一个笔记"
 }
