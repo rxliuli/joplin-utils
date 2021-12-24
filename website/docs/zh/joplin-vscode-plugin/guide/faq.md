@@ -31,7 +31,7 @@ curl http://127.0.0.1:41184/ping
 3. 检查下面命令是否能够正常执行，如果仍然无法在编辑器中打开，可能要询问 @laurent22
 
    ```sh
-   curl --location --request POST 'http://localhost:27584/services/externalEditWatcher?token=***' \
+   curl --location --request POST 'http://localhost:41184/services/externalEditWatcher?token=***' \
    --header 'Content-Type: application/json' \
    --data-raw '{
     "action": "openAndWatch",

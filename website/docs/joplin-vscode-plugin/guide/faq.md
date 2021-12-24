@@ -35,7 +35,7 @@ There may be multiple reasons for this problem
 3. Check whether the following command can be executed normally, if it still cannot be opened in the editor, you may want to ask @laurent22
 
    ```sh
-   curl --location --request POST 'http://localhost:27584/services/externalEditWatcher?token=***' \
+   curl --location --request POST 'http://localhost:41184/services/externalEditWatcher?token=***' \
    --header 'Content-Type: application/json' \
    --data-raw '{
     "action": "openAndWatch",
