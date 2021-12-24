@@ -358,24 +358,18 @@ module.exports = {
     },
   },
   plugins: [
-    [
-      '@vuepress/plugin-search',
-      {
-        locales: {
-          '/': {
-            placeholder: 'Search',
-          },
-          '/zh/': {
-            placeholder: '搜索',
-          },
-        },
-      },
-    ],
-    [
-      '@vuepress/pwa',
-      {
-        skipWaiting: true,
-      },
-    ],
+    // [
+    //   '@vuepress/plugin-search',
+    //   {
+    //     locales: {
+    //       '/': {
+    //         placeholder: 'Search',
+    //       },
+    //       '/zh/': {
+    //         placeholder: '搜索',
+    //       },
+    //     },
+    //   },
+    // ],
   ],
 }
