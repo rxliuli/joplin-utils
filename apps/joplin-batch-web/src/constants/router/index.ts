@@ -1,12 +1,12 @@
 import { RouteConfig } from 'react-router-config'
 import { i18n } from '../i18n'
-import HomePage from '../../pages/home'
-import SettingsPage from '../../pages/settings'
-import UnusedResourcePage from '../../pages/unusedResource'
-import NotFoundResourceCheckPage from '../../pages/notFoundResource'
-import ConvertExternalLinkPage from '../../pages/convertExternalLink'
-import CheckParentNotebookPage from '../../pages/checkParentNotebook'
-import FixFileExtensionPage from '../../pages/fixFileExtendsion'
+import HomePage from '../../views/home'
+import SettingsPage from '../../views/settings'
+import UnusedResourcePage from '../../views/unusedResource'
+import NotFoundResourceCheckPage from '../../views/notFoundResource'
+import ConvertExternalLinkPage from '../../views/convertExternalLink'
+import CheckParentNotebookPage from '../../views/checkParentNotebook'
+import FixFileExtensionPage from '../../views/fixFileExtendsion'
 
 export type RouteMenuConfig = RouteConfig & { title: string }
 

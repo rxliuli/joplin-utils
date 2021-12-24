@@ -8,7 +8,7 @@ import {
   MappingContentLink,
   NoteModel,
 } from './service/ConvertExternalLinkService'
-import css from './ConvertExternalLinkPage.module.css'
+import css from './ConvertExternalLinkView.module.css'
 import { JoplinMarkdownUtil } from 'joplin-blog/src/util/JoplinMarkdownUtil'
 import produce from 'immer'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
@@ -47,7 +47,7 @@ const filterEmptyUrlsNote = (note: NoteModel) => note.urls.length !== 0
 /**
  * 转换外部链接为内部引用笔记
  */
-export const ConvertExternalLinkPage: React.FC = () => {
+export const ConvertExternalLinkView: React.FC = () => {
   const [list, setList] = useState<NoteModel[]>([])
 
   const [onSearchState, onSearch] = useAsyncFn(async function onSearch(

@@ -6,7 +6,7 @@ import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { NotFoundResourceCheckService } from './service/NotFoundResourceCheckService'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
-import css from './NotFoundResourceCheckPage.module.css'
+import css from './NotFoundResourceCheckView.module.css'
 import { i18n } from '../../constants/i18n'
 
 const notFoundResourceCheckService = new NotFoundResourceCheckService(
@@ -16,7 +16,7 @@ const notFoundResourceCheckService = new NotFoundResourceCheckService(
 /**
  * 检查笔记中引用失效的资源
  */
-export const NotFoundResourceCheckPage: React.FC = () => {
+export const NotFoundResourceCheckView: React.FC = () => {
   const [list, setList] = useState<
     (Pick<NoteProperties, 'id' | 'title' | 'user_updated_time'> & {
       resources: Pick<ResourceProperties, 'id' | 'title'>[]

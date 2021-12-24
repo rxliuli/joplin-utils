@@ -1,5 +1,5 @@
 import * as React from 'react'
-import LayoutPage from './pages/layout'
+import LayoutPage from './views/layout'
 import { HashRouter } from 'react-router-dom'
 import { ReloadPrompt } from './ReloadPrompt'
 
