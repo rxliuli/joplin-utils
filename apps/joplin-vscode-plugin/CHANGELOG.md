@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.7.0
+
+- feat: support the use of extensions in remote development mode, ref: <https://github.com/rxliuli/joplin-utils/issues/26>
+
 ## 0.6.0
 
 - feat: support waking up extensions with search shortcuts `c+j,c+o`

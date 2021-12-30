@@ -26,7 +26,7 @@ export const buildResourceUrl = resourceUrlBuilder(
 /**
  * 检查未使用的资源
  */
-export const UnusedResourcePage: React.FC = () => {
+export const UnusedResourceView: React.FC = () => {
   const [list, setList] = useState<
     Pick<ResourceProperties, 'id' | 'title' | 'mime'>[]
   >([])

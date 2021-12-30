@@ -4,13 +4,13 @@ import { i18n } from '../../constants/i18n'
 import { Button, Card, Image, List, message, Space, SpinProps } from 'antd'
 import { useAsyncFn } from 'react-use'
 import { PageUtil } from 'joplin-api'
-import { buildResourceUrl } from '../unusedResource/UnusedResourcePage'
+import { buildResourceUrl } from '../unusedResource/UnusedResourceView'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import { AsyncArray, asyncLimiting } from '@liuli-util/async'
 import { MimeUtils } from './util/MimeUtils'
 
-export const FixFileExtensionPage: React.FC = () => {
+export const FixFileExtensionView: React.FC = () => {
   const [list, setList] = useState<
     Pick<ResourceProperties, 'id' | 'title' | 'file_extension' | 'mime'>[]
   >([])

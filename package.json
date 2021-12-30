@@ -6,7 +6,7 @@
     "postinstall": "npx simple-git-hooks",
     "setup-all": "nx run-many --target=setup --all",
     "dep-graph": "nx dep-graph",
-    "clean": "yarn workspaces foreach -pvA exec yarn dlx rimraf dist release node_modules",
+    "clean-all": "pnpx rimraf **/node_modules **/dist",
     "docs:deploy": "gh-pages -d docs"
   },
   "eslintConfig": {},
@@ -40,7 +40,7 @@
     "typescript": "4.2.4"
   },
   "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged",
-    "commit-msg": "yarn commitlint --edit $1"
+    "pre-commit": "pnpm lint-staged",
+    "commit-msg": "pnpm commitlint --edit $1"
   }
 }

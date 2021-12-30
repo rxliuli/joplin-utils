@@ -27,5 +27,7 @@
   "fixFileExtension.action.progress": "Fixing in progress...",
   "fixFileExtension.action.complete": "Fixing completed",
   "fixFileExtension.action.fix": "Fixing",
-  "fixFileExtension.tip": "Guess the extension: "
+  "fixFileExtension.tip": "Guess the extension: ",
+  "checkActionApi.title": "Check to open notes via API",
+  "checkActionApi.desc": "Will randomly open a note in the editor"
 }

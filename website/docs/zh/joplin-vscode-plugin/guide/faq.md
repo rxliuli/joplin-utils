@@ -34,7 +34,7 @@ curl http://127.0.0.1:41184/ping
 4. 检查下面命令是否能够正常执行，如果仍然无法在编辑器中打开，可能要询问 @laurent22
 
    ```sh
-   curl --location --request POST 'http://localhost:27584/services/externalEditWatcher?token=***' \
+   curl --location --request POST 'http://localhost:41184/services/externalEditWatcher?token=***' \
    --header 'Content-Type: application/json' \
    --data-raw '{
     "action": "openAndWatch",
@@ -53,3 +53,11 @@ powershell
 ![powershell](https://user-images.githubusercontent.com/24560368/115563663-5d855c00-a2ea-11eb-8b08-dfa7dd773601.png)
 
 如果提示 `spawn powershell ENOENT` 则需要安装 powershell，参考：[在 Windows 上安装 PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)
+
+## 如何在两个配置同步的 vscode 使用插件
+
+默认情况下，每台电脑上的 joplin 会生成随机的 token，但您可以手动修改它，一般配置文件在 _~/.config/joplin-desktop/settings.json_，您只需要修改其中的 `api.token` 为相同的 token 即可。
+
+![手动设置 joplin 的 token](/images/manually-set-token-of-joplin.png)
+
+> 参考：<https://github.com/rxliuli/joplin-utils/issues/25>

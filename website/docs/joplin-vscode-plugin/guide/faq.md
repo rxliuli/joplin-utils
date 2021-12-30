@@ -38,7 +38,7 @@ There may be multiple reasons for this problem
 4. Check whether the following command can be executed normally, if it still cannot be opened in the editor, you may want to ask @laurent22
 
    ```sh
-   curl --location --request POST'http://localhost:27584/services/externalEditWatcher?token=***' \
+   curl --location --request POST'http://localhost:41184/services/externalEditWatcher?token=***' \
    --header'Content-Type: application/json' \
    --data-raw'{
     "action": "openAndWatch",
@@ -57,3 +57,11 @@ powershell
 ![powershell](https://user-images.githubusercontent.com/24560368/115563663-5d855c00-a2ea-11eb-8b08-dfa7dd773601.png)
 
 If you are prompted to `spawn powershell ENOENT`, you need to install powershell, refer to: [Install PowerShell on Windows](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)
+
+## How to use plugins in two synchronized vscode configurations
+
+By default, joplin on each computer will generate a random token, but you can modify it manually. The general configuration file is _~/.config/joplin-desktop/settings.json_, you only need to modify the `api. The token` is the same token.
+
+![Manually set joplin's token](/images/manually-set-token-of-joplin.png)
+
+> Reference: <https://github.com/rxliuli/joplin-utils/issues/25>
