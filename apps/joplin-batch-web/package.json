@@ -28,7 +28,6 @@
     "i18next": "^20.3.2",
     "immer": "^9.0.2",
     "joplin-api": "^0.3.3",
-    "markdown-it": "^12.0.6",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^6.2.1",
@@ -39,7 +38,8 @@
     "remark-stringify": "^9.0.1",
     "unified": "^9.2.0",
     "unist-util-visit": "^2.0.3",
-    "workbox-window": "^6.3.0"
+    "workbox-window": "^6.3.0",
+    "react-markdown": "^7.1.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.5",
