@@ -26,9 +26,12 @@ curl http://127.0.0.1:41184/ping
 
 这个问题可能有多个原因
 
-1. 请使用版本 v1.4 或更高，因为它包含了必须的 [action api](https://discourse.joplinapp.org/t/hope-that-the-web-api-adds-the-following-features-to-support-the-development-of-third-party-extensions/9277/11?u=rxliuli)，例如在 VSCode 中根据 noteId 打开笔记
-2. 当前版本是 Joplin Desktop，该插件并不支持 CLI，因为它并不包含上述的 action api，参考: <https://discourse.joplinapp.org/t/action-api-not-setup-in-1-6-4-cli/16735>
-3. 检查下面命令是否能够正常执行，如果仍然无法在编辑器中打开，可能要询问 @laurent22
+1. 检查是否可以在 joplin 中通过 **切换外部编辑** 功能打开 vscode
+   1. 如果不能打开，则需要检查设置页面中的文本编辑器命令，你需要设置一个编辑器，或者有无效的设置，参考：<https://github.com/laurent22/joplin/issues/5921#issuecomment-1002692774>
+   2. 如果仍然有问题，请去 joplin 官方项目 [提出 issue](https://github.com/laurent22/joplin/issues)
+2. 请使用版本 v1.4 或更高，因为它包含了必须的 [action api](https://discourse.joplinapp.org/t/9277/11)，例如在 VSCode 中根据 noteId 打开笔记
+3. 确定是在当前电脑上安装 Joplin 桌面版，该插件并不支持 CLI，因为它并不包含上述的 action api，参考: <https://discourse.joplinapp.org/t/16735>
+4. 检查下面命令是否能够正常执行，如果仍然无法在编辑器中打开，可能要询问 @laurent22
 
    ```sh
    curl --location --request POST 'http://localhost:41184/services/externalEditWatcher?token=***' \

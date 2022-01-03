@@ -4,7 +4,12 @@
   "scripts": {
     "docs-dev": "vuepress dev docs",
     "docs-build": "vuepress build docs",
-    "docs-deploy": "yarn run docs-build && gh-pages -d docs/.vuepress/dist -a"
+    "docs-deploy": "yarn run docs-build && liuli-cli deploy"
+  },
+  "deploy": {
+    "type": "gh-pages",
+    "dest": "docs/.vuepress/dist",
+    "remote": "/"
   },
   "devDependencies": {
     "@vuepress/plugin-pwa": "^2.0.0-beta.29",
