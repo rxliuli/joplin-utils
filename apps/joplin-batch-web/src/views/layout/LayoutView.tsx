@@ -1,49 +1,39 @@
 import * as React from 'react'
-import { Suspense } from 'react'
 import { Layout, Menu, Select } from 'antd'
 import css from './LayoutView.module.css'
-import { Link, useHistory, useLocation } from 'react-router-dom'
-import { renderRoutes } from 'react-router-config'
-import { useAsyncFn, useMount } from 'react-use'
+import { useAsyncFn, useCounter, useLocalStorage, useMount } from 'react-use'
 import { i18n } from '../../constants/i18n'
 import en from '../../i18n/en.json'
 import zhCN from '../../i18n/zhCN.json'
 import { LanguageEnum } from '@liuli-util/i18next-util'
-import {
-  convertLanguagePrefix,
-  useLanguage,
-} from '../../common/hooks/useLanguage'
-import { PathUtil } from '@liuli-util/string'
-import { routeList } from '../../constants/routes'
+import { routeList } from '../../constants/router'
+import { Link, RouterView } from '@liuli-util/react-router'
+import { getLanguage } from '../../common/getLanguage'
 
 export const LayoutView: React.FC = () => {
-  const language = useLanguage()
+  const [language, setLanguage] = useLocalStorage<LanguageEnum>(
+    'language',
+    getLanguage(),
+  )
   const [{ value: list }, fetch] = useAsyncFn(
-    async (language) => {
+    async (language: LanguageEnum) => {
       console.log('language: ', language)
       await i18n.init({ en, zhCN }, language)
-      const prefix = convertLanguagePrefix(language)
-      return routeList().map((item) => ({
+      return routeList.map((item) => ({
         ...item,
-        path: PathUtil.join(prefix, item.path as string),
+        title: i18n.t(item.title as any),
       }))
     },
-    [language],
+    [],
   )
 
-  useMount(() => fetch(language))
+  useMount(() => fetch(language!))
 
-  const location = useLocation()
-  const history = useHistory()
-
+  const [refreshKey, { inc }] = useCounter(0)
   async function changeLanguage(value: LanguageEnum) {
-    const path = location.pathname.replace(
-      convertLanguagePrefix(language),
-      convertLanguagePrefix(value),
-    )
-    console.log('path: ', language, value, path)
+    setLanguage(value)
     await fetch(value)
-    history.push(path)
+    inc()
   }
   return (
     <Layout className={css.app}>
@@ -70,7 +60,7 @@ export const LayoutView: React.FC = () => {
           />
         </Layout.Header>
         <Layout.Content className={css.main}>
-          <Suspense fallback={'loading...'}>{renderRoutes(list)}</Suspense>
+          <RouterView key={refreshKey} />
         </Layout.Content>
       </Layout>
     </Layout>

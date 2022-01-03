@@ -16,7 +16,7 @@ Handles some batch operations that are not supported by Joplin itself, and prese
 
 1. open joplin desktop version
 2. Enable the web clipper
-3. Fill out the configuration in the [Settings](https://joplin-utils.rxliuli.com/joplin-batch-web/#/settings) page
+3. Fill out the configuration in the [Settings](https://joplin-utils.rxliuli.com/web/joplin-batch-web/#/settings) page
 4. Navigate to the relevant function page
 
 ![guide](https://github.com/rxliuli/joplin-utils/raw/master/apps/joplin-batch-web/docs/images/guide.gif)
