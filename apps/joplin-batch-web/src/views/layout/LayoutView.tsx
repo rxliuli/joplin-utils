@@ -60,7 +60,7 @@ export const LayoutView: React.FC = () => {
           />
         </Layout.Header>
         <Layout.Content className={css.main}>
-          <RouterView key={refreshKey} />
+          {list && <RouterView key={refreshKey} />}
         </Layout.Content>
       </Layout>
     </Layout>
