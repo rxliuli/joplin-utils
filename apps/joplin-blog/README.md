@@ -1,5 +1,7 @@
 # joplin-blog
 
+> [中文](https://joplin-utils.rxliuli.com/zh/joplin-blog/)
+
 ## Introduction
 
 CLI tool to publish Joplin notes as a static website, currently supports both blog/wiki forms, framework supports hexo/vuepress/docsify.
@@ -29,6 +31,8 @@ CLI tool to publish Joplin notes as a static website, currently supports both bl
 4. add an npm script file `"gen": "joplin-blog blog"` (if you want to generate a wiki then `"gen": "joplin-blog wiki"`)
 5. Run the command `yarn gen` 6.
 6. Then you can see that the relevant directory already contains the notes and attached resources
+
+> Please add two files _.joplin-blog.json_ and _.joplin-cache.json_ to the _.gitignore_ ignore file, the former contains sensitive information `token`, the latter is automatically generated.
 
 ## examples
 

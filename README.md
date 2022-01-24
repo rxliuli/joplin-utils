@@ -1,5 +1,7 @@
 # joplin-utils
 
+> [中文](https://joplin-utils.rxliuli.com/zh/)
+
 Some joplin peripheral tools created by me. Since the functions are in the same category and are related, they are managed using monorepo.
 
 - [joplin-vscode-plugin ![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin)](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin&ssr=false#overview): joplin's vscode plugin

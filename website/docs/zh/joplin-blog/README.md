@@ -32,6 +32,8 @@
 5. 运行命令 `yarn gen`
 6. 然后可以看到相关目录已经包含了笔记和附件资源
 
+> 请将 _.joplin-blog.json_ 和 _.joplin-cache.json_ 两个文件添加到 _.gitignore_ 忽略文件中，前者包含敏感信息 `token`，后者是自动生成。
+
 ## 示例
 
 支持的框架在 examples 目录中均有示例，你可以将之 clone 到本地查看。
