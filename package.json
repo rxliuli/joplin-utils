@@ -4,12 +4,9 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "npx simple-git-hooks",
-    "setup-all": "nx run-many --target=setup --all",
-    "dep-graph": "nx dep-graph",
-    "clean-all": "pnpx rimraf **/node_modules **/dist",
-    "docs:deploy": "gh-pages -d docs"
+    "setup-all": "pnpm --filter . run setup",
+    "clean-all": "pnpx rimraf **/node_modules **/dist"
   },
-  "eslintConfig": {},
   "prettier": "@liuli-util/prettier-standard-config",
   "commitlint": {
     "extends": [
@@ -25,18 +22,14 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "@liuli-util/prettier-standard-config": "^0.1.0",
-    "gh-pages": "^3.1.0",
-    "lint-staged": "^11.0.1",
+    "@liuli-util/prettier-standard-config": "^0.2.0",
+    "lint-staged": "^11.2.6",
     "patch-package": "^6.4.7",
-    "prettier": "^2.3.2",
+    "prettier": "^2.6.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.55.0",
-    "simple-git-hooks": "^2.5.1",
-    "type-fest": "^1.1.1",
-    "@nrwl/workspace": "latest",
-    "@nrwl/cli": "latest",
-    "@nrwl/tao": "latest",
+    "rollup": "^2.70.1",
+    "simple-git-hooks": "^2.7.0",
+    "type-fest": "^1.4.0",
     "typescript": "4.2.4"
   },
   "simple-git-hooks": {

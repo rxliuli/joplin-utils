@@ -21,7 +21,7 @@
     "preset": "ts-jest"
   },
   "devDependencies": {
-    "@liuli-util/cli": "^3.11.1",
+    "@liuli-util/cli": "^3.19.2",
     "@liuli-util/i18next-dts-gen": "^0.3.0",
     "@rollup/plugin-json": "^4.1.0",
     "@types/figlet": "^1.5.0",
@@ -30,7 +30,7 @@
     "@types/lodash": "^4.14.166",
     "@types/luxon": "^1.25.0",
     "@types/node": "^12.19.11",
-    "@types/prettier": "^2.2.3",
+    "@types/prettier": "^2.4.4",
     "@types/shelljs": "^0.8.8",
     "@types/unist": "^2.0.3",
     "builtin-modules": "^3.2.0",
@@ -47,7 +47,7 @@
     "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "type-fest": "^1.1.1",
-    "typescript": "^4.2.4"
+    "typescript": "^4.6.3"
   },
   "dependencies": {
     "@liuli-util/array": "^3.2.7",
@@ -65,7 +65,7 @@
     "mdast": "^3.0.0",
     "ora": "^5.4.0",
     "os-locale": "^5.0.0",
-    "prettier": "^2.2.1",
+    "prettier": "^2.6.1",
     "remark-gfm": "^1.0.0",
     "remark-parse": "^9.0.0",
     "remark-stringify": "^9.0.1",
