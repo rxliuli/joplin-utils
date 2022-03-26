@@ -1,4 +1,4 @@
-import * as MarkdownIt from 'markdown-it'
+import MarkdownIt from 'markdown-it'
 
 it('测试解析链接', () => {
   const note = `
@@ -35,5 +35,13 @@ it('测试解析链接', () => {
   const linkTokens = token
     .children!.filter((token) => token.type === 'link_open')
     .map((token) => token.attrGet('href'))
-  console.log(linkTokens)
+  expect(linkTokens).toEqual([
+    'resources/2b9cab1180ee4aa69e53307c7351949a.mp4',
+    'resources/8efa8ed158c749ffb6881e6e9ea65aff.pdf',
+    'resources/8289011b132841f49b99b2fede6ce470.txt',
+    'resources/49692ed049fe415c88eac612b1864f56.txt2',
+    ':/03c8b00ed350410baf41c33daddf3005',
+    'https://github.com/',
+    'https://myhost.com/Redirect?url=http%3A%2F%2Fwww.bing.com%3Fsearch%3Dtom',
+  ])
 })

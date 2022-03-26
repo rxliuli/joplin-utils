@@ -1,7 +1,8 @@
-import { BiMultiMap } from '../../src/util/BiMultiMap'
+import { BiMultiMap } from '../BiMultiMap'
 
 describe('测试 BiMultiMap', () => {
   it('基本示例', () => {
+    console.log('hello')
     const map = new BiMultiMap<number, string>()
     map.set(1, '1')
     map.set(2, '1')

@@ -5,5 +5,5 @@ import { open } from 'fs-extra'
  * @param path
  */
 export async function createEmptyFile(path: string) {
-  await open(path, 'w')
+  return await open(path, 'w')
 }
