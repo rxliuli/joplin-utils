@@ -16,14 +16,12 @@ export interface JoplinNoteHandlerLinkConverter {
 }
 
 export class JoplinNoteHandler {
-  static readonly md = unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkStringify, {
-      bullet: '-',
-      fences: true,
-      incrementListMarker: false,
-    })
+  static readonly md = unified().use(remarkParse).use(remarkGfm).use(remarkStringify, {
+    bullet: '-',
+    fences: true,
+    incrementListMarker: true,
+    listItemIndent: 'one',
+  })
 
   static parse(content: string) {
     return this.md.parse(content)
@@ -39,9 +37,7 @@ export class JoplinNoteHandler {
       visit(node, ['link', 'image'], (node: Link) => {
         res.push(node.url)
       })
-      return res
-        .filter((link) => link.startsWith(':/'))
-        .map((link) => link.slice(2))
+      return res.filter((link) => link.startsWith(':/')).map((link) => link.slice(2))
     }
 
     const linkIdList = getLink()
@@ -50,9 +46,7 @@ export class JoplinNoteHandler {
       return res
     }, new Map<string, CommonResource>())
     const idLinkMap = linkIdList.reduce((res, id) => {
-      const link = resourceMap.has(id)
-        ? converter.convertResource(resourceMap.get(id)!)
-        : converter.convertNote(id)
+      const link = resourceMap.has(id) ? converter.convertResource(resourceMap.get(id)!) : converter.convertNote(id)
       res.set(id, link)
       return res
     }, new Map<string, string>())
