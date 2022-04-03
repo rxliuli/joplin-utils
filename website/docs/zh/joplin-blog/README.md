@@ -89,3 +89,9 @@ hexo
 ### 如何导出全部的笔记
 
 设置 `"tag": ""` 以不做任何过滤导出所有标签的笔记。
+
+### 笔记中 img 标签的图片资源没有被转换
+
+> 参考：<https://github.com/rxliuli/joplin-utils/issues/31>
+
+目前，cli 仅处理笔记中的 markdown 部分，html 标签应该会**原样**保留，如果希望被正确转换，则应该使用 markdown 而非 html 标签。
