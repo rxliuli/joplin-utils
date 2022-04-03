@@ -5,7 +5,7 @@
   "main": "dist/cjs/index.js",
   "types": "dist/esm/index.d.ts",
   "license": "MIT",
-  "bin": "./bin.js",
+  "bin": "./bin.cjs",
   "scripts": {
     "setup": "pnpm run gen-i18n && pnpm run pub",
     "start": "ts-node src/bin.ts -h",
