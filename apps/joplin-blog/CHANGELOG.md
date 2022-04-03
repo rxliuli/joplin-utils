@@ -1,8 +1,16 @@
 # CHANGELOG
 
+## 0.7.2
+
+- fix: Modify bin.js => bin.cjs to force the use of commonjs to avoid errors in higher versions of nodejs
+
+## 0.7.1
+
+- fix: fix generated markdown file ordered list error
+
 ## 0.7.0
 
--feat: Support jekyll framework
+- feat: Support jekyll framework
 
 ## 0.6.0
 
