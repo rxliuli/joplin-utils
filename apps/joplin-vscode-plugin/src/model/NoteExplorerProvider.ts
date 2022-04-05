@@ -1,21 +1,16 @@
 import * as vscode from 'vscode'
 import { folderApi } from 'joplin-api'
 import { FolderOrNote } from './FolderOrNote'
-import {
-  appConfig,
-  SortNotesTypeEnum,
-  SortOrderEnum,
-} from '../config/AppConfig'
+import { appConfig, SortNotesTypeEnum, SortOrderEnum } from '../config/AppConfig'
 import { FolderListAllRes } from 'joplin-api/dist/modal/FolderListAllRes'
 import { joplinNoteApi } from '../api/JoplinNoteApi'
 import { treeEach } from '@liuli-util/tree'
 
-export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
-  private _onDidChangeTreeData: vscode.EventEmitter<
+export class NoteExplorerProvider implements vscode.TreeDataProvider<FolderOrNote> {
+  private _onDidChangeTreeData: vscode.EventEmitter<FolderOrNote | undefined> = new vscode.EventEmitter<
     FolderOrNote | undefined
-  > = new vscode.EventEmitter<FolderOrNote | undefined>()
-  readonly onDidChangeTreeData: vscode.Event<FolderOrNote | undefined> = this
-    ._onDidChangeTreeData.event
+  >()
+  readonly onDidChangeTreeData: vscode.Event<FolderOrNote | undefined> = this._onDidChangeTreeData.event
 
   async refresh() {
     await this.init()
@@ -69,21 +64,15 @@ export class NoteListProvider implements vscode.TreeDataProvider<FolderOrNote> {
     if (!folder || (folder.note_count === 0 && !folder.children)) {
       return []
     }
-    const folderItemList =
-      folder.children?.map((folder) => new FolderOrNote(folder)) || []
-    const noteItemList = (await joplinNoteApi.notesByFolderId(folder.id)).map(
-      (note) => new FolderOrNote(note),
-    )
+    const folderItemList = folder.children?.map((folder) => new FolderOrNote(folder)) || []
+    const noteItemList = (await joplinNoteApi.notesByFolderId(folder.id)).map((note) => new FolderOrNote(note))
     if (process.env.DEBUG) {
       console.log('\n\nnoteItemList: \n')
       console.log(noteItemList)
       console.log('appConfig: ', appConfig)
     }
     if (appConfig.sortNotes) {
-      const compareMap: Record<
-        SortNotesTypeEnum,
-        (a: FolderOrNote, b: FolderOrNote) => number
-      > = {
+      const compareMap: Record<SortNotesTypeEnum, (a: FolderOrNote, b: FolderOrNote) => number> = {
         [SortNotesTypeEnum.Alphabetical]: (a, b) => {
           return -b.item.title.localeCompare(a.item.title)
         },

@@ -1,24 +1,18 @@
 import * as vscode from 'vscode'
 import { window } from 'vscode'
-import { globalState } from '../state/GlobalState'
+import { GlobalContext } from '../state/GlobalContext'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { i18n } from '../constants/i18n'
 
 export class UploadResourceService {
   async uploadImageFromClipboard() {
-    const globalStoragePath = globalState.context.globalStorageUri.fsPath
-    const clipboardImage = await UploadResourceUtil.getClipboardImage(
-      globalStoragePath,
-    )
+    const globalStoragePath = GlobalContext.context.globalStorageUri.fsPath
+    const clipboardImage = await UploadResourceUtil.getClipboardImage(globalStoragePath)
     if (!clipboardImage.isExistFile) {
-      vscode.window.showWarningMessage(
-        i18n.t('Clipboard does not contain picture!'),
-      )
+      vscode.window.showWarningMessage(i18n.t('Clipboard does not contain picture!'))
       return
     }
-    const markdownLink = await UploadResourceUtil.uploadImageByPath(
-      clipboardImage.imgPath,
-    )
+    const markdownLink = await UploadResourceUtil.uploadImageByPath(clipboardImage.imgPath)
     await this.insertUrlByActiveEditor(markdownLink)
   }
 
@@ -47,9 +41,7 @@ export class UploadResourceService {
       return
     }
     const file = result[0]
-    const { markdownLink } = await UploadResourceUtil.uploadFileByPath(
-      file.fsPath,
-    )
+    const { markdownLink } = await UploadResourceUtil.uploadFileByPath(file.fsPath)
     await this.insertUrlByActiveEditor(markdownLink)
     vscode.window.showInformationMessage(i18n.t('file uploaded successfully'))
   }

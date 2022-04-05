@@ -13,11 +13,10 @@ import {
   tagApi,
   TypeEnum,
 } from 'joplin-api'
-import { NoteListProvider } from '../model/NoteProvider'
+import { NoteExplorerProvider } from '../model/NoteExplorerProvider'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { appConfig, AppConfig } from '../config/AppConfig'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
-import { globalState } from '../state/GlobalState'
 import * as path from 'path'
 import { mkdirp, pathExists, remove } from 'fs-extra'
 import { createEmptyFile } from '../util/createEmptyFile'
@@ -29,6 +28,7 @@ import { HandlerService } from './HandlerService'
 import { TagUseService } from './TagUseService'
 import { sortBy } from '@liuli-util/array'
 import { i18n } from '../constants/i18n'
+import { GlobalContext } from '../state/GlobalContext'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -36,7 +36,7 @@ export class JoplinNoteCommandService {
 
   constructor(
     private config: {
-      noteViewProvider: NoteListProvider
+      noteViewProvider: NoteExplorerProvider
       noteListTreeView: TreeView<FolderOrNote>
     },
   ) {}
@@ -58,24 +58,14 @@ export class JoplinNoteCommandService {
    * @param type
    * @param item
    */
-  async create(
-    type: TypeEnum,
-    item: FolderOrNote = this.config.noteListTreeView.selection[0],
-  ) {
-    const parentFolderId = !item
-      ? ''
-      : item.item.type_ === TypeEnum.Folder
-      ? item.item.id
-      : item.item.parent_id
+  async create(type: TypeEnum, item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
+    const parentFolderId = !item ? '' : item.item.type_ === TypeEnum.Folder ? item.item.id : item.item.parent_id
     console.log('joplinNote.create: ', item, parentFolderId)
 
     const title = await vscode.window.showInputBox({
-      placeHolder: i18n.t(
-        'Please enter what you want to create {{type}} name',
-        {
-          type: i18n.t(type === TypeEnum.Folder ? 'folder' : 'note'),
-        },
-      ),
+      placeHolder: i18n.t('Please enter what you want to create {{type}} name', {
+        type: i18n.t(type === TypeEnum.Folder ? 'folder' : 'note'),
+      }),
     })
     if (!title) {
       return
@@ -141,18 +131,14 @@ export class JoplinNoteCommandService {
     await this.config.noteViewProvider.refresh()
   }
 
-  async copyLink(
-    item: FolderOrNote = this.config.noteListTreeView.selection[0],
-  ) {
+  async copyLink(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
     console.log('joplinNote.copyLink: ', item)
     const label = JoplinNoteUtil.trimTitleStart(item.label!.trim())
     const url = `[${label}](:/${item.id})`
     vscode.env.clipboard.writeText(url)
   }
 
-  async toggleTodoState(
-    item: FolderOrNote = this.config.noteListTreeView.selection[0],
-  ) {
+  async toggleTodoState(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
     await noteExtApi.toggleTodo(item.id)
     await this.config.noteViewProvider.refresh()
   }
@@ -259,13 +245,7 @@ export class JoplinNoteCommandService {
   }
 
   private async focus(noteId: string) {
-    const note = await noteApi.get(noteId, [
-      'id',
-      'parent_id',
-      'title',
-      'is_todo',
-      'todo_completed',
-    ])
+    const note = await noteApi.get(noteId, ['id', 'parent_id', 'title', 'is_todo', 'todo_completed'])
     this.config.noteListTreeView.reveal(
       new FolderOrNote({
         ...note,
@@ -278,14 +258,11 @@ export class JoplinNoteCommandService {
    * 创建资源
    */
   async createResource() {
-    const globalStoragePath = globalState.context.globalStorageUri.fsPath
+    const globalStoragePath = GlobalContext.context.globalStorageUri.fsPath
     const title = await vscode.window.showInputBox({
-      placeHolder: i18n.t(
-        'Please enter what you want to create {{type}} name',
-        {
-          type: i18n.t('attachment'),
-        },
-      ),
+      placeHolder: i18n.t('Please enter what you want to create {{type}} name', {
+        type: i18n.t('attachment'),
+      }),
       value: '',
     })
     if (!title) {
@@ -297,9 +274,7 @@ export class JoplinNoteCommandService {
       await mkdirp(dir)
     }
     await createEmptyFile(filePath)
-    let { res, markdownLink } = await UploadResourceUtil.uploadFileByPath(
-      filePath,
-    )
+    let { res, markdownLink } = await UploadResourceUtil.uploadFileByPath(filePath)
     // 如果是 svg 图片则作为图片插入
     if (path.extname(filePath) === '.svg') {
       markdownLink = '!' + markdownLink
@@ -308,9 +283,7 @@ export class JoplinNoteCommandService {
     if (await pathExists(filePath)) {
       await remove(filePath)
     }
-    vscode.window.showInformationMessage(
-      i18n.t('Attachment resource created successfully'),
-    )
+    vscode.window.showInformationMessage(i18n.t('Attachment resource created successfully'))
     await this.handlerService.openResource(res.id)
   }
 
@@ -337,22 +310,14 @@ export class JoplinNoteCommandService {
     if (!selectItemList || selectItemList.length === 0) {
       return
     }
-    await Promise.all(
-      selectItemList.map(async (item) => resourceApi.remove(item.id)),
-    )
-    vscode.window.showInformationMessage(
-      selectItemList.map((item) => item.label).join('\n'),
-      {
-        title: '删除附件成功',
-      },
-    )
+    await Promise.all(selectItemList.map(async (item) => resourceApi.remove(item.id)))
+    vscode.window.showInformationMessage(selectItemList.map((item) => item.label).join('\n'), {
+      title: '删除附件成功',
+    })
   }
 
   private readonly tagUseService = new TagUseService(
-    path.resolve(
-      globalState.context.globalStorageUri.fsPath,
-      'joplin-vscode-plugin.sqlite',
-    ),
+    path.resolve(GlobalContext.context.globalStorageUri.fsPath, 'joplin-vscode-plugin.sqlite'),
   )
 
   /**
@@ -362,29 +327,18 @@ export class JoplinNoteCommandService {
    * 2. 在笔记编辑器中
    * @param item
    */
-  async manageTags(
-    item?: Omit<FolderOrNote, 'item'> & { item: JoplinListNote },
-  ) {
-    const noteId =
-      item?.id ||
-      JoplinNoteUtil.getNoteIdByFileName(
-        vscode.window.activeTextEditor?.document.fileName,
-      )
+  async manageTags(item?: Omit<FolderOrNote, 'item'> & { item: JoplinListNote }) {
+    const noteId = item?.id || JoplinNoteUtil.getNoteIdByFileName(vscode.window.activeTextEditor?.document.fileName)
     if (!noteId) {
       return
     }
-    const oldSelectIdList = (await noteApi.tagsById(noteId)).map(
-      (tag) => tag.id,
-    )
+    const oldSelectIdList = (await noteApi.tagsById(noteId)).map((tag) => tag.id)
 
     const lastUseTimeMap = await this.tagUseService.getMap()
     const selectTagSet = new Set(oldSelectIdList)
     const items = sortBy(
       await PageUtil.pageToAllList(tagApi.list),
-      (item) =>
-        -(selectTagSet.has(item.id)
-          ? Date.now()
-          : lastUseTimeMap.get(item.id)?.lastUseTime ?? 0),
+      (item) => -(selectTagSet.has(item.id) ? Date.now() : lastUseTimeMap.get(item.id)?.lastUseTime ?? 0),
     ).map(
       (tag) =>
         ({
@@ -406,9 +360,7 @@ export class JoplinNoteCommandService {
     const deleteIdList = difference(oldSelectIdList, selectIdList)
     console.log('选择项: ', selectItems, addIdList, deleteIdList)
     await Promise.all(addIdList.map((id) => tagApi.addTagByNoteId(id, noteId)))
-    await Promise.all(
-      deleteIdList.map((id) => tagApi.removeTagByNoteId(id, noteId)),
-    )
+    await Promise.all(deleteIdList.map((id) => tagApi.removeTagByNoteId(id, noteId)))
     await this.tagUseService.save(selectItems.map((item) => item.tag))
   }
 
