@@ -28,8 +28,7 @@ import { TagUseService } from './TagUseService'
 import { sortBy } from '@liuli-util/array'
 import { i18n } from '../constants/i18n'
 import { GlobalContext } from '../state/GlobalContext'
-import ParcelWatcher from '@parcel/watcher'
-import { AsyncArray } from '@liuli-util/async'
+import { watch } from 'chokidar'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -55,20 +54,15 @@ export class JoplinNoteCommandService {
     const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
     await remove(tempNoteDirPath)
     await mkdirp(tempNoteDirPath)
-    ParcelWatcher.subscribe(tempNoteDirPath, (err, events) => {
-      AsyncArray.forEach(events, async (event) => {
-        if (event.type !== 'update') {
-          return
-        }
-        const id = GlobalContext.openNoteMap.get(event.path)
-        if (!id) {
-          return
-        }
-        const content = await readFile(event.path, 'utf-8')
-        await noteApi.update({
-          id,
-          body: content,
-        })
+    watch(tempNoteDirPath).on('change', async (filePath) => {
+      const id = GlobalContext.openNoteMap.get(filePath)
+      if (!id) {
+        return
+      }
+      const content = await readFile(filePath, 'utf-8')
+      await noteApi.update({
+        id,
+        body: content,
       })
     })
   }

@@ -409,11 +409,6 @@
     }
   },
   "devDependencies": {
-    "@liuli-util/array": "^3.2.7",
-    "@liuli-util/async": "^3.2.7",
-    "@liuli-util/i18next-util": "^0.2.0",
-    "@liuli-util/object": "^3.2.7",
-    "@liuli-util/tree": "^3.2.7",
     "@liuli-util/i18next-dts-gen": "^0.3.2",
     "@types/fs-extra": "^9.0.5",
     "@types/glob": "^7.1.3",
@@ -424,27 +419,31 @@
     "@types/vscode": "^1.45.0",
     "esbuild": "^0.12.28",
     "esno": "^0.9.1",
-    "glob": "^7.1.6",
     "jest": "^27.4.3",
     "ts-jest": "^27.0.7",
     "tslib": "^2.0.3",
     "type-fest": "^1.1.1",
     "typescript": "^4.6.3",
     "utility-types": "^3.10.0",
+    "vscode-nls": "^5.0.0",
     "vscode-nls-dev": "^3.3.2",
-    "vscode-test": "^1.4.1",
-    "cross-path-sort": "^1.0.0",
+    "vscode-test": "^1.4.1"
+  },
+  "dependencies": {
     "fs-extra": "^9.0.1",
+    "glob": "^7.1.6",
     "i18next": "^19.8.4",
     "joplin-api": "*",
     "lodash-es": "^4.17.21",
-    "markdown-it": "^12.0.3",
     "open": "^7.3.0",
-    "use-query-params": "^1.1.9",
-    "vscode-nls": "^5.0.0"
-  },
-  "dependencies": {
-    "@parcel/watcher": "^2.0.5"
+    "markdown-it": "^12.0.3",
+    "cross-path-sort": "^1.0.0",
+    "@liuli-util/array": "^3.2.7",
+    "@liuli-util/async": "^3.2.7",
+    "@liuli-util/i18next-util": "^0.2.0",
+    "@liuli-util/object": "^3.2.7",
+    "@liuli-util/tree": "^3.2.7",
+    "chokidar": "^3.5.2"
   },
   "sync": [
     "jest"
