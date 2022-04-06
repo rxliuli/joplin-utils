@@ -11,7 +11,7 @@ async function main() {
     outdir: './dist',
     bundle: true,
     sourcemap: true,
-    external: ['vscode', '@parcel/watcher'],
+    external: ['vscode'],
     platform: 'node',
     watch,
     plugins: [

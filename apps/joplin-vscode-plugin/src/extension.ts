@@ -98,10 +98,10 @@ export async function activate(context: vscode.ExtensionContext) {
   vscode.window.registerUriHandler({
     handleUri: handlerService.uriHandler,
   })
-  const docFilter = {
+  const docFilter: vscode.DocumentSelector = {
     language: 'markdown',
     scheme: 'file',
-    pattern: '**/edit-*.md',
+    pattern: '**/rxliuli.joplin-vscode-plugin/.tempNote/*.md',
   }
   context.subscriptions.push(
     vscode.languages.registerDocumentLinkProvider(docFilter, new MDDocumentLinkProvider()),
