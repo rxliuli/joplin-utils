@@ -1,4 +1,4 @@
-import * as path from 'path'
+import { GlobalContext } from '../state/GlobalContext'
 
 export class JoplinNoteUtil {
   /**
@@ -9,12 +9,7 @@ export class JoplinNoteUtil {
     if (!fileName) {
       return null
     }
-    const joplinMdRegexp = new RegExp(`${path.sep}edit-(\\w{32})\\.md$`)
-    console.log('focus: ', fileName, joplinMdRegexp.exec(fileName))
-    if (!joplinMdRegexp.test(fileName)) {
-      return null
-    }
-    return joplinMdRegexp.exec(fileName)![1]
+    return GlobalContext.openNoteMap.get(fileName)
   }
 
   /**

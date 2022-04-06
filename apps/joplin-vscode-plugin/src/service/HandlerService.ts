@@ -1,23 +1,17 @@
 import * as vscode from 'vscode'
 import { TextDocument, Uri } from 'vscode'
-import {
-  noteActionApi,
-  noteApi,
-  resourceActionApi,
-  resourceApi,
-  TypeEnum,
-} from 'joplin-api'
+import { noteApi, resourceActionApi, resourceApi, TypeEnum } from 'joplin-api'
 import { parse } from 'querystring'
 import { JoplinNoteCommandService } from './JoplinNoteCommandService'
 import { FolderOrNote } from '../model/FolderOrNote'
 import { appConfig } from '../config/AppConfig'
-import { BiMultiMap } from '../util/BiMultiMap'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { OpenFileService } from '../util/OpenFileService'
 import { safePromise } from '../util/safePromise'
-import { AsyncArray } from '@liuli-util/async'
 import path from 'path'
 import { i18n } from '../constants/i18n'
+import { GlobalContext } from '../state/GlobalContext'
+import { remove } from 'fs-extra'
 
 /**
  * other service
@@ -25,7 +19,7 @@ import { i18n } from '../constants/i18n'
 export class HandlerService {
   constructor(private joplinNoteCommandService: JoplinNoteCommandService) {}
 
-  private readonly openResourceMap = new BiMultiMap<string, string>()
+  private readonly openResourceMap = new Map<string, string[]>()
 
   /**
    * close note watch
@@ -38,23 +32,8 @@ export class HandlerService {
       return
     }
     console.log('close note: ', noteId)
-    // const note = await noteApi.get(noteId)
-    await noteActionApi.stopWatching(noteId)
-    this.openResourceMap.deleteByKey(noteId)
-    const resourceIdList = this.openResourceMap.getByKey(noteId)
-    await AsyncArray.forEach(resourceIdList, async (resourceId) => {
-      await resourceActionApi.stopWatching(resourceId)
-      console.log('resourceActionApi.stopWatching(resourceId): ', resourceId)
-    })
-    this.openResourceMap.deleteByKey(noteId)
-    // vscode.window.showInformationMessage(
-    //   i18nLoader.get(
-    //     'Turn off monitoring of attachment resources in the note [{{title}}]',
-    //     {
-    //       title: note.title,
-    //     },
-    //   ),
-    // )
+    await remove(e.fileName)
+    GlobalContext.openNoteMap.delete(noteId)
   }
 
   async uriHandler(uri: Uri) {
@@ -76,14 +55,10 @@ export class HandlerService {
 
   async openResource(id: string) {
     if (!appConfig.programProfilePath) {
-      vscode.window.showWarningMessage(
-        i18n.t("Please set up Joplin's personal directory"),
-      )
+      vscode.window.showWarningMessage(i18n.t("Please set up Joplin's personal directory"))
       return
     }
-    const resource = await safePromise(
-      resourceApi.get(id, ['id', 'title', 'filename', 'file_extension']),
-    )
+    const resource = await safePromise(resourceApi.get(id, ['id', 'title', 'filename', 'file_extension']))
     if (!resource) {
       vscode.window.showWarningMessage(i18n.t('Resource does not exist'))
       return
@@ -91,27 +66,18 @@ export class HandlerService {
     // 如果标题包含后缀则不再拼接后缀名（后缀名其实也是不准的）
     const fileName =
       resource.filename ||
-      (/\..*$/.test(resource.title)
-        ? resource.title
-        : resource.title + '.' + resource.file_extension)
-    const filePath = path.resolve(
-      appConfig.programProfilePath,
-      'tmp/edited_resources',
-      fileName,
-    )
+      (/\..*$/.test(resource.title) ? resource.title : resource.title + '.' + resource.file_extension)
+    const filePath = path.resolve(appConfig.programProfilePath, 'tmp/edited_resources', fileName)
     await resourceActionApi.watch(resource.id)
-    const noteId = JoplinNoteUtil.getNoteIdByFileName(
-      vscode.window.activeTextEditor?.document.fileName,
-    )
+    const noteId = JoplinNoteUtil.getNoteIdByFileName(vscode.window.activeTextEditor?.document.fileName)
     console.log('open file: ', filePath, noteId, resource.id)
     const isWatch = await resourceActionApi.noteIsWatched(resource.id)
     if (isWatch) {
       vscode.window.showInformationMessage(
-        i18n.t('Start monitoring attachment resource modification: ') +
-          resource.title,
+        i18n.t('Start monitoring attachment resource modification: ') + resource.title,
       )
     }
-    this.openResourceMap.set(noteId!, resource.id)
+    // this.openResourceMap.set(noteId!, resource.id)
     // await this.openFileService.openFileByOS(filePath)
     await this.openFileService.openByVSCode(filePath)
   }
@@ -121,15 +87,7 @@ export class HandlerService {
       vscode.window.showWarningMessage(i18n.t('id cannot be empty'))
       return
     }
-    const item = await safePromise(
-      noteApi.get(id, [
-        'id',
-        'parent_id',
-        'title',
-        'is_todo',
-        'todo_completed',
-      ]),
-    )
+    const item = await safePromise(noteApi.get(id, ['id', 'parent_id', 'title', 'is_todo', 'todo_completed']))
     if (!item) {
       vscode.window.showWarningMessage(i18n.t('Note does not exist'))
       return

@@ -4,7 +4,6 @@ import { QuickPickItem, TreeView } from 'vscode'
 import {
   config,
   folderExtApi,
-  noteActionApi,
   noteApi,
   noteExtApi,
   PageUtil,
@@ -18,7 +17,7 @@ import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { appConfig, AppConfig } from '../config/AppConfig'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import * as path from 'path'
-import { mkdirp, pathExists, remove } from 'fs-extra'
+import { mkdirp, pathExists, readFile, remove, writeFile } from 'fs-extra'
 import { createEmptyFile } from '../util/createEmptyFile'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { uploadResourceService } from './UploadResourceService'
@@ -29,6 +28,8 @@ import { TagUseService } from './TagUseService'
 import { sortBy } from '@liuli-util/array'
 import { i18n } from '../constants/i18n'
 import { GlobalContext } from '../state/GlobalContext'
+import ParcelWatcher from '@parcel/watcher'
+import { AsyncArray } from '@liuli-util/async'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -41,7 +42,7 @@ export class JoplinNoteCommandService {
     },
   ) {}
 
-  init(appConfig: AppConfig) {
+  async init(appConfig: AppConfig) {
     if (!appConfig.token) {
       return
     }
@@ -51,6 +52,25 @@ export class JoplinNoteCommandService {
     setInterval(async () => {
       await this.config.noteViewProvider.refresh()
     }, 1000 * 10)
+    const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
+    await remove(tempNoteDirPath)
+    await mkdirp(tempNoteDirPath)
+    ParcelWatcher.subscribe(tempNoteDirPath, (err, events) => {
+      AsyncArray.forEach(events, async (event) => {
+        if (event.type !== 'update') {
+          return
+        }
+        const id = GlobalContext.openNoteMap.get(event.path)
+        if (!id) {
+          return
+        }
+        const content = await readFile(event.path, 'utf-8')
+        await noteApi.update({
+          id,
+          body: content,
+        })
+      })
+    })
   }
 
   /**
@@ -78,7 +98,7 @@ export class JoplinNoteCommandService {
     })
     await this.config.noteViewProvider.refresh()
     if (type === TypeEnum.Note) {
-      await noteActionApi.openAndWatch(id)
+      await GlobalContext.handlerService.openNote(id)
     }
   }
 
@@ -148,20 +168,15 @@ export class JoplinNoteCommandService {
    * @param item
    */
   async openNote(item: Omit<FolderOrNote, 'item'> & { item: JoplinListNote }) {
-    await noteActionApi.openAndWatch(item.id)
-    console.log('openNote: ', item.id, await noteActionApi.isWatch(item.id))
-    const interval = setInterval(() => {
-      this.config.noteListTreeView.reveal(item, {
-        select: true,
-        focus: true,
-      })
-    }, 17)
-    await new Promise<void>((resolve) =>
-      setTimeout(() => {
-        clearInterval(interval)
-        resolve()
-      }, 500),
-    )
+    const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
+    const filename = item.label + (GlobalContext.openNoteMap.get(item.label) ? item.id : '')
+    const tempNotePath = path.resolve(tempNoteDirPath, `${filename}.md`)
+    if (!GlobalContext.openNoteMap.has(item.id)) {
+      const note = await noteApi.get(item.id, ['body', 'title'])
+      await writeFile(tempNotePath, note.body)
+      GlobalContext.openNoteMap.set(item.id, tempNotePath)
+    }
+    await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(tempNotePath))
   }
 
   /**
@@ -199,7 +214,7 @@ export class JoplinNoteCommandService {
     })
     searchQuickPickBox.onDidAccept(() => {
       const selectItem = searchQuickPickBox.selectedItems[0]
-      noteActionApi.openAndWatch(selectItem.noteId)
+      GlobalContext.handlerService.openNote(selectItem.noteId)
     })
     searchQuickPickBox.show()
   }

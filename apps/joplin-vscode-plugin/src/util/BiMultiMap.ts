@@ -7,33 +7,33 @@
  * 可以通过 delete key 删除所有仅在这个 key 里面用到的 value
  */
 export class BiMultiMap<K, V> {
-  private readonly map = new Map<K, Set<V>>()
+  private readonly map = new Map<K | V, V | K>()
 
-  set(k: K, v: V) {
-    if (!this.map.has(k)) {
-      this.map.set(k, new Set())
+  set(k: K, v: V): void
+  set(k: V, v: K): void
+  set(k: K | V, v: K | V) {
+    if (this.has(k) || this.has(v)) {
+      this.delete(k)
     }
-    const vSet = this.map.get(k)!
-    vSet.add(v)
-    this.map.set(k, vSet)
+    this.map.set(k, v)
+    this.map.set(v, k)
   }
 
-  getByKey(k: K): V[] {
+  get(k: K): V | undefined
+  get(k: V): K | undefined
+  get(k: K | V): V | K | undefined {
+    return this.map.get(k) as any
+  }
+
+  has(k: K | V): boolean {
+    return this.map.has(k)
+  }
+
+  delete(k: K | V) {
     if (!this.map.has(k)) {
-      return []
+      return
     }
-    return Array.from(this.map.get(k)!)
-  }
-
-  getByValue(v: V): K[] {
-    return Array.from(this.map.entries()).filter(([_k, vs]) => vs.has(v)).map(([k]) => k)
-  }
-
-  deleteByKey(k: K) {
-    return this.map.delete(k)
-  }
-
-  get size() {
-    return this.map.size
+    this.map.delete(this.map.get(k)!)
+    this.map.delete(k)
   }
 }

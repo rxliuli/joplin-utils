@@ -36,8 +36,9 @@ export async function activate(context: vscode.ExtensionContext) {
       noteListTreeView,
     }),
   )
-  joplinNoteCommandService.init(appConfig)
+  await joplinNoteCommandService.init(appConfig)
   const handlerService = ClassUtil.bindMethodThis(new HandlerService(joplinNoteCommandService))
+  GlobalContext.handlerService = handlerService
   joplinNoteCommandService.handlerService = handlerService
 
   //region register commands
