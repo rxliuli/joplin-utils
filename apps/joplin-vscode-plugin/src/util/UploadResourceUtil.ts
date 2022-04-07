@@ -21,9 +21,7 @@ export class UploadResourceUtil {
     }
     console.log('uploadImageFromExplorer begin: ', filePath, param.title)
     const res = await resourceApi.create(param)
-    const markdownLink = `![${param.title}](resources/${res.id}${path.extname(
-      filePath,
-    )})`
+    const markdownLink = `![${param.title}](:/${res.id})`
     console.log('uploadImageFromExplorer end: ', markdownLink)
     return markdownLink
   }
@@ -35,9 +33,7 @@ export class UploadResourceUtil {
     }
     console.log('uploadFileFromExplorer begin: ', filePath, param.title)
     const res = await resourceApi.create(param)
-    const markdownLink = `[${res.title}](resources/${res.id}${path.extname(
-      filePath,
-    )})`
+    const markdownLink = `[${res.title}](:/${res.id})`
     console.log('uploadFileFromExplorer end: ', markdownLink)
     return { res, markdownLink }
   }

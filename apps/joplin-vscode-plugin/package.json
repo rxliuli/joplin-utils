@@ -259,22 +259,22 @@
       "editor/context": [
         {
           "command": "joplinNote.uploadImageFromClipboard",
-          "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus",
+          "when": "resourceLangId == markdown && resourceDirname =~ /\\.tempNote$/ && editorTextFocus",
           "group": "joplinNote@1"
         },
         {
           "command": "joplinNote.uploadImageFromExplorer",
-          "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus",
+          "when": "resourceLangId == markdown && resourceDirname =~ /\\.tempNote$/ && editorTextFocus",
           "group": "joplinNote@2"
         },
         {
           "command": "joplinNote.uploadFileFromExplorer",
-          "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus",
+          "when": "resourceLangId == markdown && resourceDirname =~ /\\.tempNote$/ && editorTextFocus",
           "group": "joplinNote@3"
         },
         {
           "command": "joplinNote.createResource",
-          "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus",
+          "when": "resourceLangId == markdown && resourceDirname =~ /\\.tempNote$/ && editorTextFocus",
           "group": "joplinNote@4"
         },
         {
