@@ -17,4 +17,11 @@ describe('测试 markdown-it', () => {
 `)
     console.log(res)
   })
+  it('测试解析图片链接', () => {
+    const str = '![c4cad43066f695cc7d49725b04ebc1bc.png](:/5783eb31e1924a4f9bc0023483f5ab13)'
+    const md = new MarkdownIt()
+    const token = md.parseInline(str, null)
+    const res = token[0].children?.find((item) => item.type === 'image')?.attrGet('src')
+    expect(res).toBe(':/5783eb31e1924a4f9bc0023483f5ab13')
+  })
 })

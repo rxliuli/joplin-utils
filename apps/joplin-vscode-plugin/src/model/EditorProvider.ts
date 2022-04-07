@@ -7,6 +7,7 @@ import { wrapLink } from '../util/useJoplinLink'
 import { TypeEnum, noteApi, resourceApi } from 'joplin-api'
 import { formatSize } from '../util/formatSize'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
+import { GlobalContext } from '../state/GlobalContext'
 
 export class MDDocumentLinkProvider implements DocumentLinkProvider {
   async provideDocumentLinks(document: vscode.TextDocument) {
@@ -22,37 +23,32 @@ export class MDDocumentLinkProvider implements DocumentLinkProvider {
           if (markdownTokenLink) {
             const offset = (match.index || 0) + match[1].length
 
-            if (
-              isInFencedCodeBlock(document, lineNum) ||
-              isInCodeSpan(document, lineNum, offset)
-            ) {
+            if (isInFencedCodeBlock(document, lineNum) || isInCodeSpan(document, lineNum, offset)) {
               continue
             }
 
             const linkStart = new vscode.Position(lineNum, offset)
-            const linkEnd = new vscode.Position(
-              lineNum,
-              offset + markdownTokenLink.length,
-            )
+            const linkEnd = new vscode.Position(lineNum, offset + markdownTokenLink.length)
 
             let link: string
             if (JoplinLinkRegex.test(markdownTokenLink)) {
               const id = JoplinLinkRegex.exec(markdownTokenLink)![1]
-              link = wrapLink(id, TypeEnum.Note)
-              console.log('是笔记链接: ', link)
-            } else if (JoplinResourceRegex.test(markdownTokenLink)) {
-              const id = JoplinResourceRegex.exec(markdownTokenLink)![1]
-              link = wrapLink(id, TypeEnum.Resource)
-              console.log('是资源: ', link)
+              const resourceIdList = new Set(
+                [...GlobalContext.openNoteResourceMap.values()].flat().map((item) => item.id),
+              )
+              if (resourceIdList.has(id)) {
+                link = wrapLink(id, TypeEnum.Resource)
+                console.log('是资源: ', link)
+              } else {
+                link = wrapLink(id, TypeEnum.Note)
+                console.log('是笔记链接: ', link)
+              }
             } else {
               link = markdownTokenLink
               console.log('是普通链接：', link)
             }
 
-            const documentLink = new vscode.DocumentLink(
-              new vscode.Range(linkStart, linkEnd),
-              vscode.Uri.parse(link),
-            )
+            const documentLink = new vscode.DocumentLink(new vscode.Range(linkStart, linkEnd), vscode.Uri.parse(link))
 
             documentLink.tooltip = 'Follow link'
 
@@ -74,14 +70,17 @@ export class MDHoverProvider implements HoverProvider {
     let content: string[]
     if (JoplinLinkRegex.test(markdownTokenLink)) {
       const id = JoplinLinkRegex.exec(markdownTokenLink)![1]
-      // link = wrapLink(id, TypeEnum.Note)
-      const note = await noteApi.get(id)
-      const title = note.title
-      content = [JoplinNoteUtil.trimTitleStart(title)]
-    } else if (JoplinResourceRegex.test(markdownTokenLink)) {
-      const id = JoplinResourceRegex.exec(markdownTokenLink)![1]
-      const resource = await resourceApi.get(id, ['id', 'title', 'size'])
-      content = [resource.title, formatSize(resource.size)]
+      const resourceIdList = new Set([...GlobalContext.openNoteResourceMap.values()].flat().map((item) => item.id))
+      if (resourceIdList.has(id)) {
+        const resource = await resourceApi.get(id, ['id', 'title', 'size'])
+        content = [resource.title, formatSize(resource.size)]
+        console.log('是资源: ', resource)
+      } else {
+        const note = await noteApi.get(id)
+        const title = note.title
+        content = [JoplinNoteUtil.trimTitleStart(title)]
+        console.log('是笔记链接: ', note)
+      }
     } else {
       content = [markdownTokenLink]
     }
