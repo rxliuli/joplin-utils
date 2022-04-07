@@ -23,7 +23,7 @@ export class UploadResourceUtil {
     const res = await resourceApi.create(param)
     const markdownLink = `![${param.title}](:/${res.id})`
     console.log('uploadImageFromExplorer end: ', markdownLink)
-    return markdownLink
+    return { res, markdownLink }
   }
 
   static async uploadFileByPath(filePath: string) {

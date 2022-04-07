@@ -64,6 +64,8 @@ export class JoplinNoteCommandService {
         id,
         body: content,
       })
+      const resourceList = await noteApi.resourcesById(id)
+      GlobalContext.openNoteResourceMap.set(id, resourceList)
     })
   }
 
@@ -289,7 +291,10 @@ export class JoplinNoteCommandService {
     if (path.extname(filePath) === '.svg') {
       markdownLink = '!' + markdownLink
     }
-    await uploadResourceService.insertUrlByActiveEditor(markdownLink)
+    await Promise.all([
+      uploadResourceService.insertUrlByActiveEditor(markdownLink),
+      uploadResourceService.refreshResourceList(res.id),
+    ])
     if (await pathExists(filePath)) {
       await remove(filePath)
     }

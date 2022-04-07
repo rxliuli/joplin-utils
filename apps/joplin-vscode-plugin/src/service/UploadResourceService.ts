@@ -3,6 +3,7 @@ import { window } from 'vscode'
 import { GlobalContext } from '../state/GlobalContext'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { i18n } from '../constants/i18n'
+import { noteApi, resourceApi } from 'joplin-api'
 
 export class UploadResourceService {
   async uploadImageFromClipboard() {
@@ -12,8 +13,8 @@ export class UploadResourceService {
       vscode.window.showWarningMessage(i18n.t('Clipboard does not contain picture!'))
       return
     }
-    const markdownLink = await UploadResourceUtil.uploadImageByPath(clipboardImage.imgPath)
-    await this.insertUrlByActiveEditor(markdownLink)
+    const { markdownLink, res } = await UploadResourceUtil.uploadImageByPath(clipboardImage.imgPath)
+    await Promise.all([this.insertUrlByActiveEditor(markdownLink), this.refreshResourceList(res.id)])
   }
 
   async uploadImageFromExplorer(): Promise<string | void | Error> {
@@ -28,7 +29,8 @@ export class UploadResourceService {
       return
     }
     const file = result[0]
-    const markdownLink = await UploadResourceUtil.uploadImageByPath(file.fsPath)
+    const { markdownLink, res } = await UploadResourceUtil.uploadImageByPath(file.fsPath)
+    await Promise.all([this.insertUrlByActiveEditor(markdownLink), this.refreshResourceList(res.id)])
     await this.insertUrlByActiveEditor(markdownLink)
   }
 
@@ -41,9 +43,26 @@ export class UploadResourceService {
       return
     }
     const file = result[0]
-    const { markdownLink } = await UploadResourceUtil.uploadFileByPath(file.fsPath)
-    await this.insertUrlByActiveEditor(markdownLink)
+    const { res, markdownLink } = await UploadResourceUtil.uploadFileByPath(file.fsPath)
+    await Promise.all([this.insertUrlByActiveEditor(markdownLink), this.refreshResourceList(res.id)])
     vscode.window.showInformationMessage(i18n.t('file uploaded successfully'))
+  }
+
+  async refreshResourceList(id: string) {
+    const noteId = GlobalContext.openNoteMap.get(this.editor.document.uri.fsPath)
+    if (!noteId) {
+      console.error('找不到 noteId', this.editor.document.uri.fsPath)
+      return
+    }
+    if (!GlobalContext.openNoteResourceMap.has(noteId)) {
+      console.error('找不到打开笔记对应的资源列表: ', noteId)
+      return
+    }
+    const resourceList = GlobalContext.openNoteResourceMap.get(noteId)!
+    if (!resourceList.some((item) => item.id === id)) {
+      resourceList.push(await resourceApi.get(id))
+    }
+    GlobalContext.openNoteResourceMap.set(noteId, resourceList)
   }
 
   insertUrlByActiveEditor(text: string) {
