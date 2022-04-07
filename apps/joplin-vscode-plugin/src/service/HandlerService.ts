@@ -34,6 +34,7 @@ export class HandlerService {
     console.log('close note: ', noteId)
     await remove(e.fileName)
     GlobalContext.openNoteMap.delete(noteId)
+    GlobalContext.openNoteResourceMap.delete(noteId)
   }
 
   async uriHandler(uri: Uri) {

@@ -169,6 +169,7 @@ export class JoplinNoteCommandService {
       const note = await noteApi.get(item.id, ['body', 'title'])
       await writeFile(tempNotePath, note.body)
       GlobalContext.openNoteMap.set(item.id, tempNotePath)
+      GlobalContext.openNoteResourceMap.set(item.id, await noteApi.resourcesById(item.id))
     }
     await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(tempNotePath))
   }

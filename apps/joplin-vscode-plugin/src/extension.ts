@@ -8,7 +8,7 @@ import { appConfig } from './config/AppConfig'
 import { HandlerService } from './service/HandlerService'
 import { checkJoplinServer } from './util/checkJoplinServer'
 import MarkdownIt from 'markdown-it'
-import { useJoplinLink } from './util/useJoplinLink'
+import { useJoplinImage, useJoplinLink } from './util/useJoplinLink'
 import { uploadResourceService } from './service/UploadResourceService'
 import { MDDocumentLinkProvider, MDHoverProvider } from './model/EditorProvider'
 import { GlobalContext } from './state/GlobalContext'
@@ -16,13 +16,13 @@ import { init } from './init'
 import { registerCommand } from './util/registerCommand'
 import { ClassUtil } from '@liuli-util/object'
 
-init()
-
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 // noinspection JSUnusedLocalSymbols
 export async function activate(context: vscode.ExtensionContext) {
   GlobalContext.context = context
+  appConfig.loadConfig()
+  await init()
   if (!(await checkJoplinServer())) {
     return
   }
@@ -114,7 +114,12 @@ export async function activate(context: vscode.ExtensionContext) {
 
   return {
     extendMarkdownIt(md: MarkdownIt) {
-      return md.use(useJoplinLink())
+      return md.use(useJoplinLink(GlobalContext.openNoteResourceMap)).use(
+        useJoplinImage({
+          token: appConfig.token!,
+          port: appConfig.port!,
+        }),
+      )
     },
   }
 

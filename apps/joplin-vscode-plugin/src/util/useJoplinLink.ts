@@ -1,6 +1,7 @@
 import MarkdownIt from 'markdown-it'
 import { TypeEnum } from 'joplin-api'
-import { JoplinLinkRegex, JoplinResourceRegex } from './constant'
+import { JoplinLinkRegex } from './constant'
+import { ResourceGetRes } from 'joplin-api/dist/modal/ResourceGetRes'
 
 export function wrapLink(id: string, type: TypeEnum.Resource | TypeEnum.Note) {
   const q = encodeURIComponent(`id=${id}`)
@@ -14,8 +15,8 @@ export function wrapLink(id: string, type: TypeEnum.Resource | TypeEnum.Note) {
   }
 }
 
-export function useJoplinLink() {
-  return function (md: MarkdownIt) {
+export function useJoplinLink(openNoteResourceMap: Map<string, ResourceGetRes[]>) {
+  return (md: MarkdownIt) => {
     const defaultRender =
       md.renderer.rules.link_open ||
       function (tokens, idx, options, env, self) {
@@ -27,20 +28,44 @@ export function useJoplinLink() {
         const aIndex = tokens[idx].attrIndex(attr)
         if (aIndex >= 0) {
           const linkUrl = tokens[idx].attrs![aIndex][1]
-          // 匹配 joplin 内部引用链接
-          // 匹配 joplin 的资源
+          // 匹配 joplin 内部引用链接和资源
           console.log('link: ', linkUrl)
           if (JoplinLinkRegex.test(linkUrl)) {
-            tokens[idx].attrs![aIndex][1] = wrapLink(
-              linkUrl.match(JoplinLinkRegex)![1],
-              TypeEnum.Note,
-            )
-          } else if (JoplinResourceRegex.test(linkUrl)) {
-            tokens[idx].attrs![aIndex][1] = wrapLink(
-              linkUrl.match(JoplinResourceRegex)![1],
-              TypeEnum.Resource,
-            )
+            const resourceIdList = new Set([...openNoteResourceMap.values()].flat().map((item) => item.id))
+            const id = linkUrl.match(JoplinLinkRegex)![1]
+            console.log(resourceIdList, id)
+            if (resourceIdList.has(id)) {
+              tokens[idx].attrs![aIndex][1] = wrapLink(id, TypeEnum.Resource)
+            } else {
+              tokens[idx].attrs![aIndex][1] = wrapLink(linkUrl.match(JoplinLinkRegex)![1], TypeEnum.Note)
+            }
           }
+        }
+      }
+
+      // pass token to default renderer.
+      return defaultRender(tokens, idx, options, env, self)
+    }
+    return md
+  }
+}
+
+export function useJoplinImage(config: { token: string; port: number }) {
+  return (md: MarkdownIt) => {
+    const defaultRender =
+      md.renderer.rules.link_open ||
+      function (tokens, idx, options, env, self) {
+        return self.renderToken(tokens, idx, options)
+      }
+
+    md.renderer.rules.image = function (tokens, idx, options, env, self) {
+      const aIndex = tokens[idx].attrIndex('src')
+      if (aIndex >= 0) {
+        const linkUrl = tokens[idx].attrs![aIndex][1]
+        // 匹配 joplin 内部资源
+        if (JoplinLinkRegex.test(linkUrl)) {
+          const id = linkUrl.match(JoplinLinkRegex)![1]
+          tokens[idx].attrs![aIndex][1] = `http://localhost:${config.port}/resources/${id}/file?token=${config.token}`
         }
       }
 

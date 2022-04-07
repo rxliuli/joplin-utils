@@ -52,11 +52,6 @@ export class AppConfig {
       this.programProfilePath = process.env.JOPLIN_PROGRAM_PROFILE_PATH
     }
   }
-
-  constructor() {
-    this.loadConfig()
-    vscode.workspace.onDidChangeConfiguration(this.loadConfig.bind(this))
-  }
 }
 
 export const appConfig = new AppConfig()
