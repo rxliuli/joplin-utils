@@ -25,13 +25,7 @@ export type Method =
   | 'unlink'
   | 'UNLINK'
 
-export type ResponseType =
-  | 'arraybuffer'
-  | 'blob'
-  | 'document'
-  | 'json'
-  | 'text'
-  | 'stream'
+export type ResponseType = 'arraybuffer' | 'blob' | 'document' | 'json' | 'text' | 'stream'
 
 interface AjaxConfig {
   url: string
@@ -45,8 +39,7 @@ type OptionalKeys<T> = {
   [K in keyof T]-?: {} extends Pick<T, K> ? K : never
 }[keyof T]
 
-type FlipOptional<T> = Required<Pick<T, OptionalKeys<T>>> &
-  Partial<Omit<T, OptionalKeys<T>>> extends infer O
+type FlipOptional<T> = Required<Pick<T, OptionalKeys<T>>> & Partial<Omit<T, OptionalKeys<T>>> extends infer O
   ? { [K in keyof O]: O[K] }
   : never
 
@@ -81,11 +74,7 @@ export class Ajax {
     return `http://localhost:${this.config.port}${url}?${query}`
   }
 
-  get<R>(
-    url: string,
-    data?: any,
-    config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
-  ): Promise<R> {
+  get<R>(url: string, data?: any, config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>): Promise<R> {
     return this.request<R>({
       url: this.baseUrl(url, data),
       ...config,
@@ -93,11 +82,7 @@ export class Ajax {
     })
   }
 
-  post<R>(
-    url: string,
-    data?: any,
-    config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
-  ): Promise<R> {
+  post<R>(url: string, data?: any, config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>): Promise<R> {
     return this.request<R>({
       url: this.baseUrl(url),
       data,
@@ -106,11 +91,7 @@ export class Ajax {
     })
   }
 
-  put<R>(
-    url: string,
-    data?: any,
-    config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
-  ): Promise<R> {
+  put<R>(url: string, data?: any, config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>): Promise<R> {
     return this.request<R>({
       url: this.baseUrl(url),
       data,
@@ -119,11 +100,7 @@ export class Ajax {
     })
   }
 
-  delete<R>(
-    url: string,
-    data?: any,
-    config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>,
-  ): Promise<R> {
+  delete<R>(url: string, data?: any, config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>): Promise<R> {
     return this.request<R>({
       url: this.baseUrl(url),
       data,
@@ -132,7 +109,7 @@ export class Ajax {
     })
   }
 
-  async postFormData<T>(url: string, data: object): Promise<T> {
+  async postFormData<T>(url: string, method: 'post' | 'put', data: object): Promise<T> {
     if (typeof fetch === 'undefined') {
       Reflect.set(globalValue, 'fetch', (await import('node-fetch')).default)
     }
@@ -140,9 +117,13 @@ export class Ajax {
       Reflect.set(globalValue, 'FormData', (await import('form-data')).default)
     }
     const fd = new FormData()
-    Object.entries(data).forEach(([k, v]) => fd.append(k, v))
+    Object.entries(data).forEach(([k, v]) => {
+      if (k && v) {
+        fd.append(k, v)
+      }
+    })
     const resp = await fetch(this.baseUrl(url), {
-      method: 'post',
+      method: method,
       body: fd,
     })
     return await resp.json()

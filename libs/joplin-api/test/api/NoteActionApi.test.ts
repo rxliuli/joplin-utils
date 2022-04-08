@@ -1,7 +1,7 @@
 import { noteActionApi } from '../../src'
 import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
 
-describe('test ActionApi', () => {
+describe.skip('test ActionApi', () => {
   const data = initTestFolderAndNote()
 
   it.skip('test ActionApi.openAndWatch', async () => {

@@ -46,10 +46,10 @@ describe('test ResourceApi', () => {
     })
   })
   it('test update', async () => {
-    const getRes = await resourceApi.get(id)
-    getRes.title = `new title ${Date.now()}`
-    const updateRes = await resourceApi.update(getRes)
-    expect(updateRes.title).toBe(getRes.title)
+    const title = `new title ${Date.now()}`
+    const updateRes = await resourceApi.update({ id, title })
+    console.log(updateRes)
+    expect(updateRes.title).toBe(title)
   })
   it.skip('test remove ', async () => {
     await resourceApi.remove(id)

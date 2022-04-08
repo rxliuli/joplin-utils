@@ -24,12 +24,14 @@ export class ResourceApi {
   }
 
   async get(id: string): Promise<ResourceGetRes>
-  async get<
-    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>,
-  >(id: string, fields: K[]): Promise<Pick<ResourceProperties, K> & CommonType>
-  async get<
-    K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>,
-  >(id: string, fields?: K[]): Promise<ResourceGetRes> {
+  async get<K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>>(
+    id: string,
+    fields: K[],
+  ): Promise<Pick<ResourceProperties, K> & CommonType>
+  async get<K extends keyof ResourceProperties = keyof Omit<ResourceGetRes, 'type_'>>(
+    id: string,
+    fields?: K[],
+  ): Promise<ResourceGetRes> {
     return await this.ajax.get<ResourceGetRes>(`/resources/${id}`, { fields })
   }
 
@@ -40,25 +42,24 @@ export class ResourceApi {
    * The "data" field is required, while the "props" one is not. If not specified, default values will be used.
    * @param param
    */
-  async create(
-    param: { data: ReadStream } & Partial<ResourceProperties>,
-  ): Promise<ResourceGetRes> {
-    return (await this.ajax.postFormData('/resources', {
-      props: JSON.stringify({ title: param.title }),
+  async create(param: { data: ReadStream } & Partial<ResourceProperties>): Promise<ResourceGetRes> {
+    const { data, ...others } = param
+    return (await this.ajax.postFormData('/resources', 'post', {
+      props: JSON.stringify(others),
       data: param.data,
     })) as ResourceGetRes
   }
 
-  async update(
-    param: SetRequired<Partial<ResourceProperties>, 'id'>,
-  ): Promise<ResourceGetRes> {
-    const { id, ...others } = param
-    return await this.ajax.put<ResourceGetRes>(`/resources/${id}`, others)
+  async update(param: SetRequired<Partial<ResourceProperties>, 'id'> & { data?: ReadStream }): Promise<ResourceGetRes> {
+    const { id, data, ...others } = param
+    return await this.ajax.postFormData<ResourceGetRes>(`/resources/${id}`, 'put', {
+      props: JSON.stringify(others),
+      data: data,
+    })
   }
 
   /**
    * TODO 这个 api 存在 bug
-   * @link https://discourse.joplinapp.org/t/pre-release-1-4-is-now-available-for-testing/12247/15?u=rxliuli
    * @param id
    */
   async remove(id: string): Promise<void> {

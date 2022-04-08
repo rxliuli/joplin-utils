@@ -5,7 +5,7 @@ function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-describe('test ResourceActionApi', () => {
+describe.skip('test ResourceActionApi', () => {
   let id: string
   beforeAll(async () => {
     id = (await createTestResource()).id
