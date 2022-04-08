@@ -1,20 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
-    "lib": ["es2017", "esnext.array", "es2015.iterable", "DOM"],
-    "paths": {
-      "*": ["types/*"]
-    },
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
     "module": "esnext",
     "declaration": true,
     "declarationMap": true,
     "outDir": "./dist",
     "strict": true,
     "noImplicitAny": true,
-    "baseUrl": "./",
-    //定义类型定义文件的根目录
     "esModuleInterop": true,
-    // 引入辅助函数集
     "importHelpers": true,
     "moduleResolution": "node",
     "noEmit": true,

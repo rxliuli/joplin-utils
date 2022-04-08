@@ -1,7 +1,7 @@
 import { overrideConsole } from './util/overrideConsole'
 import { setupTestEnv } from './util/setupTestEnv'
 
-beforeAll(() => {
+beforeAll(async () => {
   overrideConsole()
-  setupTestEnv()
+  await setupTestEnv()
 })

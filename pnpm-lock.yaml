@@ -568,6 +568,7 @@ importers:
       '@types/jest': ^27.0.2
       '@types/node-fetch': ^2.5.7
       axios: ^0.21.0
+      envfile: ^6.17.0
       form-data: ^4.0.0
       fs-extra: ^9.0.1
       jest: ^27.2.1
@@ -591,6 +592,7 @@ importers:
       '@types/fs-extra': 9.0.13
       '@types/jest': 27.0.2
       '@types/node-fetch': 2.5.12
+      envfile: 6.17.0
       fs-extra: 9.1.0
       jest: 27.3.1_ts-node@9.1.1
       rimraf: 3.0.2
@@ -12233,6 +12235,12 @@ packages:
   /env-paths/2.2.1:
     resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
     engines: {node: '>=6'}
+
+  /envfile/6.17.0:
+    resolution: {integrity: sha512-RnhtVw3auDZeeh5VtaNrbE7s6Kq8BoRtGIzcbMpMsJ+wIpRgs5jiDG4gQjW+vfws5QPlizE57/fUU0Tj6Nrs8A==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dev: true
 
   /envify/4.1.0:
     resolution: {integrity: sha512-IKRVVoAYr4pIx4yIWNsz9mOsboxlNXiu7TNBnem/K/uTHdkyzXWDzHCK7UTolqBbgaBz0tQHsD3YNls0uIIjiw==}

@@ -11,6 +11,7 @@ import { TagApi } from './TagApi'
 import { FolderApi } from './FolderApi'
 import { JoplinApi } from './JoplinApi'
 import { ClassUtil } from '@liuli-util/object'
+import { EventApi } from './EventApi'
 
 export class JoplinApiGenerator {
   private config: Config = new Config()
@@ -34,6 +35,7 @@ export class JoplinApiGenerator {
   readonly resourceApi = new ResourceApi(this.ajax)
   readonly searchApi = new SearchApi(this.ajax)
   readonly tagApi = new TagApi(this.ajax)
+  readonly eventApi = new EventApi(this.ajax)
 }
 
 const joplinApiGenerator = new JoplinApiGenerator()
@@ -53,13 +55,13 @@ export const {
   resourceApi,
   searchApi,
   tagApi,
+  eventApi,
 } = joplinApiGenerator
 
 /**
  * 兼容之前的类型
  */
-export const config: Pick<JoplinApiGenerator, 'token' | 'port'> =
-  joplinApiGenerator
+export const config: Pick<JoplinApiGenerator, 'token' | 'port'> = joplinApiGenerator
 
 /**
  * @deprecated 已废弃，请使用 {@link noteActionApi}
