@@ -444,7 +444,6 @@ importers:
       joplin-api: '*'
       lodash-es: ^4.17.21
       markdown-it: ^12.0.3
-      open: ^7.3.0
       ts-jest: ^27.0.7
       tslib: ^2.0.3
       type-fest: ^1.1.1
@@ -467,7 +466,6 @@ importers:
       joplin-api: link:../../libs/joplin-api
       lodash-es: 4.17.21
       markdown-it: 12.2.0
-      open: 7.4.2
     devDependencies:
       '@liuli-util/i18next-dts-gen': 0.3.3
       '@types/fs-extra': 9.0.13
@@ -15692,6 +15690,7 @@ packages:
     resolution: {integrity: sha512-F+i2BKsFrH66iaUFc0woD8sLy8getkwTwtOBjvs56Cx4CgJDeKQeqfz8wAYiSb8JOprWhHH5p77PbmYCvvUuXQ==}
     engines: {node: '>=8'}
     hasBin: true
+    dev: true
 
   /is-dom/1.1.0:
     resolution: {integrity: sha512-u82f6mvhYxRPKpw8V1N0W8ce1xXwOrQtgGcxl6UCL5zBmZu3is/18K0rR7uFCnMDuAsS/3W54mGL4vsaFUQlEQ==}
@@ -15997,6 +15996,7 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       is-docker: 2.2.1
+    dev: true
 
   /is-yarn-global/0.3.0:
     resolution: {integrity: sha512-VjSeb/lHmkoyd8ryPVIKvOCn4D1koMqY+vqyjjUfc3xyKtP4dYOxM44sZrnqQSzSds3xyOrUTLTC9LVCVgLngw==}
@@ -20266,6 +20266,7 @@ packages:
     dependencies:
       is-docker: 2.2.1
       is-wsl: 2.2.0
+    dev: true
 
   /opencollective-postinstall/2.0.3:
     resolution: {integrity: sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==}

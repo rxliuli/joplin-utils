@@ -29,6 +29,7 @@ import { sortBy } from '@liuli-util/array'
 import { i18n } from '../constants/i18n'
 import { GlobalContext } from '../state/GlobalContext'
 import { watch } from 'chokidar'
+import { AsyncArray } from '@liuli-util/async'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -52,8 +53,11 @@ export class JoplinNoteCommandService {
       await this.config.noteViewProvider.refresh()
     }, 1000 * 10)
     const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
-    await remove(tempNoteDirPath)
-    await mkdirp(tempNoteDirPath)
+    const tempResourceDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempResource')
+    await AsyncArray.forEach([tempNoteDirPath, tempResourceDirPath], async (path) => {
+      await remove(path)
+      await mkdirp(path)
+    })
     watch(tempNoteDirPath).on('change', async (filePath) => {
       const id = GlobalContext.openNoteMap.get(filePath)
       if (!id) {
@@ -67,6 +71,19 @@ export class JoplinNoteCommandService {
       const resourceList = await noteApi.resourcesById(id)
       GlobalContext.openNoteResourceMap.set(id, resourceList)
     })
+    // watch(tempResourceDirPath).on('change', async (filePath) => {
+    //   const id = GlobalContext.openNoteMap.get(filePath)
+    //   if (!id) {
+    //     return
+    //   }
+    //   const content = await readFile(filePath, 'utf-8')
+    //   await noteApi.update({
+    //     id,
+    //     body: content,
+    //   })
+    //   const resourceList = await noteApi.resourcesById(id)
+    //   GlobalContext.openNoteResourceMap.set(id, resourceList)
+    // })
   }
 
   /**

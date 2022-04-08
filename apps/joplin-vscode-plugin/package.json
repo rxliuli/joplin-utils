@@ -435,7 +435,6 @@
     "i18next": "^19.8.4",
     "joplin-api": "*",
     "lodash-es": "^4.17.21",
-    "open": "^7.3.0",
     "markdown-it": "^12.0.3",
     "cross-path-sort": "^1.0.0",
     "@liuli-util/array": "^3.2.7",

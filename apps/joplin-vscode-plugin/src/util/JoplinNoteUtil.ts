@@ -1,3 +1,4 @@
+import path from 'path'
 import { GlobalContext } from '../state/GlobalContext'
 
 export class JoplinNoteUtil {
@@ -9,7 +10,8 @@ export class JoplinNoteUtil {
     if (!fileName) {
       return null
     }
-    return GlobalContext.openNoteMap.get(fileName)
+    const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
+    return GlobalContext.openNoteMap.get(path.isAbsolute(fileName) ? fileName : path.resolve(tempNoteDirPath, fileName))
   }
 
   /**
