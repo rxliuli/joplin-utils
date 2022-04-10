@@ -12,6 +12,7 @@ import path from 'path'
 import { i18n } from '../constants/i18n'
 import { GlobalContext } from '../state/GlobalContext'
 import { remove, writeFile } from 'fs-extra'
+import { filenamify } from '../util/filenamify'
 
 /**
  * other service
@@ -75,7 +76,7 @@ export class HandlerService {
       resource.filename ||
       (/\..*$/.test(resource.title) ? resource.title : resource.title + '.' + resource.file_extension)
     const tempResourceDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempResource')
-    const filePath = path.resolve(tempResourceDirPath, fileName)
+    const filePath = path.resolve(tempResourceDirPath, filenamify(fileName))
     if (!this.openResourceMap.has(id)) {
       const buffer = await resourceApi.fileByResourceId(id)
       await writeFile(filePath, buffer)

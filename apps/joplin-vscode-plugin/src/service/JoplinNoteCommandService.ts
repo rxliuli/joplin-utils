@@ -17,7 +17,7 @@ import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { appConfig, AppConfig } from '../config/AppConfig'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import * as path from 'path'
-import { mkdirp, pathExists, readFile, remove, writeFile } from 'fs-extra'
+import { createReadStream, mkdirp, pathExists, readFile, remove, writeFile } from 'fs-extra'
 import { createEmptyFile } from '../util/createEmptyFile'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { uploadResourceService } from './UploadResourceService'
@@ -30,6 +30,7 @@ import { i18n } from '../constants/i18n'
 import { GlobalContext } from '../state/GlobalContext'
 import { watch } from 'chokidar'
 import { AsyncArray } from '@liuli-util/async'
+import { filenamify } from '../util/filenamify'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -71,19 +72,16 @@ export class JoplinNoteCommandService {
       const resourceList = await noteApi.resourcesById(id)
       GlobalContext.openNoteResourceMap.set(id, resourceList)
     })
-    // watch(tempResourceDirPath).on('change', async (filePath) => {
-    //   const id = GlobalContext.openNoteMap.get(filePath)
-    //   if (!id) {
-    //     return
-    //   }
-    //   const content = await readFile(filePath, 'utf-8')
-    //   await noteApi.update({
-    //     id,
-    //     body: content,
-    //   })
-    //   const resourceList = await noteApi.resourcesById(id)
-    //   GlobalContext.openNoteResourceMap.set(id, resourceList)
-    // })
+    watch(tempResourceDirPath).on('change', async (filePath) => {
+      const id = GlobalContext.openResourceMap.get(filePath)
+      if (!id) {
+        return
+      }
+      await resourceApi.update({
+        id,
+        data: createReadStream(filePath),
+      })
+    })
   }
 
   /**
@@ -181,15 +179,22 @@ export class JoplinNoteCommandService {
    * @param item
    */
   async openNote(item: Omit<FolderOrNote, 'item'> & { item: JoplinListNote }) {
+    // 如果已经打开了笔记，则应该切换并且保持 treeview 的焦点
+    if (GlobalContext.openNoteMap.has(item.id)) {
+      const filePath = GlobalContext.openNoteMap.get(item.id)!
+      if (vscode.window.activeTextEditor?.document.fileName !== filePath) {
+        await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath))
+      }
+      await this.focus(item.id)
+      return
+    }
     const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
     const filename = item.label + (GlobalContext.openNoteMap.get(item.label) ? item.id : '')
-    const tempNotePath = path.resolve(tempNoteDirPath, `${filename}.md`)
-    if (!GlobalContext.openNoteMap.has(item.id)) {
-      const note = await noteApi.get(item.id, ['body', 'title'])
-      await writeFile(tempNotePath, note.body)
-      GlobalContext.openNoteMap.set(item.id, tempNotePath)
-      GlobalContext.openNoteResourceMap.set(item.id, await noteApi.resourcesById(item.id))
-    }
+    const tempNotePath = path.resolve(tempNoteDirPath, filenamify(`${filename}.md`))
+    const note = await noteApi.get(item.id, ['body', 'title'])
+    await writeFile(tempNotePath, note.body)
+    GlobalContext.openNoteMap.set(item.id, tempNotePath)
+    GlobalContext.openNoteResourceMap.set(item.id, await noteApi.resourcesById(item.id))
     await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(tempNotePath))
   }
 

@@ -441,7 +441,7 @@ importers:
       glob: ^7.1.6
       i18next: ^19.8.4
       jest: ^27.4.3
-      joplin-api: '*'
+      joplin-api: workspace:*
       lodash-es: ^4.17.21
       markdown-it: ^12.0.3
       ts-jest: ^27.0.7
