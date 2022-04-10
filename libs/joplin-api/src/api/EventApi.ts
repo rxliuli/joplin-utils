@@ -1,3 +1,4 @@
+import { CommonType } from '../modal/CommonType'
 import { PageRes } from '../modal/PageData'
 import { Ajax } from '../util/ajax'
 
@@ -11,22 +12,35 @@ export interface EventProperties {
   before_change_item: string // Unused
 }
 
+export type EventGetRes = Pick<EventProperties, 'id' | 'item_type' | 'item_id' | 'type' | 'created_time'> & CommonType
+
+export type EventListRes = Pick<EventProperties, 'id' | 'item_type' | 'item_id' | 'type' | 'created_time'>
+
 /**
  * @link https://joplinapp.org/api/references/rest_api/#events
  */
 export class EventApi {
   constructor(private readonly ajax: Ajax) {}
 
+  async list(param?: { cursor?: string }): Promise<PageRes<EventListRes> & { cursor: string }>
+  async list<K extends keyof EventProperties>(param: {
+    cursor?: string
+    fields: K[]
+  }): Promise<PageRes<Pick<EventProperties, K>> & { cursor: string }>
   /**
    * @link https://joplinapp.org/api/references/rest_api/#get-events
-   * @param cursor
+   * @param param
    * @returns
    */
-  async list(cursor?: string): Promise<PageRes<EventProperties> & { cursor: string }> {
-    return await this.ajax.get('/events', {
-      cursor,
-    })
+  async list<K extends keyof EventProperties>(param?: {
+    cursor?: string
+    fields?: K[]
+  }): Promise<PageRes<EventProperties> & { cursor: string }> {
+    return await this.ajax.get('/events', param)
   }
+
+  get(id: number): Promise<EventGetRes>
+  get<K extends keyof EventProperties>(id: number, fields: K[]): Promise<Pick<EventProperties, K> & CommonType>
   /**
    * @link https://joplinapp.org/api/references/rest_api/#get-events-id
    * @param id
@@ -35,7 +49,7 @@ export class EventApi {
   async get<K extends keyof EventProperties = keyof EventProperties>(
     id: number,
     fields?: K[],
-  ): Promise<PageRes<EventProperties> & { cursor: string }> {
+  ): Promise<EventProperties & CommonType & { cursor: string }> {
     return await this.ajax.get(`/events/${id}`, { fields })
   }
 }

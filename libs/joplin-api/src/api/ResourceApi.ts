@@ -5,7 +5,7 @@ import { PageParam, PageRes } from '../modal/PageData'
 import { FieldsParam } from '../modal/FieldsParam'
 import { CommonType } from '../modal/CommonType'
 import { Ajax } from '../util/ajax'
-import { SetRequired } from 'type-fest'
+import { RequiredField } from '../types/RequiredFiled'
 
 /**
  * 附件资源相关 api
@@ -50,7 +50,9 @@ export class ResourceApi {
     })) as ResourceGetRes
   }
 
-  async update(param: SetRequired<Partial<ResourceProperties>, 'id'> & { data?: ReadStream }): Promise<ResourceGetRes> {
+  async update(
+    param: RequiredField<Partial<ResourceProperties>, 'id'> & { data?: ReadStream },
+  ): Promise<ResourceGetRes> {
     const { id, data, ...others } = param
     return await this.ajax.postFormData<ResourceGetRes>(`/resources/${id}`, 'put', {
       props: JSON.stringify(others),

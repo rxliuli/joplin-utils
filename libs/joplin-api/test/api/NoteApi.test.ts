@@ -39,17 +39,16 @@ describe('test JoplinApi', () => {
       expect(res.body).toBe(body)
     })
     it('test remove', async () => {
-      const id = 'a135c13637d34e59a289d670b639da0d'
-      const createRes = await noteApi.create({
-        id,
-        title: '# 测试标题',
-        body: '测试内容',
-        parent_id: data.folderId,
-      })
-      expect(createRes.id).not.toBeNull()
-      const res = await noteApi.remove(createRes.id)
-      console.log(res)
-      expect(res).toBeNull()
+      const id = (
+        await noteApi.create({
+          title: '# 测试标题',
+          body: '测试内容',
+          parent_id: data.folderId,
+        })
+      ).id
+      expect(await noteApi.get(id)).not.toBeFalsy()
+      await noteApi.remove(id)
+      await expect(noteApi.get(id)).rejects.toThrowError()
     })
     it('test tagsById', async () => {
       const tagList = await noteApi.tagsById(data.noteId)
@@ -72,12 +71,7 @@ describe('test JoplinApi', () => {
       const noteRes = await noteApi.get(data.noteId, ['id', 'title', 'body'])
       noteRes.body += `[res](:/${resourceRes.id})`
       await noteApi.update(noteRes)
-      const [resource] = await noteApi.resourcesById(data.noteId, [
-        'id',
-        'title',
-        'file_extension',
-        'size',
-      ])
+      const [resource] = await noteApi.resourcesById(data.noteId, ['id', 'title', 'file_extension', 'size'])
       console.log(resource.file_extension)
       console.log(resource.size)
     })
@@ -116,9 +110,6 @@ describe('test JoplinApi', () => {
       const res = await PageUtil.pageToAllList(noteApi.list)
       const time2 = Date.now()
       console.log('time diff: ', time2 - time1, res.length)
-    })
-    it('测试 list 是否默认仅获取顶级笔记', () => {
-      noteApi.list()
     })
   })
 })

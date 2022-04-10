@@ -1,11 +1,8 @@
 import { resourceApi } from '../../src'
-import { createReadStream, pathExistsSync, writeFileSync } from 'fs-extra'
+import { createReadStream, mkdirp, pathExistsSync, remove, writeFile, writeFileSync } from 'fs-extra'
 import { resolve } from 'path'
-import axios from 'axios'
-import fetch from 'node-fetch'
-import { readFileSync } from 'fs'
 import { createTestResource } from './CreateTestResource'
-import { ajax } from '../../dist'
+import * as path from 'path'
 
 describe('test ResourceApi', () => {
   let id: string
@@ -45,14 +42,40 @@ describe('test ResourceApi', () => {
       expect(json.title).toBe(title)
     })
   })
-  it('test update', async () => {
-    const title = `new title ${Date.now()}`
-    const updateRes = await resourceApi.update({ id, title })
-    console.log(updateRes)
-    expect(updateRes.title).toBe(title)
+  describe('test update', () => {
+    const tempPath = path.resolve(__dirname, '.temp')
+    beforeEach(async () => {
+      await remove(tempPath)
+      await mkdirp(tempPath)
+    })
+    it('basic example', async () => {
+      const title = `new title ${Date.now()}`
+      const updateRes = await resourceApi.update({ id, title })
+      expect(updateRes.title).toBe(title)
+    })
+    it('update file', async () => {
+      const content = 'test'
+      const txtPath = path.resolve(tempPath, 'test.txt')
+      await writeFile(txtPath, content)
+      await resourceApi.update({ id, data: createReadStream(txtPath) })
+      const res = await resourceApi.fileByResourceId(id)
+      expect(res.toString()).toBe(content)
+    })
+    it('update properties and file', async () => {
+      const title = `new title ${Date.now()}`
+      const content = 'test'
+      const txtPath = path.resolve(tempPath, 'test.txt')
+      await writeFile(txtPath, content)
+      const updateRes = await resourceApi.update({ id, title, data: createReadStream(txtPath) })
+      expect(updateRes.title).toBe(title)
+      const res = await resourceApi.fileByResourceId(id)
+      expect(res.toString()).toBe(content)
+    })
   })
-  it.skip('test remove ', async () => {
+  it('test remove ', async () => {
+    const id = (await createTestResource()).id
     await resourceApi.remove(id)
+    await expect(resourceApi.get(id)).rejects.toThrowError()
   })
   it('test fileByResourceId', async () => {
     const res = await resourceApi.fileByResourceId(id)

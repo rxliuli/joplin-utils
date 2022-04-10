@@ -40,29 +40,16 @@ describe('test FolderApi', () => {
         parent_id: data.folderId,
       })
       await expect(folderApi.get(createRes.id)).resolves.not.toBeNull()
-
       await folderApi.remove(createRes.id)
       await expect(folderApi.get(createRes.id)).rejects.not.toBeNull()
     })
     it('test notesByFolderId', async () => {
-      await Promise.all(
-        Array(200)
-          .fill(0)
-          .map(() =>
-            noteApi.create({
-              title: '# 测试标题',
-              body: '测试内容',
-              parent_id: data.folderId,
-            }),
-          ),
-      )
-      const res = await folderApi.notesByFolderId(data.folderId, [
-        'id',
-        'title',
-        'is_todo',
-        'todo_completed',
-      ])
-      console.log(res)
+      await noteApi.create({
+        title: '# 测试标题',
+        body: '测试内容',
+        parent_id: data.folderId,
+      })
+      const res = await folderApi.notesByFolderId(data.folderId, ['id', 'title', 'is_todo', 'todo_completed'])
       expect(res.length).toBeGreaterThan(0)
     }, 10_000)
   })
