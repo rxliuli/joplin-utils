@@ -5,9 +5,11 @@ import { Ajax } from '../util/ajax'
 import { NoteUpdateRes } from '../modal/NoteUpdateRes'
 
 export class NoteExtApi {
-  private noteApi = new NoteApi(this.ajax)
+  private readonly noteApi: NoteApi
 
-  constructor(private ajax: Ajax) {}
+  constructor(ajax: Ajax) {
+    this.noteApi = new NoteApi(ajax)
+  }
 
   /**
    * 重命名笔记

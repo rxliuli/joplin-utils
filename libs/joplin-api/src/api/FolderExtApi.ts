@@ -4,9 +4,11 @@ import { FolderApi } from './FolderApi'
 import { FolderUpdateRes } from '../modal/FolderUpdateRes'
 
 export class FolderExtApi {
-  private folderApi = new FolderApi(this.ajax)
+  private readonly folderApi: FolderApi
 
-  constructor(private ajax: Ajax) {}
+  constructor(ajax: Ajax) {
+    this.folderApi = new FolderApi(ajax)
+  }
 
   /**
    * 重命名目录
