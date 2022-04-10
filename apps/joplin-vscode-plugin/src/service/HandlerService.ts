@@ -4,7 +4,6 @@ import { noteApi, resourceActionApi, resourceApi, TypeEnum } from 'joplin-api'
 import { parse } from 'querystring'
 import { JoplinNoteCommandService } from './JoplinNoteCommandService'
 import { FolderOrNote } from '../model/FolderOrNote'
-import { appConfig } from '../config/AppConfig'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { OpenFileService } from '../util/OpenFileService'
 import { safePromise } from '../util/safePromise'
@@ -19,8 +18,6 @@ import { filenamify } from '../util/filenamify'
  */
 export class HandlerService {
   constructor(private joplinNoteCommandService: JoplinNoteCommandService) {}
-
-  private readonly openResourceMap = new Map<string, string[]>()
 
   /**
    * close note watch
@@ -71,17 +68,20 @@ export class HandlerService {
       vscode.window.showWarningMessage(i18n.t('Resource does not exist'))
       return
     }
+    if (GlobalContext.openResourceMap.has(id)) {
+      const filePath = GlobalContext.openResourceMap.get(id)!
+      await this.openFileService.openByVSCode(filePath)
+      return
+    }
     // 如果标题包含后缀则不再拼接后缀名（后缀名其实也是不准的）
     const fileName =
       resource.filename ||
       (/\..*$/.test(resource.title) ? resource.title : resource.title + '.' + resource.file_extension)
     const tempResourceDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempResource')
     const filePath = path.resolve(tempResourceDirPath, filenamify(fileName))
-    if (!this.openResourceMap.has(id)) {
-      const buffer = await resourceApi.fileByResourceId(id)
-      await writeFile(filePath, buffer)
-      GlobalContext.openResourceMap.set(id, filePath)
-    }
+    const buffer = await resourceApi.fileByResourceId(id)
+    await writeFile(filePath, buffer)
+    GlobalContext.openResourceMap.set(id, filePath)
     console.log('open file: ', filePath)
     await this.openFileService.openByVSCode(filePath)
   }

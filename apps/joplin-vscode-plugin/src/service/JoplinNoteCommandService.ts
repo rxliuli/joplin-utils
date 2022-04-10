@@ -79,6 +79,7 @@ export class JoplinNoteCommandService {
       }
       await resourceApi.update({
         id,
+        title: path.basename(filePath),
         data: createReadStream(filePath),
       })
     })
@@ -302,11 +303,7 @@ export class JoplinNoteCommandService {
     if (!title) {
       return
     }
-    const filePath = path.resolve(globalStoragePath, `tempResource/${title}`)
-    const dir = path.dirname(filePath)
-    if (!(await pathExists(dir))) {
-      await mkdirp(dir)
-    }
+    const filePath = path.resolve(globalStoragePath, `.tempResource/${title}`)
     await createEmptyFile(filePath)
     let { res, markdownLink } = await UploadResourceUtil.uploadFileByPath(filePath)
     // 如果是 svg 图片则作为图片插入
