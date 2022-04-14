@@ -1,6 +1,6 @@
 # Release Notes
 
-## 0.6.1
+## 0.7.0
 
 - build: release 0.6.1 beta
 - feat: Remove programProfilePath configuration, download resources via joplin api
