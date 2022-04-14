@@ -356,10 +356,6 @@
           "default": 41184,
           "description": "%configuration.joplin.port%"
         },
-        "joplin.programProfilePath": {
-          "type": "string",
-          "description": "%configuration.joplin.programProfilePath%"
-        },
         "joplin.deleteConfirm": {
           "type": "boolean",
           "default": true,
