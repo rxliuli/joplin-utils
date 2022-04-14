@@ -1,8 +1,26 @@
 # Release Notes
 
-## 0.7.0
+## 0.6.1
 
-- feat: support the use of extensions in remote development mode, ref: <https://github.com/rxliuli/joplin-utils/issues/26>
+- build: release 0.6.1 beta
+- feat: Remove programProfilePath configuration, download resources via joplin api
+- refactor: no longer force title update when updating resources
+- fix: fix the bug that the title is forced to be renamed after the resource is modified
+- feat: support open resource, fix the sidebar will lose focus when click current note
+- feat: Implement editing resources (not finished)
+- fix: Fix the bug that resources can't be clicked immediately after they are created.
+- fix: fix the bug that the link inserted automatically when creating resources is wrong
+- fix: Fix the bug that mouse hovering and clicking jump to internal links and resources
+- fix: Fix the problem that image resources cannot be previewed.
+- fix: Fix the bug that you can't jump to the referenced notes in notes
+- refactor: use chokidar without binary dependencies instead of @parcel/watcher
+- refactor: no longer use NoteActionApi
+- refactor: some simple refactoring
+- (tag: joplin-blog@0.7.2) chore: remove nx, upgrade some dependencies
+- refactor: refactor directories and unit tests, move them to the right place
+- chore: replace rollup with esbuild for better performance
+- docs: update documentation, add links to online sites
+- feat: <https://github.com/rxliuli/joplin-utils/issues/26>
 
 ## 0.6.0
 
