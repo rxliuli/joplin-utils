@@ -1,5 +1,5 @@
 import { resourceApi } from '../../src'
-import { createReadStream, mkdirp, pathExistsSync, remove, writeFile, writeFileSync } from 'fs-extra'
+import { createReadStream, mkdirp, pathExistsSync, remove, stat, writeFile, writeFileSync } from 'fs-extra'
 import { resolve } from 'path'
 import { createTestResource } from './CreateTestResource'
 import * as path from 'path'
@@ -11,6 +11,11 @@ describe('test ResourceApi', () => {
   })
   afterAll(async () => {
     await resourceApi.remove(id)
+  })
+  const tempPath = path.resolve(__dirname, '.temp')
+  beforeEach(async () => {
+    await remove(tempPath)
+    await mkdirp(tempPath)
   })
   it('test list', async () => {
     const res = await resourceApi.list({ fields: ['id', 'title'] })
@@ -43,11 +48,6 @@ describe('test ResourceApi', () => {
     })
   })
   describe('test update', () => {
-    const tempPath = path.resolve(__dirname, '.temp')
-    beforeEach(async () => {
-      await remove(tempPath)
-      await mkdirp(tempPath)
-    })
     it('basic example', async () => {
       const title = `new title ${Date.now()}`
       const updateRes = await resourceApi.update({ id, title })
@@ -71,6 +71,16 @@ describe('test ResourceApi', () => {
       const res = await resourceApi.fileByResourceId(id)
       expect(res.toString()).toBe(content)
     })
+    it('update file only', async () => {
+      const content = 'test'
+      const txtPath = path.resolve(tempPath, 'test.txt')
+      await writeFile(txtPath, content)
+      const { title } = await resourceApi.get(id)
+      await resourceApi.update({ id, data: createReadStream(txtPath) })
+      const res = await resourceApi.fileByResourceId(id)
+      expect(res.toString()).toBe(content)
+      expect((await resourceApi.get(id)).title).toBe(title)
+    })
   })
   it('test remove ', async () => {
     const id = (await createTestResource()).id
@@ -80,12 +90,13 @@ describe('test ResourceApi', () => {
   it('test fileByResourceId', async () => {
     const res = await resourceApi.fileByResourceId(id)
     console.log(typeof res)
-    const path = resolve(__dirname, '../resource/resourcesByFileId.png')
-    writeFileSync(path, res)
+    const path = resolve(tempPath, 'resourcesByFileId.png')
+    await writeFile(path, res)
     expect(pathExistsSync(path)).toBeTruthy()
   })
   it('测试获取附件资源的大小', async () => {
-    console.log(await resourceApi.get(id))
-    console.log(await resourceApi.get(id, ['id', 'title', 'size']))
+    const res = await resourceApi.get(id, ['id', 'title', 'size'])
+    const stats = await stat(path.resolve(__dirname, '../resource/resourcesByFileId.png'))
+    expect(res.size).toEqual(stats.size)
   })
 })

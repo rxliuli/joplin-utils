@@ -79,7 +79,7 @@ export class JoplinNoteCommandService {
       }
       await resourceApi.update({
         id,
-        title: path.basename(filePath),
+        // title: path.basename(filePath),
         data: createReadStream(filePath),
       })
     })
