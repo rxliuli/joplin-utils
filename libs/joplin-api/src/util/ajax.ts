@@ -115,6 +115,7 @@ export class Ajax {
       data,
       ...config,
       method: 'delete',
+      responseType: 'text',
     })
   }
 

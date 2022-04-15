@@ -51,12 +51,7 @@ export class FolderApi {
   }
 
   async remove(id: string): Promise<string> {
-    return this.ajax.delete<string>(
-      `/folders/${id}`,
-      {},
-      // TODO 兼容一个 bug https://discourse.joplinapp.org/t/pre-release-v2-8-is-now-available-updated-14-april/25158/10?u=rxliuli
-      { responseType: 'text' },
-    )
+    return this.ajax.delete<string>(`/folders/${id}`)
   }
 
   async notesByFolderId(id: string): Promise<NoteGetRes[]>

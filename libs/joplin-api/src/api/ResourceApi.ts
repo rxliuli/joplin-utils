@@ -65,12 +65,7 @@ export class ResourceApi {
    * @param id
    */
   async remove(id: string): Promise<void> {
-    return await this.ajax.delete(
-      `/resources/${id}`,
-      {},
-      // TODO 兼容一个 bug https://discourse.joplinapp.org/t/pre-release-v2-8-is-now-available-updated-14-april/25158/10?u=rxliuli
-      { responseType: 'text' },
-    )
+    return await this.ajax.delete(`/resources/${id}`)
   }
 
   /**

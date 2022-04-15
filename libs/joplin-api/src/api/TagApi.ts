@@ -31,12 +31,7 @@ export class TagApi {
   }
 
   async remove(id: string): Promise<TagProperties> {
-    return await this.ajax.delete<TagProperties>(
-      `/tags/${id}`,
-      {},
-      // TODO 兼容一个 bug https://discourse.joplinapp.org/t/pre-release-v2-8-is-now-available-updated-14-april/25158/10?u=rxliuli
-      { responseType: 'text' },
-    )
+    return await this.ajax.delete<TagProperties>(`/tags/${id}`)
   }
 
   async notesByTagId({ id, ...others }: { id: string } & PageParam<TagProperties>): Promise<PageRes<NoteGetRes>> {

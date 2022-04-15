@@ -46,12 +46,7 @@ export class NoteApi {
   }
 
   async remove(id: string): Promise<void> {
-    return this.ajax.delete(
-      `/notes/${id}`,
-      {},
-      // TODO 兼容一个 bug
-      { responseType: 'text' },
-    )
+    return this.ajax.delete(`/notes/${id}`)
   }
 
   tagsById(id: string): Promise<TagGetRes[]> {
