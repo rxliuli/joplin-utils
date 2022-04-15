@@ -27,18 +27,12 @@ it('测试 buildList', () => {
   console.log(res)
 })
 
-const joplinConfig: Pick<typeof config, 'token' | 'port'> = {
-  token: process.env.token!,
-  port: Number.parseInt(process.env.port!),
-}
 const wikiDocsifyIntegrated = new WikiDocsifyIntegrated({
   tag: 'wiki',
   rootPath: path.resolve(__dirname, 'temp/docsify-example'),
 })
 
 describe('单独测试 WikiDocsifyIntegrated', () => {
-  config.token = joplinConfig.token
-  config.port = joplinConfig.port
   it('测试 buildSidebar', async () => {
     const sidebar = await wikiDocsifyIntegrated.buildSidebar()
     console.log(sidebar)
@@ -51,8 +45,8 @@ describe('单独测试 WikiDocsifyIntegrated', () => {
 it('集成 Application', async () => {
   const application = new Application(
     {
-      token: joplinConfig.token,
-      port: joplinConfig.port,
+      token: config.token,
+      baseUrl: config.baseUrl,
       tag: 'wiki',
     },
     wikiDocsifyIntegrated,

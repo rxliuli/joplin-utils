@@ -7,13 +7,11 @@
   "license": "MIT",
   "bin": "./bin.cjs",
   "scripts": {
-    "setup": "pnpm run gen-i18n && pnpm run pub",
+    "setup": "pnpm run gen-i18n && pnpm run build",
     "start": "ts-node src/bin.ts -h",
     "build": "rimraf dist && rollup -c",
     "dev": "rollup -cw",
-    "pub": "pnpm run build && pnpm install",
-    "gen-i18n": "i18next-dts-gen --dirs src/i18n",
-    "debug-test": "esno ./src/util/setupTestEnv.ts"
+    "gen-i18n": "i18next-dts-gen --dirs src/i18n"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

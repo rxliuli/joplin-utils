@@ -1,22 +1,12 @@
-import {
-  Application,
-  ApplicationConfig,
-  BaseIntegrated,
-} from '../blog/Application'
+import { Application, ApplicationConfig, BaseIntegrated } from '../blog/Application'
 import { BlogHexoIntegratedConfig } from '../blog/BlogHexoIntegrated'
 import path from 'path'
 import { pathExists, readJson } from 'fs-extra'
 import { figletPromise } from '../util/utils'
 import ora from 'ora'
 import { Command } from 'commander'
-import {
-  WikiDocsifyIntegrated,
-  WikiDocsifyIntegratedConfig,
-} from '../wiki/WikiDocsifyIntegrated'
-import {
-  WikiVuepressIntegrated,
-  WikiVuepressIntegratedConfig,
-} from '../wiki/WikiVuepressIntegrated'
+import { WikiDocsifyIntegrated, WikiDocsifyIntegratedConfig } from '../wiki/WikiDocsifyIntegrated'
+import { WikiVuepressIntegrated, WikiVuepressIntegratedConfig } from '../wiki/WikiVuepressIntegrated'
 import { i18n } from '../constants/i18n'
 import { getLanguage } from '../util/getLanguage'
 import { LanguageEnum } from '@liuli-util/i18next-util'
@@ -28,17 +18,16 @@ type JoplinBlogConfig = ApplicationConfig & {
 
 export class WikiCommanderProgram {
   private static async getBlogApplication(config: JoplinBlogConfig) {
+    if (!config.rootPath) {
+      config.rootPath = process.cwd()
+    }
     let integrated: BaseIntegrated
     switch (config.type) {
       case 'docsify':
-        integrated = new WikiDocsifyIntegrated(
-          config as WikiDocsifyIntegratedConfig,
-        )
+        integrated = new WikiDocsifyIntegrated(config as WikiDocsifyIntegratedConfig)
         break
       case 'vuepress':
-        integrated = new WikiVuepressIntegrated(
-          config as WikiVuepressIntegratedConfig,
-        )
+        integrated = new WikiVuepressIntegrated(config as WikiVuepressIntegratedConfig)
         break
       default:
         throw new Error(i18n.t('wiki.generate.errorType'))
@@ -100,11 +89,9 @@ export class WikiCommanderProgram {
     })
 
     spinner.start(i18n.t('common.readResourceAndTag.begin'))
-    const allNoteList = await app
-      .readNoteAttachmentsAndTags(arr)
-      .on('process', (options) => {
-        spinner.text = i18n.t('common.readResourceAndTag.process', options)
-      })
+    const allNoteList = await app.readNoteAttachmentsAndTags(arr).on('process', (options) => {
+      spinner.text = i18n.t('common.readResourceAndTag.process', options)
+    })
     spinner.text = i18n.t('common.readResourceAndTag.end')
     spinner.stopAndPersist()
 
@@ -116,17 +103,14 @@ export class WikiCommanderProgram {
     })
 
     spinner.start(i18n.t('common.cache.begin'))
-    const { noteList, resourceList, skipResourceCount, updateCache } =
-      await app.cache(allNoteList)
+    const { noteList, resourceList, skipResourceCount, updateCache } = await app.cache(allNoteList)
     const skipCount = allNoteList.length - noteList.length
     spinner.stopAndPersist({ text: i18n.t('common.cache.end', { skipCount }) })
 
     spinner.start(i18n.t('common.parse.begin'))
-    const replaceContentNoteList = await app
-      .parseAndWriteNotes(noteList)
-      .on('process', (options) => {
-        spinner.text = i18n.t('common.parse.process', options)
-      })
+    const replaceContentNoteList = await app.parseAndWriteNotes(noteList).on('process', (options) => {
+      spinner.text = i18n.t('common.parse.process', options)
+    })
     spinner.stopAndPersist({
       text: i18n.t('common.parse.end'),
     })
@@ -169,9 +153,7 @@ export const wikiCommander = () => {
   const wikiCommanderProgram = new WikiCommanderProgram()
   return new Command('wiki')
     .addCommand(
-      new Command('clean')
-        .description(i18n.t('common.cache.clean'))
-        .action(() => wikiCommanderProgram.clean()),
+      new Command('clean').description(i18n.t('common.cache.clean')).action(() => wikiCommanderProgram.clean()),
     )
     .description(i18n.t('wiki.description'))
     .action(() => wikiCommanderProgram.main())

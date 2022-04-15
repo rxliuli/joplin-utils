@@ -39,9 +39,9 @@ export interface BaseIntegrated {
 
 export interface ApplicationConfig {
   token: string
-  port?: number
-  // joplinProfilePath: string
+  baseUrl?: string
   tag: string
+  rootPath?: string
 }
 
 export type ProcessInfo = {
@@ -91,8 +91,9 @@ export class Application {
 
   async check(): Promise<Error | true> {
     try {
+      console.log('this.config: ', this.config)
       config.token = this.config.token
-      config.port = this.config.port || 41184
+      config.baseUrl = this.config.baseUrl ?? 'http://localhost:41184'
       await noteApi.list({ fields: ['id'], limit: 1 })
       return true
     } catch (e) {

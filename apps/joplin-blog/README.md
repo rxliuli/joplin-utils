@@ -19,17 +19,17 @@ CLI tool to publish Joplin notes as a static website, currently supports both bl
 
 ## Requirements
 
-- Install nodejs and yarn
+- Install nodejs and npm(installed by default)
 - Knowledge of command line
 - Understanding VSCode
 
 ## Use
 
 1. Navigate to the relevant directory at the command line
-2. Add dependencies `yarn add -D joplin-blog`.
+2. Add dependencies `npm i -D joplin-blog`.
 3. add a configuration file `.joplin-blog.json` (see [configuration](#configuration) for details)
 4. add an npm script file `"gen": "joplin-blog blog"` (if you want to generate a wiki then `"gen": "joplin-blog wiki"`)
-5. Run the command `yarn gen` 6.
+5. Run the command `npm run gen`
 6. Then you can see that the relevant directory already contains the notes and attached resources
 
 > Please add two files _.joplin-blog.json_ and _.joplin-cache.json_ to the _.gitignore_ ignore file, the former contains sensitive information `token`, the latter is automatically generated.
@@ -48,13 +48,13 @@ The supported frameworks have examples in the examples directory, which you can 
 
 public
 
-| configuration | type                    | description                                           |
-| ------------- | ----------------------- | ----------------------------------------------------- |
-| `type`        | `hexo/vuepress/docsify` | type of integrated blog                               |
-| `rootPath`    | `string`                | hexo/vuepress directory, which should normally be `.` |
-| `token`       | `string`                | joplin web clipper's token                            |
-| `port`        | `number`                | the port of the joplin web clipper, usually `41184`   |
-| `tag`         | `string`                | joplin's blog tag                                     |
+| Configuration | Type                    | Required | Description                                                          |
+| ------------- | ----------------------- | -------- | -------------------------------------------------------------------- |
+| `type`        | `hexo/vuepress/docsify` | yes      | type of integrated blog                                              |
+| `rootPath`    | `string`                | no       | hexo/vuepress directory, default is `.`                              |
+| `token`       | `string`                | yes      | token for joplin web clipper                                         |
+| `baseUrl`     | `string`                | no       | base path of joplin web clipper, default is `http://localhost:41184` |
+| `tag`         | `string`                | yes      | joplin's blog tag                                                    |
 
 hexo
 

@@ -7,10 +7,6 @@ import { mkdirp, remove } from 'fs-extra'
 import { cacheCommanderProgram } from '../../cli/CacheCommander'
 
 describe('测试 BlogJekyllIntegrated', () => {
-  const joplinConfig: typeof config = {
-    token: process.env.token!,
-    port: Number.parseInt(process.env.port!),
-  }
   const rootPath = path.resolve(__dirname, 'temp/jekyll-example')
   beforeEach(async () => {
     await remove(rootPath)
@@ -20,8 +16,8 @@ describe('测试 BlogJekyllIntegrated', () => {
   it('基本示例', async () => {
     const application = new Application(
       {
-        token: joplinConfig.token,
-        port: joplinConfig.port,
+        token: config.token,
+        baseUrl: config.baseUrl,
         tag: 'blog',
       },
       new BlogJekyllIntegrated({

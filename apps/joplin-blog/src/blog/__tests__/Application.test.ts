@@ -34,11 +34,7 @@ describe('测试 Application', () => {
 
   it('集成 HexoIntegrated', async () => {
     const application = new Application(
-      {
-        token: config.token,
-        port: config.port,
-        tag: 'blog',
-      },
+      { token: config.token, baseUrl: config.baseUrl, tag: 'blog' },
       new BlogHexoIntegrated({
         tag: 'blog',
         rootPath: path.resolve(__dirname, '.temp/hexo-example'),
@@ -57,7 +53,7 @@ describe('测试 Application', () => {
     const application = new Application(
       {
         token: config.token,
-        port: config.port,
+        baseUrl: config.baseUrl,
         tag: 'blog',
       },
       new BlogVuepressIntegrated({

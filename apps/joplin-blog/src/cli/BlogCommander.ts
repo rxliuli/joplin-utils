@@ -1,16 +1,6 @@
-import {
-  Application,
-  ApplicationConfig,
-  BaseIntegrated,
-} from '../blog/Application'
-import {
-  BlogHexoIntegrated,
-  BlogHexoIntegratedConfig,
-} from '../blog/BlogHexoIntegrated'
-import {
-  BlogVuepressIntegrated,
-  BlogVuepressIntegratedConfig,
-} from '../blog/BlogVuepressIntegrated'
+import { Application, ApplicationConfig, BaseIntegrated } from '../blog/Application'
+import { BlogHexoIntegrated, BlogHexoIntegratedConfig } from '../blog/BlogHexoIntegrated'
+import { BlogVuepressIntegrated, BlogVuepressIntegratedConfig } from '../blog/BlogVuepressIntegrated'
 import path from 'path'
 import { pathExists, readJson } from 'fs-extra'
 import { figletPromise } from '../util/utils'
@@ -19,10 +9,7 @@ import { Command } from 'commander'
 import { LanguageEnum } from '@liuli-util/i18next-util'
 import { i18n } from '../constants/i18n'
 import { getLanguage } from '../util/getLanguage'
-import {
-  BlogJekyllIntegrated,
-  BlogJekyllIntegratedConfig,
-} from '../blog/BlogJekyllIntegrated'
+import { BlogJekyllIntegrated, BlogJekyllIntegratedConfig } from '../blog/BlogJekyllIntegrated'
 
 type JoplinBlogConfig = ApplicationConfig & {
   type: 'hexo' | 'vuepress' | 'jekyll'
@@ -31,20 +18,17 @@ type JoplinBlogConfig = ApplicationConfig & {
 
 export class BlogCommanderProgram {
   private static async getBlogApplication(config: JoplinBlogConfig) {
+    config.rootPath = config.rootPath ?? process.cwd()
     let integrated: BaseIntegrated
     switch (config.type) {
       case 'hexo':
         integrated = new BlogHexoIntegrated(config as BlogHexoIntegratedConfig)
         break
       case 'vuepress':
-        integrated = new BlogVuepressIntegrated(
-          config as BlogVuepressIntegratedConfig,
-        )
+        integrated = new BlogVuepressIntegrated(config as BlogVuepressIntegratedConfig)
         break
       case 'jekyll':
-        integrated = new BlogJekyllIntegrated(
-          config as BlogJekyllIntegratedConfig,
-        )
+        integrated = new BlogJekyllIntegrated(config as BlogJekyllIntegratedConfig)
         break
       default:
         throw new Error(i18n.t('blog.generate.errorType'))
@@ -104,11 +88,9 @@ export class BlogCommanderProgram {
     })
 
     spinner.start(i18n.t('common.readResourceAndTag.begin'))
-    const allNoteList = await app
-      .readNoteAttachmentsAndTags(arr)
-      .on('process', (options) => {
-        spinner.text = i18n.t('common.readResourceAndTag.process', options)
-      })
+    const allNoteList = await app.readNoteAttachmentsAndTags(arr).on('process', (options) => {
+      spinner.text = i18n.t('common.readResourceAndTag.process', options)
+    })
     spinner.text = i18n.t('common.readResourceAndTag.end')
     spinner.stopAndPersist()
 
@@ -121,17 +103,14 @@ export class BlogCommanderProgram {
 
     // noinspection DuplicatedCode
     spinner.start(i18n.t('common.cache.begin'))
-    const { noteList, resourceList, skipResourceCount, updateCache } =
-      await app.cache(allNoteList)
+    const { noteList, resourceList, skipResourceCount, updateCache } = await app.cache(allNoteList)
     const skipCount = allNoteList.length - noteList.length
     spinner.stopAndPersist({ text: i18n.t('common.cache.end', { skipCount }) })
 
     spinner.start(i18n.t('common.parse.begin'))
-    const replaceContentNoteList = await app
-      .parseAndWriteNotes(noteList)
-      .on('process', (options) => {
-        spinner.text = i18n.t('common.parse.process', options)
-      })
+    const replaceContentNoteList = await app.parseAndWriteNotes(noteList).on('process', (options) => {
+      spinner.text = i18n.t('common.parse.process', options)
+    })
     spinner.stopAndPersist({
       text: i18n.t('common.parse.end'),
     })
@@ -173,9 +152,7 @@ export const blogCommander = () => {
   const blogCommanderProgram = new BlogCommanderProgram()
   return new Command('blog')
     .addCommand(
-      new Command('clean')
-        .description(i18n.t('common.cache.clean'))
-        .action(() => blogCommanderProgram.clean()),
+      new Command('clean').description(i18n.t('common.cache.clean')).action(() => blogCommanderProgram.clean()),
     )
     .description(i18n.t('blog.description'))
     .action(() => blogCommanderProgram.main())

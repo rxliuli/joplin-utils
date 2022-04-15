@@ -17,17 +17,17 @@
 
 ## 要求
 
-- 安装 nodejs 和 yarn
+- 安装 nodejs 和 npm（默认随附安装）
 - 了解命令行
 - 了解 VSCode
 
 ## 使用
 
 1. 在命令行导航到相关目录
-2. 添加依赖 `yarn add -D joplin-blog`
+2. 添加依赖 `npm i -D joplin-blog`
 3. 添加配置文件 `.joplin-blog.json`（具体配置参考 [配置](#配置)）
 4. 添加一个 npm script 脚本文件 `"gen": "joplin-blog blog"`（如果是要生成 wiki 则 `"gen": "joplin-blog wiki"`）
-5. 运行命令 `yarn gen`
+5. 运行命令 `npm run gen`
 6. 然后可以看到相关目录已经包含了笔记和附件资源
 
 > 请将 _.joplin-blog.json_ 和 _.joplin-cache.json_ 两个文件添加到 _.gitignore_ 忽略文件中，前者包含敏感信息 `token`，后者是自动生成。
@@ -46,13 +46,13 @@
 
 公共
 
-| 配置       | 类型                    | 说明                                      |
-| ---------- | ----------------------- | ----------------------------------------- |
-| `type`     | `hexo/vuepress/docsify` | 集成博客的类型                            |
-| `rootPath` | `string`                | hexo/vuepress 目录，一般应该为 `.`        |
-| `token`    | `string`                | joplin web clipper 的 token               |
-| `port`     | `number`                | joplin web clipper 的端口，一般是 `41184` |
-| `tag`      | `string`                | joplin 的博客标签                         |
+| 配置       | 类型                    | 必填 | 说明                                                           |
+| ---------- | ----------------------- | ---- | -------------------------------------------------------------- |
+| `type`     | `hexo/vuepress/docsify` | 是   | 集成博客的类型                                                 |
+| `rootPath` | `string`                | 否   | hexo/vuepress 目录，默认是 `.`                                 |
+| `token`    | `string`                | 是   | joplin web clipper 的 token                                    |
+| `baseUrl`  | `string`                | 否   | joplin web clipper 的基础路径，默认是 `http://localhost:41184` |
+| `tag`      | `string`                | 是   | joplin 的博客标签                                              |
 
 hexo
 
