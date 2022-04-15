@@ -16,7 +16,7 @@ export const SettingsView: React.FC = () => {
     console.log('onFinish: ', values)
     try {
       joplinApiGenerator.token = values.token
-      joplinApiGenerator.port = values.port
+      joplinApiGenerator.baseUrl = values.baseUrl
       await joplinApiGenerator.noteApi.list({ limit: 1 })
       setSettings(values)
       message.success(i18n.t('settings.msg.success'))
@@ -35,25 +35,18 @@ export const SettingsView: React.FC = () => {
         form={form}
         onFinish={onFinish}
         initialValues={
-          {
-            token: settings?.token,
-            port: settings?.port ?? 41184,
-          } as Partial<Config>
+          { token: settings?.token, baseUrl: settings?.baseUrl ?? 'http://localhost:41184' } as Partial<Config>
         }
       >
         <Form.Item
-          name={'token' as keyof Config}
-          label={i18n.t('settings.form.token')}
+          name={'baseUrl' as keyof Config}
+          label={i18n.t('settings.form.baseUrl')}
           rules={[{ required: true }]}
         >
-          <Input type={'password'} />
+          <Input type={'url'} />
         </Form.Item>
-        <Form.Item
-          name={'port' as keyof Config}
-          label={i18n.t('settings.form.port')}
-          rules={[{ required: true }]}
-        >
-          <Input type={'number'} />
+        <Form.Item name={'token' as keyof Config} label={i18n.t('settings.form.token')} rules={[{ required: true }]}>
+          <Input.Password />
         </Form.Item>
         <Form.Item>
           <Button type={'primary'} htmlType={'submit'}>

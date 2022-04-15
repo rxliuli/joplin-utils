@@ -30,7 +30,7 @@
     "preset": "ts-jest"
   },
   "devDependencies": {
-    "@liuli-util/cli": "^3.19.2",
+    "@liuli-util/cli": "^3.21.0",
     "jest": "^27.2.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.7",

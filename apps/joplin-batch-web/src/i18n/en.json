@@ -6,7 +6,7 @@
   "home.title": "Home",
   "settings.title": "Security Settings",
   "settings.form.token": "Authorization token",
-  "settings.form.port": "Port",
+  "settings.form.baseUrl": "The base path of the joplin web service",
   "settings.action.submit": "Submit",
   "settings.msg.success": "Setup was successful",
   "settings.msg.error": "Unable to access joplin web clipper api",

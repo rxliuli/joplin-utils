@@ -43,7 +43,7 @@
     ]
   },
   "devDependencies": {
-    "@liuli-util/cli": "^3.19.2",
+    "@liuli-util/cli": "^3.21.0",
     "@liuli-util/eslint-config-ts": "^0.2.0",
     "@types/fs-extra": "^9.0.4",
     "@types/jest": "^27.0.2",

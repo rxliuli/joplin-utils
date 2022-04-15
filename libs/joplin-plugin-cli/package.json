@@ -34,7 +34,7 @@
     "preset": "ts-jest"
   },
   "dependencies": {
-    "@liuli-util/cli": "^3.19.2",
+    "@liuli-util/cli": "^3.21.0",
     "esbuild": "^0.12.28",
     "glob": "^7.1.6",
     "glob-promise": "^4.2.2"

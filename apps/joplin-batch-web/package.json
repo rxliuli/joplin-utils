@@ -10,8 +10,8 @@
   },
   "deploy": {
     "type": "gh-pages",
-    "dest": "dist",
-    "remote": "/web/joplin-batch-web"
+    "dist": "dist",
+    "dest": "/web/joplin-batch-web"
   },
   "jest": {
     "preset": "ts-jest"
@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.5",
+    "@liuli-util/cli": "^3.21.0",
     "@liuli-util/eslint-config-react-ts": "^0.1.0",
     "@liuli-util/i18next-dts-gen": "^0.3.3",
     "@liuli-util/rollup-plugin-i18next-dts-gen": "^0.1.0",

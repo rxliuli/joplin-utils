@@ -22,7 +22,7 @@ export default defineConfig({
       dirs: ['src/i18n'],
     }),
     checker({ typescript: true }),
-  ],
+  ] as any,
   css: {
     preprocessorOptions: {
       less: {

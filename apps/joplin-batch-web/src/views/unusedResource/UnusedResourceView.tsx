@@ -15,29 +15,22 @@ const unusedResourceService = new UnusedResourceService(joplinApiGenerator)
 
 function resourceUrlBuilder(getConfig: () => Config | null | undefined) {
   const settings = getConfig()
-  return (id: string) =>
-    `http://localhost:${settings?.port}/resources/${id}/file?token=${settings?.token}`
+  return (id: string) => `${settings?.baseUrl}/resources/${id}/file?token=${settings?.token}`
 }
 
-export const buildResourceUrl = resourceUrlBuilder(
-  () => proxyStorage<{ settings: Config }>(localStorage).settings,
-)
+export const buildResourceUrl = resourceUrlBuilder(() => proxyStorage<{ settings: Config }>(localStorage).settings)
 
 /**
  * 检查未使用的资源
  */
 export const UnusedResourceView: React.FC = () => {
-  const [list, setList] = useState<
-    Pick<ResourceProperties, 'id' | 'title' | 'mime'>[]
-  >([])
+  const [list, setList] = useState<Pick<ResourceProperties, 'id' | 'title' | 'mime'>[]>([])
   const [loadingMsg, setLoadingMsg] = useState('')
   const [state, onCheck] = useAsyncFn(async () => {
     try {
-      const list = await unusedResourceService
-        .getUnusedResource()
-        .on('process', (info) => {
-          setLoadingMsg(i18n.t('unusedResource.msg.process', info))
-        })
+      const list = await unusedResourceService.getUnusedResource().on('process', (info) => {
+        setLoadingMsg(i18n.t('unusedResource.msg.process', info))
+      })
       console.log('list: ', list)
       setList(list)
     } catch (e) {
@@ -67,12 +60,7 @@ export const UnusedResourceView: React.FC = () => {
       extra={
         <Space>
           <Button onClick={onCheck}>{i18n.t('common.action.check')}</Button>
-          <Button
-            disabled={list.length === 0}
-            danger={true}
-            loading={onRemoveAllState.loading}
-            onClick={onRemoveAll}
-          >
+          <Button disabled={list.length === 0} danger={true} loading={onRemoveAllState.loading} onClick={onRemoveAll}>
             {i18n.t('unusedResource.action.removeAll')}
           </Button>
         </Space>
@@ -87,18 +75,10 @@ export const UnusedResourceView: React.FC = () => {
           <List.Item
             key={item.id}
             actions={[
-              <Button onClick={() => onRemoveResource(item.id)}>
-                {i18n.t('common.action.remove')}
-              </Button>,
-              <Button onClick={() => onOpenResource(item.id)}>
-                {i18n.t('common.action.download')}
-              </Button>,
+              <Button onClick={() => onRemoveResource(item.id)}>{i18n.t('common.action.remove')}</Button>,
+              <Button onClick={() => onOpenResource(item.id)}>{i18n.t('common.action.download')}</Button>,
             ]}
-            extra={
-              item.mime.startsWith('image/') && (
-                <Image src={buildResourceUrl(item.id)} width={300} />
-              )
-            }
+            extra={item.mime.startsWith('image/') && <Image src={buildResourceUrl(item.id)} width={300} />}
           >
             <List.Item.Meta title={item.title} />
           </List.Item>

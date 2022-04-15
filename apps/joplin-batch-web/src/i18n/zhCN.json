@@ -6,7 +6,7 @@
   "home.title": "首页",
   "settings.title": "安全设置",
   "settings.form.token": "授权令牌",
-  "settings.form.port": "端口",
+  "settings.form.baseUrl": "joplin web 服务的基本路径",
   "settings.action.submit": "提交",
   "settings.msg.success": "设置成功",
   "settings.msg.error": "无法访问 joplin web clipper api",
