@@ -12,8 +12,7 @@ export enum SortOrderEnum {
 
 export class AppConfig {
   token?: string
-  port!: number
-  programProfilePath?: string
+  baseUrl!: string
   deleteConfirm?: boolean
   sortNotes?: boolean
   sortNotesType?: SortNotesTypeEnum
@@ -25,8 +24,7 @@ export class AppConfig {
   loadConfig() {
     const config = vscode.workspace.getConfiguration('joplin')
     this.token = config.token
-    this.port = config.port
-    this.programProfilePath = config.programProfilePath
+    this.baseUrl = config.baseUrl
     this.deleteConfirm = config.deleteConfirm
     this.sortNotes = config.sortNotes
     this.sortNotesType = config.sortNotesType
@@ -36,12 +34,10 @@ export class AppConfig {
         'loadConfig: ',
         '\ntoken: ',
         this.token,
-        '\nport: ',
-        this.port,
+        '\nbaseUrl: ',
+        this.baseUrl,
         '\ndeleteConfirm: ',
         this.deleteConfirm,
-        '\nprogramProfilePath: ',
-        this.programProfilePath,
         '\nto Sort Notes: ',
         this.sortNotes,
         '\nsort Notes Type: ',
@@ -49,7 +45,6 @@ export class AppConfig {
         '\nsort Order: ',
         this.sortOrder,
       )
-      this.programProfilePath = process.env.JOPLIN_PROGRAM_PROFILE_PATH
     }
   }
 }

@@ -3,7 +3,7 @@
     "module": "ESNext",
     "target": "ES2017",
     "outDir": "dist",
-    "lib": ["es6", "ESNext", "DOM"],
+    "lib": ["ESNext"],
     "sourceMap": true,
     "rootDir": "src",
     "strict": true,
@@ -11,7 +11,9 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "moduleResolution": "Node",
-    "noEmit": true
+    "noEmit": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true
     /* Additional Checks */
     // "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
     // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */

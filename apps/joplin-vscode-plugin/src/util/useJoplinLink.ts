@@ -1,5 +1,5 @@
 import MarkdownIt from 'markdown-it'
-import { TypeEnum } from 'joplin-api'
+import { Config, TypeEnum } from 'joplin-api'
 import { JoplinLinkRegex } from './constant'
 import { ResourceGetRes } from 'joplin-api/dist/modal/ResourceGetRes'
 
@@ -50,7 +50,7 @@ export function useJoplinLink(openNoteResourceMap: Map<string, ResourceGetRes[]>
   }
 }
 
-export function useJoplinImage(config: { token: string; port: number }) {
+export function useJoplinImage(config: Config) {
   return (md: MarkdownIt) => {
     const defaultRender =
       md.renderer.rules.link_open ||
@@ -65,7 +65,7 @@ export function useJoplinImage(config: { token: string; port: number }) {
         // 匹配 joplin 内部资源
         if (JoplinLinkRegex.test(linkUrl)) {
           const id = linkUrl.match(JoplinLinkRegex)![1]
-          tokens[idx].attrs![aIndex][1] = `http://localhost:${config.port}/resources/${id}/file?token=${config.token}`
+          tokens[idx].attrs![aIndex][1] = `${config.baseUrl}/resources/${id}/file?token=${config.token}`
         }
       }
 

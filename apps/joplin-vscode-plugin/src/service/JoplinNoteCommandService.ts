@@ -48,7 +48,7 @@ export class JoplinNoteCommandService {
       return
     }
     config.token = appConfig.token
-    config.port = appConfig.port
+    config.baseUrl = appConfig.baseUrl
 
     setInterval(async () => {
       await this.config.noteViewProvider.refresh()

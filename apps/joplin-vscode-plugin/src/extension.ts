@@ -117,7 +117,7 @@ export async function activate(context: vscode.ExtensionContext) {
       return md.use(useJoplinLink(GlobalContext.openNoteResourceMap)).use(
         useJoplinImage({
           token: appConfig.token!,
-          port: appConfig.port!,
+          baseUrl: appConfig.baseUrl!,
         }),
       )
     },

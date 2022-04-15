@@ -7,7 +7,7 @@ describe('测试 markdown-it', () => {
   it('基本示例', () => {
     const md = new MarkdownIt()
     md.use(useJoplinLink(new Map().set('id', [{ id: '5783eb31e1924a4f9bc0023483f5ab13' }]))).use(
-      useJoplinImage({ token: '', port: 41488 }),
+      useJoplinImage({ token: '', baseUrl: 'http://localhost:41488' }),
     )
     const res = md.render(`# test 2
 

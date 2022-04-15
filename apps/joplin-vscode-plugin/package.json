@@ -351,10 +351,10 @@
           "type": "string",
           "description": "%configuration.joplin.token%"
         },
-        "joplin.port": {
-          "type": "number",
-          "default": 41184,
-          "description": "%configuration.joplin.port%"
+        "joplin.baseUrl": {
+          "type": "string",
+          "default": "http://localhost:41184",
+          "description": "%configuration.joplin.baseUrl%"
         },
         "joplin.deleteConfirm": {
           "type": "boolean",

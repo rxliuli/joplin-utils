@@ -23,7 +23,7 @@
   "commands.joplinNote.createResource": "Create attachment resources",
   "commands.joplinNote.removeResource": "Delete attachment",
   "configuration.joplin.token": "joplin web server token",
-  "configuration.joplin.port": "joplin web service port, default is 41184",
+  "configuration.joplin.baseUrl": "The base path of the joplin web service, defaults to http://localhost:41184",
   "configuration.joplin.programProfilePath": "Personal directory for joplin programs",
   "configuration.joplin.deleteConfirm": "Whether to remind when deleting",
   "configuration.joplin.sortNotes": "Whether to sort notes.",

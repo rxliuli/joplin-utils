@@ -22,7 +22,7 @@
   "commands.joplinNote.createResource": "创建附件资源",
   "commands.joplinNote.removeResource": "删除附件",
   "configuration.joplin.token": "joplin web 服务的 token",
-  "configuration.joplin.port": "joplin web 服务的端口号, 默认为 41184",
+  "configuration.joplin.baseUrl": "joplin web 服务的基本路径, 默认为 http://localhost:41184",
   "configuration.joplin.programProfilePath": "joplin 程序的个人目录",
   "configuration.joplin.deleteConfirm": "删除时是否提醒",
   "configuration.joplin.sortNotes": "是否对笔记进行排序",
