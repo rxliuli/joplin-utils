@@ -2,12 +2,11 @@
 
 ## 0.7.1
 
-- chore: update vscode minimum compatible version to 1.66.2
-- chore: use the correct version
+- chore: update the minimum compatible version of vscode to 1.66.2 (the latest version)
+- refactor: remove axios dependency, refactor with fetch (reduce bundle size by about 50k)
 
 ## 0.7.0
 
-- build: release 0.6.1 beta
 - feat: Remove programProfilePath configuration, download resources via joplin api
 - refactor: no longer force title update when updating resources
 - fix: fix the bug that the title is forced to be renamed after the resource is modified
