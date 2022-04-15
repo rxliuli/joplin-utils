@@ -1,5 +1,10 @@
 # Release Notes
 
+## 0.7.1
+
+- chore: update vscode minimum compatible version to 1.66.2
+- chore: use the correct version
+
 ## 0.7.0
 
 - build: release 0.6.1 beta
@@ -16,7 +21,7 @@
 - refactor: use chokidar without binary dependencies instead of @parcel/watcher
 - refactor: no longer use NoteActionApi
 - refactor: some simple refactoring
-- (tag: joplin-blog@0.7.2) chore: remove nx, upgrade some dependencies
+- chore: remove nx, upgrade some dependencies
 - refactor: refactor directories and unit tests, move them to the right place
 - chore: replace rollup with esbuild for better performance
 - docs: update documentation, add links to online sites
