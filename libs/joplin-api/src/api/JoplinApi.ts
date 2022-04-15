@@ -2,11 +2,10 @@
 import { Ajax } from '../util/ajax'
 
 export class JoplinApi {
-  constructor(private ajax: Ajax) {
-  }
+  constructor(private ajax: Ajax) {}
 
   private async pingPort(port: number) {
-    const res = await this.ajax.request<string>({
+    const res = await this.ajax.request({
       url: `http://localhost:${port}/ping`,
       method: 'get',
       responseType: 'text',

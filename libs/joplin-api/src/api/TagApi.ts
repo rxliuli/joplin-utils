@@ -13,9 +13,7 @@ export class TagApi {
   async list<K extends keyof TagProperties>(
     pageParam: PageParam<TagProperties> & FieldsParam<K>,
   ): Promise<PageRes<Pick<TagProperties, K>>>
-  async list(
-    pageParam?: PageParam<TagProperties>,
-  ): Promise<PageRes<TagGetRes>> {
+  async list(pageParam?: PageParam<TagProperties>): Promise<PageRes<TagGetRes>> {
     return await this.ajax.get<PageRes<TagGetRes>>('/tags', pageParam)
   }
 
@@ -33,13 +31,15 @@ export class TagApi {
   }
 
   async remove(id: string): Promise<TagProperties> {
-    return await this.ajax.delete<TagProperties>(`/tags/${id}`)
+    return await this.ajax.delete<TagProperties>(
+      `/tags/${id}`,
+      {},
+      // TODO 兼容一个 bug https://discourse.joplinapp.org/t/pre-release-v2-8-is-now-available-updated-14-april/25158/10?u=rxliuli
+      { responseType: 'text' },
+    )
   }
 
-  async notesByTagId({
-    id,
-    ...others
-  }: { id: string } & PageParam<TagProperties>): Promise<PageRes<NoteGetRes>> {
+  async notesByTagId({ id, ...others }: { id: string } & PageParam<TagProperties>): Promise<PageRes<NoteGetRes>> {
     return await this.ajax.get<PageRes<NoteGetRes>>(`/tags/${id}/notes`, others)
   }
 
@@ -48,16 +48,10 @@ export class TagApi {
    * @param tagId
    * @param noteId
    */
-  async addTagByNoteId(
-    tagId: string,
-    noteId: string,
-  ): Promise<NoteTagRelated | null> {
-    return await this.ajax.post<NoteTagRelated | null>(
-      `/tags/${tagId}/notes/`,
-      {
-        id: noteId,
-      },
-    )
+  async addTagByNoteId(tagId: string, noteId: string): Promise<NoteTagRelated | null> {
+    return await this.ajax.post<NoteTagRelated | null>(`/tags/${tagId}/notes/`, {
+      id: noteId,
+    })
   }
 
   async removeTagByNoteId(tagId: string, noteId: string): Promise<void> {

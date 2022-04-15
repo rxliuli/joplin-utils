@@ -60,7 +60,6 @@
   },
   "dependencies": {
     "@liuli-util/object": "^3.2.7",
-    "axios": "^0.21.0",
     "form-data": "^4.0.0",
     "node-fetch": "^2.6.1",
     "query-string": "^6.13.7"

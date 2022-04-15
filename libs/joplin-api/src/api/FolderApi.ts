@@ -24,10 +24,7 @@ export class FolderApi {
   async list<K extends keyof FolderProperties = keyof FolderListRes>(
     pageParam: PageParam<FolderProperties> & FieldsParam<K>,
   ): Promise<PageRes<Pick<FolderProperties, K>>>
-  async list(
-    pageParam?: PageParam<FolderProperties> &
-      FieldsParam<keyof FolderProperties>,
-  ) {
+  async list(pageParam?: PageParam<FolderProperties> & FieldsParam<keyof FolderProperties>) {
     return this.ajax.get<PageRes<FolderListRes>>('/folders', pageParam)
   }
 
@@ -44,21 +41,22 @@ export class FolderApi {
     return this.ajax.get<FolderGetRes>(`/folders/${id}`)
   }
 
-  async create(
-    param: RequiredField<Partial<FolderProperties>, 'title'>,
-  ): Promise<FolderCreateRes> {
+  async create(param: RequiredField<Partial<FolderProperties>, 'title'>): Promise<FolderCreateRes> {
     return this.ajax.post<FolderCreateRes>(`/folders`, param)
   }
 
-  async update(
-    param: RequiredField<Partial<FolderProperties>, 'id'>,
-  ): Promise<FolderUpdateRes> {
+  async update(param: RequiredField<Partial<FolderProperties>, 'id'>): Promise<FolderUpdateRes> {
     const { id, ...others } = param
     return this.ajax.put<FolderUpdateRes>(`/folders/${id}`, others)
   }
 
   async remove(id: string): Promise<string> {
-    return this.ajax.delete<string>(`/folders/${id}`)
+    return this.ajax.delete<string>(
+      `/folders/${id}`,
+      {},
+      // TODO 兼容一个 bug https://discourse.joplinapp.org/t/pre-release-v2-8-is-now-available-updated-14-april/25158/10?u=rxliuli
+      { responseType: 'text' },
+    )
   }
 
   async notesByFolderId(id: string): Promise<NoteGetRes[]>
@@ -71,11 +69,7 @@ export class FolderApi {
     fields?: K[],
   ): Promise<Pick<NoteProperties, K>[]> {
     return await PageUtil.pageToAllList(
-      ({ id, ...others }) =>
-        this.ajax.get<PageRes<Pick<NoteProperties, K>>>(
-          `/folders/${id}/notes`,
-          others,
-        ),
+      ({ id, ...others }) => this.ajax.get<PageRes<Pick<NoteProperties, K>>>(`/folders/${id}/notes`, others),
       { id, fields } as PageParam<Pick<NoteProperties, K>> & { id: string },
     )
   }
