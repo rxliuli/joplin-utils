@@ -26,7 +26,7 @@
     "@types/react-dom": "^17.0.14",
     "classnames": "^2.3.1",
     "hast-util-has-property": "^2.0.0",
-    "joplin-api": "workspace:^0.3.3",
+    "joplin-api": "workspace:*",
     "markdown-it": "^12.3.2",
     "normalize.css": "^8.0.1",
     "prettier": "^2.6.1",

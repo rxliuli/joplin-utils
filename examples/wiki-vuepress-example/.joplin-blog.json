@@ -1,9 +1,7 @@
 {
   "type": "vuepress",
-  "language": "en",
   "rootPath": "docs",
-  "joplinProfilePath": "C:/Users/rxliuli/.config/joplindev-desktop",
-  "token": "ed716b75cc0dc481a3a4dc39555a469b5e4ca856a705071a36d3eabf53faf9ba10ed9ed944679b442abb167b09d9747a2e76179033afc614d40c2e646e36e401",
+  "token": "5bcfa49330788dd68efea27a0a133d2df24df68c3fd78731eaa9914ef34811a34a782233025ed8a651677ec303de6a04e54b57a27d48898ff043fd812d8e0b31",
   "port": 27583,
   "tag": "wiki"
 }

@@ -25,9 +25,9 @@
     "@liuli-util/prettier-standard-config": "^0.2.0",
     "lint-staged": "^11.2.6",
     "patch-package": "^6.4.7",
-    "prettier": "^2.6.1",
+    "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.70.1",
+    "rollup": "^2.70.2",
     "simple-git-hooks": "^2.7.0",
     "type-fest": "^1.4.0",
     "typescript": "4.2.4"

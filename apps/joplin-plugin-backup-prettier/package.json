@@ -29,7 +29,7 @@
     "@types/jest": "^26.0.23",
     "@types/node": "^14.0.14",
     "jest": "^27.0.4",
-    "joplin-api": "workspace:^0.3.3",
+    "joplin-api": "workspace:*",
     "joplin-plugin-api": "*",
     "joplin-plugin-cli": "workspace:^0.1.3",
     "rollup": "^2.55.0",
