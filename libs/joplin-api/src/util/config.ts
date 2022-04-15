@@ -1,4 +1,4 @@
 export class Config {
-  port = 41184
+  baseUrl = 'http://localhost:41184'
   token = ''
 }

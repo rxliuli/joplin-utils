@@ -71,16 +71,11 @@ export class Ajax {
   }
 
   baseUrl(url: string, param?: object): string {
-    const query = stringify(
-      {
-        ...param,
-        ...this.config,
-      },
-      {
-        arrayFormat: 'comma',
-      },
-    )
-    return `http://localhost:${this.config.port}${url}?${query}`
+    const query = stringify({ ...param, token: this.config.token }, { arrayFormat: 'comma' })
+    const baseUrl = this.config.baseUrl.endsWith('/')
+      ? this.config.baseUrl.slice(0, this.config.baseUrl.length - 1)
+      : this.config.baseUrl
+    return `${baseUrl}${url}?${query}`
   }
 
   get<R>(url: string, data?: any, config?: Omit<AjaxConfig, 'url' | 'data' | 'method'>): Promise<R> {

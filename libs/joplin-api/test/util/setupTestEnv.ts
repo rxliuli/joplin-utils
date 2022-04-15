@@ -4,7 +4,7 @@ import { parse } from 'envfile'
 import * as path from 'path'
 
 export async function setupTestEnv() {
-  config.port = 27583
+  config.baseUrl = 'http://localhost:27583'
   const envPath = path.resolve(__dirname, '.env.local')
   if (!(await pathExists(envPath))) {
     throw new Error('请更新 .env.local 文件：' + envPath)

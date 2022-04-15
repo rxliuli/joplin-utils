@@ -16,20 +16,20 @@ import { EventApi } from './EventApi'
 export class JoplinApiGenerator {
   private config: Config = new Config()
 
+  set baseUrl(baseUrl: string) {
+    this.config.baseUrl = baseUrl
+  }
+
+  get baseUrl() {
+    return this.config.baseUrl
+  }
+
   set token(token: string) {
     this.config.token = token
   }
 
-  set port(port: number) {
-    this.config.port = port
-  }
-
   get token() {
     return this.config.token
-  }
-
-  get port() {
-    return this.config.port
   }
 
   readonly ajax = new Ajax(this.config)
@@ -69,7 +69,7 @@ export const {
 /**
  * 兼容之前的类型
  */
-export const config: Pick<JoplinApiGenerator, 'token' | 'port'> = joplinApiGenerator
+export const config: Pick<JoplinApiGenerator, 'token' | 'baseUrl'> = joplinApiGenerator
 
 /**
  * @deprecated 已废弃，请使用 {@link noteActionApi}
