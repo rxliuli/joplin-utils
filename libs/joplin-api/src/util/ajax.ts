@@ -45,11 +45,8 @@ export class Ajax {
     }
     const config = { ...defaultConfig, ...ajaxConfig }
     const resp = await fetch(config.url, {
+      ...config,
       method: config.method,
-      headers: {
-        responseType: config.responseType,
-        ...config.headers,
-      },
       body: config.data instanceof FormData ? config.data : JSON.stringify(config.data),
     })
     if (!resp.ok) {
