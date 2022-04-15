@@ -13,12 +13,8 @@ class BlogJekyllSingleNoteHandler {
       layout: 'post',
       title: note.title,
       permalink: `/p/${note.id}`,
-      tags: note.tags
-        .map((tag) => tag.title)
-        .filter((name) => name !== this.config.tag),
-      date: DateTime.fromMillis(note.createdTime).toFormat(
-        'yyyy-LL-dd hh:mm:ss',
-      ),
+      tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
+      date: DateTime.fromMillis(note.createdTime).toFormat('yyyy-LL-dd hh:mm:ss'),
     }
   }
 }
@@ -29,11 +25,14 @@ export interface BlogJekyllIntegratedConfig {
 }
 
 export class BlogJekyllIntegrated implements BaseIntegrated {
-  constructor(private config: BlogJekyllIntegratedConfig) {}
+  readonly notePath: string
+  readonly resourcePath: string
+  constructor(private config: BlogJekyllIntegratedConfig) {
+    this.notePath = path.resolve(this.config.rootPath, `_posts/joplin/`)
+    this.resourcePath = path.resolve(this.config.rootPath, 'resource/')
+  }
 
-  async parse(
-    note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
-  ) {
+  async parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
     return JoplinMarkdownUtil.addMeta(
       await convertJoplinNote(note, {
         note: '/p/{id}',
@@ -43,8 +42,6 @@ export class BlogJekyllIntegrated implements BaseIntegrated {
     )
   }
 
-  notePath = path.resolve(this.config.rootPath, `_posts/joplin/`)
-  resourcePath = path.resolve(this.config.rootPath, 'resource/')
   formatFileName(id: string): string {
     return DateTime.now().toFormat('yyyy-LL-dd-') + id
   }

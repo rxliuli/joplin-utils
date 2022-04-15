@@ -48,14 +48,13 @@ The supported frameworks have examples in the examples directory, which you can 
 
 public
 
-| configuration       | type                    | description                                           |
-| ------------------- | ----------------------- | ----------------------------------------------------- |
-| `type`              | `hexo/vuepress/docsify` | type of integrated blog                               |
-| `rootPath`          | `string`                | hexo/vuepress directory, which should normally be `.` |
-| `joplinProfilePath` | `string`                | joplin personal folder                                |
-| `token`             | `string`                | joplin web clipper's token                            |
-| `port`              | `number`                | the port of the joplin web clipper, usually `41184`   |
-| `tag`               | `string`                | joplin's blog tag                                     |
+| configuration | type                    | description                                           |
+| ------------- | ----------------------- | ----------------------------------------------------- |
+| `type`        | `hexo/vuepress/docsify` | type of integrated blog                               |
+| `rootPath`    | `string`                | hexo/vuepress directory, which should normally be `.` |
+| `token`       | `string`                | joplin web clipper's token                            |
+| `port`        | `number`                | the port of the joplin web clipper, usually `41184`   |
+| `tag`         | `string`                | joplin's blog tag                                     |
 
 hexo
 
@@ -72,13 +71,6 @@ I've shared over 190 notes with this tool, [blog address (Chinese)](https://blog
 You can usually see it in **Tools > Options > Web Clipper**
 
 ![joplin web clipper](https://img.rxliuli.com/20210316092547.png)
-
-### Where is the joplin personal folder?
-
-Generally speaking, if you are using a portable program, it should be in the program directory in the `. /JoplinProfile`
-directory, and you should see the `resources, templates, tmp` directory in there.
-
-![joplinProfilePath](https://img.rxliuli.com/20210316092834.png)
 
 ### Why did the note id of the exported blog, wiki change?
 

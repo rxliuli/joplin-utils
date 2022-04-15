@@ -1,27 +1,27 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["ESNext"],
     "module": "ESNext",
-    "target": "es6",
-    "lib": [
-      "ESNext"
-    ],
-    "sourceMap": true,
-    "strict": true,
-    "rootDir": "src",
-    "outDir": "dist",
     "declaration": true,
     "declarationMap": true,
-    "resolveJsonModule": true,
+    "outDir": "./dist",
+    "strict": true,
+    "noImplicitAny": true,
     "esModuleInterop": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "noEmit": true,
     "skipLibCheck": true,
-    "moduleResolution": "Node"
+    "skipDefaultLibCheck": true,
+    "resolveJsonModule": true
   },
-  "exclude": [
-    "dist"
-  ],
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
+  "include": ["./src/**/*.ts"],
+  "exclude": ["./dist", "./node_modules"],
+  "typedocOptions": {
+    "entryPoints": ["src/index.ts"],
+    "out": "docs",
+    "readme": "README.md",
+    "gitRemote": "origin"
   }
 }

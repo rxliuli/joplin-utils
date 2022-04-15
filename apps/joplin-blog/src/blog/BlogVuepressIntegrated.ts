@@ -13,9 +13,7 @@ class BlogVuepressSingleNoteHandler {
     return {
       title: note.title,
       permalink: `/p/${note.id}`,
-      tags: note.tags
-        .map((tag) => tag.title)
-        .filter((name) => name !== this.config.tag),
+      tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
       date: DateTime.fromMillis(note.createdTime).toFormat(formatter),
       updated: DateTime.fromMillis(note.updatedTime).toFormat(formatter),
     }
@@ -31,11 +29,14 @@ export interface BlogVuepressIntegratedConfig {
 }
 
 export class BlogVuepressIntegrated implements BaseIntegrated {
-  constructor(private config: BlogVuepressIntegratedConfig) {}
+  readonly notePath: string
+  readonly resourcePath: string
+  constructor(private config: BlogVuepressIntegratedConfig) {
+    this.notePath = path.resolve(this.config.rootPath, '_posts')
+    this.resourcePath = path.resolve(this.config.rootPath, '_posts/resource')
+  }
 
-  async parse(
-    note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
-  ) {
+  async parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
     return JoplinMarkdownUtil.addMeta(
       await convertJoplinNote(note, {
         note: '/p/{id}',
@@ -44,7 +45,4 @@ export class BlogVuepressIntegrated implements BaseIntegrated {
       new BlogVuepressSingleNoteHandler(this.config).meta(note),
     )
   }
-
-  notePath = path.resolve(this.config.rootPath, '_posts')
-  resourcePath = path.resolve(this.config.rootPath, '_posts/resource')
 }

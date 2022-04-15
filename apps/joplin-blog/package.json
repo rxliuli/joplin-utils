@@ -12,13 +12,18 @@
     "build": "rimraf dist && rollup -c",
     "dev": "rollup -cw",
     "pub": "pnpm run build && pnpm install",
-    "gen-i18n": "i18next-dts-gen --dirs src/i18n"
+    "gen-i18n": "i18next-dts-gen --dirs src/i18n",
+    "debug-test": "esno ./src/util/setupTestEnv.ts"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
   "jest": {
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "<rootDir>./src/jest-start.ts"
+    ]
   },
   "devDependencies": {
     "@liuli-util/cli": "^3.19.2",
@@ -26,7 +31,6 @@
     "@rollup/plugin-json": "^4.1.0",
     "@types/figlet": "^1.5.0",
     "@types/fs-extra": "^9.0.6",
-    "@types/jest": "^26.0.19",
     "@types/lodash": "^4.14.166",
     "@types/luxon": "^1.25.0",
     "@types/node": "^12.19.11",
@@ -34,7 +38,8 @@
     "@types/shelljs": "^0.8.8",
     "@types/unist": "^2.0.3",
     "builtin-modules": "^3.2.0",
-    "jest": "^26.6.3",
+    "envfile": "^6.17.0",
+    "jest": "^27.5.1",
     "moment": "^2.29.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.55.0",
@@ -43,7 +48,7 @@
     "rollup-plugin-node-externals": "^2.2.0",
     "rollup-plugin-typescript2": "^0.30.0",
     "rollup-plugin-worker-threads": "^0.1.1",
-    "ts-jest": "^26.4.4",
+    "ts-jest": "^27.1.4",
     "ts-node": "^9.1.1",
     "tslib": "^2.0.3",
     "type-fest": "^1.1.1",
@@ -60,7 +65,7 @@
     "figlet": "^1.5.0",
     "fs-extra": "^9.0.1",
     "i18next": "^19.8.4",
-    "joplin-api": "^0.3.2",
+    "joplin-api": "workspace:*",
     "luxon": "^1.25.0",
     "mdast": "^3.0.0",
     "ora": "^5.4.0",

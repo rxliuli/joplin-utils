@@ -46,14 +46,13 @@
 
 公共
 
-| 配置                | 类型                    | 说明                                      |
-| ------------------- | ----------------------- | ----------------------------------------- |
-| `type`              | `hexo/vuepress/docsify` | 集成博客的类型                            |
-| `rootPath`          | `string`                | hexo/vuepress 目录，一般应该为 `.`        |
-| `joplinProfilePath` | `string`                | joplin 个人文件夹                         |
-| `token`             | `string`                | joplin web clipper 的 token               |
-| `port`              | `number`                | joplin web clipper 的端口，一般是 `41184` |
-| `tag`               | `string`                | joplin 的博客标签                         |
+| 配置       | 类型                    | 说明                                      |
+| ---------- | ----------------------- | ----------------------------------------- |
+| `type`     | `hexo/vuepress/docsify` | 集成博客的类型                            |
+| `rootPath` | `string`                | hexo/vuepress 目录，一般应该为 `.`        |
+| `token`    | `string`                | joplin web clipper 的 token               |
+| `port`     | `number`                | joplin web clipper 的端口，一般是 `41184` |
+| `tag`      | `string`                | joplin 的博客标签                         |
 
 hexo
 
@@ -70,12 +69,6 @@ hexo
 一般可以在 **工具 > 选项 > 网页剪辑器** 中看到
 
 ![joplin web clipper](https://img.rxliuli.com/20210316092547.png)
-
-### joplin 个人文件夹在哪儿？
-
-一般而言，如果你使用便携程序，它应该就是程序目录下的 `./JoplinProfile` 目录，你应该可以在其中看到 `resources、templates、tmp` 目录。
-
-![joplinProfilePath](https://img.rxliuli.com/20210316092834.png)
 
 ### 为什么导出的 blog、wiki 的笔记 id 变了？
 

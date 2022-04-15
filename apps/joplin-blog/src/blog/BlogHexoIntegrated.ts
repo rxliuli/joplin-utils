@@ -5,23 +5,17 @@ import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { convertJoplinNote } from './JoplinNoteHandler.worker'
 
 class BlogHexoSingleNoteHandler {
-  constructor(
-    private config: Pick<BlogHexoIntegratedConfig, 'stickyTopIdList' | 'tag'>,
-  ) {}
+  constructor(private config: Pick<BlogHexoIntegratedConfig, 'stickyTopIdList' | 'tag'>) {}
 
   meta(note: CommonNote & { tags: CommonTag[] }): object {
     return {
       layout: 'post',
       title: note.title,
       abbrlink: note.id,
-      tags: note.tags
-        .map((tag) => tag.title)
-        .filter((name) => name !== this.config.tag),
+      tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
       date: note.createdTime,
       updated: note.updatedTime,
-      sticky: this.config.stickyTopIdList?.includes(note.id)
-        ? Number.MAX_SAFE_INTEGER
-        : undefined,
+      sticky: this.config.stickyTopIdList?.includes(note.id) ? Number.MAX_SAFE_INTEGER : undefined,
     }
   }
 }
@@ -33,11 +27,14 @@ export interface BlogHexoIntegratedConfig {
 }
 
 export class BlogHexoIntegrated implements BaseIntegrated {
-  constructor(private config: BlogHexoIntegratedConfig) {}
+  readonly notePath: string
+  readonly resourcePath: string
+  constructor(private config: BlogHexoIntegratedConfig) {
+    this.notePath = path.resolve(this.config.rootPath, `source/_posts/`)
+    this.resourcePath = path.resolve(this.config.rootPath, 'source/resource')
+  }
 
-  async parse(
-    note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
-  ) {
+  async parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
     return JoplinMarkdownUtil.addMeta(
       await convertJoplinNote(note, {
         note: '/p/{id}',
@@ -46,7 +43,4 @@ export class BlogHexoIntegrated implements BaseIntegrated {
       new BlogHexoSingleNoteHandler(this.config).meta(note),
     )
   }
-
-  notePath = path.resolve(this.config.rootPath, `source/_posts/`)
-  resourcePath = path.resolve(this.config.rootPath, 'source/resource')
 }

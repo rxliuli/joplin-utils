@@ -1,18 +1,11 @@
 import { AsyncArray, asyncLimiting } from '@liuli-util/async'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import path from 'path'
-import { config, noteApi, PageUtil, searchApi, TypeEnum } from 'joplin-api'
+import { config, noteApi, PageUtil, resourceApi, searchApi, TypeEnum } from 'joplin-api'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { uniqueBy } from '@liuli-util/array'
 import { PromiseUtil } from '../util/PromiseUtil'
-import {
-  copyFile,
-  emptydir,
-  mkdirp,
-  readdir,
-  remove,
-  writeFile,
-} from 'fs-extra'
+import { emptydir, mkdirp, readdir, remove, writeFile } from 'fs-extra'
 import { CacheUtil } from '../util/CacheUtil'
 import { cacheCommanderProgram } from '../cli/CacheCommander'
 
@@ -21,9 +14,7 @@ export interface BaseIntegrated {
    * 解析笔记，得到一个替换后的笔记文本和一些资源
    * @param note
    */
-  parse(
-    note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
-  ): Promise<string> | string
+  parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }): Promise<string> | string
 
   /**
    * 初始化操作
@@ -49,7 +40,7 @@ export interface BaseIntegrated {
 export interface ApplicationConfig {
   token: string
   port?: number
-  joplinProfilePath: string
+  // joplinProfilePath: string
   tag: string
 }
 
@@ -75,22 +66,13 @@ export interface GeneratorEvents {
  * 入口程序
  */
 export class Application {
-  constructor(
-    readonly config: ApplicationConfig,
-    readonly handler: BaseIntegrated,
-  ) {}
+  constructor(readonly config: ApplicationConfig, readonly handler: BaseIntegrated) {}
 
   async filter() {
     const list = await PageUtil.pageToAllList((pageParam) =>
       searchApi.search({
         ...(pageParam as any),
-        fields: [
-          'id',
-          'title',
-          'body',
-          'user_created_time',
-          'user_updated_time',
-        ],
+        fields: ['id', 'title', 'body', 'user_created_time', 'user_updated_time'],
         type: TypeEnum.Note,
         query: `tag:${this.config.tag}`,
       }),
@@ -122,10 +104,7 @@ export class Application {
    * 初始化资源目录
    */
   async initDir() {
-    await Promise.all([
-      mkdirp(this.handler.notePath),
-      mkdirp(this.handler.resourcePath),
-    ])
+    await Promise.all([mkdirp(this.handler.notePath), mkdirp(this.handler.resourcePath)])
   }
 
   async cache<
@@ -141,12 +120,7 @@ export class Application {
       id: (item) => item.id + '-' + item.updatedTime,
     })
     await AsyncArray.forEach(noteDiff.remove, async (item) => {
-      await remove(
-        path.resolve(
-          this.handler.notePath,
-          (this.handler.formatFileName ?? ((id) => id))(item.id) + '.md',
-        ),
-      )
+      await remove(path.resolve(this.handler.notePath, (this.handler.formatFileName ?? ((id) => id))(item.id) + '.md'))
     })
     const allResourceList = uniqueBy(
       allNoteList.flatMap((item) => item.resources),
@@ -158,9 +132,9 @@ export class Application {
       id: (item) => item.id + '-' + item.user_updated_time,
     })
     const removeIdSet = new Set(resourceDiff.remove.map((item) => item.id))
-    const removeResourceFileNameList = (
-      await readdir(this.handler.resourcePath)
-    ).filter((fileName) => removeIdSet.has(path.basename(fileName)))
+    const removeResourceFileNameList = (await readdir(this.handler.resourcePath)).filter((fileName) =>
+      removeIdSet.has(path.basename(fileName)),
+    )
     await AsyncArray.forEach(removeResourceFileNameList, async (fileName) => {
       await remove(path.resolve(this.handler.resourcePath, fileName))
     })
@@ -178,10 +152,7 @@ export class Application {
   }
 
   async clean() {
-    await Promise.all([
-      emptydir(this.handler.notePath),
-      emptydir(this.handler.resourcePath),
-    ])
+    await Promise.all([emptydir(this.handler.notePath), emptydir(this.handler.resourcePath)])
     await cacheCommanderProgram.init()
   }
 
@@ -192,25 +163,14 @@ export class Application {
       const arr = await this.filter()
       console.log(`一共有 ${arr.length} 个笔记需要处理`)
       //读取笔记附件与标签
-      const allNoteList = await this.readNoteAttachmentsAndTags(arr).on(
-        'process',
-        events.readNoteAttachmentsAndTags,
-      )
+      const allNoteList = await this.readNoteAttachmentsAndTags(arr).on('process', events.readNoteAttachmentsAndTags)
       //初始化
       await this.initDir()
       await this.handler.init?.()
-      const { noteList, resourceList, updateCache } = await this.cache(
-        allNoteList,
-      )
+      const { noteList, resourceList, updateCache } = await this.cache(allNoteList)
       //解析并写入笔记
-      const replaceContentNoteList = await this.parseAndWriteNotes(noteList).on(
-        'process',
-        events.parseAndWriteNotes,
-      )
-      await this.writeNote(replaceContentNoteList).on(
-        'process',
-        events.writeNote,
-      )
+      const replaceContentNoteList = await this.parseAndWriteNotes(noteList).on('process', events.parseAndWriteNotes)
+      await this.writeNote(replaceContentNoteList).on('process', events.writeNote)
       //复制资源
       await this.copyResources(resourceList).on('process', events.copyResources)
       await updateCache()
@@ -230,9 +190,9 @@ export class Application {
             title: resource.title,
           })
           const fileName = resource.id + '.' + resource.file_extension
-          await copyFile(
-            path.resolve(this.config.joplinProfilePath, 'resources', fileName),
+          await writeFile(
             path.resolve(this.handler.resourcePath, fileName),
+            await resourceApi.fileByResourceId(resource.id),
           )
         }, 10),
       )
@@ -266,10 +226,7 @@ export class Application {
         i++
         events.process({ rate: i, all: noteList.length, title: item.title })
         await writeFile(
-          path.resolve(
-            this.handler.notePath,
-            (this.handler.formatFileName ?? ((id) => id))(item.id) + '.md',
-          ),
+          path.resolve(this.handler.notePath, (this.handler.formatFileName ?? ((id) => id))(item.id) + '.md'),
           item.text,
         )
       })
@@ -293,12 +250,7 @@ export class Application {
             title: note.title,
           })
           const [resources, tags] = await Promise.all([
-            noteApi.resourcesById(note.id, [
-              'id',
-              'title',
-              'file_extension',
-              'user_updated_time',
-            ]),
+            noteApi.resourcesById(note.id, ['id', 'title', 'file_extension', 'user_updated_time']),
             noteApi.tagsById(note.id),
           ])
           return {

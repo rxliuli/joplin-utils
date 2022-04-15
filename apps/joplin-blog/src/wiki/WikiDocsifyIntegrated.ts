@@ -13,13 +13,15 @@ export interface WikiDocsifyIntegratedConfig {
 }
 
 export class WikiDocsifyIntegrated implements BaseIntegrated {
-  constructor(private readonly config: WikiDocsifyIntegratedConfig) {}
+  readonly notePath: string
+  readonly resourcePath: string
+  constructor(private readonly config: WikiDocsifyIntegratedConfig) {
+    this.notePath = path.resolve(this.config.rootPath, `p/`)
+    this.resourcePath = path.resolve(this.config.rootPath, 'resource/')
+  }
 
   async init() {
-    await writeFile(
-      path.resolve(this.config.rootPath, '_sidebar.md'),
-      await this.buildSidebar(),
-    )
+    await writeFile(path.resolve(this.config.rootPath, '_sidebar.md'), await this.buildSidebar())
   }
 
   async buildSidebar() {
@@ -27,23 +29,15 @@ export class WikiDocsifyIntegrated implements BaseIntegrated {
     return buildList(tree, (id) => `/p/${id}`)
   }
 
-  async parse(
-    note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
-  ) {
+  async parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
     return await convertJoplinNote(note, {
       note: '/p/{id}',
       resource: '../resource/{id}.{file_extension}',
     })
   }
-
-  notePath = path.resolve(this.config.rootPath, `p/`)
-  resourcePath = path.resolve(this.config.rootPath, 'resource/')
 }
 
-export function buildList(
-  tree: ListNode[],
-  urlMap: (id: string) => string,
-): string {
+export function buildList(tree: ListNode[], urlMap: (id: string) => string): string {
   return treeMap(
     tree,
     (item, path): ListNode & { text: string } => {
@@ -53,13 +47,7 @@ export function buildList(
       if (!item.children) {
         text = prefix + `[${item.title}](${urlMap(item.id)})` + suffix
       } else {
-        text =
-          prefix +
-          item.title +
-          suffix +
-          item.children
-            .map((sub: ListNode & { text: string }) => sub.text)
-            .join('')
+        text = prefix + item.title + suffix + item.children.map((sub: ListNode & { text: string }) => sub.text).join('')
       }
       return {
         ...item,

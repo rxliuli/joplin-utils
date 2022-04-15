@@ -23,9 +23,6 @@ describe('测试 BlogJekyllIntegrated', () => {
         token: joplinConfig.token,
         port: joplinConfig.port,
         tag: 'blog',
-        joplinProfilePath: path.resolve(
-          'C:/Users/rxliuli/.config/joplindev-desktop',
-        ),
       },
       new BlogJekyllIntegrated({
         tag: 'blog',
@@ -36,10 +33,7 @@ describe('测试 BlogJekyllIntegrated', () => {
     const generatorEvents = new GeneratorEventsImpl()
     await application
       .gen()
-      .on(
-        'readNoteAttachmentsAndTags',
-        generatorEvents.readNoteAttachmentsAndTags,
-      )
+      .on('readNoteAttachmentsAndTags', generatorEvents.readNoteAttachmentsAndTags)
       .on('parseAndWriteNotes', generatorEvents.parseAndWriteNotes)
       .on('writeNote', generatorEvents.writeNote)
       .on('copyResources', generatorEvents.copyResources)

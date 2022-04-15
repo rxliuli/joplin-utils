@@ -31,19 +31,13 @@ it('集成 Application', async () => {
       token: joplinConfig.token,
       port: joplinConfig.port,
       tag: 'wiki',
-      joplinProfilePath: path.resolve(
-        'C:/Users/rxliuli/.config/joplindev-desktop',
-      ),
     },
     wikiVuepressIntegrated,
   )
   const generatorEvents = new GeneratorEventsImpl()
   await application
     .gen()
-    .on(
-      'readNoteAttachmentsAndTags',
-      generatorEvents.readNoteAttachmentsAndTags,
-    )
+    .on('readNoteAttachmentsAndTags', generatorEvents.readNoteAttachmentsAndTags)
     .on('parseAndWriteNotes', generatorEvents.parseAndWriteNotes)
     .on('writeNote', generatorEvents.writeNote)
     .on('copyResources', generatorEvents.copyResources)

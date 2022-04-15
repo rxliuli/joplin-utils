@@ -14,13 +14,15 @@ export interface WikiVuepressIntegratedConfig {
 }
 
 export class WikiVuepressIntegrated implements BaseIntegrated {
-  constructor(private readonly config: WikiVuepressIntegratedConfig) {}
+  readonly notePath: string
+  readonly resourcePath: string
+  constructor(private readonly config: WikiVuepressIntegratedConfig) {
+    this.notePath = path.resolve(this.config.rootPath, 'p')
+    this.resourcePath = path.resolve(this.config.rootPath, 'p/resource')
+  }
 
   async init() {
-    const sidebarConfigPath = path.resolve(
-      this.config.rootPath,
-      '.vuepress/sidebar.json',
-    )
+    const sidebarConfigPath = path.resolve(this.config.rootPath, '.vuepress/sidebar.json')
     await mkdirp(path.dirname(sidebarConfigPath))
     await writeJson(sidebarConfigPath, await this.buildSidebar(), {
       spaces: 2,
@@ -46,15 +48,10 @@ export class WikiVuepressIntegrated implements BaseIntegrated {
     )
   }
 
-  async parse(
-    note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
-  ) {
+  async parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
     return await convertJoplinNote(note, {
       note: '/p/{id}',
       resource: './resource/{id}.{file_extension}',
     })
   }
-
-  notePath = path.resolve(this.config.rootPath, 'p')
-  resourcePath = path.resolve(this.config.rootPath, 'p/resource')
 }
