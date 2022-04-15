@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.8.0
+
+- feat: set the target of typescript to esnext, which is only compatible with the latest version of nodejs lts by default
+- feat: remove the dependency on the local joplin resource location, download the resource to the local through the clipper api
+- refactor: updated joplin-api sdk, no longer depends on axios
+
 ## 0.7.2
 
 - fix: Modify bin.js => bin.cjs to force the use of commonjs to avoid errors in higher versions of nodejs
