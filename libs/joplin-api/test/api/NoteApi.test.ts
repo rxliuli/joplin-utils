@@ -124,4 +124,9 @@ describe('test JoplinApi', () => {
       console.log('time diff: ', time2 - time1, res.length)
     })
   })
+  describe('fix test', () => {
+    it('test get a not exist note', async () => {
+      await expect(noteApi.get('not_exist_note_id')).rejects.toThrowError()
+    })
+  })
 })

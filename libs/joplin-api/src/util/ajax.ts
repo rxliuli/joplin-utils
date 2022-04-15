@@ -38,10 +38,10 @@ export class Ajax {
    */
   async request(ajaxConfig: AjaxConfig): Promise<any> {
     if (typeof fetch === 'undefined') {
-      Reflect.set(globalValue, 'fetch', (await import('node-fetch')).default)
+      Reflect.set(globalValue, 'fetch', require('node-fetch'))
     }
     if (typeof FormData === 'undefined') {
-      Reflect.set(globalValue, 'FormData', (await import('form-data')).default)
+      Reflect.set(globalValue, 'FormData', require('form-data'))
     }
     const config = { ...defaultConfig, ...ajaxConfig }
     const resp = await fetch(config.url, {

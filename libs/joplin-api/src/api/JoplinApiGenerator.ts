@@ -24,6 +24,14 @@ export class JoplinApiGenerator {
     this.config.port = port
   }
 
+  get token() {
+    return this.config.token
+  }
+
+  get port() {
+    return this.config.port
+  }
+
   readonly ajax = new Ajax(this.config)
   readonly folderApi = new FolderApi(this.ajax)
   readonly folderExtApi = new FolderExtApi(this.ajax)

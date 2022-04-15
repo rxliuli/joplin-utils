@@ -1,4 +1,4 @@
-import { Config } from '../../src'
+import { Config, JoplinApiGenerator } from '../../src'
 
 class NoteApi {
   constructor(private config: Config) {}
@@ -45,5 +45,10 @@ describe('api test', function () {
     expect(noteApi.getConfig().token).toBe('')
     config.token = '1'
     expect(noteApi.getConfig().token).toBe('1')
+  })
+  it('test error token', async () => {
+    const api = new JoplinApiGenerator()
+    api.token = 'test'
+    await expect(api.noteApi.list()).rejects.toThrowError()
   })
 })
