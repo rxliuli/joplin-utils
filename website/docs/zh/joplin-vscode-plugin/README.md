@@ -14,8 +14,8 @@ Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，�
 
 ## 要求
 
-- Joplin 版本 > v1.4.19
-- VSCode 版本 > v1.45.0
+- Joplin 版本 > v2.8
+- VSCode 版本 > v1.66.2
 - 启用 Joplin Web Clipper
 - 熟悉 Joplin 和 VSCode 的基本使用方法
 
@@ -31,23 +31,17 @@ Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，�
 
 > 关于 Web Clipper 的帮助，请参考 [Joplin Web Clipper](https://joplinapp.org/clipper/)。
 
-要启动并运行，需要注意三个设置。
-
-端口
-
-- 从 Joplin 设置中复制端口号并粘贴到这里。启用 Web Clipper 后，会显示活动端口。
-  **网页剪辑 -> 第 1 步：启用网页剪辑服务 -> 状态**。
+要启动并运行，需要注意两个设置。
 
 授权令牌
 
 - 从 Joplin 设置中复制你的授权令牌并粘贴到这里。
   **网页剪辑 -> 高级选项 -> 拷贝 Token 令牌**。
 
-Joplin 程序的个人目录
+基本路径
 
-如果你希望使用附件相关功能，该设置是必须的。
-
-一般而言，如果你使用便携程序，它应该就是程序目录下的 `./JoplinProfile` 目录，你应该可以在其中看到 _resources_、_templates_、_tmp_ 目录。
+- 一般而言，如果你使用本地安装的 joplin 桌面客户端，则不需要特殊配置。如果使用远端的 joplin 服务，则需要进行配置。
+  例如 <http://localhost:41184>
 
 ![安装插件](../../.vuepress/public/images/joplin-settings.png)
 

@@ -14,8 +14,8 @@ Joplin Web Clipper is designed to communicate with browser extensions by sharing
 
 ## Requirements
 
-- Joplin version > v1.4.19
-- VSCode version > v1.45.0
+- Joplin version > v2.8
+- VSCode version > v1.66.2
 - Joplin Web Clipper enabled
 - Basic familiarity with using both Joplin and VS Code
 
@@ -31,23 +31,17 @@ To access the Joplin database, we need a connection to the API endpoint opened b
 
 > For help with Web Clipper refer to: [Joplin Web Clipper](https://joplinapp.org/clipper/).
 
-Three settings need attention to get up and running.
-
-`Port`
-
-- Copy the port number from Joplin settings and paste it here. The active port displays when Web Clipper is enabled:  
-  **Web Clipper -> Step 1: Enable the clipper service -> Status**
+Two settings need attention to get up and running.
 
 `Token`
 
 - Copy your Authorization token from Joplin settings and paste it here:  
   **Web Clipper -> Advanced options -> Authorization Token**
 
-`Program Profile Path`
+`baseUrl`
 
-This setting is required if you wish to use attachment-related features.
-
-In general, if you are using a portable application, it should be the `. /JoplinProfile` directory, in which you should see the _resources_, _templates_, and _tmp_ directories.
+- In general, if you use the locally installed joplin desktop client, no special configuration is required. If you use a remote joplin service, you need to configure it.
+  For example <https://1.1.1.1:41184>
 
 ![install plugin](/images/joplin-settings.png)
 
