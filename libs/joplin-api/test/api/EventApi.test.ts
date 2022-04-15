@@ -2,7 +2,7 @@ import { omit } from '@liuli-util/object'
 import { eventApi } from '../../src'
 
 describe('test EventApi', () => {
-  const compare = (a, b) => a - b
+  const compare = (a: any, b: any) => a - b
   // initTestFolderAndNote()
   describe('test list', () => {
     it('basic example', async () => {

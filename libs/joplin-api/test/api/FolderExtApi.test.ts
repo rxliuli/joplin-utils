@@ -12,10 +12,8 @@ describe('test FolderExtApi', () => {
       title: '测试目录 2',
       parent_id: createParentRes.id,
     })
-    await expect(
-      folderExtApi.move(createParentRes.id, createRes.id),
-    ).rejects.toThrowError()
-    await expect(folderExtApi.move(createRes.id, '')).resolves
+    await expect(folderExtApi.move(createParentRes.id, createRes.id)).rejects.toThrowError()
+    await folderExtApi.move(createRes.id, '')
   })
   it('test path', async () => {
     const paths = await folderExtApi.path(data.folderId)

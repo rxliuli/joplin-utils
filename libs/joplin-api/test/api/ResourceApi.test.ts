@@ -94,7 +94,8 @@ describe('test ResourceApi', () => {
     await writeFile(path, res)
     expect(pathExistsSync(path)).toBeTruthy()
   })
-  it('测试获取附件资源的大小', async () => {
+  it('test to get the size of the attachment resource', async () => {
+    const id = (await createTestResource()).id
     const res = await resourceApi.get(id, ['id', 'title', 'size'])
     const stats = await stat(path.resolve(__dirname, '../resource/resourcesByFileId.png'))
     expect(res.size).toEqual(stats.size)

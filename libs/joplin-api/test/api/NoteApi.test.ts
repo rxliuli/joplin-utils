@@ -26,17 +26,29 @@ describe('test JoplinApi', () => {
       expect(res.parent_id).toBe(data.folderId)
       await noteApi.remove(res.id)
     })
-    it('test update', async () => {
-      const title = `# 测试笔记标题修改 ${Date.now()}`
-      const body = `测试笔记内容修改 ${Date.now()}`
-      const res = await noteApi.update({
-        id: data.noteId,
-        title,
-        body,
+    describe('test update', () => {
+      it('basic example', async () => {
+        const title = `# 测试笔记标题修改 ${Date.now()}`
+        const body = `测试笔记内容修改 ${Date.now()}`
+        const res = await noteApi.update({
+          id: data.noteId,
+          title,
+          body,
+        })
+        console.log(res)
+        expect(res.title).toBe(title)
+        expect(res.body).toBe(body)
       })
-      console.log(res)
-      expect(res.title).toBe(title)
-      expect(res.body).toBe(body)
+      it('Test modification notes affect user_updated_time', async () => {
+        const res1 = await noteApi.get(data.noteId, ['user_updated_time', 'updated_time'])
+        await noteApi.update({
+          id: data.noteId,
+          title: Date.now().toString(),
+        })
+        const res2 = await noteApi.get(data.noteId, ['user_updated_time', 'updated_time'])
+        expect(res1.user_updated_time).not.toBe(res2.user_updated_time)
+        expect(res1.updated_time).not.toBe(res2.updated_time)
+      })
     })
     it('test remove', async () => {
       const id = (

@@ -2,9 +2,10 @@ import { folderApi, noteApi, PageUtil, searchApi, TypeEnum } from '../../src'
 
 describe('测试 PageUtil', function () {
   it('测试获取所有目录', async function () {
-    const folderList = await PageUtil.pageToAllList(folderApi.list)
-    console.log('folderList.length: ', folderList.length)
-    expect(folderList.length).toBeGreaterThan(0)
+    const noteList = await PageUtil.pageToAllList(noteApi.list)
+    const len = (await noteApi.list({ limit: 100 })).items.length
+    console.log('noteList.length: ', noteList.length)
+    expect(noteList.length).toBe(len)
   })
   it('测试获取所有笔记', async function () {
     const noteList = await PageUtil.pageToAllList(noteApi.list, {

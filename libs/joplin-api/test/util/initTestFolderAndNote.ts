@@ -22,23 +22,13 @@ export function initTestFolderAndNote() {
         parent_id: data.folderId,
       })
     ).id
-    data.tagId = (
-      await tagApi.create({ title: `测试标签 ${dateStr + Math.random()}` })
-    ).id
+    data.tagId = (await tagApi.create({ title: `测试标签 ${dateStr + Math.random()}` })).id
     await tagApi.addTagByNoteId(data.tagId, data.noteId)
   })
   afterEach(async () => {
     await noteApi.remove(data.noteId)
     await tagApi.remove(data.tagId)
     await folderApi.remove(data.folderId)
-
-    // await Promise.all(
-    //   (await folderApi.list()).items.map(({ id }) => folderApi.remove(id)),
-    // )
-    // await Promise.all(
-    //   (await noteApi.list()).items.map(({ id }) => noteApi.remove(id)),
-    // )
-    // await Promise.all((await tagApi.list()).items.map(({ id }) => tagApi.remove(id)))
   })
   return data
 }

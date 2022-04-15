@@ -13,7 +13,8 @@
     "dev": "liuli-cli build pkg -w",
     "docs:dev": "pnpm docs-build && live-server docs",
     "docs-build": "rimraf docs && typedoc",
-    "docs-deploy": "pnpm docs-build && liuli-cli deploy"
+    "docs-deploy": "pnpm docs-build && liuli-cli deploy",
+    "test": "jest --all -w=1"
   },
   "deploy": {
     "type": "gh-pages",
