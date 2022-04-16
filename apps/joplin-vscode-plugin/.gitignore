@@ -11,3 +11,4 @@ dist
 .vscode/launch.json
 src/i18n/index.d.ts
 .temp/
+meta.json

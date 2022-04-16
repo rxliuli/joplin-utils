@@ -21,7 +21,7 @@ import { createReadStream, mkdirp, pathExists, readFile, remove, writeFile } fro
 import { createEmptyFile } from '../util/createEmptyFile'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { uploadResourceService } from './UploadResourceService'
-import { difference } from 'lodash-es'
+import { diffBy } from '@liuli-util/array'
 import { TagGetRes } from 'joplin-api/dist/modal/TagGetRes'
 import { HandlerService } from './HandlerService'
 import { TagUseService } from './TagUseService'
@@ -390,8 +390,8 @@ export class JoplinNoteCommandService {
       return
     }
     const selectIdList = selectItems.map((item) => item.tag.id)
-    const addIdList = difference(selectIdList, oldSelectIdList)
-    const deleteIdList = difference(oldSelectIdList, selectIdList)
+    const { left: addIdList } = diffBy(selectIdList, oldSelectIdList)
+    const { left: deleteIdList } = diffBy(oldSelectIdList, selectIdList)
     console.log('选择项: ', selectItems, addIdList, deleteIdList)
     await Promise.all(addIdList.map((id) => tagApi.addTagByNoteId(id, noteId)))
     await Promise.all(deleteIdList.map((id) => tagApi.removeTagByNoteId(id, noteId)))
