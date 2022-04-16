@@ -16,10 +16,15 @@ export class JoplinMarkdownUtil {
    * @param title
    */
   static trimTitle(title: string) {
-    return (title.startsWith('#') ? title.substr(1).trimLeft() : title).replace(
-      new RegExp('[\r\n]'),
-      '',
-    )
+    return (title.startsWith('#') ? title.substr(1).trimLeft() : title).replace(new RegExp('[\r\n]'), '')
+  }
+
+  /**
+   * 清理正文的第一行标题（如果有）
+   * @param body
+   */
+  static trimBodyHeader(body: string) {
+    return body.startsWith('# ') ? body.split('\n').slice(1).join('\n').trimLeft() : body
   }
 }
 
