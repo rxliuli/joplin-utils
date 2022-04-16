@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.7.2
+
+- refactor: remove lodash-es dependency
+- docs: update documentation on <https://joplin-utils.rxliuli.com>
+- feat: support setting remote server address via baseUrl
+
 ## 0.7.1
 
 - chore: update the minimum compatible version of vscode to 1.66.2 (the latest version)
