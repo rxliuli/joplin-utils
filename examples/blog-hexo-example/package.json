@@ -7,14 +7,18 @@
     "clean": "hexo clean",
     "server": "hexo server",
     "gen": "joplin-blog blog",
-    "docs-deploy": "gh-pages -d public -e blog/hexo -a"
+    "deploy": "liuli-cli deploy"
+  },
+  "deploy": {
+    "type": "gh-pages",
+    "dist": "public",
+    "dest": "blog/hexo"
   },
   "hexo": {
     "version": "5.4.0"
   },
   "devDependencies": {
-    "@liuli-util/shell": "^0.2.0",
-    "gh-pages": "^3.1.0",
+    "@liuli-util/cli": "^3.21.0",
     "hexo": "^5.4.0",
     "hexo-asset-link": "^2.1.0",
     "hexo-generator-archive": "^1.0.0",

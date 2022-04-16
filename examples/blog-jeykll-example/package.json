@@ -5,13 +5,13 @@
   "license": "MIT",
   "scripts": {
     "gen": "joplin-blog blog",
-    "_dev": "bundle exec jekyll serve",
-    "_build": "bundle exec jekyll build",
+    "dev": "bundle exec jekyll serve",
+    "build": "bundle exec jekyll build",
     "deploy": "gh-pages -d _site -e blog/jeykll -a"
   },
   "devDependencies": {
+    "@liuli-util/cli": "^3.21.0",
     "@types/gh-pages": "^3",
-    "gh-pages": "^3.2.3",
     "joplin-blog": "workspace:*"
   }
 }
