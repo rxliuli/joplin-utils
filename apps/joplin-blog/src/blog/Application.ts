@@ -91,7 +91,6 @@ export class Application {
 
   async check(): Promise<Error | true> {
     try {
-      console.log('this.config: ', this.config)
       config.token = this.config.token
       config.baseUrl = this.config.baseUrl ?? 'http://localhost:41184'
       await noteApi.list({ fields: ['id'], limit: 1 })

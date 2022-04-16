@@ -1,21 +1,21 @@
 import { BaseIntegrated } from './Application'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import path from 'path'
-import { DateTime } from 'luxon'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { convertJoplinNote } from './JoplinNoteHandler.worker'
+import dayjs from 'dayjs'
 
 class BlogVuepressSingleNoteHandler {
   constructor(private config: Pick<BlogVuepressIntegratedConfig, 'tag'>) {}
 
   meta(note: CommonNote & { tags: CommonTag[] }): object {
-    const formatter = 'yyyy-MM-dd hh:mm:ss'
+    const formatter = 'YYYY-MM-DD HH:mm:ss'
     return {
       title: note.title,
       permalink: `/p/${note.id}`,
       tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
-      date: DateTime.fromMillis(note.createdTime).toFormat(formatter),
-      updated: DateTime.fromMillis(note.updatedTime).toFormat(formatter),
+      date: dayjs(note.createdTime).format(formatter),
+      updated: dayjs(note.updatedTime).format(formatter),
     }
   }
 }

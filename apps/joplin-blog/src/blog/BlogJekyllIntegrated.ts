@@ -3,7 +3,7 @@ import path from 'path'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { convertJoplinNote } from './JoplinNoteHandler.worker'
-import { DateTime } from 'luxon'
+import dayjs from 'dayjs'
 
 class BlogJekyllSingleNoteHandler {
   constructor(private config: Pick<BlogJekyllIntegratedConfig, 'tag'>) {}
@@ -14,7 +14,7 @@ class BlogJekyllSingleNoteHandler {
       title: note.title,
       permalink: `/p/${note.id}`,
       tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
-      date: DateTime.fromMillis(note.createdTime).toFormat('yyyy-LL-dd hh:mm:ss'),
+      date: dayjs(note.createdTime).format('YYYY-MM-DD HH:mm:ss'),
     }
   }
 }
@@ -43,6 +43,6 @@ export class BlogJekyllIntegrated implements BaseIntegrated {
   }
 
   formatFileName(id: string): string {
-    return DateTime.now().toFormat('yyyy-LL-dd-') + id
+    return dayjs().format('YYYY-MM-DD-') + id
   }
 }

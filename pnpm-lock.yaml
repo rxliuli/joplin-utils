@@ -135,8 +135,6 @@ importers:
       '@rollup/plugin-json': ^4.1.0
       '@types/figlet': ^1.5.0
       '@types/fs-extra': ^9.0.6
-      '@types/lodash': ^4.14.166
-      '@types/luxon': ^1.25.0
       '@types/node': ^12.19.11
       '@types/prettier': ^2.4.4
       '@types/shelljs': ^0.8.8
@@ -144,13 +142,13 @@ importers:
       builtin-modules: ^3.2.0
       comlink: ^4.3.1
       commander: ^7.2.0
+      dayjs: ^1.11.1
       envfile: ^6.17.0
       figlet: ^1.5.0
       fs-extra: ^9.0.1
       i18next: ^19.8.4
       jest: ^27.5.1
       joplin-api: workspace:*
-      luxon: ^1.25.0
       mdast: ^3.0.0
       moment: ^2.29.1
       ora: ^5.4.0
@@ -183,11 +181,11 @@ importers:
       '@liuli-util/tree': 3.2.7
       comlink: 4.3.1
       commander: 7.2.0
+      dayjs: 1.11.1
       figlet: 1.5.2
       fs-extra: 9.1.0
       i18next: 19.9.2
       joplin-api: link:../../libs/joplin-api
-      luxon: 1.28.0
       mdast: 3.0.0
       ora: 5.4.1
       os-locale: 5.0.0
@@ -205,8 +203,6 @@ importers:
       '@rollup/plugin-json': 4.1.0_rollup@2.58.3
       '@types/figlet': 1.5.4
       '@types/fs-extra': 9.0.13
-      '@types/lodash': 4.14.176
-      '@types/luxon': 1.27.1
       '@types/node': 12.20.36
       '@types/prettier': 2.4.4
       '@types/shelljs': 0.8.9
@@ -7585,16 +7581,8 @@ packages:
     resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
     dev: true
 
-  /@types/lodash/4.14.176:
-    resolution: {integrity: sha512-xZmuPTa3rlZoIbtDUyJKZQimJV3bxCmzMIO2c9Pz9afyDro6kr7R79GwcB6mRhuoPmV2p1Vb66WOJH7F886WKQ==}
-    dev: true
-
   /@types/lodash/4.14.180:
     resolution: {integrity: sha512-XOKXa1KIxtNXgASAnwj7cnttJxS4fksBRywK/9LzRV5YxrF80BXZIGeQSuoESQ/VkUj30Ae0+YcuHc15wJCB2g==}
-    dev: true
-
-  /@types/luxon/1.27.1:
-    resolution: {integrity: sha512-cPiXpOvPFDr2edMnOXlz3UBDApwUfR+cpizvxCy0n3vp9bz/qe8BWzHPIEFcy+ogUOyjKuCISgyq77ELZPmkkg==}
     dev: true
 
   /@types/markdown-it/10.0.3:
@@ -11887,6 +11875,10 @@ packages:
 
   /dayjs/1.10.7:
     resolution: {integrity: sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==}
+
+  /dayjs/1.11.1:
+    resolution: {integrity: sha512-ER7EjqVAMkRRsxNCC5YqJ9d9VQYuWdGt7aiH2qA5R5wt8ZmWaP2dLUSIK6y/kVzLMlmh1Tvu5xUf4M/wdGJ5KA==}
+    dev: false
 
   /de-indent/1.0.2:
     resolution: {integrity: sha1-sgOOhG3DO6pXlhKNCAS0VbjB4h0=}
@@ -18823,6 +18815,7 @@ packages:
 
   /luxon/1.28.0:
     resolution: {integrity: sha512-TfTiyvZhwBYM/7QdAVDh+7dBTBA29v4ik0Ce9zda3Mnf8on1S5KJI8P2jKFZ8+5C0jhmr0KwJEO/Wdpm0VeWJQ==}
+    dev: true
 
   /magic-string/0.25.7:
     resolution: {integrity: sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==}
