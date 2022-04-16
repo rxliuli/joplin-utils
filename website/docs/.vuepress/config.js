@@ -140,12 +140,7 @@ module.exports = {
               link: 'https://joplin-utils.rxliuli.com/api/joplin-api/',
             },
           ],
-          '/dev/': [
-            { text: 'Introduction', link: '/dev/' },
-            '/dev/doc',
-            '/dev/dev',
-            '/dev/require',
-          ],
+          '/dev/': [{ text: 'Introduction', link: '/dev/' }, '/dev/doc', '/dev/dev', '/dev/require'],
         },
       },
       '/zh/': {
@@ -257,14 +252,6 @@ module.exports = {
                       text: 'VSCode Markdown 官方文档',
                       link: 'https://code.visualstudio.com/docs/languages/markdown',
                     },
-                    {
-                      text: 'VSCode 搭建 markdown 写作环境',
-                      link: 'https://blog.rxliuli.com/p/43851eb5/',
-                    },
-                    {
-                      text: 'Markdown Extension Pack(吾辈发布的)',
-                      link: 'https://marketplace.visualstudio.com/items?itemName=rxliuli.markdown-extension-pack',
-                    },
                   ],
                 },
               ],
@@ -347,12 +334,7 @@ module.exports = {
               link: 'https://joplin-utils.rxliuli.com/api/joplin-plugin-api/',
             },
           ],
-          '/zh/dev/': [
-            { text: '简介', link: '/zh/dev/' },
-            '/zh/dev/doc',
-            '/zh/dev/dev',
-            '/zh/dev/require',
-          ],
+          '/zh/dev/': [{ text: '简介', link: '/zh/dev/' }, '/zh/dev/doc', '/zh/dev/dev', '/zh/dev/require'],
         },
       },
     },

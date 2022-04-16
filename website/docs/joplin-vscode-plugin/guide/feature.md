@@ -2,22 +2,21 @@
 
 ## Configuration table
 
-| Field                | Default value  | Options        | Description                                             |
-| -------------------- | -------------- | -------------- | ------------------------------------------------------- |
-| `token`              |                | `string`       | joplin web server token                                 |
-| `programProfilePath` |                | `string`       | Personal directory for joplin programs                  |
-| `port`               | `41184`        | `number`       | joplin web service port                                 |
-| `deleteConfirm`      | `true`         | `boolean`      | Whether to remind when deleting                         |
-| `sortNotes`          | `false`        | `boolean`      | Whether to sort notes.                                  |
-| `sortNotesType`      | `alphabetical` |                | Type of sorting notes.                                  |
-|                      |                | `alphabetical` | Sort notes by alphabetical order of its Title property. |
-|                      |                | `default`      | Default Joplin order (whatever that is).                |
-| `sortOrder`          | `asc`          |                | Order of sorting notes (asc or desc)                    |
-|                      |                | `asc`          | 'asc': ascending order                                  |
-|                      |                | `desc`         | 'desc': descending order (reverse)                      |
-| `language`           | `english`      |                | The language displayed by the plugin, follow VSCode     |
-|                      |                | `en`           | English                                                 |
-|                      |                | `zh`           | Simple Chinese                                          |
+| Field           | Default value            | Options        | Description                                             |
+| --------------- | ------------------------ | -------------- | ------------------------------------------------------- |
+| `token`         |                          | `string`       | joplin web server token                                 |
+| `baseUrl`       | `http://localhost:41184` | `string`       | The base path of the joplin web service                 |
+| `deleteConfirm` | `true`                   | `boolean`      | Whether to remind when deleting                         |
+| `sortNotes`     | `false`                  | `boolean`      | Whether to sort notes.                                  |
+| `sortNotesType` | `alphabetical`           |                | Type of sorting notes.                                  |
+|                 |                          | `alphabetical` | Sort notes by alphabetical order of its Title property. |
+|                 |                          | `default`      | Default Joplin order (whatever that is).                |
+| `sortOrder`     | `asc`                    |                | Order of sorting notes (asc or desc)                    |
+|                 |                          | `asc`          | 'asc': ascending order                                  |
+|                 |                          | `desc`         | 'desc': descending order (reverse)                      |
+| `language`      | `english`                |                | The language displayed by the plugin, follow VSCode     |
+|                 |                          | `en`           | English                                                 |
+|                 |                          | `zh`           | Simple Chinese                                          |
 
 ## Hot key
 
@@ -26,7 +25,9 @@
 - `ctrl+alt+u`: upload pictures from clipboard
 - `ctrl+alt+e`: upload image from file chooser
 - `ctrl+alt+shift+e`: add attachments from the file selector
-- `ctrl+j ctrl+o`: search notes
+- `ctrl+j ctrl+o`: search notes, default to show the 20 most recently modified notes
+- `ctrl+j ctrl+i`: create attachment
+- `ctrl+j ctrl+m`: manage tabs
 
 ## Paste picture
 

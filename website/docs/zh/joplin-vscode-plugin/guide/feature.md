@@ -2,22 +2,21 @@
 
 ## 配置表
 
-| 字段                 | 默认值         | 可选值         | 说明                         |
-| -------------------- | -------------- | -------------- | ---------------------------- |
-| `token`              |                | `string`       | joplin web 服务的 token      |
-| `programProfilePath` |                | `string`       | joplin 程序的个人目录        |
-| `port`               | `41184`        | `number`       | joplin web 服务的端口号      |
-| `deleteConfirm`      | `true`         | `boolean`      | 删除时是否提醒               |
-| `sortNotes`          | `false`        | `boolean`      | 是否对笔记进行排序           |
-| `sortNotesType`      | `alphabetical` |                | 笔记排序的类型               |
-|                      |                | `alphabetical` | 按照标题的字母顺序排序       |
-|                      |                | `default`      | Joplin 默认的排序            |
-| `sortOrder`          | `asc`          |                | 笔记排序的顺序（升序或降序） |
-|                      |                | `asc`          | 升序                         |
-|                      |                | `desc`         | 降序                         |
-| `language`           | `english`      |                | 插件显示的语言，跟随 VSCode  |
-|                      |                | `en`           | 英语                         |
-|                      |                | `zh`           | 简体中文                     |
+| 字段            | 默认值                   | 可选值         | 说明                         |
+| --------------- | ------------------------ | -------------- | ---------------------------- |
+| `token`         |                          | `string`       | joplin web 服务的 token      |
+| `baseUrl`       | `http://localhost:41184` | `string`       | joplin api 基础路径          |
+| `deleteConfirm` | `true`                   | `boolean`      | 删除时是否提醒               |
+| `sortNotes`     | `false`                  | `boolean`      | 是否对笔记进行排序           |
+| `sortNotesType` | `alphabetical`           |                | 笔记排序的类型               |
+|                 |                          | `alphabetical` | 按照标题的字母顺序排序       |
+|                 |                          | `default`      | Joplin 默认的排序            |
+| `sortOrder`     | `asc`                    |                | 笔记排序的顺序（升序或降序） |
+|                 |                          | `asc`          | 升序                         |
+|                 |                          | `desc`         | 降序                         |
+| `language`      | `english`                |                | 插件显示的语言，跟随 VSCode  |
+|                 |                          | `en`           | 英语                         |
+|                 |                          | `zh`           | 简体中文                     |
 
 ## 快捷键
 
@@ -26,7 +25,7 @@
 - `ctrl+alt+u`: 从剪切板上传图片
 - `ctrl+alt+e`: 从文件选择器上传图片
 - `ctrl+alt+shift+e`: 从文件选择器添加附件
-- `ctrl+j ctrl+o`: 搜索笔记
+- `ctrl+j ctrl+o`: 搜索笔记，默认显示最近修改的 20 条笔记
 - `ctrl+j ctrl+i`: 创建附件
 - `ctrl+j ctrl+m`: 管理标签
 
