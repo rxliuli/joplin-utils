@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.8.2
+
+- fix: fix a bug where headers in body are not removed properly
+
 ## 0.8.1
 
 - refactor: replace luxon => dayjs
