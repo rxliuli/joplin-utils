@@ -58,10 +58,6 @@ module.exports = {
                 text: 'Getting involved',
                 link: '/dev/',
               },
-              {
-                text: 'GitHub',
-                link: 'https://github.com/rxliuli/joplin-utils',
-              },
             ],
           },
         ],
@@ -142,6 +138,12 @@ module.exports = {
           ],
           '/dev/': [{ text: 'Introduction', link: '/dev/' }, '/dev/doc', '/dev/dev', '/dev/require'],
         },
+        repo: 'https://github.com/rxliuli/joplin-utils',
+        docsBranch: 'master',
+        docsDir: '/website/docs',
+        editLinkText: 'Edit this page on GitHub',
+        lastUpdatedText: 'Last Updated',
+        contributorsText: 'Contributors',
       },
       '/zh/': {
         navbar: [
@@ -186,10 +188,6 @@ module.exports = {
               {
                 text: '参与项目',
                 link: '/zh/dev/',
-              },
-              {
-                text: 'GitHub',
-                link: 'https://github.com/rxliuli/joplin-utils',
               },
               {
                 text: 'Joplin 论坛',
@@ -336,22 +334,28 @@ module.exports = {
           ],
           '/zh/dev/': [{ text: '简介', link: '/zh/dev/' }, '/zh/dev/doc', '/zh/dev/dev', '/zh/dev/require'],
         },
+        repo: 'https://github.com/rxliuli/joplin-utils',
+        docsBranch: 'master',
+        docsDir: '/website/docs',
+        editLinkText: '在 GitHub 上编辑此页',
+        lastUpdatedText: '上次更新',
+        contributorsText: '贡献者',
       },
     },
   },
   plugins: [
-    // [
-    //   '@vuepress/plugin-search',
-    //   {
-    //     locales: {
-    //       '/': {
-    //         placeholder: 'Search',
-    //       },
-    //       '/zh/': {
-    //         placeholder: '搜索',
-    //       },
-    //     },
-    //   },
-    // ],
+    [
+      '@vuepress/plugin-search',
+      {
+        locales: {
+          '/': {
+            placeholder: 'Search',
+          },
+          '/zh/': {
+            placeholder: '搜索',
+          },
+        },
+      },
+    ],
   ],
 }
