@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.8.1
+
+- refactor: replace luxon => dayjs
+- refactor: update joplin-api sdk
+- feat: update to use latest joplin-api sdk, update port => baseUrl
+
 ## 0.8.0
 
 - feat: set the target of typescript to esnext, which is only compatible with the latest version of nodejs lts by default
