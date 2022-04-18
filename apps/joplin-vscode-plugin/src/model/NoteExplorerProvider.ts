@@ -18,6 +18,10 @@ export class NoteExplorerProvider implements vscode.TreeDataProvider<FolderOrNot
     this._onDidChangeTreeData.fire(undefined)
   }
 
+  async fire() {
+    this._onDidChangeTreeData.fire(undefined)
+  }
+
   constructor() {
     // noinspection JSIgnoredPromiseFromCall
     this.init()

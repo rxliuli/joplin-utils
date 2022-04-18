@@ -31,6 +31,8 @@ import { GlobalContext } from '../state/GlobalContext'
 import { watch } from 'chokidar'
 import { AsyncArray } from '@liuli-util/async'
 import { filenamify } from '../util/filenamify'
+import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
+import { joplinNoteApi } from '../api/JoplinNoteApi'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -65,10 +67,16 @@ export class JoplinNoteCommandService {
         return
       }
       const content = await readFile(filePath, 'utf-8')
-      await noteApi.update({
+      const newNote = {
         id,
         body: content,
-      })
+      } as NoteProperties
+      const title = JoplinNoteUtil.titleFromBody(content)
+      if (title) {
+        newNote.title = title
+      }
+      await noteApi.update(newNote)
+      this.config.noteViewProvider.fire()
       const resourceList = await noteApi.resourcesById(id)
       GlobalContext.openNoteResourceMap.set(id, resourceList)
     })
