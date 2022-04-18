@@ -2,6 +2,7 @@
 
 ## 0.7.3
 
+- fix: fix the bug that temporary files and listeners are not deleted when deleting notes
 - feat: Smart stitching of title and content when opening notes
 - feat: Update the title while editing the note, ref: <https://discourse.joplinapp.org/t/9624/77>
 
