@@ -147,6 +147,12 @@ export class JoplinNoteCommandService {
       }
     }
 
+    if (GlobalContext.openNoteMap.get(item.id)) {
+      await remove(GlobalContext.openNoteMap.get(item.id)!)
+      GlobalContext.openNoteMap.delete(item.id)
+      GlobalContext.openNoteResourceMap.delete(item.id)
+      // TODO 目前无法关闭指定的 TextDocument，参考：https://github.com/Microsoft/vscode/commit/d625b55e9ec33f95d2fe1dd7a4b7cb50abb4772c#diff-4654cd1aa2a333bc6cc7ca0d19fdfb6e
+    }
     await this.folderOrNoteExtendsApi.remove(item.item)
     await this.config.noteViewProvider.refresh()
   }
