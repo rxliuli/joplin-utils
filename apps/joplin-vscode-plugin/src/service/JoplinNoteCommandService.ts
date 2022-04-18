@@ -67,11 +67,8 @@ export class JoplinNoteCommandService {
         return
       }
       const content = await readFile(filePath, 'utf-8')
-      const newNote = {
-        id,
-        body: content,
-      } as NoteProperties
-      const title = JoplinNoteUtil.titleFromBody(content)
+      const { title, body } = JoplinNoteUtil.splitTitleBody(content)
+      const newNote = { id, body } as NoteProperties
       if (title) {
         newNote.title = title
       }
@@ -201,7 +198,8 @@ export class JoplinNoteCommandService {
     const filename = item.label + (GlobalContext.openNoteMap.get(item.label) ? item.id : '')
     const tempNotePath = path.resolve(tempNoteDirPath, filenamify(`${filename}.md`))
     const note = await noteApi.get(item.id, ['body', 'title'])
-    await writeFile(tempNotePath, note.body)
+    const content = note.body.startsWith('# ') ? note.body : note.title + '\n\n' + note.body
+    await writeFile(tempNotePath, content)
     GlobalContext.openNoteMap.set(item.id, tempNotePath)
     GlobalContext.openNoteResourceMap.set(item.id, await noteApi.resourcesById(item.id))
     await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(tempNotePath))
