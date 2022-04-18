@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.7.3
+
+- feat: Update the title while editing the note, ref: <https://discourse.joplinapp.org/t/9624/77>
+
 ## 0.7.2
 
 - refactor: remove lodash-es dependency
