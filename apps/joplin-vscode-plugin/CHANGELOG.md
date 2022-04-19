@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.7.4
+
+- feat: update handling of note titles, intelligently handle the # of titles when opening or updating a note, ref: <https://discourse.joplinapp.org/t/9624/81>
+
 ## 0.7.3
 
 - fix: fix the bug that temporary files and listeners are not deleted when deleting notes
