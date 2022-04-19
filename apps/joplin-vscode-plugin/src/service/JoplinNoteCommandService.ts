@@ -70,7 +70,7 @@ export class JoplinNoteCommandService {
       const { title, body } = JoplinNoteUtil.splitTitleBody(content)
       const newNote = { id, body } as NoteProperties
       if (title) {
-        newNote.title = title
+        newNote.title = title.startsWith('# ') ? title.substring(2) : title
       }
       await noteApi.update(newNote)
       this.config.noteViewProvider.fire()
@@ -204,7 +204,9 @@ export class JoplinNoteCommandService {
     const filename = item.label + (GlobalContext.openNoteMap.get(item.label) ? item.id : '')
     const tempNotePath = path.resolve(tempNoteDirPath, filenamify(`${filename}.md`))
     const note = await noteApi.get(item.id, ['body', 'title'])
-    const content = note.body.startsWith('# ') ? note.body : note.title + '\n\n' + note.body
+    const content = note.body.startsWith('# ')
+      ? note.body
+      : (note.title.startsWith('# ') ? '' : '# ') + note.title + '\n\n' + note.body
     await writeFile(tempNotePath, content)
     GlobalContext.openNoteMap.set(item.id, tempNotePath)
     GlobalContext.openNoteResourceMap.set(item.id, await noteApi.resourcesById(item.id))
