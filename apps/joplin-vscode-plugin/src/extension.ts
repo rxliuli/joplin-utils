@@ -10,7 +10,7 @@ import { checkJoplinServer } from './util/checkJoplinServer'
 import MarkdownIt from 'markdown-it'
 import { useJoplinImage, useJoplinLink } from './util/useJoplinLink'
 import { uploadResourceService } from './service/UploadResourceService'
-import { MDDocumentLinkProvider, MDHoverProvider } from './model/EditorProvider'
+import { JoplinMarkdownLinkProvider } from './model/JoplinMarkdownLinkProvider'
 import { GlobalContext } from './state/GlobalContext'
 import { init } from './init'
 import { registerCommand } from './util/registerCommand'
@@ -103,9 +103,10 @@ export async function activate(context: vscode.ExtensionContext) {
     scheme: 'file',
     pattern: '**/rxliuli.joplin-vscode-plugin/.tempNote/*.md',
   }
+  const linkProvider = new JoplinMarkdownLinkProvider()
   context.subscriptions.push(
-    vscode.languages.registerDocumentLinkProvider(docFilter, new MDDocumentLinkProvider()),
-    vscode.languages.registerHoverProvider(docFilter, new MDHoverProvider()),
+    vscode.languages.registerDocumentLinkProvider(docFilter, linkProvider),
+    vscode.languages.registerHoverProvider(docFilter, linkProvider),
   )
 
   //endregion
