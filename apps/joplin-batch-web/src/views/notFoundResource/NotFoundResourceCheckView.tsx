@@ -9,9 +9,7 @@ import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import css from './NotFoundResourceCheckView.module.css'
 import { i18n } from '../../constants/i18n'
 
-const notFoundResourceCheckService = new NotFoundResourceCheckService(
-  joplinApiGenerator,
-)
+const notFoundResourceCheckService = new NotFoundResourceCheckService(joplinApiGenerator)
 
 /**
  * 检查笔记中引用失效的资源
@@ -19,7 +17,7 @@ const notFoundResourceCheckService = new NotFoundResourceCheckService(
 export const NotFoundResourceCheckView: React.FC = () => {
   const [list, setList] = useState<
     (Pick<NoteProperties, 'id' | 'title' | 'user_updated_time'> & {
-      resources: Pick<ResourceProperties, 'id' | 'title'>[]
+      errorLinks: Pick<ResourceProperties, 'id' | 'title'>[]
     })[]
   >([])
   const [loadingMsg, setLoadingMsg] = useState('')
@@ -51,26 +49,17 @@ export const NotFoundResourceCheckView: React.FC = () => {
         renderItem={(item) => (
           <List.Item
             key={item.id}
-            actions={[
-              <Button onClick={() => openNote(item.id)}>
-                {i18n.t('common.action.open')}
-              </Button>,
-            ]}
+            actions={[<Button onClick={() => openNote(item.id)}>{i18n.t('common.action.open')}</Button>]}
           >
             <List.Item.Meta
               title={item.title}
               description={
                 <List
                   className={css.subList}
-                  dataSource={item.resources}
+                  dataSource={item.errorLinks}
                   renderItem={(item) => (
                     <List.Item key={item.id}>
-                      <List.Item.Meta
-                        title={
-                          item.title ||
-                          i18n.t('notFoundResource.unknownFileName', item)
-                        }
-                      />
+                      <List.Item.Meta title={item.title || i18n.t('notFoundResource.unknownFileName', item)} />
                     </List.Item>
                   )}
                 />
