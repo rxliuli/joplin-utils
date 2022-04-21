@@ -5,6 +5,7 @@ import { AsyncArray, asyncLimiting } from '@liuli-util/async'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { PromiseUtil } from '../../../common/PromiseUtil'
 import { ProcessInfo } from '../../unusedResource/service/UnusedResourceService'
+import { i18n } from '../../../constants/i18n'
 
 interface CheckErrorResourceEvents {
   load(title: string): void
@@ -20,15 +21,15 @@ export class NotFoundResourceCheckService {
 
   check() {
     return PromiseUtil.warpOnEvent(async (events: CheckErrorResourceEvents) => {
-      events.load('开始加载所有附件资源')
+      events.load(i18n.t('notFoundResource.loadResources'))
       const resourceIdSet = new Set((await this.getAllResourceIdList()).map((item) => item.id))
-      events.load('开始加载所有笔记')
+      events.load(i18n.t('notFoundResource.loadNotes'))
       const noteList: Pick<NoteProperties, 'id' | 'title' | 'body' | 'user_updated_time'>[] =
         await PageUtil.pageToAllList(this.config.noteApi.list.bind(this.config.noteApi), {
           fields: ['id', 'title', 'body', 'user_updated_time'],
         })
       const noteIdSet = noteList.reduce((res, item) => res.add(item.id), new Set<string>())
-      events.load('开始解析所有笔记')
+      events.load(i18n.t('notFoundResource.parseNotes'))
       let rate = 0
       const resolvedNoteList = await AsyncArray.map(
         noteList,
@@ -41,7 +42,7 @@ export class NotFoundResourceCheckService {
           events.parse({
             rate,
             all: noteList.length,
-            title: item.title || '未知文件名',
+            title: item.title ?? i18n.t('notFoundResource.unknownFileName', { id: item.id }),
           })
           return {
             ...item,
