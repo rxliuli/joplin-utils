@@ -57,6 +57,7 @@
     "@liuli-util/i18next-dts-gen": "^0.3.3",
     "@liuli-util/rollup-plugin-i18next-dts-gen": "^0.1.0",
     "@liuli-util/shell": "^0.2.0",
+    "@liuli-util/vite-plugin-version-info": "^0.2.0",
     "@types/jest": "^26.0.23",
     "@types/markdown-it": "^12.0.2",
     "@types/node": "14",

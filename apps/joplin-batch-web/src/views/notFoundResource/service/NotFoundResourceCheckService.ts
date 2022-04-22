@@ -31,10 +31,12 @@ export class NotFoundResourceCheckService {
       const noteIdSet = noteList.reduce((res, item) => res.add(item.id), new Set<string>())
       events.load(i18n.t('notFoundResource.parseNotes'))
       let rate = 0
+      const allLinks: string[] = []
       const resolvedNoteList = await AsyncArray.map(
         noteList,
         asyncLimiting(async (item) => {
           const links = parseInternalLink(item.body)
+          allLinks.push(...links.map((item) => item.id))
           const errorLinks = links.filter((item) => {
             return !resourceIdSet.has(item.id) && !noteIdSet.has(item.id)
           })
@@ -50,8 +52,17 @@ export class NotFoundResourceCheckService {
           }
         }, 10),
       )
-      console.log('resolvedNoteList: ', resolvedNoteList)
-      return resolvedNoteList.filter((item) => item.errorLinks.length !== 0)
+      const res = resolvedNoteList.filter((item) => item.errorLinks.length !== 0)
+      console.log('debug data: ', {
+        resourceIdList: [...resourceIdSet],
+        noteIdList: [...noteIdSet],
+        allLinks,
+        resolvedNoteList: res.map((item) => ({
+          id: item.id,
+          errorLinks: item.errorLinks.map((item) => item.id),
+        })),
+      })
+      return res
     })
   }
 
