@@ -57,37 +57,45 @@ export class JoplinNoteCommandService {
     }, 1000 * 10)
     const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
     const tempResourceDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempResource')
-    await AsyncArray.forEach([tempNoteDirPath, tempResourceDirPath], async (path) => {
-      await remove(path)
-      await mkdirp(path)
-    })
-    watch(tempNoteDirPath).on('change', async (filePath) => {
-      const id = GlobalContext.openNoteMap.get(filePath)
-      if (!id) {
-        return
-      }
-      const content = await readFile(filePath, 'utf-8')
-      const { title, body } = JoplinNoteUtil.splitTitleBody(content)
-      const newNote = { id, body } as NoteProperties
-      if (title) {
-        newNote.title = title.startsWith('# ') ? title.substring(2) : title
-      }
-      await noteApi.update(newNote)
-      this.config.noteViewProvider.fire()
-      const resourceList = await noteApi.resourcesById(id)
-      GlobalContext.openNoteResourceMap.set(id, resourceList)
-    })
-    watch(tempResourceDirPath).on('change', async (filePath) => {
-      const id = GlobalContext.openResourceMap.get(filePath)
-      if (!id) {
-        return
-      }
-      await resourceApi.update({
-        id,
-        // title: path.basename(filePath),
-        data: createReadStream(filePath),
+    // await AsyncArray.forEach([tempNoteDirPath, tempResourceDirPath], async (path) => {
+    //   await remove(path)
+    //   await mkdirp(path)
+    // })
+    watch(tempNoteDirPath)
+      .on('change', async (filePath) => {
+        const id = GlobalContext.openNoteMap.get(filePath)
+        if (!id) {
+          return
+        }
+        const content = await readFile(filePath, 'utf-8')
+        const { title, body } = JoplinNoteUtil.splitTitleBody(content)
+        const newNote = { id, body } as NoteProperties
+        if (title) {
+          newNote.title = title.startsWith('# ') ? title.substring(2) : title
+        }
+        await noteApi.update(newNote)
+        this.config.noteViewProvider.fire()
+        const resourceList = await noteApi.resourcesById(id)
+        GlobalContext.openNoteResourceMap.set(id, resourceList)
       })
-    })
+      .on('error', (err) => {
+        console.error('监视笔记错误：', err)
+      })
+    watch(tempResourceDirPath)
+      .on('change', async (filePath) => {
+        const id = GlobalContext.openResourceMap.get(filePath)
+        if (!id) {
+          return
+        }
+        await resourceApi.update({
+          id,
+          // title: path.basename(filePath),
+          data: createReadStream(filePath),
+        })
+      })
+      .on('error', (err) => {
+        console.error('监视资源错误：', err)
+      })
   }
 
   /**
