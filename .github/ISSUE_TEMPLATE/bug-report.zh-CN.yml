@@ -1,6 +1,6 @@
 name: 错误报告
 description: 创建一个错误报告告诉我发生了什么以便改进
-title: "[Bug]: "
+title: '[Bug]: '
 labels: [bug, triage]
 assignees:
   - rxliuli
@@ -40,6 +40,13 @@ body:
         2. 点击'....'
         3. 滚动到 '....'
         4. 看到错误
+    validations:
+      required: true
+  - type: textarea
+    id: logFile
+    attributes:
+      label: 日志文件
+      placeholder: 插件的日志文件，通过 `joplinNote.showLogFileDir` 命令显示
     validations:
       required: true
   - type: textarea
