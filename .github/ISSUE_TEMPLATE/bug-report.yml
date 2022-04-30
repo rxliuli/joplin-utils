@@ -42,6 +42,13 @@ body:
     validations:
       required: true
   - type: textarea
+    id: logFile
+    attributes:
+      label: log file
+      placeholder: The log file of the plugin, displayed via the `joplinNote.showLogFileDir` command
+    validations:
+      required: true
+  - type: textarea
     id: context
     attributes:
       label: Additional context
