@@ -1,5 +1,22 @@
 # Release Notes
 
+## 0.7.6
+
+- feat: add winston logging to avoid feedback problems
+- fix: fix the bug that temporary notes and resource directories are not created when the plugin is initialized
+
+## 0.7.5
+
+Major update
+
+Fixed the file monitor error caused by emptying the temporary notes and resource directories when vscode is started, so that only the last vscode window can properly monitor the update of notes, because of this problem I lost a note, please update to v0.7.5.
+
+Details
+
+- chore: add license to avoid prompting every time you pack
+- fix: fix file monitor bug caused by emptying the temporary directory when starting the plugin
+- refactor: Refactor the jump function related to the joplin note link
+
 ## 0.7.4
 
 - feat: update handling of note titles, intelligently handle the # of titles when opening or updating a note, ref: <https://discourse.joplinapp.org/t/9624/81>
