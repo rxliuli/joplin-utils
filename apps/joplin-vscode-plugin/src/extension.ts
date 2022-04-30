@@ -15,6 +15,10 @@ import { GlobalContext } from './state/GlobalContext'
 import { init } from './init'
 import { registerCommand } from './util/registerCommand'
 import { ClassUtil } from '@liuli-util/object'
+import { logger } from './constants/logger'
+import { transports } from 'winston'
+import path from 'path'
+import { mkdirp } from 'fs-extra'
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -22,6 +26,11 @@ import { ClassUtil } from '@liuli-util/object'
 export async function activate(context: vscode.ExtensionContext) {
   GlobalContext.context = context
   appConfig.loadConfig()
+  console.log('logPath: ', context.logUri.fsPath)
+  await mkdirp(context.logUri.fsPath)
+  logger
+    .add(new transports.File({ filename: path.resolve(context.logUri.fsPath, 'error.log'), level: 'error' }))
+    .add(new transports.File({ filename: path.resolve(context.logUri.fsPath, 'combined.log') }))
   await init()
   if (!(await checkJoplinServer())) {
     return
@@ -69,6 +78,7 @@ export async function activate(context: vscode.ExtensionContext) {
       await joplinNoteCommandService.onDidChangeActiveTextEditor(activeFileName)
     }
   })
+  registerCommand('joplinNote.showLogFileDir', () => vscode.env.openExternal(context.logUri))
   vscode.window.onDidChangeActiveTextEditor((e) =>
     joplinNoteCommandService.onDidChangeActiveTextEditor(e?.document.fileName),
   )

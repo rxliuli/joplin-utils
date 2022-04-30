@@ -32,7 +32,7 @@ import { watch } from 'chokidar'
 import { AsyncArray } from '@liuli-util/async'
 import { filenamify } from '../util/filenamify'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
-import { joplinNoteApi } from '../api/JoplinNoteApi'
+import { logger } from '../constants/logger'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -57,10 +57,10 @@ export class JoplinNoteCommandService {
     }, 1000 * 10)
     const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
     const tempResourceDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempResource')
-    // await AsyncArray.forEach([tempNoteDirPath, tempResourceDirPath], async (path) => {
-    //   await remove(path)
-    //   await mkdirp(path)
-    // })
+    await AsyncArray.forEach([tempNoteDirPath, tempResourceDirPath], async (path) => {
+      // await remove(path)
+      await mkdirp(path)
+    })
     watch(tempNoteDirPath)
       .on('change', async (filePath) => {
         const id = GlobalContext.openNoteMap.get(filePath)
@@ -79,7 +79,7 @@ export class JoplinNoteCommandService {
         GlobalContext.openNoteResourceMap.set(id, resourceList)
       })
       .on('error', (err) => {
-        console.error('监视笔记错误：', err)
+        logger.error('watch note error', err)
       })
     watch(tempResourceDirPath)
       .on('change', async (filePath) => {
@@ -94,7 +94,7 @@ export class JoplinNoteCommandService {
         })
       })
       .on('error', (err) => {
-        console.error('监视资源错误：', err)
+        logger.error('watch resource error', err)
       })
   }
 
@@ -199,6 +199,7 @@ export class JoplinNoteCommandService {
    * @param item
    */
   async openNote(item: Omit<FolderOrNote, 'item'> & { item: JoplinListNote }) {
+    logger.info('openNote start', item)
     // 如果已经打开了笔记，则应该切换并且保持 treeview 的焦点
     if (GlobalContext.openNoteMap.has(item.id)) {
       const filePath = GlobalContext.openNoteMap.get(item.id)!
@@ -216,9 +217,11 @@ export class JoplinNoteCommandService {
       ? note.body
       : (note.title.startsWith('# ') ? '' : '# ') + note.title + '\n\n' + note.body
     await writeFile(tempNotePath, content)
+    logger.info('openNote write tempFile', tempNotePath)
     GlobalContext.openNoteMap.set(item.id, tempNotePath)
     GlobalContext.openNoteResourceMap.set(item.id, await noteApi.resourcesById(item.id))
     await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(tempNotePath))
+    logger.info('openNote open tempFile')
   }
 
   /**

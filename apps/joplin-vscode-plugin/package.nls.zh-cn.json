@@ -4,6 +4,7 @@
   "views.joplin-note.joplin-note": "所有笔记",
   "commands.joplinNote.refreshNoteList": "刷新",
   "commands.joplinNote.showCurrentlyOpenNote": "显示当前打开的笔记",
+  "commands.joplin.openLogFileDir": "打开日志目录",
   "commands.joplinNote.createFolder": "创建目录",
   "commands.joplinNote.createNote": "创建笔记",
   "commands.joplinNote.rename": "重命名",

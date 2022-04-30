@@ -5,6 +5,7 @@
   "views.joplin-note.joplin-note": "All notes",
   "commands.joplinNote.refreshNoteList": "Refresh",
   "commands.joplinNote.showCurrentlyOpenNote": "Show currently open note",
+  "commands.joplin.openLogFileDir": "Open log directory",
   "commands.joplinNote.createFolder": "Create folder",
   "commands.joplinNote.createNote": "Create note",
   "commands.joplinNote.rename": "Rename",

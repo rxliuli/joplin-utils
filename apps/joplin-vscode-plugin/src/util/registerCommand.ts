@@ -1,5 +1,6 @@
 import * as vscode from 'vscode'
 import { Disposable } from 'vscode'
+import { logger } from '../constants/logger'
 
 const outputChannel = vscode.window.createOutputChannel('joplin-vscode-plugin')
 
@@ -9,30 +10,15 @@ const outputChannel = vscode.window.createOutputChannel('joplin-vscode-plugin')
  * @param callback
  * @param thisArg
  */
-export function registerCommand(
-  command: string,
-  callback: (...args: any[]) => any,
-  thisArg?: any,
-): Disposable {
+export function registerCommand(command: string, callback: (...args: any[]) => any, thisArg?: any): Disposable {
   return vscode.commands.registerCommand(
     command,
     async (...args: any[]) => {
       try {
         return await callback(...args)
-      } catch (e) {
-        outputChannel.appendLine(
-          'command error: ' +
-            command +
-            (e instanceof Error
-              ? JSON.stringify({
-                  name: e.name,
-                  message: e.message,
-                  stack: e.stack,
-                })
-              : JSON.stringify(e)),
-        )
-        outputChannel.show()
-        throw e
+      } catch (err) {
+        logger.error('command error: ', command, err)
+        throw err
       }
     },
     thisArg,
