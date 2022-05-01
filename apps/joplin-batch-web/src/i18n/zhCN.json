@@ -32,5 +32,12 @@
   "fixFileExtension.action.fix": "修复",
   "fixFileExtension.tip": "猜测扩展名: ",
   "checkActionApi.title": "检查通过 API 打开笔记",
-  "checkActionApi.desc": "将随机在编辑器中打开一个笔记"
+  "checkActionApi.desc": "将随机在编辑器中打开一个笔记",
+  "replace.title": "搜索并替换",
+  "replace.action.search": "搜索",
+  "replace.action.replace": "替换",
+  "replace.action.preview": "预览",
+  "replace.action.replaceAll": "全部替换",
+  "replace.msg.replace": "替换成功",
+  "replace.msg.replaceAll": "全部替换成功"
 }

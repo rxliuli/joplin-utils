@@ -1,11 +1,3 @@
-import HomePage from '../views/home'
-import SettingsPage from '../views/settings'
-import UnusedResourcePage from '../views/unusedResource'
-import NotFoundResourceCheckPage from '../views/notFoundResource'
-import ConvertExternalLinkPage from '../views/convertExternalLink'
-import CheckParentNotebookPage from '../views/checkParentNotebook'
-import FixFileExtensionPage from '../views/fixFileExtendsion'
-import CheckActionApiView from '../views/checkActionApi'
 import { createHashHistory, RouteConfig } from '@liuli-util/react-router'
 import { TranslateType } from '../i18n'
 
@@ -16,42 +8,47 @@ export const history = createHashHistory()
 export const routeList: MenuRouteConfig[] = [
   {
     path: '/',
-    component: HomePage,
+    component: () => import('../views/home'),
     title: 'home.title',
   },
   {
     path: '/settings',
-    component: SettingsPage,
+    component: () => import('../views/settings'),
     title: 'settings.title',
   },
   {
     path: '/unusedResource',
-    component: UnusedResourcePage,
+    component: () => import('../views/unusedResource'),
     title: 'unusedResource.title',
   },
   {
     path: '/notFoundResource',
-    component: NotFoundResourceCheckPage,
+    component: () => import('../views/notFoundResource'),
     title: 'notFoundResource.title',
   },
   {
     path: '/convertExternalLink',
-    component: ConvertExternalLinkPage,
+    component: () => import('../views/convertExternalLink'),
     title: 'convertExternalLink.title',
   },
   {
     path: '/checkParentNotebook',
-    component: CheckParentNotebookPage,
+    component: () => import('../views/checkParentNotebook'),
     title: 'checkParentNotebook.title',
   },
   {
     path: '/fixFileExtension',
-    component: FixFileExtensionPage,
+    component: () => import('../views/fixFileExtendsion'),
     title: 'fixFileExtension.title',
   },
   {
     path: '/checkActionApi',
-    component: CheckActionApiView,
+    component: () => import('../views/checkActionApi'),
     title: 'checkActionApi.title',
+  },
+  {
+    path: '/replace',
+    component: () => import('../views/replace'),
+    title: 'replace.title',
   },
 ]

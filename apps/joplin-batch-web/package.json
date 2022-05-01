@@ -26,10 +26,11 @@
     ]
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@liuli-util/async": "^3.2.7",
     "@liuli-util/dom": "^3.2.7",
     "@liuli-util/i18next-util": "^0.2.0",
-    "@liuli-util/react-router": "^0.1.2",
+    "@liuli-util/react-router": "^0.4.1",
     "@liuli-util/string": "^3.2.7",
     "@liuli-util/tree": "^3.2.7",
     "antd": "^4.16.1",
@@ -37,10 +38,11 @@
     "i18next": "^20.3.2",
     "immer": "^9.0.2",
     "joplin-api": "workspace:*",
+    "mdast": "^3.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-highlight-words": "^0.18.0",
     "react-markdown": "^7.1.2",
-    "react-router-dom": "^6.2.1",
     "react-use": "^17.2.4",
     "remark": "^14.0.2",
     "remark-gfm": "^1.0.0",
@@ -58,14 +60,18 @@
     "@liuli-util/rollup-plugin-i18next-dts-gen": "^0.1.0",
     "@liuli-util/shell": "^0.2.0",
     "@liuli-util/vite-plugin-version-info": "^0.2.0",
+    "@types/fs-extra": "^9.0.13",
     "@types/jest": "^26.0.23",
     "@types/markdown-it": "^12.0.2",
+    "@types/mdast": "^3.0.10",
     "@types/node": "14",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-highlight-words": "^0.16.4",
     "@vitejs/plugin-react-refresh": "^1.3.1",
     "babel-jest": "^27.0.2",
     "envfile": "^6.17.0",
+    "fs-extra": "^10.1.0",
     "jest": "^26.6.3",
     "joplin-blog": "workspace:*",
     "less": "^4.1.1",
@@ -73,7 +79,6 @@
     "type-fest": "^1.2.0",
     "typescript": "^4.6.3",
     "vite": "^2.9.5",
-    "vite-plugin-checker": "^0.3.4",
-    "vite-plugin-imp": "^2.0.7"
+    "vite-plugin-checker": "^0.3.4"
   }
 }

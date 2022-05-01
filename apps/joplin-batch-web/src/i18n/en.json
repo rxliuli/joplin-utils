@@ -32,5 +32,12 @@
   "fixFileExtension.action.fix": "Fixing",
   "fixFileExtension.tip": "Guess the extension: ",
   "checkActionApi.title": "Check to open notes via API",
-  "checkActionApi.desc": "Will randomly open a note in the editor"
+  "checkActionApi.desc": "Will randomly open a note in the editor",
+  "replace.title": "Search and Replace",
+  "replace.action.search": "Search",
+  "replace.action.replace": "Replace",
+  "replace.action.preview": "Preview",
+  "replace.action.replaceAll": "Replace All",
+  "replace.msg.replace": "Replace succeeded",
+  "replace.msg.replaceAll": "Replace All Successfully"
 }
