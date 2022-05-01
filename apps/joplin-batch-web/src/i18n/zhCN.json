@@ -34,6 +34,8 @@
   "checkActionApi.title": "检查通过 API 打开笔记",
   "checkActionApi.desc": "将随机在编辑器中打开一个笔记",
   "replace.title": "搜索并替换",
+  "replace.form.keyword": "搜索关键字",
+  "replace.form.replaceText": "替换的文本",
   "replace.action.search": "搜索",
   "replace.action.replace": "替换",
   "replace.action.preview": "预览",

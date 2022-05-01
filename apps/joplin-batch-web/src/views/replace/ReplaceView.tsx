@@ -72,10 +72,10 @@ export const ReplaceView: React.FC = () => {
   return (
     <Card title={i18n.t('replace.title')} className={css.ReplaceView}>
       <Form form={form} initialValues={{ keyword: '', replaceText: '' } as SearchForm}>
-        <Form.Item name={'keyword'} label={'keyword'} rules={[{ required: true }]}>
+        <Form.Item name={'keyword'} label={i18n.t('replace.form.keyword')} rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-        <Form.Item name={'replaceText'} label={'replaceText'} rules={[{ required: true }]}>
+        <Form.Item name={'replaceText'} label={i18n.t('replace.form.replaceText')} rules={[{ required: true }]}>
           <Input />
         </Form.Item>
         <Form.Item>

@@ -34,6 +34,8 @@
   "checkActionApi.title": "Check to open notes via API",
   "checkActionApi.desc": "Will randomly open a note in the editor",
   "replace.title": "Search and Replace",
+  "replace.form.keyword": "Search keyword",
+  "replace.form.replaceText": "Replaced Text",
   "replace.action.search": "Search",
   "replace.action.replace": "Replace",
   "replace.action.preview": "Preview",
