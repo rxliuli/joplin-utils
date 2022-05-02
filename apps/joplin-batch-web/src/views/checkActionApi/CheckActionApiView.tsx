@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Button, Card, message } from 'antd'
 import { i18n } from '../../constants/i18n'
-import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
+import { joplinApiGenerator, openNote } from '../../constants/joplinApiGenerator'
 
 type CheckActionApiViewProps = {}
 
@@ -16,7 +16,7 @@ export const CheckActionApiView: React.FC<CheckActionApiViewProps> = () => {
       return
     }
     const note = list.items[0]
-    joplinApiGenerator.noteActionApi.openAndWatch(note.id)
+    openNote(note.id)
     message.success('打开笔记 ' + note.title)
   }
 

@@ -3,15 +3,11 @@ import { useState } from 'react'
 import { Button, Card, Input, List, message, Space, Typography } from 'antd'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
 import { useAsyncFn } from 'react-use'
-import {
-  ConvertExternalLinkService,
-  MappingContentLink,
-  NoteModel,
-} from './service/ConvertExternalLinkService'
+import { ConvertExternalLinkService, MappingContentLink, NoteModel } from './service/ConvertExternalLinkService'
 import css from './ConvertExternalLinkView.module.css'
 import { JoplinMarkdownUtil } from 'joplin-blog/src/util/JoplinMarkdownUtil'
 import produce from 'immer'
-import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
+import { openNote } from '../../constants/joplinApiGenerator'
 import { i18n } from '../../constants/i18n'
 
 const convertExternalLinkService = new ConvertExternalLinkService()
@@ -33,9 +29,7 @@ export const MatchNoteList: React.FC<MatchNoteListProps> = (props) => {
         <List.Item key={matchNote.id}>
           <Space>
             <Typography.Text>{matchNote.title}</Typography.Text>
-            <Button onClick={() => onConvertNote(matchNote)}>
-              {i18n.t('convertExternalLink.action.convert')}
-            </Button>
+            <Button onClick={() => onConvertNote(matchNote)}>{i18n.t('convertExternalLink.action.convert')}</Button>
           </Space>
         </List.Item>
       )}
@@ -50,9 +44,7 @@ const filterEmptyUrlsNote = (note: NoteModel) => note.urls.length !== 0
 export const ConvertExternalLinkView: React.FC = () => {
   const [list, setList] = useState<NoteModel[]>([])
 
-  const [onSearchState, onSearch] = useAsyncFn(async function onSearch(
-    keyword: string,
-  ) {
+  const [onSearchState, onSearch] = useAsyncFn(async function onSearch(keyword: string) {
     if (keyword === '') {
       setList([])
       return
@@ -88,17 +80,9 @@ export const ConvertExternalLinkView: React.FC = () => {
     message.success(i18n.t('convertExternalLink.msg.success'))
   }
 
-  async function onOpenNote(id: string) {
-    await joplinApiGenerator.noteActionApi.openAndWatch(id)
-  }
-
   return (
     <Card title={i18n.t('convertExternalLink.title')}>
-      <Input.Search
-        onSearch={onSearch}
-        allowClear={true}
-        loading={onSearchState.loading}
-      />
+      <Input.Search onSearch={onSearch} allowClear={true} loading={onSearchState.loading} />
       <List
         dataSource={list}
         itemLayout={'vertical'}
@@ -106,11 +90,7 @@ export const ConvertExternalLinkView: React.FC = () => {
         renderItem={(note, noteIndex) => (
           <List.Item
             key={note.id}
-            extra={[
-              <Button onClick={() => onOpenNote(note.id)}>
-                {i18n.t('common.action.open')}
-              </Button>,
-            ]}
+            extra={[<Button onClick={() => openNote(note.id)}>{i18n.t('common.action.open')}</Button>]}
           >
             <Typography.Title level={4}>{note.title}</Typography.Title>
             <List

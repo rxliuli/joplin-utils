@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useState } from 'react'
 import { Button, Card, List, SpinProps } from 'antd'
 import { useAsyncFn } from 'react-use'
-import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
+import { joplinApiGenerator, openNote } from '../../constants/joplinApiGenerator'
 import { NotFoundResourceCheckService } from './service/NotFoundResourceCheckService'
 import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
@@ -32,10 +32,6 @@ export const NotFoundResourceCheckView: React.FC = () => {
     setList(list)
   })
 
-  async function openNote(id: string) {
-    await joplinApiGenerator.noteActionApi.openAndWatch(id)
-  }
-
   return (
     <Card
       title={i18n.t('notFoundResource.title')}
@@ -46,19 +42,19 @@ export const NotFoundResourceCheckView: React.FC = () => {
         locale={{
           emptyText: i18n.t('notFoundResource.listEmptyText'),
         }}
-        renderItem={(item) => (
+        renderItem={(note) => (
           <List.Item
-            key={item.id}
-            actions={[<Button onClick={() => openNote(item.id)}>{i18n.t('common.action.open')}</Button>]}
+            key={'note-' + note.id}
+            actions={[<Button onClick={() => openNote(note.id)}>{i18n.t('common.action.open')}</Button>]}
           >
             <List.Item.Meta
-              title={item.title}
+              title={note.title}
               description={
                 <List
                   className={css.subList}
-                  dataSource={item.errorLinks}
+                  dataSource={note.errorLinks}
                   renderItem={(item) => (
-                    <List.Item key={item.id}>
+                    <List.Item key={'resource-' + note.id + '-' + item.id}>
                       <List.Item.Meta title={item.title || i18n.t('notFoundResource.unknownFileName', item)} />
                     </List.Item>
                   )}
