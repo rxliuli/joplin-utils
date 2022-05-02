@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /images/logo.png
+heroImage: /images/logo.svg
 heroText: Joplin Utils
 tagline: Joplin-based peripheral community tool
 actions:

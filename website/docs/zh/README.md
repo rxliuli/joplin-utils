@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /images/logo.png
+heroImage: /images/logo.svg
 heroText: Joplin Utils
 tagline: 基于 Joplin 的周边社区工具
 actions:
