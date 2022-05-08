@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "npx simple-git-hooks",
-    "setup-all": "pnpm --filter . run setup",
+    "setup-all": "pnpm -r run setup",
     "clean-all": "pnpx rimraf **/node_modules **/dist"
   },
   "prettier": "@liuli-util/prettier-standard-config",
@@ -24,7 +24,6 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@liuli-util/prettier-standard-config": "^0.2.0",
     "lint-staged": "^11.2.6",
-    "patch-package": "^6.4.7",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.70.2",
