@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.8.3
+
+- fix: fix the error that `#!/usr/bin/env node` is not added to the bin.cjs entry file
+
 ## 0.8.2
 
 - fix: fix a bug where headers in body are not removed properly

@@ -149,6 +149,7 @@ importers:
       '@rollup/plugin-json': ^4.1.0
       '@types/figlet': ^1.5.0
       '@types/fs-extra': ^9.0.6
+      '@types/mdast': ^3.0.10
       '@types/node': ^12.19.11
       '@types/prettier': ^2.4.4
       '@types/shelljs': ^0.8.8
@@ -217,6 +218,7 @@ importers:
       '@rollup/plugin-json': 4.1.0_rollup@2.70.2
       '@types/figlet': 1.5.4
       '@types/fs-extra': 9.0.13
+      '@types/mdast': 3.0.10
       '@types/node': 12.20.50
       '@types/prettier': 2.6.0
       '@types/shelljs': 0.8.11
@@ -23105,7 +23107,7 @@ packages:
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 27.5.1
+      jest: 27.5.1_ts-node@9.1.1
       jest-util: 27.5.1
       json5: 2.2.1
       lodash.memoize: 4.1.2
