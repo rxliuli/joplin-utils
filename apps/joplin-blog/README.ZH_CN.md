@@ -76,3 +76,9 @@ hexo
 
 - 导出 jex 然后再导入 jex，这里的笔记全部都是创建操作，参考：<https://discourse.joplinapp.org/t/when-will-joplin-modify-the-id-of-the-note/17806>
 - 同步时笔记发生冲突
+
+### nodejs 18 不完全兼容
+
+目前有 ArchLinux 用户报告无法使用 joplin-blog，排查之后发现更换 nodejs 16 lts 即可，请优先使用 nodejs 16 lts。
+
+相关 issue：<https://github.com/rxliuli/joplin-utils/issues/45>

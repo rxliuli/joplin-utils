@@ -78,3 +78,9 @@ Some possible reasons are
 
 - Export jex and then import jex, all notes here are created operations, refer to: <https://discourse.joplinapp.org/t/when-will-joplin-modify-the-id-of-the-note/17806>
 - Notes conflict when syncing
+
+### nodejs 18 is not fully compatible
+
+Currently, some ArchLinux users report that they cannot use joplin-blog, but after troubleshooting, they found that replacing nodejs 16 lts works, please use nodejs 16 lts first.
+
+Related issue: <https://github.com/rxliuli/joplin-utils/issues/45>
