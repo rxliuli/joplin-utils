@@ -48,13 +48,13 @@
 
 公共
 
-| 配置       | 类型                    | 必填 | 说明                                                           |
-| ---------- | ----------------------- | ---- | -------------------------------------------------------------- |
-| `type`     | `hexo/vuepress/docsify` | 是   | 集成博客的类型                                                 |
-| `rootPath` | `string`                | 否   | hexo/vuepress 目录，默认是 `.`                                 |
-| `token`    | `string`                | 是   | joplin web clipper 的 token                                    |
-| `baseUrl`  | `string`                | 否   | joplin web clipper 的基础路径，默认是 `http://localhost:41184` |
-| `tag`      | `string`                | 是   | joplin 的博客标签                                              |
+| 配置       | 类型                           | 必填 | 说明                                                           |
+| ---------- | ------------------------------ | ---- | -------------------------------------------------------------- |
+| `type`     | `hexo/vuepress/docsify/jeykll` | 是   | 集成博客的类型                                                 |
+| `rootPath` | `string`                       | 否   | hexo/vuepress 目录，默认是 `.`                                 |
+| `token`    | `string`                       | 是   | joplin web clipper 的 token                                    |
+| `baseUrl`  | `string`                       | 否   | joplin web clipper 的基础路径，默认是 `http://localhost:41184` |
+| `tag`      | `string`                       | 是   | joplin 的博客标签                                              |
 
 hexo
 

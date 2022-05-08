@@ -18,18 +18,18 @@
 ## 启动本地服务器
 
 1. 从终端进入到上一步创建的项目目录
-2. `yarn && yarn setup` 初始化
-3. `yarn server` 启动本地开发环境
+2. `npm i` 初始化
+3. `npm run server` 启动本地开发环境
 4. 在浏览器打开 <http://localhost:4000/> 可以看到博客页面
 
 ## 配置 joplin-blog
 
 1. 使用 vscode 打开 _.joplin-blog.json_ 配置文件
-2. 主要应该修改 `joplinProfilePath/token/port` 三个配置
+2. 主要应该修改 `token` 配置
 3. 删除 _source/\_posts_ 目录
 4. 为一些笔记添加 `blog` 标签
-5. 运行 `yarn gen` 从 joplin 读取 `blog` 标签的笔记并写入到当前目录
-6. 重新运行 `yarn server`
+5. 运行 `npm run run gen` 从 joplin 读取 `blog` 标签的笔记并写入到当前目录
+6. 重新运行 `npm run server`
 7. 在浏览器打开 <http://localhost:4000/> 可以看到 joplin 笔记
 
 > 配置项含义参考 [配置](./README.md#配置)
@@ -48,7 +48,7 @@
 2. 创建名为 `<user>.github.io` 的项目
 3. `git remote add origin <github-url>` 关联本地项目与 github 项目
 4. `git push origin master` 推送所有文件到仓库
-5. `yarn build && yarn deploy` 部署到远端 gh-pages 分支
+5. `npm run build && npm run deploy` 部署到远端 gh-pages 分支
 6. 从浏览器访问 `<user>.github.io`
 
 > 具体更详细的文档参考 [创建 GitHub Pages 站点](https://docs.github.com/cn/pages/getting-started-with-github-pages/creating-a-github-pages-site)

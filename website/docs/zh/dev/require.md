@@ -1,6 +1,6 @@
 # 环境要求
 
-- nodejs >= v14
+- nodejs >= v16
 - yarn
 - git
 - github

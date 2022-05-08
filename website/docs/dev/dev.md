@@ -6,6 +6,6 @@
 
 ## Main technology stack
 
-- yarn2
+- pnpm
 - react
 - typescript

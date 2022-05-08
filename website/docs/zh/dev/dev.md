@@ -4,9 +4,9 @@
 
 ## 主要技术栈
 
-- yarn3
 - react
 - typescript
+- pnpm
 
 ## 初始化项目
 
@@ -14,7 +14,7 @@
 # 克隆项目到本地
 git clone https://github.com/<YOUR GITHUB NAME>/joplin-utils.git
 # 安装依赖并初始化
-yarn && yarn setup
+pnpm && pnpm run setup
 # 进入到相应模块开发代码，具体参考 README
 ```
 
