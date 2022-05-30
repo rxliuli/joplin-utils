@@ -1,6 +1,6 @@
 # joplin api
 
-> [API documentation](https://joplin-utils.rxliuli.com/joplin-api/), [Joplin official document](https://joplinapp.org/api/overview/)
+> [API documentation](https://joplin-utils.rxliuli.com/api/joplin-api/), [Joplin official document](https://joplinapp.org/api/references/rest_api/)
 
 ## Introduction
 

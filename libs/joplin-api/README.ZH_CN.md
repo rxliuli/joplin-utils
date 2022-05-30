@@ -1,6 +1,6 @@
 # joplin api
 
-> [API 文档](https://joplin-utils.rxliuli.com/joplin-api/), [Joplin 官方文档](https://joplinapp.org/api/overview/)
+> [API 文档](https://joplin-utils.rxliuli.com/api/joplin-api/), [Joplin 官方文档](https://joplinapp.org/api/references/rest_api/)
 
 ## 简介
 
