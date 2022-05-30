@@ -8,6 +8,7 @@ export * from './api/NoteActionApi'
 export * from './api/ResourceActionApi'
 export * from './api/NoteExtApi'
 export * from './api/FolderExtApi'
+export * from './api/EventApi'
 export * from './api/JoplinApiGenerator'
 
 export * from './util/config'
