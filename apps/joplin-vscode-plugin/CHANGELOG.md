@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.7.9
+
+- feat: Support excalidraw plug-in to open whiteboard images
+
 ## 0.7.8
 
 - feat: Fix the bug that panel cannot be hidden by ctrl+j,ctrl+j
