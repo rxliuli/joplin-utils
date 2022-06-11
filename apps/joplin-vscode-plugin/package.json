@@ -2,7 +2,7 @@
   "name": "joplin-vscode-plugin",
   "displayName": "joplin-vscode-plugin",
   "description": "%package.description%",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "publisher": "rxliuli",
   "engines": {
     "vscode": "^1.66.2"
@@ -296,12 +296,14 @@
     },
     "keybindings": [
       {
-        "command": "workbench.action.togglePanel",
-        "key": "ctrl+k ctrl+j"
+        "command": "workbench.view.extension.joplin-note",
+        "key": "ctrl+j ctrl+j",
+        "when": "focusedView != joplin-note"
       },
       {
-        "command": "workbench.view.extension.joplin-note",
-        "key": "ctrl+j ctrl+j"
+        "command": "workbench.action.toggleSidebarVisibility",
+        "key": "ctrl+j ctrl+j",
+        "when": "focusedView == joplin-note"
       },
       {
         "key": "f2",
