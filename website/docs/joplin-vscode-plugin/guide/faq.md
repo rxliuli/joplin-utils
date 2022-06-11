@@ -70,7 +70,7 @@ By default, joplin on each computer will generate a random token, but you can mo
 
 When you first use the joplin vscode plugin, you may encounter the problem of not being able to view images in markdown preview, there is a prompt in the preview **Some content has been disabled in this document**, this problem can be solved very simply.
 
-1. Enter the command `markdown.showPreviewSecuritySelector`. 2.
+1. Enter the command `markdown.showPreviewSecuritySelector`
 2. Select `Allow insecure local content` in the list
 
 > [vscode markdown document](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview-security)
