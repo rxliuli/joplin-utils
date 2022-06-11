@@ -65,3 +65,16 @@ By default, joplin on each computer will generate a random token, but you can mo
 ![Manually set joplin's token](/images/manually-set-token-of-joplin.png)
 
 > Reference: <https://github.com/rxliuli/joplin-utils/issues/25>
+
+## markdown preview can't display images
+
+When you first use the joplin vscode plugin, you may encounter the problem of not being able to view images in markdown preview, there is a prompt in the preview **Some content has been disabled in this document**, this problem can be solved very simply.
+
+1. Enter the command `markdown.showPreviewSecuritySelector`. 2.
+2. Select `Allow insecure local content` in the list
+
+> [vscode markdown document](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview-security)
+
+## Incompatible Plugin Markdown Preview Enhanced
+
+Since Markdown Preview Enhanced builds its own webview page for rendering markdown files and does not care about the [markdown-it extension-guides api](https://code.visualstudio.com/api/) provided by vscode extension-guides/markdown-extension), it is now incompatible and recommends using [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang. markdown-all-in-one), reference: <https://github.com/rxliuli/joplin-utils/issues/46>
