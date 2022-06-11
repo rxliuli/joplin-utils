@@ -302,6 +302,7 @@ export class JoplinNoteCommandService {
 
   async showResources(fileName?: string) {
     const noteId = JoplinNoteUtil.getNoteIdByFileName(fileName)
+    logger.warn('showResources.noteId', noteId)
     if (!noteId) {
       return
     }
@@ -312,6 +313,7 @@ export class JoplinNoteCommandService {
         resourceId: item.id,
       })),
     )
+    logger.warn('showResources.selectItem', selectItem)
     if (!selectItem) {
       return
     }

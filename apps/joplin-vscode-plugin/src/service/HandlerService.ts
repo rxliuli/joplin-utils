@@ -12,6 +12,7 @@ import { i18n } from '../constants/i18n'
 import { GlobalContext } from '../state/GlobalContext'
 import { remove, writeFile } from 'fs-extra'
 import { filenamify } from '../util/filenamify'
+import { logger } from '../constants/logger'
 
 /**
  * other service
@@ -63,6 +64,7 @@ export class HandlerService {
   private readonly openFileService = new OpenFileService()
 
   async openResource(id: string) {
+    logger.info('HandlerService.openResource', id)
     const resource = await safePromise(resourceApi.get(id, ['id', 'title', 'filename', 'file_extension']))
     if (!resource) {
       vscode.window.showWarningMessage(i18n.t('Resource does not exist'))
@@ -87,6 +89,7 @@ export class HandlerService {
   }
 
   async openNote(id: string) {
+    logger.info('HandlerService.openNote', id)
     if (!id) {
       vscode.window.showWarningMessage(i18n.t('id cannot be empty'))
       return
