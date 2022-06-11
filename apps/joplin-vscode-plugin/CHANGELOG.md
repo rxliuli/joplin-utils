@@ -1,5 +1,14 @@
 # Release Notes
 
+## 0.7.8
+
+- feat: Fix the bug that panel cannot be hidden by ctrl+j,ctrl+j
+- feat: Support editing specified resources directly with shortcut keys
+
+## 0.7.7
+
+- fix: Fix the bug that the sidebar icon cannot be displayed.
+
 ## 0.7.6
 
 - feat: add winston logging to avoid feedback problems
