@@ -191,6 +191,11 @@
         "category": "Joplin"
       },
       {
+        "command": "joplinNote.showResources",
+        "title": "%commands.joplinNote.showResources%",
+        "category": "Joplin"
+      },
+      {
         "command": "joplinNote.showLogFileDir",
         "title": "%commands.joplin.openLogFileDir%",
         "category": "Joplin"
@@ -337,6 +342,10 @@
       {
         "command": "joplinNote.manageTags",
         "key": "ctrl+j ctrl+m"
+      },
+      {
+        "command": "joplinNote.showResources",
+        "key": "ctrl+j ctrl+l"
       },
       {
         "command": "joplinNote.cut",

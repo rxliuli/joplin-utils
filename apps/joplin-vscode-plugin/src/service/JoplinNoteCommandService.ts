@@ -17,7 +17,7 @@ import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { appConfig, AppConfig } from '../config/AppConfig'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import * as path from 'path'
-import { createReadStream, mkdirp, pathExists, readFile, remove, writeFile } from 'fs-extra'
+import { close, createReadStream, mkdirp, pathExists, readFile, remove, writeFile } from 'fs-extra'
 import { createEmptyFile } from '../util/createEmptyFile'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { uploadResourceService } from './UploadResourceService'
@@ -300,6 +300,24 @@ export class JoplinNoteCommandService {
     await Promise.all([this.focus(noteId), this.refreshResource(noteId)])
   }
 
+  async showResources(fileName?: string) {
+    const noteId = JoplinNoteUtil.getNoteIdByFileName(fileName)
+    if (!noteId) {
+      return
+    }
+    const resources = await noteApi.resourcesById(noteId)
+    const selectItem = await vscode.window.showQuickPick(
+      resources.map((item) => ({
+        label: item.title,
+        resourceId: item.id,
+      })),
+    )
+    if (!selectItem) {
+      return
+    }
+    await this.handlerService.openResource(selectItem.resourceId)
+  }
+
   private async refreshResource(noteId: string) {
     console.log('refreshResource: ', noteId, this.config)
   }
@@ -329,7 +347,7 @@ export class JoplinNoteCommandService {
       return
     }
     const filePath = path.resolve(globalStoragePath, `.tempResource/${title}`)
-    await createEmptyFile(filePath)
+    const handle = await createEmptyFile(filePath)
     let { res, markdownLink } = await UploadResourceUtil.uploadFileByPath(filePath)
     // 如果是 svg 图片则作为图片插入
     if (path.extname(filePath) === '.svg') {
@@ -340,6 +358,7 @@ export class JoplinNoteCommandService {
       uploadResourceService.refreshResourceList(res.id),
     ])
     if (await pathExists(filePath)) {
+      await close(handle)
       await remove(filePath)
     }
     vscode.window.showInformationMessage(i18n.t('Attachment resource created successfully'))
