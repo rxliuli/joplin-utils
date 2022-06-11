@@ -16,6 +16,10 @@ const extList: ExtInfo[] = [
     id: 'eighthundreds.vscode-mindmap',
     exts: ['.km', '.km.svg'],
   },
+  {
+    id: 'pomdtr.excalidraw-editor',
+    exts: ['.excalidraw', '.excalidraw.json', '.excalidraw.svg', 'excalidraw.png'],
+  },
 ]
 
 export class OpenFileService {
