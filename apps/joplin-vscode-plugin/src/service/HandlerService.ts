@@ -64,7 +64,7 @@ export class HandlerService {
   private readonly openFileService = new OpenFileService()
 
   async openResource(id: string) {
-    logger.info('HandlerService.openResource', id)
+    logger.info('HandlerService.openResource: ' + id)
     const resource = await safePromise(resourceApi.get(id, ['id', 'title', 'filename', 'file_extension']))
     if (!resource) {
       vscode.window.showWarningMessage(i18n.t('Resource does not exist'))
@@ -89,7 +89,7 @@ export class HandlerService {
   }
 
   async openNote(id: string) {
-    logger.info('HandlerService.openNote', id)
+    logger.info('HandlerService.openNote: ' + id)
     if (!id) {
       vscode.window.showWarningMessage(i18n.t('id cannot be empty'))
       return

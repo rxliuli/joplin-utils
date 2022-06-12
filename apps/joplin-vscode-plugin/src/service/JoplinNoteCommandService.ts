@@ -79,7 +79,7 @@ export class JoplinNoteCommandService {
         GlobalContext.openNoteResourceMap.set(id, resourceList)
       })
       .on('error', (err) => {
-        logger.error('watch note error', err)
+        logger.error('watch note error: ' + err)
       })
     watch(tempResourceDirPath)
       .on('change', async (filePath) => {
@@ -94,7 +94,7 @@ export class JoplinNoteCommandService {
         })
       })
       .on('error', (err) => {
-        logger.error('watch resource error', err)
+        logger.error('watch resource error: ' + err)
       })
   }
 
@@ -199,7 +199,7 @@ export class JoplinNoteCommandService {
    * @param item
    */
   async openNote(item: Omit<FolderOrNote, 'item'> & { item: JoplinListNote }) {
-    logger.info('openNote start', item)
+    logger.info(`openNote start, id: ${item.id}, title: ${item.label}`)
     // 如果已经打开了笔记，则应该切换并且保持 treeview 的焦点
     if (GlobalContext.openNoteMap.has(item.id)) {
       const filePath = GlobalContext.openNoteMap.get(item.id)!
@@ -217,7 +217,7 @@ export class JoplinNoteCommandService {
       ? note.body
       : (note.title.startsWith('# ') ? '' : '# ') + note.title + '\n\n' + note.body
     await writeFile(tempNotePath, content)
-    logger.info('openNote write tempFile', tempNotePath)
+    logger.info('openNote write tempFile: ' + tempNotePath)
     GlobalContext.openNoteMap.set(item.id, tempNotePath)
     GlobalContext.openNoteResourceMap.set(item.id, await noteApi.resourcesById(item.id))
     await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(tempNotePath))
@@ -302,7 +302,7 @@ export class JoplinNoteCommandService {
 
   async showResources(fileName?: string) {
     const noteId = JoplinNoteUtil.getNoteIdByFileName(fileName)
-    logger.warn('showResources.noteId', noteId)
+    logger.warn('showResources.noteId: ' + noteId)
     if (!noteId) {
       return
     }
@@ -313,7 +313,7 @@ export class JoplinNoteCommandService {
         resourceId: item.id,
       })),
     )
-    logger.warn('showResources.selectItem', selectItem)
+    logger.warn('showResources.selectItem: ' + JSON.stringify(selectItem))
     if (!selectItem) {
       return
     }
