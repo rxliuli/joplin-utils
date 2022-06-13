@@ -28,6 +28,13 @@
 - `ctrl+j ctrl+o`: 搜索笔记，默认显示最近修改的 20 条笔记
 - `ctrl+j ctrl+i`: 创建附件
 - `ctrl+j ctrl+m`: 管理标签
+- `ctrl+j ctrl+l`: 显示当前笔记的附件资源
+
+## 编辑附件
+
+由于在 vscode 编辑器中实现的点击跳转功能经常存在问题，所以在 `v0.7.8` 之后实现了显示当前笔记附件列表的功能，用以快速编辑指定附件资源，默认快捷键为 `ctrl+j ctrl+l`
+
+![editResource](/images/editResource.gif)
 
 ## 粘贴图片
 

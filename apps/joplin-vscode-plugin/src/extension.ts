@@ -78,6 +78,15 @@ export async function activate(context: vscode.ExtensionContext) {
       await joplinNoteCommandService.onDidChangeActiveTextEditor(activeFileName)
     }
   })
+  registerCommand('joplinNote.showResources', async () => {
+    {
+      const activeFileName = vscode.window.activeTextEditor?.document.fileName
+      if (!activeFileName) {
+        return
+      }
+      await joplinNoteCommandService.showResources(activeFileName)
+    }
+  })
   registerCommand('joplinNote.showLogFileDir', () => vscode.env.openExternal(context.logUri))
   vscode.window.onDidChangeActiveTextEditor((e) =>
     joplinNoteCommandService.onDidChangeActiveTextEditor(e?.document.fileName),

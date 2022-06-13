@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
 import { TextDocument, Uri } from 'vscode'
-import { noteApi, resourceActionApi, resourceApi, TypeEnum } from 'joplin-api'
+import { noteApi, resourceApi, TypeEnum } from 'joplin-api'
 import { parse } from 'querystring'
 import { JoplinNoteCommandService } from './JoplinNoteCommandService'
 import { FolderOrNote } from '../model/FolderOrNote'
@@ -12,6 +12,7 @@ import { i18n } from '../constants/i18n'
 import { GlobalContext } from '../state/GlobalContext'
 import { remove, writeFile } from 'fs-extra'
 import { filenamify } from '../util/filenamify'
+import { logger } from '../constants/logger'
 
 /**
  * other service
@@ -63,12 +64,15 @@ export class HandlerService {
   private readonly openFileService = new OpenFileService()
 
   async openResource(id: string) {
+    logger.info('HandlerService.openResource: ' + id)
     const resource = await safePromise(resourceApi.get(id, ['id', 'title', 'filename', 'file_extension']))
     if (!resource) {
+      logger.warn('HandlerService.openResource: Resource does not exist')
       vscode.window.showWarningMessage(i18n.t('Resource does not exist'))
       return
     }
     if (GlobalContext.openResourceMap.has(id)) {
+      logger.info('HandlerService.openResource: Resource opened')
       const filePath = GlobalContext.openResourceMap.get(id)!
       await this.openFileService.openByVSCode(filePath)
       return
@@ -82,11 +86,12 @@ export class HandlerService {
     const buffer = await resourceApi.fileByResourceId(id)
     await writeFile(filePath, buffer)
     GlobalContext.openResourceMap.set(id, filePath)
-    console.log('open file: ', filePath)
+    logger.info('HandlerService.openResource open file: ' + filePath)
     await this.openFileService.openByVSCode(filePath)
   }
 
   async openNote(id: string) {
+    logger.info('HandlerService.openNote: ' + id)
     if (!id) {
       vscode.window.showWarningMessage(i18n.t('id cannot be empty'))
       return

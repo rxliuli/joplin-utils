@@ -17,7 +17,7 @@ import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { appConfig, AppConfig } from '../config/AppConfig'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import * as path from 'path'
-import { createReadStream, mkdirp, pathExists, readFile, remove, writeFile } from 'fs-extra'
+import { close, createReadStream, mkdirp, pathExists, readFile, remove, writeFile } from 'fs-extra'
 import { createEmptyFile } from '../util/createEmptyFile'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { uploadResourceService } from './UploadResourceService'
@@ -79,7 +79,7 @@ export class JoplinNoteCommandService {
         GlobalContext.openNoteResourceMap.set(id, resourceList)
       })
       .on('error', (err) => {
-        logger.error('watch note error', err)
+        logger.error('watch note error: ' + err)
       })
     watch(tempResourceDirPath)
       .on('change', async (filePath) => {
@@ -94,7 +94,7 @@ export class JoplinNoteCommandService {
         })
       })
       .on('error', (err) => {
-        logger.error('watch resource error', err)
+        logger.error('watch resource error: ' + err)
       })
   }
 
@@ -199,7 +199,7 @@ export class JoplinNoteCommandService {
    * @param item
    */
   async openNote(item: Omit<FolderOrNote, 'item'> & { item: JoplinListNote }) {
-    logger.info('openNote start', item)
+    logger.info(`openNote start, id: ${item.id}, title: ${item.label}`)
     // 如果已经打开了笔记，则应该切换并且保持 treeview 的焦点
     if (GlobalContext.openNoteMap.has(item.id)) {
       const filePath = GlobalContext.openNoteMap.get(item.id)!
@@ -217,7 +217,7 @@ export class JoplinNoteCommandService {
       ? note.body
       : (note.title.startsWith('# ') ? '' : '# ') + note.title + '\n\n' + note.body
     await writeFile(tempNotePath, content)
-    logger.info('openNote write tempFile', tempNotePath)
+    logger.info('openNote write tempFile: ' + tempNotePath)
     GlobalContext.openNoteMap.set(item.id, tempNotePath)
     GlobalContext.openNoteResourceMap.set(item.id, await noteApi.resourcesById(item.id))
     await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(tempNotePath))
@@ -300,6 +300,26 @@ export class JoplinNoteCommandService {
     await Promise.all([this.focus(noteId), this.refreshResource(noteId)])
   }
 
+  async showResources(fileName?: string) {
+    const noteId = JoplinNoteUtil.getNoteIdByFileName(fileName)
+    logger.warn('showResources.noteId: ' + noteId)
+    if (!noteId) {
+      return
+    }
+    const resources = await noteApi.resourcesById(noteId)
+    const selectItem = await vscode.window.showQuickPick(
+      resources.map((item) => ({
+        label: item.title,
+        resourceId: item.id,
+      })),
+    )
+    logger.warn('showResources.selectItem: ' + JSON.stringify(selectItem))
+    if (!selectItem) {
+      return
+    }
+    await this.handlerService.openResource(selectItem.resourceId)
+  }
+
   private async refreshResource(noteId: string) {
     console.log('refreshResource: ', noteId, this.config)
   }
@@ -329,7 +349,7 @@ export class JoplinNoteCommandService {
       return
     }
     const filePath = path.resolve(globalStoragePath, `.tempResource/${title}`)
-    await createEmptyFile(filePath)
+    const handle = await createEmptyFile(filePath)
     let { res, markdownLink } = await UploadResourceUtil.uploadFileByPath(filePath)
     // 如果是 svg 图片则作为图片插入
     if (path.extname(filePath) === '.svg') {
@@ -340,6 +360,7 @@ export class JoplinNoteCommandService {
       uploadResourceService.refreshResourceList(res.id),
     ])
     if (await pathExists(filePath)) {
+      await close(handle)
       await remove(filePath)
     }
     vscode.window.showInformationMessage(i18n.t('Attachment resource created successfully'))

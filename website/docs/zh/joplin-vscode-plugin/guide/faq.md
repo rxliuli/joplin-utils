@@ -8,10 +8,6 @@
 curl http://127.0.0.1:41184/ping
 ```
 
-## 点击后在其他编辑器中打开
-
-请参考官方的默认外部编辑器设置：[How can I edit my note in an external text editor?](https://joplinapp.org/faq/#how-can-i-edit-my-note-in-an-external-text-editor)
-
 ## 如何列出 VSCode 打开的 joplin 笔记
 
 虽然没有正式的支持，但你可以使用快捷键 `c+j c+o` 来列出最后修改的 20 个 joplin 笔记做到类似的事情。
@@ -61,3 +57,16 @@ powershell
 ![手动设置 joplin 的 token](/images/manually-set-token-of-joplin.png)
 
 > 参考：<https://github.com/rxliuli/joplin-utils/issues/25>
+
+## markdown 预览无法显示图片
+
+当你第一次使用 joplin vscode 插件时，你也许会遇到无法在 markdown 预览中查看图片的问题，在预览中存在提示 **Some content has been disabled in this document**，这个问题可以很简单的解决。
+
+1. 输入命令 `markdown.showPreviewSecuritySelector`
+2. 在列表中选择 `Allow insecure local content`
+
+> [vscode markdown 文档](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview-security)
+
+## 不兼容插件 Markdown Preview Enhanced
+
+由于 Markdown Preview Enhanced 自行构建了 markdown 文件渲染的 webview 页面，而且不在乎 vscode 提供的 [markdown-it 扩展接口 api](https://code.visualstudio.com/api/extension-guides/markdown-extension)，所以现在无法兼容，推荐使用 [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)，参考：<https://github.com/rxliuli/joplin-utils/issues/46>

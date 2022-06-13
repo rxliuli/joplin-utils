@@ -15,9 +15,10 @@ export function registerCommand(command: string, callback: (...args: any[]) => a
     command,
     async (...args: any[]) => {
       try {
+        logger.info('command execute: ' + command)
         return await callback(...args)
       } catch (err) {
-        logger.error('command error: ', command, err)
+        logger.error('command error: ' + command)
         throw err
       }
     },
