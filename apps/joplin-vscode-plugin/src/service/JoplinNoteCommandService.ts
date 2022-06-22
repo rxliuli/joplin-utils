@@ -213,9 +213,7 @@ export class JoplinNoteCommandService {
     const filename = item.label + (GlobalContext.openNoteMap.get(item.label) ? item.id : '')
     const tempNotePath = path.resolve(tempNoteDirPath, filenamify(`${filename}.md`))
     const note = await noteApi.get(item.id, ['body', 'title'])
-    const content = note.body.startsWith('# ')
-      ? note.body
-      : (note.title.startsWith('# ') ? '' : '# ') + note.title + '\n\n' + note.body
+    const content = (note.title.startsWith('# ') ? '' : '# ') + note.title + '\n\n' + note.body
     await writeFile(tempNotePath, content)
     logger.info('openNote write tempFile: ' + tempNotePath)
     GlobalContext.openNoteMap.set(item.id, tempNotePath)
