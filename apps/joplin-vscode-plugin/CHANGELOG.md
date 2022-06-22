@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.7.10
+
+- fix: <https://github.com/rxliuli/joplin-utils/issues/47>
+
 ## 0.7.9
 
 - feat: Support excalidraw plug-in to open whiteboard images
