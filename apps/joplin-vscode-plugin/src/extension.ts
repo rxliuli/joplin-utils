@@ -19,6 +19,7 @@ import { logger } from './constants/logger'
 import { transports } from 'winston'
 import path from 'path'
 import { mkdirp } from 'fs-extra'
+import { htmlImageLink } from './util/htmlImageLink'
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -134,12 +135,20 @@ export async function activate(context: vscode.ExtensionContext) {
 
   return {
     extendMarkdownIt(md: MarkdownIt) {
-      return md.use(useJoplinLink(GlobalContext.openNoteResourceMap)).use(
-        useJoplinImage({
-          token: appConfig.token!,
-          baseUrl: appConfig.baseUrl!,
-        }),
-      )
+      return md
+        .use(useJoplinLink(GlobalContext.openNoteResourceMap))
+        .use(
+          useJoplinImage({
+            token: appConfig.token!,
+            baseUrl: appConfig.baseUrl!,
+          }),
+        )
+        .use(
+          htmlImageLink({
+            token: appConfig.token!,
+            baseUrl: appConfig.baseUrl!,
+          }),
+        )
     },
   }
 

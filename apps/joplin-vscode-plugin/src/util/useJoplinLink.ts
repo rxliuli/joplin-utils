@@ -37,7 +37,7 @@ export function useJoplinLink(openNoteResourceMap: Map<string, ResourceGetRes[]>
             if (resourceIdList.has(id)) {
               tokens[idx].attrs![aIndex][1] = wrapLink(id, TypeEnum.Resource)
             } else {
-              tokens[idx].attrs![aIndex][1] = wrapLink(linkUrl.match(JoplinLinkRegex)![1], TypeEnum.Note)
+              tokens[idx].attrs![aIndex][1] = wrapLink(id, TypeEnum.Note)
             }
           }
         }

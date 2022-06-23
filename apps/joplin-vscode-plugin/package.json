@@ -453,6 +453,7 @@
     "i18next": "^19.8.4",
     "joplin-api": "workspace:*",
     "markdown-it": "^12.0.3",
+    "node-html-parser": "^5.3.3",
     "winston": "^3.7.2"
   },
   "sync": [
