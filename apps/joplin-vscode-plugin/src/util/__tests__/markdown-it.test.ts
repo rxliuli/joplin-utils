@@ -11,13 +11,12 @@ describe('测试 markdown-it', () => {
     md.use(useJoplinLink(new Map().set('id', [{ id: '5783eb31e1924a4f9bc0023483f5ab13' }]))).use(
       useJoplinImage({ token: '', baseUrl: 'http://localhost:41488' }),
     )
-    const res = md.render(`# test 2
-
-![c4cad43066f695cc7d49725b04ebc1bc.png](:/5783eb31e1924a4f9bc0023483f5ab13)
-
-[1. Welcome to Joplin!](:/f248ee4013224815a0813c52d83dac5b)
-`)
-    console.log(res)
+    expect(md.render('![c4cad43066f695cc7d49725b04ebc1bc.png](:/5783eb31e1924a4f9bc0023483f5ab13)').trim()).toBe(
+      '<p><img src="http://localhost:41488/resources/5783eb31e1924a4f9bc0023483f5ab13/file?token=" alt=""></p>',
+    )
+    expect(md.render('[test](:/f248ee4013224815a0813c52d83dac5b)').trim()).toBe(
+      '<p><a href="vscode://rxliuli.joplin-vscode-plugin/open?id%3Df248ee4013224815a0813c52d83dac5b">test</a></p>',
+    )
   })
   it('测试解析图片链接', () => {
     const str = '![c4cad43066f695cc7d49725b04ebc1bc.png](:/5783eb31e1924a4f9bc0023483f5ab13)'
@@ -37,5 +36,6 @@ describe('测试 markdown-it', () => {
     expect(md.render(`test <img src=":/f248ee4013224815a0813c52d83dac5b" alt="test" />`).trim()).toBe(
       `<p>test <img src="http://localhost:41488/resources/f248ee4013224815a0813c52d83dac5b/file?token=" alt="test"></p>`,
     )
+    expect(md.render(`<img src="http://github.com" />`).trim()).toBe(`<img src="http://github.com" />`)
   })
 })
