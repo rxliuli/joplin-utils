@@ -12,7 +12,7 @@
     "setup": "i18next-dts-gen -i src/i18n/",
     "build": "esno build.js",
     "dev": "esno build.js -w",
-    "release": "pnpm build && vsce package --yarn"
+    "release": "pnpm build && vsce package --no-dependencies"
   },
   "categories": [
     "Notebooks"
