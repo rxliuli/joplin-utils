@@ -37,10 +37,10 @@
       "<rootDir>/src/setupTests.ts"
     ]
   },
+  "extensionKind": [
+    "ui"
+  ],
   "contributes": {
-    "extensionKind": [
-      "ui"
-    ],
     "viewsContainers": {
       "activitybar": [
         {
