@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@liuli-util/async": "^3.2.7",
+    "@liuli-util/async": "^3.4.0",
     "@liuli-util/dom": "^3.2.7",
     "@liuli-util/i18next-util": "^0.2.0",
     "@liuli-util/react-router": "^0.4.1",
