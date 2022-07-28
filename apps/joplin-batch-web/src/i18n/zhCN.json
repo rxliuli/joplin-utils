@@ -36,6 +36,7 @@
   "replace.title": "搜索并替换",
   "replace.form.keyword": "搜索关键字",
   "replace.form.replaceText": "替换的文本",
+  "replace.form.keepUpdatedTime": "保留笔记上次更新时间",
   "replace.action.search": "搜索",
   "replace.action.replace": "替换",
   "replace.action.preview": "预览",

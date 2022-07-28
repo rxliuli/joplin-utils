@@ -36,6 +36,7 @@
   "replace.title": "Search and Replace",
   "replace.form.keyword": "Search keyword",
   "replace.form.replaceText": "Replaced Text",
+  "replace.form.keepUpdatedTime": "Preserve note(s) last updated time",
   "replace.action.search": "Search",
   "replace.action.replace": "Replace",
   "replace.action.preview": "Preview",

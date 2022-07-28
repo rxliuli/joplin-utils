@@ -1,4 +1,4 @@
-import { Button, Card, Form, Input, List, message, Space } from 'antd'
+import { Button, Card, Form, Input, List, message, Space, Checkbox } from 'antd'
 import React, { useState } from 'react'
 import css from './ReplaceView.module.css'
 import { TypeEnum } from 'joplin-api'
@@ -13,11 +13,12 @@ interface SearchForm {
   replaceText: string
 }
 
-type SearchNote = Pick<NoteProperties, 'id' | 'title' | 'body'>
+type SearchNote = Pick<NoteProperties, 'id' | 'title' | 'body' | 'user_updated_time'>
 
 export const ReplaceView: React.FC = () => {
   const [form] = Form.useForm<SearchForm>()
   const [list, setList] = useState<SearchNote[]>()
+  const [keepUpdatedTime, setKeepUpdatedTime] = useState<boolean>(false)
 
   async function onSearch() {
     const values = form.getFieldsValue()
@@ -28,7 +29,7 @@ export const ReplaceView: React.FC = () => {
       limit: 100,
       order_by: 'user_updated_time',
       order_dir: 'DESC',
-      fields: ['id', 'title', 'body'],
+      fields: ['id', 'title', 'body', 'user_updated_time'],
     })
     console.log('res: ', res)
     setList(res.items)
@@ -39,6 +40,7 @@ export const ReplaceView: React.FC = () => {
     const values = form.getFieldsValue()
     await joplinApiGenerator.noteApi.update({
       id: item.id,
+      user_updated_time: keepUpdatedTime ? item.user_updated_time : undefined,
       body: item.body.replaceAll(values.keyword, values.replaceText),
     })
     await onSearch()
@@ -62,6 +64,7 @@ export const ReplaceView: React.FC = () => {
       asyncLimiting(async (item) => {
         await joplinApiGenerator.noteApi.update({
           id: item.id,
+          user_updated_time: keepUpdatedTime ? item.user_updated_time : undefined,
           body: item.body.replaceAll(values.keyword, values.replaceText),
         })
       }, 10),
@@ -78,6 +81,12 @@ export const ReplaceView: React.FC = () => {
         <Form.Item name={'replaceText'} label={i18n.t('replace.form.replaceText')} rules={[{ required: true }]}>
           <Input />
         </Form.Item>
+        <Form.Item>
+          <Checkbox checked={keepUpdatedTime} onChange={() => setKeepUpdatedTime(!keepUpdatedTime)}>
+            {i18n.t('replace.form.keepUpdatedTime')}
+          </Checkbox>
+        </Form.Item>
+
         <Form.Item>
           <Space>
             <Button type={'primary'} onClick={onSearch}>
