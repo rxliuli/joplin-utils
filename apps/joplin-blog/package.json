@@ -24,6 +24,7 @@
     ]
   },
   "devDependencies": {
+    "@types/jest": "^27",
     "@liuli-util/cli": "^3.21.0",
     "@liuli-util/i18next-dts-gen": "^0.3.0",
     "@rollup/plugin-json": "^4.1.0",
