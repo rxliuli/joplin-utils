@@ -1,4 +1,4 @@
-import visit from 'unist-util-visit'
+import { visit } from 'unist-util-visit'
 import { mdParser } from '../../../constants/mdParser'
 import { Link } from 'mdast'
 import { expose } from 'comlink'
@@ -34,10 +34,7 @@ export class MarkdownLinkUtil {
    * @param content
    * @param convertLinkMap
    */
-  static convertLink(
-    content: string,
-    convertLinkMap: Record<string, ContentLink>,
-  ): string {
+  static convertLink(content: string, convertLinkMap: Record<string, ContentLink>): string {
     const node = mdParser.parse(content)
     visit(node, (node) => {
       if (node.type !== 'link') {

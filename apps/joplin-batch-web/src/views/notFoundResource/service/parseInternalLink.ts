@@ -1,6 +1,6 @@
 import type { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
 import type { Image, Link } from 'mdast'
-import visit from 'unist-util-visit'
+import { visit } from 'unist-util-visit'
 import { mdParser } from '../../../constants/mdParser'
 
 function parseInternalLinkToId(link: string) {

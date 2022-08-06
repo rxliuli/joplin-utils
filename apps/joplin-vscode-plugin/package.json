@@ -421,7 +421,7 @@
     }
   },
   "devDependencies": {
-    "@liuli-util/i18next-dts-gen": "^0.3.2",
+    "@liuli-util/i18next-dts-gen": "^0.4.0",
     "@types/fs-extra": "^9.0.5",
     "@types/glob": "^7.1.3",
     "@types/jest": "^26.0.19",
