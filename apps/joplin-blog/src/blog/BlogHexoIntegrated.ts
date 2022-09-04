@@ -4,22 +4,6 @@ import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { convertJoplinNote } from './JoplinNoteHandler.worker'
 
-class BlogHexoSingleNoteHandler {
-  constructor(private config: Pick<BlogHexoIntegratedConfig, 'stickyTopIdList' | 'tag'>) {}
-
-  meta(note: CommonNote & { tags: CommonTag[] }): object {
-    return {
-      layout: 'post',
-      title: note.title,
-      abbrlink: note.id,
-      tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
-      date: note.createdTime,
-      updated: note.updatedTime,
-      sticky: this.config.stickyTopIdList?.includes(note.id) ? Number.MAX_SAFE_INTEGER : undefined,
-    }
-  }
-}
-
 export interface BlogHexoIntegratedConfig {
   tag: string
   rootPath: string
@@ -40,7 +24,19 @@ export class BlogHexoIntegrated implements BaseIntegrated {
         note: '/p/{id}',
         resource: '/resource/{id}.{file_extension}',
       }),
-      new BlogHexoSingleNoteHandler(this.config).meta(note),
+      this.meta(note),
     )
+  }
+
+  meta(note: CommonNote & { tags: CommonTag[] }): object {
+    return {
+      layout: 'post',
+      title: note.title,
+      abbrlink: note.id,
+      tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
+      date: note.createdTime,
+      updated: note.updatedTime,
+      sticky: this.config.stickyTopIdList?.includes(note.id) ? Number.MAX_SAFE_INTEGER : undefined,
+    }
   }
 }

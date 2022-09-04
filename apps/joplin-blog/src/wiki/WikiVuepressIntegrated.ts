@@ -7,6 +7,7 @@ import { pick } from '@liuli-util/object'
 import { WikiUtil } from './WikiUtil'
 import { TypeEnum } from 'joplin-api'
 import { convertJoplinNote } from '../blog/JoplinNoteHandler.worker'
+import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 
 export interface WikiVuepressIntegratedConfig {
   tag: string
@@ -49,9 +50,23 @@ export class WikiVuepressIntegrated implements BaseIntegrated {
   }
 
   async parse(note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] }) {
-    return await convertJoplinNote(note, {
-      note: '/p/{id}',
-      resource: './resource/{id}.{file_extension}',
-    })
+    return JoplinMarkdownUtil.addMeta(
+      await convertJoplinNote(note, {
+        note: '/p/{id}',
+        resource: './resource/{id}.{file_extension}',
+      }),
+      this.meta(note),
+    )
+  }
+
+  meta(note: CommonNote & { tags: CommonTag[] }): object {
+    return {
+      layout: 'post',
+      title: note.title,
+      abbrlink: note.id,
+      tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
+      date: note.createdTime,
+      updated: note.updatedTime,
+    }
   }
 }

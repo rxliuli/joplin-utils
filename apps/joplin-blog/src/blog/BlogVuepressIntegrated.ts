@@ -5,21 +5,6 @@ import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { convertJoplinNote } from './JoplinNoteHandler.worker'
 import dayjs from 'dayjs'
 
-class BlogVuepressSingleNoteHandler {
-  constructor(private config: Pick<BlogVuepressIntegratedConfig, 'tag'>) {}
-
-  meta(note: CommonNote & { tags: CommonTag[] }): object {
-    const formatter = 'YYYY-MM-DD HH:mm:ss'
-    return {
-      title: note.title,
-      permalink: `/p/${note.id}`,
-      tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
-      date: dayjs(note.createdTime).format(formatter),
-      updated: dayjs(note.updatedTime).format(formatter),
-    }
-  }
-}
-
 export interface BlogVuepressIntegratedConfig {
   /**
    * hexo 的根目录
@@ -42,7 +27,18 @@ export class BlogVuepressIntegrated implements BaseIntegrated {
         note: '/p/{id}',
         resource: './resource/{id}.{file_extension}',
       }),
-      new BlogVuepressSingleNoteHandler(this.config).meta(note),
+      this.meta(note),
     )
+  }
+
+  meta(note: CommonNote & { tags: CommonTag[] }): object {
+    const formatter = 'YYYY-MM-DD HH:mm:ss'
+    return {
+      title: note.title,
+      permalink: `/p/${note.id}`,
+      tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
+      date: dayjs(note.createdTime).format(formatter),
+      updated: dayjs(note.updatedTime).format(formatter),
+    }
   }
 }

@@ -5,20 +5,6 @@ import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { convertJoplinNote } from './JoplinNoteHandler.worker'
 import dayjs from 'dayjs'
 
-class BlogJekyllSingleNoteHandler {
-  constructor(private config: Pick<BlogJekyllIntegratedConfig, 'tag'>) {}
-
-  meta(note: CommonNote & { tags: CommonTag[] }): object {
-    return {
-      layout: 'post',
-      title: note.title,
-      permalink: `/p/${note.id}`,
-      tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
-      date: dayjs(note.createdTime).format('YYYY-MM-DD HH:mm:ss'),
-    }
-  }
-}
-
 export interface BlogJekyllIntegratedConfig {
   tag: string
   rootPath: string
@@ -38,11 +24,21 @@ export class BlogJekyllIntegrated implements BaseIntegrated {
         note: '/p/{id}',
         resource: '/resource/{id}.{file_extension}',
       }),
-      new BlogJekyllSingleNoteHandler(this.config).meta(note),
+      this.meta(note),
     )
   }
 
   formatFileName(id: string): string {
     return dayjs().format('YYYY-MM-DD-') + id
+  }
+
+  meta(note: CommonNote & { tags: CommonTag[] }): object {
+    return {
+      layout: 'post',
+      title: note.title,
+      permalink: `/p/${note.id}`,
+      tags: note.tags.map((tag) => tag.title).filter((name) => name !== this.config.tag),
+      date: dayjs(note.createdTime).format('YYYY-MM-DD HH:mm:ss'),
+    }
   }
 }
