@@ -39,13 +39,15 @@ export class FolderExtApi {
    * @param id
    * @param parentId
    */
-  async move(id: string, parentId: string): Promise<void> {
+  async move(id: string, parentId?: string): Promise<void> {
     if (id === parentId) {
       return
     }
-    const parentPathFolderList = await this.path(parentId)
-    if (parentPathFolderList.some((folder) => id === folder.id)) {
-      throw new Error('Cannot move directory to subdirectory')
+    if (parentId) {
+      const parentPathFolderList = await this.path(parentId)
+      if (parentPathFolderList.some((folder) => id === folder.id)) {
+        throw new Error('Cannot move directory to subdirectory')
+      }
     }
     await this.folderApi.update({ id, parent_id: parentId })
   }

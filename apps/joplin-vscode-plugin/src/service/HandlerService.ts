@@ -3,7 +3,7 @@ import { TextDocument, Uri } from 'vscode'
 import { noteApi, resourceApi, TypeEnum } from 'joplin-api'
 import { parse } from 'querystring'
 import { JoplinNoteCommandService } from './JoplinNoteCommandService'
-import { FolderOrNote } from '../model/FolderOrNote'
+import { JoplinTreeItem } from '../model/FolderOrNote'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { OpenFileService } from '../util/OpenFileService'
 import { safePromise } from '../util/safePromise'
@@ -102,7 +102,7 @@ export class HandlerService {
       return
     }
     await this.joplinNoteCommandService.openNote(
-      new FolderOrNote({
+      new JoplinTreeItem({
         ...item,
         type_: TypeEnum.Note,
       }) as any,

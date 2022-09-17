@@ -1,4 +1,4 @@
-import { FolderOrNote, JoplinListNote } from '../model/FolderOrNote'
+import { JoplinTreeItem, JoplinListNote } from '../model/FolderOrNote'
 import * as vscode from 'vscode'
 import { QuickPickItem, TreeView } from 'vscode'
 import {
@@ -41,7 +41,7 @@ export class JoplinNoteCommandService {
   constructor(
     private config: {
       noteViewProvider: NoteExplorerProvider
-      noteListTreeView: TreeView<FolderOrNote>
+      noteListTreeView: TreeView<JoplinTreeItem>
     },
   ) {}
 
@@ -53,7 +53,7 @@ export class JoplinNoteCommandService {
     config.baseUrl = appConfig.baseUrl
 
     setInterval(async () => {
-      await this.config.noteViewProvider.refresh()
+      // await this.config.noteViewProvider.refresh()
     }, 1000 * 10)
     const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
     const tempResourceDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempResource')
@@ -103,7 +103,7 @@ export class JoplinNoteCommandService {
    * @param type
    * @param item
    */
-  async create(type: TypeEnum, item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
+  async create(type: TypeEnum, item: JoplinTreeItem = this.config.noteListTreeView.selection[0]) {
     const parentFolderId = !item ? '' : item.item.type_ === TypeEnum.Folder ? item.item.id : item.item.parent_id
     console.log('joplinNote.create: ', item, parentFolderId)
 
@@ -131,7 +131,7 @@ export class JoplinNoteCommandService {
    * remove folder or note
    * @param item
    */
-  async remove(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
+  async remove(item: JoplinTreeItem = this.config.noteListTreeView.selection[0]) {
     console.log('joplinNote.remove: ', item)
     const folderOrNote = item.item
     if (appConfig.deleteConfirm) {
@@ -165,7 +165,7 @@ export class JoplinNoteCommandService {
     await this.config.noteViewProvider.refresh()
   }
 
-  async rename(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
+  async rename(item: JoplinTreeItem = this.config.noteListTreeView.selection[0]) {
     console.log('joplinNote.rename: ', item)
     const title = await vscode.window.showInputBox({
       placeHolder: i18n.t('Please enter a new name'),
@@ -182,14 +182,14 @@ export class JoplinNoteCommandService {
     await this.config.noteViewProvider.refresh()
   }
 
-  async copyLink(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
+  async copyLink(item: JoplinTreeItem = this.config.noteListTreeView.selection[0]) {
     console.log('joplinNote.copyLink: ', item)
     const label = JoplinNoteUtil.trimTitleStart(item.label!.trim())
     const url = `[${label}](:/${item.id})`
     vscode.env.clipboard.writeText(url)
   }
 
-  async toggleTodoState(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
+  async toggleTodoState(item: JoplinTreeItem = this.config.noteListTreeView.selection[0]) {
     await noteExtApi.toggleTodo(item.id)
     await this.config.noteViewProvider.refresh()
   }
@@ -198,8 +198,8 @@ export class JoplinNoteCommandService {
    * open note in vscode
    * @param item
    */
-  async openNote(item: Omit<FolderOrNote, 'item'> & { item: JoplinListNote }) {
-    logger.info(`openNote start, id: ${item.id}, title: ${item.label}`)
+  async openNote(item: JoplinListNote) {
+    logger.info(`openNote start, id: ${item.id}, title: ${item.title}`)
     // 如果已经打开了笔记，则应该切换并且保持 treeview 的焦点
     if (GlobalContext.openNoteMap.has(item.id)) {
       const filePath = GlobalContext.openNoteMap.get(item.id)!
@@ -210,7 +210,7 @@ export class JoplinNoteCommandService {
       return
     }
     const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
-    const filename = item.label + (GlobalContext.openNoteMap.get(item.label) ? item.id : '')
+    const filename = item.title + (GlobalContext.openNoteMap.get(item.title) ? item.id : '')
     const tempNotePath = path.resolve(tempNoteDirPath, filenamify(`${filename}.md`))
     const note = await noteApi.get(item.id, ['body', 'title'])
     const content = (note.title.startsWith('# ') ? '' : '# ') + note.title + '\n\n' + note.body
@@ -325,7 +325,7 @@ export class JoplinNoteCommandService {
   private async focus(noteId: string) {
     const note = await noteApi.get(noteId, ['id', 'parent_id', 'title', 'is_todo', 'todo_completed'])
     this.config.noteListTreeView.reveal(
-      new FolderOrNote({
+      new JoplinTreeItem({
         ...note,
         type_: TypeEnum.Note,
       }),
@@ -405,7 +405,7 @@ export class JoplinNoteCommandService {
    * 2. 在笔记编辑器中
    * @param item
    */
-  async manageTags(item?: Omit<FolderOrNote, 'item'> & { item: JoplinListNote }) {
+  async manageTags(item?: Omit<JoplinTreeItem, 'item'> & { item: JoplinListNote }) {
     const noteId = item?.id || JoplinNoteUtil.getNoteIdByFileName(vscode.window.activeTextEditor?.document.fileName)
     if (!noteId) {
       return
@@ -481,12 +481,12 @@ export class JoplinNoteCommandService {
     )
   }
 
-  private clipboard: FolderOrNote | null = null
+  private clipboard: JoplinTreeItem | null = null
 
   /**
    * 剪切
    */
-  cut(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
+  cut(item: JoplinTreeItem = this.config.noteListTreeView.selection[0]) {
     console.log('joplinNote.cut: ', item)
     this.clipboard = item
     vscode.window.showInformationMessage(i18n.t('cut-success'))
@@ -495,7 +495,7 @@ export class JoplinNoteCommandService {
   /**
    * 粘贴
    */
-  async paste(item: FolderOrNote = this.config.noteListTreeView.selection[0]) {
+  async paste(item: JoplinTreeItem = this.config.noteListTreeView.selection[0]) {
     const clipboard = this.clipboard?.item
     console.log('paste: ', clipboard, item)
     if (!clipboard) {

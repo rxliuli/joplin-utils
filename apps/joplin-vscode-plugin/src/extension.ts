@@ -38,9 +38,14 @@ export async function activate(context: vscode.ExtensionContext) {
     return
   }
   const noteExplorerProvider = new NoteExplorerProvider()
-  const noteListTreeView = vscode.window.createTreeView('joplin-note', {
+  const noteListTreeView = vscode.window.createTreeView('joplin', {
     treeDataProvider: noteExplorerProvider,
+    showCollapseAll: true,
+    dragAndDropController: noteExplorerProvider,
+    canSelectMany: false,
   })
+  context.subscriptions.push(noteListTreeView)
+
   const joplinNoteCommandService = ClassUtil.bindMethodThis(
     new JoplinNoteCommandService({
       noteViewProvider: noteExplorerProvider,
@@ -63,8 +68,6 @@ export async function activate(context: vscode.ExtensionContext) {
   registerCommand('joplinNote.rename', joplinNoteCommandService.rename)
   registerCommand('joplinNote.copyLink', joplinNoteCommandService.copyLink)
   registerCommand('joplinNote.remove', joplinNoteCommandService.remove)
-  registerCommand('joplinNote.cut', joplinNoteCommandService.cut)
-  registerCommand('joplinNote.paste', joplinNoteCommandService.paste)
   registerCommand('joplinNote.toggleTodoState', joplinNoteCommandService.toggleTodoState)
   registerCommand('joplinNote.createResource', joplinNoteCommandService.createResource)
   registerCommand('joplinNote.removeResource', joplinNoteCommandService.removeResource)

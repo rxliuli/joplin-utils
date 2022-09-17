@@ -25,7 +25,7 @@ export class NoteExtApi {
    * @param id
    * @param parentId
    */
-  move(id: string, parentId: string): Promise<NoteUpdateRes> {
+  move(id: string, parentId?: string): Promise<NoteUpdateRes> {
     return this.noteApi.update({ id, parent_id: parentId })
   }
 

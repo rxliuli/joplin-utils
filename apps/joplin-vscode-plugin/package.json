@@ -23,7 +23,7 @@
     "url": "https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-vscode-plugin"
   },
   "activationEvents": [
-    "onView:joplin-note",
+    "onView:joplin",
     "onUri",
     "onCommand:joplinNote.search"
   ],
@@ -52,14 +52,14 @@
     },
     "viewsWelcome": [
       {
-        "view": "joplin-note",
+        "view": "joplin",
         "contents": "%viewsWelcome.joplin-note%"
       }
     ],
     "views": {
       "joplin-note": [
         {
-          "id": "joplin-note",
+          "id": "joplin",
           "name": "%views.joplin-note.joplin-note%"
         }
       ]
@@ -205,64 +205,64 @@
       "view/title": [
         {
           "command": "joplinNote.refreshNoteList",
-          "when": "view == joplin-note",
+          "when": "view == joplin",
           "group": "navigation"
         },
         {
           "command": "joplinNote.createFolder",
-          "when": "view == joplin-note",
+          "when": "view == joplin",
           "group": "navigation"
         },
         {
           "command": "joplinNote.search",
-          "when": "view == joplin-note",
+          "when": "view == joplin",
           "group": "navigation"
         }
       ],
       "view/item/context": [
         {
           "command": "joplinNote.createFolder",
-          "when": "view == joplin-note && viewItem == joplinNote.folder",
+          "when": "view == joplin && viewItem == joplinNote.folder",
           "group": "joplinNote@1"
         },
         {
           "command": "joplinNote.createNote",
-          "when": "view == joplin-note && viewItem == joplinNote.folder",
+          "when": "view == joplin && viewItem == joplinNote.folder",
           "group": "joplinNote@2"
         },
         {
           "command": "joplinNote.rename",
-          "when": "view == joplin-note",
+          "when": "view == joplin",
           "group": "joplinNote@3"
         },
         {
           "command": "joplinNote.remove",
-          "when": "view == joplin-note",
+          "when": "view == joplin",
           "group": "joplinNote@4"
         },
         {
           "command": "joplinNote.copyLink",
-          "when": "view == joplin-note && viewItem != joplinNote.folder",
+          "when": "view == joplin && viewItem != joplinNote.folder",
           "group": "joplinNote@5"
         },
         {
           "command": "joplinNote.toggleTodoState",
-          "when": "view == joplin-note && viewItem != joplinNote.folder && viewItem != joplinNote.note",
+          "when": "view == joplin && viewItem != joplinNote.folder && viewItem != joplinNote.note",
           "group": "joplinNote@6"
         },
         {
           "command": "joplinNote.manageTags",
-          "when": "view == joplin-note && viewItem != joplinNote.folder",
+          "when": "view == joplin && viewItem != joplinNote.folder",
           "group": "joplinNote@7"
         },
         {
           "command": "joplinNote.cut",
-          "when": "view == joplin-note",
+          "when": "view == joplin",
           "group": "joplinNote@8"
         },
         {
           "command": "joplinNote.paste",
-          "when": "view == joplin-note && viewItem == joplinNote.folder",
+          "when": "view == joplin && viewItem == joplinNote.folder",
           "group": "joplinNote@9"
         }
       ],
@@ -289,7 +289,7 @@
         },
         {
           "command": "joplinNote.manageTags",
-          "when": "view == joplin-note && viewItem != joplinNote.folder",
+          "when": "view == joplin && viewItem != joplinNote.folder",
           "group": "joplinNote@7"
         }
       ]
@@ -298,22 +298,22 @@
       {
         "command": "workbench.view.extension.joplin-note",
         "key": "ctrl+j ctrl+j",
-        "when": "focusedView != joplin-note"
+        "when": "focusedView != joplin"
       },
       {
         "command": "workbench.action.toggleSidebarVisibility",
         "key": "ctrl+j ctrl+j",
-        "when": "focusedView == joplin-note"
+        "when": "focusedView == joplin"
       },
       {
         "key": "f2",
         "command": "joplinNote.rename",
-        "when": "focusedView == joplin-note"
+        "when": "focusedView == joplin"
       },
       {
         "key": "delete",
         "command": "joplinNote.remove",
-        "when": "focusedView == joplin-note"
+        "when": "focusedView == joplin"
       },
       {
         "command": "joplinNote.uploadImageFromClipboard",
@@ -348,16 +348,6 @@
       {
         "command": "joplinNote.showResources",
         "key": "ctrl+j ctrl+l"
-      },
-      {
-        "command": "joplinNote.cut",
-        "key": "ctrl+x",
-        "when": "focusedView == joplin-note"
-      },
-      {
-        "command": "joplinNote.paste",
-        "key": "ctrl+v",
-        "when": "focusedView == joplin-note"
       }
     ],
     "configuration": {
