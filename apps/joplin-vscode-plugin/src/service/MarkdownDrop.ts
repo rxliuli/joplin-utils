@@ -1,11 +1,10 @@
+import { noteApi } from 'joplin-api'
 import path from 'path'
 import * as vscode from 'vscode'
 import { logger } from '../constants/logger'
 import { GlobalContext } from '../state/GlobalContext'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { uploadResourceService } from './UploadResourceService'
-
-const uriListMime = 'text/uri-list'
 
 /**
  * Provider that reverses dropped text.
@@ -24,17 +23,33 @@ export class ReverseTextOnDropProvider implements vscode.DocumentDropEditProvide
       logger.info('ReverseTextOnDropProvider.provideDocumentDropEdits not joplin note')
       return
     }
-    const item = dataTransfer.get('text/uri-list')
-    if (!item) {
-      logger.info("ReverseTextOnDropProvider.provideDocumentDropEdits don't get uri")
-      return
+    let item = dataTransfer.get('text/uri-list')
+    if (item) {
+      return this.dragFile(item)
     }
+    item = dataTransfer.get('application/vnd.code.tree.joplin')
+    if (item) {
+      return this.dragTreeItem(item)
+    }
+    return { insertText: '' }
+  }
+  private async dragTreeItem(item: vscode.DataTransferItem): Promise<vscode.DocumentDropEdit | undefined> {
+    const id = JSON.parse(item.value).itemHandles[0].split('/')[1]
+    if (id) {
+      try {
+        const note = await noteApi.get(id)
+        return { insertText: `[${note.title}](./${note.id})` }
+      } catch {}
+    }
+    console.log('joplin tree drag: ', item)
+  }
+  private async dragFile(item: vscode.DataTransferItem): Promise<vscode.DocumentDropEdit | undefined> {
     const uri = vscode.Uri.parse(item.value)
-    const fileName = uri.fsPath
-    console.log('ReverseTextOnDropProvider', fileName)
+    const fsPath = uri.fsPath
+    console.log('ReverseTextOnDropProvider', fsPath)
     const imageExts = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'bmp', 'tiff', 'ico']
-    const isImage = imageExts.includes(path.extname(fileName).slice(1))
-    const { markdownLink, res } = await UploadResourceUtil.uploadByPath(fileName, isImage)
+    const isImage = imageExts.includes(path.extname(fsPath).slice(1))
+    const { markdownLink, res } = await UploadResourceUtil.uploadByPath(fsPath, isImage)
     await uploadResourceService.refreshResourceList(res.id)
 
     const snippet = new vscode.SnippetString()
