@@ -348,7 +348,7 @@ export class JoplinNoteCommandService {
     }
     const filePath = path.resolve(globalStoragePath, `.tempResource/${title}`)
     const handle = await createEmptyFile(filePath)
-    let { res, markdownLink } = await UploadResourceUtil.uploadFileByPath(filePath)
+    let { res, markdownLink } = await UploadResourceUtil.uploadByPath(filePath, false)
     // 如果是 svg 图片则作为图片插入
     if (path.extname(filePath) === '.svg') {
       markdownLink = '!' + markdownLink

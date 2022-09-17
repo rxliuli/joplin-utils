@@ -14,15 +14,15 @@ export interface IClipboardImage {
 }
 
 export class UploadResourceUtil {
-  static async uploadImageByPath(filePath: string) {
+  static async uploadByPath(filePath: string, isImage: boolean) {
     const param = {
       title: path.parse(filePath).name,
       data: createReadStream(path.resolve(filePath)),
     }
-    console.log('uploadImageFromExplorer begin: ', filePath, param.title)
+    console.log('uploadFromExplorer begin: ', filePath, param.title)
     const res = await resourceApi.create(param)
-    const markdownLink = `![${param.title}](:/${res.id})`
-    console.log('uploadImageFromExplorer end: ', markdownLink)
+    const markdownLink = `${isImage ? '!' : ''}[${param.title}](:/${res.id})`
+    console.log('uploadFromExplorer end: ', markdownLink)
     return { res, markdownLink }
   }
 
