@@ -10,8 +10,6 @@
   "commands.joplinNote.createFolder": "Create folder",
   "commands.joplinNote.createNote": "Create note",
   "commands.joplinNote.rename": "Rename",
-  "commands.joplinNote.cut": "Cut",
-  "commands.joplinNote.paste": "Paste",
   "commands.joplinNote.copyLink": "Copy link",
   "commands.joplinNote.toggleTodoState": "Toggle todo state",
   "commands.joplinNote.remove": "Remove",

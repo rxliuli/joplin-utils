@@ -26,8 +26,6 @@
   "No active editor": "No active editor",
   "Resource [{{title}}] does not exist": "Resource [{{title}}] does not exist",
   "Resource does not exist": "Resource does not exist",
-  "cut-success": "Cut successfully",
-  "paste-success": "Paste successfully",
   "paste-error-clipboardNotFound": "No note or table of contents selected to cut",
   "paste-error-itemNotFound": "No directory selected to paste",
   "paste-error-targetNotDir": "The destination of the paste is not a directory",

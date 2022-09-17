@@ -53,7 +53,7 @@ export class JoplinNoteCommandService {
     config.baseUrl = appConfig.baseUrl
 
     setInterval(async () => {
-      // await this.config.noteViewProvider.refresh()
+      await this.config.noteViewProvider.refresh()
     }, 1000 * 10)
     const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
     const tempResourceDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempResource')
