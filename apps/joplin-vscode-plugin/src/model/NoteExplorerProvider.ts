@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
 import { folderApi, folderExtApi, noteExtApi } from 'joplin-api'
-import { JoplinTreeItem } from './FolderOrNote'
+import { JoplinTreeItem } from './JoplinTreeItem'
 import { appConfig, SortNotesTypeEnum, SortOrderEnum } from '../config/AppConfig'
 import { FolderListAllRes } from 'joplin-api/dist/modal/FolderListAllRes'
 import { joplinNoteApi } from '../api/JoplinNoteApi'

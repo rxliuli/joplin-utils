@@ -1,4 +1,4 @@
-import { JoplinTreeItem, JoplinListNote } from '../model/FolderOrNote'
+import { JoplinTreeItem, JoplinListNote } from '../model/JoplinTreeItem'
 import * as vscode from 'vscode'
 import { QuickPickItem, TreeView } from 'vscode'
 import {
