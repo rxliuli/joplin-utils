@@ -101,11 +101,6 @@ export class HandlerService {
       vscode.window.showWarningMessage(i18n.t('Note does not exist'))
       return
     }
-    await this.joplinNoteCommandService.openNote(
-      new JoplinTreeItem({
-        ...item,
-        type_: TypeEnum.Note,
-      }) as any,
-    )
+    await this.joplinNoteCommandService.openNote(item)
   }
 }

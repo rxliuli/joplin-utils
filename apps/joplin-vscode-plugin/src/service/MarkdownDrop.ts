@@ -12,7 +12,7 @@ import { uploadResourceService } from './UploadResourceService'
  * Note this does not apply to text that is drag and dropped with-in the current editor,
  * only for text dropped from external apps.
  */
-export class ReverseTextOnDropProvider implements vscode.DocumentDropEditProvider {
+export class JoplinNoteOnDropProvider implements vscode.DocumentDropEditProvider {
   async provideDocumentDropEdits(
     _document: vscode.TextDocument,
     position: vscode.Position,
@@ -38,7 +38,7 @@ export class ReverseTextOnDropProvider implements vscode.DocumentDropEditProvide
     if (id) {
       try {
         const note = await noteApi.get(id)
-        return { insertText: `[${note.title}](./${note.id})` }
+        return { insertText: `[${note.title}](:/${note.id})` }
       } catch {}
     }
     console.log('joplin tree drag: ', item)

@@ -20,7 +20,7 @@ import { transports } from 'winston'
 import path from 'path'
 import { mkdirp } from 'fs-extra'
 import { htmlImageLink } from './util/htmlImageLink'
-import { ReverseTextOnDropProvider } from './service/MarkdownDrop'
+import { JoplinNoteOnDropProvider } from './service/MarkdownDrop'
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -113,16 +113,10 @@ export async function activate(context: vscode.ExtensionContext) {
     'joplinNote.uploadFileFromExplorer',
     uploadResourceService.uploadFileFromExplorer.bind(uploadResourceService),
   )
-  // Enable our providers in plaintext files
-  const selector: vscode.DocumentSelector = { language: 'markdown' }
-
   // Register our providers
   context.subscriptions.push(
-    vscode.languages.registerDocumentDropEditProvider(selector, new ReverseTextOnDropProvider()),
+    vscode.languages.registerDocumentDropEditProvider({ language: 'markdown' }, new JoplinNoteOnDropProvider()),
   )
-  // context.subscriptions.push(
-  //   vscode.languages.registerDocumentDropEditProvider(selector, new FileNameListOnDropProvider()),
-  // )
 
   //endregion
 
