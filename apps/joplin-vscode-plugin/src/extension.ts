@@ -20,6 +20,7 @@ import { transports } from 'winston'
 import path from 'path'
 import { mkdirp } from 'fs-extra'
 import { htmlImageLink } from './util/htmlImageLink'
+import { JoplinNoteOnDropProvider } from './service/MarkdownDrop'
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -38,9 +39,14 @@ export async function activate(context: vscode.ExtensionContext) {
     return
   }
   const noteExplorerProvider = new NoteExplorerProvider()
-  const noteListTreeView = vscode.window.createTreeView('joplin-note', {
+  const noteListTreeView = vscode.window.createTreeView('joplin', {
     treeDataProvider: noteExplorerProvider,
+    showCollapseAll: true,
+    dragAndDropController: noteExplorerProvider,
+    canSelectMany: false,
   })
+  context.subscriptions.push(noteListTreeView)
+
   const joplinNoteCommandService = ClassUtil.bindMethodThis(
     new JoplinNoteCommandService({
       noteViewProvider: noteExplorerProvider,
@@ -63,8 +69,6 @@ export async function activate(context: vscode.ExtensionContext) {
   registerCommand('joplinNote.rename', joplinNoteCommandService.rename)
   registerCommand('joplinNote.copyLink', joplinNoteCommandService.copyLink)
   registerCommand('joplinNote.remove', joplinNoteCommandService.remove)
-  registerCommand('joplinNote.cut', joplinNoteCommandService.cut)
-  registerCommand('joplinNote.paste', joplinNoteCommandService.paste)
   registerCommand('joplinNote.toggleTodoState', joplinNoteCommandService.toggleTodoState)
   registerCommand('joplinNote.createResource', joplinNoteCommandService.createResource)
   registerCommand('joplinNote.removeResource', joplinNoteCommandService.removeResource)
@@ -109,6 +113,10 @@ export async function activate(context: vscode.ExtensionContext) {
   registerCommand(
     'joplinNote.uploadFileFromExplorer',
     uploadResourceService.uploadFileFromExplorer.bind(uploadResourceService),
+  )
+  // Register our providers
+  context.subscriptions.push(
+    vscode.languages.registerDocumentDropEditProvider({ language: 'markdown' }, new JoplinNoteOnDropProvider()),
   )
 
   //endregion

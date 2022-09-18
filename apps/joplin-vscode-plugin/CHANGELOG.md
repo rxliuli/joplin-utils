@@ -1,5 +1,16 @@
 # Release Notes
 
+## 0.8.0
+
+- feat: support dragging the sidebar notes into the text
+  ![Drag and drop notes to body](https://user-images.githubusercontent.com/24560368/190853895-d42c4907-65b4-4f6b-a987-eca3d9c8c542.gif)
+- refactor: rename FolderOrNote => JoplinTreeItem
+- feat: remove cut and paste commands that are no longer needed
+- feat: implement the drag and drop function of the sidebar
+  ![Notes and Table of Contents Drag and Drop](https://user-images.githubusercontent.com/24560368/190853959-1ca1dfc7-f71b-435d-b6dc-b65a3e07293f.gif)
+- feat: support drag and drop file upload from file manager to joplin
+  ![Drag and drop files to notes](https://user-images.githubusercontent.com/24560368/190854218-62b136b5-0ddf-4cb7-adc3-cb0abb6b1db4.gif)
+
 ## 0.7.10
 
 - fix: <https://github.com/rxliuli/joplin-utils/issues/47>

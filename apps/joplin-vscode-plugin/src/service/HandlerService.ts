@@ -3,7 +3,7 @@ import { TextDocument, Uri } from 'vscode'
 import { noteApi, resourceApi, TypeEnum } from 'joplin-api'
 import { parse } from 'querystring'
 import { JoplinNoteCommandService } from './JoplinNoteCommandService'
-import { FolderOrNote } from '../model/FolderOrNote'
+import { JoplinTreeItem } from '../model/JoplinTreeItem'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { OpenFileService } from '../util/OpenFileService'
 import { safePromise } from '../util/safePromise'
@@ -101,11 +101,6 @@ export class HandlerService {
       vscode.window.showWarningMessage(i18n.t('Note does not exist'))
       return
     }
-    await this.joplinNoteCommandService.openNote(
-      new FolderOrNote({
-        ...item,
-        type_: TypeEnum.Note,
-      }) as any,
-    )
+    await this.joplinNoteCommandService.openNote(item)
   }
 }

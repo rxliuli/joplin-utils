@@ -7,21 +7,16 @@ import { TypeEnum } from 'joplin-api'
 import path from 'path'
 
 export type JoplinListFolder = FolderListAllRes & CommonType
-export type JoplinListNote = Pick<
-  NoteProperties,
-  'id' | 'parent_id' | 'title' | 'is_todo' | 'todo_completed'
-> &
+export type JoplinListNote = Pick<NoteProperties, 'id' | 'parent_id' | 'title' | 'is_todo' | 'todo_completed'> &
   CommonType
 
-export class FolderOrNote extends vscode.TreeItem {
+export class JoplinTreeItem extends vscode.TreeItem {
   constructor(public item: JoplinListFolder | JoplinListNote) {
     super(
       item.title,
-      item.type_ === TypeEnum.Folder
-        ? vscode.TreeItemCollapsibleState.Collapsed
-        : TreeItemCollapsibleState.None,
+      item.type_ === TypeEnum.Folder ? vscode.TreeItemCollapsibleState.Collapsed : TreeItemCollapsibleState.None,
     )
-    const iconName = FolderOrNote.getIconName(item)
+    const iconName = JoplinTreeItem.getIconName(item)
     this.iconPath = {
       light: path.resolve(__dirname, `../resources/light/${iconName}.svg`),
       dark: path.resolve(__dirname, `../resources/dark/${iconName}.svg`),
@@ -29,8 +24,9 @@ export class FolderOrNote extends vscode.TreeItem {
     if (item.type_ === TypeEnum.Note) {
       this.command = {
         command: 'joplinNote.openNote',
-        title: this.item.title,
-        arguments: [this],
+        title: item.title,
+        // TODO 此处引用自身居然会导致不能拖拽？
+        arguments: [item],
       }
     }
   }
@@ -53,5 +49,5 @@ export class FolderOrNote extends vscode.TreeItem {
   label = this.item.title
   tooltip = this.item.title
   description = ''
-  contextValue = 'joplinNote.' + FolderOrNote.getIconName(this.item)
+  contextValue = 'joplinNote.' + JoplinTreeItem.getIconName(this.item)
 }

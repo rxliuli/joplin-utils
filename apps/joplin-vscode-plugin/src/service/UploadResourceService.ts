@@ -13,7 +13,7 @@ export class UploadResourceService {
       vscode.window.showWarningMessage(i18n.t('Clipboard does not contain picture!'))
       return
     }
-    const { markdownLink, res } = await UploadResourceUtil.uploadImageByPath(clipboardImage.imgPath)
+    const { markdownLink, res } = await UploadResourceUtil.uploadByPath(clipboardImage.imgPath, true)
     await Promise.all([this.insertUrlByActiveEditor(markdownLink), this.refreshResourceList(res.id)])
   }
 
@@ -29,9 +29,8 @@ export class UploadResourceService {
       return
     }
     const file = result[0]
-    const { markdownLink, res } = await UploadResourceUtil.uploadImageByPath(file.fsPath)
+    const { markdownLink, res } = await UploadResourceUtil.uploadByPath(file.fsPath, true)
     await Promise.all([this.insertUrlByActiveEditor(markdownLink), this.refreshResourceList(res.id)])
-    await this.insertUrlByActiveEditor(markdownLink)
   }
 
   async uploadFileFromExplorer(): Promise<string | void | Error> {
@@ -43,7 +42,7 @@ export class UploadResourceService {
       return
     }
     const file = result[0]
-    const { res, markdownLink } = await UploadResourceUtil.uploadFileByPath(file.fsPath)
+    const { res, markdownLink } = await UploadResourceUtil.uploadByPath(file.fsPath, false)
     await Promise.all([this.insertUrlByActiveEditor(markdownLink), this.refreshResourceList(res.id)])
     vscode.window.showInformationMessage(i18n.t('file uploaded successfully'))
   }
