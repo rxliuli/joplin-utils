@@ -1,6 +1,5 @@
 import * as vscode from 'vscode'
 import { matchAll, getReferenceAtPosition } from '../util/utils'
-import { isInFencedCodeBlock, isInCodeSpan } from '../util/externalUtils'
 import { JoplinLinkRegex } from '../util/constant'
 import { wrapLink } from '../util/useJoplinLink'
 import { TypeEnum, noteApi, resourceApi } from 'joplin-api'
@@ -14,6 +13,9 @@ export class JoplinMarkdownLinkProvider implements vscode.DocumentLinkProvider, 
     return link
   }
   async provideDocumentLinks(document: vscode.TextDocument) {
+    if (!GlobalContext.openNoteMap.has(document.fileName)) {
+      return
+    }
     const lines = document.getText().split(/\r?\n/g)
     const res = lines.flatMap((line, i) => this.getLinksOnLine(line, i))
     console.log('provideDocumentLinks: ', res)
@@ -56,6 +58,10 @@ export class JoplinMarkdownLinkProvider implements vscode.DocumentLinkProvider, 
   }
 
   async provideHover(document: vscode.TextDocument, position: vscode.Position) {
+    if (!GlobalContext.openNoteMap.has(document.fileName)) {
+      return
+    }
+    console.log('provideHover: ', document)
     const markdownTokenLink = getReferenceAtPosition(document, position)
     if (!markdownTokenLink) {
       return

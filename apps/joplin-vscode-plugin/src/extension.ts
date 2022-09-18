@@ -114,10 +114,6 @@ export async function activate(context: vscode.ExtensionContext) {
     'joplinNote.uploadFileFromExplorer',
     uploadResourceService.uploadFileFromExplorer.bind(uploadResourceService),
   )
-  // Register our providers
-  context.subscriptions.push(
-    vscode.languages.registerDocumentDropEditProvider({ language: 'markdown' }, new JoplinNoteOnDropProvider()),
-  )
 
   //endregion
 
@@ -130,12 +126,12 @@ export async function activate(context: vscode.ExtensionContext) {
   const docFilter: vscode.DocumentSelector = {
     language: 'markdown',
     scheme: 'file',
-    pattern: '**/rxliuli.joplin-vscode-plugin/.tempNote/*.md',
   }
   const linkProvider = new JoplinMarkdownLinkProvider()
   context.subscriptions.push(
     vscode.languages.registerDocumentLinkProvider(docFilter, linkProvider),
     vscode.languages.registerHoverProvider(docFilter, linkProvider),
+    vscode.languages.registerDocumentDropEditProvider(docFilter, new JoplinNoteOnDropProvider()),
   )
 
   //endregion
