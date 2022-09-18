@@ -18,7 +18,7 @@ export function registerCommand(command: string, callback: (...args: any[]) => a
         logger.info('command execute: ' + command)
         return await callback(...args)
       } catch (err) {
-        logger.error('command error: ' + command)
+        logger.error('command error: ' + command + ', ' + (err instanceof Error ? err.message : ''))
         throw err
       }
     },

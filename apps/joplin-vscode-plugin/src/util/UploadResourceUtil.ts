@@ -57,7 +57,7 @@ export class UploadResourceUtil {
     const baseDir = path.resolve(fileDir, 'ClipboardImage')
     mkdirpSync(baseDir)
     const imagePath = path.resolve(baseDir, `${Date.now()}.png`)
-    return await new Promise<IClipboardImage>((resolve): void => {
+    return await new Promise<IClipboardImage>((resolve, reject): void => {
       const platform: string = UploadResourceUtil.getCurrentPlatform()
       let execution
       // for PicGo GUI
@@ -70,28 +70,33 @@ export class UploadResourceUtil {
         linux: './clipboard/linux.sh',
       }
       const scriptPath = path.join(__dirname, platformPaths[platform])
-      if (platform === 'darwin') {
-        execution = spawn('osascript', [scriptPath, imagePath])
-      } else if (platform === 'win32' || platform === 'win10') {
-        execution = spawn('powershell', [
-          '-noprofile',
-          '-noninteractive',
-          '-nologo',
-          '-sta',
-          '-executionpolicy',
-          'unrestricted',
-          // fix windows 10 native cmd crash bug when "picgo upload"
-          // https://github.com/PicGo/PicGo-Core/issues/32
-          // '-windowstyle','hidden',
-          // '-noexit',
-          '-file',
-          scriptPath,
-          imagePath,
-        ])
-      } else {
-        execution = spawn('sh', [scriptPath, imagePath])
+      try {
+        if (platform === 'darwin') {
+          execution = spawn('osascript', [scriptPath, imagePath])
+        } else if (platform === 'win32' || platform === 'win10') {
+          execution = spawn('powershell', [
+            '-noprofile',
+            '-noninteractive',
+            '-nologo',
+            '-sta',
+            '-executionpolicy',
+            'unrestricted',
+            // fix windows 10 native cmd crash bug when "picgo upload"
+            // https://github.com/PicGo/PicGo-Core/issues/32
+            // '-windowstyle','hidden',
+            // '-noexit',
+            '-file',
+            scriptPath,
+            imagePath,
+          ])
+        } else {
+          execution = spawn('sh', [scriptPath, imagePath])
+        }
+      } catch (err) {
+        reject(err)
+        throw err
       }
-
+      execution.on('error', reject)
       execution.stdout.on('data', (data: Buffer) => {
         if (platform === 'linux') {
           if (data.toString().trim() === 'no xclip') {

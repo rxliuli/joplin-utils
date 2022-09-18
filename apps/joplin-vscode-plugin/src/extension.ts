@@ -27,11 +27,12 @@ import { htmlImageLink } from './util/htmlImageLink'
 export async function activate(context: vscode.ExtensionContext) {
   GlobalContext.context = context
   appConfig.loadConfig()
-  console.log('logPath: ', context.logUri.fsPath)
-  await mkdirp(context.logUri.fsPath)
+  const logPath = path.resolve(context.globalStorageUri.fsPath, 'log')
+  console.log('logPath: ', logPath)
+  await mkdirp(logPath)
   logger
-    .add(new transports.File({ filename: path.resolve(context.logUri.fsPath, 'error.log'), level: 'error' }))
-    .add(new transports.File({ filename: path.resolve(context.logUri.fsPath, 'combined.log') }))
+    .add(new transports.File({ filename: path.resolve(logPath, 'error.log'), level: 'error' }))
+    .add(new transports.File({ filename: path.resolve(logPath, 'combined.log') }))
   await init()
   if (!(await checkJoplinServer())) {
     return
@@ -88,7 +89,7 @@ export async function activate(context: vscode.ExtensionContext) {
       await joplinNoteCommandService.showResources(activeFileName)
     }
   })
-  registerCommand('joplinNote.showLogFileDir', () => vscode.env.openExternal(context.logUri))
+  registerCommand('joplinNote.showLogFileDir', () => vscode.env.openExternal(vscode.Uri.file(logPath)))
   vscode.window.onDidChangeActiveTextEditor((e) =>
     joplinNoteCommandService.onDidChangeActiveTextEditor(e?.document.fileName),
   )
