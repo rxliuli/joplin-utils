@@ -1,5 +1,13 @@
 # Release Notes
 
+## 0.8.1
+
+- fix: restore cut and paste function
+- chore: replace esno => tsx
+- feat: register markdown languages together to avoid processing md files of non-joplin notes
+- feat: Change the log storage location to avoid the problem that the vscode log directory changes frequently and the logs are not concentrated in one directory, and save possible error messages to the log when the command execution fails
+- chore: update engines.vscode
+
 ## 0.8.0
 
 - feat: support dragging the sidebar notes into the text
