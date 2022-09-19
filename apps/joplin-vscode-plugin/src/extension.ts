@@ -69,6 +69,8 @@ export async function activate(context: vscode.ExtensionContext) {
   registerCommand('joplinNote.rename', joplinNoteCommandService.rename)
   registerCommand('joplinNote.copyLink', joplinNoteCommandService.copyLink)
   registerCommand('joplinNote.remove', joplinNoteCommandService.remove)
+  registerCommand('joplinNote.cut', joplinNoteCommandService.cut)
+  registerCommand('joplinNote.paste', joplinNoteCommandService.paste)
   registerCommand('joplinNote.toggleTodoState', joplinNoteCommandService.toggleTodoState)
   registerCommand('joplinNote.createResource', joplinNoteCommandService.createResource)
   registerCommand('joplinNote.removeResource', joplinNoteCommandService.removeResource)

@@ -102,6 +102,16 @@
         "category": "Joplin"
       },
       {
+        "command": "joplinNote.cut",
+        "title": "%commands.joplinNote.cut%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.paste",
+        "title": "%commands.joplinNote.paste%",
+        "category": "Joplin"
+      },
+      {
         "command": "joplinNote.remove",
         "title": "%commands.joplinNote.remove%",
         "icon": {
@@ -244,6 +254,16 @@
           "command": "joplinNote.manageTags",
           "when": "view == joplin && viewItem != joplinNote.folder",
           "group": "joplinNote@7"
+        },
+        {
+          "command": "joplinNote.cut",
+          "when": "view == joplin",
+          "group": "joplinNote@8"
+        },
+        {
+          "command": "joplinNote.paste",
+          "when": "view == joplin && viewItem == joplinNote.folder",
+          "group": "joplinNote@9"
         }
       ],
       "editor/context": [

@@ -39,7 +39,7 @@ export class FolderExtApi {
    * @param id
    * @param parentId
    */
-  async move(id: string, parentId?: string): Promise<void> {
+  async move(id: string, parentId: string): Promise<void> {
     if (id === parentId) {
       return
     }

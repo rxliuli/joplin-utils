@@ -121,16 +121,20 @@ export class NoteExplorerProvider
     if (!transferItem) {
       return
     }
+    const targetId = target?.id
+    if (!targetId) {
+      return
+    }
     logger.info('handleDrop: ', transferItem.value, target)
     if (target && !target.collapsibleState) {
       return
     }
     const source = (transferItem.value as JoplinTreeItem[])[0]
-    if (source.item.parent_id === target?.id) {
+    if (source.item.parent_id === targetId) {
       return
     }
     if (!source.collapsibleState) {
-      await noteExtApi.move(source.id, target?.id ?? '')
+      await noteExtApi.move(source.id, targetId ?? '')
       await this.refresh()
       return
     }
@@ -141,7 +145,7 @@ export class NoteExplorerProvider
         return
       }
     }
-    await folderExtApi.move(source.id, target?.id)
+    await folderExtApi.move(source.id, targetId)
     await this.refresh()
   }
 }
