@@ -1,5 +1,5 @@
-const { build } = require('esbuild')
-const { copy, mkdirp, remove } = require('fs-extra')
+import { build } from 'esbuild'
+import { copy, mkdirp, remove } from 'fs-extra'
 
 async function main() {
   await remove('./dist')

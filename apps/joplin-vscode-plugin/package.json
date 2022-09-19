@@ -10,8 +10,8 @@
   "icon": "resources/icon.png",
   "scripts": {
     "setup": "i18next-dts-gen -i src/i18n/",
-    "build": "tsx build.js",
-    "dev": "tsx build.js -w",
+    "build": "tsx build.ts",
+    "dev": "tsx build.ts -w",
     "release": "pnpm build && vsce package --no-dependencies"
   },
   "categories": [
