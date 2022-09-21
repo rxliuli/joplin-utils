@@ -16,7 +16,7 @@ export interface IClipboardImage {
 export class UploadResourceUtil {
   static async uploadByPath(filePath: string, isImage: boolean) {
     const param = {
-      title: path.parse(filePath).name,
+      title: path.basename(filePath),
       data: createReadStream(path.resolve(filePath)),
     }
     console.log('uploadFromExplorer begin: ', filePath, param.title)
