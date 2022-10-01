@@ -33,9 +33,10 @@ importers:
       '@liuli-util/async': ^3.6.0
       '@liuli-util/dom': ^3.4.0
       '@liuli-util/eslint-config-react-ts': ^0.2.1
-      '@liuli-util/i18next-util': ^0.3.0
+      '@liuli-util/fs-extra': ^0.1.0
+      '@liuli-util/i18next-util': ^0.4.1
       '@liuli-util/react-router': ^0.6.0
-      '@liuli-util/rollup-plugin-i18next-dts-gen': ^0.4.2
+      '@liuli-util/rollup-plugin-i18next-dts-gen': ^0.4.3
       '@liuli-util/shell': ^0.2.0
       '@liuli-util/string': ^3.5.0
       '@liuli-util/tree': ^3.5.0
@@ -82,7 +83,7 @@ importers:
       '@ant-design/icons': 4.7.0_biqbaboplfbrettd7655fr4n2y
       '@liuli-util/async': 3.6.0
       '@liuli-util/dom': 3.4.0
-      '@liuli-util/i18next-util': 0.3.0_i18next@21.9.2
+      '@liuli-util/i18next-util': 0.4.1_i18next@21.9.2
       '@liuli-util/react-router': 0.6.0_biqbaboplfbrettd7655fr4n2y
       '@liuli-util/string': 3.5.0
       '@liuli-util/tree': 3.5.0
@@ -108,7 +109,8 @@ importers:
     devDependencies:
       '@babel/preset-env': 7.19.3
       '@liuli-util/eslint-config-react-ts': 0.2.1_typescript@4.8.4
-      '@liuli-util/rollup-plugin-i18next-dts-gen': 0.4.2_typescript@4.8.4
+      '@liuli-util/fs-extra': 0.1.0
+      '@liuli-util/rollup-plugin-i18next-dts-gen': 0.4.3_typescript@4.8.4
       '@liuli-util/shell': 0.2.0
       '@liuli-util/vite-plugin-version-info': 0.4.0_vite@3.1.4
       '@types/fs-extra': 9.0.13
@@ -2998,6 +3000,7 @@ packages:
       i18next: ^20.3.3
     dependencies:
       i18next: 21.9.2
+    dev: true
 
   /@liuli-util/i18next-util/0.4.1_i18next@21.9.2:
     resolution: {integrity: sha512-pDuV6l1NkNxLHOU81zeHpRTkQxqKNk/oPmhRBB21+almy13qCX/f4kn3WOnYRlZnwJk1jS6rpV18E0eBgC/ibQ==}
@@ -3031,8 +3034,8 @@ packages:
       - react-dom
     dev: false
 
-  /@liuli-util/rollup-plugin-i18next-dts-gen/0.4.2_typescript@4.8.4:
-    resolution: {integrity: sha512-LBUuU5nwH8lQY6WIzYctYUrNA5PKdo59tsvQwgi20S9ez2OUGrvZHHI1Z6YZJEl8ZaYs/rDpOqlo4LWywrEuEg==}
+  /@liuli-util/rollup-plugin-i18next-dts-gen/0.4.3_typescript@4.8.4:
+    resolution: {integrity: sha512-xgvc84tuWkFpRi7BolenjuQeGqWYN1jxR5eISd+WyIL26tO+09dNo4msfROuMWh7SCZ4KE8DyAi5D+eXa9Q5Zw==}
     dependencies:
       '@liuli-util/i18next-dts-gen': 0.6.3_typescript@4.8.4
     transitivePeerDependencies:

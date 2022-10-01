@@ -1,13 +1,10 @@
-import { ConditionalKeys, PromiseValue } from 'type-fest'
+import { ConditionalKeys } from 'type-fest'
 import { wait } from '@liuli-util/async'
 
 type VoidFunc = (...args: never[]) => void
 
 export type OnEventPromise<T, E> = Promise<T> & {
-  on<K extends ConditionalKeys<E, VoidFunc>>(
-    type: K,
-    callback: E[K],
-  ): OnEventPromise<T, E>
+  on<K extends ConditionalKeys<E, VoidFunc>>(type: K, callback: E[K]): OnEventPromise<T, E>
 }
 
 export class PromiseUtil {
@@ -20,7 +17,7 @@ export class PromiseUtil {
     F extends (events: any) => Promise<any>,
     E extends Parameters<F>[0],
     K extends ConditionalKeys<E, VoidFunc>,
-  >(executor: F): OnEventPromise<PromiseValue<ReturnType<F>>, E> {
+  >(executor: F): OnEventPromise<Awaited<ReturnType<F>>, E> {
     const events: Partial<Pick<E, K>> = {}
     const res = wait(0).then(
       () =>
@@ -36,6 +33,6 @@ export class PromiseUtil {
       events[type] = callback
       return res
     })
-    return res as OnEventPromise<PromiseValue<ReturnType<F>>, E>
+    return res as OnEventPromise<Awaited<ReturnType<F>>, E>
   }
 }
