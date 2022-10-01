@@ -5,7 +5,7 @@ import { config, noteApi, PageUtil, resourceApi, searchApi, TypeEnum } from 'jop
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
 import { uniqueBy } from '@liuli-util/array'
 import { PromiseUtil } from '../util/PromiseUtil'
-import { emptydir, mkdirp, readdir, remove, writeFile } from 'fs-extra'
+import { emptydir, mkdirp, readdir, remove, writeFile } from '@liuli-util/fs-extra'
 import { CacheUtil } from '../util/CacheUtil'
 import { cacheCommanderProgram } from '../cli/CacheCommander'
 

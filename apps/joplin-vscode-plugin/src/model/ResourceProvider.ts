@@ -1,5 +1,5 @@
 import { noteApi } from 'joplin-api'
-import { ResourceGetRes } from 'joplin-api/dist/modal/ResourceGetRes'
+import { ResourceGetRes } from 'joplin-api'
 import * as vscode from 'vscode'
 
 /**
@@ -7,13 +7,11 @@ import * as vscode from 'vscode'
  */
 export class ResourceProvider implements vscode.TreeDataProvider<Resource> {
   private resourceList: Resource[] = []
-  private _onDidChangeTreeData: vscode.EventEmitter<
+  private _onDidChangeTreeData: vscode.EventEmitter<Resource | undefined> = new vscode.EventEmitter<
     Resource | undefined
-  > = new vscode.EventEmitter<Resource | undefined>()
+  >()
   private async init(noteId: string) {
-    this.resourceList = (await noteApi.resourcesById(noteId)).map(
-      (r) => new Resource(r),
-    )
+    this.resourceList = (await noteApi.resourcesById(noteId)).map((r) => new Resource(r))
   }
   async refresh(noteId: string) {
     await this.init(noteId)

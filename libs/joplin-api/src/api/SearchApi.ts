@@ -1,10 +1,10 @@
 // noinspection ES6PreferShortImport
-import { TypeEnum } from '../modal/TypeEnum'
+import { TypeEnum } from '../model/TypeEnum'
 import { Ajax } from '../util/ajax'
-import { PageParam, PageRes } from '../modal/PageData'
-import { FieldsParam } from '../modal/FieldsParam'
-import { NoteProperties } from '../modal/NoteProperties'
-import { CommonType } from '../modal/CommonType'
+import { PageParam, PageRes } from '../model/PageData'
+import { FieldsParam } from '../model/FieldsParam'
+import { NoteProperties } from '../model/NoteProperties'
+import { CommonType } from '../model/CommonType'
 
 export class SearchApi {
   constructor(private ajax: Ajax) {}
@@ -28,17 +28,13 @@ export class SearchApi {
   }
 
   async search<K extends keyof NoteProperties>(
-    param: { query: string; type?: TypeEnum } & PageParam<NoteProperties> &
-      FieldsParam<K>,
+    param: { query: string; type?: TypeEnum } & PageParam<NoteProperties> & FieldsParam<K>,
   ): Promise<PageRes<Pick<NoteProperties, K> & CommonType>> {
     SearchApi.TypeEnumMap['8'] = ''
     const { type, ...others } = param
-    return this.ajax.get<PageRes<Pick<NoteProperties, K> & CommonType>>(
-      '/search',
-      {
-        ...others,
-        type: SearchApi.TypeEnumMap[type!],
-      },
-    )
+    return this.ajax.get<PageRes<Pick<NoteProperties, K> & CommonType>>('/search', {
+      ...others,
+      type: SearchApi.TypeEnumMap[type!],
+    })
   }
 }

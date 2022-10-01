@@ -113,20 +113,12 @@ export interface ExportModule {
   /**
    * Called when an item needs to be processed. An "item" can be any Joplin object, such as a note, a folder, a notebook, etc.
    */
-  onProcessItem(
-    context: ExportContext,
-    itemType: number,
-    item: any,
-  ): Promise<void>
+  onProcessItem(context: ExportContext, itemType: number, item: any): Promise<void>
 
   /**
    * Called when a resource file needs to be exported.
    */
-  onProcessResource(
-    context: ExportContext,
-    resource: any,
-    filePath: string,
-  ): Promise<void>
+  onProcessResource(context: ExportContext, resource: any, filePath: string): Promise<void>
 
   /**
    * Called when the export process is done.

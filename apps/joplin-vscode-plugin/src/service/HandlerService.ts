@@ -10,7 +10,7 @@ import { safePromise } from '../util/safePromise'
 import path from 'path'
 import { i18n } from '../constants/i18n'
 import { GlobalContext } from '../state/GlobalContext'
-import { remove, writeFile } from 'fs-extra'
+import { remove, writeFile } from '@liuli-util/fs-extra'
 import { filenamify } from '../util/filenamify'
 import { logger } from '../constants/logger'
 

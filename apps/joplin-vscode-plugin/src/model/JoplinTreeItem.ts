@@ -1,8 +1,9 @@
+import { fileURLToPath } from 'url'
 import * as vscode from 'vscode'
 import { TreeItemCollapsibleState } from 'vscode'
-import { FolderListAllRes } from 'joplin-api/dist/modal/FolderListAllRes'
-import { CommonType } from 'joplin-api/dist/modal/CommonType'
-import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
+import { FolderListAllRes } from 'joplin-api'
+import { CommonType } from 'joplin-api'
+import { NoteProperties } from 'joplin-api'
 import { TypeEnum } from 'joplin-api'
 import path from 'path'
 
@@ -18,8 +19,8 @@ export class JoplinTreeItem extends vscode.TreeItem {
     )
     const iconName = JoplinTreeItem.getIconName(item)
     this.iconPath = {
-      light: path.resolve(__dirname, `../resources/light/${iconName}.svg`),
-      dark: path.resolve(__dirname, `../resources/dark/${iconName}.svg`),
+      light: path.resolve(path.dirname(fileURLToPath(import.meta.url)), `../resources/light/${iconName}.svg`),
+      dark: path.resolve(path.dirname(fileURLToPath(import.meta.url)), `../resources/dark/${iconName}.svg`),
     }
     if (item.type_ === TypeEnum.Note) {
       this.command = {

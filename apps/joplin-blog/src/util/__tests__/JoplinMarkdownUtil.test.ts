@@ -1,3 +1,4 @@
+import { expect, it, describe } from 'vitest'
 import { JoplinMarkdownUtil } from '../JoplinMarkdownUtil'
 
 describe('测试 JoplinMarkdownUtil', () => {

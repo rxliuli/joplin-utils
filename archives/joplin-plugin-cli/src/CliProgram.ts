@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'url'
 import { build } from 'esbuild'
 import * as path from 'path'
 import { copy, move, readJson, writeJson } from 'fs-extra'
@@ -41,9 +42,7 @@ export class CliProgram {
   }
 
   async build(isWatch: boolean): Promise<void> {
-    const entryPoints = await promise(
-      path.resolve(this.config.basePath, 'src/*.ts'),
-    )
+    const entryPoints = await promise(path.resolve(this.config.basePath, 'src/*.ts'))
     await Promise.all([this.buildScripts(entryPoints), this.copyManifest()])
     if (isWatch) {
       await watch(['src/manifest.json', 'src/*.ts'], {
@@ -59,9 +58,7 @@ export class CliProgram {
       })
       return
     }
-    const pkgName = (
-      await readJson(path.resolve(this.config.basePath, 'package.json'))
-    ).name
+    const pkgName = (await readJson(path.resolve(this.config.basePath, 'package.json'))).name
     await createArchive({
       sourceDir: path.resolve(this.config.basePath, 'dist'),
       destPath: pkgName + '.jpl',
@@ -71,13 +68,10 @@ export class CliProgram {
   async generate(name: string): Promise<void> {
     const destPath = path.resolve(this.config.basePath, name)
     await copy(
-      path.resolve(__dirname, '../templates/joplin-plugin-template'),
+      path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../templates/joplin-plugin-template'),
       destPath,
     )
-    await move(
-      path.resolve(destPath, '_.gitignore'),
-      path.resolve(destPath, '.gitignore'),
-    )
+    await move(path.resolve(destPath, '_.gitignore'), path.resolve(destPath, '.gitignore'))
     const pkgPath = path.resolve(destPath, 'package.json')
     await writeJson(
       pkgPath,

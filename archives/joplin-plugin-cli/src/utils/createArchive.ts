@@ -17,9 +17,7 @@ export async function createArchive(options: ArchiveOptions): Promise<void> {
   const sourceDir = path.resolve(options.sourceDir)
   const destPath = path.resolve(options.destPath)
   console.log('createArchive: ', sourceDir, destPath)
-  const distFiles = (await promise(`${sourceDir}/**/*`, { nodir: true })).map(
-    (f) => f.substr(sourceDir.length + 1),
-  )
+  const distFiles = (await promise(`${sourceDir}/**/*`, { nodir: true })).map((f) => f.substr(sourceDir.length + 1))
   await create(
     {
       strict: true,

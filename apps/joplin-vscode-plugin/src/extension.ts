@@ -18,7 +18,7 @@ import { ClassUtil } from '@liuli-util/object'
 import { logger } from './constants/logger'
 import { transports } from 'winston'
 import path from 'path'
-import { mkdirp } from 'fs-extra'
+import { mkdirp } from '@liuli-util/fs-extra'
 import { htmlImageLink } from './util/htmlImageLink'
 import { JoplinNoteOnDropProvider } from './service/MarkdownDrop'
 

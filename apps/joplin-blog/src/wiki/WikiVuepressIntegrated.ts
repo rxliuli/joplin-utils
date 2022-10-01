@@ -1,7 +1,7 @@
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { BaseIntegrated } from '../blog/Application'
 import path from 'path'
-import { mkdirp, writeJson } from 'fs-extra'
+import { mkdirp, writeJson } from '@liuli-util/fs-extra'
 import { treeMap } from '@liuli-util/tree'
 import { pick } from '@liuli-util/object'
 import { WikiUtil } from './WikiUtil'

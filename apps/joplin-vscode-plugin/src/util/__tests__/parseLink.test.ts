@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest'
 import MarkdownIt from 'markdown-it'
 
 it('测试解析链接', () => {
@@ -32,9 +33,7 @@ it('测试解析链接', () => {
 
   const md = new MarkdownIt()
   const [token] = md.parseInline(note, null)
-  const linkTokens = token
-    .children!.filter((token) => token.type === 'link_open')
-    .map((token) => token.attrGet('href'))
+  const linkTokens = token.children!.filter((token) => token.type === 'link_open').map((token) => token.attrGet('href'))
   expect(linkTokens).toEqual([
     'resources/2b9cab1180ee4aa69e53307c7351949a.mp4',
     'resources/8efa8ed158c749ffb6881e6e9ea65aff.pdf',

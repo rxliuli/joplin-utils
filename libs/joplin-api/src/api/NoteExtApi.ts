@@ -2,7 +2,7 @@ import { NoteApi } from './NoteApi'
 // noinspection ES6PreferShortImport
 import { IntBool } from '../types/IntBool'
 import { Ajax } from '../util/ajax'
-import { NoteUpdateRes } from '../modal/NoteUpdateRes'
+import { NoteUpdateRes } from '../model/NoteUpdateRes'
 
 export class NoteExtApi {
   private readonly noteApi: NoteApi

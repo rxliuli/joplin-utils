@@ -1,21 +1,17 @@
 import { folderApi, noteApi, resourceApi, tagApi } from 'joplin-api'
-import { PageRes } from 'joplin-api/dist/modal/PageData'
+import { PageRes } from 'joplin-api'
 import { treeMap, treeToList } from '@liuli-util/tree'
 import * as path from 'path'
 import { arrayToMap } from '@liuli-util/array'
-import { FolderListAllRes } from 'joplin-api/dist/modal/FolderListAllRes'
+import { FolderListAllRes } from 'joplin-api'
 import { AsyncArray } from '@liuli-util/async'
 import { mkdirp, writeFile, writeJson } from 'fs-extra'
-import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
-import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
-import { TagProperties } from 'joplin-api/dist/modal/TagProperties'
+import { NoteProperties } from 'joplin-api'
+import { ResourceProperties } from 'joplin-api'
+import { TagProperties } from 'joplin-api'
 import { replaceFilename } from '../util/replaceFilename'
 
-type PageResValueType<T extends Promise<PageRes<any>>> = T extends Promise<
-  PageRes<infer U>
->
-  ? U
-  : never
+type PageResValueType<T extends Promise<PageRes<any>>> = T extends Promise<PageRes<infer U>> ? U : never
 
 async function readAll<F extends (...args: any[]) => Promise<PageRes<any>>>(
   fn: F,
@@ -45,25 +41,13 @@ type WriteFileProperty = {
 export type ExportFolder = FolderListAllRes & WriteFileProperty
 export type ExportNote = Pick<
   NoteProperties,
-  | 'id'
-  | 'title'
-  | 'body'
-  | 'user_created_time'
-  | 'user_updated_time'
-  | 'is_todo'
-  | 'todo_completed'
-  | 'todo_due'
+  'id' | 'title' | 'body' | 'user_created_time' | 'user_updated_time' | 'is_todo' | 'todo_completed' | 'todo_due'
 > &
   WriteFileProperty
 
 export type ExportResource = Pick<
   ResourceProperties,
-  | 'id'
-  | 'title'
-  | 'user_created_time'
-  | 'user_updated_time'
-  | 'file_extension'
-  | 'mime'
+  'id' | 'title' | 'user_created_time' | 'user_updated_time' | 'file_extension' | 'mime'
 > & { fileTitle: string }
 
 export type ExportNoteTagRelation = {
@@ -71,10 +55,7 @@ export type ExportNoteTagRelation = {
   noteId: string
 }
 
-export type ExportTag = Pick<
-  TagProperties,
-  'id' | 'title' | 'user_updated_time' | 'user_created_time'
->
+export type ExportTag = Pick<TagProperties, 'id' | 'title' | 'user_updated_time' | 'user_created_time'>
 
 export type ExportConfig = {
   folderList: ExportFolder[]
@@ -124,9 +105,7 @@ export class Exporter {
     const newTree = treeMap(
       tree,
       (item) => {
-        const fileTitle =
-          item.title +
-          (folderSet.has(item.parent_id + item.title) ? '_' + item.id : '')
+        const fileTitle = item.title + (folderSet.has(item.parent_id + item.title) ? '_' + item.id : '')
         folderSet.add(item.parent_id + fileTitle)
         return {
           ...item,
@@ -170,49 +149,30 @@ export class Exporter {
     const folderMap = arrayToMap(folderList, (item) => item.id)
     return noteList.map((item) => {
       const folderTitle =
-        replaceFilename(item.title) +
-        (noteTitleSet.has(item.parent_id + item.title) ? '_' + item.id : '') +
-        '.md'
+        replaceFilename(item.title) + (noteTitleSet.has(item.parent_id + item.title) ? '_' + item.id : '') + '.md'
       noteTitleSet.add(item.parent_id + item.title)
       return {
         ...item,
         fileTitle: folderTitle,
-        filePath: [folderMap.get(item.parent_id)!.filePath, folderTitle].join(
-          '/',
-        ),
+        filePath: [folderMap.get(item.parent_id)!.filePath, folderTitle].join('/'),
       } as typeof item & WriteFileProperty
     })
   }
 
   async writeNote(list: ExportNote[]) {
     await AsyncArray.forEach(list, async (item) => {
-      const notePath = path.resolve(
-        this.config.rootPath,
-        'notes',
-        item.filePath,
-      )
+      const notePath = path.resolve(this.config.rootPath, 'notes', item.filePath)
       await writeFile(notePath, item.body)
     })
   }
 
   async listResource(): Promise<ExportResource[]> {
     const resourceList = await readAll(resourceApi.list, {
-      fields: [
-        'id',
-        'title',
-        'user_created_time',
-        'user_updated_time',
-        'file_extension',
-        'mime',
-      ],
+      fields: ['id', 'title', 'user_created_time', 'user_updated_time', 'file_extension', 'mime'],
     })
     const noteTitleSet = new Set<string>()
     return resourceList.map((item) => {
-      const title =
-        item.title +
-        (item.title.endsWith(item.file_extension)
-          ? ''
-          : '.' + item.file_extension)
+      const title = item.title + (item.title.endsWith(item.file_extension) ? '' : '.' + item.file_extension)
       // console.log('title: ', title)
       const fileTitle = (noteTitleSet.has(title) ? item.id + '_' : '') + title
       return {
@@ -236,17 +196,15 @@ export class Exporter {
     const tagList = await readAll(tagApi.list, {
       fields: ['id', 'title', 'user_updated_time', 'user_created_time'],
     })
-    const noteTagRelationList = await new AsyncArray(tagList).flatMap(
-      async (item) => {
-        const noteList = await readAll(tagApi.notesByTagId, {
-          id: item.id,
-        })
-        return noteList.map((note) => ({
-          noteId: note.id,
-          tagId: item.id,
-        }))
-      },
-    )
+    const noteTagRelationList = await new AsyncArray(tagList).flatMap(async (item) => {
+      const noteList = await readAll(tagApi.notesByTagId, {
+        id: item.id,
+      })
+      return noteList.map((note) => ({
+        noteId: note.id,
+        tagId: item.id,
+      }))
+    })
     return { tagList, noteTagRelationList }
   }
 

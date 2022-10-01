@@ -1,9 +1,11 @@
+import { fileURLToPath } from 'url'
+import { expect, it, describe, beforeEach } from 'vitest'
 import { JoplinNoteHandler } from '../JoplinNoteHandler'
 import * as path from 'path'
-import { remove, mkdirp } from 'fs-extra'
+import { remove, mkdirp } from '@liuli-util/fs-extra'
 
 describe('测试 JoplinNoteHandler', () => {
-  const tempPath = path.resolve(__dirname, '.temp')
+  const tempPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.temp')
   beforeEach(async () => {
     await remove(tempPath)
     await mkdirp(tempPath)

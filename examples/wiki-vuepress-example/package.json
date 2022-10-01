@@ -1,21 +1,26 @@
 {
+  "private": true,
   "name": "wiki-vuepress-example",
   "version": "1.0.0",
-  "private": true,
+  "type": "module",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
   "scripts": {
-    "dev": "vuepress dev docs",
     "build": "vuepress build docs",
-    "gen": "joplin-blog wiki",
-    "deploy": "liuli-cli deploy"
+    "deploy": "liuli-cli deploy",
+    "dev": "vuepress dev docs",
+    "gen": "joplin-blog wiki"
+  },
+  "devDependencies": {
+    "joplin-blog": "workspace:*",
+    "tsup": "^6.2.3",
+    "vuepress": "^1.8.2"
   },
   "deploy": {
     "type": "gh-pages",
     "dist": "docs/.vuepress/dist",
     "dest": "wiki/vuepress"
-  },
-  "devDependencies": {
-    "@liuli-util/cli": "^3.21.0",
-    "joplin-blog": "workspace:*",
-    "vuepress": "^1.8.2"
   }
 }

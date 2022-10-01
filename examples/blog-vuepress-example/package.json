@@ -1,22 +1,27 @@
 {
+  "private": true,
   "name": "blog-vuepress-example",
   "version": "0.2.0",
-  "private": true,
+  "type": "module",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
   "scripts": {
-    "dev": "vuepress dev blog",
-    "gen": "joplin-blog blog",
     "build": "vuepress build blog",
-    "deploy": "liuli-cli deploy"
+    "deploy": "liuli-cli deploy",
+    "dev": "vuepress dev blog",
+    "gen": "joplin-blog blog"
+  },
+  "devDependencies": {
+    "@vuepress/theme-blog": "^2.3.3",
+    "joplin-blog": "workspace:*",
+    "tsup": "^6.2.3",
+    "vuepress": "^1.7.1"
   },
   "deploy": {
     "type": "gh-pages",
     "dist": "blog/.vuepress/dist",
     "dest": "blog/vuepress"
-  },
-  "devDependencies": {
-    "@liuli-util/cli": "^3.21.0",
-    "@vuepress/theme-blog": "^2.3.3",
-    "joplin-blog": "workspace:*",
-    "vuepress": "^1.7.1"
   }
 }

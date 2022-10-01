@@ -1,3 +1,4 @@
+import { expect, it, describe } from 'vitest'
 import { ContentLink, MarkdownLinkUtil } from '../MarkdownLinkUtil'
 
 describe('测试 convertLink', () => {

@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'url'
+import { expect, it, describe } from 'vitest'
 import { config } from 'joplin-api'
 import { WikiVuepressIntegrated } from '../WikiVuepressIntegrated'
 import path from 'path'
@@ -6,7 +8,7 @@ import { GeneratorEventsImpl } from '../../blog/__tests__/util/GeneratorEventsIm
 
 const wikiVuepressIntegrated = new WikiVuepressIntegrated({
   tag: 'wiki',
-  rootPath: path.resolve(__dirname, 'temp/vuepress-example'),
+  rootPath: path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'temp/vuepress-example'),
 })
 
 describe('单独测试 WikiVuepressIntegrated', () => {

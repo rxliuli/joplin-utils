@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'url'
+import { expect, it, describe } from 'vitest'
 import { config } from 'joplin-api'
 import { Application } from '../../blog/Application'
 import path from 'path'
@@ -29,7 +31,7 @@ it('测试 buildList', () => {
 
 const wikiDocsifyIntegrated = new WikiDocsifyIntegrated({
   tag: 'wiki',
-  rootPath: path.resolve(__dirname, 'temp/docsify-example'),
+  rootPath: path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'temp/docsify-example'),
 })
 
 describe('单独测试 WikiDocsifyIntegrated', () => {

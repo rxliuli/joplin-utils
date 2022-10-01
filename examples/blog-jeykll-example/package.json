@@ -1,17 +1,18 @@
 {
   "name": "blog-jeykll-example",
   "version": "1.0.0",
-  "main": "index.js",
   "license": "MIT",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
-    "gen": "joplin-blog blog",
-    "dev": "bundle exec jekyll serve",
     "build": "bundle exec jekyll build",
-    "deploy": "gh-pages -d _site -e blog/jeykll -a"
+    "deploy": "gh-pages -d _site -e blog/jeykll -a",
+    "dev": "bundle exec jekyll serve",
+    "gen": "joplin-blog blog"
   },
   "devDependencies": {
-    "@liuli-util/cli": "^3.21.0",
     "@types/gh-pages": "^3",
-    "joplin-blog": "workspace:*"
+    "joplin-blog": "workspace:*",
+    "tsup": "^6.2.3"
   }
 }

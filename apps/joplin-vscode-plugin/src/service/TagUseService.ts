@@ -1,5 +1,5 @@
-import { TagGetRes } from 'joplin-api/dist/modal/TagGetRes'
-import { mkdirp, pathExists, readJson, writeJson } from 'fs-extra'
+import { TagGetRes } from 'joplin-api'
+import { mkdirp, pathExists, readJson, writeJson } from '@liuli-util/fs-extra'
 import path from 'path'
 
 interface TagUseEntity {
@@ -23,10 +23,7 @@ export class TagUseService {
   async getMap(): Promise<Map<string, TagUseEntity>> {
     await this.init()
     const list: TagUseEntity[] = (await readJson(this.configPath)).tagUse
-    return list.reduce(
-      (res, item) => res.set(item.id, item),
-      new Map<string, TagUseEntity>(),
-    )
+    return list.reduce((res, item) => res.set(item.id, item), new Map<string, TagUseEntity>())
   }
 
   async save(tags: Pick<TagGetRes, 'id' | 'title'>[]) {

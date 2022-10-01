@@ -1,9 +1,11 @@
-import { mkdirp, readFile, remove, close } from 'fs-extra'
+import { fileURLToPath } from 'url'
+import { expect, it, describe, beforeEach } from 'vitest'
+import { mkdirp, readFile, remove, close } from '@liuli-util/fs-extra'
 import * as path from 'path'
 import { createEmptyFile } from '../createEmptyFile'
 
 describe('测试 createEmptyFile', () => {
-  const tempPath = path.resolve(__dirname, '.temp')
+  const tempPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.temp')
   beforeEach(async () => {
     await remove(tempPath)
     await mkdirp(tempPath)

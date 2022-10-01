@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest'
 import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
@@ -5,7 +6,7 @@ import remarkGfm from 'remark-gfm'
 import data from '../data.json'
 import { visit } from 'unist-util-visit'
 import { Image, Link } from 'mdast'
-import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
+import { ResourceProperties } from 'joplin-api'
 
 it('测试', () => {
   const md = unified().use(remarkParse).use(remarkGfm).use(remarkStringify, {

@@ -1,3 +1,4 @@
+import { createRequire } from 'module'
 import Plugin from '../Plugin'
 import JoplinData from './JoplinData'
 import JoplinPlugins from './JoplinPlugins'

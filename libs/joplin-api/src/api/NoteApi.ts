@@ -1,17 +1,17 @@
-import { NoteGetRes } from '../modal/NoteGetRes'
-import { NoteProperties } from '../modal/NoteProperties'
-import { TagGetRes } from '../modal/TagGetRes'
-import { NoteCreateRes } from '../modal/NoteCreateRes'
-import { NoteUpdateRes } from '../modal/NoteUpdateRes'
-import { ResourceGetRes } from '../modal/ResourceGetRes'
+import { NoteGetRes } from '../model/NoteGetRes'
+import { NoteProperties } from '../model/NoteProperties'
+import { TagGetRes } from '../model/TagGetRes'
+import { NoteCreateRes } from '../model/NoteCreateRes'
+import { NoteUpdateRes } from '../model/NoteUpdateRes'
+import { ResourceGetRes } from '../model/ResourceGetRes'
 import { Ajax } from '../util/ajax'
-import { PageParam, PageRes } from '../modal/PageData'
-import { FieldsParam } from '../modal/FieldsParam'
+import { PageParam, PageRes } from '../model/PageData'
+import { FieldsParam } from '../model/FieldsParam'
 import { RequiredField } from '../types/RequiredFiled'
 // noinspection ES6PreferShortImport
 import { PageUtil } from '../util/PageUtil'
-import { CommonType } from '../modal/CommonType'
-import { ResourceProperties } from '../modal/ResourceProperties'
+import { CommonType } from '../model/CommonType'
+import { ResourceProperties } from '../model/ResourceProperties'
 
 /**
  * TODO 可以考虑使用 fields() 方法设置然后产生一个新的 Api 实例

@@ -9,7 +9,7 @@ import { downloadUrl, proxyStorage } from '@liuli-util/dom'
 import produce from 'immer'
 import { AsyncArray } from '@liuli-util/async'
 import { i18n } from '../../constants/i18n'
-import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
+import { ResourceProperties } from 'joplin-api'
 
 const unusedResourceService = new UnusedResourceService(joplinApiGenerator)
 

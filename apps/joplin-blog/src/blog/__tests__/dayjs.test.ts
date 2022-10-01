@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest'
 import dayjs from 'dayjs'
 
 it('测试 dayjs', () => {

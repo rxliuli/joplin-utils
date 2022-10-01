@@ -1,44 +1,68 @@
 {
   "name": "joplin-vscode-plugin",
-  "displayName": "joplin-vscode-plugin",
-  "description": "%package.description%",
   "version": "0.8.2",
-  "publisher": "rxliuli",
-  "engines": {
-    "vscode": "^1.71.0"
-  },
-  "icon": "resources/icon.png",
-  "scripts": {
-    "setup": "i18next-dts-gen -i src/i18n/",
-    "build": "tsx build.ts",
-    "dev": "tsx build.ts -w",
-    "release": "pnpm build && vsce package --no-dependencies"
-  },
-  "categories": [
-    "Notebooks"
-  ],
+  "description": "%package.description%",
   "homepage": "https://joplin-utils.rxliuli.com/zh/joplin-vscode-plugin/",
   "repository": {
     "type": "git",
     "url": "https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-vscode-plugin"
+  },
+  "type": "module",
+  "main": "./dist/extension.js",
+  "scripts": {
+    "build": "tsup src/extension.ts --format cjs --external vscode",
+    "dev": "tsup src/extension.ts --format cjs -w",
+    "release": "pnpm build && vsce package --no-dependencies",
+    "setup": "i18next-dts-gen -i src/i18n/"
+  },
+  "devDependencies": {
+    "@koa/cors": "^3.3.0",
+    "@koa/router": "^11.0.1",
+    "@liuli-util/array": "^3.2.7",
+    "@liuli-util/async": "^3.4.0",
+    "@liuli-util/i18next-util": "^0.2.0",
+    "@liuli-util/object": "^3.2.7",
+    "@liuli-util/tree": "^3.2.7",
+    "chokidar": "^3.5.2",
+    "cross-path-sort": "^1.0.0",
+    "glob": "^7.1.6",
+    "i18next": "^19.8.4",
+    "joplin-api": "workspace:*",
+    "koa": "^2.13.4",
+    "markdown-it": "^12.0.3",
+    "node-html-parser": "^5.3.3",
+    "tsx": "^3.9.0",
+    "winston": "^3.7.2",
+    "@liuli-util/fs-extra": "^0.1.0",
+    "@liuli-util/i18next-dts-gen": "^0.4.0",
+    "@types/glob": "^7.1.3",
+    "@types/koa": "^2.13.5",
+    "@types/koa__cors": "^3.3.0",
+    "@types/koa__router": "^8.0.11",
+    "@types/markdown-it": "^10.0.3",
+    "@types/node": "^14.14.13",
+    "@types/vscode": "^1.71.0",
+    "esbuild": "^0.12.28",
+    "tslib": "^2.0.3",
+    "tsup": "^6.2.3",
+    "type-fest": "^1.1.1",
+    "typescript": "^4.6.3",
+    "utility-types": "^3.10.0",
+    "vitest": "^0.23.4",
+    "vscode-nls": "^5.0.0",
+    "vscode-nls-dev": "^3.3.2",
+    "vscode-test": "^1.4.1"
+  },
+  "engines": {
+    "vscode": "^1.71.0"
   },
   "activationEvents": [
     "onView:joplin",
     "onUri",
     "onCommand:joplinNote.search"
   ],
-  "main": "./dist/extension.js",
-  "jest": {
-    "preset": "ts-jest",
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/*.test.ts"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/setupTests.ts"
-    ]
-  },
-  "extensionKind": [
-    "ui"
+  "categories": [
+    "Notebooks"
   ],
   "contributes": {
     "viewsContainers": {
@@ -410,48 +434,12 @@
       "definitionProvider": "true"
     }
   },
-  "devDependencies": {
-    "@liuli-util/i18next-dts-gen": "^0.4.0",
-    "@types/fs-extra": "^9.0.5",
-    "@types/glob": "^7.1.3",
-    "@types/jest": "^26.0.19",
-    "@types/koa": "^2.13.5",
-    "@types/koa__cors": "^3.3.0",
-    "@types/koa__router": "^8.0.11",
-    "@types/markdown-it": "^10.0.3",
-    "@types/node": "^14.14.13",
-    "@types/vscode": "^1.71.0",
-    "esbuild": "^0.12.28",
-    "jest": "^27.4.3",
-    "ts-jest": "^27.0.7",
-    "tslib": "^2.0.3",
-    "type-fest": "^1.1.1",
-    "typescript": "^4.6.3",
-    "utility-types": "^3.10.0",
-    "vscode-nls": "^5.0.0",
-    "vscode-nls-dev": "^3.3.2",
-    "vscode-test": "^1.4.1"
-  },
-  "dependencies": {
-    "@koa/cors": "^3.3.0",
-    "@koa/router": "^11.0.1",
-    "@liuli-util/array": "^3.2.7",
-    "@liuli-util/async": "^3.4.0",
-    "@liuli-util/i18next-util": "^0.2.0",
-    "@liuli-util/object": "^3.2.7",
-    "@liuli-util/tree": "^3.2.7",
-    "chokidar": "^3.5.2",
-    "cross-path-sort": "^1.0.0",
-    "fs-extra": "^9.0.1",
-    "glob": "^7.1.6",
-    "i18next": "^19.8.4",
-    "joplin-api": "workspace:*",
-    "koa": "^2.13.4",
-    "markdown-it": "^12.0.3",
-    "node-html-parser": "^5.3.3",
-    "tsx": "^3.9.0",
-    "winston": "^3.7.2"
-  },
+  "displayName": "joplin-vscode-plugin",
+  "extensionKind": [
+    "ui"
+  ],
+  "icon": "resources/icon.png",
+  "publisher": "rxliuli",
   "sync": [
     "jest"
   ]

@@ -1,14 +1,15 @@
+import { expect, it, vi } from 'vitest'
 import { retry } from '../retry'
 
 it('basic', async () => {
-  const f = jest.fn().mockImplementation(() => Promise.reject(new Error()))
+  const f = vi.fn().mockImplementation(() => Promise.reject(new Error()))
   const fn = retry(f, 3)
   await expect(() => fn()).rejects.toThrowError()
   expect(f.mock.calls.length).toBe(4)
 })
 
 it('res', async () => {
-  const f = jest.fn().mockImplementation(async (i: number) => {
+  const f = vi.fn().mockImplementation(async (i: number) => {
     if (i === 0) {
       throw new Error()
     }

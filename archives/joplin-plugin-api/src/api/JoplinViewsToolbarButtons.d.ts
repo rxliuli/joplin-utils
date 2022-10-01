@@ -12,9 +12,5 @@ export default class JoplinViewsToolbarButtons {
   /**
    * Creates a new toolbar button and associate it with the given command.
    */
-  create(
-    id: string,
-    commandName: string,
-    location: ToolbarButtonLocation,
-  ): Promise<void>
+  create(id: string, commandName: string, location: ToolbarButtonLocation): Promise<void>
 }

@@ -1,3 +1,4 @@
+import { expect, it, describe } from 'vitest'
 import { filenamify } from '../filenamify'
 
 describe('测试 filenamify', () => {

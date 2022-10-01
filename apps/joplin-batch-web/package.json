@@ -1,29 +1,17 @@
 {
+  "private": true,
   "name": "joplin-batch-web",
   "version": "0.2.1",
-  "private": true,
+  "type": "module",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview",
-    "deploy": "pnpm build && liuli-cli deploy"
-  },
-  "deploy": {
-    "type": "gh-pages",
-    "dist": "dist",
-    "dest": "/web/joplin-batch-web"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "setupFilesAfterEnv": [
-      "./src/jest-start.ts"
-    ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "@liuli-util/eslint-config-react-ts"
-    ]
+    "deploy": "pnpm build && liuli-cli deploy",
+    "dev": "vite",
+    "serve": "vite preview"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
@@ -50,17 +38,16 @@
     "remark-stringify": "^10.0.2",
     "unified": "^10.1.2",
     "unist-util-visit": "^4.1.0",
-    "workbox-window": "^6.5.4"
+    "workbox-window": "^6.5.4",
+    "yaml": "^1.10.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.18.10",
-    "@liuli-util/cli": "^3.21.0",
     "@liuli-util/eslint-config-react-ts": "^0.2.1",
     "@liuli-util/rollup-plugin-i18next-dts-gen": "^0.2.0",
     "@liuli-util/shell": "^0.2.0",
     "@liuli-util/vite-plugin-version-info": "^0.2.0",
     "@types/fs-extra": "^9.0.13",
-    "@types/jest": "^28.1.6",
     "@types/markdown-it": "^12.2.3",
     "@types/mdast": "^3.0.10",
     "@types/node": "^18.6.4",
@@ -71,13 +58,23 @@
     "babel-jest": "^28.1.3",
     "envfile": "^6.17.0",
     "fs-extra": "^10.1.0",
-    "jest": "^28.1.3",
     "joplin-blog": "workspace:*",
     "less": "^4.1.3",
-    "ts-jest": "^28.0.7",
+    "tsup": "^6.2.3",
     "type-fest": "^2.18.0",
     "typescript": "^4.7.4",
     "vite": "^3.0.4",
-    "vite-plugin-checker": "^0.4.9"
+    "vite-plugin-checker": "^0.4.9",
+    "vitest": "^0.23.4"
+  },
+  "deploy": {
+    "type": "gh-pages",
+    "dist": "dist",
+    "dest": "/web/joplin-batch-web"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@liuli-util/eslint-config-react-ts"
+    ]
   }
 }

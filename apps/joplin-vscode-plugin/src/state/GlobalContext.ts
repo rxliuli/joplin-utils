@@ -1,4 +1,4 @@
-import { ResourceGetRes } from 'joplin-api/dist/modal/ResourceGetRes'
+import { ResourceGetRes } from 'joplin-api'
 import * as vscode from 'vscode'
 import { HandlerService } from '../service/HandlerService'
 import { BiMultiMap } from '../util/BiMultiMap'

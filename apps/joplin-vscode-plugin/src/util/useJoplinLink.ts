@@ -1,7 +1,7 @@
 import MarkdownIt from 'markdown-it'
 import { Config, TypeEnum } from 'joplin-api'
 import { JoplinLinkRegex } from './constant'
-import { ResourceGetRes } from 'joplin-api/dist/modal/ResourceGetRes'
+import { ResourceGetRes } from 'joplin-api'
 
 export function wrapLink(id: string, type: TypeEnum.Resource | TypeEnum.Note) {
   const q = encodeURIComponent(`id=${id}`)

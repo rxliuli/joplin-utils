@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { Button, Card, Input, List, message, Space, Typography } from 'antd'
-import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
+import { NoteProperties } from 'joplin-api'
 import { useAsyncFn } from 'react-use'
 import { ConvertExternalLinkService, MappingContentLink, NoteModel } from './service/ConvertExternalLinkService'
 import css from './ConvertExternalLinkView.module.css'
-import { JoplinMarkdownUtil } from 'joplin-blog/src/util/JoplinMarkdownUtil'
 import produce from 'immer'
 import { openNote } from '../../constants/joplinApiGenerator'
 import { i18n } from '../../constants/i18n'
+import { JoplinMarkdownUtil } from '../../util/JoplinMarkdownUtil'
 
 const convertExternalLinkService = new ConvertExternalLinkService()
 

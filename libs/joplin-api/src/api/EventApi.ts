@@ -1,5 +1,5 @@
-import { CommonType } from '../modal/CommonType'
-import { PageRes } from '../modal/PageData'
+import { CommonType } from '../model/CommonType'
+import { PageRes } from '../model/PageData'
 import { Ajax } from '../util/ajax'
 
 export interface EventProperties {

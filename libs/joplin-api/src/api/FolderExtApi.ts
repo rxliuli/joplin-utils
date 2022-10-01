@@ -1,7 +1,7 @@
-import { FolderGetRes } from '../modal/FolderGetRes'
+import { FolderGetRes } from '../model/FolderGetRes'
 import { Ajax } from '../util/ajax'
 import { FolderApi } from './FolderApi'
-import { FolderUpdateRes } from '../modal/FolderUpdateRes'
+import { FolderUpdateRes } from '../model/FolderUpdateRes'
 
 export class FolderExtApi {
   private readonly folderApi: FolderApi

@@ -1,5 +1,5 @@
 import joplin from 'joplin-plugin-api'
-import { readdir } from 'fs-extra'
+import { readdir } from '@liuli-util/fs-extra'
 import * as path from 'path'
 import * as os from 'os'
 

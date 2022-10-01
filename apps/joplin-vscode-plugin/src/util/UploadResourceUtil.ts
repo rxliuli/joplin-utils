@@ -1,8 +1,9 @@
+import { fileURLToPath } from 'url'
 import * as os from 'os'
 import * as path from 'path'
-import { createReadStream, mkdirpSync } from 'fs-extra'
+import { createReadStream, mkdirpSync } from '@liuli-util/fs-extra'
 import { spawn } from 'child_process'
-import * as fs from 'fs-extra'
+import * as fs from '@liuli-util/fs-extra'
 import { resourceApi } from 'joplin-api'
 
 /**
@@ -69,7 +70,7 @@ export class UploadResourceUtil {
         win10: './clipboard/windows10.ps1',
         linux: './clipboard/linux.sh',
       }
-      const scriptPath = path.join(__dirname, platformPaths[platform])
+      const scriptPath = path.join(path.dirname(fileURLToPath(import.meta.url)), platformPaths[platform])
       try {
         if (platform === 'darwin') {
           execution = spawn('osascript', [scriptPath, imagePath])

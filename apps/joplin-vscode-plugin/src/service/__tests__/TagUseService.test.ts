@@ -1,9 +1,11 @@
+import { fileURLToPath } from 'url'
+import { expect, it } from 'vitest'
 import { TagUseService } from '../TagUseService'
 import path from 'path'
-import { remove } from 'fs-extra'
+import { remove } from '@liuli-util/fs-extra'
 
 it('基本示例', async () => {
-  const configPath = path.resolve(__dirname, 'temp/db.json')
+  const configPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'temp/db.json')
   await remove(configPath)
   const tagUseService = new TagUseService(configPath)
   expect(await tagUseService.getMap()).toEqual(new Map())

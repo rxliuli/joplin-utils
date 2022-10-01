@@ -1,4 +1,4 @@
-import { open } from 'fs-extra'
+import { open } from '@liuli-util/fs-extra'
 
 /**
  * 创建一个空文件

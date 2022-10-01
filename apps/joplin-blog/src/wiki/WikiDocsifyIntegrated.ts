@@ -1,7 +1,7 @@
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { BaseIntegrated } from '../blog/Application'
 import path from 'path'
-import { writeFile } from 'fs-extra'
+import { writeFile } from '@liuli-util/fs-extra'
 import { ListNode } from '../util/JoplinMarkdownUtil'
 import { WikiUtil } from './WikiUtil'
 import { treeMap } from '@liuli-util/tree'

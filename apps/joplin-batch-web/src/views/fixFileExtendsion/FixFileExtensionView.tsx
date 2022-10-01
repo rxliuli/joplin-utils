@@ -6,25 +6,18 @@ import { useAsyncFn } from 'react-use'
 import { PageUtil } from 'joplin-api'
 import { buildResourceUrl } from '../unusedResource/UnusedResourceView'
 import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
-import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
+import { ResourceProperties } from 'joplin-api'
 import { AsyncArray, asyncLimiting } from '@liuli-util/async'
 import { MimeUtils } from './util/MimeUtils'
 
 export const FixFileExtensionView: React.FC = () => {
-  const [list, setList] = useState<
-    Pick<ResourceProperties, 'id' | 'title' | 'file_extension' | 'mime'>[]
-  >([])
+  const [list, setList] = useState<Pick<ResourceProperties, 'id' | 'title' | 'file_extension' | 'mime'>[]>([])
   const [loadState, fetch] = useAsyncFn(async () => {
     setList(
       (
-        await PageUtil.pageToAllList(
-          joplinApiGenerator.resourceApi.list.bind(
-            joplinApiGenerator.resourceApi,
-          ),
-          {
-            fields: ['id', 'title', 'file_extension', 'mime'],
-          },
-        )
+        await PageUtil.pageToAllList(joplinApiGenerator.resourceApi.list.bind(joplinApiGenerator.resourceApi), {
+          fields: ['id', 'title', 'file_extension', 'mime'],
+        })
       )
         .filter((item) => !item.file_extension)
         .map((item) => ({
@@ -71,17 +64,11 @@ export const FixFileExtensionView: React.FC = () => {
         renderItem={(item) => (
           <List.Item
             key={item.id}
-            extra={
-              item.mime.startsWith('image/') && (
-                <Image src={buildResourceUrl(item.id)} width={300} />
-              )
-            }
+            extra={item.mime.startsWith('image/') && <Image src={buildResourceUrl(item.id)} width={300} />}
           >
             <List.Item.Meta
               title={item.title}
-              description={`${i18n.t('fixFileExtension.tip')}${
-                item.file_extension
-              }`}
+              description={`${i18n.t('fixFileExtension.tip')}${item.file_extension}`}
             />
           </List.Item>
         )}

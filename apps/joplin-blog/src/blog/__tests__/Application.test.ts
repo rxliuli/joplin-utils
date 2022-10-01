@@ -1,12 +1,14 @@
+import { fileURLToPath } from 'url'
+import { expect, it, beforeAll } from 'vitest'
 import { Application } from '../Application'
 import path from 'path'
-import { mkdirp, pathExists, readdir, remove, writeFile } from 'fs-extra'
+import { mkdirp, pathExists, readdir, remove, writeFile } from '@liuli-util/fs-extra'
 import { config, noteApi } from 'joplin-api'
 import { BlogHexoIntegrated } from '../BlogHexoIntegrated'
 import { BlogVuepressIntegrated } from '../BlogVuepressIntegrated'
 import { GeneratorEventsImpl } from './util/GeneratorEventsImpl'
 
-const tempPath = path.resolve(__dirname, '.temp')
+const tempPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.temp')
 
 beforeAll(async () => {
   await remove(tempPath)
@@ -16,7 +18,7 @@ beforeAll(async () => {
 it.skip('单独测试 HexoIntegrated', async () => {
   const hexoHandler = new BlogHexoIntegrated({
     tag: 'blog',
-    rootPath: path.resolve(__dirname, '.temp/hexo-example'),
+    rootPath: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.temp/hexo-example'),
   })
   const noteId = '21a3eba7f4b445ccbc123bf52831d387'
   const { user_created_time, user_updated_time, ...note } = await noteApi.get(noteId, [
@@ -35,7 +37,7 @@ it.skip('单独测试 HexoIntegrated', async () => {
     tags,
     resources,
   })
-  await writeFile(path.resolve(__dirname, '.temp/test.md'), res)
+  await writeFile(path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.temp/test.md'), res)
 })
 
 it('集成 HexoIntegrated', async () => {
@@ -43,7 +45,7 @@ it('集成 HexoIntegrated', async () => {
     { token: config.token, baseUrl: config.baseUrl, tag: 'blog' },
     new BlogHexoIntegrated({
       tag: 'blog',
-      rootPath: path.resolve(__dirname, '.temp/hexo-example'),
+      rootPath: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.temp/hexo-example'),
     }),
   )
 
@@ -64,7 +66,7 @@ it.skip('集成 VuepressIntegrated', async () => {
       tag: 'blog',
     },
     new BlogVuepressIntegrated({
-      rootPath: path.resolve(__dirname, '.temp/vuepress-example'),
+      rootPath: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.temp/vuepress-example'),
       tag: 'blog',
     }),
   )

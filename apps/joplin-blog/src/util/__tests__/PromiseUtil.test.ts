@@ -1,3 +1,4 @@
+import { expect, it, describe } from 'vitest'
 import { PromiseUtil } from '../PromiseUtil'
 import { wait } from '@liuli-util/async'
 

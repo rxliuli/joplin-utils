@@ -1,6 +1,6 @@
 import path from 'path'
 import { CommonNote, CommonResource } from '../model/CommonNote'
-import { pathExists, readJson, writeJson } from 'fs-extra'
+import { pathExists, readJson, writeJson } from '@liuli-util/fs-extra'
 
 type CacheNote = Pick<CommonNote, 'id' | 'updatedTime'>
 type CacheResource = Pick<CommonResource, 'id' | 'user_updated_time'>

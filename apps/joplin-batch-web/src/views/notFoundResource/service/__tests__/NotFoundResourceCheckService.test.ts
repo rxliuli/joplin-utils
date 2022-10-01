@@ -1,6 +1,7 @@
+import { expect, it } from 'vitest'
 import { config, noteApi, PageUtil, resourceApi } from 'joplin-api'
-import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
-import { ResourceProperties } from 'joplin-api/dist/modal/ResourceProperties'
+import { NoteProperties } from 'joplin-api'
+import { ResourceProperties } from 'joplin-api'
 import { parseInternalLink } from '../parseInternalLink'
 
 it('测试 NotFoundResourceCheckService', async () => {

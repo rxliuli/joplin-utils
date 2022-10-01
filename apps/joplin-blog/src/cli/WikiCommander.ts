@@ -1,7 +1,7 @@
 import { Application, ApplicationConfig, BaseIntegrated } from '../blog/Application'
 import { BlogHexoIntegratedConfig } from '../blog/BlogHexoIntegrated'
 import path from 'path'
-import { pathExists, readJson } from 'fs-extra'
+import { pathExists, readJson } from '@liuli-util/fs-extra'
 import { figletPromise } from '../util/utils'
 import ora from 'ora'
 import { Command } from 'commander'

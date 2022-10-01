@@ -29,11 +29,7 @@ export default class JoplinContentScripts {
    * @param id A unique ID for the content script.
    * @param scriptPath Must be a path relative to the plugin main script. For example, if your file content_script.js is next to your index.ts file, you would set `scriptPath` to `"./content_script.js`.
    */
-  register(
-    type: ContentScriptType,
-    id: string,
-    scriptPath: string,
-  ): Promise<void>
+  register(type: ContentScriptType, id: string, scriptPath: string): Promise<void>
   /**
    * Listens to a messages sent from the content script using postMessage().
    * See {@link ContentScriptType} for more information as well as the

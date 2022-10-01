@@ -1,3 +1,4 @@
+import { expect, it, describe } from 'vitest'
 import { PageUtil } from 'joplin-api'
 import { UnusedResourceService } from '../UnusedResourceService'
 import { joplinApiGenerator } from '../../../../constants/joplinApiGenerator'

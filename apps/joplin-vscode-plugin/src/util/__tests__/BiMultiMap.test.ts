@@ -1,3 +1,4 @@
+import { expect, it, describe } from 'vitest'
 import { BiMultiMap } from '../BiMultiMap'
 
 describe('测试 BiMultiMap', () => {

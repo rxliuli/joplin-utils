@@ -2,7 +2,7 @@ import { Application, ApplicationConfig, BaseIntegrated } from '../blog/Applicat
 import { BlogHexoIntegrated, BlogHexoIntegratedConfig } from '../blog/BlogHexoIntegrated'
 import { BlogVuepressIntegrated, BlogVuepressIntegratedConfig } from '../blog/BlogVuepressIntegrated'
 import path from 'path'
-import { pathExists, readJson } from 'fs-extra'
+import { pathExists, readJson } from '@liuli-util/fs-extra'
 import { figletPromise } from '../util/utils'
 import ora from 'ora'
 import { Command } from 'commander'

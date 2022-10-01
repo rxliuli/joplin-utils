@@ -1,5 +1,5 @@
-import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
-import { CommonType } from 'joplin-api/dist/modal/CommonType'
+import { NoteProperties } from 'joplin-api'
+import { CommonType } from 'joplin-api'
 import { noteApi, TypeEnum, folderApi } from 'joplin-api'
 
 class JoplinNoteApi {

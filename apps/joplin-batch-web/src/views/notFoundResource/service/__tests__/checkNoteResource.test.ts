@@ -1,3 +1,4 @@
+import { expect, it } from 'vitest'
 import { parseInternalLink } from '../parseInternalLink'
 
 it('测试 checkNoteResource', () => {

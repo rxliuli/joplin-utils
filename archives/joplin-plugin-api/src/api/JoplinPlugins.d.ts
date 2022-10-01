@@ -1,3 +1,4 @@
+import { createRequire } from 'module'
 import Plugin from '../Plugin'
 import { ContentScriptType, Script } from './types'
 /**
@@ -22,11 +23,7 @@ export default class JoplinPlugins {
   /**
    * @deprecated Use joplin.contentScripts.register()
    */
-  registerContentScript(
-    type: ContentScriptType,
-    id: string,
-    scriptPath: string,
-  ): Promise<void>
+  registerContentScript(type: ContentScriptType, id: string, scriptPath: string): Promise<void>
   /**
    * Gets the plugin own data directory path. Use this to store any
    * plugin-related data. Unlike [[installationDir]], any data stored here

@@ -1,7 +1,7 @@
-import { CommonType } from 'joplin-api/dist/modal/CommonType'
+import { CommonType } from 'joplin-api'
 import { TypeEnum, noteApi, folderApi, noteExtApi, folderExtApi } from 'joplin-api'
-import { BaseProperties } from 'joplin-api/dist/modal/BaseProperties'
-import { FolderProperties } from 'joplin-api/dist/modal/FolderProperties'
+import { BaseProperties } from 'joplin-api'
+import { FolderProperties } from 'joplin-api'
 
 export class FolderOrNoteExtendsApi {
   async remove(item: Pick<BaseProperties, 'id'> & CommonType) {
@@ -26,9 +26,7 @@ export class FolderOrNoteExtendsApi {
     }
   }
 
-  async create(
-    item: Pick<FolderProperties, 'title' | 'parent_id'> & CommonType,
-  ) {
+  async create(item: Pick<FolderProperties, 'title' | 'parent_id'> & CommonType) {
     switch (item.type_) {
       case TypeEnum.Folder:
         return await folderApi.create({

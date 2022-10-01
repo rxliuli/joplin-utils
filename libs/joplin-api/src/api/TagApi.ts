@@ -1,9 +1,9 @@
-import { TagProperties } from '../modal/TagProperties'
-import { TagGetRes } from '../modal/TagGetRes'
-import { NoteGetRes } from '../modal/NoteGetRes'
-import { NoteTagRelated } from '../modal/NoteTagRelated'
-import { PageParam, PageRes } from '../modal/PageData'
-import { FieldsParam } from '../modal/FieldsParam'
+import { TagProperties } from '../model/TagProperties'
+import { TagGetRes } from '../model/TagGetRes'
+import { NoteGetRes } from '../model/NoteGetRes'
+import { NoteTagRelated } from '../model/NoteTagRelated'
+import { PageParam, PageRes } from '../model/PageData'
+import { FieldsParam } from '../model/FieldsParam'
 import { Ajax } from '../util/ajax'
 
 export class TagApi {

@@ -1,11 +1,13 @@
+import { fileURLToPath } from 'url'
+import { expect, it, describe, beforeEach } from 'vitest'
 import { noteApi, PageUtil } from 'joplin-api'
 import * as path from 'path'
-import { mkdirp, remove, writeFile } from 'fs-extra'
+import { mkdirp, remove, writeFile } from '@liuli-util/fs-extra'
 import { groupBy, sortBy } from '@liuli-util/array'
-import { NoteProperties } from 'joplin-api/dist/modal/NoteProperties'
+import { NoteProperties } from 'joplin-api'
 
 describe('删除重复的笔记', () => {
-  const tempPath = path.resolve(__dirname, '.temp/exportDuplicationNoteList')
+  const tempPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.temp/exportDuplicationNoteList')
   beforeEach(async () => {
     await remove(tempPath)
     await mkdirp(tempPath)
@@ -20,10 +22,7 @@ describe('删除重复的笔记', () => {
       .map(
         ([_, notes]) =>
           sortBy(
-            notes as Pick<
-              NoteProperties,
-              'user_updated_time' | 'title' | 'body' | 'id'
-            >[],
+            notes as Pick<NoteProperties, 'user_updated_time' | 'title' | 'body' | 'id'>[],
             (note) => note.user_updated_time,
           )[0],
       )

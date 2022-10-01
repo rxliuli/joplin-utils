@@ -1,14 +1,10 @@
-import { PageParam, PageRes } from '../modal/PageData'
-import { NoteProperties } from '../modal/NoteProperties'
-import { TypeEnum } from '../modal/TypeEnum'
-import { FieldsParam } from '../modal/FieldsParam'
-import { CommonType } from '../modal/CommonType'
+import { PageParam, PageRes } from '../model/PageData'
+import { NoteProperties } from '../model/NoteProperties'
+import { TypeEnum } from '../model/TypeEnum'
+import { FieldsParam } from '../model/FieldsParam'
+import { CommonType } from '../model/CommonType'
 
-type PageResValueType<T extends Promise<PageRes<any>>> = T extends Promise<
-  PageRes<infer U>
->
-  ? U
-  : never
+type PageResValueType<T extends Promise<PageRes<any>>> = T extends Promise<PageRes<infer U>> ? U : never
 
 export class PageUtil {
   /**
@@ -22,11 +18,7 @@ export class PageUtil {
    * 每次都获取最大分页数量，尽可能减少请求次数
    */
 
-  static async pageToAllList<
-    F extends (
-      pageParam: PageParam<any> & Record<string, any>,
-    ) => Promise<PageRes<any>>
-  >(
+  static async pageToAllList<F extends (pageParam: PageParam<any> & Record<string, any>) => Promise<PageRes<any>>>(
     fn: F,
     pageParam?: Omit<Parameters<F>[0], 'page' | 'limit'>,
   ): Promise<PageResValueType<ReturnType<F>>[]>
@@ -38,7 +30,7 @@ export class PageUtil {
         type?: TypeEnum
       } & PageParam<NoteProperties> &
         FieldsParam<K>,
-    ) => Promise<PageRes<Pick<NoteProperties, K> & CommonType>>
+    ) => Promise<PageRes<Pick<NoteProperties, K> & CommonType>>,
   >(
     fn: F,
     pageParam: {
