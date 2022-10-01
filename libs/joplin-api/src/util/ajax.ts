@@ -1,3 +1,4 @@
+import { omit } from '@liuli-util/object'
 import { stringify } from 'query-string'
 import { Config } from './config'
 import { globalValue } from './globalValue'
@@ -38,14 +39,14 @@ export class Ajax {
    */
   async request(ajaxConfig: AjaxConfig): Promise<any> {
     if (typeof fetch === 'undefined') {
-      Reflect.set(globalValue, 'fetch', require('node-fetch'))
+      Reflect.set(globalValue, 'fetch', (await import('node-fetch')).default)
     }
     if (typeof FormData === 'undefined') {
-      Reflect.set(globalValue, 'FormData', require('form-data'))
+      Reflect.set(globalValue, 'FormData', (await import('form-data')).default)
     }
     const config = { ...defaultConfig, ...ajaxConfig }
     const resp = await fetch(config.url, {
-      ...config,
+      ...omit(config, 'data'),
       method: config.method,
       body: config.data instanceof FormData ? config.data : JSON.stringify(config.data),
     })

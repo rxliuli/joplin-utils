@@ -1,10 +1,10 @@
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
-import unified from 'unified'
+import { unified } from 'unified'
 import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
-import visit from 'unist-util-visit'
-import { Link } from 'mdast'
-import unistUtilMap from 'unist-util-map'
+import { visit } from 'unist-util-visit'
+import { Link, Root } from 'mdast'
+import { map } from 'unist-util-map'
 import remarkGfm from 'remark-gfm'
 import { format, Options } from 'prettier'
 import type { Node } from 'unist'
@@ -34,8 +34,8 @@ export class JoplinNoteHandler {
   ) {
     function getLink() {
       const res: string[] = []
-      visit(node, ['link', 'image'], (node: Link) => {
-        res.push(node.url)
+      visit(node, ['link', 'image'], (node) => {
+        res.push((node as Link).url)
       })
       return res.filter((link) => link.startsWith(':/')).map((link) => link.slice(2))
     }
@@ -51,7 +51,7 @@ export class JoplinNoteHandler {
       return res
     }, new Map<string, string>())
 
-    return unistUtilMap(node, (node) => {
+    return map(node, (node) => {
       if (node.type !== 'link' && node.type !== 'image') {
         return node
       }
@@ -67,7 +67,7 @@ export class JoplinNoteHandler {
   }
 
   static format(node: Node) {
-    return format(this.md.stringify(node), {
+    return format(this.md.stringify(node as Root), {
       parser: 'markdown',
       tabWidth: 2,
     } as Options)

@@ -1,5 +1,5 @@
 import { LanguageEnum } from '@liuli-util/i18next-util'
-import osLocale from 'os-locale'
+import { osLocale } from 'os-locale'
 
 export async function getLanguage(): Promise<LanguageEnum> {
   const language = await osLocale()

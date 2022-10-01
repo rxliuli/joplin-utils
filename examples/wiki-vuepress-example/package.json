@@ -16,7 +16,7 @@
   "devDependencies": {
     "joplin-blog": "workspace:*",
     "tsup": "^6.2.3",
-    "vuepress": "^1.8.2"
+    "vuepress": "^1.9.7"
   },
   "deploy": {
     "type": "gh-pages",

@@ -11,7 +11,7 @@
     "gen": "joplin-blog blog"
   },
   "devDependencies": {
-    "@types/gh-pages": "^3",
+    "@types/gh-pages": "^3.2.1",
     "joplin-blog": "workspace:*",
     "tsup": "^6.2.3"
   }
