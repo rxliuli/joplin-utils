@@ -19,8 +19,9 @@ export class JoplinTreeItem extends vscode.TreeItem {
     )
     const iconName = JoplinTreeItem.getIconName(item)
     this.iconPath = {
-      light: path.resolve(path.dirname(fileURLToPath(import.meta.url)), `../resources/light/${iconName}.svg`),
-      dark: path.resolve(path.dirname(fileURLToPath(import.meta.url)), `../resources/dark/${iconName}.svg`),
+      // TODO 此处虽然是 esm，但也需要这种代码，因为最终要在 cjs 中运行
+      light: path.resolve(__dirname, `../resources/light/${iconName}.svg`),
+      dark: path.resolve(__dirname, `../resources/dark/${iconName}.svg`),
     }
     if (item.type_ === TypeEnum.Note) {
       this.command = {

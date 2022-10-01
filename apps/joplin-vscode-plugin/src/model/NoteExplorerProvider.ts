@@ -35,18 +35,22 @@ export class NoteExplorerProvider
   private folderMap = new Map<string, FolderListAllRes>()
 
   private async init() {
-    this.folderList = await folderApi.listAll()
+    try {
+      this.folderList = await folderApi.listAll()
 
-    treeEach(
-      this.folderList,
-      (item: FolderListAllRes) => {
-        this.folderMap.set(item.id, item)
-      },
-      {
-        id: 'id',
-        children: 'children',
-      },
-    )
+      treeEach(
+        this.folderList,
+        (item: FolderListAllRes) => {
+          this.folderMap.set(item.id, item)
+        },
+        {
+          id: 'id',
+          children: 'children',
+        },
+      )
+    } catch (e) {
+      console.error('init error', e)
+    }
   }
 
   /**

@@ -70,7 +70,7 @@ export class UploadResourceUtil {
         win10: './clipboard/windows10.ps1',
         linux: './clipboard/linux.sh',
       }
-      const scriptPath = path.join(path.dirname(fileURLToPath(import.meta.url)), platformPaths[platform])
+      const scriptPath = path.join(__dirname, platformPaths[platform])
       try {
         if (platform === 'darwin') {
           execution = spawn('osascript', [scriptPath, imagePath])
