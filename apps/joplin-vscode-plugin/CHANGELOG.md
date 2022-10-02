@@ -1,5 +1,14 @@
 # Release Notes
 
+## 0.8.3
+
+- chore: esm migration
+
+## 0.8.2
+
+- fix: fix the bug that the title is not set correctly when creating an attachment
+- chore: build.js => build.ts
+
 ## 0.8.1
 
 - fix: restore cut and paste function
