@@ -1,8 +1,8 @@
 import { fileURLToPath } from 'url'
 import { expect, it, describe, beforeEach } from 'vitest'
-import { JoplinNoteHandler } from '../JoplinNoteHandler'
 import * as path from 'path'
 import { remove, mkdirp } from '@liuli-util/fs-extra'
+import { fromMarkdown, toMarkdown } from '@liuli-util/markdown-util'
 
 describe('测试 JoplinNoteHandler', () => {
   const tempPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.temp')
@@ -16,7 +16,6 @@ describe('测试 JoplinNoteHandler', () => {
 1. one
 2. two
 `
-    const md = JoplinNoteHandler.md
-    expect(md.stringify(md.parse(text))).toBe(text)
+    expect(toMarkdown(fromMarkdown(text))).toBe(text)
   })
 })

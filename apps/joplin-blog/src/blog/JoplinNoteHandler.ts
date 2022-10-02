@@ -1,13 +1,5 @@
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
-import { unified } from 'unified'
-import remarkParse from 'remark-parse'
-import remarkStringify from 'remark-stringify'
-import { visit } from 'unist-util-visit'
-import { Link, Root } from 'mdast'
-import { map } from 'unist-util-map'
-import remarkGfm from 'remark-gfm'
-import { format, Options } from 'prettier'
-import type { Node } from 'unist'
+import { fromMarkdown, Root, Link, visit, map, toMarkdown } from '@liuli-util/markdown-util'
 
 export interface JoplinNoteHandlerLinkConverter {
   convertNote(id: string): string
@@ -16,26 +8,21 @@ export interface JoplinNoteHandlerLinkConverter {
 }
 
 export class JoplinNoteHandler {
-  static readonly md = unified().use(remarkParse).use(remarkGfm).use(remarkStringify, {
-    bullet: '-',
-    fences: true,
-    incrementListMarker: true,
-    listItemIndent: 'one',
-  })
-
   static parse(content: string) {
-    return this.md.parse(content)
+    return fromMarkdown(content)
   }
 
   static convertLink(
-    node: Node,
+    node: Root,
     note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
     converter: JoplinNoteHandlerLinkConverter,
   ) {
     function getLink() {
       const res: string[] = []
-      visit(node, ['link', 'image'], (node) => {
-        res.push((node as Link).url)
+      visit(node, (node) => {
+        if (['link', 'image'].includes(node.type)) {
+          res.push((node as Link).url)
+        }
       })
       return res.filter((link) => link.startsWith(':/')).map((link) => link.slice(2))
     }
@@ -66,10 +53,7 @@ export class JoplinNoteHandler {
     })
   }
 
-  static format(node: Node) {
-    return format(this.md.stringify(node as Root), {
-      parser: 'markdown',
-      tabWidth: 2,
-    } as Options)
+  static format(node: Root) {
+    return toMarkdown(node)
   }
 }

@@ -3,7 +3,6 @@ import { BlogHexoIntegrated, BlogHexoIntegratedConfig } from '../blog/BlogHexoIn
 import { BlogVuepressIntegrated, BlogVuepressIntegratedConfig } from '../blog/BlogVuepressIntegrated'
 import path from 'path'
 import { pathExists, readJson } from '@liuli-util/fs-extra'
-import { figletPromise } from '../util/utils'
 import ora from 'ora'
 import { Command } from 'commander'
 import { LanguageEnum } from '@liuli-util/i18next-util'
@@ -53,7 +52,6 @@ export class BlogCommanderProgram {
     return await BlogCommanderProgram.getBlogApplication(config)
   }
   async main() {
-    console.log(await figletPromise('joplin-blog'))
     const app = await this.getApp()
     if (app) {
       await this.gen(app)
@@ -75,17 +73,17 @@ export class BlogCommanderProgram {
       color: 'blue',
     })
 
-    spinner.start(i18n.t('common.filter.begin'))
+    // spinner.start(i18n.t('common.filter.begin'))
     const arr = await app.filter()
     if (arr.length === 0) {
-      spinner.warn(i18n.t('common.filter.empty')).stopAndPersist()
+      // spinner.warn(i18n.t('common.filter.empty')).stopAndPersist()
       return
     }
-    spinner.stopAndPersist({
-      text: i18n.t(`common.filter.end`, {
-        length: arr.length,
-      }),
-    })
+    // spinner.stopAndPersist({
+    //   text: i18n.t(`common.filter.end`, {
+    //     length: arr.length,
+    //   }),
+    // })
 
     spinner.start(i18n.t('common.readResourceAndTag.begin'))
     const allNoteList = await app.readNoteAttachmentsAndTags(arr).on('process', (options) => {

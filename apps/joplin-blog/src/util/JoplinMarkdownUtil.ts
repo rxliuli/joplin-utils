@@ -16,7 +16,7 @@ export class JoplinMarkdownUtil {
    * @param title
    */
   static trimTitle(title: string) {
-    return (title.startsWith('#') ? title.substr(1).trimLeft() : title).replace(new RegExp('[\r\n]'), '')
+    return (title.startsWith('#') ? title.substring(1).trimStart() : title).replace(new RegExp('[\r\n]'), '')
   }
 
   /**
@@ -24,7 +24,7 @@ export class JoplinMarkdownUtil {
    * @param body
    */
   static trimBodyHeader(body: string) {
-    return body.startsWith('# ') ? body.split('\n').slice(1).join('\n').trimLeft() : body
+    return body.startsWith('# ') ? body.split('\n').slice(1).join('\n').trimStart() : body
   }
 }
 

@@ -2,6 +2,7 @@ import { wrapWorkerFunc } from '../util/wrapWorkerFunc'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { JoplinNoteHandler } from './JoplinNoteHandler'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
+import { fromMarkdown } from '@liuli-util/markdown-util'
 
 function _convertNote(
   note: CommonNote & { tags: CommonTag[]; resources: CommonResource[] },
@@ -11,7 +12,7 @@ function _convertNote(
   },
 ) {
   return JoplinNoteHandler.format(
-    JoplinNoteHandler.convertLink(JoplinNoteHandler.parse(JoplinMarkdownUtil.trimBodyHeader(note.body)), note, {
+    JoplinNoteHandler.convertLink(fromMarkdown(JoplinMarkdownUtil.trimBodyHeader(note.body)), note, {
       convertNote(id: string): string {
         return rule.note.replace('{id}', id)
       },
