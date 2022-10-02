@@ -3,3 +3,4 @@ packages:
   - 'libs/*'
   - 'examples/*'
   - 'libs/joplin-plugin-cli/examples/*'
+  - 'website'

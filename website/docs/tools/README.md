@@ -3,12 +3,10 @@
 ## general user
 
 - [joplin-vscode-plugin](../joplin-vscode-plugin/)
-- joplin-blog
+- [joplin-blog](https://www.npmjs.com/package/joplin-blog)
 - [joplin-batch-web](../joplin-batch-web/)
-- joplin-plugin-backup-prettier
-- joplin-search-integration
+- [joplin-search-integration](https://chrome.google.com/webstore/detail/joplin-search-integration/mcjkdcifkhjenpfjacnbhpdcnjknjkhj)
 
 ## Developer
 
 - [joplin-api](../joplin-api)
-- joplin-plugin-api

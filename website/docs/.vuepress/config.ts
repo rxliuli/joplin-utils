@@ -1,12 +1,15 @@
+import { defineUserConfig } from 'vuepress-vite'
+import { defaultTheme } from '@vuepress/theme-default'
+import { searchPlugin } from '@vuepress/plugin-search'
+
 /**
  * @type import('vuepress-vite').AppConfig
  */
-module.exports = {
+export default defineUserConfig({
   head: [
     ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
   ],
-  bundler: '@vuepress/vite',
   locales: {
     '/': {
       lang: 'en-US', // 将会被设置为 <html> 的 lang 属性
@@ -20,7 +23,7 @@ module.exports = {
   /**
    * @type import('@vuepress/theme-default').DefaultThemeData
    */
-  themeConfig: {
+  theme: defaultTheme({
     locales: {
       '/': {
         navbar: [
@@ -84,7 +87,6 @@ module.exports = {
                 },
                 {
                   text: 'VSCode',
-                  collapsable: false,
                   children: [
                     {
                       text: 'VSCode Official Document',
@@ -94,7 +96,6 @@ module.exports = {
                 },
                 {
                   text: 'Markdown',
-                  collapsable: false,
                   children: [
                     {
                       text: 'Markdown Guide (English)',
@@ -104,7 +105,6 @@ module.exports = {
                 },
                 {
                   text: 'VSCode + Markdown',
-                  collapsable: false,
                   children: [
                     {
                       text: 'VSCode Markdown Official Document',
@@ -216,7 +216,6 @@ module.exports = {
                 '/zh/joplin-vscode-plugin/other/roadmap',
                 {
                   text: 'VSCode',
-                  collapsable: false,
                   children: [
                     {
                       text: 'VSCode 官方文档',
@@ -230,7 +229,6 @@ module.exports = {
                 },
                 {
                   text: 'Markdown',
-                  collapsable: false,
                   children: [
                     {
                       text: 'Markdown 指南（英文）',
@@ -244,7 +242,6 @@ module.exports = {
                 },
                 {
                   text: 'VSCode + Markdown',
-                  collapsable: false,
                   children: [
                     {
                       text: 'VSCode Markdown 官方文档',
@@ -342,20 +339,6 @@ module.exports = {
         contributorsText: '贡献者',
       },
     },
-  },
-  plugins: [
-    [
-      '@vuepress/plugin-search',
-      {
-        locales: {
-          '/': {
-            placeholder: 'Search',
-          },
-          '/zh/': {
-            placeholder: '搜索',
-          },
-        },
-      },
-    ],
-  ],
-}
+  }),
+  plugins: [searchPlugin()],
+})
