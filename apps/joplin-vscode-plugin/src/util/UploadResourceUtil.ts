@@ -1,10 +1,10 @@
-import { fileURLToPath } from 'url'
 import * as os from 'os'
 import * as path from 'path'
 import { createReadStream, mkdirpSync } from '@liuli-util/fs-extra'
 import { spawn } from 'child_process'
 import * as fs from '@liuli-util/fs-extra'
 import { resourceApi } from 'joplin-api'
+import { RootPath } from '../RootPath'
 
 /**
  * for clipboard image
@@ -65,12 +65,12 @@ export class UploadResourceUtil {
       const platformPaths: {
         [index: string]: string
       } = {
-        darwin: './clipboard/mac.applescript',
-        win32: './clipboard/windows.ps1',
-        win10: './clipboard/windows10.ps1',
-        linux: './clipboard/linux.sh',
+        darwin: 'mac.applescript',
+        win32: 'windows.ps1',
+        win10: 'windows10.ps1',
+        linux: 'linux.sh',
       }
-      const scriptPath = path.join(__dirname, platformPaths[platform])
+      const scriptPath = path.join(RootPath, 'resources/clipboard', platformPaths[platform])
       try {
         if (platform === 'darwin') {
           execution = spawn('osascript', [scriptPath, imagePath])
