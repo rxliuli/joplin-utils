@@ -9,13 +9,17 @@
     "url": "https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-api"
   },
   "type": "module",
+  "types": "dist/index.d.ts",
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./src": "./src/index.ts"
   },
   "scripts": {
-    "build": "rimraf dist && tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+    "build": "rimraf dist && tsup src/index.ts src/node-polyfill.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts src/node-polyfill.ts --format esm,cjs --dts --watch",
     "docs-build": "rimraf docs && typedoc",
     "docs-deploy": "pnpm docs-build && liuli-cli deploy",
     "docs:dev": "pnpm docs-build && live-server docs",
@@ -23,11 +27,8 @@
     "setup": "pnpm build",
     "test": "vitest run -w=1"
   },
-  "types": "dist/index.d.ts",
   "dependencies": {
     "@liuli-util/object": "^3.5.0",
-    "form-data": "^4.0.0",
-    "node-fetch": "^3.2.10",
     "query-string": "^7.1.1"
   },
   "devDependencies": {

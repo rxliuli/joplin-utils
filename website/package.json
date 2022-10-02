@@ -4,7 +4,7 @@
   "scripts": {
     "docs-dev": "vuepress dev docs",
     "docs-build": "vuepress build docs",
-    "docs-deploy": "yarn run docs-build && liuli-cli deploy"
+    "docs-deploy": "gh-pages -d docs/.vuepress/dist --add"
   },
   "deploy": {
     "type": "gh-pages",
@@ -13,11 +13,11 @@
     "add": true
   },
   "devDependencies": {
-    "@liuli-util/cli": "^3.22.0",
     "@vuepress/client": "2.0.0-beta.51",
     "@vuepress/plugin-search": "2.0.0-beta.51",
     "@vuepress/theme-default": "2.0.0-beta.51",
     "gh-pages": "^4.0.0",
+    "vue": "^3.2.40",
     "vuepress-vite": "2.0.0-beta.51"
   }
 }

@@ -21,6 +21,7 @@ import path from 'path'
 import { mkdirp } from '@liuli-util/fs-extra'
 import { htmlImageLink } from './util/htmlImageLink'
 import { JoplinNoteOnDropProvider } from './service/MarkdownDrop'
+import './util/node-polyfill'
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed

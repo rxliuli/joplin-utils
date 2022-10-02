@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts && tsup src/bin.ts --format esm --target esnext",
-    "dev": "tsup src/index.ts --format esm,cjs --dts && tsup src/bin.ts --format esm --target esnext --watch",
+    "dev": "tsup-node src/index.ts --format esm,cjs --dts && tsup src/bin.ts --format esm --target esnext --watch",
     "gen-i18n": "i18next-dts-gen --dirs src/i18n",
     "setup": "pnpm run gen-i18n && pnpm run build",
     "start": "tsx src/bin.ts"
@@ -27,9 +27,11 @@
     "commander": "^9.4.1",
     "dayjs": "^1.11.5",
     "figlet": "^1.5.2",
+    "form-data": "^4.0.0",
     "i18next": "^21.9.2",
     "joplin-api": "workspace:*",
     "mdast": "^3.0.0",
+    "node-fetch": "^3.2.10",
     "ora": "^6.1.2",
     "os-locale": "^6.0.2",
     "prettier": "^2.7.1",
