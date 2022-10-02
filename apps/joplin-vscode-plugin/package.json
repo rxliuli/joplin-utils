@@ -7,13 +7,26 @@
     "type": "git",
     "url": "https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-vscode-plugin"
   },
-  "type": "module",
-  "main": "./dist/extension.cjs",
+  "main": "./dist/extension.js",
   "scripts": {
-    "build": "tsup src/extension.ts --format cjs --external vscode --sourcemap",
-    "dev": "tsup-node src/extension.ts --format cjs --external vscode --sourcemap --watch",
+    "build": "tsup",
+    "dev": "tsup-node --watch",
     "release": "pnpm build && vsce package --no-dependencies",
     "setup": "i18next-dts-gen -i src/i18n/"
+  },
+  "tsup": {
+    "entry": [
+      "src/extension.ts"
+    ],
+    "format": [
+      "cjs"
+    ],
+    "sourcemap": true,
+    "clean": true,
+    "shims": true,
+    "external": [
+      "vscode"
+    ]
   },
   "devDependencies": {
     "@koa/cors": "^3.4.1",
