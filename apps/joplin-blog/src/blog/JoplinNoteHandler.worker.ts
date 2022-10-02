@@ -1,4 +1,3 @@
-import { wrapWorkerFunc } from '../util/wrapWorkerFunc'
 import { CommonNote, CommonResource, CommonTag } from '../model/CommonNote'
 import { JoplinNoteHandler } from './JoplinNoteHandler'
 import { JoplinMarkdownUtil } from '../util/JoplinMarkdownUtil'
@@ -23,4 +22,4 @@ function _convertNote(
   )
 }
 
-export const convertJoplinNote = wrapWorkerFunc(_convertNote)
+export const convertJoplinNote = _convertNote

@@ -236,12 +236,11 @@ export class Application {
   readNoteAttachmentsAndTags(arr: CommonNote[]) {
     return PromiseUtil.warpOnEvent(async (events: ProcessEvents) => {
       let i = 0
-      return new AsyncArray(
+      return await AsyncArray.map(
         arr.map((note) => ({
           ...note,
           title: JoplinMarkdownUtil.trimTitle(note.title),
         })),
-      ).map(
         asyncLimiting(async (note) => {
           i++
           events.process({

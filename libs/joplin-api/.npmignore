@@ -8,7 +8,6 @@ yarn-debug.log*
 yarn-error.log*
 .history
 docs
-src
 .npmignore
 
 # Editor directories and files

@@ -73,17 +73,13 @@ export class BlogCommanderProgram {
       color: 'blue',
     })
 
-    // spinner.start(i18n.t('common.filter.begin'))
+    spinner.start(i18n.t('common.filter.begin'))
     const arr = await app.filter()
     if (arr.length === 0) {
-      // spinner.warn(i18n.t('common.filter.empty')).stopAndPersist()
+      spinner.warn(i18n.t('common.filter.empty')).stopAndPersist()
       return
     }
-    // spinner.stopAndPersist({
-    //   text: i18n.t(`common.filter.end`, {
-    //     length: arr.length,
-    //   }),
-    // })
+    spinner.stopAndPersist({ text: i18n.t(`common.filter.end`, { length: arr.length }) })
 
     spinner.start(i18n.t('common.readResourceAndTag.begin'))
     const allNoteList = await app.readNoteAttachmentsAndTags(arr).on('process', (options) => {
@@ -95,9 +91,7 @@ export class BlogCommanderProgram {
     spinner.start(i18n.t('common.init.begin'))
     await app.initDir()
     await app.handler.init?.()
-    spinner.stopAndPersist({
-      text: i18n.t('common.init.end'),
-    })
+    spinner.stopAndPersist({ text: i18n.t('common.init.end') })
 
     // noinspection DuplicatedCode
     spinner.start(i18n.t('common.cache.begin'))
@@ -109,36 +103,24 @@ export class BlogCommanderProgram {
     const replaceContentNoteList = await app.parseAndWriteNotes(noteList).on('process', (options) => {
       spinner.text = i18n.t('common.parse.process', options)
     })
-    spinner.stopAndPersist({
-      text: i18n.t('common.parse.end'),
-    })
+    spinner.stopAndPersist({ text: i18n.t('common.parse.end') })
 
     spinner.start(i18n.t('common.writeNote.begin'))
     await app.writeNote(replaceContentNoteList).on('process', (options) => {
       spinner.text = i18n.t('common.writeNote.process', options)
     })
-    spinner.stopAndPersist({
-      text: i18n.t('common.writeNote.end'),
-    })
+    spinner.stopAndPersist({ text: i18n.t('common.writeNote.end') })
 
     if (skipResourceCount !== 0) {
-      spinner.stopAndPersist({
-        text: i18n.t('common.cache.resource.skip', {
-          skipCount: skipResourceCount,
-        }),
-      })
+      spinner.stopAndPersist({ text: i18n.t('common.cache.resource.skip', { skipCount: skipResourceCount }) })
     }
     spinner.start(i18n.t('common.copyResource.begin'))
     await app.copyResources(resourceList).on('process', (options) => {
       spinner.text = i18n.t('common.copyResource.process', options)
     })
-    spinner.stopAndPersist({
-      text: i18n.t('common.copyResource.end'),
-    })
+    spinner.stopAndPersist({ text: i18n.t('common.copyResource.end') })
 
-    spinner.start().stopAndPersist({
-      text: i18n.t('blog.generate.end'),
-    })
+    spinner.start().stopAndPersist({ text: i18n.t('blog.generate.end') })
     await updateCache()
   }
 }
