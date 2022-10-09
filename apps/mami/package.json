@@ -1,0 +1,36 @@
+{
+  "name": "mami",
+  "version": "0.2.0",
+  "license": "MIT",
+  "type": "module",
+  "bin": "./bin.js",
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --shims && tsup src/bin.ts --format esm --target esnext",
+    "dev": "tsup-node src/index.ts --format esm,cjs --dts --shims && tsup src/bin.ts --format esm --target esnext --watch",
+    "setup": "pnpm build",
+    "start": "tsx ./src/bin.ts",
+    "test": "vitest run"
+  },
+  "sideEffects": false,
+  "devDependencies": {
+    "@liuli-util/async": "^3.6.0",
+    "@liuli-util/tree": "^3.6.0",
+    "@types/lodash-es": "^4.17.6",
+    "@types/node": "^18.7.23",
+    "joplin-api": "workspace:^0.4.3",
+    "tsup": "^6.2.3",
+    "tsx": "^3.9.0",
+    "typescript": "^4.8.4",
+    "vitest": "^0.23.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@liuli-util/fs-extra": "^0.1.0",
+    "form-data": "^4.0.0",
+    "lodash-es": "^4.17.21",
+    "node-fetch": "^3.2.10"
+  }
+}

@@ -250,6 +250,37 @@ importers:
       vitest: 0.23.4
       winston: 3.8.2
 
+  apps/mami:
+    specifiers:
+      '@liuli-util/async': ^3.6.0
+      '@liuli-util/fs-extra': ^0.1.0
+      '@liuli-util/tree': ^3.6.0
+      '@types/lodash-es': ^4.17.6
+      '@types/node': ^18.7.23
+      form-data: ^4.0.0
+      joplin-api: workspace:^0.4.3
+      lodash-es: ^4.17.21
+      node-fetch: ^3.2.10
+      tsup: ^6.2.3
+      tsx: ^3.9.0
+      typescript: ^4.8.4
+      vitest: ^0.23.4
+    dependencies:
+      '@liuli-util/fs-extra': 0.1.0
+      form-data: 4.0.0
+      lodash-es: 4.17.21
+      node-fetch: 3.2.10
+    devDependencies:
+      '@liuli-util/async': 3.6.0
+      '@liuli-util/tree': 3.6.0
+      '@types/lodash-es': 4.17.6
+      '@types/node': 18.7.23
+      joplin-api: link:../../libs/joplin-api
+      tsup: 6.2.3_typescript@4.8.4
+      tsx: 3.9.0
+      typescript: 4.8.4
+      vitest: 0.23.4
+
   examples/blog-hexo-example:
     specifiers:
       hexo: ^6.3.0
@@ -3043,7 +3074,6 @@ packages:
 
   /@liuli-util/tree/3.6.0:
     resolution: {integrity: sha512-0mlNZJyQkhKjHnd1uKlsdo4hcZu/RTGrXVKjPvCqMMzQv7V1Q+eTMzpjWyUrUfnxzEgyNs9RewgSC3/TgyLlKA==}
-    dev: false
 
   /@liuli-util/vite-plugin-version-info/0.4.0_vite@3.1.4:
     resolution: {integrity: sha512-LZPKB+BBsvShpAVEZ+Yf8BMSXDtbWLNGXvYiH4mL27o6Fccmy+R1mbAJphPLjDWTFgOMYaxcwpgvVJ9cLA3CDg==}
@@ -3432,6 +3462,16 @@ packages:
 
   /@types/linkify-it/3.0.2:
     resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
+    dev: true
+
+  /@types/lodash-es/4.17.6:
+    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
+    dependencies:
+      '@types/lodash': 4.14.186
+    dev: true
+
+  /@types/lodash/4.14.186:
+    resolution: {integrity: sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==}
     dev: true
 
   /@types/markdown-it-emoji/2.0.2:
@@ -11452,6 +11492,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash._reinterpolate/3.0.0:
     resolution: {integrity: sha512-xYHt68QRoYGjeeM/XOE1uJtvXQAgvszfBhjV4yvsQH0u2i9I6cI6c6/eG4Hh3UAOVn0y/xAXwmTzEay49Q//HA==}
