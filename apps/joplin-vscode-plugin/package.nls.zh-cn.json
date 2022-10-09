@@ -23,6 +23,10 @@
   "commands.joplinNote.uploadFileFromExplorer": "从文件选择器上传文件",
   "commands.joplinNote.createResource": "创建附件资源",
   "commands.joplinNote.removeResource": "删除附件",
+  "commands.joplinNote.insertNoteLink": "插入笔记链接",
+  "commands.joplinNote.showLinkThisNotes": "显示链接到当前笔记的笔记",
+  "commands.joplinNote.showThisNoteLinks": "显示当前笔记引用的笔记",
+
   "configuration.joplin.token": "joplin web 服务的 token",
   "configuration.joplin.baseUrl": "joplin web 服务的基本路径, 默认为 http://localhost:41184",
   "configuration.joplin.programProfilePath": "joplin 程序的个人目录",

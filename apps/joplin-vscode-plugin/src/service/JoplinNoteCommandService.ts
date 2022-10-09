@@ -33,6 +33,7 @@ import { AsyncArray } from '@liuli-util/async'
 import { filenamify } from '../util/filenamify'
 import { NoteProperties } from 'joplin-api'
 import { logger } from '../constants/logger'
+import { loadLastNoteList } from '../util/api'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -227,17 +228,17 @@ export class JoplinNoteCommandService {
    */
   async search() {
     interface SearchNoteItem extends QuickPickItem {
-      noteId: string
+      id: string
     }
 
     const searchQuickPickBox = vscode.window.createQuickPick<SearchNoteItem>()
     searchQuickPickBox.placeholder = i18n.t('Please enter key words')
     searchQuickPickBox.canSelectMany = false
-    searchQuickPickBox.items = await this.loadLastNoteList()
+    searchQuickPickBox.items = await loadLastNoteList()
 
     searchQuickPickBox.onDidChangeValue(async (value: string) => {
       if (value.trim() === '') {
-        searchQuickPickBox.items = await this.loadLastNoteList()
+        searchQuickPickBox.items = await loadLastNoteList()
         return
       }
       const { items: noteList } = await searchApi.search({
@@ -250,37 +251,16 @@ export class JoplinNoteCommandService {
       })
       searchQuickPickBox.items = noteList.map((note) => ({
         label: note.title,
-        noteId: note.id,
+        id: note.id,
         alwaysShow: true,
       }))
       console.log('search: ', value, JSON.stringify(searchQuickPickBox.items))
     })
     searchQuickPickBox.onDidAccept(() => {
       const selectItem = searchQuickPickBox.selectedItems[0]
-      GlobalContext.handlerService.openNote(selectItem.noteId)
+      GlobalContext.handlerService.openNote(selectItem.id)
     })
     searchQuickPickBox.show()
-  }
-
-  private readonly LastLimitCount = 20
-
-  /**
-   * 加载最后编辑的一些笔记
-   * @private
-   */
-  private async loadLastNoteList() {
-    return (
-      await noteApi.list({
-        fields: ['id', 'title'],
-        limit: this.LastLimitCount,
-        order_dir: 'DESC',
-        order_by: 'user_updated_time',
-      })
-    ).items.map((item) => ({
-      label: item.title,
-      noteId: item.id,
-      alwaysShow: true,
-    }))
   }
 
   /**

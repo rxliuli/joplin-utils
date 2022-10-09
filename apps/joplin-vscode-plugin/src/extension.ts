@@ -22,6 +22,7 @@ import { mkdirp } from '@liuli-util/fs-extra'
 import { htmlImageLink } from './util/htmlImageLink'
 import { JoplinNoteOnDropProvider } from './service/MarkdownDrop'
 import './util/node-polyfill'
+import { insertNoteLink, showLinkThisNotes, showThisNoteLinks } from './commands'
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -81,19 +82,31 @@ export async function activate(context: vscode.ExtensionContext) {
   registerCommand('joplinNote.showCurrentlyOpenNote', async () => {
     {
       const activeFileName = vscode.window.activeTextEditor?.document.fileName
-      if (!activeFileName) {
-        return
-      }
-      await joplinNoteCommandService.onDidChangeActiveTextEditor(activeFileName)
+      activeFileName && (await joplinNoteCommandService.onDidChangeActiveTextEditor(activeFileName))
     }
   })
   registerCommand('joplinNote.showResources', async () => {
     {
       const activeFileName = vscode.window.activeTextEditor?.document.fileName
-      if (!activeFileName) {
-        return
-      }
-      await joplinNoteCommandService.showResources(activeFileName)
+      activeFileName && (await joplinNoteCommandService.showResources(activeFileName))
+    }
+  })
+  registerCommand('joplinNote.insertNoteLink', async () => {
+    {
+      const activeFileName = vscode.window.activeTextEditor?.document.fileName
+      activeFileName && (await insertNoteLink())
+    }
+  })
+  registerCommand('joplinNote.showLinkThisNotes', async () => {
+    {
+      const activeFileName = vscode.window.activeTextEditor?.document.fileName
+      activeFileName && (await showLinkThisNotes())
+    }
+  })
+  registerCommand('joplinNote.showThisNoteLinks', async () => {
+    {
+      const activeFileName = vscode.window.activeTextEditor?.document.fileName
+      activeFileName && (await showThisNoteLinks())
     }
   })
   registerCommand('joplinNote.showLogFileDir', () => vscode.env.openExternal(vscode.Uri.file(logPath)))

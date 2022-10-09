@@ -24,6 +24,10 @@
   "commands.joplinNote.uploadFileFromExplorer": "Upload file from explorer",
   "commands.joplinNote.createResource": "Create attachment resources",
   "commands.joplinNote.removeResource": "Delete attachment",
+  "commands.joplinNote.insertNoteLink": "Insert note link",
+  "commands.joplinNote.showLinkThisNotes": "Show notes linked to the current note",
+  "commands.joplinNote.showThisNoteLinks": "Show notes referenced by the current note",
+
   "configuration.joplin.token": "joplin web server token",
   "configuration.joplin.baseUrl": "The base path of the joplin web service, defaults to http://localhost:41184",
   "configuration.joplin.programProfilePath": "Personal directory for joplin programs",

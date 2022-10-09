@@ -3,7 +3,7 @@ import { window } from 'vscode'
 import { GlobalContext } from '../state/GlobalContext'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { i18n } from '../constants/i18n'
-import { noteApi, resourceApi } from 'joplin-api'
+import { resourceApi } from 'joplin-api'
 
 export class UploadResourceService {
   async uploadImageFromClipboard() {

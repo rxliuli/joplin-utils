@@ -227,6 +227,21 @@
         "command": "joplinNote.showLogFileDir",
         "title": "%commands.joplin.openLogFileDir%",
         "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.insertNoteLink",
+        "title": "%commands.joplinNote.insertNoteLink%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.showLinkThisNotes",
+        "title": "%commands.joplinNote.showLinkThisNotes%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.showThisNoteLinks",
+        "title": "%commands.joplinNote.showThisNoteLinks%",
+        "category": "Joplin"
       }
     ],
     "menus": {
