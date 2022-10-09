@@ -1,7 +1,7 @@
 import { expect, it, vi } from 'vitest'
 import { convert, Note, OutputPlugin } from '../../convert'
 import { joplinInput } from '../joplinInput'
-import '../../utils/node-polyfill'
+import '../../utils/nodePolyfill'
 import path from 'path'
 
 it('joplinInput', async () => {

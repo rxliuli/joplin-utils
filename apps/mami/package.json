@@ -4,6 +4,11 @@
   "license": "MIT",
   "type": "module",
   "bin": "./bin.js",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts --shims && tsup src/bin.ts --format esm --target esnext",
     "dev": "tsup-node src/index.ts --format esm,cjs --dts --shims && tsup src/bin.ts --format esm --target esnext --watch",
@@ -29,6 +34,8 @@
   },
   "dependencies": {
     "@liuli-util/fs-extra": "^0.1.0",
+    "bundle-require": "^3.1.0",
+    "esbuild": "^0.15.10",
     "form-data": "^4.0.0",
     "lodash-es": "^4.17.21",
     "node-fetch": "^3.2.10"
