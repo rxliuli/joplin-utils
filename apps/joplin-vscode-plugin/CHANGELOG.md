@@ -1,5 +1,11 @@
 # Release Notes
 
+## 0.9.0
+
+- feat: support three new commands, show currently referenced note, show referenced note, insert note link
+- feat: support audio and video display in joplin
+- feat: upgrade joplin-api, no longer rely on node-fetch/form-data, and fill in by itself
+
 ## 0.8.3
 
 - chore: esm migration
