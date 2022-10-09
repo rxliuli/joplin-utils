@@ -10,7 +10,7 @@
   "main": "./dist/extension.js",
   "scripts": {
     "build": "tsup",
-    "dev": "tsup-node --watch",
+    "dev": "tsup --watch",
     "release": "pnpm build && vsce package --no-dependencies",
     "setup": "i18next-dts-gen -i src/i18n/"
   },

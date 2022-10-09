@@ -39,4 +39,23 @@ describe('测试 markdown-it', () => {
     )
     expect(md.render(`<img src="http://github.com" />`).trim()).toBe(`<img src="http://github.com" />`)
   })
+  it('html media', () => {
+    const r = md
+      .use((md) => {
+        const defaultRender =
+          md.renderer.rules.link_open ||
+          function (tokens, idx, options, env, self) {
+            return md.renderer.renderToken(tokens, idx, options)
+          }
+        md.renderer.rules.link_open = (tokens, idx, opt, env, self) => {
+          const href = tokens[idx].attrGet('href')
+          if (href?.endsWith('.mp3')) {
+            return `<audio controls src="${href}" type="audio/mpeg">`
+          }
+          return defaultRender(tokens, idx, opt, env, self)
+        }
+      })
+      .render('[audio](test.mp3)')
+    expect(r).to.be.include('audio')
+  })
 })
