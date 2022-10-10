@@ -287,6 +287,7 @@ importers:
 
   examples/blog-hexo-example:
     specifiers:
+      '@mami/cli': workspace:*
       hexo: ^6.3.0
       hexo-asset-link: ^2.2.1
       hexo-generator-archive: ^1.0.0
@@ -299,10 +300,10 @@ importers:
       hexo-server: ^3.0.0
       hexo-theme-landscape: ^0.0.3
       joplin-blog: workspace:*
-      mami: workspace:*
       tsup: ^6.2.3
       typescript: ^4.8.4
     devDependencies:
+      '@mami/cli': link:../../apps/mami
       hexo: 6.3.0
       hexo-asset-link: 2.2.1_hexo@6.3.0
       hexo-generator-archive: 1.0.0
@@ -315,7 +316,6 @@ importers:
       hexo-server: 3.0.0
       hexo-theme-landscape: 0.0.3
       joplin-blog: link:../../apps/joplin-blog
-      mami: link:../../apps/mami
       tsup: 6.2.3_typescript@4.8.4
       typescript: 4.8.4
 

@@ -1,9 +1,11 @@
 {
-  "name": "mami",
+  "name": "@mami/cli",
   "version": "0.2.0",
   "license": "MIT",
   "type": "module",
-  "bin": "./bin.js",
+  "bin": {
+    "mami": "./bin.js"
+  },
   "exports": {
     "import": "./dist/index.js",
     "require": "./dist/index.cjs"
