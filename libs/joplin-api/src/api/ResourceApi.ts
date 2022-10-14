@@ -42,7 +42,7 @@ export class ResourceApi {
    * The "data" field is required, while the "props" one is not. If not specified, default values will be used.
    * @param param
    */
-  async create(param: { data: ReadStream } & Partial<ResourceProperties>): Promise<ResourceGetRes> {
+  async create(param: { data: ReadStream | Buffer } & Partial<ResourceProperties>): Promise<ResourceGetRes> {
     const { data, ...others } = param
     return (await this.ajax.postFormData('/resources', 'post', {
       props: JSON.stringify(others),

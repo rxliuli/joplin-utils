@@ -1,9 +1,11 @@
 import { expect, it, describe, beforeAll, afterAll, beforeEach } from 'vitest'
 import { config, resourceApi } from '../..'
-import { createReadStream, mkdirp, pathExists, remove, stat, writeFile } from 'fs-extra'
+import { createReadStream, mkdirp, pathExists, readFile, ReadStream, remove, stat, writeFile } from 'fs-extra'
 import { createTestResource } from './utils/CreateTestResource'
 import path from 'path'
 import { setupTestEnv } from '../../util/setupTestEnv'
+import { Readable } from 'stream'
+import fs from 'fs'
 
 let id: string
 beforeAll(async () => {
@@ -45,6 +47,19 @@ it('test create', async () => {
     data: createReadStream(resourcePath),
   })
   expect(json.title).toBe(title)
+})
+it('create by buffer', async () => {
+  const title = 'image title'
+  const tempPath = path.resolve(__dirname, '.temp')
+  await mkdirp(tempPath)
+  const fsPath = path.resolve(tempPath, path.basename(resourcePath))
+  await writeFile(fsPath, await readFile(resourcePath))
+  const data = createReadStream(fsPath)
+  const json = await resourceApi.create({
+    title,
+    data,
+  })
+  expect(json.title).eq(title)
 })
 describe('test update', () => {
   it('basic example', async () => {
