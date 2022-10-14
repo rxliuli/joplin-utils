@@ -1,5 +1,6 @@
-import { folderApi, folderExtApi } from '../../src'
-import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
+import { expect, it, describe } from 'vitest'
+import { folderApi, folderExtApi } from '../..'
+import { initTestFolderAndNote } from '../../util/initTestFolderAndNote'
 
 describe('test FolderExtApi', () => {
   const data = initTestFolderAndNote()

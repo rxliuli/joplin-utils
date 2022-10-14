@@ -1,5 +1,6 @@
-import { resourceActionApi } from '../../src'
-import { createTestResource } from './CreateTestResource'
+import { expect, it, describe, beforeAll } from 'vitest'
+import { resourceActionApi } from '../..'
+import { createTestResource } from './utils/CreateTestResource'
 
 function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))

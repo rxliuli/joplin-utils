@@ -1,4 +1,5 @@
-import { folderApi, noteApi, PageUtil, searchApi, TypeEnum } from '../../src'
+import { expect, it, describe } from 'vitest'
+import { noteApi, PageUtil, searchApi, TypeEnum } from '../'
 
 describe('测试 PageUtil', function () {
   it('测试获取所有目录', async function () {

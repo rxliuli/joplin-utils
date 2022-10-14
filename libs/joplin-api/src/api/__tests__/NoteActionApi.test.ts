@@ -1,5 +1,6 @@
-import { noteActionApi } from '../../src'
-import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
+import { expect, it, describe } from 'vitest'
+import { noteActionApi } from '../..'
+import { initTestFolderAndNote } from '../../util/initTestFolderAndNote'
 
 describe.skip('test ActionApi', () => {
   const data = initTestFolderAndNote()

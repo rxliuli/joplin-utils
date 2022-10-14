@@ -25,7 +25,7 @@
     "docs:dev": "pnpm docs-build && live-server docs",
     "prepublishOnly": "pnpm build",
     "setup": "pnpm build",
-    "test": "vitest run -w=1"
+    "test": "vitest run"
   },
   "dependencies": {
     "@liuli-util/object": "^3.5.0",
@@ -35,7 +35,9 @@
     "@liuli-util/eslint-config-ts": "^0.4.0",
     "@types/fs-extra": "^9.0.13",
     "envfile": "^6.18.0",
+    "form-data": "^4.0.0",
     "fs-extra": "^10.1.0",
+    "node-fetch": "^3.2.10",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.0",

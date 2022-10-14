@@ -1,6 +1,7 @@
-import { searchApi } from '../../src'
-import { TypeEnum } from '../../src'
-import { initTestFolderAndNote } from '../util/initTestFolderAndNote'
+import { expect, it, describe } from 'vitest'
+import { searchApi } from '../..'
+import { TypeEnum } from '../..'
+import { initTestFolderAndNote } from '../../util/initTestFolderAndNote'
 
 /**
  * TODO 搜索的 api 严重缺乏测试

@@ -1,4 +1,5 @@
-import { config, Config, JoplinApiGenerator } from '../../src'
+import { expect, it, describe } from 'vitest'
+import { config, Config, JoplinApiGenerator } from '../..'
 
 class NoteApi {
   constructor(private config: Config) {}

@@ -1,5 +1,6 @@
+import { expect, it, describe } from 'vitest'
 import { omit } from '@liuli-util/object'
-import { eventApi } from '../../src'
+import { eventApi } from '../..'
 
 describe('test EventApi', () => {
   const compare = (a: any, b: any) => a - b

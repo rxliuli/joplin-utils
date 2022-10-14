@@ -1,4 +1,5 @@
-import { folderApi, noteApi, tagApi } from '../../src'
+import { afterEach, beforeEach } from 'vitest'
+import { folderApi, noteApi, tagApi } from '..'
 
 export function initTestFolderAndNote() {
   const data = {

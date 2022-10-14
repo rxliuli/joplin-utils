@@ -15,7 +15,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true
   },
-  "include": ["./src/**/*.ts"],
+  "include": ["./src/**/*.ts", "vite.config.ts"],
   "exclude": ["./dist", "./node_modules"],
   "typedocOptions": {
     "entryPoints": ["src/index.ts"],
