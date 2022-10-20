@@ -2,7 +2,6 @@ import { beforeAll } from 'vitest'
 import { clearDatabase } from './util/clearDatabase'
 import { overrideConsole } from './util/overrideConsole'
 import { setupTestEnv } from './util/setupTestEnv'
-import './util/nodePolyfill'
 
 beforeAll(async () => {
   overrideConsole()

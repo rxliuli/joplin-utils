@@ -1,11 +1,9 @@
 import { expect, it, describe, beforeAll, afterAll, beforeEach } from 'vitest'
-import { config, resourceApi } from '../..'
-import { createReadStream, mkdirp, pathExists, readFile, ReadStream, remove, stat, writeFile } from 'fs-extra'
+import { resourceApi } from '../..'
+import { mkdirp, pathExists, readFile, remove, stat, writeFile } from 'fs-extra'
 import { createTestResource } from './utils/CreateTestResource'
 import path from 'path'
 import { setupTestEnv } from '../../util/setupTestEnv'
-import { Readable } from 'stream'
-import fs from 'fs'
 
 let id: string
 beforeAll(async () => {
@@ -44,8 +42,9 @@ it('test create', async () => {
   const title = 'image title'
   const json = await resourceApi.create({
     title,
-    data: createReadStream(resourcePath),
+    data: new Blob([await readFile(resourcePath)]),
   })
+  console.log(json.id)
   expect(json.title).toBe(title)
 })
 it('create by buffer', async () => {
@@ -54,10 +53,9 @@ it('create by buffer', async () => {
   await mkdirp(tempPath)
   const fsPath = path.resolve(tempPath, path.basename(resourcePath))
   await writeFile(fsPath, await readFile(resourcePath))
-  const data = createReadStream(fsPath)
   const json = await resourceApi.create({
     title,
-    data,
+    data: new Blob([await readFile(fsPath)]),
   })
   expect(json.title).eq(title)
 })
@@ -71,7 +69,7 @@ describe('test update', () => {
     const content = 'test'
     const txtPath = path.resolve(tempPath, 'test.txt')
     await writeFile(txtPath, content)
-    await resourceApi.update({ id, data: createReadStream(txtPath) })
+    await resourceApi.update({ id, data: new Blob([await readFile(txtPath)]) })
     const res = await resourceApi.fileByResourceId(id)
     expect(res.toString()).toBe(content)
   })
@@ -80,7 +78,7 @@ describe('test update', () => {
     const content = 'test'
     const txtPath = path.resolve(tempPath, 'test.txt')
     await writeFile(txtPath, content)
-    const updateRes = await resourceApi.update({ id, title, data: createReadStream(txtPath) })
+    const updateRes = await resourceApi.update({ id, title, data: new Blob([await readFile(txtPath)]) })
     expect(updateRes.title).toBe(title)
     const res = await resourceApi.fileByResourceId(id)
     expect(res.toString()).toBe(content)
@@ -90,7 +88,7 @@ describe('test update', () => {
     const txtPath = path.resolve(tempPath, 'test.txt')
     await writeFile(txtPath, content)
     const { title } = await resourceApi.get(id)
-    await resourceApi.update({ id, data: createReadStream(txtPath) })
+    await resourceApi.update({ id, data: new Blob([await readFile(txtPath)]) })
     const res = await resourceApi.fileByResourceId(id)
     expect(res.toString()).toBe(content)
     expect((await resourceApi.get(id)).title).toBe(title)

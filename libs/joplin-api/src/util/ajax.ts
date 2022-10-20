@@ -44,7 +44,7 @@ export class Ajax {
       body: config.data instanceof FormData ? config.data : JSON.stringify(config.data),
     })
     if (!resp.ok) {
-      throw new Error((await resp.json()).error + ', url: ' + config.url)
+      throw new Error('status: ' + resp.status + ', url: ' + config.url + '\nstatusText: ' + (await resp.text()))
     }
     switch (config.responseType) {
       case 'json':

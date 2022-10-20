@@ -206,11 +206,12 @@ importers:
       '@types/koa__cors': ^3.3.0
       '@types/koa__router': ^12.0.0
       '@types/markdown-it': ^12.2.3
-      '@types/node': ^18.7.23
+      '@types/node': ^16
       '@types/vscode': ^1.71.0
       chokidar: ^3.5.3
       cross-path-sort: ^1.0.0
-      form-data: ^4.0.0
+      fetch-blob: ^3.2.0
+      formdata-polyfill: ^4.0.10
       joplin-api: workspace:*
       koa: ^2.13.4
       markdown-it: ^13.0.1
@@ -234,11 +235,12 @@ importers:
       '@types/koa__cors': 3.3.0
       '@types/koa__router': 12.0.0
       '@types/markdown-it': 12.2.3
-      '@types/node': 18.7.23
+      '@types/node': 16.11.68
       '@types/vscode': 1.71.0
       chokidar: 3.5.3
       cross-path-sort: 1.0.0
-      form-data: 4.0.0
+      fetch-blob: 3.2.0
+      formdata-polyfill: 4.0.10
       joplin-api: link:../../libs/joplin-api
       koa: 2.13.4
       markdown-it: 13.0.1
@@ -365,9 +367,7 @@ importers:
       '@liuli-util/object': ^3.5.0
       '@types/fs-extra': ^9.0.13
       envfile: ^6.18.0
-      form-data: ^4.0.0
       fs-extra: ^10.1.0
-      node-fetch: ^3.2.10
       query-string: ^7.1.1
       rimraf: ^3.0.2
       ts-node: ^10.9.1
@@ -383,9 +383,7 @@ importers:
       '@liuli-util/eslint-config-ts': 0.4.0_typescript@4.8.4
       '@types/fs-extra': 9.0.13
       envfile: 6.18.0
-      form-data: 4.0.0
       fs-extra: 10.1.0
-      node-fetch: 3.2.10
       rimraf: 3.0.2
       ts-node: 10.9.1_typescript@4.8.4
       tslib: 2.4.0
@@ -3532,6 +3530,10 @@ packages:
 
   /@types/node/14.18.31:
     resolution: {integrity: sha512-vQAnaReSQkEDa8uwAyQby8bYGKu84R/deEc6mg5T8fX6gzCn8QW6rziSgsti1fNvsrswKUKPnVTi7uoB+u62Mw==}
+    dev: true
+
+  /@types/node/16.11.68:
+    resolution: {integrity: sha512-JkRpuVz3xCNCWaeQ5EHLR/6woMbHZz/jZ7Kmc63AkU+1HxnoUugzSWMck7dsR4DvNYX8jp9wTi9K7WvnxOIQZQ==}
     dev: true
 
   /@types/node/18.7.23:

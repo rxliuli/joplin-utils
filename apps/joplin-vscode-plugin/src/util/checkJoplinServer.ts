@@ -18,13 +18,11 @@ export async function checkJoplinServer() {
     }
   } catch (e) {
     errMsg()
-    console.log('Error message: \n', JSON.stringify(e))
+    console.log('Error message: \n', e)
     return false
   }
   if (!appConfig.token) {
-    vscode.window.showInformationMessage(
-      'Please configure joplin token first, and then restart VSCode!',
-    )
+    vscode.window.showInformationMessage('Please configure joplin token first, and then restart VSCode!')
     return false
   }
   return true

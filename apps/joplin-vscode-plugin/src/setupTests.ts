@@ -1,4 +1,5 @@
 import { config } from 'joplin-api'
+import { beforeEach } from 'vitest'
 
 beforeEach(() => {
   config.token =

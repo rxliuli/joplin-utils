@@ -34,6 +34,7 @@ import { filenamify } from '../util/filenamify'
 import { NoteProperties } from 'joplin-api'
 import { logger } from '../constants/logger'
 import { loadLastNoteList } from '../util/api'
+import { Blob } from 'buffer'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -91,7 +92,7 @@ export class JoplinNoteCommandService {
         await resourceApi.update({
           id,
           // title: path.basename(filePath),
-          data: createReadStream(filePath),
+          data: new Blob([await readFile(filePath)]),
         })
       })
       .on('error', (err) => {

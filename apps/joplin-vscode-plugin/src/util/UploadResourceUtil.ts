@@ -1,10 +1,10 @@
 import * as os from 'os'
 import * as path from 'path'
-import { createReadStream, mkdirpSync } from '@liuli-util/fs-extra'
+import { existsSync, mkdirpSync, readFile } from '@liuli-util/fs-extra'
 import { spawn } from 'child_process'
-import * as fs from '@liuli-util/fs-extra'
 import { resourceApi } from 'joplin-api'
 import { RootPath } from '../RootPath'
+import { Blob } from 'buffer'
 
 /**
  * for clipboard image
@@ -18,7 +18,7 @@ export class UploadResourceUtil {
   static async uploadByPath(filePath: string, isImage: boolean) {
     const param = {
       title: path.basename(filePath),
-      data: createReadStream(path.resolve(filePath)),
+      data: new Blob([await readFile(filePath)]),
     }
     console.log('uploadFromExplorer begin: ', filePath, param.title)
     const res = await resourceApi.create(param)
@@ -30,7 +30,7 @@ export class UploadResourceUtil {
   static async uploadFileByPath(filePath: string) {
     const param = {
       title: path.basename(filePath),
-      data: createReadStream(path.resolve(filePath)),
+      data: new Blob([await readFile(filePath)]),
     }
     console.log('uploadFileFromExplorer begin: ', filePath, param.title)
     const res = await resourceApi.create(param)
@@ -109,10 +109,10 @@ export class UploadResourceUtil {
           }
         }
         const imgPath = data.toString().trim()
-        let isExistFile = fs.existsSync(imgPath)
+        let isExistFile = existsSync(imgPath)
         // in macOS if your copy the file in system, it's basename will not equal to our default basename
         if (path.basename(imgPath) !== path.basename(imagePath)) {
-          if (fs.existsSync(imgPath)) {
+          if (existsSync(imgPath)) {
             isExistFile = true
           }
         }
