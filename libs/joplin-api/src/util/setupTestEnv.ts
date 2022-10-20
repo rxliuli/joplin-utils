@@ -5,7 +5,7 @@ import * as path from 'path'
 import { findParent } from './findParent'
 
 export async function setupTestEnv() {
-  config.baseUrl = 'http://localhost:27583'
+  config.baseUrl = 'http://127.0.0.1:27583'
   const dirPath = await findParent(__dirname, (item) => pathExists(path.resolve(item, 'package.json')))
   const envPath = path.resolve(dirPath!, '.env.local')
   if (!(await pathExists(envPath))) {
