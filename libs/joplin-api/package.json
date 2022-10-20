@@ -1,6 +1,6 @@
 {
   "name": "joplin-api",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "joplin ts/js data api",
   "license": "mit",
   "homepage": "https://joplin-utils.rxliuli.com/api/joplin-api",
