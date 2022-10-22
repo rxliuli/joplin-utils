@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.0.0
+
+- chore: The functional integration of joplin is basically stable, so release 1.0.0
+
 ## 0.9.1
 
 - fix: fix the issue that uploading a file without specifying a filename will cause a mime error
