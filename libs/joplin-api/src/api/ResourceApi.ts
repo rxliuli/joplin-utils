@@ -42,12 +42,13 @@ export class ResourceApi {
    * The "data" field is required, while the "props" one is not. If not specified, default values will be used.
    * @param param
    */
-  async create(param: { data: Blob | BufferBlob } & Partial<ResourceProperties>): Promise<ResourceGetRes> {
+  async create(param: { data: Blob | BufferBlob } & Partial<ResourceProperties>): Promise<ResourceProperties> {
     const { data, ...others } = param
     return (await this.ajax.postFormData('/resources', 'post', {
       props: JSON.stringify(others),
-      data: param.data,
-    })) as ResourceGetRes
+      data: data,
+      filename: param.filename,
+    })) as ResourceProperties
   }
 
   async update(
@@ -57,6 +58,7 @@ export class ResourceApi {
     return await this.ajax.postFormData<ResourceGetRes>(`/resources/${id}`, 'put', {
       props: JSON.stringify(others),
       data: data,
+      filename: param.filename,
     })
   }
 

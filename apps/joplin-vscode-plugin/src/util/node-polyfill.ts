@@ -1,10 +1,7 @@
-import nodeFetch from 'node-fetch'
+import fetch from 'node-fetch'
 import { FormData } from 'formdata-polyfill/esm.min.js'
+import { Blob } from 'fetch-blob'
 
-// @ts-expect-errors
-if (typeof fetch === 'undefined') {
-  Reflect.set(globalThis, 'fetch', nodeFetch)
-}
-if (typeof FormData === 'undefined') {
-  Reflect.set(globalThis, 'FormData', FormData)
-}
+Reflect.set(globalThis, 'fetch', fetch)
+Reflect.set(globalThis, 'FormData', FormData)
+Reflect.set(globalThis, 'Blob', Blob)

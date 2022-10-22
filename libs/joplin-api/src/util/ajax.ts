@@ -104,13 +104,20 @@ export class Ajax {
     })
   }
 
-  async postFormData<T>(url: string, method: 'post' | 'put', data: object): Promise<T> {
+  async postFormData<T>(
+    url: string,
+    method: 'post' | 'put',
+    data: {
+      props: string
+      data?: Blob
+      filename?: string
+    },
+  ): Promise<T> {
     const fd = new FormData()
-    Object.entries(data).forEach(([k, v]) => {
-      if (k && v) {
-        fd.append(k, v)
-      }
-    })
+    fd.append('props', data.props)
+    if (data.data) {
+      fd.append('data', data.data, data.filename)
+    }
     return await this.request({ url: this.baseUrl(url), method: method, data: fd })
   }
 }

@@ -17,7 +17,7 @@ import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { appConfig, AppConfig } from '../config/AppConfig'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import * as path from 'path'
-import { close, createReadStream, mkdirp, pathExists, readFile, remove, writeFile } from '@liuli-util/fs-extra'
+import { close, mkdirp, pathExists, readFile, remove, writeFile } from '@liuli-util/fs-extra'
 import { createEmptyFile } from '../util/createEmptyFile'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { uploadResourceService } from './UploadResourceService'
@@ -34,7 +34,6 @@ import { filenamify } from '../util/filenamify'
 import { NoteProperties } from 'joplin-api'
 import { logger } from '../constants/logger'
 import { loadLastNoteList } from '../util/api'
-import { Blob } from 'buffer'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -89,11 +88,18 @@ export class JoplinNoteCommandService {
         if (!id) {
           return
         }
-        await resourceApi.update({
-          id,
-          // title: path.basename(filePath),
-          data: new Blob([await readFile(filePath)]),
-        })
+        try {
+          const data = await readFile(filePath)
+          const r = await resourceApi.update({
+            id,
+            // @ts-expect-error
+            data: new Blob([data]),
+            filename: path.basename(filePath),
+          })
+          console.log('resource update? ', r)
+        } catch (err) {
+          logger.error('update resource error: ' + err)
+        }
       })
       .on('error', (err) => {
         logger.error('watch resource error: ' + err)

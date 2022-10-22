@@ -1,6 +1,6 @@
 import { expect, it, describe, beforeAll, afterAll, beforeEach } from 'vitest'
 import { resourceApi } from '../..'
-import { mkdirp, pathExists, readFile, remove, stat, writeFile } from 'fs-extra'
+import { mkdirp, pathExists, readFile, remove, stat, writeFile, open, close } from 'fs-extra'
 import { createTestResource } from './utils/CreateTestResource'
 import path from 'path'
 import { setupTestEnv } from '../../util/setupTestEnv'
@@ -40,12 +40,29 @@ it.skip('test get filename', async () => {
 const resourcePath = path.resolve(__dirname, './assets/resourcesByFileId.png')
 it('test create', async () => {
   const title = 'image title'
-  const json = await resourceApi.create({
+  const r = await resourceApi.create({
     title,
     data: new Blob([await readFile(resourcePath)]),
   })
-  console.log(json.id)
-  expect(json.title).toBe(title)
+  console.log(r)
+  expect(r.title).toBe(title)
+})
+it.only('test create empty file', async () => {
+  const fsPath = path.resolve(tempPath, 'test.km.svg')
+  const handle = await open(fsPath, 'w')
+  try {
+    expect(await pathExists(fsPath)).toBeTruthy()
+    const r = await resourceApi.create({
+      title: path.basename(fsPath),
+      data: new Blob([await readFile(fsPath)]),
+      filename: path.basename(fsPath),
+    })
+    console.log(r)
+    expect(r.mime).eq('image/svg+xml')
+    expect(r.file_extension).eq('svg')
+  } finally {
+    await close(handle)
+  }
 })
 it('create by buffer', async () => {
   const title = 'image title'

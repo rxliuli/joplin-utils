@@ -4,7 +4,6 @@ import { existsSync, mkdirpSync, readFile } from '@liuli-util/fs-extra'
 import { spawn } from 'child_process'
 import { resourceApi } from 'joplin-api'
 import { RootPath } from '../RootPath'
-import { Blob } from 'buffer'
 
 /**
  * for clipboard image
@@ -16,26 +15,17 @@ export interface IClipboardImage {
 
 export class UploadResourceUtil {
   static async uploadByPath(filePath: string, isImage: boolean) {
-    const param = {
-      title: path.basename(filePath),
+    const title = path.basename(filePath)
+    console.log('uploadFromExplorer begin: ', filePath, title)
+    const res = await resourceApi.create({
+      title,
+      // @ts-expect-error
       data: new Blob([await readFile(filePath)]),
-    }
-    console.log('uploadFromExplorer begin: ', filePath, param.title)
-    const res = await resourceApi.create(param)
-    const markdownLink = `${isImage ? '!' : ''}[${param.title}](:/${res.id})`
+      filename: title,
+    })
+    console.log('uploadByPath', res)
+    const markdownLink = `${isImage ? '!' : ''}[${title}](:/${res.id})`
     console.log('uploadFromExplorer end: ', markdownLink)
-    return { res, markdownLink }
-  }
-
-  static async uploadFileByPath(filePath: string) {
-    const param = {
-      title: path.basename(filePath),
-      data: new Blob([await readFile(filePath)]),
-    }
-    console.log('uploadFileFromExplorer begin: ', filePath, param.title)
-    const res = await resourceApi.create(param)
-    const markdownLink = `[${res.title}](:/${res.id})`
-    console.log('uploadFileFromExplorer end: ', markdownLink)
     return { res, markdownLink }
   }
 

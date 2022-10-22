@@ -34,8 +34,12 @@
   "devDependencies": {
     "@liuli-util/eslint-config-ts": "^0.4.0",
     "@types/fs-extra": "^9.0.13",
+    "@types/node": "^18.11.3",
     "envfile": "^6.18.0",
+    "fetch-blob": "^3.2.0",
+    "formdata-polyfill": "^4.0.10",
     "fs-extra": "^10.1.0",
+    "node-fetch": "^3.2.10",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.0",
