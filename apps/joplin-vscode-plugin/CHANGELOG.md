@@ -1,5 +1,10 @@
 # Release Notes
 
+## 0.9.1
+
+- fix: fix the issue that uploading a file without specifying a filename will cause a mime error
+- feat: update dependency nodejs to 18, no longer include fetch/FormData polyfill
+
 ## 0.9.0
 
 - feat: support three new commands, show currently referenced note, show referenced note, insert note link
