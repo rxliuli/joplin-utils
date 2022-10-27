@@ -34,6 +34,7 @@
     "@liuli-util/array": "^3.5.0",
     "@liuli-util/async": "^3.6.0",
     "@liuli-util/fs-extra": "^0.1.0",
+    "@liuli-util/i18next-dts-gen": "^0.6.3",
     "@liuli-util/i18next-util": "^0.4.1",
     "@liuli-util/object": "^3.5.1",
     "@liuli-util/tree": "^3.5.0",

@@ -199,6 +199,7 @@ importers:
       '@liuli-util/array': ^3.5.0
       '@liuli-util/async': ^3.6.0
       '@liuli-util/fs-extra': ^0.1.0
+      '@liuli-util/i18next-dts-gen': ^0.6.3
       '@liuli-util/i18next-util': ^0.4.1
       '@liuli-util/object': ^3.5.1
       '@liuli-util/tree': ^3.5.0
@@ -231,6 +232,7 @@ importers:
       '@liuli-util/array': 3.5.0
       '@liuli-util/async': 3.6.0
       '@liuli-util/fs-extra': 0.1.0
+      '@liuli-util/i18next-dts-gen': 0.6.3_typescript@4.8.4
       '@liuli-util/i18next-util': 0.4.1
       '@liuli-util/object': 3.5.1
       '@liuli-util/tree': 3.5.0
@@ -258,44 +260,8 @@ importers:
       vitest: 0.23.4
       winston: 3.8.2
 
-  apps/mami:
-    specifiers:
-      '@liuli-util/async': ^3.6.0
-      '@liuli-util/fs-extra': ^0.1.0
-      '@liuli-util/tree': ^3.6.0
-      '@types/lodash-es': ^4.17.6
-      '@types/node': ^18.7.23
-      bundle-require: ^3.1.0
-      esbuild: ^0.15.10
-      form-data: ^4.0.0
-      joplin-api: workspace:^0.4.3
-      lodash-es: ^4.17.21
-      node-fetch: ^3.2.10
-      tsup: ^6.2.3
-      tsx: ^3.9.0
-      typescript: ^4.8.4
-      vitest: ^0.23.4
-    dependencies:
-      '@liuli-util/fs-extra': 0.1.0
-      bundle-require: 3.1.0_esbuild@0.15.10
-      esbuild: 0.15.10
-      form-data: 4.0.0
-      lodash-es: 4.17.21
-      node-fetch: 3.2.10
-    devDependencies:
-      '@liuli-util/async': 3.6.0
-      '@liuli-util/tree': 3.6.0
-      '@types/lodash-es': 4.17.6
-      '@types/node': 18.7.23
-      joplin-api: link:../../libs/joplin-api
-      tsup: 6.2.3_typescript@4.8.4
-      tsx: 3.9.0
-      typescript: 4.8.4
-      vitest: 0.23.4
-
   examples/blog-hexo-example:
     specifiers:
-      '@mami/cli': workspace:*
       hexo: ^6.3.0
       hexo-asset-link: ^2.2.1
       hexo-generator-archive: ^1.0.0
@@ -311,7 +277,6 @@ importers:
       tsup: ^6.2.3
       typescript: ^4.8.4
     devDependencies:
-      '@mami/cli': link:../../apps/mami
       hexo: 6.3.0
       hexo-asset-link: 2.2.1_hexo@6.3.0
       hexo-generator-archive: 1.0.0
@@ -2722,6 +2687,7 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@esbuild/linux-loong64/0.14.54:
@@ -2739,6 +2705,7 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /@eslint/eslintrc/1.3.2:
@@ -3096,6 +3063,7 @@ packages:
 
   /@liuli-util/tree/3.6.0:
     resolution: {integrity: sha512-0mlNZJyQkhKjHnd1uKlsdo4hcZu/RTGrXVKjPvCqMMzQv7V1Q+eTMzpjWyUrUfnxzEgyNs9RewgSC3/TgyLlKA==}
+    dev: false
 
   /@liuli-util/vite-plugin-version-info/0.4.0_vite@3.1.4:
     resolution: {integrity: sha512-LZPKB+BBsvShpAVEZ+Yf8BMSXDtbWLNGXvYiH4mL27o6Fccmy+R1mbAJphPLjDWTFgOMYaxcwpgvVJ9cLA3CDg==}
@@ -3484,16 +3452,6 @@ packages:
 
   /@types/linkify-it/3.0.2:
     resolution: {integrity: sha512-HZQYqbiFVWufzCwexrvh694SOim8z2d+xJl5UNamcvQFejLY/2YUtzXHYi3cHdI7PMlS8ejH2slRAOJQ32aNbA==}
-    dev: true
-
-  /@types/lodash-es/4.17.6:
-    resolution: {integrity: sha512-R+zTeVUKDdfoRxpAryaQNRKk3105Rrgx2CFRClIgRGaqDTdjsm8h6IYA8ir584W3ePzkZfst5xIgDwYrlh9HLg==}
-    dependencies:
-      '@types/lodash': 4.14.186
-    dev: true
-
-  /@types/lodash/4.14.186:
-    resolution: {integrity: sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==}
     dev: true
 
   /@types/markdown-it-emoji/2.0.2:
@@ -5949,6 +5907,7 @@ packages:
     dependencies:
       esbuild: 0.15.10
       load-tsconfig: 0.2.3
+    dev: true
 
   /bytes/3.0.0:
     resolution: {integrity: sha512-pMhOfFDPiv9t5jjIXkHosWmkSyQbvsgEVNkz0ERHbuLh2T/7j4Mqqpz523Fe8MVY89KC6Sh/QfS2sM+SjgFDcw==}
@@ -7973,6 +7932,7 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-android-arm64/0.14.54:
@@ -7998,6 +7958,7 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-darwin-64/0.14.54:
@@ -8023,6 +7984,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-darwin-arm64/0.14.54:
@@ -8048,6 +8010,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-freebsd-64/0.14.54:
@@ -8073,6 +8036,7 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-freebsd-arm64/0.14.54:
@@ -8098,6 +8062,7 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-32/0.14.54:
@@ -8123,6 +8088,7 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-64/0.14.54:
@@ -8148,6 +8114,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-arm/0.14.54:
@@ -8173,6 +8140,7 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-arm64/0.14.54:
@@ -8198,6 +8166,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-mips64le/0.14.54:
@@ -8223,6 +8192,7 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-ppc64le/0.14.54:
@@ -8248,6 +8218,7 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-riscv64/0.14.54:
@@ -8265,6 +8236,7 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-linux-s390x/0.14.54:
@@ -8282,6 +8254,7 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-netbsd-64/0.14.54:
@@ -8307,6 +8280,7 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-openbsd-64/0.14.54:
@@ -8332,6 +8306,7 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-sunos-64/0.14.54:
@@ -8357,6 +8332,7 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-32/0.14.54:
@@ -8382,6 +8358,7 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-64/0.14.54:
@@ -8407,6 +8384,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild-windows-arm64/0.14.54:
@@ -8432,6 +8410,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: true
     optional: true
 
   /esbuild/0.14.54:
@@ -8515,6 +8494,7 @@ packages:
       esbuild-windows-32: 0.15.10
       esbuild-windows-64: 0.15.10
       esbuild-windows-arm64: 0.15.10
+    dev: true
 
   /escalade/3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
@@ -11444,6 +11424,7 @@ packages:
   /load-tsconfig/0.2.3:
     resolution: {integrity: sha512-iyT2MXws+dc2Wi6o3grCFtGXpeMvHmJqS27sMPGtV2eUu4PeFnG+33I8BlFK1t1NWMjOpcx9bridn5yxLDX2gQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: true
 
   /loader-runner/2.4.0:
     resolution: {integrity: sha512-Jsmr89RcXGIwivFY21FcRrisYZfvLMTWx5kOLc+JTxtpBOG6xML0vzbc6SEQG2FO9/4Fc3wW4LVcB5DmGflaRw==}
@@ -11503,10 +11484,6 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
-
-  /lodash-es/4.17.21:
-    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: false
 
   /lodash._reinterpolate/3.0.0:
     resolution: {integrity: sha512-xYHt68QRoYGjeeM/XOE1uJtvXQAgvszfBhjV4yvsQH0u2i9I6cI6c6/eG4Hh3UAOVn0y/xAXwmTzEay49Q//HA==}
@@ -17387,7 +17364,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.3
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.11.3
+      '@types/node': 18.7.23
       chai: 4.3.6
       debug: 4.3.4
       local-pkg: 0.4.2
