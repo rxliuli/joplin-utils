@@ -1,6 +1,6 @@
 import { Ajax } from '../util/ajax'
 
-enum ActionEnum {
+export enum ResourceActionEnum {
   OpenAndWatch = 'openAndWatch',
   Watch = 'watch',
   StopWatching = 'stopWatching',
@@ -11,22 +11,22 @@ export class ResourceActionApi {
   constructor(private ajax: Ajax) {}
 
   openAndWatch(resourceId: string): Promise<void> {
-    return this.baseAction(ActionEnum.OpenAndWatch, resourceId)
+    return this.baseAction(ResourceActionEnum.OpenAndWatch, resourceId)
   }
 
   watch(resourceId: string): Promise<void> {
-    return this.baseAction(ActionEnum.Watch, resourceId)
+    return this.baseAction(ResourceActionEnum.Watch, resourceId)
   }
 
   stopWatching(resourceId: string): Promise<void> {
-    return this.baseAction(ActionEnum.StopWatching, resourceId)
+    return this.baseAction(ResourceActionEnum.StopWatching, resourceId)
   }
 
   async noteIsWatched(resourceId: string): Promise<boolean> {
-    return this.baseAction(ActionEnum.NoteIsWatched, resourceId)
+    return this.baseAction(ResourceActionEnum.NoteIsWatched, resourceId)
   }
 
-  private async baseAction(action: ActionEnum, resourceId: string) {
+  private async baseAction(action: ResourceActionEnum, resourceId: string) {
     return this.ajax.post<any>('/services/resourceEditWatcher', {
       action,
       resourceId,

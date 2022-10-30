@@ -342,13 +342,14 @@ importers:
       fetch-blob: ^3.2.0
       formdata-polyfill: ^4.0.10
       fs-extra: ^10.1.0
+      gh-pages: ^4.0.0
       node-fetch: ^3.2.10
       query-string: ^7.1.1
       rimraf: ^3.0.2
       ts-node: ^10.9.1
       tslib: ^2.4.0
       tsup: ^6.2.3
-      typedoc: ^0.23.15
+      typedoc: ^0.23.19
       typescript: ^4.8.4
       vitest: ^0.23.4
     dependencies:
@@ -362,12 +363,13 @@ importers:
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
       fs-extra: 10.1.0
+      gh-pages: 4.0.0
       node-fetch: 3.2.10
       rimraf: 3.0.2
       ts-node: 10.9.1_lw7q66ikwuedwcorwkk4v6trsa
       tslib: 2.4.0
       tsup: 6.2.3_mwhvu7sfp6vq5ryuwb6hlbjfka
-      typedoc: 0.23.15_typescript@4.8.4
+      typedoc: 0.23.19_typescript@4.8.4
       typescript: 4.8.4
       vitest: 0.23.4
 
@@ -16795,8 +16797,8 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: true
 
-  /typedoc/0.23.15_typescript@4.8.4:
-    resolution: {integrity: sha512-x9Zu+tTnwxb9YdVr+zvX7LYzyBl1nieOr6lrSHbHsA22/RJK2m4Y525WIg5Mj4jWCmfL47v6f4hUzY7EIuwS5w==}
+  /typedoc/0.23.19_typescript@4.8.4:
+    resolution: {integrity: sha512-70jPL0GQnSJtgQqI7ifOWxpTXrB3sxc4SWPPRn3K0wdx3txI6ZIT/ZYMF39dNg2Gjmql45cO+cAKXJp0TpqOVA==}
     engines: {node: '>= 14.14'}
     hasBin: true
     peerDependencies:

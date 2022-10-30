@@ -79,7 +79,12 @@ export interface NoteProperties extends BaseProperties {
    */
   image_data_url: string
   /**
-   * If an image is provided, you can also specify an optional rectangle that will be used to crop the image. In format { x: x, y: y, width: width, height: height }
+   * If an image is provided, you can also specify an optional rectangle that will be used to crop the image. In format `{ x: x, y: y, width: width, height: height }`
    */
-  crop_rect: { x: number; y: number; width: number; height: number }
+  crop_rect: {
+    x: number
+    y: number
+    width: number
+    height: number
+  }
 }

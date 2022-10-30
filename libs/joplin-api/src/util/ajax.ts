@@ -6,7 +6,7 @@ export type Method = 'get' | 'delete' | 'post' | 'put'
 
 export type ResponseType = 'arraybuffer' | 'blob' | 'json' | 'text'
 
-interface AjaxConfig {
+export interface AjaxConfig {
   url: string
   method?: Method
   data?: any
