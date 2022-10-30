@@ -10,7 +10,9 @@ document.
 ## Quick Start
 
 ```ts
-config.port = 27583
+import { config, noteApi } from 'joplin-api'
+
+config.baseUrl = 'http://127.0.0.1:27583'
 config.token = '***'
 const res = await noteApi.list()
 console.log(res)
@@ -22,6 +24,7 @@ console.log(res)
 
 | Object              | Description                                                                       |
 | ------------------- | --------------------------------------------------------------------------------- |
+| `eventApi`          | event-related api, such as getting note modification history                      |
 | `folderApi`         | Directory-related api, such as getting directory tree                             |
 | `folderExtApi`      | Directory extension api, such as mobile directory                                 |
 | `joplinApi`         | joplin basic api, such as checking whether joplin web service is open             |

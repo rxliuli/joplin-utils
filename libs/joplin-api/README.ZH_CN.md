@@ -9,7 +9,9 @@ Joplin api 的 js 封装，使用 ts 编写，提供完整的类型定义，包�
 ## 快速启动
 
 ```ts
-config.port = 27583
+import { config, noteApi } from 'joplin-api'
+
+config.baseUrl = 'http://127.0.0.1:27583'
 config.token = '***'
 const res = await noteApi.list()
 console.log(res)
@@ -21,6 +23,7 @@ console.log(res)
 
 | 对象                | 描述                                              |
 | ------------------- | ------------------------------------------------- |
+| `eventApi`          | 事件相关的 api，例如获取笔记修改历史              |
 | `folderApi`         | 目录相关 api，例如获取目录树                      |
 | `folderExtApi`      | 目录扩展 api，例如移动目录                        |
 | `joplinApi`         | joplin 基础 api，例如检查 joplin web 服务是否打开 |
