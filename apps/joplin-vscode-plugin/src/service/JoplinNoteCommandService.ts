@@ -218,8 +218,10 @@ export class JoplinNoteCommandService {
       return
     }
     const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
-    const filename = item.title + (GlobalContext.openNoteMap.get(item.title) ? item.id : '')
-    const tempNotePath = path.resolve(tempNoteDirPath, filenamify(`${filename}.md`))
+    let tempNotePath = path.resolve(tempNoteDirPath, filenamify(`${item.title}.md`))
+    if (GlobalContext.openNoteMap.has(tempNotePath)) {
+      tempNotePath = path.resolve(tempNoteDirPath, filenamify(`${item.title} (${item.id}).md`))
+    }
     const note = await noteApi.get(item.id, ['body', 'title'])
     const content = (note.title.startsWith('# ') ? '' : '# ') + note.title + '\n\n' + note.body
     await writeFile(tempNotePath, content)
