@@ -13,6 +13,7 @@ import { GlobalContext } from '../state/GlobalContext'
 import { remove, writeFile } from '@liuli-util/fs-extra'
 import { filenamify } from '../util/filenamify'
 import { logger } from '../constants/logger'
+import { fileSuffix } from '../util/fileSuffix'
 
 /**
  * other service
@@ -82,7 +83,10 @@ export class HandlerService {
       resource.filename ||
       (/\..*$/.test(resource.title) ? resource.title : resource.title + '.' + resource.file_extension)
     const tempResourceDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempResource')
-    const filePath = path.resolve(tempResourceDirPath, filenamify(fileName))
+    let filePath = path.resolve(tempResourceDirPath, filenamify(fileName))
+    if (GlobalContext.openResourceMap.has(filePath)) {
+      filePath = fileSuffix(filePath, resource.id)
+    }
     const buffer = await resourceApi.fileByResourceId(id)
     await writeFile(filePath, buffer)
     GlobalContext.openResourceMap.set(id, filePath)

@@ -34,6 +34,7 @@ import { filenamify } from '../util/filenamify'
 import { NoteProperties } from 'joplin-api'
 import { logger } from '../constants/logger'
 import { loadLastNoteList } from '../util/api'
+import { fileSuffix } from '../util/fileSuffix'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -220,7 +221,7 @@ export class JoplinNoteCommandService {
     const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
     let tempNotePath = path.resolve(tempNoteDirPath, filenamify(`${item.title}.md`))
     if (GlobalContext.openNoteMap.has(tempNotePath)) {
-      tempNotePath = path.resolve(tempNoteDirPath, filenamify(`${item.title} (${item.id}).md`))
+      tempNotePath = fileSuffix(tempNotePath, item.id)
     }
     const note = await noteApi.get(item.id, ['body', 'title'])
     const content = (note.title.startsWith('# ') ? '' : '# ') + note.title + '\n\n' + note.body
