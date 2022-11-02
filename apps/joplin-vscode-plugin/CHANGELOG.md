@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.0.1
+
+- fix: note/resource name clashes and loss of data
+
 ## 1.0.0
 
 - chore: The functional integration of joplin is basically stable, so release 1.0.0
