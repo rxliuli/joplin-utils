@@ -1,5 +1,22 @@
 # 更新记录
 
+## 0.5.1
+
+- docs: 更新 readme
+- fix: 修复 joplin-api 生成和部署文档
+- fix: 修复上传文件时没有指定文件名会导致 mime 错误的问题
+
+## 0.5.0
+
+- feat: 更新依赖的 nodejs 为 18，不再包含 fetch/FormData 的 polyfill
+- feat: 更新使用 nodejs 18 并修复无法请求 localhost 的问题
+- feat: 添加将 Buffer 上传到 joplin 的示例
+- refactor: 重构单元测试
+- feat: 升级 joplin-api，不再依赖 node-fetch/form-data，由外部自行填充
+- feat: 修复 joplin-api/joplin-blog 中的错误
+- feat: 基本 esm 迁移
+- feat: 实现侧边栏的拖拽功能
+
 ## 0.3.3
 
 - fix: 修复 NoteActionApi/ResourceActionApi 类型定义错误
