@@ -43,6 +43,8 @@
 1. `ctrl+alt+u` 粘贴剪切板的图片
 2. `ctrl+alt+e` 使用文件管理器选择图片粘贴
 
+![pasteImage](/images/pasteImage.gif)
+
 ## 添加附件
 
 `v0.1.10` 之后新增了添加附件的功能，可以通过命令或快捷键将文件作为附件资源添加到 Joplin 笔记中。

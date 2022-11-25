@@ -43,6 +43,8 @@ After `v0.1.7` the image paste function has been added, you can upload images to
 1. `ctrl+alt+u` to paste the image from clipboard
 2. `ctrl+alt+e` Use file manager to select the image to paste
 
+![pasteImage](/images/pasteImage.gif)
+
 ## Add attachment
 
 After `v0.1.10` the ability to add attachments has been added, so you can add files as attached resources to Joplin notes via commands or shortcuts.
