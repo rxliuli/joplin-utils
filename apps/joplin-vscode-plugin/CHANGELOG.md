@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.1.0
+
+- feat: add a menu item for searching in notebooks
+
 ## 1.0.1
 
 - fix: note/resource name clashes and loss of data
