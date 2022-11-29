@@ -236,12 +236,12 @@ export class JoplinNoteCommandService {
   /**
    * show search input box
    */
-  async search() {
+  async search(item?: JoplinTreeItem) {
     interface SearchNoteItem extends QuickPickItem {
       id: string
     }
-
     const searchQuickPickBox = vscode.window.createQuickPick<SearchNoteItem>()
+    searchQuickPickBox.value = item ? `notebook:"${item.item.title}" ` : ''
     searchQuickPickBox.placeholder = i18n.t('Please enter key words')
     searchQuickPickBox.canSelectMany = false
     searchQuickPickBox.items = await loadLastNoteList()

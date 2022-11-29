@@ -312,6 +312,11 @@
           "command": "joplinNote.paste",
           "when": "view == joplin && viewItem == joplinNote.folder",
           "group": "joplinNote@9"
+        },
+        {
+          "command": "joplinNote.search",
+          "when": "view == joplin && viewItem == joplinNote.folder",
+          "group": "joplinNote@10"
         }
       ],
       "editor/context": [
