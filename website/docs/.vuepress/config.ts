@@ -1,6 +1,7 @@
 import { defineUserConfig } from 'vuepress-vite'
 import { defaultTheme } from '@vuepress/theme-default'
 import { searchPlugin } from '@vuepress/plugin-search'
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 
 /**
  * @type import('vuepress-vite').AppConfig
@@ -340,5 +341,10 @@ export default defineUserConfig({
       },
     },
   }),
-  plugins: [searchPlugin()],
+  plugins: [
+    searchPlugin(),
+    googleAnalyticsPlugin({
+      id: 'G-9V6G332LX9',
+    }),
+  ],
 })

@@ -376,6 +376,7 @@ importers:
   website:
     specifiers:
       '@vuepress/client': 2.0.0-beta.51
+      '@vuepress/plugin-google-analytics': 2.0.0-beta.51
       '@vuepress/plugin-search': 2.0.0-beta.51
       '@vuepress/theme-default': 2.0.0-beta.51
       gh-pages: ^4.0.0
@@ -383,6 +384,7 @@ importers:
       vuepress-vite: 2.0.0-beta.51
     devDependencies:
       '@vuepress/client': 2.0.0-beta.51
+      '@vuepress/plugin-google-analytics': 2.0.0-beta.51
       '@vuepress/plugin-search': 2.0.0-beta.51
       '@vuepress/theme-default': 2.0.0-beta.51
       gh-pages: 4.0.0
@@ -2836,7 +2838,7 @@ packages:
       '@jest/schemas': 29.0.0
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 18.7.23
+      '@types/node': 18.11.3
       '@types/yargs': 17.0.13
       chalk: 4.1.2
     dev: true
@@ -3356,7 +3358,7 @@ packages:
   /@types/graceful-fs/4.1.5:
     resolution: {integrity: sha512-anKkLmZZ+xm4p8JWBf4hElkM4XR+EZeA2M9BAkkTldmcyDY4mbdIJnRghDJH3Ov5ooY7/UAoENtmdMSkaAd7Cw==}
     dependencies:
-      '@types/node': 18.7.23
+      '@types/node': 18.11.3
     dev: true
 
   /@types/hash-sum/1.0.0:
@@ -4442,6 +4444,16 @@ packages:
       '@vuepress/core': 2.0.0-beta.51
       '@vuepress/utils': 2.0.0-beta.51
       execa: 6.1.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@vuepress/plugin-google-analytics/2.0.0-beta.51:
+    resolution: {integrity: sha512-lSMlsPbMVGyyYkiLnambnCHK8x+ANVBJu1m34Zss3Q0hlH+8d2BrFNQ/KWSlVcwHqFxorGuBP3ARhlyuKmL4JQ==}
+    dependencies:
+      '@vuepress/client': 2.0.0-beta.51
+      '@vuepress/core': 2.0.0-beta.51
+      '@vuepress/utils': 2.0.0-beta.51
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -10971,7 +10983,7 @@ packages:
     dependencies:
       '@jest/types': 29.1.2
       '@types/graceful-fs': 4.1.5
-      '@types/node': 18.7.23
+      '@types/node': 18.11.3
       anymatch: 3.1.2
       fb-watchman: 2.0.2
       graceful-fs: 4.2.10
@@ -10994,7 +11006,7 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@jest/types': 29.1.2
-      '@types/node': 18.7.23
+      '@types/node': 18.11.3
       chalk: 4.1.2
       ci-info: 3.4.0
       graceful-fs: 4.2.10
@@ -11005,7 +11017,7 @@ packages:
     resolution: {integrity: sha512-AdTZJxKjTSPHbXT/AIOjQVmoFx0LHFcVabWu0sxI7PAy7rFf8c0upyvgBKgguVXdM4vY74JdwkyD4hSmpTW8jA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
-      '@types/node': 18.7.23
+      '@types/node': 18.11.3
       jest-util: 29.1.2
       merge-stream: 2.0.0
       supports-color: 8.1.1
