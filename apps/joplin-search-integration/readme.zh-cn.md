@@ -1,6 +1,6 @@
 # joplin 搜索集成
 
-> [GitHub](https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-search-intergration),
+> [GitHub](https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-search-integration),
 > [Chrome 商店](https://chrome.google.com/webstore/detail/joplin-search-integration/mcjkdcifkhjenpfjacnbhpdcnjknjkhj)
 
 ## 简介
