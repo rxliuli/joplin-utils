@@ -1,3 +1,5 @@
+import browser from 'webextension-polyfill'
+
 export interface LocalConfig {
   baseUrl: string
   token?: string
@@ -5,7 +7,7 @@ export interface LocalConfig {
 }
 
 export async function loadConfig(): Promise<LocalConfig> {
-  const c = ((await chrome.storage.local.get(['baseUrl', 'token', 'theme'])) ?? {}) as LocalConfig
+  const c = ((await browser.storage.local.get(['baseUrl', 'token', 'theme'])) ?? {}) as LocalConfig
   return {
     baseUrl: c.baseUrl ?? 'http://127.0.0.1:41184',
     token: c.token,

@@ -1,8 +1,10 @@
-chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+import browser from 'webextension-polyfill'
+
+browser.runtime.onMessage.addListener((message) => {
   switch (message.action) {
     case 'open':
-      const url = chrome.runtime.getURL(`/options/index.html?id=${message.id}`)
-      chrome.tabs.create({ url, active: true })
+      const url = browser.runtime.getURL(`/options/index.html?id=${message.id}`)
+      browser.tabs.create({ url, active: true })
       break
     default:
       break

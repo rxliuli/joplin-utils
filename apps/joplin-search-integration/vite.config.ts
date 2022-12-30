@@ -1,6 +1,7 @@
-import { defineConfig } from 'vite'
+import { defineConfig, Plugin } from 'vite'
 import path from 'node:path'
 import { chromeExtension } from 'vite-plugin-chrome-extension'
+import { firefoxOutput } from '@liuli-util/vite-plugin-chrome-extension-dist-firefox'
 
 export default defineConfig({
   resolve: {
@@ -15,5 +16,5 @@ export default defineConfig({
     minify: false,
     assetsInlineLimit: 10096,
   },
-  plugins: [chromeExtension()] as any,
+  plugins: [chromeExtension() as any, firefoxOutput()],
 })

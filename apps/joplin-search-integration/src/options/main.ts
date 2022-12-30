@@ -1,3 +1,4 @@
+import 'webextension-polyfill'
 import { fromMarkdown, Link, Image, selectAll, toHtml } from '@liuli-util/markdown-util'
 import { config, noteApi } from 'joplin-api'
 import { loadConfig, LocalConfig } from './utils/loadConfig'
@@ -38,14 +39,14 @@ function renderNoteToHtml(note: NoteData): string {
     if (note.resources.includes(id)) {
       item.url = `${config.baseUrl}/resources/${id}/file?token=${config.token}`
     } else {
-      item.url = chrome.runtime.getURL(`/options/index.html?id=${id}`)
+      item.url = browser.runtime.getURL(`/options/index.html?id=${id}`)
     }
   })
   const html = toHtml(root)
   const parser = new DOMParser()
   const dom = parser.parseFromString(html, 'text/html')
   dom.querySelectorAll('a').forEach((item) => {
-    if (item.protocol !== 'chrome-extension:') {
+    if (!['chrome-extension:', 'moz-extension:'].includes(item.protocol)) {
       item.target = '_blank'
     }
   })
@@ -60,7 +61,7 @@ function onToggleTheme() {
   document.querySelector('#app .panel .icon.toggle')!.addEventListener('click', () => {
     const t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'
     document.documentElement.dataset.theme = t
-    chrome.storage.local.set({ theme: t })
+    browser.storage.local.set({ theme: t })
   })
 }
 

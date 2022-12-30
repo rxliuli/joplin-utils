@@ -1,3 +1,4 @@
+import browser from 'webextension-polyfill'
 import { SearchNote } from '../plugins/plugin'
 
 export function renderList(root: HTMLDivElement, list: SearchNote[]) {
@@ -13,7 +14,7 @@ export function renderList(root: HTMLDivElement, list: SearchNote[]) {
     if (!(el instanceof HTMLElement && el.tagName === 'A')) {
       return
     }
-    chrome.runtime.sendMessage({
+    browser.runtime.sendMessage({
       action: 'open',
       id: el.dataset.id,
     })

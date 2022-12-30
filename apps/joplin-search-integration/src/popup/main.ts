@@ -1,3 +1,4 @@
+import browser from 'webextension-polyfill'
 import { loadConfig } from '../options/utils/loadConfig'
 
 window.addEventListener('load', async () => {
@@ -11,7 +12,7 @@ window.addEventListener('load', async () => {
   const list = ['baseUrl', 'token', 'theme']
   list.forEach((k) => {
     document.getElementById(k)!.addEventListener('change', async (ev) => {
-      await chrome.storage.local.set({ [k]: (ev.target as HTMLInputElement).value })
+      await browser.storage.local.set({ [k]: (ev.target as HTMLInputElement).value })
     })
   })
 })
