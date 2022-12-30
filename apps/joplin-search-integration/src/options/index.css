@@ -1,0 +1,74 @@
+html[data-theme='dark'] {
+  background-color: #0d1117;
+}
+html[data-theme='light'] {
+  background-color: #ffffff;
+}
+
+#app {
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (max-width: 996px) {
+  #app {
+    max-width: 100%;
+    padding: 16px;
+  }
+}
+
+@media (min-width: 997px) {
+  #app {
+    max-width: 75%;
+  }
+}
+
+@media (min-width: 1440px) {
+  #app {
+    max-width: 980px;
+  }
+}
+
+.content img {
+  max-width: 100%;
+  width: fit-content;
+  margin: 0 auto;
+  display: block;
+}
+
+#app .panel {
+  position: fixed;
+  bottom: 48px;
+  right: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#app .panel .icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+  opacity: 0.8;
+}
+#app .panel .icon:hover {
+  opacity: 1;
+}
+
+html[data-theme='light'] #app .panel .dark {
+  display: none;
+}
+html[data-theme='dark'] #app .panel .light {
+  display: none;
+}
+
+html[data-theme='dark'] #app .panel .icon {
+  background-color: #444950;
+  color: #ffffff;
+}
+html[data-theme='light'] #app .panel .icon {
+  background-color: #ebedf0;
+}

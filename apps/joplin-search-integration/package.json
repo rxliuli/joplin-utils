@@ -1,0 +1,33 @@
+{
+  "name": "joplin-search-integration",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "pack-zip": "rimraf extension.zip && jszip-cli add dist/ -o ./extension.zip",
+    "pack-crx": "crx pack dist -o ./extension.crx",
+    "start-chromium": "web-ext run --source-dir ./dist --target=chromium"
+  },
+  "devDependencies": {
+    "@ffflorian/jszip-cli": "^3.1.6",
+    "@liuli-util/markdown-util": "^0.5.0",
+    "@types/chrome": "^0.0.206",
+    "@types/minimatch": "^5.1.2",
+    "@types/node": "^18.11.17",
+    "cross-env": "^7.0.3",
+    "crx": "^5.0.1",
+    "joplin-api": "workspace:^0.5.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.6.4",
+    "unplugin-auto-import": "^0.12.1",
+    "vite": "^3.2.0",
+    "vite-plugin-chrome-extension": "^0.0.7",
+    "vitest": "^0.23.4",
+    "web-ext": "^7.4.0"
+  },
+  "dependencies": {
+    "minimatch": "^5.1.2"
+  }
+}

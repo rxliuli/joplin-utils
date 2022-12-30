@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings</title>
+    <script src="main.ts" type="module"></script>
+  </head>
+
+  <body>
+    <form id="control-row">
+      <div>
+        <label for="baseUrl">BaseUrl:</label>
+        <br />
+        <input type="url" id="baseUrl" />
+      </div>
+      <div>
+        <label for="token">Token:</label>
+        <br />
+        <input type="password" id="token" />
+      </div>
+      <div>
+        <label for="theme">Theme:</label>
+        <br />
+        <select id="theme">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+    </form>
+  </body>
+</html>
