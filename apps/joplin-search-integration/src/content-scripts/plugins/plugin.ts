@@ -21,5 +21,5 @@ export interface SearchPlugin {
   /**
    * 渲染检索到的笔记数据
    */
-  render(noteList: SearchNote[]): void
+  render(list: SearchNote[]): void
 }

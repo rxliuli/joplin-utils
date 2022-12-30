@@ -21,7 +21,6 @@
     "joplin-api": "workspace:^0.5.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.6.4",
-    "unplugin-auto-import": "^0.12.1",
     "vite": "^3.2.0",
     "vite-plugin-chrome-extension": "^0.0.7",
     "vitest": "^0.23.4",

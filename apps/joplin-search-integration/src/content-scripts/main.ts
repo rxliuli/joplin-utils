@@ -6,8 +6,9 @@ import { trimTitleStart } from './utils/trim'
 import minimatch from 'minimatch'
 import { bing } from './plugins/bing'
 import { baidu } from './plugins/baidu'
+import { duckduckgo } from './plugins/duckduckgo'
 
-const plugins: SearchPlugin[] = [google(), bing(), baidu()]
+const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo()]
 
 function findPlugin() {
   return plugins.find((item) => item.matches.some((matchPattern) => minimatch(location.href, matchPattern)))

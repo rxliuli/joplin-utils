@@ -2,7 +2,7 @@ import { SearchNote } from '../plugins/plugin'
 
 export function renderList(root: HTMLDivElement, list: SearchNote[]) {
   const html = `<div>
-  <h2 class="header">Joplin search notes</h2>
+  <h2 class="joplin-header">Joplin search notes</h2>
   <ul>
     ${list.map((item) => `<li><a href="javascript:void(0)" data-id="${item.id}">${item.title}</a></li>`).join('')}
   </ul>
@@ -26,7 +26,7 @@ export function createJoplinElement() {
 
   const $style = document.createElement('style')
   $style.innerHTML = `
-  .joplin-root .header {
+  .joplin-root .joplin-header {
     font-size: 18px;
   }
   .joplin-root ul {
@@ -35,7 +35,7 @@ export function createJoplinElement() {
   
   .joplin-root ul li {
     font-size: 16px;
-    margin: 14px 0;
+    margin-bottom: 14px;
   }
   `
   document.head.appendChild($style)
