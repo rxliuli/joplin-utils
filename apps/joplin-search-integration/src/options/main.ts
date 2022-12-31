@@ -1,4 +1,4 @@
-import 'webextension-polyfill'
+import browser from 'webextension-polyfill'
 import { fromMarkdown, Link, Image, selectAll, toHtml } from '@liuli-util/markdown-util'
 import { config, noteApi } from 'joplin-api'
 import { loadConfig, LocalConfig } from './utils/loadConfig'

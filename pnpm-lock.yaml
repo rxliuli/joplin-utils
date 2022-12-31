@@ -197,7 +197,6 @@ importers:
       '@ffflorian/jszip-cli': ^3.1.6
       '@liuli-util/markdown-util': ^0.5.0
       '@liuli-util/vite-plugin-chrome-extension-dist-firefox': workspace:*
-      '@types/firefox-webext-browser': ^94.0.1
       '@types/minimatch': ^5.1.2
       '@types/node': ^18.11.17
       '@types/webextension-polyfill': ^0.9.2
@@ -219,7 +218,6 @@ importers:
       '@ffflorian/jszip-cli': 3.1.6
       '@liuli-util/markdown-util': 0.5.0
       '@liuli-util/vite-plugin-chrome-extension-dist-firefox': link:../../libs/vite-plugin-chrome-extension-dist-firefox
-      '@types/firefox-webext-browser': 94.0.1
       '@types/minimatch': 5.1.2
       '@types/node': 18.11.18
       '@types/webextension-polyfill': 0.9.2
@@ -3726,10 +3724,6 @@ packages:
 
   /@types/figlet/1.5.5:
     resolution: {integrity: sha512-0sMBeFoqdGgdXoR/hgKYSWMpFufSpToosNsI2VgmkPqZJgeEXsXNu2hGr0FN401dBro2tNO5y2D6uw3UxVaxbg==}
-    dev: true
-
-  /@types/firefox-webext-browser/94.0.1:
-    resolution: {integrity: sha512-I6iHRQJSTZ+gYt2IxdH2RRAMvcUyK8v5Ig7fHQR0IwUNYP7hz9+cziBVIKxLCO6XI7fiyRsNOWObfl3/4Js2Lg==}
     dev: true
 
   /@types/fs-extra/9.0.13:

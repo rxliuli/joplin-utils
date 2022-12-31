@@ -16,7 +16,6 @@
     "@ffflorian/jszip-cli": "^3.1.6",
     "@liuli-util/markdown-util": "^0.5.0",
     "@liuli-util/vite-plugin-chrome-extension-dist-firefox": "workspace:*",
-    "@types/firefox-webext-browser": "^94.0.1",
     "@types/minimatch": "^5.1.2",
     "@types/node": "^18.11.17",
     "@types/webextension-polyfill": "^0.9.2",
