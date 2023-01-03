@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite build --watch",
+    "dev": "vite dev",
     "build": "vite build",
     "pack-zip": "rimraf extension.zip && jszip-cli add dist/ -o ./extension.zip",
     "pack-crx": "crx pack dist -o ./extension.crx",
@@ -30,6 +30,7 @@
     "webextension-polyfill": "^0.10.0"
   },
   "dependencies": {
+    "@primer/css": "^20.8.0",
     "joplin-api": "workspace:^",
     "minimatch": "^5.1.2"
   }

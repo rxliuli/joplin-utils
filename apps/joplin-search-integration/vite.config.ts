@@ -16,5 +16,5 @@ export default defineConfig({
     minify: false,
     assetsInlineLimit: 10096,
   },
-  plugins: [chromeExtension() as any, firefoxOutput()],
+  plugins: [chromeExtension(), firefoxOutput()] as any,
 })

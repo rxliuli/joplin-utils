@@ -1,30 +1,32 @@
 html[data-theme='dark'] {
   background-color: #0d1117;
+  color: #c9d1d9;
 }
 html[data-theme='light'] {
   background-color: #ffffff;
+  color: #000000;
 }
 
-#app {
+.note {
   position: relative;
   margin: 0 auto;
 }
 
 @media (max-width: 996px) {
-  #app {
+  .note {
     max-width: 100%;
     padding: 16px;
   }
 }
 
 @media (min-width: 997px) {
-  #app {
+  .note {
     max-width: 75%;
   }
 }
 
 @media (min-width: 1440px) {
-  #app {
+  .note {
     max-width: 980px;
   }
 }
@@ -36,7 +38,7 @@ html[data-theme='light'] {
   display: block;
 }
 
-#app .panel {
+.note .panel {
   position: fixed;
   bottom: 48px;
   right: 48px;
@@ -44,7 +46,7 @@ html[data-theme='light'] {
   flex-direction: column;
   gap: 16px;
 }
-#app .panel .icon {
+.note .panel .icon {
   display: block;
   width: 48px;
   height: 48px;
@@ -54,21 +56,74 @@ html[data-theme='light'] {
   transition: all 0.3s;
   opacity: 0.8;
 }
-#app .panel .icon:hover {
+.note .panel .icon:hover {
   opacity: 1;
 }
 
-html[data-theme='light'] #app .panel .dark {
+html[data-theme='light'] .note .panel .dark {
   display: none;
 }
-html[data-theme='dark'] #app .panel .light {
+html[data-theme='dark'] .note .panel .light {
   display: none;
 }
 
-html[data-theme='dark'] #app .panel .icon {
+html[data-theme='dark'] .note .panel .icon {
   background-color: #444950;
   color: #ffffff;
 }
-html[data-theme='light'] #app .panel .icon {
+html[data-theme='light'] .note .panel .icon {
   background-color: #ebedf0;
+}
+
+html[data-theme='light'] .settings {
+  --border-color: #58a6ff;
+  --outline-color: #58a6ff;
+}
+
+html[data-theme='dark'] .settings {
+  --border-color: #30363d;
+  --outline-color: #58a6ff;
+}
+
+.settings label {
+  display: block;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.settings input,
+.settings select {
+  margin-top: 4px;
+  margin-bottom: 16px;
+  padding: 5px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-shadow: var(--border-color);
+  outline-color: var(--outline-color);
+}
+
+.settings {
+  position: relative;
+  margin: 0 auto;
+}
+
+@media (max-width: 996px) {
+  .settings {
+    max-width: 100%;
+    padding: 16px;
+  }
+}
+
+@media (min-width: 997px) {
+  .settings {
+    max-width: 75%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .settings {
+    max-width: 980px;
+  }
 }

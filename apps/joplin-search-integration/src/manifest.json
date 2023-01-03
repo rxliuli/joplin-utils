@@ -12,9 +12,6 @@
       "js": ["content-scripts/main.ts"]
     }
   ],
-  "action": {
-    "default_popup": "popup/index.html"
-  },
   "host_permissions": ["http://localhost:27583/*", "http://localhost:41184/*"],
   "permissions": ["storage"],
   "icons": {

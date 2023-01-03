@@ -16,6 +16,7 @@ export function renderList(root: HTMLDivElement, list: SearchNote[]) {
     }
     browser.runtime.sendMessage({
       action: 'open',
+      path: '/note',
       id: el.dataset.id,
     })
   })

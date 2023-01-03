@@ -7,6 +7,7 @@ import minimatch from 'minimatch'
 import { bing } from './plugins/bing'
 import { baidu } from './plugins/baidu'
 import { duckduckgo } from './plugins/duckduckgo'
+import browser from 'webextension-polyfill'
 
 const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo()]
 
@@ -37,6 +38,10 @@ async function main() {
   const c = await loadConfig()
   if (!c.token) {
     alert('Joplin Search Integration: Please configure the token first')
+    browser.runtime.sendMessage({
+      action: 'open',
+      path: '/',
+    })
     return
   }
   config.token = c.token
