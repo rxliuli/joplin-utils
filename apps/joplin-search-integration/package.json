@@ -7,6 +7,7 @@
     "dev": "vite dev",
     "build": "vite build",
     "pack-zip": "rimraf extension.zip && jszip-cli add dist/ -o ./extension.zip",
+    "pack-src": "rimraf src.zip && jszip-cli add src/ package.json .gitignore vite.config.ts tsconfig.json tsconfig.node.json -o ./src.zip",
     "pack-crx": "crx pack dist -o ./extension.crx",
     "pack-xpi": "web-ext build -s ./dist-firefox/ -o",
     "start-firefox": "web-ext run -s ./dist-firefox",
