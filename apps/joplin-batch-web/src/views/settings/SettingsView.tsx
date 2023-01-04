@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { Button, Card, Form, Input, message } from 'antd'
-import { Config } from 'joplin-api'
+import { config, Config, noteApi } from 'joplin-api'
 import { useLocalStorage } from 'react-use'
-import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { i18n } from '../../constants/i18n'
 
 export const SettingsView: React.FC = () => {
@@ -15,9 +14,9 @@ export const SettingsView: React.FC = () => {
     const values = form.getFieldsValue()
     console.log('onFinish: ', values)
     try {
-      joplinApiGenerator.token = values.token
-      joplinApiGenerator.baseUrl = values.baseUrl
-      await joplinApiGenerator.noteApi.list({ limit: 1 })
+      config.token = values.token
+      config.baseUrl = values.baseUrl
+      await noteApi.list({ limit: 1 })
       setSettings(values)
       message.success(i18n.t('settings.msg.success'))
     } catch (e) {

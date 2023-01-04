@@ -2,23 +2,20 @@ import * as React from 'react'
 import { useState } from 'react'
 import { Button, Card, Image, List, message, Space, SpinProps } from 'antd'
 import { UnusedResourceService } from './service/UnusedResourceService'
-import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { useAsyncFn } from 'react-use'
-import { Config } from 'joplin-api'
+import { Config, resourceApi } from 'joplin-api'
 import { downloadUrl, proxyStorage } from '@liuli-util/dom'
 import produce from 'immer'
 import { AsyncArray } from '@liuli-util/async'
 import { i18n } from '../../constants/i18n'
 import { ResourceProperties } from 'joplin-api'
 
-const unusedResourceService = new UnusedResourceService(joplinApiGenerator)
+const unusedResourceService = new UnusedResourceService()
 
-function resourceUrlBuilder(getConfig: () => Config | null | undefined) {
-  const settings = getConfig()
-  return (id: string) => `${settings?.baseUrl}/resources/${id}/file?token=${settings?.token}`
+export function buildResourceUrl(id: string) {
+  const settings = proxyStorage<{ settings: Config }>(localStorage).settings
+  return `${settings?.baseUrl}/resources/${id}/file?token=${settings?.token}`
 }
-
-export const buildResourceUrl = resourceUrlBuilder(() => proxyStorage<{ settings: Config }>(localStorage).settings)
 
 /**
  * 检查未使用的资源
@@ -40,7 +37,7 @@ export const UnusedResourceView: React.FC = () => {
 
   async function onRemoveResource(id: string) {
     setList(produce((list) => list.filter((item) => item.id !== id)))
-    await joplinApiGenerator.resourceApi.remove(id)
+    await resourceApi.remove(id)
   }
 
   async function onOpenResource(id: string) {
@@ -49,7 +46,7 @@ export const UnusedResourceView: React.FC = () => {
 
   const [onRemoveAllState, onRemoveAll] = useAsyncFn(async () => {
     await AsyncArray.forEach(list, async (item) => {
-      await joplinApiGenerator.resourceApi.remove(item.id)
+      await resourceApi.remove(item.id)
     })
     setList([])
   }, [list])

@@ -3,9 +3,8 @@ import { useState } from 'react'
 import { i18n } from '../../constants/i18n'
 import { Button, Card, Image, List, message, Space, SpinProps } from 'antd'
 import { useAsyncFn } from 'react-use'
-import { PageUtil } from 'joplin-api'
+import { PageUtil, resourceApi } from 'joplin-api'
 import { buildResourceUrl } from '../unusedResource/UnusedResourceView'
-import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { ResourceProperties } from 'joplin-api'
 import { AsyncArray, asyncLimiting } from '@liuli-util/async'
 import { MimeUtils } from './util/MimeUtils'
@@ -15,7 +14,7 @@ export const FixFileExtensionView: React.FC = () => {
   const [loadState, fetch] = useAsyncFn(async () => {
     setList(
       (
-        await PageUtil.pageToAllList(joplinApiGenerator.resourceApi.list.bind(joplinApiGenerator.resourceApi), {
+        await PageUtil.pageToAllList(resourceApi.list.bind(resourceApi), {
           fields: ['id', 'title', 'file_extension', 'mime'],
         })
       )
@@ -34,7 +33,7 @@ export const FixFileExtensionView: React.FC = () => {
       await AsyncArray.forEach(
         list,
         asyncLimiting(async (item) => {
-          await joplinApiGenerator.resourceApi.update({
+          await resourceApi.update({
             id: item.id,
             file_extension: item.file_extension,
           })

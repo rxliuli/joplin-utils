@@ -2,14 +2,14 @@ import * as React from 'react'
 import { useState } from 'react'
 import { Button, Card, List, SpinProps } from 'antd'
 import { useAsyncFn } from 'react-use'
-import { joplinApiGenerator, openNote } from '../../constants/joplinApiGenerator'
+import { openNote } from '../../constants/joplinApiGenerator'
 import { NotFoundResourceCheckService } from './service/NotFoundResourceCheckService'
 import { ResourceProperties } from 'joplin-api'
 import { NoteProperties } from 'joplin-api'
 import css from './NotFoundResourceCheckView.module.css'
 import { i18n } from '../../constants/i18n'
 
-const notFoundResourceCheckService = new NotFoundResourceCheckService(joplinApiGenerator)
+const notFoundResourceCheckService = new NotFoundResourceCheckService()
 
 /**
  * 检查笔记中引用失效的资源

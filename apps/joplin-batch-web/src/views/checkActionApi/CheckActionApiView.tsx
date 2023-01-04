@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { Button, Card, message } from 'antd'
 import { i18n } from '../../constants/i18n'
-import { joplinApiGenerator, openNote } from '../../constants/joplinApiGenerator'
+import { openNote } from '../../constants/joplinApiGenerator'
+import { noteApi } from 'joplin-api'
 
 type CheckActionApiViewProps = {}
 
@@ -10,7 +11,7 @@ type CheckActionApiViewProps = {}
  */
 export const CheckActionApiView: React.FC<CheckActionApiViewProps> = () => {
   async function onOpen() {
-    const list = await joplinApiGenerator.noteApi.list({ limit: 1 })
+    const list = await noteApi.list({ limit: 1 })
     if (list.items.length === 0) {
       message.error('没有找到任何笔记')
       return

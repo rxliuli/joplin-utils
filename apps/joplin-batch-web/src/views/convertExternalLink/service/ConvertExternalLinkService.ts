@@ -1,10 +1,9 @@
-import { NoteProperties } from 'joplin-api'
+import { noteApi, NoteProperties, searchApi } from 'joplin-api'
 import { PageUtil } from 'joplin-api'
 import { AsyncArray } from '@liuli-util/async'
 import type { ContentLink, MarkdownLinkUtil } from './MarkdownLinkUtil'
 import MarkdownLinkUtilWorker from './MarkdownLinkUtil?worker'
 import { wrap } from 'comlink'
-import { joplinApiGenerator } from '../../../constants/joplinApiGenerator'
 
 export type NoteModel = Pick<NoteProperties, 'id' | 'title' | 'body' | 'user_updated_time'> & {
   urls: MappingContentLink[]
@@ -21,7 +20,7 @@ export class ConvertExternalLinkService {
    * @param linkPrefix
    */
   async search(linkPrefix: string): Promise<NoteModel[]> {
-    const list = await PageUtil.pageToAllList(joplinApiGenerator.searchApi.search.bind(joplinApiGenerator.searchApi), {
+    const list = await PageUtil.pageToAllList(searchApi.search.bind(searchApi), {
       query: `body:"${linkPrefix}"`,
       fields: ['id', 'title', 'body', 'user_updated_time'],
       order_by: 'user_updated_time',
@@ -51,7 +50,7 @@ export class ConvertExternalLinkService {
           return link
         }
         const matchNotes = (
-          await joplinApiGenerator.searchApi.search({
+          await searchApi.search({
             query: `title:"${link.title}"`,
             limit: 3,
             fields: ['id', 'title'],
@@ -71,9 +70,9 @@ export class ConvertExternalLinkService {
    * @param convertLinkMap
    */
   async convert(id: string, convertLinkMap: Record<string, ContentLink>) {
-    const note = await joplinApiGenerator.noteApi.get(id, ['id', 'body'])
+    const note = await noteApi.get(id, ['id', 'body'])
     const content = await this.markdownLinkUtilWorker.convertLink(note.body, convertLinkMap)
-    await joplinApiGenerator.noteApi.update({
+    await noteApi.update({
       id: note.id,
       body: content,
       user_updated_time: Date.now(),

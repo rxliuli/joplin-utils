@@ -2,9 +2,8 @@ import * as React from 'react'
 import { useState } from 'react'
 import { Button, Card, List, Typography } from 'antd'
 import { useAsyncFn } from 'react-use'
-import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
 import { CheckParentNotebookService } from './service/CheckParentNotebookService'
-import { NoteProperties } from 'joplin-api'
+import { noteApi, NoteProperties } from 'joplin-api'
 import { i18n } from '../../constants/i18n'
 
 const checkParentNotebookService = new CheckParentNotebookService()
@@ -21,7 +20,7 @@ export const CheckParentNotebookView: React.FC = () => {
   })
 
   async function onRemove(id: string) {
-    await joplinApiGenerator.noteApi.remove(id)
+    await noteApi.remove(id)
     setList((list) => list.filter((item) => item.id !== id))
   }
 

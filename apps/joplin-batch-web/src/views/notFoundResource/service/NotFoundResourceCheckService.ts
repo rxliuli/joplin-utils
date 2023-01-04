@@ -1,4 +1,4 @@
-import { JoplinApiGenerator, PageUtil } from 'joplin-api'
+import { noteApi, PageUtil, resourceApi } from 'joplin-api'
 import { ResourceProperties } from 'joplin-api'
 import { parseInternalLink } from './parseInternalLink'
 import { AsyncArray, asyncLimiting } from '@liuli-util/async'
@@ -17,7 +17,7 @@ interface CheckErrorResourceEvents {
 }
 
 export class NotFoundResourceCheckService {
-  constructor(private readonly config: JoplinApiGenerator) {}
+  constructor() {}
 
   check() {
     return PromiseUtil.warpOnEvent(async (events: CheckErrorResourceEvents) => {
@@ -25,7 +25,7 @@ export class NotFoundResourceCheckService {
       const resourceIdSet = new Set((await this.getAllResourceIdList()).map((item) => item.id))
       events.load(i18n.t('notFoundResource.loadNotes'))
       const noteList: Pick<NoteProperties, 'id' | 'title' | 'body' | 'user_updated_time'>[] =
-        await PageUtil.pageToAllList(this.config.noteApi.list.bind(this.config.noteApi), {
+        await PageUtil.pageToAllList(noteApi.list.bind(noteApi), {
           fields: ['id', 'title', 'body', 'user_updated_time'],
         })
       const noteIdSet = noteList.reduce((res, item) => res.add(item.id), new Set<string>())
@@ -67,7 +67,7 @@ export class NotFoundResourceCheckService {
   }
 
   async getAllResourceIdList() {
-    return (await PageUtil.pageToAllList(this.config.resourceApi.list.bind(this.config.resourceApi), {
+    return (await PageUtil.pageToAllList(resourceApi.list.bind(resourceApi), {
       fields: ['id', 'title', 'mime'] as (keyof ResourceProperties)[],
     })) as Pick<ResourceProperties, 'id'>[]
   }

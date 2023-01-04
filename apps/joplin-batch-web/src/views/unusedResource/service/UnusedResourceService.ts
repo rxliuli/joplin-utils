@@ -1,6 +1,5 @@
-import { JoplinApiGenerator } from 'joplin-api'
 import { AsyncArray, asyncLimiting } from '@liuli-util/async'
-import { PageUtil } from 'joplin-api'
+import { PageUtil, resourceApi, searchApi } from 'joplin-api'
 import { PromiseUtil } from '../../../common/PromiseUtil'
 import { ResourceProperties } from 'joplin-api'
 
@@ -15,14 +14,12 @@ export type ProcessEvents = {
 }
 
 export class UnusedResourceService {
-  constructor(private readonly config: JoplinApiGenerator) {}
-
   /**
    * 获取所有的资源
    */
   getUnusedResource() {
     return PromiseUtil.warpOnEvent(async (events: ProcessEvents) => {
-      const resourceList = (await PageUtil.pageToAllList(this.config.resourceApi.list.bind(this.config.resourceApi), {
+      const resourceList = (await PageUtil.pageToAllList(resourceApi.list.bind(resourceApi), {
         fields: ['id', 'title', 'mime'] as (keyof ResourceProperties)[],
       })) as Pick<ResourceProperties, 'id' | 'title' | 'mime'>[]
       let i = 0
@@ -46,7 +43,7 @@ export class UnusedResourceService {
    * @param id
    */
   async checkUsed(id: string): Promise<boolean> {
-    const res = await this.config.searchApi.search({
+    const res = await searchApi.search({
       query: `"](:/${id})"`,
     })
     return res.items.length > 0

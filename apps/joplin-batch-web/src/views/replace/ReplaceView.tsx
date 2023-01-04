@@ -1,8 +1,7 @@
 import { Button, Card, Form, Input, List, message, Space, Checkbox } from 'antd'
 import React, { useState } from 'react'
 import css from './ReplaceView.module.css'
-import { TypeEnum } from 'joplin-api'
-import { joplinApiGenerator } from '../../constants/joplinApiGenerator'
+import { noteApi, searchApi, TypeEnum } from 'joplin-api'
 import { NoteProperties } from 'joplin-api'
 import Highlighter from 'react-highlight-words'
 import { AsyncArray, asyncLimiting } from '@liuli-util/async'
@@ -23,7 +22,7 @@ export const ReplaceView: React.FC = () => {
   async function onSearch() {
     const values = form.getFieldsValue()
     console.log('onSearch: ', values)
-    const res = await joplinApiGenerator.searchApi.search({
+    const res = await searchApi.search({
       query: `body:${values.keyword}`,
       type: TypeEnum.Note,
       limit: 100,
@@ -38,7 +37,7 @@ export const ReplaceView: React.FC = () => {
 
   async function onReplace(item: SearchNote) {
     const values = form.getFieldsValue()
-    await joplinApiGenerator.noteApi.update({
+    await noteApi.update({
       id: item.id,
       user_updated_time: keepUpdatedTime ? item.user_updated_time : undefined,
       body: item.body.replaceAll(values.keyword, values.replaceText),
@@ -62,7 +61,7 @@ export const ReplaceView: React.FC = () => {
     await AsyncArray.forEach(
       list,
       asyncLimiting(async (item) => {
-        await joplinApiGenerator.noteApi.update({
+        await noteApi.update({
           id: item.id,
           user_updated_time: keepUpdatedTime ? item.user_updated_time : undefined,
           body: item.body.replaceAll(values.keyword, values.replaceText),
