@@ -1,6 +1,6 @@
 {
   "name": "Joplin Search Integration",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "When using search, related Joplin notes are also displayed in the search results.",
   "manifest_version": 3,
   "background": {

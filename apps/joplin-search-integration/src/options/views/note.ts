@@ -10,15 +10,17 @@ function getNoteId() {
 
 interface NoteData {
   id: string
+  title: string
   content: string
   resources: string[]
 }
 
 async function getNoteData(id: string): Promise<NoteData | undefined> {
   try {
-    const [s, r] = await Promise.all([noteApi.get(id, ['body']), noteApi.resourcesById(id, ['id'])])
+    const [s, r] = await Promise.all([noteApi.get(id, ['body', 'title']), noteApi.resourcesById(id, ['id'])])
     return {
       id: id,
+      title: s.title,
       content: s.body,
       resources: r.map((item) => item.id),
     }
@@ -133,6 +135,7 @@ async function main() {
   if (!s) {
     throw new Error('查询笔记失败')
   }
+  document.title = s.title
   const html = renderNoteToHtml(s)
   $content.innerHTML = html
   onToggleTheme()

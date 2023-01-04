@@ -1,4 +1,4 @@
-import browser, { theme } from 'webextension-polyfill'
+import browser from 'webextension-polyfill'
 import { loadConfig, LocalConfig } from '../utils/loadConfig'
 
 function render() {
@@ -39,14 +39,17 @@ async function main() {
   ;($theme.querySelector(`[value="${c.theme}"]`) as HTMLOptionElement).selected = true
   setTheme(c.theme)
   const list = ['baseUrl', 'token', 'theme']
+  const handle = async (k: string, ev: Event) => {
+    const el = ev.target as HTMLInputElement
+    await browser.storage.local.set({ [k]: el.value })
+    if (el.name === 'theme') {
+      setTheme(el.value as LocalConfig['theme'])
+    }
+  }
   list.forEach((k) => {
-    document.getElementById(k)!.addEventListener('change', async (ev) => {
-      const el = ev.target as HTMLInputElement
-      await browser.storage.local.set({ [k]: el.value })
-      if (el.name === 'theme') {
-        setTheme(el.value as LocalConfig['theme'])
-      }
-    })
+    const el = document.getElementById(k)!
+    el.addEventListener('change', (ev) => handle(k, ev))
+    el.addEventListener('input', (ev) => handle(k, ev))
   })
 }
 

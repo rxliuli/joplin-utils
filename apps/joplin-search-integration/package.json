@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
+    "dev": "vite build --watch",
     "build": "vite build",
     "pack-zip": "rimraf extension.zip && jszip-cli add dist/ -o ./extension.zip",
     "pack-src": "rimraf src.zip && jszip-cli add src/ package.json .gitignore vite.config.ts tsconfig.json tsconfig.node.json -o ./src.zip",
