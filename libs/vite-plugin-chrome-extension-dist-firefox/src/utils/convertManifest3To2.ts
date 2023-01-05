@@ -1,18 +1,23 @@
-import manifest3 from '../manifest.json'
-
-export function convertManifest3To2(manifest: typeof manifest3) {
+export function convertManifest3To2(manifest: any) {
   const { background, action, manifest_version, host_permissions, permissions, options_page, ...other } = manifest
-  return {
-    ...other,
-    background: {
+  const r = other as any
+  r.manifest_version = 2
+  if (background.service_worker) {
+    r.background = {
       scripts: [background.service_worker],
-    },
-    browser_action: action,
-    manifest_version: 2,
-    permissions: [...permissions, ...(host_permissions ? [...host_permissions, '<all_urls>'] : [])],
-    options_ui: {
+    }
+  }
+  if (options_page) {
+    r.options_ui = {
       page: options_page,
       browser_style: true,
-    },
+    }
   }
+  if (action) {
+    r.browser_action = action
+  }
+  if (permissions) {
+    r.permissions = [...permissions, ...(host_permissions ? [...host_permissions, '<all_urls>'] : [])]
+  }
+  return r
 }

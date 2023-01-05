@@ -10,6 +10,10 @@ export async function checkJoplinServer() {
     vscode.window.showErrorMessage(
       `Joplin's token/port is set incorrectly, unable to access Joplin service! Are you sure it is running and active?`,
     )
+  if (!appConfig.token) {
+    vscode.window.showInformationMessage('Please configure joplin token first, and then restart VSCode!')
+    return false
+  }
   try {
     if (!(await joplinApi.ping())) {
       errMsg()
@@ -21,9 +25,6 @@ export async function checkJoplinServer() {
     console.log('Error message: \n', e)
     return false
   }
-  if (!appConfig.token) {
-    vscode.window.showInformationMessage('Please configure joplin token first, and then restart VSCode!')
-    return false
-  }
+
   return true
 }

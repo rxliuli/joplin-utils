@@ -3,7 +3,7 @@
 import * as vscode from 'vscode'
 import { NoteExplorerProvider } from './model/NoteExplorerProvider'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
-import { TypeEnum } from 'joplin-api'
+import { config, TypeEnum } from 'joplin-api'
 import { appConfig } from './config/AppConfig'
 import { HandlerService } from './service/HandlerService'
 import { checkJoplinServer } from './util/checkJoplinServer'
@@ -36,6 +36,7 @@ export async function activate(context: vscode.ExtensionContext) {
   logger
     .add(new transports.File({ filename: path.resolve(logPath, 'error.log'), level: 'error' }))
     .add(new transports.File({ filename: path.resolve(logPath, 'combined.log') }))
+  logger.info(`joplin config, baseUrl: ${config.baseUrl}, token: ${typeof config.token}`)
   await init()
   if (!(await checkJoplinServer())) {
     return

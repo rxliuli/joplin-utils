@@ -1,3 +1,4 @@
+import { config } from 'joplin-api'
 import * as vscode from 'vscode'
 
 export enum SortNotesTypeEnum {
@@ -22,13 +23,15 @@ export class AppConfig {
    * reload joplin for vscode config
    */
   loadConfig() {
-    const config = vscode.workspace.getConfiguration('joplin')
-    this.token = config.token
-    this.baseUrl = config.baseUrl
-    this.deleteConfirm = config.deleteConfirm
-    this.sortNotes = config.sortNotes
-    this.sortNotesType = config.sortNotesType
-    this.sortOrder = config.sortOrder
+    const c = vscode.workspace.getConfiguration('joplin')
+    this.token = c.token
+    this.baseUrl = c.baseUrl
+    this.deleteConfirm = c.deleteConfirm
+    this.sortNotes = c.sortNotes
+    this.sortNotesType = c.sortNotesType
+    this.sortOrder = c.sortOrder
+    config.baseUrl = this.baseUrl
+    config.token = this.token!
     if (process.env.DEBUG) {
       console.log(
         'loadConfig: ',

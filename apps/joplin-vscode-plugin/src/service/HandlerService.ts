@@ -1,9 +1,8 @@
 import * as vscode from 'vscode'
 import { TextDocument, Uri } from 'vscode'
-import { noteApi, resourceApi, TypeEnum } from 'joplin-api'
+import { noteApi, resourceApi } from 'joplin-api'
 import { parse } from 'querystring'
 import { JoplinNoteCommandService } from './JoplinNoteCommandService'
-import { JoplinTreeItem } from '../model/JoplinTreeItem'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { OpenFileService } from '../util/OpenFileService'
 import { safePromise } from '../util/safePromise'
@@ -35,13 +34,13 @@ export class HandlerService {
       if (!noteId) {
         return
       }
-      console.log('close note: ', noteId)
+      logger.info(`close note, noteId: ${noteId}, fileName: ${path.basename(e.fileName)}`)
       await remove(e.fileName)
       GlobalContext.openNoteMap.delete(noteId)
       GlobalContext.openNoteResourceMap.delete(noteId)
     } else if (GlobalContext.openResourceMap.has(e.uri.fsPath)) {
       const resourceId = GlobalContext.openResourceMap.get(e.fileName)!
-      console.log('close resourceId: ', resourceId)
+      logger.info(`close resource, id: ${resourceId}, fileName: ${path.basename(e.fileName)}`)
       await remove(e.fileName)
       GlobalContext.openResourceMap.delete(resourceId)
     }
