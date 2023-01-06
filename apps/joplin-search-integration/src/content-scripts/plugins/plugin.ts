@@ -6,7 +6,7 @@ export interface SearchPlugin {
   /**
    * 匹配规则
    */
-  matches: string[]
+  match(url: URL): boolean
 
   /**
    * 搜索引擎的名字

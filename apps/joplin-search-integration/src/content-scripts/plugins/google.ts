@@ -1,6 +1,7 @@
 import { getSearchQuery } from '../utils/getQuery'
 import { createJoplinElement, renderList } from '../utils/render'
 import { SearchPlugin, SearchNote } from './plugin'
+import micromatch from 'minimatch'
 
 function createRhs(): HTMLElement {
   const $rcht = document.querySelector('#rcnt')!
@@ -13,7 +14,11 @@ function createRhs(): HTMLElement {
 
 export function google(): SearchPlugin {
   return {
-    matches: ['https://www.google.com/search?*', 'https://www.google.com.*/search?*'],
+    match(url) {
+      return ['https://www.google.com/search?*', 'https://www.google.com.*/search?*'].some((m) =>
+        micromatch(url.href, m),
+      )
+    },
     name: 'google',
     getQuery() {
       return getSearchQuery(['q'])

@@ -12,7 +12,8 @@ import browser from 'webextension-polyfill'
 const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo()]
 
 function findPlugin() {
-  return plugins.find((item) => item.matches.some((matchPattern) => minimatch(location.href, matchPattern)))
+  const u = new URL(location.href)
+  return plugins.find((item) => item.match(u))
 }
 
 async function search(keyword: string) {

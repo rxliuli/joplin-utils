@@ -11,7 +11,9 @@ function createRhs(): HTMLElement {
 
 export function bing(): SearchPlugin {
   return {
-    matches: ['https://www.bing.com/search?*'],
+    match(url) {
+      return url.origin === 'https://www.bing.com' && url.pathname === '/search' && !!url.searchParams.get('q')
+    },
     name: 'bing',
     getQuery() {
       return getSearchQuery(['q'])

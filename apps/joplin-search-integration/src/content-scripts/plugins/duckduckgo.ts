@@ -5,7 +5,9 @@ import { SearchPlugin } from './plugin'
 export function duckduckgo(): SearchPlugin {
   return {
     name: 'duckduckgo',
-    matches: ['https://duckduckgo.com/?q=*'],
+    match(url) {
+      return url.origin === 'https://duckduckgo.com' && !!url.searchParams.get('q')
+    },
     getQuery() {
       return getSearchQuery(['q'])
     },

@@ -11,7 +11,13 @@ function createContainer(): HTMLElement {
 
 export function baidu(): SearchPlugin {
   return {
-    matches: ['https://www.baidu.com/s?*'],
+    match(url) {
+      return (
+        url.origin === 'https://www.baidu.com' &&
+        url.pathname === '/s' &&
+        !!(url.searchParams.get('wd') || url.searchParams.get('word'))
+      )
+    },
     name: 'baidu',
     /**
      * 参考：https://www.jianshu.com/p/5ce9b98e4d81
