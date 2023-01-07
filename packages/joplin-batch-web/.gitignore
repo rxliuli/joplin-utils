@@ -1,0 +1,7 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+public/README.md
+**/i18n/index.d.ts

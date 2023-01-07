@@ -1,0 +1,48 @@
+# 路线图
+
+- 编辑
+  - [x] 粘贴图片自动上传到 joplin 并获取链接插入
+    - [x] 支持编辑器右键菜单粘贴剪切板图片
+  - [x] 解决 joplin ref link 在编辑器中不能 `ctrl+click` 打开的问题
+  - [x] 编辑器自定义面包屑，点击时自动展开左边的侧边栏 -- 放弃，这实在没什么必要
+  - [x] 支持在 markdown 直接将 `.drawio/.km` 的文件作为图片显示。-- 使用 drawio.svg/km.svg
+  - [x] 集成 joplin v1.5 直接预览视频、音频、PDF 附件资源的功能。-- 确定不可行
+- 优化
+  - [x] 在代码编辑器中直接添加引用 -- 使用搜索框选择
+  - [x] 实现笔记多选功能 -- 暂不实现
+  - [x] 添加 outline 标题侧边栏（等待 api 支持、或自行实现 <https://github.com/microsoft/vscode/issues/97095>）-- 使用 ctrl+f12 快捷键显示列表
+    - [x] 笔记标题大纲
+    - [x] 笔记的附件资源与引用笔记
+    - [x] 笔记的时间线功能
+  - [x] 处理 vscode 不能从链接打开 `.drawio` 的问题（可能也包含 `.km` 的思维导图）
+  - [x] 对 todo 启用特殊的右键菜单及 icon
+  - [x] 支持在笔记中直接创建附件，主要是为了可以直接创建代码文件
+  - [x] 修复 bug 从剪切板上传图片时提示 `Cannot read property 'globalStoragePath' of undefined`
+  - [x] 优化消息国际化
+  - [x] 添加开发相关文档
+  - [x] 修复根目录的笔记无法显示的问题
+  - [x] 支持在外部程序中查看附件资源
+    - [x] 打开附件资源时自动监视变化，使用 `open` 返回的 `child_process` -- 由 joplin 负责
+  - [x] 搜索时默认显示最近编辑的 20 条历史笔记
+  - [x] 编写使用 VSCode 编写 Markdown 文档的一些建议，参考：[个人经验分享：使用 VSCode + Joplin 作为笔记工具](:/9648f44ae78240d386481d449c583fc0)
+  - [x] 应该允许拖动笔记或目录 -- vscode api 不支持
+  - [x] 笔记/目录重命名直接就地出现输入框 -- vscode api 不支持
+- 标签相关
+  - [x] 为笔记添加标签
+  - [x] 为笔记删除标签
+  - [x] 重命名标签
+- 整理 vscode api 使用
+- 创造 joplin-chars -- 废弃
+  - [x] 优化性能
+  - [x] 使用插件将之集成到 joplin 中
+  - [x] [笔记关系图](https://echarts.apache.org/examples/zh/editor.html?c=graph)
+  - [x] [笔记目录大小分析图](https://echarts.apache.org/examples/zh/editor.html?c=treemap-disk)
+  - [x] [词云](https://github.com/ecomfe/echarts-wordcloud)
+  - [x] timeline 时间线
+- 创造 joplin-blog
+  - [x] 提高性能
+  - [x] 优化 ux
+  - [x] 导出指定笔记到 hexo blog
+  - [x] 解决内嵌图片的问题
+  - [x] 解决附件资源的问题
+  - [x] 解决内部引用笔记的问题

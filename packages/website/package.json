@@ -1,0 +1,24 @@
+{
+  "name": "website",
+  "version": "0.1.0",
+  "scripts": {
+    "docs-dev": "vuepress dev docs",
+    "docs-build": "vuepress build docs",
+    "docs-deploy": "gh-pages -d docs/.vuepress/dist --add --dotfiles"
+  },
+  "deploy": {
+    "type": "gh-pages",
+    "dist": "docs/.vuepress/dist",
+    "dest": "/",
+    "add": true
+  },
+  "devDependencies": {
+    "@vuepress/client": "2.0.0-beta.51",
+    "@vuepress/plugin-search": "2.0.0-beta.51",
+    "@vuepress/plugin-google-analytics": "2.0.0-beta.51",
+    "@vuepress/theme-default": "2.0.0-beta.51",
+    "gh-pages": "^4.0.0",
+    "vue": "^3.2.40",
+    "vuepress-vite": "2.0.0-beta.51"
+  }
+}

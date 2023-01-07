@@ -1,9 +1,0 @@
-{
-  "name": "Joplin Utils",
-  "short_name": "Joplin Utils",
-  "description": "Joplin-based peripheral community tool",
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#fff",
-  "theme_color": "#3eaf7c"
-}
