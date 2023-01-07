@@ -22,7 +22,7 @@ Why not use the official plugin template project?
 The front-end packaging tools have changed a lot lately, mainly due to the performance revolution caused by esbuild and swc (that's not an overstatement). vue authors abandoned webpack and built a new cross-framework tool called vite based on esbuild and rollup, so I also prefer to build faster tools based on esbuild.
 
 > The official plugin template project takes about 3.87s to build using webpack, while this cli takes only 0.17s based on esbuild.
-> ![diff](https://github.com/rxliuli/joplin-utils/raw/master/libs/joplin-plugin-cli/assets/diff.png)
+> ![diff](https://github.com/rxliuli/joplin-utils/raw/master/packages/joplin-plugin-cli/assets/diff.png)
 
 ## How to migrate existing plugins?
 

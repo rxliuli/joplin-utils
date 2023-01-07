@@ -1,7 +1,7 @@
 # Required dependencies
 
-- nodejs >= v14
-- yarn
+- nodejs >= v18
+- pnpm
 - git
 - github
 
@@ -14,18 +14,18 @@ node -v
 npm -v
 ```
 
-## Install yarn
+## Install pnpm
 
-Once you have installed nodejs, install yarn with the following command
+Once you have installed nodejs, install pnpm with the following command
 
 ```sh
-npm i -g yarn
+npm i -g pnpm
 ```
 
-Check whether the yarn installation was successful
+Check whether the pnpm installation was successful
 
 ```sh
-yarn -v
+pnpm -v
 ```
 
 ## Register on GitHub

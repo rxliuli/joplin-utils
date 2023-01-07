@@ -14,9 +14,9 @@
 
 ## 环境要求
 
-- nodejs >= v12
+- nodejs >= v18
 - joplin >= v1.4
-- yarn
+- pnpm
 
 ## 启动项目
 

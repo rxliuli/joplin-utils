@@ -17,7 +17,7 @@ const res = await noteApi.list()
 console.log(res)
 ```
 
-> 更多示例参考: <https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-api/test>
+> 更多示例参考: <https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-api/test>
 
 ## API 参考
 

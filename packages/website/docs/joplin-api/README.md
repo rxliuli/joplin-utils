@@ -16,7 +16,7 @@ const res = await noteApi.list()
 console.log(res)
 ```
 
-> More examples reference: <https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-api/test>
+> More examples reference: <https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-api/test>
 
 ## API Reference
 

@@ -28,7 +28,6 @@ export default defineUserConfig({
     locales: {
       '/': {
         navbar: [
-          { text: 'Home', link: '/' },
           {
             text: 'Tools',
             children: [
@@ -52,10 +51,6 @@ export default defineUserConfig({
               {
                 text: 'joplin-api',
                 link: '/joplin-api/',
-              },
-              {
-                text: 'joplin-plugin-api',
-                link: '/zh/joplin-plugin-api/',
               },
             ],
           },
@@ -166,7 +161,6 @@ export default defineUserConfig({
       },
       '/zh/': {
         navbar: [
-          { text: '首页', link: '/zh/' },
           {
             text: '工具',
             children: [
@@ -190,14 +184,6 @@ export default defineUserConfig({
               {
                 text: 'joplin-api',
                 link: '/zh/joplin-api/',
-              },
-              {
-                text: 'joplin-plugin-cli',
-                link: '/zh/joplin-plugin-cli/',
-              },
-              {
-                text: 'joplin-plugin-api',
-                link: '/zh/joplin-plugin-api/',
               },
             ],
           },

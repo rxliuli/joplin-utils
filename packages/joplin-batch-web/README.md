@@ -1,7 +1,5 @@
 # joplin-batch-web
 
-## Overview
-
 Handles some batch operations that are not supported by Joplin itself, and presents them as a visual interface.
 
 - [x] Check for unreferenced attachment resources
@@ -12,14 +10,14 @@ Handles some batch operations that are not supported by Joplin itself, and prese
       Would like to be able to convert previous blog links to internal `:/id` links to ensure they never expire
 - [x] Check for notes that don't have a parent directory (usually an error)
 
-### Getting Started
+## Getting Started
 
 1. open joplin desktop version
 2. Enable the web clipper
 3. Fill out the configuration in the [Settings](https://joplin-utils.rxliuli.com/web/joplin-batch-web/#/settings) page
 4. Navigate to the relevant function page
 
-![guide](https://github.com/rxliuli/joplin-utils/raw/master/apps/joplin-batch-web/docs/images/guide.gif)
+![guide](https://github.com/rxliuli/joplin-utils/raw/master/packages/joplin-batch-web/docs/images/guide.gif)
 
 > If you want to participate in the development or run locally, you can refer to [Participate in the project](./docs/dev.md)
 
@@ -31,4 +29,4 @@ The cli form is not very suitable for this scenario, e.g. when you need to previ
 
 ### Will it record my note data
 
-The website works locally, there is no back-end server, if you are still worried, you can check the source code [joplin-batch-web](https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-batch-web)
+The website works locally, there is no back-end server, if you are still worried, you can check the source code [joplin-batch-web](https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-batch-web)

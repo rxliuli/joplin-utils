@@ -1,7 +1,7 @@
 # 环境要求
 
-- nodejs >= v16
-- yarn
+- nodejs >= v18
+- pnpm
 - git
 - github
 
@@ -14,18 +14,18 @@ node -v
 npm -v
 ```
 
-## 安装 yarn
+## 安装 pnpm
 
-在安装完 nodejs 之后，使用命令安装 yarn
+在安装完 nodejs 之后，使用命令安装 pnpm
 
 ```sh
-npm i -g yarn
+npm i -g pnpm
 ```
 
 检查是否成功安装
 
 ```sh
-yarn -v
+pnpm -v
 ```
 
 ## 注册 github

@@ -14,7 +14,7 @@ Performs some batch operations not currently handled by Joplin and displays them
 3. On the [settings](https://joplin-utils.rxliuli.com/web/joplin-batch-web/#/settings) page, fill in the configuration options
 4. Navigate to your required function page
 
-![guide](https://github.com/rxliuli/joplin-utils/raw/master/apps/joplin-batch-web/docs/images/guide.gif)
+![guide](/images/joplin-batch-web-guide.gif)
 
 ## FAQ
 
@@ -24,6 +24,6 @@ The format of a CLI application is not always suitable in certain scenarios, suc
 
 ### Will it record my note data?
 
-The website runs entirely locally, there is no backend server. If you are still concerned you can check out the source code [joplin-batch-web](https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-batch-web)
+The website runs entirely locally, there is no backend server. If you are still concerned you can check out the source code [joplin-batch-web](https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-batch-web)
 
 <!-- TODO -->

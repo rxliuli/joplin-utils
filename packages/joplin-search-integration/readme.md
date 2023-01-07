@@ -1,6 +1,6 @@
 # Joplin Search Integration
 
-> [GitHub](https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-search-integration),
+> [GitHub](https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-search-integration),
 > [Chrome Store](https://chrome.google.com/webstore/detail/joplin-search-integration/mcjkdcifkhjenpfjacnbhpdcnjknjkhj)
 
 ## Introduction
