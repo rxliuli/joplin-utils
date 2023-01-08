@@ -1,5 +1,5 @@
 import browser from 'webextension-polyfill'
-import { fromMarkdown, Link, Image, selectAll, toHtml } from '@liuli-util/markdown-util'
+import { fromMarkdown, Link, Image, selectAll, toHtml, breaksFromMarkdown } from '@liuli-util/markdown-util'
 import { config, noteApi } from 'joplin-api'
 import { loadConfig, LocalConfig } from '../utils/loadConfig'
 
@@ -28,7 +28,9 @@ async function getNoteData(id: string): Promise<NoteData | undefined> {
 }
 
 function renderNoteToHtml(note: NoteData): string {
-  const root = fromMarkdown(note.content)
+  const root = fromMarkdown(note.content, {
+    mdastExtensions: [breaksFromMarkdown()],
+  })
   const f = (item: Image | Link): boolean => item.url.startsWith(':/')
   const images = (selectAll('image', root) as Image[]).filter(f)
   images.forEach((item) => {

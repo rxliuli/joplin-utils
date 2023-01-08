@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@ffflorian/jszip-cli": "^3.1.6",
-    "@liuli-util/markdown-util": "^0.5.0",
+    "@liuli-util/markdown-util": "^0.6.0",
     "@liuli-util/vite-plugin-chrome-extension-dist-firefox": "workspace:*",
     "@types/minimatch": "^5.1.2",
     "@types/node": "^18.11.17",
