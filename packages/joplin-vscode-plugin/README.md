@@ -1,6 +1,6 @@
 # joplin-vscode-plugin
 
-> [![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin) VSCode Plugin Marketplace](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin), [Website](https://joplin-utils.rxliuli.com/zh/joplin-vscode-plugin/)
+> [![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin) VSCode Plugin Marketplace](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin), [Website](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/)
 
 ## Overview
 
