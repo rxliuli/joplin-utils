@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.1.1
+
+- fix: Fixed the error that baseUrl was not used when checked joplin clipper service
+
 ## 1.1.0
 
 - feat: add a menu item for searching in notebooks
