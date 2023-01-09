@@ -1,7 +1,0 @@
-# Project exclude paths
-../../.idea
-/node_modules/
-docs
-dist/
-.env.local
-.env.*.local

@@ -1,6 +1,2 @@
 packages:
-  - 'apps/*'
-  - 'libs/*'
-  - 'examples/*'
-  - 'libs/joplin-plugin-cli/examples/*'
-  - 'website'
+  - 'packages/*'
