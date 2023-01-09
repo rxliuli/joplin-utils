@@ -18,7 +18,7 @@ body:
       label: 发生错误的工具/包
       options:
         - joplin-vscode-plugin
-        - joplin-blog
+        - joplin-search-integration
         - joplin-batch-web
         - joplin-api
         - joplin-search-integration

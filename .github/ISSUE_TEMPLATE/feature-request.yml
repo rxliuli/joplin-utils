@@ -12,7 +12,7 @@ body:
       description: What version of our software are you running?
       options:
         - joplin-vscode-plugin
-        - joplin-blog
+        - joplin-search-integration
         - joplin-batch-web
         - joplin-api
     validations:
