@@ -6,13 +6,14 @@ import { createJoplinElement, renderList } from '../utils/render'
 export const urls: string[] = []
 
 export function searx(urls: string[]): SearchPlugin {
+  const q = () => getSearchQuery(['q']) ?? (document.getElementById('q') as HTMLInputElement)?.value
   return {
     match(url) {
-      return urls.some((m) => micromatch(url.href, m)) && url.pathname === '/search' && !!url.searchParams.get('q')
+      return urls.some((m) => micromatch(url.href, m)) && !!q()
     },
     name: 'searx',
     getQuery() {
-      return getSearchQuery(['q'])
+      return q()
     },
     render(list) {
       const $sidebar = document.getElementById('sidebar')
