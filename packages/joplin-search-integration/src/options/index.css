@@ -76,13 +76,17 @@ html[data-theme='light'] .note .panel .icon {
 }
 
 html[data-theme='light'] .settings {
-  --border-color: #58a6ff;
-  --outline-color: #58a6ff;
+  --border-color: #dddddd;
+  --background-inputs: #fcfcfc;
+  --focus-highlight: #b8b8b8;
+  --text: #1c1d1e;
 }
 
 html[data-theme='dark'] .settings {
-  --border-color: #30363d;
-  --outline-color: #58a6ff;
+  --border-color: #444;
+  --background-inputs: #222;
+  --focus-highlight: #888;
+  --text: #efefef;
 }
 
 .settings label {
@@ -103,7 +107,18 @@ html[data-theme='dark'] .settings {
   border: 1px solid var(--border-color);
   border-radius: 6px;
   box-shadow: var(--border-color);
-  outline-color: var(--outline-color);
+  outline: none;
+  background-color: var(--background-inputs);
+  color: var(--text);
+}
+
+.settings input:hover,
+.settings input:focus,
+.settings select:hover,
+.settings select:focus,
+.settings textarea:hover,
+.settings textarea:focus {
+  border-color: var(--focus-highlight);
 }
 
 .settings textarea {

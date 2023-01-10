@@ -14,7 +14,7 @@ function render() {
       </div>
       <div>
         <label for="searxUrls">SearxUrls</label>
-        <textarea name="searxUrls" id="searxUrls"></textarea>
+        <textarea name="searxUrls" id="searxUrls" rows="7" cols="66"></textarea>
       </div>
       <div>
         <label for="theme">Theme</label>
