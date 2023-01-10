@@ -3,11 +3,11 @@ import { loadConfig } from '../options/utils/loadConfig'
 import { google } from './plugins/google'
 import { SearchPlugin } from './plugins/plugin'
 import { trimTitleStart } from './utils/trim'
-import minimatch from 'minimatch'
 import { bing } from './plugins/bing'
 import { baidu } from './plugins/baidu'
 import { duckduckgo } from './plugins/duckduckgo'
 import browser from 'webextension-polyfill'
+import { searx } from './plugins/searx'
 
 const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo()]
 
@@ -31,12 +31,13 @@ async function search(keyword: string) {
 }
 
 async function main() {
+  const c = await loadConfig()
+  plugins.push(searx(c.searxUrls))
   const plugin = findPlugin()
   if (!plugin) {
     console.info('找不到合适的插件')
     return
   }
-  const c = await loadConfig()
   if (!c.token) {
     alert('Joplin Search Integration: Please configure the token first')
     browser.runtime.sendMessage({

@@ -89,10 +89,12 @@ html[data-theme='dark'] .settings {
   display: block;
   margin-bottom: 8px;
   text-align: left;
+  font-size: 14px;
 }
 
 .settings input,
-.settings select {
+.settings select,
+.settings textarea {
   margin-top: 4px;
   margin-bottom: 16px;
   padding: 5px 12px;
@@ -102,6 +104,10 @@ html[data-theme='dark'] .settings {
   border-radius: 6px;
   box-shadow: var(--border-color);
   outline-color: var(--outline-color);
+}
+
+.settings textarea {
+  max-width: 100%;
 }
 
 .settings {

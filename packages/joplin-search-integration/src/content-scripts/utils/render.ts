@@ -33,6 +33,7 @@ export function createJoplinElement() {
   }
   .joplin-root ul {
     list-style-type: none;
+    padding-left: 0;
   }
   
   .joplin-root ul li {
