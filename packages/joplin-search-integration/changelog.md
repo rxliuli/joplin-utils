@@ -1,5 +1,9 @@
 # changelog
 
+## 0.3.2
+
+- feat: automatic recognition of searx search engine
+
 ## 0.3.1
 
 - feat: automatically open new tabs in nearby locations
