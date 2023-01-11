@@ -9,18 +9,21 @@ Joplin api 的 js 封装，使用 ts 编写，提供完整的类型定义，包�
 ## 快速启动
 
 ```ts
-config.port = 27583
+import { config, noteApi } from 'joplin-api'
+
+config.baseUrl = 'http://127.0.0.1:27583'
 config.token = '***'
 const res = await noteApi.list()
 console.log(res)
 ```
 
-> 更多示例参考: <https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-api/test>
+> 更多示例参考: <https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-api/src/api/__tests__>
 
 ## API 参考
 
 | 对象                | 描述                                              |
 | ------------------- | ------------------------------------------------- |
+| `eventApi`          | 事件相关的 api，例如获取笔记修改历史              |
 | `folderApi`         | 目录相关 api，例如获取目录树                      |
 | `folderExtApi`      | 目录扩展 api，例如移动目录                        |
 | `joplinApi`         | joplin 基础 api，例如检查 joplin web 服务是否打开 |
@@ -34,7 +37,7 @@ console.log(res)
 | `config`            | 全局 joplin web clipper 配置                      |
 | `PageUtil`          | 分页相关的静态工具类，例如获取全量笔记列表        |
 
-## 约定俗成
+## 约定俗称
 
 - 使用 class 封装 API，例如 note 相关的 API 被封装在 `NoteApi` 类中。
 - 同一个功能含义保持统一的命名。例如笔记列表是 `NoteApi.list`。以下为完整对照表
@@ -52,11 +55,3 @@ console.log(res)
 ## 一些问题
 
 - `get` 方法不应该报错，如果不存在应该返回 `null` 而非抛出异常
-- 缺少常见的 `rename/move` 函数，而只有更加通用的 `update` -- 已实现 `NoteExtApi/FolderExtApi`
-
-## 其他
-
-两种方式
-
-1. 全局配置
-2. 生成新的实例

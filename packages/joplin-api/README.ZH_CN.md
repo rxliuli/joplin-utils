@@ -17,7 +17,7 @@ const res = await noteApi.list()
 console.log(res)
 ```
 
-> 更多示例参考: <https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-api/test>
+> 更多示例参考: <https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-api/src/api/__tests__>
 
 ## API 参考
 
@@ -55,11 +55,3 @@ console.log(res)
 ## 一些问题
 
 - `get` 方法不应该报错，如果不存在应该返回 `null` 而非抛出异常
-- 缺少常见的 `rename/move` 函数，而只有更加通用的 `update`
-
-## 其他
-
-两种方式
-
-1. 全局配置
-2. 生成新的实例

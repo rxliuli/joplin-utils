@@ -10,18 +10,21 @@ document.
 ## Quick Start
 
 ```ts
-config.port = 27583
+import { config, noteApi } from 'joplin-api'
+
+config.baseUrl = 'http://127.0.0.1:27583'
 config.token = '***'
 const res = await noteApi.list()
 console.log(res)
 ```
 
-> More examples reference: <https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-api/test>
+> More examples reference: <https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-api/src/api/__tests__>
 
 ## API Reference
 
 | Object              | Description                                                                       |
 | ------------------- | --------------------------------------------------------------------------------- |
+| `eventApi`          | event-related api, such as getting note modification history                      |
 | `folderApi`         | Directory-related api, such as getting directory tree                             |
 | `folderExtApi`      | Directory extension api, such as mobile directory                                 |
 | `joplinApi`         | joplin basic api, such as checking whether joplin web service is open             |
@@ -52,8 +55,3 @@ console.log(res)
 - There are some special cases, such as APIs involving multiple entities, the naming is
   generally `operation entity + by + according to entity`, for example, the API to get the tag list according to the
   note id is `noteApi.tagsById`
-
-## some problems
-
-- The `get` method should not report an error, if it does not exist it should return `null` instead of throwing an
-  exception
