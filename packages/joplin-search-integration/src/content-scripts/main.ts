@@ -9,7 +9,7 @@ import { duckduckgo } from './plugins/duckduckgo'
 import browser from 'webextension-polyfill'
 import { searx } from './plugins/searx'
 
-const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo()]
+const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo(), searx()]
 
 function findPlugin() {
   const u = new URL(location.href)
@@ -31,13 +31,12 @@ async function search(keyword: string) {
 }
 
 async function main() {
-  const c = await loadConfig()
-  plugins.push(searx(c.searxUrls))
   const plugin = findPlugin()
   if (!plugin) {
     console.info('找不到合适的插件')
     return
   }
+  const c = await loadConfig()
   if (!c.token) {
     alert('Joplin Search Integration: Please configure the token first')
     browser.runtime.sendMessage({

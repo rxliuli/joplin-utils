@@ -13,10 +13,6 @@ function render() {
         <input type="password" name="token" id="token" />
       </div>
       <div>
-        <label for="searxUrls">SearxUrls</label>
-        <textarea name="searxUrls" id="searxUrls" rows="7" cols="66"></textarea>
-      </div>
-      <div>
         <label for="theme">Theme</label>
         <select name="theme" id="theme">
           <option value="light">Light</option>
@@ -37,14 +33,12 @@ async function main() {
   const $baseUrl = document.querySelector('#baseUrl')! as HTMLInputElement
   const $token = document.querySelector('#token')! as HTMLInputElement
   const $theme = document.querySelector('#theme')! as HTMLSelectElement
-  const $searxUrls = document.querySelector('#searxUrls')! as HTMLSelectElement
   const c = await loadConfig()
   $baseUrl.value = c.baseUrl
   $token.value = c.token ?? ''
   ;($theme.querySelector(`[value="${c.theme}"]`) as HTMLOptionElement).selected = true
-  $searxUrls.value = c.searxUrls.join('\n')
   setTheme(c.theme)
-  const list = ['baseUrl', 'token', 'theme', 'searxUrls']
+  const list = ['baseUrl', 'token', 'theme']
   const handle = async (k: string, value: string) => {
     await browser.storage.local.set({ [k]: value })
     if (k === 'theme') {
@@ -52,7 +46,6 @@ async function main() {
     }
   }
   const map: Record<string, (ev: Event) => any> = {
-    searxUrls: (ev: Event) => (ev.target as HTMLInputElement).value.split('\n'),
     default: (ev: Event) => (ev.target as HTMLInputElement).value,
   }
   list.forEach((k) => {
