@@ -1,5 +1,9 @@
 # changelog
 
+## 0.3.3
+
+- fix: Fixed a bug where note citation links were not handled correctly
+
 ## 0.3.2
 
 - feat: automatic recognition of searx search engine
