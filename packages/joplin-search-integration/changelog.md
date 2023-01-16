@@ -1,5 +1,9 @@
 # changelog
 
+## 0.3.4
+
+- chore: Update the extension icon to avoid being mistaken for the official extension of joplin
+
 ## 0.3.3
 
 - fix: Fixed a bug where note citation links were not handled correctly
