@@ -15,10 +15,10 @@
   "host_permissions": ["http://localhost:27583/*", "http://localhost:41184/*"],
   "permissions": ["storage"],
   "icons": {
-    "16": "assets/icon-16.png",
-    "32": "assets/icon-32.png",
-    "48": "assets/icon-48.png",
-    "128": "assets/icon-128.png"
+    "16": "assets/16.png",
+    "32": "assets/32.png",
+    "48": "assets/48.png",
+    "128": "assets/128.png"
   },
   "options_page": "options/index.html"
 }
