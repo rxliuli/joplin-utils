@@ -1,5 +1,9 @@
 # changelog
 
+## 0.3.5
+
+- feat: the timing of rendering in advance to speed up the display of content on the page
+
 ## 0.3.4
 
 - chore: Update the extension icon to avoid being mistaken for the official extension of joplin
