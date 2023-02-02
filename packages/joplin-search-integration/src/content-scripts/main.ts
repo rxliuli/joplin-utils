@@ -31,11 +31,13 @@ async function search(keyword: string) {
 }
 
 async function main() {
+  console.debug('load plugin')
   const plugin = findPlugin()
   if (!plugin) {
     console.info('找不到合适的插件')
     return
   }
+  console.debug('load config')
   const c = await loadConfig()
   if (!c.token) {
     alert('Joplin Search Integration: Please configure the token first')
@@ -47,19 +49,17 @@ async function main() {
   }
   config.token = c.token
   config.baseUrl = c.baseUrl
+  console.debug('get query')
   const keywrod = plugin.getQuery()
   if (!keywrod) {
     throw new Error('未能解析搜索关键字')
   }
+  console.debug('search notes')
   const list = await search(keywrod)
-  console.log('search: ', keywrod, list)
-  if (document.readyState === 'complete') {
-    plugin.render(list)
-  } else {
-    window.addEventListener('load', () => {
-      plugin.render(list)
-    })
-  }
+  console.debug('search: ', keywrod, list)
+  console.debug('render start')
+  plugin.render(list)
+  console.debug('render end')
 }
 
 main()
