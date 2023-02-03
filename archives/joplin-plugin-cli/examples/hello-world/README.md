@@ -1,1 +1,0 @@
-# joplin-plugin-template

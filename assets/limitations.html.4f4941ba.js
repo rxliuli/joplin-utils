@@ -1,1 +1,0 @@
-const i=JSON.parse('{"key":"v-0829310c","path":"/joplin-vscode-plugin/guide/limitations.html","title":"Limitations","lang":"en-US","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1673093773000,"contributors":[{"name":"rxliuli","email":"rxliuli@gmail.com","commits":1}]},"filePathRelative":"joplin-vscode-plugin/guide/limitations.md"}');export{i as data};
