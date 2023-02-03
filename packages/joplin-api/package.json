@@ -22,7 +22,7 @@
     "dev": "tsup src/index.ts src/node-polyfill.ts --format esm,cjs --dts --watch",
     "docs-build": "rimraf docs && typedoc",
     "docs-deploy": "pnpm docs-build && gh-pages -d docs -e /api/joplin-api --add",
-    "docs:dev": "pnpm docs-build && live-server docs",
+    "docs-dev": "pnpm docs-build && live-server docs",
     "prepublishOnly": "pnpm build",
     "setup": "pnpm build",
     "test": "vitest run"
