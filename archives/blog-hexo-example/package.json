@@ -1,0 +1,41 @@
+{
+  "private": true,
+  "name": "blog-hexo-example",
+  "version": "0.2.0",
+  "type": "module",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "scripts": {
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "liuli-cli deploy",
+    "gen": "joplin-blog blog",
+    "server": "hexo server"
+  },
+  "devDependencies": {
+    "hexo": "^6.3.0",
+    "hexo-asset-link": "^2.2.1",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-index": "^2.0.0",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^5.0.0",
+    "hexo-renderer-stylus": "^2.1.0",
+    "hexo-server": "^3.0.0",
+    "hexo-theme-landscape": "^0.0.3",
+    "joplin-blog": "workspace:*",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.4"
+  },
+  "deploy": {
+    "type": "gh-pages",
+    "dist": "public",
+    "dest": "blog/hexo"
+  },
+  "hexo": {
+    "version": "5.4.0"
+  }
+}

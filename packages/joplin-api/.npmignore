@@ -1,0 +1,48 @@
+# git ignore
+.DS_Store
+node_modules/
+.rpt2_cache/
+.nyc_output
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.history
+docs
+.npmignore
+
+# Editor directories and files
+.idea
+.vscode
+.history
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+package-lock.json
+.docz
+
+# build dist
+*.tgz
+
+## npm ignore
+
+.github/
+.rpt2_cache/
+build/
+docs/
+test/
+*.test.ts
+.gitignore
+.huskyrc.js
+.lintstagedrc
+.nojekyll
+.prettierrc.json
+CNAME
+CONTRIBUTING.md
+jest.config.js
+LICENSE
+readme.md
+readme-zh-cn.md
+typedoc.json
+.cache
+.idea

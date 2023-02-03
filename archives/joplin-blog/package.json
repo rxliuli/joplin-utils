@@ -1,0 +1,52 @@
+{
+  "name": "joplin-blog",
+  "version": "0.9.4",
+  "license": "MIT",
+  "type": "module",
+  "bin": "./bin.js",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --shims && tsup src/bin.ts --format esm --target esnext",
+    "dev": "tsup-node src/index.ts --format esm,cjs --dts --shims && tsup src/bin.ts --format esm --target esnext --watch",
+    "gen-i18n": "i18next-dts-gen --dirs src/i18n",
+    "setup": "pnpm run gen-i18n && pnpm run build",
+    "start": "tsx src/bin.ts"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "@liuli-util/array": "^3.5.0",
+    "@liuli-util/async": "^3.6.0",
+    "@liuli-util/fs-extra": "^0.1.0",
+    "@liuli-util/i18next-util": "^0.4.1",
+    "@liuli-util/markdown-util": "^0.2.3",
+    "@liuli-util/object": "^3.5.1",
+    "@liuli-util/tree": "^3.6.0",
+    "comlink": "^4.3.1",
+    "commander": "^9.4.1",
+    "dayjs": "^1.11.5",
+    "figlet": "^1.5.2",
+    "form-data": "^4.0.0",
+    "joplin-api": "workspace:^",
+    "node-fetch": "^3.2.10",
+    "ora": "^6.1.2",
+    "os-locale": "^6.0.2",
+    "yaml": "^2.1.1"
+  },
+  "devDependencies": {
+    "@liuli-util/i18next-dts-gen": "^0.6.3",
+    "@types/figlet": "^1.5.5",
+    "@types/node": "^18.7.23",
+    "envfile": "^6.18.0",
+    "tsup": "^6.2.3",
+    "tsx": "^3.9.0",
+    "type-fest": "^3.0.0",
+    "typescript": "^4.8.4",
+    "vitest": "^0.23.4"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  }
+}

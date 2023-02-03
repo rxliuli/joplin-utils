@@ -1,0 +1,66 @@
+{
+  "name": "joplin-api",
+  "version": "0.5.1",
+  "description": "joplin ts/js data api",
+  "license": "mit",
+  "homepage": "https://joplin-utils.rxliuli.com/api/joplin-api",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-api"
+  },
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./src": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsup src/index.ts src/node-polyfill.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts src/node-polyfill.ts --format esm,cjs --dts --watch",
+    "docs-build": "rimraf docs && typedoc",
+    "docs-deploy": "pnpm docs-build && gh-pages -d docs -e /api/joplin-api --add",
+    "docs:dev": "pnpm docs-build && live-server docs",
+    "prepublishOnly": "pnpm build",
+    "setup": "pnpm build",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@liuli-util/object": "^3.5.0",
+    "query-string": "^7.1.1"
+  },
+  "devDependencies": {
+    "@liuli-util/eslint-config-ts": "^0.4.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^18.11.3",
+    "envfile": "^6.18.0",
+    "fetch-blob": "^3.2.0",
+    "formdata-polyfill": "^4.0.10",
+    "fs-extra": "^10.1.0",
+    "gh-pages": "^4.0.0",
+    "node-fetch": "^3.2.10",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.0",
+    "tsup": "^6.2.3",
+    "typedoc": "^0.23.19",
+    "typescript": "^4.8.4",
+    "vitest": "^0.23.4"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "deploy": {
+    "type": "gh-pages",
+    "dist": "docs",
+    "dest": "/api/joplin-api"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@liuli-util/eslint-config-ts"
+    ]
+  }
+}

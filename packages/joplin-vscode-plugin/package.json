@@ -1,0 +1,475 @@
+{
+  "name": "joplin-vscode-plugin",
+  "version": "1.1.1",
+  "description": "%package.description%",
+  "homepage": "https://joplin-utils.rxliuli.com/zh/joplin-vscode-plugin/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rxliuli/joplin-utils/tree/master/apps/joplin-vscode-plugin"
+  },
+  "main": "./dist/extension.js",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "release": "pnpm build && vsce package --no-dependencies",
+    "setup": "i18next-dts-gen -i src/i18n/"
+  },
+  "tsup": {
+    "entry": [
+      "src/extension.ts"
+    ],
+    "format": [
+      "cjs"
+    ],
+    "sourcemap": true,
+    "clean": true,
+    "shims": true,
+    "external": [
+      "vscode"
+    ]
+  },
+  "devDependencies": {
+    "@koa/cors": "^3.4.1",
+    "@koa/router": "^12.0.0",
+    "@liuli-util/array": "^3.5.0",
+    "@liuli-util/async": "^3.6.0",
+    "@liuli-util/fs-extra": "^0.1.0",
+    "@liuli-util/i18next-dts-gen": "^0.6.3",
+    "@liuli-util/i18next-util": "^0.4.1",
+    "@liuli-util/object": "^3.5.1",
+    "@liuli-util/tree": "^3.5.0",
+    "@types/koa": "^2.13.5",
+    "@types/koa__cors": "^3.3.0",
+    "@types/koa__router": "^12.0.0",
+    "@types/markdown-it": "^12.2.3",
+    "@types/mime-types": "^2.1.1",
+    "@types/node": "^16",
+    "@types/vscode": "^1.71.0",
+    "chokidar": "^3.5.3",
+    "cross-path-sort": "^1.0.0",
+    "envfile": "^6.18.0",
+    "fetch-blob": "^3.2.0",
+    "formdata-polyfill": "^4.0.10",
+    "joplin-api": "workspace:*",
+    "koa": "^2.13.4",
+    "markdown-it": "^13.0.1",
+    "mime-types": "^2.1.35",
+    "node-fetch": "^3.2.10",
+    "node-html-parser": "^6.1.1",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.4",
+    "utility-types": "^3.10.0",
+    "vitest": "^0.23.4",
+    "winston": "^3.8.2"
+  },
+  "engines": {
+    "vscode": "^1.71.0"
+  },
+  "activationEvents": [
+    "onView:joplin",
+    "onUri",
+    "onCommand:joplinNote.search"
+  ],
+  "categories": [
+    "Notebooks"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "joplin-note",
+          "title": "Joplin",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "joplin",
+        "contents": "%viewsWelcome.joplin-note%"
+      }
+    ],
+    "views": {
+      "joplin-note": [
+        {
+          "id": "joplin",
+          "name": "%views.joplin-note.joplin-note%"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "joplinNote.refreshNoteList",
+        "title": "%commands.joplinNote.refreshNoteList%",
+        "icon": {
+          "light": "resources/light/refresh.svg",
+          "dark": "resources/dark/refresh.svg"
+        },
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.createFolder",
+        "title": "%commands.joplinNote.createFolder%",
+        "icon": {
+          "light": "resources/light/new-folder.svg",
+          "dark": "resources/dark/new-folder.svg"
+        },
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.createNote",
+        "title": "%commands.joplinNote.createNote%",
+        "icon": {
+          "light": "resources/light/new-file.svg",
+          "dark": "resources/dark/new-file.svg"
+        },
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.rename",
+        "title": "%commands.joplinNote.rename%",
+        "icon": {
+          "light": "resources/light/edit.svg",
+          "dark": "resources/dark/edit.svg"
+        },
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.cut",
+        "title": "%commands.joplinNote.cut%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.paste",
+        "title": "%commands.joplinNote.paste%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.remove",
+        "title": "%commands.joplinNote.remove%",
+        "icon": {
+          "light": "resources/light/trash.svg",
+          "dark": "resources/dark/trash.svg"
+        },
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.manageTags",
+        "title": "%commands.joplinNote.manageTags%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.createTag",
+        "title": "%commands.joplinNote.createTag%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.removeTag",
+        "title": "%commands.joplinNote.removeTag%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.copyLink",
+        "title": "%commands.joplinNote.copyLink%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.toggleTodoState",
+        "title": "%commands.joplinNote.toggleTodoState%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.search",
+        "title": "%commands.joplinNote.search%",
+        "icon": {
+          "light": "resources/light/search.svg",
+          "dark": "resources/dark/search.svg"
+        },
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.uploadImageFromClipboard",
+        "title": "%commands.joplinNote.uploadImageFromClipboard%",
+        "when": "resourceLangId == markdown && resourceFilename =~ /^edit-.*\\.md/ && editorTextFocus",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.uploadImageFromClipboard",
+        "title": "%commands.joplinNote.uploadImageFromClipboard%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.uploadImageFromExplorer",
+        "title": "%commands.joplinNote.uploadImageFromExplorer%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.uploadFileFromExplorer",
+        "title": "%commands.joplinNote.uploadFileFromExplorer%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.createResource",
+        "title": "%commands.joplinNote.createResource%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.removeResource",
+        "title": "%commands.joplinNote.removeResource%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.showCurrentlyOpenNote",
+        "title": "%commands.joplinNote.showCurrentlyOpenNote%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.showResources",
+        "title": "%commands.joplinNote.showResources%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.showLogFileDir",
+        "title": "%commands.joplin.openLogFileDir%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.insertNoteLink",
+        "title": "%commands.joplinNote.insertNoteLink%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.showLinkThisNotes",
+        "title": "%commands.joplinNote.showLinkThisNotes%",
+        "category": "Joplin"
+      },
+      {
+        "command": "joplinNote.showThisNoteLinks",
+        "title": "%commands.joplinNote.showThisNoteLinks%",
+        "category": "Joplin"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "joplinNote.refreshNoteList",
+          "when": "view == joplin",
+          "group": "navigation"
+        },
+        {
+          "command": "joplinNote.createFolder",
+          "when": "view == joplin",
+          "group": "navigation"
+        },
+        {
+          "command": "joplinNote.search",
+          "when": "view == joplin",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "joplinNote.createFolder",
+          "when": "view == joplin && viewItem == joplinNote.folder",
+          "group": "joplinNote@1"
+        },
+        {
+          "command": "joplinNote.createNote",
+          "when": "view == joplin && viewItem == joplinNote.folder",
+          "group": "joplinNote@2"
+        },
+        {
+          "command": "joplinNote.rename",
+          "when": "view == joplin",
+          "group": "joplinNote@3"
+        },
+        {
+          "command": "joplinNote.remove",
+          "when": "view == joplin",
+          "group": "joplinNote@4"
+        },
+        {
+          "command": "joplinNote.copyLink",
+          "when": "view == joplin && viewItem != joplinNote.folder",
+          "group": "joplinNote@5"
+        },
+        {
+          "command": "joplinNote.toggleTodoState",
+          "when": "view == joplin && viewItem != joplinNote.folder && viewItem != joplinNote.note",
+          "group": "joplinNote@6"
+        },
+        {
+          "command": "joplinNote.manageTags",
+          "when": "view == joplin && viewItem != joplinNote.folder",
+          "group": "joplinNote@7"
+        },
+        {
+          "command": "joplinNote.cut",
+          "when": "view == joplin",
+          "group": "joplinNote@8"
+        },
+        {
+          "command": "joplinNote.paste",
+          "when": "view == joplin && viewItem == joplinNote.folder",
+          "group": "joplinNote@9"
+        },
+        {
+          "command": "joplinNote.search",
+          "when": "view == joplin && viewItem == joplinNote.folder",
+          "group": "joplinNote@10"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "joplinNote.uploadImageFromClipboard",
+          "when": "resourceLangId == markdown && resourceDirname =~ /\\.tempNote$/ && editorTextFocus",
+          "group": "joplinNote@1"
+        },
+        {
+          "command": "joplinNote.uploadImageFromExplorer",
+          "when": "resourceLangId == markdown && resourceDirname =~ /\\.tempNote$/ && editorTextFocus",
+          "group": "joplinNote@2"
+        },
+        {
+          "command": "joplinNote.uploadFileFromExplorer",
+          "when": "resourceLangId == markdown && resourceDirname =~ /\\.tempNote$/ && editorTextFocus",
+          "group": "joplinNote@3"
+        },
+        {
+          "command": "joplinNote.createResource",
+          "when": "resourceLangId == markdown && resourceDirname =~ /\\.tempNote$/ && editorTextFocus",
+          "group": "joplinNote@4"
+        },
+        {
+          "command": "joplinNote.manageTags",
+          "when": "view == joplin && viewItem != joplinNote.folder",
+          "group": "joplinNote@7"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "workbench.view.extension.joplin-note",
+        "key": "ctrl+j ctrl+j",
+        "when": "focusedView != joplin"
+      },
+      {
+        "command": "workbench.action.toggleSidebarVisibility",
+        "key": "ctrl+j ctrl+j",
+        "when": "focusedView == joplin"
+      },
+      {
+        "key": "f2",
+        "command": "joplinNote.rename",
+        "when": "focusedView == joplin"
+      },
+      {
+        "key": "delete",
+        "command": "joplinNote.remove",
+        "when": "focusedView == joplin"
+      },
+      {
+        "command": "joplinNote.uploadImageFromClipboard",
+        "key": "ctrl+alt+u",
+        "mac": "cmd+alt+u",
+        "when": "editorTextFocus && editorLangId == markdown"
+      },
+      {
+        "command": "joplinNote.uploadImageFromExplorer",
+        "key": "ctrl+alt+e",
+        "mac": "cmd+alt+e",
+        "when": "editorTextFocus && editorLangId == markdown"
+      },
+      {
+        "command": "joplinNote.uploadFileFromExplorer",
+        "key": "ctrl+alt+shift+e",
+        "mac": "cmd+alt+shift+e",
+        "when": "editorTextFocus && editorLangId == markdown"
+      },
+      {
+        "command": "joplinNote.search",
+        "key": "ctrl+j ctrl+o"
+      },
+      {
+        "command": "joplinNote.createResource",
+        "key": "ctrl+j ctrl+i"
+      },
+      {
+        "command": "joplinNote.manageTags",
+        "key": "ctrl+j ctrl+m"
+      },
+      {
+        "command": "joplinNote.showResources",
+        "key": "ctrl+j ctrl+l"
+      }
+    ],
+    "configuration": {
+      "title": "joplin",
+      "properties": {
+        "joplin.token": {
+          "type": "string",
+          "description": "%configuration.joplin.token%"
+        },
+        "joplin.baseUrl": {
+          "type": "string",
+          "default": "http://localhost:41184",
+          "description": "%configuration.joplin.baseUrl%"
+        },
+        "joplin.deleteConfirm": {
+          "type": "boolean",
+          "default": true,
+          "description": "%configuration.joplin.deleteConfirm%"
+        },
+        "joplin.sortNotes": {
+          "type": "boolean",
+          "default": false,
+          "description": "%configuration.joplin.sortNotes%"
+        },
+        "joplin.sortNotesType": {
+          "type": "string",
+          "default": "alphabetical",
+          "description": "%configuration.joplin.sortNotesType%",
+          "enum": [
+            "default",
+            "alphabetical"
+          ],
+          "enumDescriptions": [
+            "%configuration.joplin.sortNotesTypeDefault%",
+            "%configuration.joplin.sortNotesTypeAlphabetical%"
+          ]
+        },
+        "joplin.sortOrder": {
+          "type": "string",
+          "default": "asc",
+          "description": "%configuration.joplin.sortOrder%",
+          "enum": [
+            "asc",
+            "desc"
+          ],
+          "enumDescriptions": [
+            "%configuration.joplin.sortNotesOrderAsc%",
+            "%configuration.joplin.sortNotesOrderDesc%"
+          ]
+        }
+      }
+    },
+    "markdown.markdownItPlugins": true,
+    "markdown.previewStyles": [
+      "./resources/css/tag-preview.css"
+    ],
+    "markdown.previewScripts": [],
+    "capabilities": {
+      "hoverProvider": "true",
+      "definitionProvider": "true"
+    }
+  },
+  "displayName": "joplin-vscode-plugin",
+  "extensionKind": [
+    "ui"
+  ],
+  "icon": "resources/icon.png",
+  "publisher": "rxliuli",
+  "sync": [
+    "jest"
+  ]
+}

@@ -1,0 +1,26 @@
+node_modules/
+.rpt2_cache/
+
+# Editor directories and files
+.idea
+#.vscode
+.history
+
+# build dist
+*.tgz
+dist/
+**/__tests__/temp
+.ultra.cache.json
+*.jpl
+
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+#!.yarn/versions
+.pnp.*
+.yarn-cache.json
+.temp
+.cache/
+.env*.local
