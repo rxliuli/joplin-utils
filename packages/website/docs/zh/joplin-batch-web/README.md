@@ -17,7 +17,9 @@
 3. 在 [设置](https://joplin-utils.rxliuli.com/web/joplin-batch-web/#/settings) 页面填写配置
 4. 导航到相关功能页面
 
-![guide](/images/joplin-batch-web-guide.gif)
+![guide](https://github.com/rxliuli/joplin-utils/raw/master/packages/joplin-batch-web/docs/images/guide.gif)
+
+> 如果您希望参与开发或在本地运行，可以参考 [参与项目](./docs/zh/dev.md)
 
 ## FAQ
 
@@ -28,7 +30,3 @@ cli 的形式不太适合这种场景，例如需要预览异常的附件或笔�
 ### 它会记录我的笔记数据么
 
 网站是全本地工作的，没有后端服务器，如果你仍然担忧，可以检查源代码 [joplin-batch-web](https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-batch-web)
-
-### 似乎没有正确请求 joplin clipper api，token=undefined
-
-请检查是否设置了 token/port，具体地址在 [设置页面](https://joplin-utils.rxliuli.com/web/joplin-batch-web/#/zh-CN/settings)。

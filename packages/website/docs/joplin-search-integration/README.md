@@ -7,8 +7,8 @@
 
 When using search, related Joplin notes are also displayed in the search results.
 
-![search result](/images/joplin-search-integration-search.png)
-![note preview](/images/joplin-search-integration-detail.png)
+![search result](https://joplin-utils.rxliuli.com/images/joplin-search-integration-search.png)
+![note preview](https://joplin-utils.rxliuli.com/images/joplin-search-integration-detail.png)
 
 Currently supported search engines include
 
@@ -16,6 +16,8 @@ Currently supported search engines include
 - Bing
 - Baidu
 - DuckDuckGo
+- Searx
+- MetaGer
 
 ## FAQ
 

@@ -2,6 +2,7 @@
   "name": "website",
   "version": "0.1.0",
   "scripts": {
+    "setup": "cp ../joplin-search-integration/readme.md ./docs/joplin-search-integration/README.md && cp ../joplin-search-integration/readme.zh-cn.md ./docs/zh/joplin-search-integration/README.md && cp ../joplin-batch-web/README.md ./docs/joplin-batch-web/README.md && cp ../joplin-batch-web/README.zh-CN.md ./docs/zh/joplin-batch-web/README.md",
     "docs-dev": "vuepress dev docs",
     "docs-build": "vuepress build docs",
     "docs-deploy": "gh-pages -d docs/.vuepress/dist --add --dotfiles"

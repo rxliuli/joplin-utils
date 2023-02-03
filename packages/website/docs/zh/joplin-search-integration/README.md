@@ -7,8 +7,8 @@
 
 使用搜索时，相关的乔普林笔记也会显示在搜索结果中。
 
-![search result](/images/joplin-search-integration-search.png)
-![note preview](/images/joplin-search-integration-detail.png)
+![search result](https://joplin-utils.rxliuli.com/images/joplin-search-integration-search.png)
+![note preview](https://joplin-utils.rxliuli.com/images/joplin-search-integration-detail.png)
 
 目前支持的搜索引擎包括
 
@@ -16,6 +16,8 @@
 - Bing
 - Baidu
 - DuckDuckGo
+- Searx
+- MetaGer
 
 ## 常见问题
 
