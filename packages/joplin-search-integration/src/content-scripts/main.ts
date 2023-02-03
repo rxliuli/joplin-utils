@@ -8,8 +8,9 @@ import { baidu } from './plugins/baidu'
 import { duckduckgo } from './plugins/duckduckgo'
 import browser from 'webextension-polyfill'
 import { searx } from './plugins/searx'
+import { metagar } from './plugins/metagar'
 
-const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo(), searx()]
+const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo(), searx(), metagar()]
 
 function findPlugin() {
   const u = new URL(location.href)
