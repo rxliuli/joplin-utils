@@ -1,5 +1,9 @@
 # changelog
 
+## 0.4.0
+
+- feat: support metagar search engine, ref: <https://github.com/rxliuli/joplin-utils/issues/70>
+
 ## 0.3.5
 
 - feat: the timing of rendering in advance to speed up the display of content on the page

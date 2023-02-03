@@ -16,6 +16,8 @@ Currently supported search engines include
 - Bing
 - Baidu
 - DuckDuckGo
+- Searx
+- MetaGer
 
 ## FAQ
 

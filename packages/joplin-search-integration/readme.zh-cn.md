@@ -16,6 +16,8 @@
 - Bing
 - Baidu
 - DuckDuckGo
+- Searx
+- MetaGer
 
 ## 常见问题
 
