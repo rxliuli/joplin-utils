@@ -1,0 +1,1 @@
+import{w as a}from"./index.ed2f3d4d.js";class m{static warpOnEvent(n){const s={},t=a(0).then(()=>new Promise((e,r)=>{try{e(n(s))}catch(o){r(o)}}));return Reflect.set(t,"on",(e,r)=>(s[e]=r,t)),t}}export{m as P};
