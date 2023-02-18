@@ -1,0 +1,1 @@
+const i=JSON.parse('{"key":"v-15f08efa","path":"/joplin-search-integration/privacy.html","title":"Privacy Policy","lang":"en-US","frontmatter":{},"excerpt":"","headers":[],"git":{"updatedTime":1676726916000,"contributors":[{"name":"rxliuli","email":"rxliuli@gmail.com","commits":1}]},"filePathRelative":"joplin-search-integration/privacy.md"}');export{i as data};
