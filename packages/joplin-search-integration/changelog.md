@@ -1,5 +1,9 @@
 # changelog
 
+## 0.5.0
+
+- feat: support you.com search engine, ref: <https://discourse.joplinapp.org/t/28864/42>
+
 ## 0.4.0
 
 - feat: support metagar search engine, ref: <https://github.com/rxliuli/joplin-utils/issues/70>
