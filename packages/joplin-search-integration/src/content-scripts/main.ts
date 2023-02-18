@@ -1,8 +1,7 @@
-import { config, searchApi, TypeEnum } from 'joplin-api'
+import { config } from 'joplin-api'
 import { loadConfig } from '../options/utils/loadConfig'
 import { google } from './plugins/google'
 import { SearchPlugin } from './plugins/plugin'
-import { trimTitleStart } from './utils/trim'
 import { bing } from './plugins/bing'
 import { baidu } from './plugins/baidu'
 import { duckduckgo } from './plugins/duckduckgo'
@@ -10,26 +9,13 @@ import browser from 'webextension-polyfill'
 import { searx } from './plugins/searx'
 import { metagar } from './plugins/metagar'
 import { you } from './plugins/you'
+import { search } from './utils/search'
 
 const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo(), searx(), metagar(), you()]
 
 function findPlugin() {
   const u = new URL(location.href)
   return plugins.find((item) => item.match(u))
-}
-
-async function search(keyword: string) {
-  const res = await searchApi.search({
-    query: keyword,
-    type: TypeEnum.Note,
-    limit: 10,
-    fields: ['id', 'title'],
-    order_by: 'user_updated_time',
-  })
-  return res.items.map((item) => ({
-    ...item,
-    title: trimTitleStart(item.title),
-  }))
 }
 
 async function main() {
