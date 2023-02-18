@@ -9,8 +9,9 @@ import { duckduckgo } from './plugins/duckduckgo'
 import browser from 'webextension-polyfill'
 import { searx } from './plugins/searx'
 import { metagar } from './plugins/metagar'
+import { you } from './plugins/you'
 
-const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo(), searx(), metagar()]
+const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo(), searx(), metagar(), you()]
 
 function findPlugin() {
   const u = new URL(location.href)

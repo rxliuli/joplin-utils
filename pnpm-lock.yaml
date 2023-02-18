@@ -177,6 +177,7 @@ importers:
   packages/joplin-search-integration:
     specifiers:
       '@ffflorian/jszip-cli': ^3.1.6
+      '@liuli-util/async': ^3.6.0
       '@liuli-util/markdown-util': ^0.6.0
       '@liuli-util/vite-plugin-chrome-extension-dist-firefox': workspace:*
       '@primer/css': ^20.8.0
@@ -195,6 +196,7 @@ importers:
       web-ext: ^7.4.0
       webextension-polyfill: ^0.10.0
     dependencies:
+      '@liuli-util/async': 3.6.0
       '@primer/css': 20.8.0
       joplin-api: link:../joplin-api
       minimatch: 5.1.2

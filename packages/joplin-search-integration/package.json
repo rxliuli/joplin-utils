@@ -31,6 +31,7 @@
     "webextension-polyfill": "^0.10.0"
   },
   "dependencies": {
+    "@liuli-util/async": "^3.6.0",
     "@primer/css": "^20.8.0",
     "joplin-api": "workspace:^",
     "minimatch": "^5.1.2"
