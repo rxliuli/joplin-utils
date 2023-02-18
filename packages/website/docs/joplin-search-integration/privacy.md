@@ -1,17 +1,33 @@
 # Privacy Policy
 
-Thank you for using our Chrome extension. We take your personal data and privacy very seriously and are committed to protecting your personal information.
+This page informs you of our policies regarding the collection, use, and disclosure of personal data when using the joplin-search-integration extension and your choices with respect to that data.
 
-When you use our extension, we may collect some of your data and information, including but not limited to:
+We use your data to provide and improve the service. By using the service, you agree to the collection and use of information in accordance with this policy.
 
-Usage data, such as search keywords and browsing history
-Device and browser information, such as operating system, browser version, and IP address
-We collect this data and information for the purpose of improving the quality and performance of our extension and services, in order to better serve you.
+## Summary
 
-We promise not to share your personal data and information with third parties, except as required by law. We use strict security measures to protect your personal data and information from unauthorized access, use, or disclosure.
+- **We do not track the usage of the extension at all.**
+- **We never send information or extension settings outside of your browser.**
+- **By default, the extension only interacts with supported search engine websites.**
 
-If you have any privacy-related questions or concerns, please feel free to contact us, and we will do our best to answer your questions and address your concerns.
+## Data Storage
 
-Thank you for using our extension!
+We store some data permanently on your local device. This information is still available even if your browser is restarted.
 
-Please note that this is just a basic framework, and you should make appropriate modifications and additions based on your extension and data processing workflow.
+This data can only be accessed through the joplin-search-integration extension on your browser.
+
+The stored information may include:
+
+- Extension settings (such as joplin clipper service prot/token).
+
+The extension itself does not send any such information outside of your device.
+
+However, if you enable Chrome Sync, Firefox Sync, Edge Sync, or any other compatible browser data synchronization feature, this information may be sent by your browser to that service.
+
+## Data Collection
+
+This extension does not collect any data or send it to any remote servers.
+
+## Contact
+
+If you have any questions, please [open an issue](https://github.com/rxliuli/joplin-utils/issues).
