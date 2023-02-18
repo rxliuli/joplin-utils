@@ -121,6 +121,10 @@ export default defineUserConfig({
               link: '/joplin-search-integration/',
             },
             {
+              text: 'Privacy Policy',
+              link: '/joplin-search-integration/privacy',
+            },
+            {
               text: 'Chrome Store',
               link: 'https://chrome.google.com/webstore/detail/joplin-search-integration/mcjkdcifkhjenpfjacnbhpdcnjknjkhj',
             },
