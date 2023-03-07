@@ -18,7 +18,6 @@
 - DuckDuckGo
 - Searx
 - MetaGer
-- You
 
 ## 常见问题
 
@@ -26,13 +25,13 @@
 
 一般可以在 **工具 > 选项 > 网页剪辑器** 中看到
 
-![joplin web clipper](https://joplin-utils.rxliuli.com/images/joplin-search-integration-token-settings-source.png)
+![joplin web clipper](https://img.rxliuli.com/20210316092547.png)
 
 ### 在 Brave 浏览器中没有搜索结果
 
 实际上是 Brave 会默认阻止其他域的资源，所以在 Google 搜索网站关闭它即可。
 
-![joplin web clipper](https://joplin-utils.rxliuli.com/images/brave-shields.png)
+![joplin web clipper](https://img.rxliuli.com/20210320142144.png)
 
 ## 贡献
 
