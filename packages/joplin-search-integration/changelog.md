@@ -1,5 +1,9 @@
 # changelog
 
+## 0.5.1
+
+- feat: support cn.bing.com search engine, ref: <https://github.com/rxliuli/joplin-utils/issues/71>
+
 ## 0.5.0
 
 - feat: support you.com search engine, ref: <https://discourse.joplinapp.org/t/28864/42>
