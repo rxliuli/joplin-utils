@@ -9,7 +9,9 @@ export function searx(): SearchPlugin {
   return {
     match(url) {
       return (
-        url.pathname === '/search' && !!document.querySelector('meta[name="description"][content^="SearXNG"]') && !!q()
+        url.pathname.endsWith('/search') &&
+        !!document.querySelector('meta[name="description"][content^="SearXNG"]') &&
+        !!q()
       )
     },
     name: 'searx',

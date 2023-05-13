@@ -12,7 +12,7 @@ export function duckduckgo(): SearchPlugin {
       return getSearchQuery(['q'])
     },
     render(list) {
-      const $rhs = document.querySelector('#links_wrapper > div.results--sidebar.js-results-sidebar')
+      const $rhs = document.querySelector('[data-testid="sidebar"]')
       if ($rhs === null) {
         console.error('网页结构发生了变化')
         return
