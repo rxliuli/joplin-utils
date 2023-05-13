@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build",
-    "pack-zip": "rimraf extension.zip && jszip-cli add dist/ -o ./extension.zip",
-    "pack-src": "rimraf src.zip && jszip-cli add src/ package.json .gitignore vite.config.ts tsconfig.json tsconfig.node.json -o ./src.zip",
+    "pack-zip": "rimraf extension.zip && jszip-cli add dist/ -o ./release/chrome.zip",
+    "pack-src": "rimraf src.zip && jszip-cli add src/ package.json .gitignore vite.config.ts tsconfig.json tsconfig.node.json -o ./release/src.zip",
     "pack-crx": "crx pack dist -o ./extension.crx",
-    "pack-xpi": "web-ext build -s ./dist-firefox/ -o",
+    "pack-xpi": "web-ext build -s ./dist-firefox/ -o -a release/ -n firefox.zip",
+    "pack-all": "rimraf release && pnpm build && pnpm pack-xpi && pnpm pack-zip && pnpm pack-src",
     "start-firefox": "web-ext run -s ./dist-firefox",
     "start-chromium": "web-ext run -s ./dist --target=chromium"
   },
