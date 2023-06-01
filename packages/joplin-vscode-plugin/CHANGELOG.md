@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.1.2
+
+- fix: fix links to headers not working of <https://github.com/rxliuli/joplin-utils/issues/73>
+
 ## 1.1.1
 
 - fix: Fixed the error that baseUrl was not used when checked joplin clipper service
