@@ -1,12 +1,19 @@
-import { defineConfig } from 'vite'
+import { defineConfig, Plugin, splitVendorChunkPlugin } from 'vite'
 import reactRefresh from '@vitejs/plugin-react-refresh'
 import { i18nextDtsGen } from '@liuli-util/rollup-plugin-i18next-dts-gen'
 import checker from 'vite-plugin-checker'
 import { version } from '@liuli-util/vite-plugin-version-info'
+import { chunk } from '@liuli-util/vite-plugin-chunk-node-modules'
 
 export default defineConfig({
   base: './',
-  plugins: [reactRefresh(), i18nextDtsGen({ dirs: ['src/i18n'] }), checker({ typescript: true }), version()] as any,
+  plugins: [
+    reactRefresh(),
+    i18nextDtsGen({ dirs: ['src/i18n'] }),
+    checker({ typescript: true }),
+    version(),
+    chunk(),
+  ] as any,
   css: {
     preprocessorOptions: {
       less: {

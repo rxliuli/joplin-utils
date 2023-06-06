@@ -43,6 +43,7 @@
     "@liuli-util/fs-extra": "^0.1.0",
     "@liuli-util/rollup-plugin-i18next-dts-gen": "^0.4.3",
     "@liuli-util/shell": "^0.2.0",
+    "@liuli-util/vite-plugin-chunk-node-modules": "^0.1.1",
     "@liuli-util/vite-plugin-version-info": "^0.4.0",
     "@types/fs-extra": "^9.0.13",
     "@types/markdown-it": "^12.2.3",
