@@ -1,0 +1,1 @@
+function l(r,t){var{includeImageAlt:i=!0}=t||{};return u(r,i)}function u(r,t){return r&&typeof r=="object"&&(r.value||(t?r.alt:"")||"children"in r&&a(r.children,t)||Array.isArray(r)&&a(r,t))||""}function a(r,t){for(var i=[],n=-1;++n<r.length;)i[n]=u(r[n],t);return i.join("")}export{l as t};

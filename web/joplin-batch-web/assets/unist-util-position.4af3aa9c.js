@@ -1,0 +1,1 @@
+const l=o("start"),p=o("end");function o(i){return s;function s(t){const n=t&&t.position&&t.position[i]||{};return{line:n.line||null,column:n.column||null,offset:n.offset>-1?n.offset:null}}}export{p as a,l as p};

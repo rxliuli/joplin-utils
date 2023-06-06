@@ -1,0 +1,1 @@
+function u(p,n,l,c){const e=p.length;let f=0,h;if(n<0?n=-n>e?0:e+n:n=n>e?e:n,l=l>0?l:0,c.length<1e4)h=Array.from(c),h.unshift(n,l),[].splice.apply(p,h);else for(l&&[].splice.apply(p,[n,l]);f<c.length;)h=c.slice(f,f+1e4),h.unshift(n,0),[].splice.apply(p,h),f+=1e4,n+=1e4}function g(p,n){return p.length>0?(u(p,p.length,0,n),p):n}export{g as p,u as s};
