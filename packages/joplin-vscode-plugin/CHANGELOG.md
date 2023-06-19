@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.1.3
+
+- fix: fix the plugin to support reconnection when joplin is not started <https://github.com/rxliuli/joplin-utils/issues/74>
+
 ## 1.1.2
 
 - fix: fix links to headers not working of <https://github.com/rxliuli/joplin-utils/issues/73>
