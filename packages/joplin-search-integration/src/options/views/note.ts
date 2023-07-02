@@ -46,7 +46,7 @@ function renderNoteToHtml(note: NoteData): string {
       const p = new URLSearchParams(location.search)
       p.set('path', '/note')
       p.set('id', id)
-      item.url = browser.runtime.getURL(`/options/index.html?${p.toString()}`)
+      item.url = browser.runtime.getURL(`/src/options/index.html?${p.toString()}`)
     }
   })
   const html = toHtml(root)

@@ -15,6 +15,7 @@ function getRoute() {
 }
 
 const route = getRoute()
+console.log('route', route)
 route?.component()
 
 export {}

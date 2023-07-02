@@ -1,5 +1,9 @@
 # changelog
 
+## 0.5.3
+
+- chore: update infrastructure, use manifest v3, support firefox 109 and above
+
 ## 0.5.1
 
 - feat: support cn.bing.com search engine, ref: <https://github.com/rxliuli/joplin-utils/issues/71>

@@ -1,20 +1,24 @@
-import { defineConfig, Plugin } from 'vite'
-import path from 'node:path'
-import { chromeExtension } from 'vite-plugin-chrome-extension'
-import { firefoxOutput } from '@liuli-util/vite-plugin-chrome-extension-dist-firefox'
+import { defineConfig } from 'vite'
+import { firefox } from '@liuli-util/vite-plugin-firefox-dist'
+import { crx } from '@crxjs/vite-plugin'
+import manifest from './manifest.json'
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-    },
-  },
+  plugins: [
+    crx({ manifest }),
+    firefox({
+      browser_specific_settings: {
+        gecko: {
+          id: 'joplin-search-integration@rxliuli.com',
+          strict_min_version: '109.0',
+        },
+      },
+    }),
+  ] as any,
+  base: './',
   build: {
-    rollupOptions: {
-      input: 'src/manifest.json',
-    },
+    target: 'esnext',
     minify: false,
-    assetsInlineLimit: 10096,
+    cssMinify: false,
   },
-  plugins: [chromeExtension(), firefoxOutput()] as any,
 })
