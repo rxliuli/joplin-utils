@@ -9,7 +9,7 @@ export default defineConfig({
     firefox({
       browser_specific_settings: {
         gecko: {
-          id: 'joplin-search-integration@rxliuli.com',
+          id: '{77acd154-9528-47d8-b340-dbd61729064d}',
           strict_min_version: '109.0',
         },
       },
