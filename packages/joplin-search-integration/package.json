@@ -17,7 +17,7 @@
     "@crxjs/vite-plugin": "2.0.0-beta.18",
     "@ffflorian/jszip-cli": "^3.4.1",
     "@liuli-util/rollup-plugin-i18next-dts-gen": "^0.4.3",
-    "@liuli-util/vite-plugin-firefox-dist": "^0.2.0",
+    "@liuli-util/vite-plugin-firefox-dist": "^0.2.1",
     "@types/lodash-es": "^4.17.7",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",

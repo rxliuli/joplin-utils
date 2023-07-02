@@ -288,8 +288,8 @@ importers:
         specifier: ^0.4.3
         version: 0.4.3(typescript@5.0.4)
       '@liuli-util/vite-plugin-firefox-dist':
-        specifier: ^0.2.0
-        version: 0.2.0(@types/node@14.18.31)
+        specifier: ^0.2.1
+        version: 0.2.1(@types/node@14.18.31)
       '@types/lodash-es':
         specifier: ^4.17.7
         version: 4.17.7
@@ -3146,8 +3146,8 @@ packages:
       - supports-color
     dev: true
 
-  /@liuli-util/vite-plugin-firefox-dist@0.2.0(@types/node@14.18.31):
-    resolution: {integrity: sha512-ieB+4sD1Wai/BCvkW5TLB6laJACzbwotEkUGcK56Dzs7EylGXV336MVhcBjHCFBbEJW63mKOUvXgkbPFy7ZZfQ==}
+  /@liuli-util/vite-plugin-firefox-dist@0.2.1(@types/node@14.18.31):
+    resolution: {integrity: sha512-v7DPnuyCaItPgK4rXRB5g4YgQGhnpdqU2hOjrfeW8IeDVI0TKWX8LyFGifm6TgHcRUYAv4MuiD4Zu+P00ssi4Q==}
     dependencies:
       lodash-es: 4.17.21
       utility-types: 3.10.0
