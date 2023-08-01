@@ -43,7 +43,11 @@ async function main() {
     throw new Error('未能解析搜索关键字')
   }
   console.debug('search notes')
-  const list = await search(keywrod)
+  // const list = await search(keywrod)
+  const list = await browser.runtime.sendMessage({
+    action: 'search',
+    keywrod,
+  })
   console.debug('search: ', keywrod, list)
   console.debug('render start')
   plugin.render(list)
