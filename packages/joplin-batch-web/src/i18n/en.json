@@ -42,5 +42,12 @@
   "replace.action.preview": "Preview",
   "replace.action.replaceAll": "Replace All",
   "replace.msg.replace": "Replace succeeded",
-  "replace.msg.replaceAll": "Replace All Successfully"
+  "replace.msg.replaceAll": "Replace All Successfully",
+  "fixInternalLinkTitle.title": "Fix internal link Title",
+  "fixInternalLinkTitle.action.update": "Update",
+  "fixInternalLinkTitle.action.updateAll": "Update All",
+  "fixInternalLinkTitle.msg.success": "Update Successful",
+  "fixInternalLinkTitle.msg.loading": "Updating [{{title}}]",
+
+  "example": "example"
 }

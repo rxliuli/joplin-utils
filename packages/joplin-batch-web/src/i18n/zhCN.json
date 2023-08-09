@@ -42,5 +42,12 @@
   "replace.action.preview": "预览",
   "replace.action.replaceAll": "全部替换",
   "replace.msg.replace": "替换成功",
-  "replace.msg.replaceAll": "全部替换成功"
+  "replace.msg.replaceAll": "全部替换成功",
+  "fixInternalLinkTitle.title": "修复内部链接标题",
+  "fixInternalLinkTitle.action.update": "更新",
+  "fixInternalLinkTitle.action.updateAll": "全部更新",
+  "fixInternalLinkTitle.msg.success": "更新成功",
+  "fixInternalLinkTitle.msg.loading": "更新 [{{title}}]",
+
+  "example": "example"
 }

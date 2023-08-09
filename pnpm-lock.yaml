@@ -111,6 +111,9 @@ importers:
       '@liuli-util/i18next-util':
         specifier: ^0.4.1
         version: 0.4.1(i18next@21.9.2)
+      '@liuli-util/markdown-util':
+        specifier: ^0.6.0
+        version: 0.6.0
       '@liuli-util/react-router':
         specifier: ^0.6.0
         version: 0.6.0(react-dom@18.2.0)(react@18.2.0)
@@ -135,9 +138,18 @@ importers:
       joplin-api:
         specifier: workspace:*
         version: link:../joplin-api
+      lodash-es:
+        specifier: ^4.17.21
+        version: 4.17.21
       mdast:
         specifier: ^3.0.0
         version: 3.0.0
+      mobx:
+        specifier: ^6.10.0
+        version: 6.10.0
+      mobx-react-lite:
+        specifier: ^4.0.3
+        version: 4.0.3(mobx@6.10.0)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -202,6 +214,9 @@ importers:
       '@types/fs-extra':
         specifier: ^9.0.13
         version: 9.0.13
+      '@types/lodash-es':
+        specifier: ^4.17.7
+        version: 4.17.7
       '@types/markdown-it':
         specifier: ^12.2.3
         version: 12.2.3
@@ -8953,7 +8968,6 @@ packages:
 
   /lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
-    dev: true
 
   /lodash.debounce@4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
@@ -9785,6 +9799,29 @@ packages:
     hasBin: true
     dev: true
 
+  /mobx-react-lite@4.0.3(mobx@6.10.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-wEE1oT5zvDdvplG4HnRrFgPwg5GFVVrEtl42Er85k23zeu3om8H8wbDPgdbQP88zAihVsik6xJfw6VnzUl8fQw==}
+    peerDependencies:
+      mobx: ^6.9.0
+      react: ^16.8.0 || ^17 || ^18
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      mobx: 6.10.0
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /mobx@6.10.0:
+    resolution: {integrity: sha512-WMbVpCMFtolbB8swQ5E2YRrU+Yu8iLozCVx3CdGjbBKlP7dFiCSuiG06uea3JCFN5DnvtAX7+G5Bp82e2xu0ww==}
+    dev: false
+
   /moment@2.29.4:
     resolution: {integrity: sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==}
     requiresBuild: true
@@ -10464,7 +10501,7 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.0.6
-      ts-node: 10.9.1(@types/node@18.11.18)(typescript@4.8.4)
+      ts-node: 10.9.1(@types/node@14.18.31)(typescript@4.8.4)
       yaml: 1.10.2
     dev: true
 
@@ -13042,6 +13079,14 @@ packages:
     dependencies:
       punycode: 2.1.1
     dev: true
+
+  /use-sync-external-store@1.2.0(react@18.2.0):
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}

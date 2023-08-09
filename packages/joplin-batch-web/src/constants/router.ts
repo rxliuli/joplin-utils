@@ -51,4 +51,9 @@ export const routeList: MenuRouteConfig[] = [
     component: () => import('../views/replace'),
     title: 'replace.title',
   },
+  {
+    path: '/fixInternalLinkTitle',
+    component: () => import('../views/fixInternalLinkTitle'),
+    title: 'fixInternalLinkTitle.title',
+  },
 ]

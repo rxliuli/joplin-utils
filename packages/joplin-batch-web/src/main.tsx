@@ -8,7 +8,5 @@ import { init } from './constants/joplinApiGenerator'
 
 init()
 createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <ReactRouter history={history} routes={[{ path: '/', component: LayoutView, children: routeList }]} />
-  </React.StrictMode>,
+  <ReactRouter history={history} routes={[{ path: '/', component: LayoutView, children: routeList }]} />,
 )
