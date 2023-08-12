@@ -6,9 +6,11 @@ import { useAsyncFn, useMount } from 'react-use'
 import { observer, useLocalObservable } from 'mobx-react-lite'
 import { AsyncArray, asyncLimiting } from '@liuli-util/async'
 import { openNote } from '../../constants/joplinApiGenerator'
+import { keyBy } from 'lodash-es'
 
-interface CheckResult {
+export interface CheckResult {
   id: string
+  url: string
   title: string
   noteTitle: string
 }
@@ -18,6 +20,52 @@ interface CheckedNote {
   result: CheckResult[]
 }
 
+function generateId(title: string) {
+  return title.trim().replace(' ', '-')
+}
+
+function trimTitle(title: string) {
+  return (title.startsWith('# ') ? title.slice(2) : title).trim()
+}
+
+export function checkNote(map: Record<string, Pick<NoteProperties, 'title' | 'body'>>, body: string): CheckResult[] {
+  const s = body.match(/(?<!\!)\[[^\[\]]*?\]\(\:\/.*?\)/g)
+  if (!s) {
+    return []
+  }
+  return [...s]
+    .map((it): CheckResult => {
+      const [title, url] = it.slice(1, -1).split('](:/')
+      let id: string = url,
+        noteTitle: string
+      if (!url.trim().startsWith('#') && url.includes('#')) {
+        let encodedTitle: string
+        ;[id, encodedTitle] = url.split('#')
+        const note = map[id]
+        if (!note) {
+          return { id, url, title, noteTitle: title }
+        }
+        const findTitle = note.body
+          .match(/^(#{1,6})\s+(.*)$/gm)
+          ?.map((it) => it.slice(it.indexOf(' ')).trim())
+          ?.find((it) => generateId(it) === encodedTitle)
+          ?.trim()
+        if (findTitle) {
+          noteTitle = trimTitle(note.title) + ' # ' + findTitle
+        } else {
+          noteTitle = trimTitle(note.title) + ' # ' + encodedTitle
+        }
+      } else {
+        if (!map[id]) {
+          return { id, url, title, noteTitle: title }
+        }
+        noteTitle = trimTitle(map[id].title)
+      }
+      return { url, id, title, noteTitle: noteTitle }
+    })
+    .filter((it) => map[it.id] && it.title !== it.noteTitle)
+}
+
 export const FixInternalLinkTitleView: React.FC = observer(() => {
   const [messageApi, contextHolder] = message.useMessage()
 
@@ -25,43 +73,24 @@ export const FixInternalLinkTitleView: React.FC = observer(() => {
     keepUpdatedTime: true,
     list: [] as CheckedNote[],
   }))
-  function checkNote(map: Record<string, string>, body: string): CheckResult[] {
-    const s = body.match(/(?<!\!)\[[^\[\]]*?\]\(\:\/.*?\)/g)
-    if (!s) {
-      return []
-    }
-    return [...s]
-      .map((it) => {
-        const [title, id] = it.slice(1, -1).split('](:/')
-        return {
-          id,
-          title,
-          noteTitle: map[id],
-        } as CheckResult
-      })
-      .filter((it) => map[it.id] && it.title !== it.noteTitle)
-  }
 
   async function onCheck() {
     // 获取所有的笔记
     const list = await PageUtil.pageToAllList(noteApi.list, {
       fields: ['id', 'title', 'body', 'user_updated_time'],
       order_by: 'user_updated_time',
+      order_dir: 'DESC',
     })
     // 检查笔记中的内部引用链接的标题是否正确
-    const map = list.reduce((acc, it) => {
-      acc[it.id] = (it.title.startsWith('# ') ? it.title.slice(2) : it.title).trim()
-      return acc
-    }, {} as Record<string, string>)
-    console.log(map)
-    // console.log(list, map)
+    const map = keyBy(list, 'id')
+    console.log(list, map)
     const checked = list
       .map((it) => ({
         note: it,
         result: checkNote(map, it.body),
       }))
       .filter((it) => it.result.length > 0)
-    // console.log(checked)
+    console.log(checked)
     state.list = checked
   }
 
@@ -74,7 +103,7 @@ export const FixInternalLinkTitleView: React.FC = observer(() => {
       content: i18n.t('fixInternalLinkTitle.msg.loading', { title: checked.note.title }),
     })
     const s = checked.result.reduce(
-      (acc, it) => acc.replaceAll(`[${it.title}](:/${it.id})`, `[${it.noteTitle}](:/${it.id})`),
+      (acc, it) => acc.replaceAll(`[${it.title}](:/${it.url})`, `[${it.noteTitle}](:/${it.url})`),
       checked.note.body,
     )
     await noteApi.update({
@@ -146,7 +175,7 @@ export const FixInternalLinkTitleView: React.FC = observer(() => {
                     {it.result.map((it, i) => (
                       <li key={i}>
                         [<del>{it.title}</del>
-                        {it.noteTitle}](:/{it.id})
+                        {it.noteTitle}](:/{it.url})
                       </li>
                     ))}
                   </ul>
