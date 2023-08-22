@@ -12,3 +12,4 @@ dist
 src/i18n/index.d.ts
 .temp/
 meta.json
+stats.html

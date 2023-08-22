@@ -1,16 +1,14 @@
-import { createLogger, format, transports } from 'winston'
-import json from '../../package.json'
+import path from 'path'
+import * as winston from 'winston'
 
-export const logger = createLogger({
+export const logger = winston.createLogger({
   level: 'info',
-  format: format.json(),
-  defaultMeta: { pluginVersion: json.version },
+  format: winston.format.json(),
+  transports: [new winston.transports.Console({ format: winston.format.json() })],
 })
 
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(
-    new transports.Console({
-      format: format.simple(),
-    }),
-  )
+export function initLogger(logPath: string) {
+  logger
+    .add(new winston.transports.File({ filename: path.resolve(logPath, 'error.log'), level: 'error' }))
+    .add(new winston.transports.File({ filename: path.resolve(logPath, 'combined.log') }))
 }

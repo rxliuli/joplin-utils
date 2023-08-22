@@ -8,7 +8,7 @@ interface TagUseEntity {
   title: string
 }
 
-export class TagUseService {
+export class TagUseApi {
   constructor(private readonly configPath: string) {}
 
   private async init() {

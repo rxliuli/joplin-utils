@@ -1,43 +1,33 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode'
-import { NoteExplorerProvider } from './model/NoteExplorerProvider'
+import { NoteExplorerProvider } from './provider/NoteExplorerProvider'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
 import { config, TypeEnum } from 'joplin-api'
-import { appConfig } from './config/AppConfig'
 import { HandlerService } from './service/HandlerService'
 import { checkJoplinServer } from './util/checkJoplinServer'
-import MarkdownIt from 'markdown-it'
-import { useJoplinImage, useJoplinLink } from './util/useJoplinLink'
 import { uploadResourceService } from './service/UploadResourceService'
-import { JoplinMarkdownLinkProvider } from './model/JoplinMarkdownLinkProvider'
-import { GlobalContext } from './state/GlobalContext'
-import { init } from './init'
+import { MarkdownProvider } from './provider/MarkdownProvider'
+import { GlobalContext } from './constants/context'
 import { registerCommand } from './util/registerCommand'
 import { ClassUtil } from '@liuli-util/object'
-import { logger } from './constants/logger'
-import { transports } from 'winston'
+import { initLogger, logger } from './constants/logger'
 import path from 'path'
-import { mkdirp } from '@liuli-util/fs-extra'
-import { htmlImageLink } from './util/htmlImageLink'
-import { JoplinNoteOnDropProvider } from './service/MarkdownDrop'
-import './util/node-polyfill'
-import { insertNoteLink, showLinkThisNotes, showThisNoteLinks } from './commands'
+import './util/nodePolyfill'
+import { linkCommands, tagCommands } from './commands'
+import { initI18n } from './constants/i18n'
+import { extendMarkdownIt } from './util/markdown'
+import { initConfig } from './constants/config'
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 // noinspection JSUnusedLocalSymbols
 export async function activate(context: vscode.ExtensionContext) {
   GlobalContext.context = context
-  appConfig.loadConfig()
+  initConfig()
   const logPath = path.resolve(context.globalStorageUri.fsPath, 'log')
-  console.log('logPath: ', logPath)
-  await mkdirp(logPath)
-  logger
-    .add(new transports.File({ filename: path.resolve(logPath, 'error.log'), level: 'error' }))
-    .add(new transports.File({ filename: path.resolve(logPath, 'combined.log') }))
-  logger.info(`joplin config, baseUrl: ${config.baseUrl}, token: ${typeof config.token}`)
-  await init()
+  initLogger(logPath)
+  await initI18n({ language: vscode.env.language.toLocaleLowerCase().includes('zh') ? 'zh-CN' : 'en-US' })
   if (!(await checkJoplinServer())) {
     return
   }
@@ -56,61 +46,48 @@ export async function activate(context: vscode.ExtensionContext) {
       noteListTreeView,
     }),
   )
-  await joplinNoteCommandService.init(appConfig)
+  await joplinNoteCommandService.init()
   const handlerService = ClassUtil.bindMethodThis(new HandlerService(joplinNoteCommandService))
   GlobalContext.handlerService = handlerService
   joplinNoteCommandService.handlerService = handlerService
 
   //region register commands
 
-  registerCommand('joplinNote.refreshNoteList', noteExplorerProvider.refresh.bind(noteExplorerProvider))
-  registerCommand('joplinNote.search', joplinNoteCommandService.search)
-  registerCommand('joplinNote.openNote', joplinNoteCommandService.openNote)
+  registerCommand('joplin.refreshNoteList', noteExplorerProvider.refresh.bind(noteExplorerProvider))
+  registerCommand('joplin.search', joplinNoteCommandService.search)
+  registerCommand('joplin.openNote', joplinNoteCommandService.openNote)
 
-  registerCommand('joplinNote.createFolder', (item) => joplinNoteCommandService.create(TypeEnum.Folder, item))
-  registerCommand('joplinNote.createNote', (item) => joplinNoteCommandService.create(TypeEnum.Note, item))
-  registerCommand('joplinNote.rename', joplinNoteCommandService.rename)
-  registerCommand('joplinNote.copyLink', joplinNoteCommandService.copyLink)
-  registerCommand('joplinNote.remove', joplinNoteCommandService.remove)
-  registerCommand('joplinNote.cut', joplinNoteCommandService.cut)
-  registerCommand('joplinNote.paste', joplinNoteCommandService.paste)
-  registerCommand('joplinNote.toggleTodoState', joplinNoteCommandService.toggleTodoState)
-  registerCommand('joplinNote.createResource', joplinNoteCommandService.createResource)
-  registerCommand('joplinNote.removeResource', joplinNoteCommandService.removeResource)
-  registerCommand('joplinNote.manageTags', joplinNoteCommandService.manageTags)
-  registerCommand('joplinNote.createTag', joplinNoteCommandService.createTag)
-  registerCommand('joplinNote.removeTag', joplinNoteCommandService.removeTag)
-  registerCommand('joplinNote.showCurrentlyOpenNote', async () => {
+  registerCommand('joplin.createFolder', (item) => joplinNoteCommandService.create(TypeEnum.Folder, item))
+  registerCommand('joplin.createNote', (item) => joplinNoteCommandService.create(TypeEnum.Note, item))
+  registerCommand('joplin.rename', joplinNoteCommandService.rename)
+  registerCommand('joplin.copyLink', joplinNoteCommandService.copyLink)
+  registerCommand('joplin.remove', joplinNoteCommandService.remove)
+  registerCommand('joplin.cut', joplinNoteCommandService.cut)
+  registerCommand('joplin.paste', joplinNoteCommandService.paste)
+  registerCommand('joplin.toggleTodoState', joplinNoteCommandService.toggleTodoState)
+  registerCommand('joplin.createResource', joplinNoteCommandService.createResource)
+  registerCommand('joplin.removeResource', joplinNoteCommandService.removeResource)
+  const tag = tagCommands()
+  registerCommand('joplin.manageTags', tag.manageTags)
+  registerCommand('joplin.createTag', tag.createTag)
+  registerCommand('joplin.removeTag', tag.removeTag)
+  registerCommand('joplin.showCurrentlyOpenNote', async () => {
     {
       const activeFileName = vscode.window.activeTextEditor?.document.fileName
       activeFileName && (await joplinNoteCommandService.onDidChangeActiveTextEditor(activeFileName))
     }
   })
-  registerCommand('joplinNote.showResources', async () => {
+  registerCommand('joplin.showResources', async () => {
     {
       const activeFileName = vscode.window.activeTextEditor?.document.fileName
       activeFileName && (await joplinNoteCommandService.showResources(activeFileName))
     }
   })
-  registerCommand('joplinNote.insertNoteLink', async () => {
-    {
-      const activeFileName = vscode.window.activeTextEditor?.document.fileName
-      activeFileName && (await insertNoteLink())
-    }
-  })
-  registerCommand('joplinNote.showLinkThisNotes', async () => {
-    {
-      const activeFileName = vscode.window.activeTextEditor?.document.fileName
-      activeFileName && (await showLinkThisNotes())
-    }
-  })
-  registerCommand('joplinNote.showThisNoteLinks', async () => {
-    {
-      const activeFileName = vscode.window.activeTextEditor?.document.fileName
-      activeFileName && (await showThisNoteLinks())
-    }
-  })
-  registerCommand('joplinNote.showLogFileDir', () => vscode.env.openExternal(vscode.Uri.file(logPath)))
+  const link = linkCommands()
+  registerCommand('joplin.insertNoteLink', link.insertNoteLink)
+  registerCommand('joplin.showLinkThisNotes', link.showLinkThisNotes)
+  registerCommand('joplin.showThisNoteLinks', link.showThisNoteLinks)
+  registerCommand('joplin.showLogFileDir', () => vscode.env.openExternal(vscode.Uri.file(logPath)))
   vscode.window.onDidChangeActiveTextEditor((e) =>
     joplinNoteCommandService.onDidChangeActiveTextEditor(e?.document.fileName),
   )
@@ -120,15 +97,15 @@ export async function activate(context: vscode.ExtensionContext) {
   //region register image upload
 
   registerCommand(
-    'joplinNote.uploadImageFromClipboard',
+    'joplin.uploadImageFromClipboard',
     uploadResourceService.uploadImageFromClipboard.bind(uploadResourceService),
   )
   registerCommand(
-    'joplinNote.uploadImageFromExplorer',
+    'joplin.uploadImageFromExplorer',
     uploadResourceService.uploadImageFromExplorer.bind(uploadResourceService),
   )
   registerCommand(
-    'joplinNote.uploadFileFromExplorer',
+    'joplin.uploadFileFromExplorer',
     uploadResourceService.uploadFileFromExplorer.bind(uploadResourceService),
   )
 
@@ -144,35 +121,18 @@ export async function activate(context: vscode.ExtensionContext) {
     language: 'markdown',
     scheme: 'file',
   }
-  const linkProvider = new JoplinMarkdownLinkProvider()
+  const markdownProvider = new MarkdownProvider()
   context.subscriptions.push(
-    vscode.languages.registerDocumentLinkProvider(docFilter, linkProvider),
-    vscode.languages.registerHoverProvider(docFilter, linkProvider),
-    vscode.languages.registerDocumentDropEditProvider(docFilter, new JoplinNoteOnDropProvider()),
+    vscode.languages.registerDocumentLinkProvider(docFilter, markdownProvider),
+    vscode.languages.registerHoverProvider(docFilter, markdownProvider),
+    vscode.languages.registerDocumentDropEditProvider(docFilter, markdownProvider),
   )
 
   //endregion
 
   //region register markdown support
 
-  return {
-    extendMarkdownIt(md: MarkdownIt) {
-      return md
-        .use(useJoplinLink(GlobalContext.openNoteResourceMap))
-        .use(
-          useJoplinImage({
-            token: appConfig.token!,
-            baseUrl: appConfig.baseUrl!,
-          }),
-        )
-        .use(
-          htmlImageLink({
-            token: appConfig.token!,
-            baseUrl: appConfig.baseUrl!,
-          }),
-        )
-    },
-  }
+  return { extendMarkdownIt }
 
   //endregion
 }

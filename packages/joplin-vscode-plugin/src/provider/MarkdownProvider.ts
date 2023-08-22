@@ -1,14 +1,18 @@
 import * as vscode from 'vscode'
 import { matchAll, getReferenceAtPosition } from '../util/utils'
-import { JoplinLinkRegex } from '../util/constant'
-import { wrapLink } from '../util/useJoplinLink'
 import { TypeEnum, noteApi, resourceApi } from 'joplin-api'
 import { formatSize } from '../util/formatSize'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
-import { GlobalContext } from '../state/GlobalContext'
+import { GlobalContext } from '../constants/context'
 import { logger } from '../constants/logger'
+import { JoplinLinkRegex, wrapLink } from '../util/markdown'
+import path from 'path'
+import { uploadResourceService } from '../service/UploadResourceService'
+import { UploadResourceUtil } from '../util/UploadResourceUtil'
 
-export class JoplinMarkdownLinkProvider implements vscode.DocumentLinkProvider, vscode.HoverProvider {
+export class MarkdownProvider
+  implements vscode.DocumentLinkProvider, vscode.HoverProvider, vscode.DocumentDropEditProvider
+{
   async resolveDocumentLink(link: vscode.DocumentLink, token: vscode.CancellationToken): Promise<vscode.DocumentLink> {
     logger.info('resolveDocumentLink: ', link, token)
     return link
@@ -83,5 +87,48 @@ export class JoplinMarkdownLinkProvider implements vscode.DocumentLinkProvider, 
     }
     logger.info('provideHover: ', content)
     return new vscode.Hover(content)
+  }
+  async provideDocumentDropEdits(
+    _document: vscode.TextDocument,
+    position: vscode.Position,
+    dataTransfer: vscode.DataTransfer,
+    token: vscode.CancellationToken,
+  ): Promise<vscode.DocumentDropEdit | undefined> {
+    if (!GlobalContext.openNoteMap.has(_document.fileName)) {
+      logger.info('ReverseTextOnDropProvider.provideDocumentDropEdits not joplin note')
+      return
+    }
+    let item = dataTransfer.get('text/uri-list')
+    if (item) {
+      return this.dragFile(item)
+    }
+    item = dataTransfer.get('application/vnd.code.tree.joplin')
+    if (item) {
+      return this.dragTreeItem(item)
+    }
+    return { insertText: '' }
+  }
+  private async dragTreeItem(item: vscode.DataTransferItem): Promise<vscode.DocumentDropEdit | undefined> {
+    const id = JSON.parse(item.value).itemHandles[0].split('/')[1]
+    if (id) {
+      try {
+        const note = await noteApi.get(id)
+        return { insertText: `[${note.title}](:/${note.id})` }
+      } catch {}
+    }
+    console.log('joplin tree drag: ', item)
+  }
+  private async dragFile(item: vscode.DataTransferItem): Promise<vscode.DocumentDropEdit | undefined> {
+    const uri = vscode.Uri.parse(item.value)
+    const fsPath = uri.fsPath
+    console.log('ReverseTextOnDropProvider', fsPath)
+    const imageExts = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'bmp', 'tiff', 'ico']
+    const isImage = imageExts.includes(path.extname(fsPath).slice(1))
+    const { markdownLink, res } = await UploadResourceUtil.uploadByPath(fsPath, isImage)
+    await uploadResourceService.refreshResourceList(res.id)
+
+    const snippet = new vscode.SnippetString()
+    snippet.appendText(markdownLink)
+    return { insertText: snippet }
   }
 }

@@ -7,8 +7,8 @@ import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { OpenFileService } from '../util/OpenFileService'
 import { safePromise } from '../util/safePromise'
 import path from 'path'
-import { i18n } from '../constants/i18n'
-import { GlobalContext } from '../state/GlobalContext'
+import { t } from '../constants/i18n'
+import { GlobalContext } from '../constants/context'
 import { remove, writeFile } from '@liuli-util/fs-extra'
 import { filenamify } from '../util/filenamify'
 import { logger } from '../constants/logger'
@@ -57,7 +57,7 @@ export class HandlerService {
         await this.openResource(id)
         break
       default:
-        vscode.window.showErrorMessage(i18n.t('Unprocessable link'))
+        vscode.window.showErrorMessage(t('Unprocessable link'))
     }
   }
 
@@ -68,7 +68,7 @@ export class HandlerService {
     const resource = await safePromise(resourceApi.get(id, ['id', 'title', 'filename', 'file_extension']))
     if (!resource) {
       logger.warn('HandlerService.openResource: Resource does not exist')
-      vscode.window.showWarningMessage(i18n.t('Resource does not exist'))
+      vscode.window.showWarningMessage(t('Resource does not exist'))
       return
     }
     if (GlobalContext.openResourceMap.has(id)) {
@@ -96,12 +96,12 @@ export class HandlerService {
   async openNote(id: string) {
     logger.info('HandlerService.openNote: ' + id)
     if (!id) {
-      vscode.window.showWarningMessage(i18n.t('id cannot be empty'))
+      vscode.window.showWarningMessage(t('id cannot be empty'))
       return
     }
     const item = await safePromise(noteApi.get(id, ['id', 'parent_id', 'title', 'is_todo', 'todo_completed']))
     if (!item) {
-      vscode.window.showWarningMessage(i18n.t('Note does not exist'))
+      vscode.window.showWarningMessage(t('Note does not exist'))
       return
     }
     await this.joplinNoteCommandService.openNote(item)

@@ -5,8 +5,7 @@ import { beforeEach, expect, it } from 'vitest'
 import { findParent } from '../findParent'
 import { UploadResourceUtil } from '../UploadResourceUtil'
 import { parse } from 'envfile'
-import { createEmptyFile } from '../createEmptyFile'
-import '../node-polyfill'
+import '../nodePolyfill'
 
 const tempPath = path.resolve(__dirname, '.temp', path.basename(__filename))
 beforeEach(async () => {

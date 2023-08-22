@@ -1,9 +1,41 @@
-import MarkdownIt from 'markdown-it'
-import { config, Config, TypeEnum } from 'joplin-api'
-import { JoplinLinkRegex } from './constant'
+import { Config, TypeEnum, config } from 'joplin-api'
+import type MarkdownIt from 'markdown-it'
+import type { RenderRule } from 'markdown-it/lib/renderer'
+import parse from 'node-html-parser'
+
+export const JoplinLinkRegex = /^:\/(\w{32})$/
+
+/**
+ * 替换 html 标签
+ * @param config
+ * @returns
+ */
+export function htmlImageLink(config: Config): MarkdownIt.PluginSimple {
+  return (md) => {
+    const htmlUrlReplace: RenderRule = (tokens, idx, options, env, self) => {
+      if (tokens[idx].content.startsWith('<img')) {
+        const code = tokens[idx].content
+        const img = parse(code).querySelector('img')!
+        const linkUrl = img.getAttribute('src')
+        if (linkUrl && JoplinLinkRegex.test(linkUrl)) {
+          const id = linkUrl.match(JoplinLinkRegex)![1]
+          img.setAttribute('src', `${config.baseUrl}/resources/${id}/file?token=${config.token}`)
+          return img.toString()
+        }
+      }
+
+      return tokens[idx].content
+    }
+    md.renderer.rules.html_block = htmlUrlReplace
+    md.renderer.rules.html_inline = htmlUrlReplace
+    return md
+  }
+}
+
 import { ResourceGetRes } from 'joplin-api'
 import { arrayToMap } from '@liuli-util/array'
 import path from 'path'
+import { GlobalContext } from '../constants/context'
 
 export function wrapLink(id: string, type: TypeEnum.Resource | TypeEnum.Note) {
   const q = encodeURIComponent(`id=${id}`)
@@ -17,7 +49,7 @@ export function wrapLink(id: string, type: TypeEnum.Resource | TypeEnum.Note) {
   }
 }
 
-export function useJoplinLink(openNoteResourceMap: Map<string, ResourceGetRes[]>) {
+function useJoplinLink(openNoteResourceMap: Map<string, ResourceGetRes[]>) {
   // ref: https://code.visualstudio.com/updates/v1_72#_builtin-preview-for-some-audio-and-video-files
   const audioExts = ['wav', 'mp3', 'ogg']
   const videoExts = ['webm', 'mp4']
@@ -80,7 +112,7 @@ export function useJoplinLink(openNoteResourceMap: Map<string, ResourceGetRes[]>
   }
 }
 
-export function useJoplinImage(config: Config) {
+function useJoplinImage(config: Config) {
   return (md: MarkdownIt) => {
     const defaultRender =
       md.renderer.rules.link_open ||
@@ -104,4 +136,21 @@ export function useJoplinImage(config: Config) {
     }
     return md
   }
+}
+
+export function extendMarkdownIt(md: MarkdownIt) {
+  return md
+    .use(useJoplinLink(GlobalContext.openNoteResourceMap))
+    .use(
+      useJoplinImage({
+        token: config.token!,
+        baseUrl: config.baseUrl!,
+      }),
+    )
+    .use(
+      htmlImageLink({
+        token: config.token!,
+        baseUrl: config.baseUrl!,
+      }),
+    )
 }

@@ -1,4 +1,3 @@
-import { fileURLToPath } from 'url'
 import * as vscode from 'vscode'
 import { TreeItemCollapsibleState } from 'vscode'
 import { FolderListAllRes } from 'joplin-api'
@@ -25,7 +24,7 @@ export class JoplinTreeItem extends vscode.TreeItem {
     }
     if (item.type_ === TypeEnum.Note) {
       this.command = {
-        command: 'joplinNote.openNote',
+        command: 'joplin.openNote',
         title: item.title,
         // TODO 此处引用自身居然会导致不能拖拽？
         arguments: [item],
@@ -51,5 +50,5 @@ export class JoplinTreeItem extends vscode.TreeItem {
   label = this.item.title
   tooltip = this.item.title
   description = ''
-  contextValue = 'joplinNote.' + JoplinTreeItem.getIconName(this.item)
+  contextValue = 'joplin.' + JoplinTreeItem.getIconName(this.item)
 }

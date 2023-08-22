@@ -1,12 +1,12 @@
 import * as vscode from 'vscode'
 import { folderApi, folderExtApi, noteExtApi } from 'joplin-api'
 import { JoplinTreeItem } from './JoplinTreeItem'
-import { appConfig, SortNotesTypeEnum, SortOrderEnum } from '../config/AppConfig'
 import { FolderListAllRes } from 'joplin-api'
 import { joplinNoteApi } from '../api/JoplinNoteApi'
 import { treeEach } from '@liuli-util/tree'
 import { logger } from '../constants/logger'
-import { i18n } from '../constants/i18n'
+import { t } from '../constants/i18n'
+import { SortNotesTypeEnum, SortOrderEnum, extConfig } from '../constants/config'
 
 export class NoteExplorerProvider
   implements vscode.TreeDataProvider<JoplinTreeItem>, vscode.TreeDragAndDropController<JoplinTreeItem>
@@ -81,17 +81,17 @@ export class NoteExplorerProvider
     if (process.env.DEBUG) {
       console.log('\n\nnoteItemList: \n')
       console.log(noteItemList)
-      console.log('appConfig: ', appConfig)
+      console.log('appConfig: ', extConfig)
     }
-    if (appConfig.sortNotes) {
+    if (extConfig.sortNotes) {
       const compareMap: Record<SortNotesTypeEnum, (a: JoplinTreeItem, b: JoplinTreeItem) => number> = {
         [SortNotesTypeEnum.Alphabetical]: (a, b) => {
           return -b.item.title.localeCompare(a.item.title)
         },
         [SortNotesTypeEnum.Default]: () => 0,
       }
-      noteItemList.sort(compareMap[appConfig.sortNotesType!])
-      if (appConfig.sortOrder == SortOrderEnum.Desc) {
+      noteItemList.sort(compareMap[extConfig.sortNotesType!])
+      if (extConfig.sortOrder == SortOrderEnum.Desc) {
         noteItemList.reverse()
       }
     }
@@ -145,7 +145,7 @@ export class NoteExplorerProvider
     if (target) {
       const paths = await folderExtApi.path(target.id)
       if (paths.some((item) => item.id === source.id)) {
-        vscode.window.showWarningMessage(i18n.t('paste-error-canTPasteSub'))
+        vscode.window.showWarningMessage(t('paste-error-canTPasteSub'))
         return
       }
     }

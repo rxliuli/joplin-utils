@@ -1,21 +1,21 @@
 import * as vscode from 'vscode'
 import { joplinApi } from 'joplin-api'
-import { appConfig } from '../config/AppConfig'
-import { i18n } from '../constants/i18n'
+import { t } from '../constants/i18n'
+import { extConfig } from '../constants/config'
 
 /**
  * check joplin server
  */
 export async function checkJoplinServer(): Promise<boolean> {
   async function errMsg(): Promise<boolean> {
-    const reconnect = i18n.t('checkJoplinServer.reconnect')
-    const r = await vscode.window.showErrorMessage(i18n.t('checkJoplinServer.error'), reconnect)
+    const reconnect = t('checkJoplinServer.reconnect')
+    const r = await vscode.window.showErrorMessage(t('checkJoplinServer.error'), reconnect)
     if (r === reconnect) {
       return await checkJoplinServer()
     }
     return false
   }
-  if (!appConfig.token) {
+  if (!extConfig.token) {
     vscode.window.showInformationMessage('Please configure joplin token first, and then restart VSCode!')
     return false
   }

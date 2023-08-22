@@ -1,8 +1,8 @@
 import * as vscode from 'vscode'
 import { window } from 'vscode'
-import { GlobalContext } from '../state/GlobalContext'
+import { GlobalContext } from '../constants/context'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
-import { i18n } from '../constants/i18n'
+import { t } from '../constants/i18n'
 import { resourceApi } from 'joplin-api'
 
 export class UploadResourceService {
@@ -10,7 +10,7 @@ export class UploadResourceService {
     const globalStoragePath = GlobalContext.context.globalStorageUri.fsPath
     const clipboardImage = await UploadResourceUtil.getClipboardImage(globalStoragePath)
     if (!clipboardImage.isExistFile) {
-      vscode.window.showWarningMessage(i18n.t('Clipboard does not contain picture!'))
+      vscode.window.showWarningMessage(t('Clipboard does not contain picture!'))
       return
     }
     const { markdownLink, res } = await UploadResourceUtil.uploadByPath(clipboardImage.imgPath, true)
@@ -44,7 +44,7 @@ export class UploadResourceService {
     const file = result[0]
     const { res, markdownLink } = await UploadResourceUtil.uploadByPath(file.fsPath, false)
     await Promise.all([this.insertUrlByActiveEditor(markdownLink), this.refreshResourceList(res.id)])
-    vscode.window.showInformationMessage(i18n.t('file uploaded successfully'))
+    vscode.window.showInformationMessage(t('file uploaded successfully'))
   }
 
   async refreshResourceList(id: string) {
@@ -76,7 +76,7 @@ export class UploadResourceService {
   get editor(): vscode.TextEditor {
     const editor = vscode.window.activeTextEditor
     if (!editor) {
-      window.showErrorMessage(i18n.t('No active editor'))
+      window.showErrorMessage(t('No active editor'))
     }
     return editor as vscode.TextEditor
   }

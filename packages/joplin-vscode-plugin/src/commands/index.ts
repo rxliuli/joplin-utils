@@ -1,3 +1,2 @@
-export * from './insertNoteLink'
-export * from './showLinkThisNotes'
-export * from './showThisNoteLinks'
+export * from './link/link'
+export * from './tag/tag'

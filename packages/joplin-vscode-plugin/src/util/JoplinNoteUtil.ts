@@ -1,6 +1,5 @@
 import path from 'path'
-import { title } from 'process'
-import { GlobalContext } from '../state/GlobalContext'
+import { GlobalContext } from '../constants/context'
 
 export class JoplinNoteUtil {
   /**
