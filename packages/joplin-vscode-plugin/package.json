@@ -75,7 +75,7 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "joplin-note",
+          "id": "joplin",
           "title": "Joplin",
           "icon": "resources/icon.svg"
         }
@@ -88,10 +88,14 @@
       }
     ],
     "views": {
-      "joplin-note": [
+      "joplin": [
         {
-          "id": "joplin",
+          "id": "noteExplorer",
           "name": "%views.joplin-note.joplin-note%"
+        },
+        {
+          "id": "noteSearch",
+          "name": "Note Search"
         }
       ]
     },
@@ -251,17 +255,17 @@
       "view/title": [
         {
           "command": "joplin.refreshNoteList",
-          "when": "view == joplin",
+          "when": "view == noteExplorer",
           "group": "navigation"
         },
         {
           "command": "joplin.createFolder",
-          "when": "view == joplin",
+          "when": "view == noteExplorer",
           "group": "navigation"
         },
         {
           "command": "joplin.search",
-          "when": "view == joplin",
+          "when": "view == noteExplorer",
           "group": "navigation"
         }
       ],
@@ -347,7 +351,7 @@
     },
     "keybindings": [
       {
-        "command": "workbench.view.extension.joplin-note",
+        "command": "workbench.view.extension.joplin",
         "key": "ctrl+j ctrl+j",
         "when": "focusedView != joplin"
       },

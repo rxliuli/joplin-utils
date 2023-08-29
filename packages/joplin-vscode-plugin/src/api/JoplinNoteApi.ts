@@ -42,7 +42,7 @@ class JoplinNoteApi {
    */
   async loadLastNoteList(): Promise<(vscode.QuickPickItem & { id: string })[]> {
     const list = await noteApi.list({
-      fields: ['id', 'title'],
+      fields: ['id', 'title', 'body'],
       limit: 20,
       order_dir: 'DESC',
       order_by: 'user_updated_time',

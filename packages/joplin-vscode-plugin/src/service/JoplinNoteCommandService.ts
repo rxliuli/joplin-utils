@@ -21,6 +21,7 @@ import { logger } from '../constants/logger'
 import { fileSuffix } from '../util/fileSuffix'
 import { joplinNoteApi } from '../api/JoplinNoteApi'
 import { extConfig } from '../constants/config'
+import { debounce } from 'lodash-es'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -234,17 +235,18 @@ export class JoplinNoteCommandService {
       const { items: noteList } = await searchApi.search({
         query: value,
         type: TypeEnum.Note,
-        fields: ['id', 'title'],
+        fields: ['id', 'title', 'body'],
         limit: 100,
         order_by: 'user_updated_time',
         order_dir: 'DESC',
       })
+      GlobalContext.noteSearchProvider.setSearchList(noteList)
       searchQuickPickBox.items = noteList.map((note) => ({
         label: note.title,
         id: note.id,
         alwaysShow: true,
       }))
-      console.log('search: ', value, JSON.stringify(searchQuickPickBox.items))
+      // console.log('search: ', value, JSON.stringify(searchQuickPickBox.items))
     })
     searchQuickPickBox.onDidAccept(() => {
       const selectItem = searchQuickPickBox.selectedItems[0]

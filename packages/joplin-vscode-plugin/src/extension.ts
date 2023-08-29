@@ -3,7 +3,7 @@
 import * as vscode from 'vscode'
 import { NoteExplorerProvider } from './provider/NoteExplorerProvider'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
-import { config, TypeEnum } from 'joplin-api'
+import { TypeEnum } from 'joplin-api'
 import { HandlerService } from './service/HandlerService'
 import { checkJoplinServer } from './util/checkJoplinServer'
 import { uploadResourceService } from './service/UploadResourceService'
@@ -18,6 +18,7 @@ import { linkCommands, tagCommands } from './commands'
 import { initI18n } from './constants/i18n'
 import { extendMarkdownIt } from './util/markdown'
 import { initConfig } from './constants/config'
+import { NoteSearchProvider } from './provider/NoteSearchProvider'
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -32,13 +33,21 @@ export async function activate(context: vscode.ExtensionContext) {
     return
   }
   const noteExplorerProvider = new NoteExplorerProvider()
-  const noteListTreeView = vscode.window.createTreeView('joplin', {
+  const noteListTreeView = vscode.window.createTreeView('noteExplorer', {
     treeDataProvider: noteExplorerProvider,
     showCollapseAll: true,
     dragAndDropController: noteExplorerProvider,
     canSelectMany: false,
   })
   context.subscriptions.push(noteListTreeView)
+  const noteSearchProvider = new NoteSearchProvider()
+  const noteSearchTreeView = vscode.window.createTreeView('noteSearch', {
+    treeDataProvider: noteSearchProvider,
+    showCollapseAll: false,
+    canSelectMany: false,
+  })
+  GlobalContext.noteSearchProvider = noteSearchProvider
+  context.subscriptions.push(noteSearchTreeView)
 
   const joplinNoteCommandService = ClassUtil.bindMethodThis(
     new JoplinNoteCommandService({
