@@ -1,5 +1,6 @@
 import path from 'path'
 import { GlobalContext } from '../constants/context'
+import { NoteProperties } from 'joplin-api'
 
 export class JoplinNoteUtil {
   /**
@@ -28,5 +29,9 @@ export class JoplinNoteUtil {
       title: title.trim(),
       body: others.join('\n').trimStart(),
     }
+  }
+
+  static getNoteContent(note: Pick<NoteProperties, 'title' | 'body'>) {
+    return (note.title.startsWith('# ') ? '' : '# ') + note.title + '\n\n' + note.body
   }
 }

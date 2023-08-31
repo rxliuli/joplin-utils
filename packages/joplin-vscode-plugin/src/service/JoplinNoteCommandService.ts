@@ -58,6 +58,7 @@ export class JoplinNoteCommandService {
         }
         await noteApi.update(newNote)
         this.config.noteViewProvider.fire()
+        GlobalContext.noteSearchProvider.refresh(newNote)
         const resourceList = await noteApi.resourcesById(id)
         GlobalContext.openNoteResourceMap.set(id, resourceList)
       })
@@ -188,13 +189,44 @@ export class JoplinNoteCommandService {
    * open note in vscode
    * @param item
    */
-  async openNote(item: JoplinListNote) {
+  async openNote(
+    item: JoplinListNote,
+    position?: {
+      start: { line: number; character: number }
+      end: { line: number; character: number }
+    },
+  ) {
+    function real(
+      editor: vscode.TextEditor,
+      position: {
+        start: { line: number; character: number }
+        end: { line: number; character: number }
+      },
+    ) {
+      const startPosition = new vscode.Position(position.start.line, position.start.character)
+      const endPosition = new vscode.Position(position.end.line, position.end.character)
+      const newSelection = new vscode.Selection(startPosition, endPosition)
+      // 设置选区
+      editor.selection = newSelection
+      editor.revealRange(newSelection)
+      const decorationRange = new vscode.Range(startPosition, endPosition)
+      const highlightDecoration = vscode.window.createTextEditorDecorationType({
+        backgroundColor: 'rgba(255,255,0,0.5)', // 黄色半透明背景
+      })
+      editor.setDecorations(highlightDecoration, [decorationRange])
+      setTimeout(() => {
+        editor.setDecorations(highlightDecoration, [])
+      }, 200)
+    }
     logger.info(`openNote start, id: ${item.id}, title: ${item.title}`)
     // 如果已经打开了笔记，则应该切换并且保持 treeview 的焦点
     if (GlobalContext.openNoteMap.has(item.id)) {
       const filePath = GlobalContext.openNoteMap.get(item.id)!
       if (vscode.window.activeTextEditor?.document.fileName !== filePath) {
         await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(filePath))
+      }
+      if (position) {
+        real(vscode.window.activeTextEditor!, position)
       }
       await this.focus(item.id)
       return
@@ -205,12 +237,15 @@ export class JoplinNoteCommandService {
       tempNotePath = fileSuffix(tempNotePath, item.id)
     }
     const note = await noteApi.get(item.id, ['body', 'title'])
-    const content = (note.title.startsWith('# ') ? '' : '# ') + note.title + '\n\n' + note.body
+    const content = JoplinNoteUtil.getNoteContent(note)
     await writeFile(tempNotePath, content)
     logger.info('openNote write tempFile: ' + path.basename(tempNotePath))
     GlobalContext.openNoteMap.set(item.id, tempNotePath)
     GlobalContext.openNoteResourceMap.set(item.id, await noteApi.resourcesById(item.id))
     await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(tempNotePath))
+    if (position && vscode.window.activeTextEditor) {
+      real(vscode.window.activeTextEditor, position)
+    }
     logger.info('openNote open tempFile')
   }
 
@@ -240,7 +275,7 @@ export class JoplinNoteCommandService {
         order_by: 'user_updated_time',
         order_dir: 'DESC',
       })
-      GlobalContext.noteSearchProvider.setSearchList(noteList)
+      GlobalContext.noteSearchProvider.setSearchList(value.trim(), noteList)
       searchQuickPickBox.items = noteList.map((note) => ({
         label: note.title,
         id: note.id,
