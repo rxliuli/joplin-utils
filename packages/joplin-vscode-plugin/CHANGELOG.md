@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.2.0
+
+- feat: support displaying search results to the sidebar, ref: <https://github.com/rxliuli/joplin-utils/issues/59>
+
 ## 1.1.3
 
 - fix: fix the plugin to support reconnection when joplin is not started <https://github.com/rxliuli/joplin-utils/issues/74>
@@ -10,7 +14,7 @@
 
 ## 1.1.1
 
-- fix: Fixed the error that baseUrl was not used when checked joplin clipper service
+- fix: fixed the error that baseUrl was not used when checked joplin clipper service
 
 ## 1.1.0
 
