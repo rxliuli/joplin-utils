@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.2.1
+
+- fix: fix the problem of right-click menu failure
+
 ## 1.2.0
 
 - feat: support displaying search results to the sidebar, ref: <https://github.com/rxliuli/joplin-utils/issues/59>
