@@ -272,52 +272,52 @@
       "view/item/context": [
         {
           "command": "joplin.createFolder",
-          "when": "view == joplin && viewItem == joplin.folder",
+          "when": "view == noteExplorer && viewItem == joplin.folder",
           "group": "joplinNote@1"
         },
         {
           "command": "joplin.createNote",
-          "when": "view == joplin && viewItem == joplin.folder",
+          "when": "view == noteExplorer && viewItem == joplin.folder",
           "group": "joplinNote@2"
         },
         {
           "command": "joplin.rename",
-          "when": "view == joplin",
+          "when": "view == noteExplorer",
           "group": "joplinNote@3"
         },
         {
           "command": "joplin.remove",
-          "when": "view == joplin",
+          "when": "view == noteExplorer",
           "group": "joplinNote@4"
         },
         {
           "command": "joplin.copyLink",
-          "when": "view == joplin && viewItem != joplin.folder",
+          "when": "view == noteExplorer && viewItem != joplin.folder",
           "group": "joplinNote@5"
         },
         {
           "command": "joplin.toggleTodoState",
-          "when": "view == joplin && viewItem != joplin.folder && viewItem != joplin.note",
+          "when": "view == noteExplorer && viewItem != joplin.folder && viewItem != joplin.note",
           "group": "joplinNote@6"
         },
         {
           "command": "joplin.manageTags",
-          "when": "view == joplin && viewItem != joplin.folder",
+          "when": "view == noteExplorer && viewItem != joplin.folder",
           "group": "joplinNote@7"
         },
         {
           "command": "joplin.cut",
-          "when": "view == joplin",
+          "when": "view == noteExplorer",
           "group": "joplinNote@8"
         },
         {
           "command": "joplin.paste",
-          "when": "view == joplin && viewItem == joplin.folder",
+          "when": "view == noteExplorer && viewItem == joplin.folder",
           "group": "joplinNote@9"
         },
         {
           "command": "joplin.search",
-          "when": "view == joplin && viewItem == joplin.folder",
+          "when": "view == noteExplorer && viewItem == joplin.folder",
           "group": "joplinNote@10"
         }
       ],
@@ -344,7 +344,7 @@
         },
         {
           "command": "joplin.manageTags",
-          "when": "view == joplin && viewItem != joplin.folder",
+          "when": "view == noteExplorer && viewItem != joplin.folder",
           "group": "joplinNote@7"
         }
       ]
@@ -358,17 +358,17 @@
       {
         "command": "workbench.action.toggleSidebarVisibility",
         "key": "ctrl+j ctrl+j",
-        "when": "focusedView == joplin"
+        "when": "focusedView == noteExplorer"
       },
       {
         "key": "f2",
         "command": "joplin.rename",
-        "when": "focusedView == joplin"
+        "when": "focusedView == noteExplorer"
       },
       {
         "key": "delete",
         "command": "joplin.remove",
-        "when": "focusedView == joplin"
+        "when": "focusedView == noteExplorer"
       },
       {
         "command": "joplin.uploadImageFromClipboard",
