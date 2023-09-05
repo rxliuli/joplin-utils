@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.2.2
+
+- fix: blob is not defined when upload image, ref: <https://github.com/rxliuli/joplin-utils/issues/79>
+
 ## 1.2.1
 
 - fix: fix the problem of right-click menu failure
