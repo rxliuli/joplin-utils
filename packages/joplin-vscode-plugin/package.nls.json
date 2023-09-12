@@ -9,6 +9,7 @@
   "commands.joplin.openLogFileDir": "Open log directory",
   "commands.joplin.createFolder": "Create folder",
   "commands.joplin.createNote": "Create note",
+  "commands.joplin.createTodo": "Create todo",
   "commands.joplin.rename": "Rename",
   "commands.joplin.cut": "Cut",
   "commands.joplin.paste": "Paste",

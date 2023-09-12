@@ -1,7 +1,7 @@
 import { JoplinTreeItem, JoplinListNote } from '../provider/JoplinTreeItem'
 import * as vscode from 'vscode'
 import { QuickPickItem, TreeView } from 'vscode'
-import { folderExtApi, noteApi, noteExtApi, PageUtil, resourceApi, searchApi, TypeEnum } from 'joplin-api'
+import { folderApi, folderExtApi, noteApi, noteExtApi, PageUtil, resourceApi, searchApi, TypeEnum } from 'joplin-api'
 import { NoteExplorerProvider } from '../provider/NoteExplorerProvider'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
@@ -94,28 +94,34 @@ export class JoplinNoteCommandService {
    * @param type
    * @param item
    */
-  async create(type: TypeEnum, item: JoplinTreeItem = this.config.noteListTreeView.selection[0]) {
+  async create(type: 'folder' | 'note' | 'todo', item: JoplinTreeItem = this.config.noteListTreeView.selection[0]) {
     const parentFolderId = !item ? '' : item.item.type_ === TypeEnum.Folder ? item.item.id : item.item.parent_id
     console.log('joplin.create: ', item, parentFolderId)
 
     const title = await vscode.window.showInputBox({
       placeHolder: t('Please enter what you want to create {{type}} name', {
-        type: t(type === TypeEnum.Folder ? 'folder' : 'note'),
+        type: t(type === 'folder' ? 'folder' : type === 'note' ? 'note' : 'todo'),
       }),
     })
     if (!title) {
       return
     }
 
-    const { id } = await this.folderOrNoteExtendsApi.create({
+    if (type === 'folder') {
+      await folderApi.create({
+        title,
+        parent_id: parentFolderId,
+      })
+      await this.config.noteViewProvider.refresh()
+      return
+    }
+    const { id } = await noteApi.create({
       title,
       parent_id: parentFolderId,
-      type_: type,
+      is_todo: type === 'todo' ? 1 : 0,
     })
     await this.config.noteViewProvider.refresh()
-    if (type === TypeEnum.Note) {
-      await GlobalContext.handlerService.openNote(id)
-    }
+    await GlobalContext.handlerService.openNote(id)
   }
 
   /**

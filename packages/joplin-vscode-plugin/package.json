@@ -1,6 +1,6 @@
 {
   "name": "joplin-vscode-plugin",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "%package.description%",
   "homepage": "https://joplin-utils.rxliuli.com/zh/joplin-vscode-plugin/",
   "repository": {
@@ -121,6 +121,15 @@
       {
         "command": "joplin.createNote",
         "title": "%commands.joplin.createNote%",
+        "icon": {
+          "light": "resources/light/new-file.svg",
+          "dark": "resources/dark/new-file.svg"
+        },
+        "category": "Joplin"
+      },
+      {
+        "command": "joplin.createTodo",
+        "title": "%commands.joplin.createTodo%",
         "icon": {
           "light": "resources/light/new-file.svg",
           "dark": "resources/dark/new-file.svg"
@@ -281,44 +290,49 @@
           "group": "joplinNote@2"
         },
         {
-          "command": "joplin.rename",
-          "when": "view == noteExplorer",
+          "command": "joplin.createTodo",
+          "when": "view == noteExplorer && viewItem == joplin.folder",
           "group": "joplinNote@3"
         },
         {
-          "command": "joplin.remove",
+          "command": "joplin.rename",
           "when": "view == noteExplorer",
           "group": "joplinNote@4"
         },
         {
+          "command": "joplin.remove",
+          "when": "view == noteExplorer",
+          "group": "joplinNote@5"
+        },
+        {
           "command": "joplin.copyLink",
           "when": "view == noteExplorer && viewItem != joplin.folder",
-          "group": "joplinNote@5"
+          "group": "joplinNote@6"
         },
         {
           "command": "joplin.toggleTodoState",
           "when": "view == noteExplorer && viewItem != joplin.folder && viewItem != joplin.note",
-          "group": "joplinNote@6"
+          "group": "joplinNote@7"
         },
         {
           "command": "joplin.manageTags",
           "when": "view == noteExplorer && viewItem != joplin.folder",
-          "group": "joplinNote@7"
+          "group": "joplinNote@8"
         },
         {
           "command": "joplin.cut",
           "when": "view == noteExplorer",
-          "group": "joplinNote@8"
+          "group": "joplinNote@9"
         },
         {
           "command": "joplin.paste",
           "when": "view == noteExplorer && viewItem == joplin.folder",
-          "group": "joplinNote@9"
+          "group": "joplinNote@10"
         },
         {
           "command": "joplin.search",
           "when": "view == noteExplorer && viewItem == joplin.folder",
-          "group": "joplinNote@10"
+          "group": "joplinNote@11"
         }
       ],
       "editor/context": [

@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.3.0
+
+- feat: support creating todo items, ref: <https://discourse.joplinapp.org/t/9624/112>
+
 ## 1.2.2
 
 - fix: blob is not defined when upload image, ref: <https://github.com/rxliuli/joplin-utils/issues/79>

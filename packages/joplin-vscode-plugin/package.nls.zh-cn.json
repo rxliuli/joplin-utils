@@ -8,6 +8,7 @@
   "commands.joplin.openLogFileDir": "打开日志目录",
   "commands.joplin.createFolder": "创建目录",
   "commands.joplin.createNote": "创建笔记",
+  "commands.joplin.createTodo": "创建待办事项",
   "commands.joplin.rename": "重命名",
   "commands.joplin.cut": "剪切",
   "commands.joplin.paste": "粘贴",

@@ -66,8 +66,9 @@ export async function activate(context: vscode.ExtensionContext) {
   registerCommand('joplin.search', joplinNoteCommandService.search)
   registerCommand('joplin.openNote', joplinNoteCommandService.openNote)
 
-  registerCommand('joplin.createFolder', (item) => joplinNoteCommandService.create(TypeEnum.Folder, item))
-  registerCommand('joplin.createNote', (item) => joplinNoteCommandService.create(TypeEnum.Note, item))
+  registerCommand('joplin.createFolder', (item) => joplinNoteCommandService.create('folder', item))
+  registerCommand('joplin.createNote', (item) => joplinNoteCommandService.create('note', item))
+  registerCommand('joplin.createTodo', (item) => joplinNoteCommandService.create('todo', item))
   registerCommand('joplin.rename', joplinNoteCommandService.rename)
   registerCommand('joplin.copyLink', joplinNoteCommandService.copyLink)
   registerCommand('joplin.remove', joplinNoteCommandService.remove)
