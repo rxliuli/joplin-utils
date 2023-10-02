@@ -47,9 +47,9 @@ describe('api test', function () {
     config.token = '1'
     expect(noteApi.getConfig().token).toBe('1')
   })
-  it('测试使用 127.0.0.1', async () => {
+  it('测试使用 baseUrl', async () => {
     const api = new JoplinApiGenerator()
-    api.baseUrl = 'http://127.0.0.1:27583/'
+    api.baseUrl = config.baseUrl
     api.token = config.token
     expect(await api.joplinApi.ping()).toBeTruthy()
   })

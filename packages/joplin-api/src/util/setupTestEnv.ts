@@ -4,8 +4,8 @@ import { parse } from 'envfile'
 import * as path from 'path'
 import { findParent } from './findParent'
 
+// Read Joplin API 'TOKEN' (and optional 'URL') from .env.local file
 export async function setupTestEnv() {
-  config.baseUrl = 'http://127.0.0.1:27583'
   const dirPath = await findParent(__dirname, (item) => pathExists(path.resolve(item, 'package.json')))
   const envPath = path.resolve(dirPath!, '.env.local')
   if (!(await pathExists(envPath))) {
@@ -13,5 +13,6 @@ export async function setupTestEnv() {
   }
   const env = await readFile(envPath, 'utf8')
 
+  config.baseUrl = parse(env).URL || 'http://127.0.0.1:27583'
   config.token = parse(env).TOKEN!
 }
