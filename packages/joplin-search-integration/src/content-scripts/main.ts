@@ -10,8 +10,9 @@ import { searx } from './plugins/searx'
 import { metagar } from './plugins/metagar'
 import { you } from './plugins/you'
 import { search } from './utils/search'
+import { brave } from './plugins/brave'
 
-const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo(), searx(), metagar(), you()]
+const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo(), searx(), metagar(), you(), brave()]
 
 function findPlugin() {
   const u = new URL(location.href)
