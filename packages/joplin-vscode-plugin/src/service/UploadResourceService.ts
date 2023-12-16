@@ -4,16 +4,28 @@ import { GlobalContext } from '../constants/context'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { t } from '../constants/i18n'
 import { resourceApi } from 'joplin-api'
+import { logger } from '../constants/logger'
 
 export class UploadResourceService {
   async uploadImageFromClipboard() {
     const globalStoragePath = GlobalContext.context.globalStorageUri.fsPath
-    const clipboardImage = await UploadResourceUtil.getClipboardImage(globalStoragePath)
-    if (!clipboardImage.isExistFile) {
+    let imagePath: string
+    try {
+      imagePath = await UploadResourceUtil.getClipboardImage(globalStoragePath)
+    } catch (e) {
+      logger.error('getClipboardImage error', e)
+      if ((e as Error).message === 'no xclip') {
+        vscode.window.showErrorMessage(t('upload.error.no-xclip'))
+        return
+      }
+      if ((e as Error).message === 'no wl-clipboard') {
+        vscode.window.showErrorMessage(t('upload.error.no-wl-clipboard'), 'https://github.com/bugaevc/wl-clipboard')
+        return
+      }
       vscode.window.showWarningMessage(t('Clipboard does not contain picture!'))
-      return
+      throw e
     }
-    const { markdownLink, res } = await UploadResourceUtil.uploadByPath(clipboardImage.imgPath, true)
+    const { markdownLink, res } = await UploadResourceUtil.uploadByPath(imagePath, true)
     await Promise.all([this.insertUrlByActiveEditor(markdownLink), this.refreshResourceList(res.id)])
   }
 

@@ -22,6 +22,8 @@
   "Please select the tag to delete": "请选择要删除的标签",
   "Remove tag [{{title}}] success": "删除标签 [{{title}}] 成功",
   "Clipboard does not contain picture!": "剪贴板不包含图片",
+  "upload.error.no-xclip": "请先安装 xclip",
+  "upload.error.no-wl-clipboard": "请先安装 wl-clipboard",
   "file uploaded successfully": "文件上传成功",
   "No active editor": "当前没有激活的编辑器",
   "Resource does not exist": "资源不存在",

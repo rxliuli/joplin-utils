@@ -22,6 +22,8 @@
   "Please select the tag to delete": "Please select the tag to delete",
   "Remove tag [{{title}}] success": "Remove tag [{{title}}] success",
   "Clipboard does not contain picture!": "Clipboard does not contain picture",
+  "upload.error.no-xclip": "Please install xclip first",
+  "upload.error.no-wl-clipboard": "Please install wl-clipboard first",
   "file uploaded successfully": "file uploaded successfully",
   "No active editor": "No active editor",
   "Resource [{{title}}] does not exist": "Resource [{{title}}] does not exist",
