@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.3.1
+
+- fix: Fixed the issue of silent failure when pasting images on Linux, ref: <https://github.com/rxliuli/joplin-utils/issues/56>
+
 ## 1.3.0
 
 - feat: support creating todo items, ref: <https://discourse.joplinapp.org/t/9624/112>
