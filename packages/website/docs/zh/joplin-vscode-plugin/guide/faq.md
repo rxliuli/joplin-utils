@@ -70,3 +70,7 @@ powershell
 ## 不兼容插件 Markdown Preview Enhanced
 
 由于 Markdown Preview Enhanced 自行构建了 markdown 文件渲染的 webview 页面，而且不在乎 vscode 提供的 [markdown-it 扩展接口 api](https://code.visualstudio.com/api/extension-guides/markdown-extension)，所以现在无法兼容，推荐使用 [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)，参考：<https://github.com/rxliuli/joplin-utils/issues/46>
+
+## Linux 上无法粘贴图片到笔记中
+
+请先安装 [xclip](https://github.com/astrand/xclip) 和 [wl-clipboard](https://github.com/bugaevc/wl-clipboard)。

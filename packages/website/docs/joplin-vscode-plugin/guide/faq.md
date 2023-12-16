@@ -78,3 +78,7 @@ When you first use the joplin vscode plugin, you may encounter the problem of no
 ## Incompatible Plugin Markdown Preview Enhanced
 
 Since Markdown Preview Enhanced builds its own webview page for rendering markdown files and does not care about the [markdown-it extension-guides api](https://code.visualstudio.com/api/) provided by vscode extension-guides/markdown-extension), it is now incompatible and recommends using [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang. markdown-all-in-one), reference: <https://github.com/rxliuli/joplin-utils/issues/46>
+
+## Unable to Paste Images into Notes on Linux
+
+Please first install [xclip](https://github.com/astrand/xclip) and [wl-clipboard](https://github.com/bugaevc/wl-clipboard).
