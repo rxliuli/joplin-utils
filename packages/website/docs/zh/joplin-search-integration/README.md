@@ -32,6 +32,22 @@
 
 ![joplin web clipper](https://img.rxliuli.com/20210320142144.png)
 
+### 不能在这个网站上读取或修改数据
+
+有时候安装完插件并且配置好后没有效果，查看插件显示为灰色的，提示无法在这个网站上读取或修改数据。
+
+这时候需要手动配置为允许。
+
+![error](/images/read-and-change-data-error.jpg)
+
+Chrome
+
+![chrome](/images/read-and-change-data-on-firefox.jpg)
+
+Firefox
+
+![firefox](/images/read-and-change-data-on-firefox.jpg)
+
 ## 贡献
 
 如果你希望添加新的搜索引擎支持，可以提出 issue，或者 fork 后修改提 PR（非常简单

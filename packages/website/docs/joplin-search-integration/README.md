@@ -33,6 +33,22 @@ turn it off on the Google search site.
 
 ![joplin web clipper](https://img.rxliuli.com/20210320142144.png)
 
+### It is not possible to access the station or modify the number.
+
+At some point, the installation will be completed, and after the arrangement, there will be no effect, and the display will be gray.
+
+Allows you to arrange manuals according to current demand.
+
+![error](/images/read-and-change-data-error.jpg)
+
+Chrome
+
+![chrome](/images/read-and-change-data-on-firefox.jpg)
+
+Firefox
+
+![firefox](/images/read-and-change-data-on-firefox.jpg)
+
 ## Contribute
 
 If you want to add new search engine support, you can raise an issue, or fork it
