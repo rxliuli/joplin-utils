@@ -1,5 +1,6 @@
-import browser from 'webextension-polyfill'
 import { SearchNote } from '../plugins/plugin'
+import { BackChannel } from '../../background'
+import { warp } from '../../utils/ext'
 
 export function renderList(root: HTMLDivElement, list: SearchNote[]) {
   const html = `<div>
@@ -9,13 +10,13 @@ export function renderList(root: HTMLDivElement, list: SearchNote[]) {
   </ul>
 </div>`
   root.innerHTML = html
-  root.addEventListener('click', (ev) => {
+  root.addEventListener('click', async (ev) => {
     const el = ev.target
     if (!(el instanceof HTMLElement && el.tagName === 'A')) {
       return
     }
-    browser.runtime.sendMessage({
-      action: 'open',
+    const back = warp<BackChannel>({ name: 'back' })
+    await back.open({
       path: '/note',
       id: el.dataset.id,
     })

@@ -1,16 +1,16 @@
-import { config } from 'joplin-api'
+import { NoteProperties, config } from 'joplin-api'
 import { loadConfig } from '../options/utils/loadConfig'
 import { google } from './plugins/google'
 import { SearchPlugin } from './plugins/plugin'
 import { bing } from './plugins/bing'
 import { baidu } from './plugins/baidu'
 import { duckduckgo } from './plugins/duckduckgo'
-import browser from 'webextension-polyfill'
 import { searx } from './plugins/searx'
 import { metagar } from './plugins/metagar'
 import { you } from './plugins/you'
-import { search } from './utils/search'
 import { brave } from './plugins/brave'
+import type { BackChannel } from '../background'
+import { warp } from '../utils/ext'
 
 const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo(), searx(), metagar(), you(), brave()]
 
@@ -18,6 +18,8 @@ function findPlugin() {
   const u = new URL(location.href)
   return plugins.find((item) => item.match(u))
 }
+
+const back = warp<BackChannel>({ name: 'back' })
 
 async function main() {
   console.debug('load plugin')
@@ -30,10 +32,7 @@ async function main() {
   const c = await loadConfig()
   if (!c.token) {
     alert('Joplin Search Integration: Please configure the token first')
-    browser.runtime.sendMessage({
-      action: 'open',
-      path: '/',
-    })
+    await back.open({ path: '/' })
     return
   }
   config.token = c.token
@@ -41,14 +40,20 @@ async function main() {
   console.debug('get query')
   const keywrod = plugin.getQuery()
   if (!keywrod) {
-    throw new Error('未能解析搜索关键字')
+    console.info('未能解析搜索关键字')
+    return
   }
   console.debug('search notes')
-  // const list = await search(keywrod)
-  const list = await browser.runtime.sendMessage({
-    action: 'search',
-    keywrod,
-  })
+  let list: Pick<NoteProperties, 'id' | 'title'>[]
+  try {
+    list = await back.search(keywrod)
+  } catch (err) {
+    console.error('search notes error', err)
+    if (typeof err === 'object' && (err as any).code === 'JoplinWebClipperNotEnabled') {
+      alert(`Joplin Search Integration: Please enable joplin webclipper service. check: ${c.baseUrl}/ping`)
+    }
+    return
+  }
   console.debug('search: ', keywrod, list)
   console.debug('render start')
   plugin.render(list)
