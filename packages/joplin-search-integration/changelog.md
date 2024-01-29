@@ -1,5 +1,9 @@
 # changelog
 
+## 0.6.2
+
+- refactor: refactored using preact, added better error handling
+
 ## 0.5.3
 
 - chore: update infrastructure, use manifest v3, support firefox 109 and above
