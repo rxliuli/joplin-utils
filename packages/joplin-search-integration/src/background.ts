@@ -3,9 +3,10 @@ import { LocalConfig } from './options/utils/loadConfig'
 import { trimTitleStart } from './content-scripts/utils/trim'
 import Browser from 'webextension-polyfill'
 import { Channel, register } from './utils/ext'
+import { omit } from 'lodash-es'
 
 export interface BackChannel extends Channel<'back'> {
-  open(args: object): Promise<void>
+  open(args: { path: string } & Record<string, string | number>): Promise<void>
   search(keyword: string): Promise<Pick<NoteProperties, 'id' | 'title'>[]>
 }
 
@@ -13,8 +14,10 @@ register<BackChannel>({
   name: 'back',
   async open(args) {
     const p = new URLSearchParams(location.search)
-    Object.entries(args).forEach(([k, v]) => (Array.isArray(v) ? v.forEach((i) => p.set(k, i)) : p.set(k, String(v))))
-    const url = Browser.runtime.getURL(`/src/options/index.html?${p.toString()}`)
+    Object.entries(omit(args, 'path')).forEach(([k, v]) =>
+      Array.isArray(v) ? v.forEach((i) => p.set(k, i)) : p.set(k, String(v)),
+    )
+    const url = Browser.runtime.getURL(`/src/options/index.html#${args.path}?${p.toString()}`)
     const t = (await Browser.tabs.query({ active: true, currentWindow: true }))[0]
     await Browser.tabs.create({ url, active: true, index: (t?.index ?? 0) + 1 })
   },

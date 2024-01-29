@@ -6,11 +6,19 @@ export interface LocalConfig {
   theme: 'light' | 'dark'
 }
 
+export function getDefault(): LocalConfig {
+  return {
+    baseUrl: 'http://127.0.0.1:41184',
+    theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+  }
+}
+
 export async function loadConfig(): Promise<LocalConfig> {
   const c = ((await browser.storage.local.get(['baseUrl', 'token', 'theme'])) ?? {}) as LocalConfig
+  const d = getDefault()
   return {
-    baseUrl: c.baseUrl ?? 'http://127.0.0.1:41184',
+    baseUrl: c.baseUrl ?? d.baseUrl,
     token: c.token,
-    theme: c.theme ?? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+    theme: c.theme ?? d.theme,
   }
 }

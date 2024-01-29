@@ -1,6 +1,5 @@
 import { getSearchQuery } from '../utils/getQuery'
-import { createJoplinElement, renderList } from '../utils/render'
-import { SearchNote, SearchPlugin } from './plugin'
+import { SearchPlugin } from './plugin'
 
 function createRhs(): HTMLElement {
   const $context = document.querySelector('#b_context')!
@@ -22,11 +21,11 @@ export function bing(): SearchPlugin {
     getQuery() {
       return getSearchQuery(['q'])
     },
-    render(list: SearchNote[]): void {
+    createRenderRoot() {
       const $rhs = createRhs()
-      const $root = createJoplinElement()
+      const $root = document.createElement('div')
       $rhs.appendChild($root)
-      renderList($root, list)
+      return $root
     },
   }
 }

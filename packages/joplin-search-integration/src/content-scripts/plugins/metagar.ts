@@ -1,7 +1,6 @@
 import { SearchPlugin } from './plugin'
-import micromatch from 'minimatch'
+import { minimatch } from 'minimatch'
 import { getSearchQuery } from '../utils/getQuery'
-import { createJoplinElement, renderList } from '../utils/render'
 
 function createRhs(): HTMLElement {
   const $right = document.querySelector('#quicktips')!
@@ -17,17 +16,17 @@ export function metagar(): SearchPlugin {
     name: 'metaGar',
     match(url) {
       return ['https://metager.org/meta/meta.ger3?*', 'https://metager.de/meta/meta.ger3?*'].some((m) =>
-        micromatch(url.href, m),
+        minimatch(url.href, m),
       )
     },
     getQuery() {
       return getSearchQuery(['eingabe'])
     },
-    render(list) {
+    createRenderRoot() {
       const $rhs = createRhs()
-      const $root = createJoplinElement()
+      const $root = document.createElement('div')
       $rhs.appendChild($root)
-      renderList($root, list)
+      return $root
     },
   }
 }

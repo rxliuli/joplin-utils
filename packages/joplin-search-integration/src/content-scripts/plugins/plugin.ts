@@ -21,5 +21,10 @@ export interface SearchPlugin {
   /**
    * 渲染检索到的笔记数据
    */
-  render(list: SearchNote[]): void
+  // render(list: SearchNote[]): void
+
+  /**
+   * 创建一个渲染根节点
+   */
+  createRenderRoot(): HTMLDivElement
 }

@@ -1,0 +1,13 @@
+.joplin-root .joplin-header {
+  font-size: 18px;
+}
+.joplin-root .note-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.joplin-root .note-list li {
+  font-size: 16px;
+  margin-bottom: 14px;
+}

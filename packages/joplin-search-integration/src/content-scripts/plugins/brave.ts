@@ -18,13 +18,11 @@ export function brave(): SearchPlugin {
     getQuery() {
       return getSearchQuery(['q'])
     },
-    async render(list) {
-      // await wait(1000)
-      // console.log('render')
+    createRenderRoot() {
       const $rhs = createRhs()
-      const $root = createJoplinElement()
+      const $root = document.createElement('div')
       $rhs.appendChild($root)
-      renderList($root, list)
+      return $root
     },
   }
 }

@@ -1,7 +1,7 @@
 import { getSearchQuery } from '../utils/getQuery'
 import { createJoplinElement, renderList } from '../utils/render'
 import { SearchPlugin, SearchNote } from './plugin'
-import micromatch from 'minimatch'
+import { minimatch } from 'minimatch'
 
 function createRhs(): HTMLElement {
   const $rcht = document.querySelector('#rcnt')!
@@ -16,22 +16,21 @@ export function google(): SearchPlugin {
   return {
     match(url) {
       return ['https://www.google.com/search?*', 'https://www.google.com.*/search?*'].some((m) =>
-        micromatch(url.href, m),
+        minimatch(url.href, m),
       )
     },
     name: 'google',
     getQuery() {
       return getSearchQuery(['q'])
     },
-    render(list: SearchNote[]): void {
+    createRenderRoot() {
       const $rhs = document.querySelector('#rhs') || createRhs()
       if ($rhs === null) {
-        console.error('网页结构发生了变化')
-        return
+        throw new Error("Don't find render root")
       }
-      const $root = createJoplinElement()
+      const $root = document.createElement('div')
       $rhs.appendChild($root)
-      renderList($root, list)
+      return $root
     },
   }
 }

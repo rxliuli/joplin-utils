@@ -1,5 +1,5 @@
 import { wait } from '@liuli-util/async'
-import minimatch from 'minimatch'
+import { minimatch } from 'minimatch'
 import { getSearchQuery } from '../utils/getQuery'
 import { createJoplinElement, renderList } from '../utils/render'
 import { search } from '../utils/search'

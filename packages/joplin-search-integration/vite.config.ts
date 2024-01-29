@@ -2,10 +2,15 @@ import { defineConfig } from 'vite'
 import { firefox } from '@liuli-util/vite-plugin-firefox-dist'
 import { crx } from '@crxjs/vite-plugin'
 import manifest from './manifest.json'
+import preact from '@preact/preset-vite'
+import tailwindcss from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
+import svgr from 'vite-plugin-svgr'
 
 export default defineConfig({
   plugins: [
-    crx({ manifest }),
+    preact(),
+    crx({ manifest }) as any,
     firefox({
       browser_specific_settings: {
         gecko: {
@@ -14,11 +19,24 @@ export default defineConfig({
         },
       },
     }),
-  ] as any,
+    svgr(),
+  ],
   base: './',
   build: {
     target: 'esnext',
     minify: false,
     cssMinify: false,
+  },
+  server: {
+    port: 5173,
+    strictPort: true,
+    hmr: {
+      port: 5173,
+    },
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss, autoprefixer],
+    },
   },
 })

@@ -1,6 +1,5 @@
 import { getSearchQuery } from '../utils/getQuery'
-import { createJoplinElement, renderList } from '../utils/render'
-import { SearchNote, SearchPlugin } from './plugin'
+import { SearchPlugin } from './plugin'
 
 function createContainer(): HTMLElement {
   const $right = document.querySelector('#content_right')!
@@ -25,11 +24,11 @@ export function baidu(): SearchPlugin {
     getQuery() {
       return getSearchQuery(['wd', 'word'])
     },
-    render(list: SearchNote[]): void {
+    createRenderRoot() {
       const $rhs = createContainer()
-      const $root = createJoplinElement()
+      const $root = document.createElement('div')
       $rhs.appendChild($root)
-      renderList($root, list)
+      return $root
     },
   }
 }

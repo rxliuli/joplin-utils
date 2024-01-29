@@ -18,11 +18,17 @@ export function searx(): SearchPlugin {
     getQuery() {
       return q()
     },
-    render(list) {
+    // render(list) {
+    //   const $sidebar = document.getElementById('sidebar')
+    //   const $root = createJoplinElement()
+    //   $sidebar?.appendChild($root)
+    //   renderList($root, list)
+    // },
+    createRenderRoot() {
       const $sidebar = document.getElementById('sidebar')
       const $root = createJoplinElement()
       $sidebar?.appendChild($root)
-      renderList($root, list)
+      return $root
     },
   }
 }

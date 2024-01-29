@@ -14,21 +14,31 @@
     "start-chromium": "web-ext run -s ./dist --target=chromium"
   },
   "devDependencies": {
-    "@crxjs/vite-plugin": "2.0.0-beta.18",
+    "@crxjs/vite-plugin": "2.0.0-beta.23",
     "@ffflorian/jszip-cli": "^3.4.1",
     "@liuli-util/rollup-plugin-i18next-dts-gen": "^0.4.3",
     "@liuli-util/vite-plugin-firefox-dist": "^0.2.1",
+    "@preact/preset-vite": "^2.8.1",
+    "@preact/signals": "^1.2.2",
+    "@tailwindcss/typography": "^0.5.10",
     "@types/lodash-es": "^4.17.7",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@types/webextension-polyfill": "^0.10.1",
     "@vitejs/plugin-react": "^4.0.0",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.24",
+    "autoprefixer": "^10.4.17",
+    "history": "^5.3.0",
+    "postcss": "^8.4.33",
+    "preact": "^10.19.3",
+    "preact-async-route": "^2.2.1",
+    "preact-iso": "^2.3.2",
+    "preact-router": "^4.1.2",
+    "react-use": "^17.4.0",
     "rimraf": "^5.0.0",
-    "tailwindcss": "^3.3.2",
+    "tailwindcss": "^3.4.1",
     "typescript": "^5.0.2",
     "vite": "^4.3.9",
+    "vite-plugin-svgr": "^4.2.0",
     "web-ext": "^7.6.2"
   },
   "dependencies": {
@@ -36,7 +46,7 @@
     "@liuli-util/markdown-util": "^0.6.0",
     "@primer/css": "^20.8.0",
     "joplin-api": "workspace:^",
-    "minimatch": "^5.1.2",
+    "minimatch": "^9.0.3",
     "webextension-polyfill": "^0.10.0"
   }
 }

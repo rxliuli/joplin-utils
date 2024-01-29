@@ -11,16 +11,14 @@ export function duckduckgo(): SearchPlugin {
     getQuery() {
       return getSearchQuery(['q'])
     },
-    render(list) {
+    createRenderRoot() {
       const $rhs = document.querySelector('[data-testid="sidebar"]')
       if ($rhs === null) {
-        console.error('网页结构发生了变化')
-        return
+        throw new Error("Don't find render root")
       }
-      const $root = createJoplinElement()
+      const $root = document.createElement('div')
       $rhs.appendChild($root)
-      $root.style.color = getComputedStyle(document.documentElement).getPropertyValue('--theme-col-txt-title')
-      renderList($root, list)
+      return $root
     },
   }
 }
