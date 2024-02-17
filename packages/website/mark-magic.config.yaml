@@ -1,0 +1,18 @@
+tasks:
+  - name: translate
+    input:
+      name: '@mark-magic/plugin-local'
+      config:
+        path: './docs/zh-CN'
+    transforms:
+      - name: '@mark-magic/plugin-doctran'
+        config:
+          engine: 'openai'
+          to: 'en'
+          baseUrl: ${OPENAI_API_BASE_URL}
+          apiKey: ${OPENAI_API_KEY}
+          model: 'gpt-4'
+    output:
+      name: '@mark-magic/plugin-local'
+      config:
+        path: './docs/en-US'

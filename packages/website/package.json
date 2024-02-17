@@ -1,19 +1,19 @@
 {
-  "name": "website",
+  "name": "@joplin-utils/website",
+  "private": true,
   "version": "0.1.0",
+  "type": "module",
   "scripts": {
-    "setup": "cp ../joplin-search-integration/readme.md ./docs/joplin-search-integration/README.md && cp ../joplin-search-integration/readme.zh-cn.md ./docs/zh/joplin-search-integration/README.md && cp ../joplin-batch-web/README.md ./docs/joplin-batch-web/README.md && cp ../joplin-batch-web/README.zh-CN.md ./docs/zh/joplin-batch-web/README.md",
-    "docs-dev": "vuepress dev docs",
-    "docs-build": "vuepress build docs",
-    "docs-deploy": "gh-pages -d docs/.vuepress/dist --add --dotfiles"
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "deploy": "gh-pages -d docs/.vitepress/dist --add --dotfiles"
   },
   "devDependencies": {
-    "@vuepress/client": "2.0.0-beta.51",
-    "@vuepress/plugin-search": "2.0.0-beta.51",
-    "@vuepress/plugin-google-analytics": "2.0.0-beta.51",
-    "@vuepress/theme-default": "2.0.0-beta.51",
+    "@mark-magic/cli": "^0.12.0",
+    "@mark-magic/plugin-doctran": "^0.12.0",
+    "@mark-magic/plugin-local": "^0.12.0",
     "gh-pages": "^4.0.0",
-    "vue": "^3.2.40",
-    "vuepress-vite": "2.0.0-beta.51"
+    "vitepress": "1.0.0-rc.42",
+    "vue": "^3.4.19"
   }
 }
