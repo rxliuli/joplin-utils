@@ -1,5 +1,9 @@
 # changelog
 
+## 0.6.0.6.4
+
+- chore: Open settings on first installation
+
 ## 0.6.3
 
 - fix: fixed <https://github.com/rxliuli/joplin-utils/issues/92>
