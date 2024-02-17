@@ -2,9 +2,9 @@
 
 ## 概述
 
-joplin-vscode-plugin 提供在 vscode 中管理 joplin 笔记的功能，包括常见的查看、编辑笔记，管理笔记的标签，添加、修改附件，内部链接、搜索等功能。
+Joplin VSCode Plugin 提供在 VSCode 中管理 Joplin 笔记的功能，包括常见的查看、编辑笔记，管理笔记的标签，添加、修改附件，内部链接、搜索等功能。
 
-Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，共享笔记、笔记本、标签等。joplin-vscode-plugin 连接到相同的 REST 端点，可以在不离开编辑器的情况下查看和修改笔记。
+Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，共享笔记、笔记本、标签等。Joplin VSCode Plugin 连接到相同的 REST 端点，可以在不离开编辑器的情况下查看和修改笔记。
 
 > 为什么会有这个插件？阅读 [我的动机](./faq.md) 了解开发它的原因。
 >
@@ -21,7 +21,7 @@ Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，�
 
 ## 安装 Joplin VSCode 插件
 
-在 VSCode 市场中搜索 joplin。找到 joplin-vscode-plugin 并点击安装。
+在 VSCode 市场中搜索 joplin。找到 Joplin VSCode Plugin 并点击安装。
 
 ![安装插件](/images/install-plugin.png)
 
@@ -40,7 +40,7 @@ Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，�
 
 基本路径
 
-- 一般而言，如果你使用本地安装的 joplin 桌面客户端，则不需要特殊配置。如果使用远端的 joplin 服务，则需要进行配置。
+- 一般而言，如果你使用本地安装的 Joplin 桌面客户端，则不需要特殊配置。如果使用远端的 Joplin 服务，则需要进行配置。
   例如 <http://localhost:41184>
 
 ![安装插件](/images/joplin-settings.png)

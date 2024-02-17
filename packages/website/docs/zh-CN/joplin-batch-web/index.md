@@ -1,5 +1,7 @@
 # joplin-batch-web
 
+> [前往使用](https://joplin-utils.rxliuli.com/web/joplin-batch-web/)
+
 处理一些 Joplin 本身不支持的批量操作，以可视化界面的形式展现出来。
 
 - [x] 检查是否存在没有引用的附件资源
