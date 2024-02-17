@@ -1,5 +1,9 @@
 # changelog
 
+## 0.6.3
+
+- fix: fixed <https://github.com/rxliuli/joplin-utils/issues/92>
+
 ## 0.6.2
 
 - refactor: refactored using preact, added better error handling
