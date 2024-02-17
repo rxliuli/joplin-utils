@@ -105,14 +105,19 @@ async function main() {
     return
   }
 
-  const id = 'joplin-root'
-  let $root = document.getElementById(id)
-  if (!$root) {
-    $root = plugin.createRenderRoot()
-    $root.id = 'joplin-root'
-    $root.classList.add('joplin-root')
+  function renderRoot(plugin: SearchPlugin) {
+    const id = 'joplin-root'
+    let $root = document.getElementById(id)
+    if (!$root) {
+      $root = plugin.createRenderRoot()
+      $root.id = 'joplin-root'
+      $root.classList.add('joplin-root')
+    }
+    render(<SearchPanel plugin={plugin} />, $root)
   }
-  render(<SearchPanel plugin={plugin} />, $root)
+
+  renderRoot(plugin)
+  plugin.observe?.(() => renderRoot(plugin))
   console.debug('render end')
 }
 

@@ -1,5 +1,13 @@
 import browser from 'webextension-polyfill'
-import { fromMarkdown, Link, Image, selectAll, toHtml, breaksFromMarkdown } from '@liuli-util/markdown-util'
+import {
+  fromMarkdown,
+  Link,
+  Image,
+  selectAll,
+  breaksFromMarkdown,
+  hastToHtml,
+  mdToHast,
+} from '@liuli-util/markdown-util'
 import { config, noteApi } from 'joplin-api'
 import { loadConfig, LocalConfig } from '../utils/loadConfig'
 import Light from './assets/light.svg?react'
@@ -53,7 +61,7 @@ function renderNoteToHtml(note: NoteData): string {
       item.url = browser.runtime.getURL(`/src/options/index.html?${p.toString()}`)
     }
   })
-  const html = toHtml(root)
+  const html = hastToHtml(mdToHast(root))
   const parser = new DOMParser()
   const dom = parser.parseFromString(html, 'text/html')
   dom.querySelectorAll('a').forEach((item) => {

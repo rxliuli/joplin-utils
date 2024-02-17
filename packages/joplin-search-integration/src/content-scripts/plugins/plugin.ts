@@ -27,4 +27,6 @@ export interface SearchPlugin {
    * 创建一个渲染根节点
    */
   createRenderRoot(): HTMLDivElement
+
+  observe?(render: () => void): void
 }

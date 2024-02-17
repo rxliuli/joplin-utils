@@ -1,11 +1,10 @@
 import { getSearchQuery } from '../utils/getQuery'
-import { createJoplinElement, renderList } from '../utils/render'
 import { SearchPlugin } from './plugin'
 
 function createRhs(): HTMLElement {
   const $context = document.querySelector('.sidebar')!
   const $li = document.createElement('div') as HTMLDivElement
-  $context.insertBefore($li, $context.lastElementChild)
+  $context.appendChild($li)
   return $li
 }
 
@@ -23,6 +22,11 @@ export function brave(): SearchPlugin {
       const $root = document.createElement('div')
       $rhs.appendChild($root)
       return $root
+    },
+    observe(render) {
+      new MutationObserver(render).observe(document.querySelector('.sidebar')!, {
+        childList: true,
+      })
     },
   }
 }
