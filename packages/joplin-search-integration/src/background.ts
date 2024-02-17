@@ -49,3 +49,14 @@ register<BackChannel>({
     }
   },
 })
+
+Browser.runtime.onInstalled.addListener(function (details) {
+  if (details.reason == 'install') {
+    const url = Browser.runtime.getURL(`/src/options/index.html`)
+    console.log('First install!')
+    Browser.tabs.create({ url, active: true })
+  } else if (details.reason == 'update') {
+    var thisVersion = Browser.runtime.getManifest().version
+    console.log('Updated from ' + details.previousVersion + ' to ' + thisVersion + '!')
+  }
+})
