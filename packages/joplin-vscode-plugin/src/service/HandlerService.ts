@@ -9,10 +9,11 @@ import { safePromise } from '../util/safePromise'
 import path from 'path'
 import { t } from '../constants/i18n'
 import { GlobalContext } from '../constants/context'
-import { remove, writeFile } from '@liuli-util/fs-extra'
 import { filenamify } from '../util/filenamify'
 import { logger } from '../constants/logger'
 import { fileSuffix } from '../util/fileSuffix'
+import { writeFile } from 'node:fs/promises'
+import { rm } from 'fs/promises'
 
 /**
  * other service
@@ -35,13 +36,13 @@ export class HandlerService {
         return
       }
       logger.info(`close note, noteId: ${noteId}, fileName: ${path.basename(e.fileName)}`)
-      await remove(e.fileName)
+      await rm(e.fileName, { force: true, recursive: true })
       GlobalContext.openNoteMap.delete(noteId)
       GlobalContext.openNoteResourceMap.delete(noteId)
     } else if (GlobalContext.openResourceMap.has(e.uri.fsPath)) {
       const resourceId = GlobalContext.openResourceMap.get(e.fileName)!
       logger.info(`close resource, id: ${resourceId}, fileName: ${path.basename(e.fileName)}`)
-      await remove(e.fileName)
+      await rm(e.fileName, { force: true, recursive: true })
       GlobalContext.openResourceMap.delete(resourceId)
     }
   }

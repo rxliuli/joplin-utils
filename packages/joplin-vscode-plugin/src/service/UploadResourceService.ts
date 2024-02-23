@@ -5,7 +5,7 @@ import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { t } from '../constants/i18n'
 import { resourceApi } from 'joplin-api'
 import { logger } from '../constants/logger'
-import { readFile } from 'fs/promises'
+import { readFile } from 'node:fs/promises'
 import path from 'pathe'
 
 export class UploadResourceService {

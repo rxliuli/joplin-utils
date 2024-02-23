@@ -37,5 +37,5 @@
   "paste-error-canTPasteSub": "Can't paste into a subdirectory",
   "checkJoplinServer.error": "Joplin's token/port is set incorrectly, unable to access Joplin service! Are you sure it is running and active?",
   "checkJoplinServer.reconnect": "Reconnect",
-  "example": "example"
+  "example": "Example"
 }

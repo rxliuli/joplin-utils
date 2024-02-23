@@ -10,5 +10,5 @@ export const logger = winston.createLogger({
 export function initLogger(logPath: string) {
   logger
     .add(new winston.transports.File({ filename: path.resolve(logPath, 'error.log'), level: 'error' }))
-    .add(new winston.transports.File({ filename: path.resolve(logPath, 'combined.log') }))
+    .add(new winston.transports.File({ filename: path.resolve(logPath, 'combined.log'), level: 'info' }))
 }

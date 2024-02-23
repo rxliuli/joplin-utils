@@ -11,3 +11,8 @@ declare module 'cross-path-sort' {
 
   export function sort<T>(paths: T[], options?: SortOptions): T[]
 }
+
+declare module 'jimp/es' {
+  import Jimp from 'jimp'
+  export default Jimp
+}

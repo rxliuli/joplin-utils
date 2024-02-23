@@ -1,10 +1,11 @@
 import * as os from 'os'
 import * as path from 'path'
-import { existsSync, mkdirpSync, readFile } from '@liuli-util/fs-extra'
 import { exec, spawn } from 'child_process'
 import { resourceApi } from 'joplin-api'
 import { RootPath } from '../RootPath'
 import which from 'which'
+import { existsSync } from 'node:fs'
+import { mkdir, readFile } from 'node:fs/promises'
 
 export class UploadResourceUtil {
   static async uploadByPath(filePath: string, isImage: boolean) {
@@ -12,7 +13,6 @@ export class UploadResourceUtil {
     console.log('uploadFromExplorer begin: ', filePath, title)
     const res = await resourceApi.create({
       title,
-      // @ts-expect-error
       data: new Blob([await readFile(filePath)]),
       filename: title,
     })
@@ -39,7 +39,7 @@ export class UploadResourceUtil {
   // Thanks to vs-picgo: https://github.com/Spades-S/vs-picgo/blob/master/src/extension.ts
   static async getClipboardImage(fileDir: string): Promise<string> {
     const baseDir = path.resolve(fileDir, 'ClipboardImage')
-    mkdirpSync(baseDir)
+    await mkdir(baseDir, { recursive: true })
     const imagePath = path.resolve(baseDir, `${Date.now()}.png`)
     return await new Promise<string>(async (resolve, reject): Promise<void> => {
       const platform: string = UploadResourceUtil.getCurrentPlatform()

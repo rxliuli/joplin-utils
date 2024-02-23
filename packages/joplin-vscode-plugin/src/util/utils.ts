@@ -3,11 +3,9 @@ import { CancellationToken, GlobPattern, Uri, workspace } from 'vscode'
 import * as path from 'path'
 import { sort as sortPaths } from 'cross-path-sort'
 import * as fs from 'fs'
-
 import { FoundRefT, RefT, WorkspaceCache } from '../types'
 import { isInCodeSpan, isInFencedCodeBlock } from './externalUtils'
-import MarkdownIt from 'markdown-it'
-import Token from 'markdown-it/lib/token'
+import { JoplinLinkRegex } from './markdown'
 
 export { sortPaths }
 
@@ -265,6 +263,39 @@ export const matchAll = (pattern: RegExp, text: string): Array<RegExpMatchArray>
   return out
 }
 
+/**
+ * 使用正则获取 markdown 中的图片和链接
+ */
+function getMarkdownImagesLinks(str: string): {
+  type: 'image' | 'link'
+  text: string
+  url: string
+}[] {
+  const reg = /!\[([^\]]*)\]\(([^)]+)\)|\[([^\]]*)\]\(([^)]+)\)/g
+  const out: {
+    type: 'image' | 'link'
+    text: string
+    url: string
+  }[] = []
+  let match: RegExpMatchArray | null
+  while ((match = reg.exec(str))) {
+    if (match[1]) {
+      out.push({
+        type: 'image',
+        text: match[1],
+        url: match[2],
+      })
+    } else {
+      out.push({
+        type: 'link',
+        text: match[3],
+        url: match[4],
+      })
+    }
+  }
+  return out
+}
+
 export const getReferenceAtPosition = (document: vscode.TextDocument, position: vscode.Position): string | null => {
   if (isInFencedCodeBlock(document, position.line) || isInCodeSpan(document, position.line, position.character)) {
     return null
@@ -274,14 +305,19 @@ export const getReferenceAtPosition = (document: vscode.TextDocument, position: 
     return null
   }
   const linkText = document.getText(range)
-  const md = new MarkdownIt()
-  const linkToken = (md.parseInline(linkText, null) as Token[])[0].children?.find((token) =>
-    ['link_open', 'image'].includes(token.type),
-  )
-  if (!linkToken) {
-    return null
-  }
-  return linkToken.attrGet('href') ?? linkToken.attrGet('src')
+  // const md = new MarkdownIt()
+  // const linkToken = (md.parseInline(linkText, null) as Token[])[0].children?.find((token) =>
+  //   ['link_open', 'image'].includes(token.type),
+  // )
+  // if (!linkToken) {
+  //   return null
+  // }
+  const internalLink = getMarkdownImagesLinks(linkText)
+    .map((it) => it.url)
+    .find((it) => JoplinLinkRegex.test(it))
+  // console.log('linkText', linkText, internalLink)
+  return internalLink ?? null
+  // return linkToken.attrGet('href') ?? linkToken.attrGet('src')
 }
 
 export const escapeForRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')

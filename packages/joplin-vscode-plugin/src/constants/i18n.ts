@@ -1,17 +1,19 @@
 import { TranslateType } from '../i18n'
-import i18next from 'i18next'
 import enUS from '../i18n/en-US.json'
 import zhCN from '../i18n/zh-CN.json'
 
 export type Lang = 'en-US' | 'zh-CN'
 
+const config = {
+  language: 'en-US' as Lang,
+  langs: {
+    'en-US': enUS,
+    'zh-CN': zhCN,
+  },
+}
+
 export async function initI18n(options: { language: Lang }) {
-  const { language } = options
-  await i18next.init({
-    lng: language,
-    resources: { 'en-US': { translation: enUS }, 'zh-CN': { translation: zhCN } },
-    keySeparator: false,
-  })
+  config.language = options.language
 }
 
 /**
@@ -19,6 +21,17 @@ export async function initI18n(options: { language: Lang }) {
  * @param args
  */
 export function t<K extends keyof TranslateType>(...args: TranslateType[K]['params']): TranslateType[K]['value'] {
-  // @ts-ignore
-  return i18next.t(args[0], args[1])
+  const [key, params] = args
+  let result =
+    (config.langs[config.language] as Record<string, string>)[key] ??
+    (config.langs['en-US'] as Record<string, string>)[key]
+  if (!result) {
+    return key as any
+  }
+  if (params) {
+    Object.entries(params).forEach(([key, value]) => {
+      result = result.replaceAll(`{{${key}}}`, String(value))
+    })
+  }
+  return result as any
 }

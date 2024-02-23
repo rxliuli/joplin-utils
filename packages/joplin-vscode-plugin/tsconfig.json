@@ -6,17 +6,12 @@
     "lib": ["ESNext"],
     "sourceMap": true,
     "strict": true,
-    /* enable all strict type-checking options */
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "noEmit": true,
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
-    /* Additional Checks */
-    // "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
-    // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
-    // "noUnusedParameters": true,  /* Report errors on unused parameters. */
   },
   "exclude": ["node_modules", ".vscode-test", "test", "rollup.config.js"],
   "include": ["package.json", "src"],

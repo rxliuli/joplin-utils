@@ -1,6 +1,7 @@
 import { TagGetRes } from 'joplin-api'
-import { mkdirp, pathExists, readJson, writeJson } from '@liuli-util/fs-extra'
+import { pathExists } from 'path-exists'
 import path from 'path'
+import { mkdir, readFile, writeFile } from 'fs/promises'
 
 interface TagUseEntity {
   id: string
@@ -13,22 +14,20 @@ export class TagUseApi {
 
   private async init() {
     if (!(await pathExists(this.configPath))) {
-      await mkdirp(path.dirname(this.configPath))
-      await writeJson(this.configPath, {
-        tagUse: [],
-      })
+      await mkdir(path.dirname(this.configPath), { recursive: true })
+      await writeFile(this.configPath, JSON.stringify({ tagUse: [] }))
     }
   }
 
   async getMap(): Promise<Map<string, TagUseEntity>> {
     await this.init()
-    const list: TagUseEntity[] = (await readJson(this.configPath)).tagUse
+    const list: TagUseEntity[] = JSON.parse(await readFile(this.configPath, 'utf-8')).tagUse
     return list.reduce((res, item) => res.set(item.id, item), new Map<string, TagUseEntity>())
   }
 
   async save(tags: Pick<TagGetRes, 'id' | 'title'>[]) {
     await this.init()
-    const db = await readJson(this.configPath)
+    const db = JSON.parse(await readFile(this.configPath, 'utf-8'))
     const map = await this.getMap()
     tags.forEach((tag) => {
       map.set(tag.id, {
@@ -37,9 +36,12 @@ export class TagUseApi {
         lastUseTime: Date.now(),
       } as TagUseEntity)
     })
-    await writeJson(this.configPath, {
-      ...db,
-      tagUse: [...map.values()],
-    })
+    await writeFile(
+      this.configPath,
+      JSON.stringify({
+        ...db,
+        tagUse: [...map.values()],
+      }),
+    )
   }
 }

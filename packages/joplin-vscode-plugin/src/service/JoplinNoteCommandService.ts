@@ -6,7 +6,7 @@ import { NoteExplorerProvider } from '../provider/NoteExplorerProvider'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import * as path from 'path'
-import { close, mkdirp, pathExists, readFile, remove, writeFile } from '@liuli-util/fs-extra'
+import { pathExists } from 'path-exists'
 import { createEmptyFile } from '../util/createEmptyFile'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { uploadResourceService } from './UploadResourceService'
@@ -21,7 +21,7 @@ import { logger } from '../constants/logger'
 import { fileSuffix } from '../util/fileSuffix'
 import { joplinNoteApi } from '../api/JoplinNoteApi'
 import { extConfig } from '../constants/config'
-import { debounce } from 'lodash-es'
+import { mkdir, readFile, rm, writeFile } from 'fs/promises'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -42,7 +42,7 @@ export class JoplinNoteCommandService {
     const tempResourceDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempResource')
     await AsyncArray.forEach([tempNoteDirPath, tempResourceDirPath], async (path) => {
       // await remove(path)
-      await mkdirp(path)
+      await mkdir(path, { recursive: true })
     })
     watch(tempNoteDirPath)
       .on('change', async (filePath) => {
@@ -75,7 +75,6 @@ export class JoplinNoteCommandService {
           const data = await readFile(filePath)
           const r = await resourceApi.update({
             id,
-            // @ts-expect-error
             data: new Blob([data]),
             filename: path.basename(filePath),
           })
@@ -153,7 +152,7 @@ export class JoplinNoteCommandService {
     }
 
     if (GlobalContext.openNoteMap.get(item.id)) {
-      await remove(GlobalContext.openNoteMap.get(item.id)!)
+      await rm(GlobalContext.openNoteMap.get(item.id)!, { force: true, recursive: true })
       GlobalContext.openNoteMap.delete(item.id)
       GlobalContext.openNoteResourceMap.delete(item.id)
       // TODO 目前无法关闭指定的 TextDocument，参考：https://github.com/Microsoft/vscode/commit/d625b55e9ec33f95d2fe1dd7a4b7cb50abb4772c#diff-4654cd1aa2a333bc6cc7ca0d19fdfb6e
@@ -371,8 +370,8 @@ export class JoplinNoteCommandService {
       uploadResourceService.refreshResourceList(res.id),
     ])
     if (await pathExists(filePath)) {
-      await close(handle)
-      await remove(filePath)
+      await handle.close()
+      await rm(filePath, { force: true })
     }
     vscode.window.showInformationMessage(t('Attachment resource created successfully'))
     await this.handlerService.openResource(res.id)

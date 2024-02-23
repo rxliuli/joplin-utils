@@ -1,4 +1,4 @@
-import { open } from '@liuli-util/fs-extra'
+import { open } from 'fs/promises'
 
 /**
  * 创建一个空文件

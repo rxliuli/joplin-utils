@@ -3,7 +3,6 @@
 import * as vscode from 'vscode'
 import { NoteExplorerProvider } from './provider/NoteExplorerProvider'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
-import { TypeEnum } from 'joplin-api'
 import { HandlerService } from './service/HandlerService'
 import { checkJoplinServer } from './util/checkJoplinServer'
 import { uploadResourceService } from './service/UploadResourceService'
@@ -28,7 +27,9 @@ export async function activate(context: vscode.ExtensionContext) {
   initConfig()
   const logPath = path.resolve(context.globalStorageUri.fsPath, 'log')
   initLogger(logPath)
-  await initI18n({ language: vscode.env.language.toLocaleLowerCase().includes('zh') ? 'zh-CN' : 'en-US' })
+  await initI18n({
+    language: vscode.env.language.toLocaleLowerCase().includes('zh') ? 'zh-CN' : 'en-US',
+  })
   if (!(await checkJoplinServer())) {
     return
   }

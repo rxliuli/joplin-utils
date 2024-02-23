@@ -1,16 +1,16 @@
 import { fileURLToPath } from 'url'
-import { expect, it, describe, beforeEach } from 'vitest'
+import { it, describe, beforeEach } from 'vitest'
 import { noteApi, PageUtil } from 'joplin-api'
 import * as path from 'path'
-import { mkdirp, remove, writeFile } from '@liuli-util/fs-extra'
 import { groupBy, sortBy } from '@liuli-util/array'
 import { NoteProperties } from 'joplin-api'
+import { mkdir, rm, writeFile } from 'fs/promises'
 
 describe('删除重复的笔记', () => {
   const tempPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.temp/exportDuplicationNoteList')
   beforeEach(async () => {
-    await remove(tempPath)
-    await mkdirp(tempPath)
+    await rm(tempPath, { force: true, recursive: true })
+    await mkdir(tempPath, { recursive: true })
   })
   it('加载所有重复的笔记', async () => {
     const noteList = await PageUtil.pageToAllList(noteApi.list, {

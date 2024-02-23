@@ -1,16 +1,17 @@
-import { close, mkdirp, pathExists, readFile, remove } from '@liuli-util/fs-extra'
+import { pathExists } from 'path-exists'
 import { config, resourceApi } from 'joplin-api'
 import path from 'path'
 import { beforeEach, expect, it } from 'vitest'
 import { findParent } from '../findParent'
 import { UploadResourceUtil } from '../UploadResourceUtil'
-import { parse } from 'envfile'
 import '../nodePolyfill'
+import { mkdir, readFile, rm } from 'fs/promises'
+import { parse } from 'dotenv'
 
 const tempPath = path.resolve(__dirname, '.temp', path.basename(__filename))
 beforeEach(async () => {
-  await remove(tempPath)
-  await mkdirp(tempPath)
+  await rm(tempPath, { force: true, recursive: true })
+  await mkdir(tempPath, { recursive: true })
   const dirPath = await findParent(__dirname, (item) => pathExists(path.resolve(item, 'package.json')))
   const envPath = path.resolve(dirPath!, '.env.local')
   if (!(await pathExists(envPath))) {

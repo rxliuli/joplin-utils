@@ -36,5 +36,6 @@
   "paste-error-canTPasteSub": "不能粘贴到子目录中",
   "checkJoplinServer.error": "Joplin 的 token/port 设置错误，无法访问 Joplin 服务！您确定它正在运行并处于活动状态吗？",
   "checkJoplinServer.reconnect": "重新连接",
+
   "example": "示例"
 }

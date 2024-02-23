@@ -1,13 +1,12 @@
 import { diffBy } from '@liuli-util/array'
-import { t } from 'i18next'
 import { noteApi, PageUtil, tagApi, TagGetRes } from 'joplin-api'
-import { sortBy } from 'lodash-es'
 import { JoplinTreeItem, JoplinListNote } from '../../provider/JoplinTreeItem'
 import { JoplinNoteUtil } from '../../util/JoplinNoteUtil'
 import * as vscode from 'vscode'
 import { TagUseApi } from './utils/TagUseApi'
 import { GlobalContext } from '../../constants/context'
 import path from 'path'
+import { t } from '../../constants/i18n'
 
 export function tagCommands() {
   const tagUseService = new TagUseApi(
@@ -30,17 +29,20 @@ export function tagCommands() {
 
     const lastUseTimeMap = await tagUseService.getMap()
     const selectTagSet = new Set(oldSelectIdList)
-    const items = sortBy(
-      await PageUtil.pageToAllList(tagApi.list),
-      (item) => -(selectTagSet.has(item.id) ? Date.now() : lastUseTimeMap.get(item.id)?.lastUseTime ?? 0),
-    ).map(
-      (tag) =>
-        ({
-          label: tag.title,
-          picked: selectTagSet.has(tag.id),
-          tag,
-        } as vscode.QuickPickItem & { tag: TagGetRes }),
-    )
+    const items = (await PageUtil.pageToAllList(tagApi.list))
+      .sort((a, b) => {
+        const f = (it: typeof a) =>
+          -(selectTagSet.has(it.id) ? Date.now() : lastUseTimeMap.get(it.id)?.lastUseTime ?? 0)
+        return f(b) - f(a)
+      })
+      .map(
+        (tag) =>
+          ({
+            label: tag.title,
+            picked: selectTagSet.has(tag.id),
+            tag,
+          } as vscode.QuickPickItem & { tag: TagGetRes }),
+      )
 
     const selectItems = await vscode.window.showQuickPick(items, {
       placeHolder: t('Please select a tag for this note'),
