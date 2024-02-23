@@ -1,5 +1,10 @@
 # Release Notes
 
+## 1.4.0
+
+- perf: Trim all unnecessary dependencies
+- feat: Automatically compress images when uploading from clipboard
+
 ## 1.3.1
 
 - fix: Fixed the issue of silent failure when pasting images on Linux, ref: <https://github.com/rxliuli/joplin-utils/issues/56>
