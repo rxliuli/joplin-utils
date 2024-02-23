@@ -7,7 +7,6 @@ import { resourceApi } from 'joplin-api'
 import { logger } from '../constants/logger'
 import { readFile } from 'fs/promises'
 import path from 'pathe'
-import Jimp from 'jimp'
 
 export class UploadResourceService {
   async uploadImageFromClipboard() {
@@ -37,6 +36,7 @@ export class UploadResourceService {
           throw e
         }
         progress.report({ message: 'Optimizing image' })
+        const Jimp = (await import('jimp')).default
         const lenna = await Jimp.read(await readFile(imagePath))
         imagePath = path.join(path.dirname(imagePath), path.basename(imagePath, path.extname(imagePath)) + '.jpg')
         console.log('imagePath: ', imagePath)
