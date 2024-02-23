@@ -2,6 +2,8 @@
 
 ## 概述
 
+> [![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin)](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin&ssr=false#overview)
+
 Joplin VSCode Plugin 提供在 VSCode 中管理 Joplin 笔记的功能，包括常见的查看、编辑笔记，管理笔记的标签，添加、修改附件，内部链接、搜索等功能。
 
 Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，共享笔记、笔记本、标签等。Joplin VSCode Plugin 连接到相同的 REST 端点，可以在不离开编辑器的情况下查看和修改笔记。

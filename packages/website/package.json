@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
-    "deploy": "gh-pages -d docs/.vitepress/dist --add --dotfiles"
+    "deploy": "gh-pages -d docs/.vitepress/dist --add --dotfiles",
+    "trans": "mark-magic -t translate && cp -f ./docs/index.md ./docs/en-US/"
   },
   "devDependencies": {
     "@mark-magic/cli": "^0.12.0",

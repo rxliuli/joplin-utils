@@ -1,4 +1,4 @@
-# joplin api
+# Joplin API
 
 > [API 文档](https://joplin-utils.rxliuli.com/api/joplin-api/), [Joplin 官方文档](https://joplinapp.org/api/references/rest_api/)
 

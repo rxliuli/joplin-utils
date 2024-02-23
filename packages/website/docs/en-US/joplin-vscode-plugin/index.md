@@ -2,6 +2,8 @@
 
 ## Overview
 
+> [![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin)](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin&ssr=false#overview)
+
 Joplin VSCode Plugin provides the capability to manage Joplin notes within VSCode, including common tasks such as viewing, editing notes, managing note tags, adding or editing attachments, internal linking, searching, etc.
 
 Joplin Web Clipper aims to communicate with browser extensions via REST Web API, sharing notes, notebooks, tags, and so on. The Joplin VSCode Plugin connects to the same REST endpoint, allowing you to view and edit notes without leaving the editor.

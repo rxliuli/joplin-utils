@@ -1,4 +1,4 @@
-# joplin-batch-web
+# Joplin Batch Web
 
 > [Go to use](https://joplin-utils.rxliuli.com/web/joplin-batch-web/)
 

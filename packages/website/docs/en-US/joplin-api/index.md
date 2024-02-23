@@ -1,4 +1,4 @@
-# joplin api
+# Joplin API
 
 > [API Documentation](https://joplin-utils.rxliuli.com/api/joplin-api/), [Joplin Official Documentation](https://joplinapp.org/api/references/rest_api/)
 
