@@ -5,28 +5,48 @@ import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { t } from '../constants/i18n'
 import { resourceApi } from 'joplin-api'
 import { logger } from '../constants/logger'
+import { readFile } from 'fs/promises'
+import path from 'pathe'
+import Jimp from 'jimp'
 
 export class UploadResourceService {
   async uploadImageFromClipboard() {
-    const globalStoragePath = GlobalContext.context.globalStorageUri.fsPath
-    let imagePath: string
-    try {
-      imagePath = await UploadResourceUtil.getClipboardImage(globalStoragePath)
-    } catch (e) {
-      logger.error('getClipboardImage error', e)
-      if ((e as Error).message === 'no xclip') {
-        vscode.window.showErrorMessage(t('upload.error.no-xclip'))
-        return
-      }
-      if ((e as Error).message === 'no wl-clipboard') {
-        vscode.window.showErrorMessage(t('upload.error.no-wl-clipboard'), 'https://github.com/bugaevc/wl-clipboard')
-        return
-      }
-      vscode.window.showWarningMessage(t('Clipboard does not contain picture!'))
-      throw e
-    }
-    const { markdownLink, res } = await UploadResourceUtil.uploadByPath(imagePath, true)
-    await Promise.all([this.insertUrlByActiveEditor(markdownLink), this.refreshResourceList(res.id)])
+    await vscode.window.withProgress(
+      {
+        title: 'Uploading image from clipboard',
+        location: vscode.ProgressLocation.Notification,
+        cancellable: true,
+      },
+      async (progress) => {
+        const globalStoragePath = GlobalContext.context.globalStorageUri.fsPath
+        progress.report({ message: 'Getting clipboard image' })
+        let imagePath: string
+        try {
+          imagePath = await UploadResourceUtil.getClipboardImage(globalStoragePath)
+        } catch (e) {
+          logger.error('getClipboardImage error', e)
+          if ((e as Error).message === 'no xclip') {
+            vscode.window.showErrorMessage(t('upload.error.no-xclip'))
+            return
+          }
+          if ((e as Error).message === 'no wl-clipboard') {
+            vscode.window.showErrorMessage(t('upload.error.no-wl-clipboard'), 'https://github.com/bugaevc/wl-clipboard')
+            return
+          }
+          vscode.window.showWarningMessage(t('Clipboard does not contain picture!'))
+          throw e
+        }
+        progress.report({ message: 'Optimizing image' })
+        const lenna = await Jimp.read(await readFile(imagePath))
+        imagePath = path.join(path.dirname(imagePath), path.basename(imagePath, path.extname(imagePath)) + '.jpg')
+        console.log('imagePath: ', imagePath)
+        await lenna.quality(70).writeAsync(imagePath)
+        progress.report({ message: 'Uploading image' })
+        const { markdownLink, res } = await UploadResourceUtil.uploadByPath(imagePath, true)
+        await Promise.all([this.insertUrlByActiveEditor(markdownLink), this.refreshResourceList(res.id)])
+        progress.report({ message: 'Uploaded successfully' })
+      },
+    )
   }
 
   async uploadImageFromExplorer(): Promise<string | void | Error> {
