@@ -33,7 +33,7 @@ export function tagCommands() {
       .sort((a, b) => {
         const f = (it: typeof a) =>
           -(selectTagSet.has(it.id) ? Date.now() : lastUseTimeMap.get(it.id)?.lastUseTime ?? 0)
-        return f(b) - f(a)
+        return f(a) - f(b)
       })
       .map(
         (tag) =>
