@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.4.1
+
+- fix: Fixed the sorting error in the note's tag list
+
 ## 1.4.0
 
 - perf: Trim all unnecessary dependencies
