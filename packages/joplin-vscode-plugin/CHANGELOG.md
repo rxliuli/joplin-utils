@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.5.0
+
+- fix: Display a friendly error message when the token is not set
+- fix: Solve the issue requiring a restart after modifying plugin settings
+- feat: Implement Chinese word segmentation search based on jieba
+
 ## 1.4.1
 
 - fix: Fixed the sorting error in the note's tag list
@@ -179,23 +185,23 @@ Details
 - fix: Fix https://github.com/rxliuli/joplin-utils/issues/21
 - feat: use the rollup plugin of i18next-dts-gen
 - chore: remove unrelated dependencies, fix minor issues
-- docs(joplin-vscode-plugin): fix a minor issue with update description information
+- docs: fix a minor issue with update description information
 
 ## 0.5.2
 
-- chore(joplin-vscode-plugin): remove unneeded markdown directories
-- refactor(joplin-vscode-plugin): utility @liuli-util/i18next-util in the joplin-vscode-plugin project
-- docs(joplin-vscode-plugin): fix wrong reference links
-- chore(joplin-vscode-plugin): use rollup instead of liuli-cli for packaging, since rollup merges the need for defineConfig helper function
-- docs(joplin-vscode-plugin): update the linked notes gif to include a jumping demo
-- docs(joplin-vscode-plugin): fix gif link error
-- fix(joplin-vscode-plugin): fix a type incompatibility bug in rollup.config.ts
-- docs(joplin-vscode-plugin): add a gif demo for copying notes links
-- chore(joplin-vscode-plugin): change package configuration to use dir instead of file export option to support dynamic import, remove esbuild package configuration
-- docs(joplin-vscode-plugin): update references and image linking errors in documentation
-- feat(joplin-vscode-plugin): add a more friendly message when pasting
-- build(joplin-vscode-plugin): add script for bundling with esbuild since rollup cannot bundle monorepo dependencies
-- feat(joplin-vscode-plugin): modify registerCommand to add error catching and add it to the output panel for user feedback
+- chore: remove unneeded markdown directories
+- refactor: utility @liuli-util/i18next-util in the joplin-vscode-plugin project
+- docs: fix wrong reference links
+- chore: use rollup instead of liuli-cli for packaging, since rollup merges the need for defineConfig helper function
+- docs: update the linked notes gif to include a jumping demo
+- docs: fix gif link error
+- fix: fix a type incompatibility bug in rollup.config.ts
+- docs: add a gif demo for copying notes links
+- chore: change package configuration to use dir instead of file export option to support dynamic import, remove esbuild package configuration
+- docs: update references and image linking errors in documentation
+- feat: add a more friendly message when pasting
+- build: add script for bundling with esbuild since rollup cannot bundle monorepo dependencies
+- feat: modify registerCommand to add error catching and add it to the output panel for user feedback
 
 ## 0.5.1
 
