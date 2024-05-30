@@ -35,7 +35,8 @@
   "paste-error-targetNotDir": "The destination of the paste is not a directory",
   "paste-error-targetNotThis": "Cannot paste the directory into the directory itself",
   "paste-error-canTPasteSub": "Can't paste into a subdirectory",
-  "checkJoplinServer.error": "Joplin's token/port is set incorrectly, unable to access Joplin service! Are you sure it is running and active?",
+  "checkJoplinServer.error.missToken": "Please configure joplin token first!",
+  "checkJoplinServer.error.dontConnect": "Joplin's token/baseUrl is set incorrectly, unable to access Joplin service! Are you sure it is running and active?",
   "checkJoplinServer.reconnect": "Reconnect",
   "example": "Example"
 }

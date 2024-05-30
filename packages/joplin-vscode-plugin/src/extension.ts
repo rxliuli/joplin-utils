@@ -30,6 +30,7 @@ export async function activate(context: vscode.ExtensionContext) {
   await initI18n({
     language: vscode.env.language.toLocaleLowerCase().includes('zh') ? 'zh-CN' : 'en-US',
   })
+  checkJoplinServer()
   const noteExplorerProvider = new NoteExplorerProvider()
   const noteListTreeView = vscode.window.createTreeView('noteExplorer', {
     treeDataProvider: noteExplorerProvider,

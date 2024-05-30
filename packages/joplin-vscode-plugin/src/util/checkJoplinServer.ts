@@ -9,7 +9,7 @@ import { ExtConfig } from '../constants/config'
 export async function checkJoplinServer(): Promise<boolean> {
   async function errMsg(): Promise<boolean> {
     const reconnect = t('checkJoplinServer.reconnect')
-    const r = await vscode.window.showErrorMessage(t('checkJoplinServer.error'), reconnect)
+    const r = await vscode.window.showErrorMessage(t('checkJoplinServer.error.dontConnect'), reconnect)
     if (r === reconnect) {
       return await checkJoplinServer()
     }
@@ -17,7 +17,7 @@ export async function checkJoplinServer(): Promise<boolean> {
   }
   const extConfig = vscode.workspace.getConfiguration('joplin') as vscode.WorkspaceConfiguration & ExtConfig
   if (!extConfig.token) {
-    vscode.window.showInformationMessage('Please configure joplin token first, and then restart VSCode!')
+    vscode.window.showInformationMessage(t('checkJoplinServer.error.missToken'))
     return false
   }
   try {
