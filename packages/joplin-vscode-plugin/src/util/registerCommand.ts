@@ -1,6 +1,7 @@
 import * as vscode from 'vscode'
 import { Disposable } from 'vscode'
 import { logger } from '../constants/logger'
+import { checkJoplinServer } from './checkJoplinServer'
 
 const outputChannel = vscode.window.createOutputChannel('joplin-vscode-plugin')
 
@@ -18,6 +19,14 @@ export function registerCommand(command: string, callback: (...args: any[]) => a
         logger.info('command execute: ' + command)
         return await callback(...args)
       } catch (err) {
+        if (
+          err instanceof Error &&
+          err.message.startsWith('status: 403, url: http://localhost:41184/') &&
+          err.message.includes('Missing \\"token\\" parameter')
+        ) {
+          await checkJoplinServer()
+          return
+        }
         logger.error('command error: ' + command + ', ' + (err instanceof Error ? err.message : ''))
         throw err
       }

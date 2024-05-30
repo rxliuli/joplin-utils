@@ -20,10 +20,10 @@ import { NoteProperties } from 'joplin-api'
 import { logger } from '../constants/logger'
 import { fileSuffix } from '../util/fileSuffix'
 import { joplinNoteApi } from '../api/JoplinNoteApi'
-import { extConfig } from '../constants/config'
 import { mkdir, readFile, rm, writeFile } from 'fs/promises'
 import { cut_for_search } from 'jieba-wasm'
 import once from 'lodash-es/once'
+import { ExtConfig } from '../constants/config'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -38,7 +38,9 @@ export class JoplinNoteCommandService {
 
   async init() {
     setInterval(async () => {
-      await this.config.noteViewProvider.refresh()
+      try {
+        await this.config.noteViewProvider.refresh()
+      } catch {}
     }, 1000 * 10)
     const tempNoteDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
     const tempResourceDirPath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempResource')
@@ -132,6 +134,7 @@ export class JoplinNoteCommandService {
   async remove(item: JoplinTreeItem = this.config.noteListTreeView.selection[0]) {
     console.log('joplin.remove: ', item)
     const folderOrNote = item.item
+    const extConfig = vscode.workspace.getConfiguration('joplin') as vscode.WorkspaceConfiguration & ExtConfig
     if (extConfig.deleteConfirm) {
       const confirmMsg = t('confirm')
       const cancelMsg = t('cancel')

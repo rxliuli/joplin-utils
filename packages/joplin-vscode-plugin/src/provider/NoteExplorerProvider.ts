@@ -6,7 +6,8 @@ import { joplinNoteApi } from '../api/JoplinNoteApi'
 import { treeEach } from '@liuli-util/tree'
 import { logger } from '../constants/logger'
 import { t } from '../constants/i18n'
-import { SortNotesTypeEnum, SortOrderEnum, extConfig } from '../constants/config'
+import { ExtConfig, SortNotesTypeEnum, SortOrderEnum } from '../constants/config'
+import { checkJoplinServer } from '../util/checkJoplinServer'
 
 export class NoteExplorerProvider
   implements vscode.TreeDataProvider<JoplinTreeItem>, vscode.TreeDragAndDropController<JoplinTreeItem>
@@ -26,31 +27,22 @@ export class NoteExplorerProvider
     this._onDidChangeTreeData.fire(undefined)
   }
 
-  constructor() {
-    // noinspection JSIgnoredPromiseFromCall
-    this.init()
-  }
-
   private folderList: FolderListAllRes[] = []
   private folderMap = new Map<string, FolderListAllRes>()
 
   private async init() {
-    try {
-      this.folderList = await folderApi.listAll()
+    this.folderList = await folderApi.listAll()
 
-      treeEach(
-        this.folderList,
-        (item: FolderListAllRes) => {
-          this.folderMap.set(item.id, item)
-        },
-        {
-          id: 'id',
-          children: 'children',
-        },
-      )
-    } catch (e) {
-      console.error('init error', e)
-    }
+    treeEach(
+      this.folderList,
+      (item: FolderListAllRes) => {
+        this.folderMap.set(item.id, item)
+      },
+      {
+        id: 'id',
+        children: 'children',
+      },
+    )
   }
 
   /**
@@ -68,7 +60,11 @@ export class NoteExplorerProvider
   async getChildren(element?: JoplinTreeItem) {
     if (!element) {
       if (this.folderList.length === 0) {
-        await this.init()
+        try {
+          await this.init()
+        } catch {
+          await checkJoplinServer()
+        }
       }
       return this.folderList.map((item) => new JoplinTreeItem(item))
     }
@@ -78,6 +74,7 @@ export class NoteExplorerProvider
     }
     const folderItemList = folder.children?.map((folder) => new JoplinTreeItem(folder)) || []
     const noteItemList = (await joplinNoteApi.notesByFolderId(folder.id)).map((note) => new JoplinTreeItem(note))
+    const extConfig = vscode.workspace.getConfiguration('joplin') as vscode.WorkspaceConfiguration & ExtConfig
     if (process.env.DEBUG) {
       console.log('\n\nnoteItemList: \n')
       console.log(noteItemList)

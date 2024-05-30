@@ -11,7 +11,7 @@ export enum SortOrderEnum {
   Desc = 'desc',
 }
 
-interface ExtConfig {
+export interface ExtConfig {
   token?: string
   baseUrl: string
   deleteConfirm?: boolean
@@ -20,11 +20,20 @@ interface ExtConfig {
   sortOrder?: SortOrderEnum
 }
 
-export const extConfig = vscode.workspace.getConfiguration('joplin') as vscode.WorkspaceConfiguration & ExtConfig
-
 export function initConfig() {
+  let extConfig = vscode.workspace.getConfiguration('joplin') as vscode.WorkspaceConfiguration & ExtConfig
+
   config.baseUrl = extConfig.baseUrl
   config.token = extConfig.token!
+  vscode.workspace.onDidChangeConfiguration((ev) => {
+    extConfig = vscode.workspace.getConfiguration('joplin') as vscode.WorkspaceConfiguration & ExtConfig
+    if (ev.affectsConfiguration('joplin.baseUrl')) {
+      config.baseUrl = extConfig.get('baseUrl')!
+    }
+    if (ev.affectsConfiguration('joplin.token')) {
+      config.token = extConfig.get('token')!
+    }
+  })
 
   console.log('process.env: ', JSON.parse(JSON.stringify(process.env)))
   if (!process.env.JOPLIN_DEBUG) {

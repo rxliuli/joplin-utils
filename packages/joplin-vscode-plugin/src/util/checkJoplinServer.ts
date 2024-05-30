@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
 import { joplinApi } from 'joplin-api'
 import { t } from '../constants/i18n'
-import { extConfig } from '../constants/config'
+import { ExtConfig } from '../constants/config'
 
 /**
  * check joplin server
@@ -15,6 +15,7 @@ export async function checkJoplinServer(): Promise<boolean> {
     }
     return false
   }
+  const extConfig = vscode.workspace.getConfiguration('joplin') as vscode.WorkspaceConfiguration & ExtConfig
   if (!extConfig.token) {
     vscode.window.showInformationMessage('Please configure joplin token first, and then restart VSCode!')
     return false
