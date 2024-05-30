@@ -1,54 +1,50 @@
 # Frequently Asked Questions
 
-## Why develop this plugin
+## Why Develop This Plugin
 
-1. As a professional editor, vscode's editing function cannot be compared with note-taking tools, for example, shortcut key support.
-2. vscode is not only an editor but also has a very large plugin ecosystem, so it has implemented markdown formatting, lint verification, pdf export, and other all functions. We don't have to recreate the editor's wheel within the note-taking tools - possibly a square wheel.
-3. In fact, I have been using vscode to edit markdown documents and use git + vscode to store company-related documents. At the same time, joplin is used for storing personal notes, but after a while, I found that I needed the sync / search function of vscode + joplin.
+1. As a professional editor, VSCode’s editing features vastly outperform those of note-taking tools. For instance, it has extensive shortcut support.
+2. VSCode is not just an editor but boasts a massive ecosystem of plugins. It already supports markdown formatting, lint checks, PDF exports, and many other functions. We don’t need to reinvent the wheel, which might end up being a square one, within a note-taking tool.
+3. Personally, I have been using VSCode to edit markdown documents and to store company-related documents with git + VSCode. Also, I’ve been using Joplin for personal notes, yet after a while, I found that I needed synchronization/search functionality between VSCode and Joplin.
 
-Therefore, I have written this plugin for people with the same needs.
+Thus, I developed this plugin for others with similar needs.
 
-## Error message displayed **Joplin’s token/port is set incorrectly, unable to access Joplin service!**
+## Error Message **Joplin’s token/port is set incorrectly, unable to access Joplin service!**
 
-Please try the following command in CMD/Bash, it should return **JoplinClipperServer** if there's no problem; otherwise, you need to raise an issue with Joplin official.
+Please try executing the following command in CMD/Bash. If there are no issues, it should return **JoplinClipperServer**. Otherwise, consider filing an issue with Joplin.
 
 ```cmd
 curl http://127.0.0.1:41184/ping
 ```
 
-## How to list Joplin notes opened in VSCode
+## How to List Joplin Notes Opened in VSCode
 
-Although there is no official support, you can use `c+j c+o` shortcut key to list the last 20 modified Joplin notes to do similar things.
+Though there isn't official support, you can use the shortcut `c+j c+o` to list the 20 most recently modified Joplin notes, achieving a similar effect.
 
-> The reason for the lack of official support might be the overlap of their functions. Besides, vscode's recently opened files are not just the files currently being opened by the editor, but also include the closed ones.
+> The main reason for the lack of formal support might be the functional overlap between the two. Additionally, VSCode’s list of recently opened files includes more than just the files currently open in the editor, encompassing even closed files.
 
-## The plugin does not display the list
+## Unable to Open Notes from the Sidebar
 
-Please check Joplin's configuration items and restart VSCode.
+This issue could arise for several reasons:
 
-## Unable to open a note by clicking in the sidebar
+1. Check if you can open VSCode through the **Toggle External Editing** feature in Joplin.
+   1. If it doesn’t open, inspect the text editor command in Joplin’s settings. Ensure a valid editor setting is applied. Refer to: <https://github.com/laurent22/joplin/issues/5921#issuecomment-1002692774>
+   2. If the issue persists, file an [issue with Joplin](https://github.com/laurent22/joplin/issues).
+2. Use version v1.4 or higher as it includes necessary [action APIs](https://discourse.joplinapp.org/t/9277/11) for functionalities like opening notes in VSCode based on noteId.
+3. Ensure Joplin Desktop is installed on the current computer. This plugin does not support the CLI version as it lacks the aforementioned action APIs. Refer to: <https://discourse.joplinapp.org/t/16735>
+4. Verify if the following command can execute correctly. If you still can't open notes in the editor, consider reaching out to @laurent22.
 
-This problem may have multiple reasons
-
-1. Check if VSCode can be opened via the "Toggle External Editor" function in Joplin
-   1. If not, you need to check the text editor command in the settings page, you need to set an editor, or there might be invalid settings, reference:<https://github.com/laurent22/joplin/issues/5921#issuecomment-1002692774>
-   2. If the problem remains, please [raise an issue](https://github.com/laurent22/joplin/issues) in the official Joplin project
-2. Please use version v1.4 or higher, because it includes the necessary [action api](https://discourse.joplinapp.org/t/9277/11), such as opening a note in VSCode based on noteId
-3. Make sure to install Joplin desktop version on your current computer, this plugin doesn't support CLI, because it doesn't contain the aforementioned action api, reference: <https://discourse.joplinapp.org/t/16735>
-4. Check if the following command can be properly executed, if it still can't be opened in the editor, you might need to ask @laurent22
-
-```sh
-curl --location --request POST 'http://localhost:41184/services/externalEditWatcher?token=***' \
+   ```sh
+   curl --location --request POST 'http://localhost:41184/services/externalEditWatcher?token=***' \
    --header 'Content-Type: application/json' \
    --data-raw '{
     "action": "openAndWatch",
     "noteId": "257f6a9dacc1409580ee526d50ac4d49"
    }'
-```
+   ```
 
-## Windows 10 cannot upload clipboard images
+## Unable to Upload Clipboard Images on Windows 10
 
-It might be because powershell is not installed, check by entering powershell in CMD
+This could be due to missing PowerShell. Check by typing PowerShell in CMD.
 
 ```sh
 powershell
@@ -56,29 +52,29 @@ powershell
 
 ![powershell](https://user-images.githubusercontent.com/24560368/115563663-5d855c00-a2ea-11eb-8b08-dfa7dd773601.png)
 
-If the prompt `spawn powershell ENOENT` is shown, you need to install powershell, reference: [Installing PowerShell on Windows](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)
+If prompted with `spawn powershell ENOENT`, you need to install PowerShell. Refer to: [Installing PowerShell on Windows](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1)
 
-## How to use plugins with two synced vscode configurations
+## How to Use the Plugin with Two Synchronized VSCode Configurations
 
-By default, Joplin on each computer will generate a random token, but you can manually modify it, the general configuration file is located in _\~/.config/joplin-desktop/settings.json_, you just need to change the `api.token` to the same token.
+By default, Joplin generates a random token for each computer. However, you can manually modify it. Usually, the configuration file is located at _\~/.config/joplin-desktop/settings.json_. You just need to set the `api.token` to the same token.
 
-![Manually set joplin's token](/images/manually-set-token-of-joplin.png)
+![manually-set-token-of-joplin](/images/manually-set-token-of-joplin.png)
 
 > Reference: <https://github.com/rxliuli/joplin-utils/issues/25>
 
-## Markdown preview cannot display images
+## Markdown Preview Can't Display Images
 
-When you use the Joplin vscode plugin for the first time, you might encounter a problem where you cannot view images in the markdown preview. There is a prompt **Some content has been disabled in this document** in the preview, this problem can be simply solved.
+When you first use the Joplin VSCode plugin, you may encounter issues with images not displaying in the markdown preview. The preview might show a message stating **Some content has been disabled in this document**. This can be easily resolved.
 
-1. Enter command `markdown.showPreviewSecuritySelector`
-2. Choose `Allow insecure local content` from the list
+1. Enter the command `markdown.showPreviewSecuritySelector`.
+2. Select `Allow insecure local content` from the list.
 
-> [vscode markdown document](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview-security)
+> [VSCode Markdown Documentation](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview-security)
 
-## Incompatible plugin Markdown Preview Enhanced
+## Incompatibility with Markdown Preview Enhanced Plugin
 
-Since Markdown Preview Enhanced has built its own markdown file rendering webview page, and does not care about the [markdown-it extension interface api](https://code.visualstudio.com/api/extension-guides/markdown-extension) provided by vscode, it's currently incompatible. We recommend using [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one), reference: <https://github.com/rxliuli/joplin-utils/issues/46>
+Since Markdown Preview Enhanced constructs its own webview page for rendering markdown files and disregards the [markdown-it extension interface API](https://code.visualstudio.com/api/extension-guides/markdown-extension) provided by VSCode, it’s currently incompatible. It is recommended to use [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) instead. Refer to: <https://github.com/rxliuli/joplin-utils/issues/46>
 
-## Unable to paste images into notes on Linux
+## Unable to Paste Images into Notes on Linux
 
-First install [xclip](https://github.com/astrand/xclip) and [wl-clipboard](https://github.com/bugaevc/wl-clipboard).
+Please install [xclip](https://github.com/astrand/xclip) and [wl-clipboard](https://github.com/bugaevc/wl-clipboard) first.

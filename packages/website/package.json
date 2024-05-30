@@ -7,14 +7,14 @@
     "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "deploy": "gh-pages -d docs/.vitepress/dist --add --dotfiles",
-    "trans": "mark-magic -t translate && cp -f ./docs/index.md ./docs/en-US/"
+    "trans": "mark-magic -t translate && cp ./docs/index.md ./docs/en-US/"
   },
   "devDependencies": {
-    "@mark-magic/cli": "^0.12.0",
-    "@mark-magic/plugin-doctran": "^0.12.0",
-    "@mark-magic/plugin-local": "^0.12.0",
-    "gh-pages": "^4.0.0",
-    "vitepress": "1.0.0-rc.42",
-    "vue": "^3.4.19"
+    "@mark-magic/cli": "^0.14.1",
+    "@mark-magic/plugin-doctran": "^0.14.0",
+    "@mark-magic/plugin-local": "^0.14.0",
+    "gh-pages": "^6.1.1",
+    "vitepress": "1.2.2",
+    "vue": "^3.4.27"
   }
 }

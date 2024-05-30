@@ -1,12 +1,12 @@
 # Joplin API
 
-> [API Documentation](https://joplin-utils.rxliuli.com/api/joplin-api/), [Joplin Official Documentation](https://joplinapp.org/api/references/rest_api/)
+> [API Documentation](https://joplin-utils.rxliuli.com/api/joplin-api/), [Official Joplin Documentation](https://joplinapp.org/api/references/rest_api/)
 
 ## Introduction
 
-The js wrapper for Joplin api, written in ts, provides a complete type definition, incorporating all currently publicly documented apis.
+A JavaScript wrapper for the Joplin API written in TypeScript. It provides complete type definitions and covers all currently documented APIs.
 
-## Quickstart
+## Quick Start
 
 ```ts
 import { config, noteApi } from 'joplin-api'
@@ -17,41 +17,41 @@ const res = await noteApi.list()
 console.log(res)
 ```
 
-> For more examples, refer to <https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-api/src/api/__tests__>
+> More examples can be found at: <https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-api/src/api/__tests__>
 
 ## API Reference
 
-| Object              | Description                                                                     |
-| ------------------- | ------------------------------------------------------------------------------- |
-| `eventApi`          | Event-related apis, such as obtaining note modification history                 |
-| `folderApi`         | Directory related apis, such as fetching directory tree                         |
-| `folderExtApi`      | Directory extension api, such as moving directories                             |
-| `joplinApi`         | Basic joplin api, for example, check if joplin web service is running           |
-| `noteActionApi`     | Note-related action apis, such as opening notes in an external editor           |
-| `noteApi`           | Note-related api, such as obtaining the content of notes                        |
-| `noteExtApi`        | Note extension api, such as renaming                                            |
-| `resourceActionApi` | Resource action apis, such as opening attached resources in an external editor  |
-| `resourceApi`       | Resource related api, for example uploading pictures                            |
-| `searchApi`         | Search-related api                                                              |
-| `tagApi`            | Tag related api, such as modifying the tag of notes                             |
-| `config`            | Global joplin web clipper configuration                                         |
-| `PageUtil`          | Pagination related static utility class, such as obtaining a full list of notes |
+| Object              | Description                                                                    |
+| ------------------- | ------------------------------------------------------------------------------ |
+| `eventApi`          | Event-related API, such as fetching note revision history                      |
+| `folderApi`         | Folder-related API, such as retrieving the folder tree                         |
+| `folderExtApi`      | Folder extension API, such as moving folders                                   |
+| `joplinApi`         | Basic Joplin API, such as checking if the Joplin web service is running        |
+| `noteActionApi`     | Note action API, such as opening notes in an external editor                   |
+| `noteApi`           | Note-related API, such as fetching the content of notes                        |
+| `noteExtApi`        | Note extension API, such as renaming notes                                     |
+| `resourceActionApi` | Resource action API, such as opening attachments in an external editor         |
+| `resourceApi`       | Resource-related API, such as uploading images                                 |
+| `searchApi`         | Search-related API                                                             |
+| `tagApi`            | Tag-related API, such as modifying note tags                                   |
+| `config`            | Global Joplin web clipper configuration                                        |
+| `PageUtil`          | Static utility class for pagination, such as retrieving the full list of notes |
 
-## Naming Conventions
+## Conventions
 
-- Use class to encapsulate API, for example, the API related to note is encapsulated in the `NoteApi` class.
-- The same functionality keeps a unified name, such as the note list is `NoteApi.list`. Here is the complete comparison table
+- The API is wrapped in classes, such as note-related APIs being encapsulated in the `NoteApi` class.
+- The same functionality has consistent naming. For instance, the note list is `NoteApi.list`. Here is the full comparison table:
 
-| Implication | Naming   | Example          |
-| ----------- | -------- | ---------------- |
-| List        | `list`   | `noteApi.list`   |
-| Get by id   | `get`    | `noteApi.get`    |
-| Create      | `create` | `noteApi.create` |
-| Update      | `update` | `noteApi.update` |
-| Delete      | `remove` | `noteApi.remove` |
+| Function  | Naming   | Example          |
+| --------- | -------- | ---------------- |
+| List      | `list`   | `noteApi.list`   |
+| Get by ID | `get`    | `noteApi.get`    |
+| Create    | `create` | `noteApi.create` |
+| Update    | `update` | `noteApi.update` |
+| Delete    | `remove` | `noteApi.remove` |
 
-- There are some special cases, for example, api involving multiple entities, the naming is usually `operation entity + by + according to entity`, for example, the api of getting the tag list by note id is `noteApi.tagsById`
+- There are some special cases. For example, in APIs involving multiple entities, the naming is generally `actionEntity + by + referenceEntity`. For example, the API for getting the tag list by note ID is `noteApi.tagsById`.
 
 ## Some Issues
 
-- The `get` method should not error out, if it does not exist it should return `null` instead of throwing an exception
+- The `get` method should not throw an error. If an item does not exist, it should return `null` instead of throwing an exception.

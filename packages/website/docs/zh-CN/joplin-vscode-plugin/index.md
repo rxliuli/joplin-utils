@@ -11,15 +11,12 @@ Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，�
 > 为什么会有这个插件？阅读 [我的动机](./faq.md) 了解开发它的原因。
 >
 > 它能做什么？[功能](./feature.md) 列出了现有的功能。
->
-> 没听说过 [乔普林](https://joplinapp.org/)？你错过了一个不错的 [开源同步笔记应用](https://joplinapp.org/)。
 
 ## 要求
 
 - Joplin 版本 > v2.8
 - VSCode 版本 > v1.66.2
 - 启用 Joplin Web Clipper
-- 熟悉 Joplin 和 VSCode 的基本使用方法
 
 ## 安装 Joplin VSCode 插件
 
@@ -43,13 +40,9 @@ Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，�
 基本路径
 
 - 一般而言，如果你使用本地安装的 Joplin 桌面客户端，则不需要特殊配置。如果使用远端的 Joplin 服务，则需要进行配置。
-  例如 <http://localhost:41184>
+  例如 <http://127.0.0.1:41184>
 
 ![安装插件](/images/joplin-settings.png)
-
-## 重新启动 VSCode
-
-目前配置编辑后不会自动重新连接，需要关闭 VSCode，下次启动时它就会连接到 Joplin。
 
 ## 开始使用
 
@@ -65,8 +58,8 @@ Joplin Web Clipper 旨在通过 REST Web API 与浏览器扩展进行通信，�
 
 你可以随心所欲地创建、编辑和删除 **笔记** 和 **笔记本**，一切都在 VSCode 中不间断的完成。🦸♀️
 
-## 命令和键绑定
+## 命令和快捷键
 
-VSCode 有很多快捷键键绑定，为了避免与内置的快捷键冲突，我们假定了一个快捷键前缀 `Ctrl+J`，在后面继续添加二步快捷键键。
+VSCode 有很多快捷键，为了避免与内置的快捷键冲突，该插件假定了一个快捷键前缀 `Ctrl+J`，在后面继续添加二步快捷键。
 
-提示：探索在命令调色板中输入 `joplin` 的结果，找出我没有告诉你的伟大功能。
+提示：探索在命令调色板中输入 `joplin` 的结果，找出这里没有告诉你的功能。
