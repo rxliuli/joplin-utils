@@ -22,6 +22,8 @@ import { fileSuffix } from '../util/fileSuffix'
 import { joplinNoteApi } from '../api/JoplinNoteApi'
 import { extConfig } from '../constants/config'
 import { mkdir, readFile, rm, writeFile } from 'fs/promises'
+import { cut_for_search } from 'jieba-wasm'
+import once from 'lodash-es/once'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -266,11 +268,15 @@ export class JoplinNoteCommandService {
     searchQuickPickBox.placeholder = t('Please enter key words')
     searchQuickPickBox.canSelectMany = false
     searchQuickPickBox.items = await joplinNoteApi.loadLastNoteList()
-
     searchQuickPickBox.onDidChangeValue(async (value: string) => {
       if (value.trim() === '') {
         searchQuickPickBox.items = await joplinNoteApi.loadLastNoteList()
         return
+      }
+      // is chinese
+      if (!value.includes(':') && /[\u4E00-\u9FFF]/.test(value)) {
+        value = cut_for_search(value, true).join(' ')
+        logger.info(`chinese search value: ${value}`)
       }
       const { items: noteList } = await searchApi.search({
         query: value,
@@ -293,7 +299,10 @@ export class JoplinNoteCommandService {
       GlobalContext.handlerService.openNote(selectItem.id)
     })
     searchQuickPickBox.show()
+    this.initJieba()
   }
+
+  initJieba = once(() => cut_for_search('', true))
 
   /**
    * 切换选中的文件时自动展开左侧的树
