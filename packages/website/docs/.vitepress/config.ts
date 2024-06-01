@@ -46,6 +46,10 @@ export default defineConfig({
             ],
           },
           {
+            text: 'Joplin Publisher',
+            link: '/en-US/joplin-publisher/',
+          },
+          {
             text: 'Joplin Batch Web',
             link: '/en-US/joplin-batch-web/',
           },
@@ -96,6 +100,10 @@ export default defineConfig({
                 link: '/zh-CN/joplin-search-integration/privacy',
               },
             ],
+          },
+          {
+            text: 'Joplin Publisher',
+            link: '/zh-CN/joplin-publisher/',
           },
           {
             text: 'Joplin Batch Web',

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "outDir": "./dist/",
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react",
+    "baseUrl": "."
+  }
+}
