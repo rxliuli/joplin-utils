@@ -13,21 +13,31 @@ joplin.plugins.register({
 })
 
 async function registerCommands() {
+  let isRunning = false
   await joplin.commands.register({
     name: 'joplin-publisher.publish',
     label: 'Publish to GitHub',
     execute: async () => {
-      const config = {
-        token: await joplin.settings.value('token'),
-        username: await joplin.settings.value('username'),
-        repo: await joplin.settings.value('repo'),
-        tag: await joplin.settings.value('tag'),
-      }
-      if (!config.token || !config.username || !config.repo) {
-        await joplin.views.dialogs.showMessageBox('Please set the GitHub token, username, and repo in the settings')
+      if (isRunning) {
+        await joplin.views.dialogs.showMessageBox('The previous task is still running, please wait')
         return
       }
-      await publish(config)
+      try {
+        isRunning = true
+        const config = {
+          token: await joplin.settings.value('token'),
+          username: await joplin.settings.value('username'),
+          repo: await joplin.settings.value('repo'),
+          tag: await joplin.settings.value('tag'),
+        }
+        if (!config.token || !config.username || !config.repo) {
+          await joplin.views.dialogs.showMessageBox('Please set the GitHub token, username, and repo in the settings')
+          return
+        }
+        await publish(config)
+      } finally {
+        isRunning = false
+      }
     },
   })
 }
