@@ -24,7 +24,7 @@ Publish Joplin notes to GitHub and automate build deployment through GitHub Acti
 2. Open Joplin > Settings > Plugins > Publisher, and set GitHub token/username/repo respectively
    ![setting 1](/images/joplin-publisher-joplin-setting-1.png)
 3. Select a note and add the **blog** tag
-   ![setting 2](/images/joplin-publisher-joplin-setting-1.png)
+   ![setting 2](/images/joplin-publisher-joplin-setting-2.png)
 4. Click Tools > Publish to GitHub to publish
    ![publish 1](/images/joplin-publisher-joplin-publish-1.png)
 
