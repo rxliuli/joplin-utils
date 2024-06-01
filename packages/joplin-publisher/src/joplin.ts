@@ -1,5 +1,5 @@
 import { Content, InputPlugin, Resource, wrapContentLink, wrapResourceLink } from '@mark-magic/core'
-import joplin from 'api'
+import joplin from 'joplin-plugin-api'
 import { FolderListAllRes, NoteProperties, PageUtil, ResourceProperties, TagGetRes } from 'joplin-api'
 import { Image, Link, fromMarkdown, selectAll, toMarkdown } from '@liuli-util/markdown-util'
 import path from 'node:path'

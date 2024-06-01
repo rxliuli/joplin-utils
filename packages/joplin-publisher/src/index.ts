@@ -1,5 +1,4 @@
-import joplin from 'api'
-import { SettingItemType } from 'api/types'
+import joplin, { SettingItemType } from 'joplin-plugin-api'
 import { publish } from './publish'
 
 joplin.plugins.register({

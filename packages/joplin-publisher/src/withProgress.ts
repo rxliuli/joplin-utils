@@ -1,4 +1,4 @@
-import joplin from 'api'
+import joplin from 'joplin-plugin-api'
 
 interface Progress<T> {
   /**
