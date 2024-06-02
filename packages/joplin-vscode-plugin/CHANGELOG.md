@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.6.0
+
+- feat: Create note from selection
+
 ## 1.5.0
 
 - fix: Display a friendly error message when the token is not set
