@@ -12,6 +12,7 @@ import { FolderApi } from './FolderApi'
 import { JoplinApi } from './JoplinApi'
 import { ClassUtil } from '@liuli-util/object'
 import { EventApi } from './EventApi'
+import { FetchAdapter, JoplinDataApiAuthProvider } from './adapter'
 
 export class JoplinApiGenerator {
   private config: Config = new Config()
@@ -32,7 +33,7 @@ export class JoplinApiGenerator {
     return this.config.token
   }
 
-  readonly ajax = new Ajax(this.config)
+  readonly ajax = new Ajax(new FetchAdapter(new JoplinDataApiAuthProvider(this.config)))
   readonly folderApi = new FolderApi(this.ajax)
   readonly folderExtApi = new FolderExtApi(this.ajax)
   readonly joplinApi = new JoplinApi(this.ajax)

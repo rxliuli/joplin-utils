@@ -10,10 +10,10 @@ export * from './api/NoteExtApi'
 export * from './api/FolderExtApi'
 export * from './api/EventApi'
 export * from './api/JoplinApiGenerator'
+export * from './util/config'
+
 export { joplinDataApi } from './api/adapter'
 export type { Api, ApiConfig } from './api/adapter'
-
-export * from './util/config'
 
 export * from './util/PageUtil'
 

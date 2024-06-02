@@ -2,7 +2,6 @@
 import { FolderApi } from './FolderApi'
 import { Ajax, Method } from '../util/ajax'
 import { omit } from 'lodash-es'
-import { Config } from '../util/config'
 import { FolderExtApi } from './FolderExtApi'
 import { JoplinApi } from './JoplinApi'
 import { NoteActionApi } from './NoteActionApi'
@@ -21,6 +20,7 @@ export interface RequestInfo {
   url: string
   method?: Method
   data?: any
+  params?: Record<string, string>
   responseType?: ResponseType
   headers?: Record<string, string>
 }
@@ -106,9 +106,11 @@ export class JoplinDataApiAuthProvider implements AuthProvider {
     this.config.baseUrl = this.config.baseUrl ?? 'http://localhost:41184'
   }
   async authenticate(info: RequestInfo): Promise<void> {
-    const u = new URL(info.url)
-    u.searchParams.set('token', this.config.token)
-    info.url = u.toString()
+    const query = new URLSearchParams(Object.entries({ ...info.params, token: this.config.token })).toString()
+    const baseUrl = this.config.baseUrl!.endsWith('/')
+      ? this.config.baseUrl!.slice(0, this.config.baseUrl!.length - 1)
+      : this.config.baseUrl
+    info.url = `${baseUrl}${info.url}?${query}`
   }
 }
 
@@ -139,14 +141,8 @@ export type ApiConfig =
 export function joplinDataApi(options: ApiConfig): Api {
   const adapter =
     options.type === 'plugin' ? new JoplinPluginAdapter() : new FetchAdapter(new JoplinDataApiAuthProvider(options))
-  const ajax = new Ajax(
-    {
-      baseUrl: 'http://localhost:41184',
-      token: '',
-      ...options,
-    },
-    adapter,
-  )
+
+  const ajax = new Ajax(adapter)
   return {
     folder: new FolderApi(ajax),
     folderExt: new FolderExtApi(ajax),
