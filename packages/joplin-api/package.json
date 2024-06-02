@@ -18,7 +18,7 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",
-    "docs-build": "rimraf docs && typedoc",
+    "docs-build": "rimraf docs && typedoc src/index.ts",
     "docs-deploy": "pnpm docs-build && gh-pages -d docs -e /api/joplin-api --add",
     "docs-dev": "pnpm docs-build && live-server docs",
     "prepublishOnly": "pnpm build",
@@ -55,10 +55,5 @@
     "type": "gh-pages",
     "dist": "docs",
     "dest": "/api/joplin-api"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@liuli-util/eslint-config-ts"
-    ]
   }
 }
