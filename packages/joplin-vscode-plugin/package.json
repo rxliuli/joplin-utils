@@ -221,6 +221,11 @@
         "category": "Joplin"
       },
       {
+        "command": "joplin.createBySelection",
+        "title": "%commands.joplin.createBySelection%",
+        "category": "Joplin"
+      },
+      {
         "command": "joplin.showCurrentlyOpenNote",
         "title": "%commands.joplin.showCurrentlyOpenNote%",
         "category": "Joplin"
@@ -343,6 +348,11 @@
           "group": "joplinNote@3"
         },
         {
+          "command": "joplin.createBySelection",
+          "when": "resourceLangId == markdown && resourceDirname =~ /\\.tempNote$/ && editorTextFocus",
+          "group": "joplinNote@3"
+        },
+        {
           "command": "joplin.createResource",
           "when": "resourceLangId == markdown && resourceDirname =~ /\\.tempNote$/ && editorTextFocus",
           "group": "joplinNote@4"
@@ -355,6 +365,10 @@
       ]
     },
     "keybindings": [
+      {
+        "command": "joplin.search",
+        "key": "ctrl+j ctrl+o"
+      },
       {
         "command": "workbench.view.extension.joplin",
         "key": "ctrl+j ctrl+j",
@@ -394,10 +408,6 @@
         "when": "editorTextFocus && editorLangId == markdown"
       },
       {
-        "command": "joplin.search",
-        "key": "ctrl+j ctrl+o"
-      },
-      {
         "command": "joplin.createResource",
         "key": "ctrl+j ctrl+i"
       },
@@ -408,6 +418,10 @@
       {
         "command": "joplin.showResources",
         "key": "ctrl+j ctrl+l"
+      },
+      {
+        "command": "joplin.createBySelection",
+        "key": "ctrl+j ctrl+n"
       }
     ],
     "configuration": {

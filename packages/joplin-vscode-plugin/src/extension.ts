@@ -13,7 +13,7 @@ import { ClassUtil } from '@liuli-util/object'
 import { initLogger } from './constants/logger'
 import path from 'path'
 import './util/nodePolyfill'
-import { linkCommands, tagCommands } from './commands'
+import { linkCommands, noteCommands, tagCommands } from './commands'
 import { initI18n } from './constants/i18n'
 import { extendMarkdownIt } from './util/markdown'
 import { initConfig } from './constants/config'
@@ -45,6 +45,7 @@ export async function activate(context: vscode.ExtensionContext) {
     showCollapseAll: false,
     canSelectMany: false,
   })
+  GlobalContext.noteExplorerProvider = noteExplorerProvider
   GlobalContext.noteSearchProvider = noteSearchProvider
   context.subscriptions.push(noteSearchTreeView)
 
@@ -76,6 +77,8 @@ export async function activate(context: vscode.ExtensionContext) {
   registerCommand('joplin.toggleTodoState', joplinNoteCommandService.toggleTodoState)
   registerCommand('joplin.createResource', joplinNoteCommandService.createResource)
   registerCommand('joplin.removeResource', joplinNoteCommandService.removeResource)
+  const note = noteCommands()
+  registerCommand('joplin.createBySelection', note.createBySelection)
   const tag = tagCommands()
   registerCommand('joplin.manageTags', tag.manageTags)
   registerCommand('joplin.createTag', tag.createTag)

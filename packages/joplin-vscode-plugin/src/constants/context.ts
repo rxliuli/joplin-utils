@@ -1,8 +1,9 @@
-import { ResourceGetRes } from 'joplin-api'
+import { Api, ResourceGetRes } from 'joplin-api'
 import * as vscode from 'vscode'
 import { HandlerService } from '../service/HandlerService'
 import { BiMultiMap } from '../util/BiMultiMap'
 import { NoteSearchProvider } from '../provider/NoteSearchProvider'
+import { NoteExplorerProvider } from '../provider/NoteExplorerProvider'
 
 /**
  * 全局状态
@@ -17,5 +18,7 @@ export class GlobalContext {
   static readonly openNoteResourceMap = new Map<string, ResourceGetRes[]>()
   static handlerService: HandlerService
   // Search view
+  static noteExplorerProvider: NoteExplorerProvider
   static noteSearchProvider: NoteSearchProvider
+  static api: Api
 }

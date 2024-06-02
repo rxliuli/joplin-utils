@@ -28,6 +28,7 @@
   "commands.joplin.insertNoteLink": "Insert note link",
   "commands.joplin.showLinkThisNotes": "Show notes linked to the current note",
   "commands.joplin.showThisNoteLinks": "Show notes referenced by the current note",
+  "commands.joplin.createBySelection": "Create note from selection",
 
   "configuration.joplin.token": "joplin web server token",
   "configuration.joplin.baseUrl": "The base path of the joplin web service, defaults to http://localhost:41184",

@@ -1,5 +1,6 @@
-import { config } from 'joplin-api'
+import { ApiConfig, config, joplinDataApi } from 'joplin-api'
 import * as vscode from 'vscode'
+import { GlobalContext } from './context'
 
 export enum SortNotesTypeEnum {
   Alphabetical = 'alphabetical',
@@ -20,18 +21,24 @@ export interface ExtConfig {
   sortOrder?: SortOrderEnum
 }
 
-export function initConfig() {
+export async function initConfig() {
   let extConfig = vscode.workspace.getConfiguration('joplin') as vscode.WorkspaceConfiguration & ExtConfig
 
   config.baseUrl = extConfig.baseUrl
   config.token = extConfig.token!
+  const joplinConfig: ApiConfig = {
+    type: 'rest',
+    baseUrl: extConfig.baseUrl,
+    token: extConfig.token!,
+  }
+  GlobalContext.api = joplinDataApi(joplinConfig)
   vscode.workspace.onDidChangeConfiguration((ev) => {
     extConfig = vscode.workspace.getConfiguration('joplin') as vscode.WorkspaceConfiguration & ExtConfig
     if (ev.affectsConfiguration('joplin.baseUrl')) {
-      config.baseUrl = extConfig.get('baseUrl')!
+      joplinConfig.baseUrl = config.baseUrl = extConfig.get('baseUrl')!
     }
     if (ev.affectsConfiguration('joplin.token')) {
-      config.token = extConfig.get('token')!
+      joplinConfig.token = config.token = extConfig.get('token')!
     }
   })
 
@@ -43,6 +50,6 @@ export function initConfig() {
   // such as ENV vars or, at least, do not commit them to the final code. (you
   // could also use different branch for that). These configs were messing up
   // with my use of the source code, for instance.
-  config.token = process.env.JOPLIN_TOKEN!
-  config.baseUrl = process.env.JOPLIN_BASE_URL!
+  joplinConfig.baseUrl = config.baseUrl = process.env.JOPLIN_BASE_URL!
+  joplinConfig.token = config.token = process.env.JOPLIN_TOKEN!
 }
