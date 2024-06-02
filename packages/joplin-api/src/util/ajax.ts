@@ -1,6 +1,6 @@
 import { omit } from '@liuli-util/object'
-import { stringify } from 'query-string'
 import { Config } from './config'
+import { FetchAdapter, RequestAdapter } from '../api/adapter'
 
 export type Method = 'get' | 'delete' | 'post' | 'put'
 
@@ -30,13 +30,16 @@ const defaultConfig: FlipOptional<AjaxConfig> = Object.freeze({
 })
 
 export class Ajax {
-  constructor(public readonly config: Config) {}
+  constructor(public readonly config: Config, private readonly adapter?: RequestAdapter) {}
 
   /**
    * 封装 ajax 请求
    * @param ajaxConfig
    */
   async request(ajaxConfig: AjaxConfig): Promise<any> {
+    if (this.adapter) {
+      return await this.adapter.send(ajaxConfig)
+    }
     const config = { ...defaultConfig, ...ajaxConfig }
     const resp = await fetch(config.url, {
       ...omit(config, 'data'),
@@ -61,7 +64,7 @@ export class Ajax {
   }
 
   baseUrl(url: string, param?: object): string {
-    const query = stringify({ ...param, token: this.config.token }, { arrayFormat: 'comma' })
+    const query = new URLSearchParams(Object.entries({ ...param, token: this.config.token })).toString()
     const baseUrl = this.config.baseUrl.endsWith('/')
       ? this.config.baseUrl.slice(0, this.config.baseUrl.length - 1)
       : this.config.baseUrl

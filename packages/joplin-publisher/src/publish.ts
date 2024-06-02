@@ -5,7 +5,7 @@ import fs from 'fs'
 import { globby } from 'globby'
 import { convert } from '@mark-magic/core'
 import * as hexo from '@mark-magic/plugin-hexo'
-import { joplinInput } from './joplin'
+import * as joplin from './joplin'
 import { withProgress } from './withProgress'
 import { emptyDir, pathExists } from 'fs-extra'
 import { get } from 'lodash-es'
@@ -61,7 +61,7 @@ export async function publish(options: { token: string; username: string; repo: 
     // 通过 mark-magic 生成 md 文件
     try {
       await convert({
-        input: joplinInput({ tag: options.tag }),
+        input: joplin.input({ type: 'plugin', tag: options.tag }),
         output: hexo.output({ path: dir }),
       }).on('generate', ({ content }) => {
         console.log('progress:', content.name)

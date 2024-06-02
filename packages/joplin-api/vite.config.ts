@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitest/config'
+import { node } from '@liuli-util/vite-plugin-node'
 import path from 'path'
 
 export default defineConfig({
@@ -7,4 +8,5 @@ export default defineConfig({
     maxConcurrency: 1,
     threads: false,
   },
+  plugins: [node({ dts: true })] as any,
 })

@@ -5,7 +5,6 @@ import { FieldsParam } from '../model/FieldsParam'
 import { CommonType } from '../model/CommonType'
 import { Ajax } from '../util/ajax'
 import { RequiredField } from '../types/RequiredFiled'
-import type { Blob as BufferBlob } from 'buffer'
 
 /**
  * 附件资源相关 api
@@ -42,7 +41,7 @@ export class ResourceApi {
    * The "data" field is required, while the "props" one is not. If not specified, default values will be used.
    * @param param
    */
-  async create(param: { data: Blob | BufferBlob } & Partial<ResourceProperties>): Promise<ResourceProperties> {
+  async create(param: { data: Blob } & Partial<ResourceProperties>): Promise<ResourceProperties> {
     const { data, ...others } = param
     return (await this.ajax.postFormData('/resources', 'post', {
       props: JSON.stringify(others),
@@ -51,9 +50,7 @@ export class ResourceApi {
     })) as ResourceProperties
   }
 
-  async update(
-    param: RequiredField<Partial<ResourceProperties>, 'id'> & { data?: Blob | BufferBlob },
-  ): Promise<ResourceGetRes> {
+  async update(param: RequiredField<Partial<ResourceProperties>, 'id'> & { data?: Blob }): Promise<ResourceGetRes> {
     const { id, data, ...others } = param
     return await this.ajax.postFormData<ResourceGetRes>(`/resources/${id}`, 'put', {
       props: JSON.stringify(others),

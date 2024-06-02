@@ -1,6 +1,6 @@
 import type Joplin from './Joplin'
 
-declare const joplin: Joplin
+const joplin: Joplin = (globalThis as any).joplin
 
 export default joplin
 

@@ -1,6 +1,5 @@
 import { pathExists, readFile } from 'fs-extra'
 import { config } from '../'
-import { parse } from 'envfile'
 import * as path from 'path'
 import { findParent } from './findParent'
 
@@ -13,6 +12,6 @@ export async function setupTestEnv() {
   }
   const env = await readFile(envPath, 'utf8')
 
-  config.baseUrl = parse(env).URL || 'http://127.0.0.1:27583'
-  config.token = parse(env).TOKEN!
+  config.baseUrl = import.meta.env.VITE_TEST_BASE_URL
+  config.token = import.meta.env.VITE_TEST_TOKEN!
 }
