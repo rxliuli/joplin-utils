@@ -17,7 +17,7 @@ import { useComputed, useSignal } from '@preact/signals'
 import { useMount } from 'react-use'
 import { Loading, useAsyncFn } from '../../components/loading'
 import { useRouter } from 'preact-router'
-import { useRef } from 'react'
+import { useRef } from 'preact/hooks'
 import { setTheme } from '../utils/theme'
 
 interface NoteData {

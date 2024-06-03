@@ -15,6 +15,7 @@ import { render } from 'preact'
 import { useMount } from 'react-use'
 import { Loading, useAsyncFn } from '../components/loading'
 import css from './index.css?inline'
+import init, { cut_for_search } from 'jieba-wasm'
 
 function NoteList(props: { list: SearchNote[] }) {
   function onGotoNoteView(it: SearchNote) {
@@ -55,14 +56,20 @@ function SearchPanel(props: { plugin: SearchPlugin }) {
     config.token = c.token
     config.baseUrl = c.baseUrl
     console.debug('get query')
-    const keywrod = props.plugin.getQuery()
-    if (!keywrod) {
+    let keyword = props.plugin.getQuery()
+    if (!keyword) {
       throw new Error('Do not get search keyword')
+    }
+    // is chinese
+    if (!keyword.includes(':') && /[\u4E00-\u9FFF]/.test(keyword)) {
+      await (init as any)()
+      keyword = cut_for_search(keyword, true).join(' ')
+      console.info(`chinese search keywrod: ${keyword}`)
     }
     console.debug('search notes')
     let list: SearchNote[]
     try {
-      list = await back.search(keywrod)
+      list = await back.search(keyword)
     } catch (err) {
       console.error('search notes error', err)
       if (typeof err === 'object' && (err as any).code === 'JoplinWebClipperNotEnabled') {
@@ -70,7 +77,7 @@ function SearchPanel(props: { plugin: SearchPlugin }) {
       }
       return
     }
-    console.debug('search: ', keywrod, list)
+    console.debug('search: ', keyword, list)
     console.debug('render start')
     return list
   })
@@ -80,7 +87,7 @@ function SearchPanel(props: { plugin: SearchPlugin }) {
       <style>{css}</style>
       <h2 class={'joplin-header'}>Joplin search notes</h2>
       <section>
-        {state.loading.value && <Loading text={'Loading...'} />}
+        {state.loading.value && <div>Loading...</div>}
         {state.error.value && <div class={'text-red-500'}>Error: {(state.error.value as Error).message}</div>}
         {state.value.value && <NoteList list={state.value.value} />}
       </section>
