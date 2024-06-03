@@ -19,5 +19,5 @@ features:
   - title: Joplin Search Integration
     details: 使用搜索时，相关的乔普林笔记也会显示在搜索结果中。
   - title: Joplin API
-    details: Joplin api 的 js 封装，使用 ts 编写，提供完整的类型定义，包含目前所有在文档中公开的 api。
+    details: Joplin data API 的 TypeScript 封装，在插件和独立应用中同构使用 Joplin data API。
 ---

@@ -2,7 +2,7 @@
 
 ## 介绍
 
-Joplin data API 的 JavaScript 封装，使用 TypeScript 编写，提供完整的类型定义，包含目前所有在文档中公开的 api。
+Joplin data API 的 TypeScript 封装，在插件和独立应用中同构使用 Joplin data API。
 
 ## 使用
 

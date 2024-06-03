@@ -15,6 +15,7 @@
     "@mark-magic/plugin-local": "^0.14.0",
     "gh-pages": "^6.1.1",
     "vitepress": "1.2.2",
+    "vitepress-sidebar": "^1.23.2",
     "vue": "^3.4.27"
   }
 }

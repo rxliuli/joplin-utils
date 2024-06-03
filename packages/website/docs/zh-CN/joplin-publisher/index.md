@@ -33,3 +33,20 @@
 ![blog](/images/joplin-publisher-joplin-blog-1.png)
 
 你可以继续为希望发布的笔记添加标签 blog，然后重新运行 **Publish to GitHub**，这会将笔记更新到网站上。
+
+## 配置
+
+由于使用 Hexo 进行渲染，所以可以在创建的 GitHub 仓库中配置。目前使用的主题是 Fluid，也可以修改对应的主题配置。
+
+例如，想要修改站点的标题，可以修改 `_config.yml` 中的 `title`
+
+![hexo-setting-1](/images/joplin-publisher-hexo-setting-1.png)
+
+如果想要更新首页的背景图，可以修改 `_config.fluid.yml` 中的 `index.banner_img`
+
+![hexo-setting-2](/images/joplin-publisher-hexo-setting-2.png)
+
+参考
+
+- hexo 文档：<https://hexo.io/>
+- fluid 主题的文档：<https://hexo.fluid-dev.com/docs/en/guide/>

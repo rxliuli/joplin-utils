@@ -2,7 +2,7 @@
 
 ## Introduction
 
-JavaScript wrapper for the Joplin data API, written in TypeScript, providing complete type definitions, including all currently publicly documented APIs.
+TypeScript encapsulation of the Joplin data API for use in both plugins and standalone applications.
 
 ## Usage
 
@@ -14,7 +14,7 @@ const api = joplinDataApi({
   baseUrl: 'http://127.0.0.1:27583',
   token: '***',
 })
-// Or in plugin
+// or in plugin
 const api = joplinDataApi({
   type: 'plugin',
 })
@@ -27,19 +27,19 @@ console.log(res)
 
 ## API Reference
 
-| Object               | Description                                                            |
-| -------------------- | ---------------------------------------------------------------------- |
-| `api.event`          | Event-related API, e.g., get note modification history                 |
-| `api.folder`         | Folder-related API, e.g., obtain folder tree                           |
-| `api.folderExt`      | Extended folder API, e.g., move folder                                 |
-| `api.joplin`         | Basic joplin API, e.g., check if joplin web service is open            |
-| `api.noteAction`     | Note action API, e.g., open note in external editor                    |
-| `api.note`           | Note-related API, e.g., get note content                               |
-| `api.noteExt`        | Extended note API, e.g., rename                                        |
-| `api.resourceAction` | Resource action API, e.g., open attachment resource in external editor |
-| `api.resource`       | Resource-related API, e.g., upload image                               |
-| `api.search`         | Search-related API                                                     |
-| `api.tag`            | Tag-related API, e.g., modify note tags                                |
-| `PageUtil`           | Static pagination utility class, e.g., get the full list of notes      |
+| Object               | Description                                                               |
+| -------------------- | ------------------------------------------------------------------------- |
+| `api.event`          | Event-related API, such as getting note modification history              |
+| `api.folder`         | Folder-related API, such as getting the directory tree                    |
+| `api.folderExt`      | Folder extension API, such as moving directories                          |
+| `api.joplin`         | Basic Joplin API, such as checking if Joplin web service is open          |
+| `api.noteAction`     | Note action related API, such as opening notes in an external editor      |
+| `api.note`           | Note-related API, such as getting note content                            |
+| `api.noteExt`        | Note extension API, such as renaming notes                                |
+| `api.resourceAction` | Resource action API, such as opening resources in an external editor      |
+| `api.resource`       | Resource-related API, such as uploading images                            |
+| `api.search`         | Search-related API                                                        |
+| `api.tag`            | Tag-related API, such as modifying note tags                              |
+| `PageUtil`           | Static utility class for pagination, such as getting a full list of notes |
 
 > [API Documentation](https://joplin-utils.rxliuli.com/api/joplin-api/)
