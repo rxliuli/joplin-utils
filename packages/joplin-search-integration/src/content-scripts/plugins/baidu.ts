@@ -30,5 +30,14 @@ export function baidu(): SearchPlugin {
       $rhs.appendChild($root)
       return $root
     },
+    observe(render) {
+      setInterval(() => {
+        if (!this.match(new URL(location.href)) || document.querySelector('#joplin-root')) {
+          return
+        }
+        console.log('rerender')
+        render()
+      }, 1000)
+    },
   }
 }
