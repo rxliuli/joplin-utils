@@ -1,6 +1,11 @@
 # changelog
 
-## 0.6.0.6.4
+## 0.7.0
+
+- feat: Automatic word segmentation search. close <https://github.com/rxliuli/joplin-utils/issues/94>
+- fix: Fix the issue where Baidu search results were not displayed correctly. close <https://github.com/rxliuli/joplin-utils/issues/97>
+
+## 0.6.4
 
 - chore: Open settings on first installation
 
