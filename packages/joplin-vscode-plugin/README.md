@@ -2,7 +2,7 @@
 
 <a href="https://www.producthunt.com/posts/joplin-vscode-plugin?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-joplin&#0045;vscode&#0045;plugin" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.png?post_id=395063&theme=light" alt="joplin&#0045;vscode&#0045;plugin - Editing&#0032;and&#0032;management&#0032;of&#0032;Joplin&#0032;notes&#0032;with&#0032;VSCode | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
-> [![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin) VSCode Plugin Marketplace](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin), [Website](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/)
+> [![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin) VSCode Plugin Marketplace](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin), [Website](https://joplin-utils.rxliuli.com/en-US/joplin-vscode-plugin/)
 
 ## Overview
 
