@@ -1,6 +1,6 @@
 # joplin-utils
 
-> [中文](https://joplin-utils.rxliuli.com/zh/)
+> [中文](https://joplin-utils.rxliuli.com/zh-CN/)
 
 Some joplin peripheral tools created by me. Since the functions are in the same category and are related, they are managed using monorepo.
 
