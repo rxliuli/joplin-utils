@@ -389,8 +389,8 @@ importers:
         specifier: ^5.3.0
         version: 5.3.0
       jieba-wasm:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^2.0.0
+        version: 2.0.0
       joplin-api:
         specifier: workspace:^
         version: link:../joplin-api
@@ -500,8 +500,8 @@ importers:
         specifier: ^0.4.1
         version: 0.4.1
       jieba-wasm:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^2.0.0
+        version: 2.0.0
       jimp:
         specifier: ^0.22.12
         version: 0.22.12(encoding@0.1.13)
@@ -6389,8 +6389,8 @@ packages:
     resolution: {integrity: sha512-AdTZJxKjTSPHbXT/AIOjQVmoFx0LHFcVabWu0sxI7PAy7rFf8c0upyvgBKgguVXdM4vY74JdwkyD4hSmpTW8jA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
-  jieba-wasm@1.0.0:
-    resolution: {integrity: sha512-AVyc0By+N4rfRt2mEVcEYFjWkqgvwxnvTIvTwjgx7DU3k71SVMPZBYn7HZcjNsviMI63nQGJul28txgDMbh7cw==}
+  jieba-wasm@2.0.0:
+    resolution: {integrity: sha512-dWOTDMxmU3NyRMJvga1Ig8dbjdAQOODdcpF2XDDXXsKRY9rbwGhseODzOkMcX2cKonK5nktN6gaKFdvj14yFmQ==}
 
   jimp@0.22.12:
     resolution: {integrity: sha512-R5jZaYDnfkxKJy1dwLpj/7cvyjxiclxU3F4TrI/J4j2rS0niq6YDUMoPn5hs8GDpO+OZGo7Ky057CRtWesyhfg==}
@@ -17551,7 +17551,7 @@ snapshots:
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
-  jieba-wasm@1.0.0: {}
+  jieba-wasm@2.0.0: {}
 
   jimp@0.22.12(encoding@0.1.13):
     dependencies:

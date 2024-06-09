@@ -62,7 +62,7 @@ function SearchPanel(props: { plugin: SearchPlugin }) {
     }
     // is chinese
     if (!keyword.includes(':') && /[\u4E00-\u9FFF]/.test(keyword)) {
-      await (init as any)()
+      await init()
       keyword = cut_for_search(keyword, true).join(' ')
       console.info(`chinese search keywrod: ${keyword}`)
     }
