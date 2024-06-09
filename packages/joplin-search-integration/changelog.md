@@ -1,5 +1,9 @@
 # changelog
 
+## 0.7.1
+
+- chore: update jiebe-wasm@2.0.0, ref: <https://github.com/fengkx/jieba-wasm/issues/5>
+
 ## 0.7.0
 
 - feat: Automatic word segmentation search. close <https://github.com/rxliuli/joplin-utils/issues/94>
