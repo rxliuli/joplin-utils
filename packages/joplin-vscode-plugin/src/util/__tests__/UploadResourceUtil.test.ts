@@ -4,7 +4,6 @@ import path from 'path'
 import { beforeEach, expect, it } from 'vitest'
 import { findParent } from '../findParent'
 import { UploadResourceUtil } from '../UploadResourceUtil'
-import '../nodePolyfill'
 import { mkdir, readFile, rm } from 'fs/promises'
 import { parse } from 'dotenv'
 

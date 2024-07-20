@@ -1,7 +1,17 @@
 import { JoplinTreeItem, JoplinListNote } from '../provider/JoplinTreeItem'
 import * as vscode from 'vscode'
 import { QuickPickItem, TreeView } from 'vscode'
-import { folderApi, folderExtApi, noteApi, noteExtApi, PageUtil, resourceApi, searchApi, TypeEnum } from 'joplin-api'
+import {
+  folderApi,
+  folderExtApi,
+  FolderListAllRes,
+  noteApi,
+  noteExtApi,
+  PageUtil,
+  resourceApi,
+  searchApi,
+  TypeEnum,
+} from 'joplin-api'
 import { NoteExplorerProvider } from '../provider/NoteExplorerProvider'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
@@ -24,6 +34,8 @@ import { mkdir, readFile, rm, writeFile } from 'fs/promises'
 import { cut_for_search } from 'jieba-wasm'
 import once from 'lodash-es/once'
 import { ExtConfig } from '../constants/config'
+import { groupBy, keyBy, minBy, takeWhile } from 'lodash-es'
+import { treeToList } from '@liuli-util/tree'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -270,10 +282,11 @@ export class JoplinNoteCommandService {
     searchQuickPickBox.value = item ? `notebook:"${item.item.title}" ` : ''
     searchQuickPickBox.placeholder = t('Please enter key words')
     searchQuickPickBox.canSelectMany = false
-    searchQuickPickBox.items = await joplinNoteApi.loadLastNoteList()
+    searchQuickPickBox.items = await handleDuplicateItems(await joplinNoteApi.loadLastNoteList())
     searchQuickPickBox.onDidChangeValue(async (value: string) => {
       if (value.trim() === '') {
-        searchQuickPickBox.items = await joplinNoteApi.loadLastNoteList()
+        const list = await handleDuplicateItems(await joplinNoteApi.loadLastNoteList())
+        searchQuickPickBox.items = list
         return
       }
       // is chinese
@@ -284,17 +297,21 @@ export class JoplinNoteCommandService {
       const { items: noteList } = await searchApi.search({
         query: value,
         type: TypeEnum.Note,
-        fields: ['id', 'title', 'body'],
+        fields: ['id', 'title', 'body', 'parent_id'],
         limit: 100,
         order_by: 'user_updated_time',
         order_dir: 'DESC',
       })
       GlobalContext.noteSearchProvider.setSearchList(value.trim(), noteList)
-      searchQuickPickBox.items = noteList.map((note) => ({
-        label: note.title,
-        id: note.id,
-        alwaysShow: true,
-      }))
+      searchQuickPickBox.items = await handleDuplicateItems(
+        noteList.map((note) => ({
+          label: note.title,
+          id: note.id,
+          alwaysShow: true,
+          parent_id: note.parent_id,
+        })),
+      )
+
       // console.log('search: ', value, JSON.stringify(searchQuickPickBox.items))
     })
     searchQuickPickBox.onDidAccept(() => {
@@ -466,4 +483,50 @@ export class JoplinNoteCommandService {
     vscode.window.showInformationMessage(t('paste-success'))
     this.clipboard = null
   }
+}
+
+async function handleDuplicateItems(items: (vscode.QuickPickItem & { id: string; parent_id: string })[]) {
+  const dupliteds = Object.entries(groupBy(items, (it) => it.label)).filter(([_k, v]) => v.length > 1)
+  if (dupliteds.length > 0) {
+    const folders = treeToList(await GlobalContext.api.folder.listAll(), {
+      id: 'id',
+      children: 'children',
+      path: 'path',
+    })
+    const folderMap = keyBy(folders, (it) => it.id)
+    function getCommonPrefix<T extends any[]>(arrays: T[]): T[] {
+      if (arrays.length === 0) {
+        return []
+      }
+
+      const shortestArray = minBy(arrays, 'length')
+
+      return takeWhile(shortestArray, (it, i) => arrays.every((arr) => arr[i] === it))
+    }
+    function findParents(folderId: string): FolderListAllRes[] {
+      const ids = folderMap[folderId].path
+      return ids.map((it) => folderMap[it])
+      // const res: FolderListAllRes[] = []
+      // let parent = folderMap[folderId]
+      // while (parent) {
+      //   res.push(parent)
+      //   parent = folderMap[parent.parent_id]
+      // }
+      // return res
+    }
+    dupliteds.forEach(([_k, v]) => {
+      const folderNames = v.map((it) => findParents(it.parent_id).map((it) => it.title))
+      const commonPrefix = getCommonPrefix(folderNames)
+      const diffFolderNames = folderNames
+        .map((it) => it.slice(commonPrefix.length))
+        .map((it) => {
+          if (commonPrefix.length > 0) {
+            it.unshift('...')
+          }
+          return it.join('/')
+        })
+      v.forEach((it, i) => (it.description = diffFolderNames[i]))
+    })
+  }
+  return items
 }
