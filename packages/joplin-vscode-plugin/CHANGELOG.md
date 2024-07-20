@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.7.0
+
+- feat: Notebook Path Hints in Note Search and "Joplin: Search", close <https://github.com/rxliuli/joplin-utils/issues/100>
+
 ## 1.6.0
 
 - feat: Create note from selection
