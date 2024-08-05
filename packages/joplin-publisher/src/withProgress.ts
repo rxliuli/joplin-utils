@@ -1,4 +1,5 @@
 import joplin from 'joplin-plugin-api'
+import { logger } from './logger'
 
 interface Progress<T> {
   /**

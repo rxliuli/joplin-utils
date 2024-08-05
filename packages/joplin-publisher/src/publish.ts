@@ -1,4 +1,3 @@
-import envPaths from 'env-paths'
 import * as git from 'isomorphic-git'
 import http from 'isomorphic-git/http/node'
 import fs from 'fs'
@@ -7,29 +6,32 @@ import { convert } from '@mark-magic/core'
 import * as hexo from '@mark-magic/plugin-hexo'
 import * as joplin from '@mark-magic/plugin-joplin'
 import { withProgress } from './withProgress'
-import { emptyDir, pathExists } from 'fs-extra'
+import { emptyDir, pathExists, remove } from 'fs-extra'
 import { get } from 'lodash-es'
 import { logger } from './logger'
+import { rm } from 'fs/promises'
 
 export async function publish(options: { token: string; username: string; repo: string; tag: string; dir: string }) {
+  const onAuth = () => ({ username: options.username, password: options.token })
+
   const { dir } = options
-  logger.info('localDir :', dir)
+  logger.info('localDir : ' + dir)
   await withProgress({ title: 'Processing start' }, async (process) => {
     // 如果不存在，拉取仓库
-    await git.setConfig({
-      fs,
-      dir,
-      path: 'user.name',
-      value: 'Joplin Publisher',
-    })
+    async function initGit() {}
+    const repoUrl = `https://github.com/${options.username}/${options.repo}`
+    logger.info('Repo url: ' + repoUrl)
+
     async function cloneRepo() {
+      logger.info('Cloning remote repository')
       process.report({ message: 'Cloning remote repository' })
       try {
         await git.clone({
           fs,
           http,
           dir,
-          url: `https://github.com/${options.username}/${options.repo}`,
+          url: repoUrl,
+          onAuth,
         })
         return true
       } catch (err) {
@@ -45,14 +47,10 @@ export async function publish(options: { token: string; username: string; repo: 
     } else {
       try {
         process.report({ message: 'Pulling remote repository' })
-        await git.pull({ fs, http, dir, singleBranch: true })
+        logger.info('Pulling remote repository')
+        await git.pull({ fs, http, dir, singleBranch: true, onAuth })
       } catch (err) {
-        if (get(err, 'code') === 'NotFoundError') {
-          await emptyDir(dir)
-          if (!(await cloneRepo())) {
-            return
-          }
-        }
+        await remove(dir)
         logger.error('Failed to pull remote repository', err)
         process.report({ message: 'Failed to pull remote repository' })
         return
@@ -65,7 +63,6 @@ export async function publish(options: { token: string; username: string; repo: 
         input: joplin.input({ type: 'plugin', tag: options.tag }),
         output: hexo.output({ path: dir }),
       }).on('generate', ({ content }) => {
-        logger.info('progress:', content.name)
         process.report({ message: `Processing ${content.name}` })
       })
     } catch (err) {
@@ -76,13 +73,19 @@ export async function publish(options: { token: string; username: string; repo: 
     // 推送到远端
     try {
       process.report({ message: 'Pushing to remote repository' })
+      await git.setConfig({
+        fs,
+        dir,
+        path: 'user.name',
+        value: 'Joplin Publisher',
+      })
       await stageAllChanges({ dir })
       await git.commit({
         fs,
         dir,
         message: `Update ${new Date().toISOString()}`,
       })
-      await git.push({ fs, http, dir, onAuth: () => ({ username: options.username, password: options.token }) })
+      await git.push({ fs, http, dir, onAuth })
     } catch (err) {
       if (get(err, 'data.statusCode') === 403 && !!get(err, 'data.response')) {
         logger.info('Failed to push to remote repository', get(err, 'data'))
