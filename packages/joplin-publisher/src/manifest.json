@@ -6,7 +6,7 @@
   "description": "Publish Joplin notes to GitHub and automate build deployment through GitHub Actions",
   "author": "rxliuli",
   "homepage_url": "https://joplin-utils.rxliuli.com/en-US/joplin-publisher/",
-  "repository_url": "https://github.com/rxliuli/joplin-utils",
+  "repository_url": "https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-publisher",
   "keywords": ["GitHub", "Publish"],
   "categories": ["integrations"],
   "screenshots": [

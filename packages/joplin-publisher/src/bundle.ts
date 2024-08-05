@@ -16,4 +16,4 @@ await create(
 )
 await mkdirp(path.resolve(__dirname, './publish'))
 await copy('./joplin-publisher.jpl', './publish/joplin-publisher.jpl')
-await copy('./src/manifest.json', './publish/manifest.json')
+await copy('./dist/manifest.json', './publish/manifest.json')
