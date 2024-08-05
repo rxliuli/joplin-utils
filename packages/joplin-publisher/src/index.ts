@@ -1,8 +1,11 @@
 import joplin, { SettingItemType } from 'joplin-plugin-api'
 import { publish } from './publish'
+import { initLogger } from './logger'
+import path from 'path'
 
 joplin.plugins.register({
   onStart: async function () {
+    initLogger(path.resolve(await joplin.plugins.dataDir(), 'logs'))
     // 声明一些插件设置，例如 github token、username、repo 等
     await registerSettings()
     // 实现这个命令的功能，生成 markdown 文件并使用 git 推送到远端仓库
@@ -33,7 +36,8 @@ async function registerCommands() {
           await joplin.views.dialogs.showMessageBox('Please set the GitHub token, username, and repo in the settings')
           return
         }
-        await publish(config)
+        const dataDir = await joplin.plugins.dataDir()
+        await publish({ ...config, dir: path.resolve(dataDir, `repos/${config.username}/${config.repo}`) })
       } finally {
         isRunning = false
       }

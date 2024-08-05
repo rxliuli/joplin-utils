@@ -9,10 +9,11 @@ import * as joplin from '@mark-magic/plugin-joplin'
 import { withProgress } from './withProgress'
 import { emptyDir, pathExists } from 'fs-extra'
 import { get } from 'lodash-es'
+import { logger } from './logger'
 
-export async function publish(options: { token: string; username: string; repo: string; tag: string }) {
-  const dir = envPaths(`joplin-publisher/${options.username}/${options.repo}`).data
-  console.log('dir:', dir)
+export async function publish(options: { token: string; username: string; repo: string; tag: string; dir: string }) {
+  const { dir } = options
+  logger.info('localDir :', dir)
   await withProgress({ title: 'Processing start' }, async (process) => {
     // 如果不存在，拉取仓库
     await git.setConfig({
@@ -32,7 +33,7 @@ export async function publish(options: { token: string; username: string; repo: 
         })
         return true
       } catch (err) {
-        console.error('Failed to clone remote repository', err)
+        logger.error('Failed to clone remote repository', err)
         process.report({ message: 'Failed to clone remote repository' })
         return false
       }
@@ -52,7 +53,7 @@ export async function publish(options: { token: string; username: string; repo: 
             return
           }
         }
-        console.error('Failed to pull remote repository', err)
+        logger.error('Failed to pull remote repository', err)
         process.report({ message: 'Failed to pull remote repository' })
         return
       }
@@ -64,11 +65,11 @@ export async function publish(options: { token: string; username: string; repo: 
         input: joplin.input({ type: 'plugin', tag: options.tag }),
         output: hexo.output({ path: dir }),
       }).on('generate', ({ content }) => {
-        console.log('progress:', content.name)
+        logger.info('progress:', content.name)
         process.report({ message: `Processing ${content.name}` })
       })
     } catch (err) {
-      console.error('Failed to generate markdown file', err)
+      logger.error('Failed to generate markdown file', err)
       process.report({ message: 'Failed to generate markdown file' })
       return
     }
@@ -84,11 +85,11 @@ export async function publish(options: { token: string; username: string; repo: 
       await git.push({ fs, http, dir, onAuth: () => ({ username: options.username, password: options.token }) })
     } catch (err) {
       if (get(err, 'data.statusCode') === 403 && !!get(err, 'data.response')) {
-        console.log('Failed to push to remote repository', get(err, 'data'))
+        logger.info('Failed to push to remote repository', get(err, 'data'))
         process.report({ message: `Failed to push to remote repository: ${get(err, 'data.response')}` })
         return
       }
-      console.error('Failed to push to remote repository', err)
+      logger.error('Failed to push to remote repository', err)
       process.report({ message: 'Failed to push to remote repository' })
       return
     }
