@@ -4,7 +4,6 @@ import * as path from 'path'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import { last } from 'lodash-es'
 import { readJson } from 'fs-extra/esm'
-import { writeFile } from 'fs/promises'
 
 export default defineConfig({
   plugins: [
@@ -18,7 +17,6 @@ export default defineConfig({
             const r = await readJson(filename)
             r.version = process.env.npm_package_version
             const s = JSON.stringify(r, null, 2)
-            await writeFile(filename, s)
             return s
           },
         },
