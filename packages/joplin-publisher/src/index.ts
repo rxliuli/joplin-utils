@@ -52,7 +52,7 @@ async function registerSettings() {
   })
   await joplin.settings.registerSettings({
     token: {
-      value: '',
+      value: 'YOUR_GITHUB_TOKEN',
       section: 'PublisherSection',
       type: SettingItemType.String,
       secure: true,
