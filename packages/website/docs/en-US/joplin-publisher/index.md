@@ -20,7 +20,7 @@ Publish Joplin notes to GitHub, and automate the build and deployment process us
 
 ### Joplin
 
-1. Install the plugin
+1. Install the plugin, <https://joplinapp.org/plugins/plugin/rxliuli.joplin-publisher/>
 2. Open Joplin > Settings > Plugins > Publisher, and set GitHub token/username/repo
    ![setting 1](/images/joplin-publisher-joplin-setting-1.png)
 3. Choose a note and add the tag **blog**

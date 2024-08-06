@@ -20,7 +20,7 @@
 
 ### Joplin
 
-1. 安装插件
+1. 安装插件 <https://joplinapp.org/plugins/plugin/rxliuli.joplin-publisher/>
 2. 打开 Joplin > Settings > Plugins > Publisher，分别设置 GitHub token/username/repo
    ![setting 1](/images/joplin-publisher-joplin-setting-1.png)
 3. 选择一个笔记，添加标签 **blog**
