@@ -1,0 +1,58 @@
+{
+  "name": "jpl-vite",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "jpl": "./bin.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./webview": {
+      "import": "./dist/webview.js",
+      "types": "./dist/webview.d.ts"
+    },
+    "./api": {
+      "import": "./dist/api.js",
+      "types": "./dist/api.d.ts"
+    },
+    "./messaging": {
+      "import": "./dist/messaging.js",
+      "types": "./dist/messaging.d.ts"
+    }
+  },
+  "scripts": {
+    "setup": "pnpm build",
+    "build": "vite build",
+    "dev": "pnpm build --watch",
+    "start": "vite-node src/bin.ts",
+    "test": "vitest run"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@liuli-util/vite-plugin-node": "^0.9.0",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^22.1.0",
+    "typescript": "^5.5.4",
+    "vite-node": "^2.0.5",
+    "vitest": "^2.0.5"
+  },
+  "dependencies": {
+    "bundle-require": "^5.0.0",
+    "commander": "^12.1.0",
+    "fs-extra": "^11.2.0",
+    "globby": "^14.0.1",
+    "joplin-plugin-api": "workspace:^",
+    "lodash-es": "^4.17.21",
+    "serialize-error": "^11.0.3",
+    "tar": "^7.4.3",
+    "vite": ">=5",
+    "vite-plugin-dts": "4.0.0-beta.2"
+  }
+}

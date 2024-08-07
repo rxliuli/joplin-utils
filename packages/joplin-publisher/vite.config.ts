@@ -3,7 +3,6 @@ import { node } from '@liuli-util/vite-plugin-node'
 import * as path from 'path'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import { last } from 'lodash-es'
-import { readJson } from 'fs-extra/esm'
 
 export default defineConfig({
   plugins: [
@@ -13,8 +12,8 @@ export default defineConfig({
         {
           src: 'src/manifest.json',
           dest: '',
-          async transform(content: string, filename: string) {
-            const r = await readJson(filename)
+          async transform(content: string) {
+            const r = await JSON.parse(content)
             r.version = process.env.npm_package_version
             const s = JSON.stringify(r, null, 2)
             return s
