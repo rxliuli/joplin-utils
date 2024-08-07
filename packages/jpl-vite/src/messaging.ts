@@ -2,6 +2,7 @@ import joplin, { ViewHandle } from 'joplin-plugin-api'
 import { webviewApi } from './webview'
 import { serializeError, deserializeError } from 'serialize-error'
 import { once } from 'lodash-es'
+import { getEnv } from '.'
 
 type ProtocolWithReturn<T> = T extends (...args: infer Args) => any ? ReturnType<T> : [T]
 type GetDataType<T> = T extends (...args: infer Args) => any ? Parameters<T> : [T]
@@ -17,15 +18,6 @@ interface ExtensionMessenger<TProtocolMap> {
       ...args: GetDataType<TProtocolMap[TMethod]>
     ) => ProtocolWithReturn<TProtocolMap[TMethod]> | Promise<ProtocolWithReturn<TProtocolMap[TMethod]>>,
   ): () => void
-}
-
-function getEnv(): 'main' | 'webview' | undefined {
-  if (typeof joplin !== 'undefined') {
-    return 'main'
-  }
-  if (typeof webviewApi !== 'undefined') {
-    return 'webview'
-  }
 }
 
 function getIpc(viewHandle: ViewHandle) {

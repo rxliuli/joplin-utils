@@ -57,3 +57,14 @@ export interface ResolvedPluginConfig extends PluginConfig {
 export function defineConfig(config: PluginConfig) {
   return config
 }
+
+export function getEnv(): 'main' | 'webview' | undefined {
+  // @ts-expect-error
+  if (typeof joplin !== 'undefined') {
+    return 'main'
+  }
+  // @ts-expect-error
+  if (typeof webviewApi !== 'undefined') {
+    return 'webview'
+  }
+}

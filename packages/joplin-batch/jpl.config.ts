@@ -1,5 +1,6 @@
+import path from 'path'
 import { defineConfig } from '../jpl-vite/dist'
-import { preact } from '@preact/preset-vite'
+import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   id: 'rxliuli.joplin-batch',
@@ -15,6 +16,11 @@ export default defineConfig({
   categories: ['productivity'],
   icons: {},
   vite: {
-    plugins: [preact() as any],
+    plugins: [react() as any],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src/webview'),
+      },
+    },
   },
 })

@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/webview/*"]
+    },
     "target": "ESNext",
     "lib": ["ESNext", "DOM"],
     "outDir": "./dist",
@@ -11,8 +15,7 @@
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "jsx": "react-jsx"
   },
   "include": ["src"]
 }
