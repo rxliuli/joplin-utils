@@ -70,12 +70,9 @@ export class FetchAdapter implements RequestAdapter {
 export class JoplinPluginAdapter implements RequestAdapter {
   constructor() {}
   async send<T>(info: RequestInfo): Promise<T> {
-    const u = new URL(info.url)
-    u.searchParams.delete('token')
-    const parmas = [...u.searchParams.entries()].reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {})
     const r = await joplin.data[info.method ?? 'get'](
-      u.pathname.split('/').filter((it) => it.length > 0),
-      { ...info.data, ...parmas },
+      info.url.split('/').filter((it) => it.length > 0),
+      { ...info.data, ...info.params },
     )
     if (!info.responseType || info.responseType === 'json') {
       return r as any

@@ -34,7 +34,7 @@ export class SearchApi {
     const { type, ...others } = param
     return this.ajax.get<PageRes<Pick<NoteProperties, K> & CommonType>>('/search', {
       ...others,
-      type: SearchApi.TypeEnumMap[type!],
+      ...(type ? { type: SearchApi.TypeEnumMap[type!] } : {}),
     })
   }
 }
