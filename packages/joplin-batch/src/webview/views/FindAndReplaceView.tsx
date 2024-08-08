@@ -19,6 +19,7 @@ import {
   DrawerTitle,
 } from '@/components/ui/drawer'
 import reactStringReplace from 'react-string-replace'
+import { AsyncState } from 'react-use/lib/useAsyncFn'
 
 type SearchNote = Pick<NoteProperties, 'id' | 'title' | 'body' | 'user_created_time'>
 
@@ -38,7 +39,7 @@ export function FindAndReplaceView() {
   const [state, onSearch] = useAsyncFn(async () => {
     list.value = []
     const stream = asGenerator(dataApi.search.search.bind(dataApi.search))({
-      query: form.search,
+      query: `"${form.search}"`,
       fields: ['id', 'title', 'body', 'user_updated_time'],
       order_by: 'user_updated_time',
       order_dir: 'DESC',
@@ -65,7 +66,7 @@ export function FindAndReplaceView() {
     const active = list.value[boxState.activeIndex]
     await replaceById(note, form.search, form.replace)
     list.value = list.value.filter((i) => i.id !== note.id)
-    if (active.id === note.id) {
+    if (active.id === note.id || boxState.isOpen) {
       boxState.isOpen = false
     }
   })
@@ -132,7 +133,17 @@ export function FindAndReplaceView() {
             {boxState.isOpen && <DiffView text={list.value[boxState.activeIndex]?.body} form={form} />}
           </div>
         ) : (
-          <DrawerView list={list} form={form} boxState={boxState} />
+          <Drawer open={boxState.isOpen} onOpenChange={(value) => (boxState.isOpen = value)}>
+            <DrawerView
+              note={list.value[boxState.activeIndex]}
+              replaceSingleState={replaceSingleState}
+              onReplaceSingle={onReplaceSingle}
+            >
+              <div className={'h-[60vh] overflow-y-auto'}>
+                <DiffView form={form} text={list.value[boxState.activeIndex]?.body} />
+              </div>
+            </DrawerView>
+          </Drawer>
         )}
       </div>
     </div>
@@ -145,50 +156,32 @@ async function replaceById(note: SearchNote, search: string, replace: string) {
 }
 
 function DrawerView(props: {
-  list: { value: SearchNote[] }
-  form: FormType
-  boxState: {
-    isOpen: boolean
-    activeIndex: number
-  }
+  children: React.ReactNode
+  note?: SearchNote
+  replaceSingleState: AsyncState<void>
+  onReplaceSingle: (note: SearchNote) => Promise<void>
 }) {
-  const { list, boxState, form } = props
+  const { note, onReplaceSingle, replaceSingleState } = props
 
-  const [replaceSingleState, onReplaceSingle] = useAsyncFn(async () => {
-    if (!form.replace || !form.replace) {
-      return
-    }
-    if (!boxState.isOpen) {
-      return
-    }
-    const it = list.value[boxState.activeIndex]
-    await replaceById(it, form.search, form.replace)
-    list.value = list.value.filter((i) => i.id !== it.id)
-    boxState.isOpen = false
-  })
   return (
-    <Drawer open={boxState.isOpen} onOpenChange={(value) => (boxState.isOpen = value)}>
-      <DrawerContent>
-        <div className="mx-auto w-full max-w-xl">
-          <DrawerHeader>
-            <DrawerTitle>Replace</DrawerTitle>
-            <DrawerDescription>{list.value[boxState.activeIndex]?.title}</DrawerDescription>
-          </DrawerHeader>
-          <div className={'h-[60vh] overflow-y-auto'}>
-            <DiffView form={form} text={list.value[boxState.activeIndex]?.body} />
-          </div>
-          <DrawerFooter>
-            <Button onClick={onReplaceSingle}>
-              {replaceSingleState.loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Replace
-            </Button>
-            <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
-            </DrawerClose>
-          </DrawerFooter>
-        </div>
-      </DrawerContent>
-    </Drawer>
+    <DrawerContent>
+      <div className="mx-auto w-full max-w-xl">
+        <DrawerHeader>
+          <DrawerTitle>Replace</DrawerTitle>
+          <DrawerDescription>{note?.title}</DrawerDescription>
+        </DrawerHeader>
+        {props.children}
+        <DrawerFooter>
+          <Button onClick={() => onReplaceSingle(note!)}>
+            {replaceSingleState.loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            Replace
+          </Button>
+          <DrawerClose asChild>
+            <Button variant="outline">Cancel</Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </div>
+    </DrawerContent>
   )
 }
 

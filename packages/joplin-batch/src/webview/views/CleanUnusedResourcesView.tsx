@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { AlertCircle, Loader2, Trash2 } from 'lucide-react'
-import { useAsyncFn, useLocalStorage, useMedia, useMount } from 'react-use'
+import { useAsync, useAsyncFn, useLocalStorage, useMount } from 'react-use'
 import { ResourceProperties } from 'joplin-api'
 import { useDeepSignal } from 'deepsignal/react'
 import { asGenerator } from '../lib/pageUtil'
@@ -10,7 +10,8 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Link } from '@liuli-util/react-router'
 import ZoomableImage from '@/components/3rd/ZoomableImage'
 import { cn } from '@/lib/utils'
-import { getPlatform } from '@/lib/getPlatform'
+import { MimeIcon } from '@/components/3rd/MimeIcon'
+import { sendMessage } from '../../message'
 
 async function isUse(id: string): Promise<boolean> {
   const res = await dataApi.search.search({
@@ -76,22 +77,12 @@ export function CleanUnusedResourcesView() {
         </Button>
       </header>
       <div className={'flex-1 overflow-y-auto'}>
-        {!(settings?.baseUrl && settings.token) && getPlatform() === 'desktop' && (
-          <Alert className={'mb-2 text-yellow-600 border-yellow-600 [&>svg]:text-yellow-600'}>
-            <AlertCircle className="h-4 w-4" />
-            <AlertTitle>Warn</AlertTitle>
-            <AlertDescription>
-              <div>Please set the Joplin Web Clipper Service address and token in the settings to view the image.</div>
-              <Link to={'/settings'} className={'text-blue-600 underline'}>
-                Go to Settings
-              </Link>
-            </AlertDescription>
-          </Alert>
-        )}
+        {!(settings?.baseUrl && settings.token) && <SettingsWarnInfo />}
         {state.error && <div>Error: {state.error.message}</div>}
         {list.value.length > 0 && (
-          <ScrollArea className="rounded-md">
-            <ul className="space-y-4">
+          // fix https://github.com/shadcn-ui/ui/issues/3833
+          <ScrollArea className="rounded-md w-full [&>div>div]:!block">
+            <ul className="space-y-4 w-full">
               {list.value.map((it) => (
                 <RenderItem key={it.id} resource={it} onDelete={onDelete} settings={settings} />
               ))}
@@ -108,6 +99,24 @@ export function CleanUnusedResourcesView() {
   )
 }
 
+function SettingsWarnInfo() {
+  const state = useAsync(async () => sendMessage('getVersionInfo'))
+  return state.value?.platform !== 'mobile' ? (
+    <Alert className={'mb-2 text-yellow-600 border-yellow-600 [&>svg]:text-yellow-600'}>
+      <AlertCircle className="h-4 w-4" />
+      <AlertTitle>Warn</AlertTitle>
+      <AlertDescription>
+        <div>Please set the Joplin Web Clipper Service address and token in the settings to view the image.</div>
+        <Link to={'/settings'} className={'text-blue-600 underline'}>
+          Go to Settings
+        </Link>
+      </AlertDescription>
+    </Alert>
+  ) : (
+    <></>
+  )
+}
+
 function RenderItem(props: {
   resource: Pick<ResourceProperties, 'id' | 'title' | 'mime'>
   onDelete: (id: string) => void
@@ -117,13 +126,12 @@ function RenderItem(props: {
   return (
     <li key={resource.id} className="bg-secondary rounded-lg p-4">
       <div
-        className={cn('flex flex-wrap justify-between items-center', {
+        className={cn('flex justify-between items-center w-full', {
           'mb-2': resource.mime.startsWith('image/') && settings?.baseUrl && settings.token,
         })}
       >
-        <span className="font-medium overflow-hidden text-ellipsis whitespace-nowrap max-w-[calc(100%-120px)]">
-          {resource.title}
-        </span>
+        <MimeIcon mimeType={resource.mime} className={'text-blue-500'} />
+        <div className="flex-1 font-medium truncate">{resource.title}</div>
         <div className="space-x-2">
           <Button variant="destructive" size="sm" onClick={() => onDelete(resource.id)}>
             <Trash2 className="mr-2 h-4 w-4" />

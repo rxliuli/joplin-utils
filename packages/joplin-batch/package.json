@@ -27,6 +27,7 @@
     "joplin-plugin-api": "workspace:^",
     "jpl-vite": "workspace:^",
     "lodash-es": "^4.17.21",
+    "pathe": "^1.1.2",
     "postcss": "^8.4.35",
     "react": "^18.3.1",
     "react-use": "^17.5.1",

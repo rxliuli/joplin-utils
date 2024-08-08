@@ -67,3 +67,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+#joplin-plugin-content {
+  @apply p-0;
+}

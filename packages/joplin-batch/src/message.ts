@@ -7,8 +7,7 @@ export interface StorageValues {
 }
 
 export interface IProtocol {
-  add(a: number, b: number): number
-  value(): number
+  getVersionInfo(): VersionInfo
 
   invokeDataApi(method: string, ...args: any[]): any
 }

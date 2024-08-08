@@ -1,4 +1,4 @@
-import { MenuItemLocation, ViewHandle, joplin } from 'jpl-vite/api'
+import { MenuItemLocation, ToolbarButtonLocation, ViewHandle, joplin } from 'jpl-vite/api'
 import { IProtocol } from './message'
 import { defineExtensionMessaging } from 'jpl-vite/messaging'
 import { joplinDataApi } from 'joplin-api'
@@ -17,7 +17,7 @@ async function registerCommands() {
 
   let handler: ViewHandle
   await joplin.commands.register({
-    name: 'joplin-batch.visible',
+    name: 'joplin-batch.toggle',
     label: 'Joplin Batch',
     async execute() {
       const panels = joplin.views.panels
@@ -27,16 +27,10 @@ async function registerCommands() {
         return
       }
       handler = await panels.create('Batch Utils')
-      await panels.setHtml(handler, `<meta name="platform" content="${(await joplin.versionInfo()).platform}"`)
       await panels.addScript(handler, '/webview/index.js')
       await panels.addScript(handler, '/webview/style.css')
       const { onMessage } = defineExtensionMessaging<IProtocol>(handler)
-      let last = 0
-      onMessage('add', (a, b) => {
-        last = a + b
-        return last
-      })
-      onMessage('value', () => last)
+      onMessage('getVersionInfo', () => joplin.versionInfo())
       onMessage('invokeDataApi', (method, ...args) => {
         const f = deepGet(dataApi, method)
         if (!f) {
@@ -50,7 +44,15 @@ async function registerCommands() {
 }
 
 async function registerMenus() {
-  await joplin.views.menuItems.create('joplin-batch.visible', 'joplin-batch.visible', MenuItemLocation.Tools)
+  if ((await joplin.versionInfo()).platform === 'desktop') {
+    await joplin.views.menuItems.create('joplin-batch.toggle', 'joplin-batch.toggle', MenuItemLocation.Tools)
+    return
+  }
+  await joplin.views.toolbarButtons.create(
+    'joplin-batch.toggle',
+    'joplin-batch.toggle',
+    ToolbarButtonLocation.NoteToolbar,
+  )
 }
 
 function deepGet(obj: any, path: string): Function | undefined {

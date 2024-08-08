@@ -13,9 +13,7 @@ export function DemoView() {
     count.value = new Date()
   }, 100)
 
-  async function onPostMessage() {
-    console.log(await sendMessage('add', 1, 2))
-  }
+  async function onPostMessage() {}
 
   async function onInvokeDataApi() {
     const list = webviewJoplinDataApi().note.list
