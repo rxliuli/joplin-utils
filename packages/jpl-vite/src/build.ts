@@ -3,7 +3,7 @@ import { build as viteBuild, UserConfig, mergeConfig, loadEnv } from 'vite'
 import { ResolvedPluginConfig } from '.'
 import { omit } from 'lodash-es'
 import { readFile, writeFile } from 'fs/promises'
-import { pathExists } from 'fs-extra'
+import { mkdirp, pathExists } from 'fs-extra/esm'
 import { bundleRequire } from 'bundle-require'
 
 function devMode(config: UserConfig) {
@@ -83,7 +83,8 @@ async function emitManifest(config: ResolvedPluginConfig) {
   const content = omit(config, 'vite')
   const pkg = JSON.parse(await readFile(path.resolve(config.root, 'package.json'), 'utf-8'))
   content.version = pkg.version
-  await writeFile(path.resolve('dist/manifest.json'), JSON.stringify(content, null, 2))
+  await mkdirp(path.resolve(config.root, 'dist'))
+  await writeFile(path.resolve(config.root, 'dist/manifest.json'), JSON.stringify(content, null, 2))
 }
 
 export async function build(config: ResolvedPluginConfig) {
