@@ -50,7 +50,11 @@ export default defineConfig({
             link: '/en-US/joplin-publisher/',
           },
           {
-            text: 'Joplin Batch Web',
+            text: 'Joplin Batch',
+            link: '/en-US/joplin-batch/',
+          },
+          {
+            text: 'Joplin Batch Web(Legacy)',
             link: '/en-US/joplin-batch-web/',
           },
           {
@@ -106,7 +110,11 @@ export default defineConfig({
             link: '/zh-CN/joplin-publisher/',
           },
           {
-            text: 'Joplin Batch Web',
+            text: 'Joplin Batch',
+            link: '/zh-CN/joplin-batch/',
+          },
+          {
+            text: 'Joplin Batch Web(Legacy)',
             link: '/zh-CN/joplin-batch-web/',
           },
           {

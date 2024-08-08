@@ -11,7 +11,7 @@ hero:
       text: 看看 Joplin VSCode Plugin
       link: /zh-CN/joplin-vscode-plugin/
     - theme: alt
-      text: 在 GitHub 加个 Star
+      text: ✨ 在 GitHub 加个 Star
       link: https://github.com/rxliuli/joplin-utils
 features:
   - title: Joplin VSCode Plugin

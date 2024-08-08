@@ -11,7 +11,7 @@ hero:
       text: View Joplin VSCode Plugin
       link: /en-US/joplin-vscode-plugin/
     - theme: alt
-      text: Star in GitHub
+      text: ✨ Star on GitHub
       link: https://github.com/rxliuli/joplin-utils
 features:
   - title: Joplin VSCode Plugin
