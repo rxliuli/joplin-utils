@@ -11,22 +11,22 @@ export default defineConfig({
   description:
     'Handle some bulk operations that Joplin itself does not support and present them in a visual interface.',
   author: 'rxliuli',
-  homepage_url: 'https://joplin-utils.rxliuli.com/en-US/joplin-batch-web/',
-  repository_url: 'https://raw.githubusercontent.com/rxliuli/joplin-utils/master/packages/joplin-batch',
+  homepage_url: 'https://joplin-utils.rxliuli.com/en-US/joplin-batch/',
+  repository_url: 'https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-batch',
   keywords: ['Batch', 'Find And Replace', 'Clear Unuse Resources'],
   categories: ['productivity', 'personal knowledge management'],
   screenshots: [
     {
       label: 'Clean Unused Resources',
-      src: 'https://raw.githubusercontent.com/rxliuli/joplin-utils/master/packages/joplin-batch/images/screenshots/clean.png',
+      src: 'https://joplin-utils.rxliuli.com/joplin-batch/clean.png',
     },
     {
       label: 'Find And Replace',
-      src: 'https://raw.githubusercontent.com/rxliuli/joplin-utils/master/packages/joplin-batch/images/screenshots/replace.png',
+      src: 'https://joplin-utils.rxliuli.com/joplin-batch/replace.png',
     },
     {
       label: 'Diff Viewer',
-      src: 'https://raw.githubusercontent.com/rxliuli/joplin-utils/master/packages/joplin-batch/images/screenshots/diff.png',
+      src: 'https://joplin-utils.rxliuli.com/joplin-batch/diff.png',
     },
   ],
   icons: {
