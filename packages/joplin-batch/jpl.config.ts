@@ -13,7 +13,7 @@ export default defineConfig({
   author: 'rxliuli',
   homepage_url: 'https://joplin-utils.rxliuli.com/en-US/joplin-batch/',
   repository_url: 'https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-batch',
-  keywords: ['Batch', 'Find And Replace', 'Clear Unuse Resources'],
+  keywords: ['Batch', 'Replace', 'Clean'],
   categories: ['productivity', 'personal knowledge management'],
   screenshots: [
     {
