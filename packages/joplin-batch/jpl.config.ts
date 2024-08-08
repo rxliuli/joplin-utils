@@ -12,9 +12,25 @@ export default defineConfig({
   author: 'rxliuli',
   homepage_url: 'https://joplin-utils.rxliuli.com/en-US/joplin-batch-web/',
   repository_url: 'https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-batch',
-  keywords: ['Batch'],
+  keywords: ['Batch', 'Find And Replace', 'Clear Unuse Resources'],
   categories: ['productivity'],
-  icons: {},
+  screenshots: [
+    {
+      label: 'Clean Unused Resources',
+      src: 'https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-batch/images/screenshots/clean.png',
+    },
+    {
+      label: 'Find And Replace',
+      src: 'https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-batch/images/screenshots/replace.png',
+    },
+    {
+      label: 'Diff Viewer',
+      src: 'https://github.com/rxliuli/joplin-utils/tree/master/diff.png',
+    },
+  ],
+  icons: {
+    '128': 'packages/joplin-publisher/images/icon-128.png',
+  },
   vite: {
     plugins: [react() as any],
     resolve: {

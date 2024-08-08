@@ -8,6 +8,7 @@ import { useAsyncFn } from 'react-use'
 import { Loader2 } from 'lucide-react'
 import { useSignalEffect } from '@preact/signals-react'
 import { getSettings, setSettings } from '@/lib/dataApi'
+import { Link } from '@liuli-util/react-router'
 
 export function SettingsView() {
   const settings = useDeepSignal<{
@@ -74,6 +75,11 @@ export function SettingsView() {
           <Button onClick={onCheck} disabled={state.loading}>
             {state.loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Check
+          </Button>
+          <Button variant={'link'}>
+            <Link target={'_blank'} to={'https://joplinapp.org/help/apps/clipper'}>
+              How to get the token
+            </Link>
           </Button>
           <div>
             {state.error && <span className={'text-red-500'}>{state.error.message}</span>}

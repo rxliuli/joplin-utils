@@ -1,4 +1,5 @@
 import { defineExtensionMessaging } from 'jpl-vite/messaging'
+import { VersionInfo } from 'jpl-vite/api'
 
 export interface StorageValues {
   selectedFontId: string

@@ -5,6 +5,7 @@
   "scripts": {
     "setup": "pnpm build",
     "dev": "jpl",
+    "dev:webview": "jpl dev",
     "build": "jpl build"
   },
   "license": "MIT",
@@ -42,6 +43,7 @@
     "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.2",
     "@types/react-dom": "^18.0.6",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",

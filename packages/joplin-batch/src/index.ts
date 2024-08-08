@@ -1,4 +1,4 @@
-import joplin, { MenuItemLocation, ViewHandle } from 'joplin-plugin-api'
+import { MenuItemLocation, ViewHandle, joplin } from 'jpl-vite/api'
 import { IProtocol } from './message'
 import { defineExtensionMessaging } from 'jpl-vite/messaging'
 import { joplinDataApi } from 'joplin-api'
@@ -27,6 +27,7 @@ async function registerCommands() {
         return
       }
       handler = await panels.create('Batch Utils')
+      await panels.setHtml(handler, `<meta name="platform" content="${(await joplin.versionInfo()).platform}"`)
       await panels.addScript(handler, '/webview/index.js')
       await panels.addScript(handler, '/webview/style.css')
       const { onMessage } = defineExtensionMessaging<IProtocol>(handler)

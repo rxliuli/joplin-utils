@@ -17,15 +17,19 @@
     "setup": "pnpm build",
     "build": "vite build",
     "dev": "pnpm build --watch",
-    "test": "vitest run"
+    "test": "vitest run",
+    "syncRemote": "vite-node src/syncRemote.ts"
   },
   "sideEffects": false,
   "devDependencies": {
     "@liuli-util/vite-plugin-node": "^0.8.1",
+    "degit": "^2.8.4",
     "typescript": "^5.3.3",
     "vite": "^5.0.12",
+    "vite-node": "^2.0.5",
     "vite-plugin-static-copy": "^1.0.5",
-    "vitest": "^1.6.0"
+    "vitest": "^1.6.0",
+    "zx": "^8.1.4"
   },
   "publishConfig": {
     "access": "public",
