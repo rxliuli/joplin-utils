@@ -27,7 +27,7 @@
     "@liuli-util/test": "^3.8.0",
     "@liuli-util/tree": "^3.5.0",
     "@types/markdown-it": "^12.2.3",
-    "@types/node": "^18.19.18",
+    "@types/node": "^20.13.0",
     "@types/vscode": "^1.71.0",
     "@types/which": "^3.0.3",
     "chokidar": "^3.5.3",

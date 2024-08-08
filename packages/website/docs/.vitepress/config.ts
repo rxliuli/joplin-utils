@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import typedocSidebar from '../en-US/api/typedoc-sidebar.json'
 
 export default defineConfig({
   title: 'Joplin Utils',
@@ -58,8 +59,8 @@ export default defineConfig({
             link: '/en-US/joplin-batch-web/',
           },
           {
-            text: 'Joplin API',
-            link: '/en-US/joplin-api/',
+            text: 'API',
+            items: typedocSidebar,
           },
         ],
       },
@@ -118,8 +119,8 @@ export default defineConfig({
             link: '/zh-CN/joplin-batch-web/',
           },
           {
-            text: 'Joplin API',
-            link: '/zh-CN/joplin-api/',
+            text: 'API',
+            items: typedocSidebar,
           },
         ],
       },

@@ -38,7 +38,7 @@
   "devDependencies": {
     "@liuli-util/vite-plugin-node": "^0.9.0",
     "@types/lodash-es": "^4.17.12",
-    "@types/node": "^22.1.0",
+    "@types/node": "^20.13.0",
     "typescript": "^5.5.4",
     "vite-node": "^2.0.5",
     "vitest": "^2.0.5"

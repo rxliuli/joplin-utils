@@ -53,7 +53,7 @@
     "@types/lodash-es": "^4.17.7",
     "@types/markdown-it": "^12.2.3",
     "@types/mdast": "^3.0.10",
-    "@types/node": "^18.7.23",
+    "@types/node": "^20.13.0",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@types/react-highlight-words": "^0.16.4",

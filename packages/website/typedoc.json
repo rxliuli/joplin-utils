@@ -1,0 +1,13 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["../joplin-api", "../joplin-plugin-api", "../jpl-vite"],
+  "plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme"],
+  "docsRoot": "./docs",
+  "out": "./docs/en-US/api",
+  "entryPointStrategy": "packages",
+  "sidebar": {
+    "collapse": false,
+    "pretty": true
+  },
+  "skipErrorChecking": true
+}
