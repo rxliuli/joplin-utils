@@ -72,7 +72,8 @@ export class JoplinPluginAdapter implements RequestAdapter {
   async send<T>(info: RequestInfo): Promise<T> {
     const r = await joplin.data[info.method ?? 'get'](
       info.url.split('/').filter((it) => it.length > 0),
-      { ...info.data, ...info.params },
+      info.params,
+      info.data,
     )
     if (!info.responseType || info.responseType === 'json') {
       return r as any
