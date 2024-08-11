@@ -36,7 +36,7 @@ Note: Commands are enabled by default unless you use this property.
 
 #### Defined in
 
-[types.ts:58](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L58)
+[types.ts:58](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L58)
 
 ---
 
@@ -48,7 +48,7 @@ Icon to be used on toolbar buttons for example
 
 #### Defined in
 
-[types.ts:24](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L24)
+[types.ts:24](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L24)
 
 ---
 
@@ -63,7 +63,7 @@ should not be used as a menu item.
 
 #### Defined in
 
-[types.ts:19](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L19)
+[types.ts:19](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L19)
 
 ---
 
@@ -75,7 +75,7 @@ Name of command - must be globally unique
 
 #### Defined in
 
-[types.ts:11](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L11)
+[types.ts:11](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L11)
 
 ## Methods
 
@@ -95,4 +95,4 @@ Code to be ran when the command is executed. It may return a result.
 
 #### Defined in
 
-[types.ts:29](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L29)
+[types.ts:29](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L29)

@@ -1,5 +1,8 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, UserConfig, DefaultTheme } from 'vitepress'
 import typedocSidebar from '../en-US/api/typedoc-sidebar.json'
+import { readFile } from 'fs/promises'
+import path from 'path'
+import { twitterMeta } from 'vitepress-plugin-twitter-card'
 
 export default defineConfig({
   title: 'Joplin Utils',
@@ -153,4 +156,10 @@ export default defineConfig({
     ],
   ],
   ignoreDeadLinks: 'localhostLinks',
+  extends() {
+    return twitterMeta({
+      site: 'rxliuli',
+      image: 'https://joplin-utils.rxliuli.com/images/logo.png',
+    })
+  },
 })

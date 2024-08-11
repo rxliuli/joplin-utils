@@ -13,7 +13,7 @@ config screen.
 
 #### Defined in
 
-[types.ts:462](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L462)
+[types.ts:462](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L462)
 
 ---
 
@@ -25,7 +25,7 @@ Reserved property. Not used at the moment.
 
 #### Defined in
 
-[types.ts:450](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L450)
+[types.ts:450](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L450)
 
 ---
 
@@ -35,7 +35,7 @@ Reserved property. Not used at the moment.
 
 #### Defined in
 
-[types.ts:419](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L419)
+[types.ts:419](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L419)
 
 ---
 
@@ -48,7 +48,7 @@ That setting will render as a dropdown list in the configuration screen.
 
 #### Defined in
 
-[types.ts:439](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L439)
+[types.ts:439](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L439)
 
 ---
 
@@ -58,7 +58,7 @@ That setting will render as a dropdown list in the configuration screen.
 
 #### Defined in
 
-[types.ts:418](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L418)
+[types.ts:418](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L418)
 
 ---
 
@@ -68,7 +68,7 @@ That setting will render as a dropdown list in the configuration screen.
 
 #### Defined in
 
-[types.ts:469](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L469)
+[types.ts:469](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L469)
 
 ---
 
@@ -81,7 +81,7 @@ to a particular range.
 
 #### Defined in
 
-[types.ts:468](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L468)
+[types.ts:468](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L468)
 
 ---
 
@@ -94,7 +94,7 @@ should contain a map of value => label.
 
 #### Defined in
 
-[types.ts:445](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L445)
+[types.ts:445](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L445)
 
 ---
 
@@ -109,7 +109,7 @@ values that you do not want to directly expose.
 
 #### Defined in
 
-[types.ts:427](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L427)
+[types.ts:427](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L427)
 
 ---
 
@@ -122,7 +122,7 @@ specifically for the plugin.
 
 #### Defined in
 
-[types.ts:433](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L433)
+[types.ts:433](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L433)
 
 ---
 
@@ -135,7 +135,7 @@ setting will be stored in the system keychain if one is available.
 
 #### Defined in
 
-[types.ts:456](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L456)
+[types.ts:456](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L456)
 
 ---
 
@@ -145,7 +145,7 @@ setting will be stored in the system keychain if one is available.
 
 #### Defined in
 
-[types.ts:470](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L470)
+[types.ts:470](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L470)
 
 ---
 
@@ -157,7 +157,7 @@ Either store the setting in the database or in settings.json. Defaults to databa
 
 #### Defined in
 
-[types.ts:475](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L475)
+[types.ts:475](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L475)
 
 ---
 
@@ -170,7 +170,7 @@ Currently only used to display a file or directory selector. Always set
 
 #### Defined in
 
-[types.ts:416](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L416)
+[types.ts:416](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L416)
 
 ---
 
@@ -180,7 +180,7 @@ Currently only used to display a file or directory selector. Always set
 
 #### Defined in
 
-[types.ts:410](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L410)
+[types.ts:410](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L410)
 
 ---
 
@@ -190,4 +190,4 @@ Currently only used to display a file or directory selector. Always set
 
 #### Defined in
 
-[types.ts:409](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L409)
+[types.ts:409](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L409)

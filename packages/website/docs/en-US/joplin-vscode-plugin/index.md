@@ -2,7 +2,7 @@
 
 ## Overview
 
-> [![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin)](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin&ssr=false#overview)
+[![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin)](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin&ssr=false#overview)
 
 Joplin VSCode Plugin provides the functionality to manage Joplin notes within VSCode, including common actions like viewing, editing notes, managing note tags, adding or modifying attachments, internal linking, searching, and more.
 

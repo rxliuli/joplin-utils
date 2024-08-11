@@ -10,7 +10,7 @@
 
 #### Defined in
 
-[types.ts:180](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L180)
+[types.ts:180](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L180)
 
 ---
 
@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[types.ts:181](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L181)
+[types.ts:181](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L181)
 
 ---
 
@@ -32,4 +32,4 @@ You can attach your own custom data using this property - it will then be passed
 
 #### Defined in
 
-[types.ts:186](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L186)
+[types.ts:186](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L186)

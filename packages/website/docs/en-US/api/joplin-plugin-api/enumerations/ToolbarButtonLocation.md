@@ -12,7 +12,7 @@ This toolbar is right above the text editor. It applies to the note body only.
 
 #### Defined in
 
-[types.ts:349](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L349)
+[types.ts:349](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L349)
 
 ---
 
@@ -24,4 +24,4 @@ This toolbar in the top right corner of the application. It applies to the note 
 
 #### Defined in
 
-[types.ts:344](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L344)
+[types.ts:344](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L344)

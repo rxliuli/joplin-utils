@@ -22,7 +22,7 @@ https://joplinapp.org/api/references/rest_api/#events
 
 #### Defined in
 
-[api/EventApi.ts:23](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-api/src/api/EventApi.ts#L23)
+[api/EventApi.ts:23](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L23)
 
 ## Methods
 
@@ -54,7 +54,7 @@ https://joplinapp.org/api/references/rest_api/#get-events-id
 
 ##### Defined in
 
-[api/EventApi.ts:42](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-api/src/api/EventApi.ts#L42)
+[api/EventApi.ts:42](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L42)
 
 #### get(id, fields)
 
@@ -82,7 +82,7 @@ https://joplinapp.org/api/references/rest_api/#get-events-id
 
 ##### Defined in
 
-[api/EventApi.ts:43](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-api/src/api/EventApi.ts#L43)
+[api/EventApi.ts:43](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L43)
 
 ---
 
@@ -116,7 +116,7 @@ https://joplinapp.org/api/references/rest_api/#get-events
 
 ##### Defined in
 
-[api/EventApi.ts:25](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-api/src/api/EventApi.ts#L25)
+[api/EventApi.ts:25](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L25)
 
 #### list(param)
 
@@ -146,4 +146,4 @@ https://joplinapp.org/api/references/rest_api/#get-events
 
 ##### Defined in
 
-[api/EventApi.ts:26](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-api/src/api/EventApi.ts#L26)
+[api/EventApi.ts:26](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L26)

@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:34](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L34)
+[jpl-vite/src/index.ts:34](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L34)
 
 ---
 
@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:35](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L35)
+[jpl-vite/src/index.ts:35](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L35)
 
 ---
 
@@ -50,7 +50,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:39](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L39)
+[jpl-vite/src/index.ts:39](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L39)
 
 ---
 
@@ -64,7 +64,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:43](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L43)
+[jpl-vite/src/index.ts:43](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L43)
 
 ---
 
@@ -78,7 +78,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:38](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L38)
+[jpl-vite/src/index.ts:38](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L38)
 
 ---
 
@@ -92,7 +92,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:41](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L41)
+[jpl-vite/src/index.ts:41](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L41)
 
 ---
 
@@ -106,7 +106,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:45](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L45)
+[jpl-vite/src/index.ts:45](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L45)
 
 ---
 
@@ -120,7 +120,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:31](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L31)
+[jpl-vite/src/index.ts:31](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L31)
 
 ---
 
@@ -134,7 +134,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:40](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L40)
+[jpl-vite/src/index.ts:40](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L40)
 
 ---
 
@@ -148,7 +148,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:32](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L32)
+[jpl-vite/src/index.ts:32](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L32)
 
 ---
 
@@ -162,7 +162,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:33](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L33)
+[jpl-vite/src/index.ts:33](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L33)
 
 ---
 
@@ -176,7 +176,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:37](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L37)
+[jpl-vite/src/index.ts:37](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L37)
 
 ---
 
@@ -190,7 +190,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:46](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L46)
+[jpl-vite/src/index.ts:46](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L46)
 
 ---
 
@@ -204,7 +204,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:42](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L42)
+[jpl-vite/src/index.ts:42](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L42)
 
 ---
 
@@ -218,7 +218,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:44](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L44)
+[jpl-vite/src/index.ts:44](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L44)
 
 ---
 
@@ -232,7 +232,7 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:36](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L36)
+[jpl-vite/src/index.ts:36](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L36)
 
 ---
 
@@ -242,4 +242,4 @@
 
 #### Defined in
 
-[jpl-vite/src/index.ts:50](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/jpl-vite/src/index.ts#L50)
+[jpl-vite/src/index.ts:50](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/jpl-vite/src/index.ts#L50)

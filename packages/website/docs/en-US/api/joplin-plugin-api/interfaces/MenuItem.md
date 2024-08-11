@@ -12,7 +12,7 @@ Accelerator associated with the menu item
 
 #### Defined in
 
-[types.ts:315](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L315)
+[types.ts:315](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L315)
 
 ---
 
@@ -25,7 +25,7 @@ parameters.
 
 #### Defined in
 
-[types.ts:305](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L305)
+[types.ts:305](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L305)
 
 ---
 
@@ -38,7 +38,7 @@ have a command associated with them unless they are a sub-menu.
 
 #### Defined in
 
-[types.ts:299](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L299)
+[types.ts:299](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L299)
 
 ---
 
@@ -50,7 +50,7 @@ Menu item label. If not specified, the command label will be used instead.
 
 #### Defined in
 
-[types.ts:325](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L325)
+[types.ts:325](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L325)
 
 ---
 
@@ -62,7 +62,7 @@ Menu items that should appear below this menu item. Allows creating a menu tree.
 
 #### Defined in
 
-[types.ts:320](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L320)
+[types.ts:320](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L320)
 
 ---
 
@@ -74,4 +74,4 @@ Set to "separator" to create a divider line
 
 #### Defined in
 
-[types.ts:310](https://github.com/rxliuli/joplin-utils/blob/856dd8cbf75fe71932485581a99ca0e4ebcdd5e8/packages/joplin-plugin-api/src/types.ts#L310)
+[types.ts:310](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-plugin-api/src/types.ts#L310)
