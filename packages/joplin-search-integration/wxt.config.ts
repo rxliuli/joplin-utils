@@ -7,8 +7,6 @@ export default defineConfig({
   modules: ['@wxt-dev/module-svelte'],
   manifest: {
     name: 'Joplin Search Integration',
-    description:
-      'This browser extension displays relevant Joplin notes alongside search results on popular engines like Google, Bing, and Baidu. It seamlessly integrates personal notes with web searches, enhancing information retrieval and productivity for Joplin users.',
     host_permissions: ['http://localhost:27583/*', 'http://localhost:41184/*'],
     permissions: ['storage', 'tabs'],
   },

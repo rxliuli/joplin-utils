@@ -1,6 +1,6 @@
 {
   "name": "joplin-search-integration",
-  "description": "This browser extension displays relevant Joplin notes alongside search results on popular engines like Google, Bing, and Baidu. It seamlessly integrates personal notes with web searches, enhancing information retrieval and productivity for Joplin users.",
+  "description": "Displays Joplin notes in search results on Google, Bing, and other engines, integrating personal notes with web searches.",
   "type": "module",
   "private": true,
   "version": "0.8.0",
