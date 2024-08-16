@@ -1,9 +1,9 @@
 {
-  "name": "joplin-search-integration-svelte",
-  "description": "manifest.json description",
+  "name": "joplin-search-integration",
+  "description": "This browser extension displays relevant Joplin notes alongside search results on popular engines like Google, Bing, and Baidu. It seamlessly integrates personal notes with web searches, enhancing information retrieval and productivity for Joplin users.",
   "type": "module",
   "private": true,
-  "version": "0.7.1",
+  "version": "0.8.0",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",

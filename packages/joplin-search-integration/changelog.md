@@ -1,5 +1,17 @@
 # changelog
 
+## 0.8.0
+
+Major Changes
+
+- Refactored the entire plugin using wxt (Web Extension Toolkit)
+  - This significant architectural change aims to improve the plugin's performance, maintainability, and extensibility
+
+Notes
+
+- Due to the extensive refactoring, users are advised to report any new issues or unexpected behaviors
+- No changes to existing functionality are expected, but please verify your workflow after updating
+
 ## 0.7.1
 
 - chore: update jiebe-wasm@2.0.0, ref: <https://github.com/fengkx/jieba-wasm/issues/5>
