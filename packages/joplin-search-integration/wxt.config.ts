@@ -8,7 +8,7 @@ export default defineConfig({
   manifest: {
     name: 'Joplin Search Integration',
     host_permissions: ['http://localhost:27583/*', 'http://localhost:41184/*'],
-    permissions: ['storage', 'tabs'],
+    permissions: ['storage'],
   },
   vite() {
     return {
