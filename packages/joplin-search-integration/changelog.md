@@ -1,5 +1,9 @@
 # changelog
 
+## 0.8.1
+
+- chore: remove tabs permission
+
 ## 0.8.0
 
 Major Changes
