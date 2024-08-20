@@ -45,7 +45,10 @@ export function FindAndReplaceView() {
       order_dir: 'DESC',
     })
     for await (const it of stream) {
-      list.value.push(it)
+      const regexp = new RegExp(form.search, 'gi')
+      if (regexp.test(it.title) || regexp.test(it.body)) {
+        list.value.push(it as unknown as SearchNote)
+      }
     }
   })
 
