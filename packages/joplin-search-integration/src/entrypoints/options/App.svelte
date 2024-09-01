@@ -2,7 +2,6 @@
   import Router from 'svelte-spa-router'
   import Settings from './views/Settings.svelte'
   import Note from './views/Note.svelte'
-  import { detectTheme } from '$lib/detectTheme'
   import { Toaster } from '$lib/components/ui/sonner'
 
   const routes = {
@@ -12,7 +11,7 @@
   }
 
   onMount(() => {
-    if (detectTheme()) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.classList.add('dark')
     }
   })

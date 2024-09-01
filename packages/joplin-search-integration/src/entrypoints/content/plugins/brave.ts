@@ -23,10 +23,5 @@ export function brave(): SearchPlugin {
       $rhs.appendChild($root)
       return $root
     },
-    observe(render) {
-      new MutationObserver(render).observe(document.querySelector('.sidebar')!, {
-        childList: true,
-      })
-    },
   }
 }

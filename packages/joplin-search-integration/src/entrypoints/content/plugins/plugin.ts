@@ -3,30 +3,8 @@ import { NoteProperties } from 'joplin-api'
 export type SearchNote = Pick<NoteProperties, 'id' | 'title'>
 
 export interface SearchPlugin {
-  /**
-   * 匹配规则
-   */
-  match(url: URL): boolean
-
-  /**
-   * 搜索引擎的名字
-   */
   name: string
-
-  /**
-   * 解析网页搜索的关键词
-   */
+  match(url: URL): boolean
   getQuery(): string | undefined
-
-  /**
-   * 渲染检索到的笔记数据
-   */
-  // render(list: SearchNote[]): void
-
-  /**
-   * 创建一个渲染根节点
-   */
   createRenderRoot(): HTMLDivElement
-
-  observe?(render: () => void): void
 }

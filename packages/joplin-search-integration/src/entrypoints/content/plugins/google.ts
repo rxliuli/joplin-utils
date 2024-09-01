@@ -1,6 +1,5 @@
 import { getSearchQuery } from '../utils/getQuery'
-import { createJoplinElement, renderList } from '../utils/render'
-import { SearchPlugin, SearchNote } from './plugin'
+import { SearchPlugin } from './plugin'
 import { minimatch } from 'minimatch'
 
 function createRhs(): HTMLElement {

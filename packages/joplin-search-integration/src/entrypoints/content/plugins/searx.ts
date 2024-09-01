@@ -1,6 +1,6 @@
 import { SearchPlugin } from './plugin'
 import { getSearchQuery } from '../utils/getQuery'
-import { createJoplinElement, renderList } from '../utils/render'
+import { createJoplinElement } from '../utils/render'
 
 export const urls: string[] = []
 
@@ -18,12 +18,6 @@ export function searx(): SearchPlugin {
     getQuery() {
       return q()
     },
-    // render(list) {
-    //   const $sidebar = document.getElementById('sidebar')
-    //   const $root = createJoplinElement()
-    //   $sidebar?.appendChild($root)
-    //   renderList($root, list)
-    // },
     createRenderRoot() {
       const $sidebar = document.getElementById('sidebar')
       const $root = createJoplinElement()

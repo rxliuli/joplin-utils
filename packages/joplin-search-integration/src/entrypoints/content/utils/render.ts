@@ -1,4 +1,4 @@
-import { sendMessage } from '@/entrypoints/model/messaging'
+import { sendMessage } from '../../model/messaging'
 import { SearchNote } from '../plugins/plugin'
 
 export function renderList(root: HTMLDivElement, list: SearchNote[]) {
@@ -9,16 +9,6 @@ export function renderList(root: HTMLDivElement, list: SearchNote[]) {
   </ul>
 </div>`
   root.innerHTML = html
-  root.addEventListener('click', async (ev) => {
-    const el = ev.target
-    if (!(el instanceof HTMLElement && el.tagName === 'A')) {
-      return
-    }
-    await sendMessage('open', {
-      path: '/note',
-      id: el.dataset.id!,
-    })
-  })
 }
 
 export function createJoplinElement() {

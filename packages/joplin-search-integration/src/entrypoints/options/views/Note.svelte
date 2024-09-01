@@ -41,7 +41,7 @@
 
 <main>
   {#if html}
-    <div class="container mx-auto prose dark:prose-invert">
+    <div class="container mx-auto prose dark:prose-invert p-8">
       <h1>{note.title}</h1>
       {@html html}
     </div>

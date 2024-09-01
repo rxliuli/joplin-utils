@@ -1,12 +1,16 @@
+export function detectBackground() {
+  const bodyBgColor = window.getComputedStyle(document.body).backgroundColor
+  const [r, g, b] = bodyBgColor.match(/\d+/g)!.map(Number)
+  const brightness = (r * 299 + g * 587 + b * 114) / 1000
+  return brightness !== 0 && brightness < 128
+}
+
 export function detectTheme() {
   // 1. 检查系统偏好
   const prefersDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
 
   // 2. 分析背景色
-  const bodyBgColor = window.getComputedStyle(document.body).backgroundColor
-  const [r, g, b] = bodyBgColor.match(/\d+/g)!.map(Number)
-  const brightness = (r * 299 + g * 587 + b * 114) / 1000
-  const isDarkBg = brightness !== 0 && brightness < 128
+  const isDarkBg = detectBackground()
 
   // 3. 检查特定的CSS类或属性
   const htmlClasses = document.documentElement.classList

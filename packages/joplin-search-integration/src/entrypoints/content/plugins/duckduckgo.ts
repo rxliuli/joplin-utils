@@ -1,5 +1,4 @@
 import { getSearchQuery } from '../utils/getQuery'
-import { createJoplinElement, renderList } from '../utils/render'
 import { SearchPlugin } from './plugin'
 
 export function duckduckgo(): SearchPlugin {

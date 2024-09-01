@@ -2,7 +2,6 @@ import { wait } from '@liuli-util/async'
 import { minimatch } from 'minimatch'
 import { getSearchQuery } from '../utils/getQuery'
 import { createJoplinElement, renderList } from '../utils/render'
-import { search } from '../utils/search'
 import { SearchNote, SearchPlugin } from './plugin'
 
 function watch<T>(
@@ -46,18 +45,16 @@ export function you(): SearchPlugin {
     getQuery() {
       return getSearchQuery(['q'])
     },
-    async render(list) {
-      // await render(list)
-      watch(
-        () => getSearchQuery(['q']),
-        async (value) => {
-          console.log('watch', value)
-          if (!value) {
-            return
-          }
-          render(await search(value))
-        },
-      )
+    createRenderRoot() {
+      const $rhs = document.querySelector('[data-testid="right-line-container"]')
+      if ($rhs === null) {
+        throw new Error('网页结构发生了变化')
+      }
+      const $root = createJoplinElement()
+      $root.style.paddingLeft = '3rem'
+      $root.style.paddingRight = '2rem'
+      $rhs.appendChild($root)
+      return $root
     },
   }
 }

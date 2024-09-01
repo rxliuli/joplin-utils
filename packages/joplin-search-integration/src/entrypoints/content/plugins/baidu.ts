@@ -5,6 +5,7 @@ function createContainer(): HTMLElement {
   const $right = document.querySelector('#content_right')!
   const $container = document.createElement('div') as HTMLDivElement
   $right.insertBefore($container, $right.lastElementChild)
+  document.documentElement.style.fontSize = '14px'
   return $container
 }
 
@@ -29,15 +30,6 @@ export function baidu(): SearchPlugin {
       const $root = document.createElement('div')
       $rhs.appendChild($root)
       return $root
-    },
-    observe(render) {
-      setInterval(() => {
-        if (!this.match(new URL(location.href)) || document.querySelector('#joplin-root')) {
-          return
-        }
-        console.log('rerender')
-        render()
-      }, 1000)
     },
   }
 }
