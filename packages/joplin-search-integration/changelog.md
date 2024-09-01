@@ -1,5 +1,12 @@
 # changelog
 
+## 0.8.2
+
+- fix: Resolved a CSS conflict between the search box and plugin CSS when using Bing search
+- style: Optimize the style of the note viewing page
+- fix: Fixed the issue of abnormal text size when searching on Baidu
+- fix: Fixed the issue of incorrect webpage theme detection when using Baidu search
+
 ## 0.8.1
 
 - chore: remove tabs permission
