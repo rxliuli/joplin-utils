@@ -9,6 +9,9 @@ export default defineConfig({
     name: 'Joplin Search Integration',
     host_permissions: ['http://localhost:27583/*', 'http://localhost:41184/*'],
     permissions: ['storage'],
+    omnibox: {
+      keyword: '@joplin',
+    },
   },
   vite() {
     return {
