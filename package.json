@@ -31,5 +31,6 @@
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
     "commit-msg": "pnpm commitlint --edit $1"
-  }
+  },
+  "version": "0.0.1"
 }
