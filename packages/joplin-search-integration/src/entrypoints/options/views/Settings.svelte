@@ -29,7 +29,7 @@
     config = c
   })
 
-  async function onCheck() {
+  async function onSave() {
     const c = (await browser.storage.local.get({
       baseUrl: 'http://localhost:41184',
       token: '',
@@ -78,7 +78,7 @@
       {/if}
     </Card.Content>
     <Card.Footer>
-      <Button variant="secondary" on:click={onCheck}>Check</Button>
+      <Button variant="secondary" on:click={onSave}>Save</Button>
     </Card.Footer>
   </Card.Root>
 </main>
