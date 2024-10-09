@@ -3,63 +3,57 @@ import { Element } from 'hast'
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
 
-// Function to process LaTeX from text nodes and return new children
-export function processLatex(textNodes: Node[]): Element[] {
-  const newChildren: Element[] = [] // Collect new child elements for the root
+// Function to process LaTeX from text nodes
+export function processLatex(textNodes: Element[]): void {
+  textNodes.forEach((node) => {
+    if (
+      Array.isArray(node.properties.className) &&
+      node.properties.className[0] === 'language-math' &&
+      node.properties.className[1] === 'math-inline'
+    ) {
+      // @ts-ignore
+      const text = node.children[0].value
+      const renderedLatex = katex.renderToString(text, { throwOnError: false })
+      node.type = 'element'
+      node.tagName = 'span'
+      node.properties = { className: 'katex-inline' }
+      node.children[0] = { type: 'raw', value: renderedLatex }
+    }
+  })
+}
 
+export function unescapeJoplinMathExceptions(textNodes: Node[]): void {
   textNodes.forEach((node) => {
     // @ts-ignore
-    const text = node.value
+    if (node.type === 'text') {
+      // @ts-ignore
+      node.value = node.value.replaceAll('&#36;', '$')
+    }
+  })
+}
 
-    // Regular expression to match inline LaTeX and block LaTeX
-    const latexInlineRegex = /\$(.+?)\$/g // Inline LaTeX
-    const latexBlockRegex = /\$\$(.+?)\$\$/g // Block LaTeX
+export function escapeJoplinMathExceptions(text: string): string {
+  // Regular expression to match inline LaTeX and block LaTeX for Joplin
+  const latexInlineRegex = /(?<!\\)\$(\S.+?)(?<!\\)(?<!\s)\$/gm // Inline LaTeX
+  const latexBlockRegex = /(?<!\\)\$\$(\S.+?)(?<!\\)(?<!\s)\$\$/gm // Block LaTeX
+  let escapedText = ''
 
-    // Split text into parts based on block LaTeX first
-    let parts = text.split(latexBlockRegex)
-
-    parts.forEach((part: string, index: number) => {
+  text.split(latexBlockRegex).forEach((s1, index: number) => {
+    if (index % 2 === 1) {
+      escapedText += '$$'
+    }
+    s1.split(latexInlineRegex).forEach((s2, index: number) => {
       if (index % 2 === 1) {
-        // If it's an odd index, it is block LaTeX
-        const latex = part.trim()
-        const renderedLatex = katex.renderToString(latex, { throwOnError: false })
-
-        // Push rendered block LaTeX as a new element of type 'html'
-        newChildren.push({
-          type: 'element',
-          tagName: 'div',
-          properties: { className: 'katex-block' },
-          children: [{ type: 'raw', value: renderedLatex }],
-        })
-      } else {
-        // If it's an even index, it is regular text or inline LaTeX
-        const inlineParts = part.split(latexInlineRegex)
-
-        inlineParts.forEach((inlinePart, inlineIndex) => {
-          if (inlineIndex % 2 === 1) {
-            // If it's an odd index, it is inline LaTeX
-            const latex = inlinePart.trim()
-            const renderedLatex = katex.renderToString(latex, { throwOnError: false })
-
-            // Push rendered inline LaTeX as a new element of type 'html'
-            newChildren.push({
-              type: 'element',
-              tagName: 'span',
-              properties: { className: 'katex-inline' },
-              children: [{ type: 'raw', value: renderedLatex }],
-            })
-          } else if (inlinePart.trim()) {
-            newChildren.push({
-              type: 'element',
-              tagName: 'span',
-              properties: {},
-              children: [{ type: 'text', value: inlinePart }],
-            })
-          }
-        })
+        escapedText += '$'
+      }
+      escapedText += s2.replaceAll('$', '&#36;')
+      if (index % 2 === 1) {
+        escapedText += '$'
       }
     })
+    if (index % 2 === 1) {
+      escapedText += '$$'
+    }
   })
-
-  return newChildren
+  return escapedText
 }
