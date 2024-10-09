@@ -3,6 +3,8 @@ import { toHast } from 'mdast-util-to-hast'
 import { selectAll } from 'unist-util-select'
 import { toHtml } from 'hast-util-to-html'
 import { Element } from 'hast'
+import { processLatex } from '$lib/katex-render'
+//import { processLatex } from './katex-render'
 
 export function md2html(
   md: string,
@@ -24,10 +26,15 @@ export function md2html(
   const links = (selectAll('[tagName="a"]', root) as Element[]).filter(
     (it) => typeof it.properties.href === 'string' && isInternal(it.properties.href),
   )
-
   links.forEach((it) => {
     const id = (it.properties.href as string).slice(2)
     it.properties.href = browser.runtime.getURL(`/options.html#/note/${id}`)
   })
-  return toHtml(root)
+
+  // Process LaTeX using KaTeX
+  const textNodes = selectAll('text', root)
+  // @ts-ignore
+  root.children = processLatex(textNodes)
+
+  return toHtml(root, { allowDangerousHtml: true })
 }

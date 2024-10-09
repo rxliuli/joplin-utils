@@ -473,6 +473,9 @@ importers:
       hast-util-to-html:
         specifier: ^9.0.1
         version: 9.0.1
+      katex:
+        specifier: ^0.16.11
+        version: 0.16.11
       lucide-svelte:
         specifier: ^0.428.0
         version: 0.428.0(svelte@4.2.18)
@@ -6933,6 +6936,10 @@ packages:
 
   just-clone@6.2.0:
     resolution: {integrity: sha512-1IynUYEc/HAwxhi3WDpIpxJbZpMCvvrrmZVqvj9EhpvbH8lls7HhdhiByjL7DkAaWlLIzpC0Xc/VPvy/UxLNjA==}
+
+  katex@0.16.11:
+    resolution: {integrity: sha512-RQrI8rlHY92OLf3rho/Ts8i/XvjgguEjOkO1BEXcU3N8BqPpSzBNwV/G0Ukr+P/l3ivvJUE/Fa/CwbS6HesGNQ==}
+    hasBin: true
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -18367,6 +18374,10 @@ snapshots:
       setimmediate: 1.0.5
 
   just-clone@6.2.0: {}
+
+  katex@0.16.11:
+    dependencies:
+      commander: 8.3.0
 
   keyv@4.5.4:
     dependencies:

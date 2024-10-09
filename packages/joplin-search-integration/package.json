@@ -43,6 +43,7 @@
     "bits-ui": "^0.21.13",
     "formsnap": "^1.0.1",
     "hast-util-to-html": "^9.0.1",
+    "katex": "^0.16.11",
     "lucide-svelte": "^0.428.0",
     "mdast-util-from-markdown": "^2.0.1",
     "mdast-util-to-hast": "^13.2.0",
