@@ -40,7 +40,7 @@ export function md2html(
   // Process LaTeX using KaTeX
   const codeNodes = selectAll('[tagName="code"]', root)
   // @ts-ignore
-  processLatex(codeNodes)
+  processLatex(codeNodes, md)
   const textNodes = selectAll('text', root)
   // @ts-ignore
   unescapeJoplinMathExceptions(textNodes)

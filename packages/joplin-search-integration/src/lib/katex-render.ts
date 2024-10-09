@@ -4,7 +4,7 @@ import katex from 'katex'
 import 'katex/dist/katex.min.css'
 
 // Function to process LaTeX from text nodes
-export function processLatex(textNodes: Element[]): void {
+export function processLatex(textNodes: Element[], md: string): void {
   textNodes.forEach((node) => {
     if (
       Array.isArray(node.properties.className) &&
@@ -15,8 +15,19 @@ export function processLatex(textNodes: Element[]): void {
       const text = node.children[0].value
       const renderedLatex = katex.renderToString(text, { throwOnError: false })
       node.type = 'element'
-      node.tagName = 'span'
-      node.properties = { className: 'katex-inline' }
+      if (
+        node.position &&
+        node.position.start.offset &&
+        node.position.end.offset &&
+        node.position.start.offset + 2 < node.position.end.offset &&
+        md.slice(node.position.start.offset, node.position.start.offset + 2) === '$$'
+      ) {
+        node.tagName = 'div'
+        node.properties = { className: 'katex-block' }
+      } else {
+        node.tagName = 'span'
+        node.properties = { className: 'katex-inline' }
+      }
       node.children[0] = { type: 'raw', value: renderedLatex }
     }
   })
