@@ -1,0 +1,76 @@
+env:
+  DIRECTORY: packages/joplin-search-integration/.output
+  PROJECT_NAME: joplin-search-integration
+  PACKAGE_PATH: packages/joplin-search-integration
+
+name: Deploy Joplin Search Integration
+
+on:
+  push:
+    branches: ['main']
+    paths:
+      - 'packages/joplin-search-integration/package.json'
+  pull_request:
+    branches: ['main']
+    paths:
+      - 'packages/joplin-search-integration/package.json'
+
+jobs:
+  Version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+      version_changed: ${{ steps.check_version.outputs.version_changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Check for version change
+        id: check_version
+        run: |
+          if git diff --name-only HEAD~1..HEAD | grep -q '^packages/joplin-search-integration/package\.json$'; then
+            VERSION_CHANGED=1
+          else
+            VERSION_CHANGED=0
+          fi
+          echo "version_changed=$VERSION_CHANGED" >> "$GITHUB_OUTPUT"
+      - name: Get version
+        if: ${{ steps.check_version.outputs.version_changed == '1' }}
+        id: get_version
+        run: |
+          VERSION=$(jq -r .version ${{ env.PACKAGE_PATH }}/package.json)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+  Submit:
+    permissions:
+      contents: write
+    needs: Version
+    if: ${{ needs.Version.outputs.version_changed == '1' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 'latest'
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: ${{ env.PACKAGE_PATH }}
+      - name: Zip extensions
+        run: pnpm run zip
+        working-directory: ${{ env.PACKAGE_PATH }}
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: 'v${{ needs.Version.outputs.version }}'
+          name: 'v${{ needs.Version.outputs.version }}'
+          draft: false
+          prerelease: false
+          files: |
+            ${{ env.DIRECTORY }}/${{env.PROJECT_NAME}}-${{ needs.Version.outputs.version }}-chrome.zip
+            ${{ env.DIRECTORY }}/${{env.PROJECT_NAME}}-${{ needs.Version.outputs.version }}-firefox.zip
+            ${{ env.DIRECTORY }}/${{env.PROJECT_NAME}}-${{ needs.Version.outputs.version }}-sources.zip
