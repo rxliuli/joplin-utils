@@ -5,6 +5,8 @@ import { toHtml } from 'hast-util-to-html'
 import { Element } from 'hast'
 import { math } from 'micromark-extension-math'
 import { mathFromMarkdown } from 'mdast-util-math'
+import { gfm } from 'micromark-extension-gfm'
+import { gfmFromMarkdown } from 'mdast-util-gfm'
 import { escapeJoplinMathExceptions, processLatex, unescapeJoplinMathExceptions } from '$lib/katex-render'
 
 export function md2html(
@@ -12,12 +14,13 @@ export function md2html(
   options: {
     baseUrl: string
     token: string
+    currentNoteId: string
   },
 ): string {
   md = escapeJoplinMathExceptions(md)
   const tree = fromMarkdown(md, {
-    extensions: [math()],
-    mdastExtensions: [mathFromMarkdown()],
+    extensions: [math(), gfm()],
+    mdastExtensions: [mathFromMarkdown(), gfmFromMarkdown()],
   })
   const root = toHast(tree, { allowDangerousHtml: true })
   const isInternal = (url: string): boolean => url.startsWith(':/')

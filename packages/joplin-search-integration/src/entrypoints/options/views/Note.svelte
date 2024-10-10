@@ -18,6 +18,7 @@
     const config = (await browser.storage.local.get({
       baseUrl: 'http://localhost:41184',
       token: '',
+      currentNoteId: id,
     })) as { baseUrl: string; token: string }
     html = md2html(note.body, config)
   }
