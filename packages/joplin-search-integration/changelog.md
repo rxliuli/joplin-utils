@@ -1,5 +1,9 @@
 # changelog
 
+## 0.10.0
+
+- feat: add math rendering to notes, ref: <https://github.com/rxliuli/joplin-utils/pull/105>
+
 ## 0.9.0
 
 - feat: support search joplin notes on search bar

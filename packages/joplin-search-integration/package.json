@@ -3,7 +3,7 @@
   "description": "Displays Joplin notes in search results on Google, Bing, and other engines, integrating personal notes with web searches.",
   "type": "module",
   "private": true,
-  "version": "0.9.0",
+  "version": "0.10.0",
   "scripts": {
     "dev": "wxt",
     "dev:firefox": "wxt -b firefox",
