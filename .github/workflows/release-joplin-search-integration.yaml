@@ -7,11 +7,11 @@ name: Deploy Joplin Search Integration
 
 on:
   push:
-    branches: ['main']
+    branches: ['master']
     paths:
       - 'packages/joplin-search-integration/package.json'
   pull_request:
-    branches: ['main']
+    branches: ['master']
     paths:
       - 'packages/joplin-search-integration/package.json'
 
