@@ -61,13 +61,13 @@ jobs:
         run: pnpm install
         working-directory: ${{ env.PACKAGE_PATH }}
       - name: Zip extensions
-        run: pnpm run zip
+        run: pnpm run zip && pnpm run zip:firefox
         working-directory: ${{ env.PACKAGE_PATH }}
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: 'v${{ needs.Version.outputs.version }}'
-          name: 'v${{ needs.Version.outputs.version }}'
+          tag_name: 'joplin-search-integration@${{ needs.Version.outputs.version }}'
+          name: 'joplin-search-integration@${{ needs.Version.outputs.version }}'
           draft: false
           prerelease: false
           files: |
