@@ -2,7 +2,7 @@ import { fromMarkdown } from 'mdast-util-from-markdown'
 import { toHast } from 'mdast-util-to-hast'
 import { selectAll } from 'unist-util-select'
 import { toHtml } from 'hast-util-to-html'
-import { Element, Properties } from 'hast'
+import { Element, Literal, Properties } from 'hast'
 import { math } from 'micromark-extension-math'
 import { mathFromMarkdown } from 'mdast-util-math'
 import { gfm } from 'micromark-extension-gfm'
@@ -49,12 +49,10 @@ export function md2html(
     it.properties.href = browser.runtime.getURL(`/options.html#/note/${options.currentNoteId}${it.properties.href}`)
   })
 
-  // Process LaTeX using KaTeX
-  const codeNodes = selectAll('[tagName="code"]', root)
-  // @ts-ignore
+  // Process math using KaTeX
+  const codeNodes = selectAll('[tagName="code"]', root) as Element[]
   processLatex(codeNodes, md)
-  const textNodes = selectAll('text', root)
-  // @ts-ignore
+  const textNodes = selectAll('text', root) as Literal[]
   unescapeJoplinMathExceptions(textNodes)
 
   return toHtml(root, { allowDangerousHtml: true })

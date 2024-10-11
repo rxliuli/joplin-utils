@@ -1,4 +1,4 @@
-import { Element } from 'hast'
+import { Element, Literal } from 'hast'
 // @ts-ignore
 import katex from 'katex'
 import 'katex/dist/katex.min.css'
@@ -33,16 +33,15 @@ export function processLatex(textNodes: Element[], md: string): void {
   })
 }
 
-export function unescapeJoplinMathExceptions(textNodes: Node[]): void {
+export function unescapeJoplinMathExceptions(textNodes: Literal[]): void {
   textNodes.forEach((node) => {
-    // @ts-ignore
     if (node.type === 'text') {
-      // @ts-ignore
       node.value = node.value.replaceAll('&#36;', '$')
     }
   })
 }
 
+// Changes all '$' not marking start/end of math expressions to '&#36;' to ensure math rendering uses the correct ones
 export function escapeJoplinMathExceptions(text: string): string {
   // Regular expression to match inline LaTeX and block LaTeX for Joplin
   const latexInlineRegex = /(?<!\\)\$(\S.+?)(?<!\\)(?<!\s)\$/gm // Inline LaTeX
