@@ -29,13 +29,13 @@
     await tick()
     const urlFragment = window.location.hash.split('#')[2];
     if (urlFragment) {
-      const targetElement = document.getElementById(urlFragment);
-      if (targetElement) {
-        setTimeout(() => {
+      setTimeout(() => {
+        const targetElement = document.getElementById(urlFragment);
+        if (targetElement) {
           targetElement.scrollIntoView();
           window.location.hash = window.location.hash + '-'
-        }, delay);
-      }
+        }
+      }, delay);
     }
   }
 
