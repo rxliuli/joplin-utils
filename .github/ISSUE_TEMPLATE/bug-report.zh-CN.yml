@@ -10,7 +10,7 @@ body:
     attributes:
       label: 确认事项
       options:
-        - label: 我检查了 [FAQ](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/guide/faq.html)
+        - label: 我检查了 [FAQ](https://joplin-utils.rxliuli.com/en-US/joplin-vscode-plugin/faq.html)
           required: true
   - type: dropdown
     id: app

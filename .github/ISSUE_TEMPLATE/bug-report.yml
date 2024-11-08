@@ -10,7 +10,7 @@ body:
     attributes:
       label: Confirmation
       options:
-        - label: I checked [FAQ](https://joplin-utils.rxliuli.com/joplin-vscode-plugin/guide/faq.html)
+        - label: I checked [FAQ](https://joplin-utils.rxliuli.com/en-US/joplin-vscode-plugin/faq.html)
           required: true
   - type: dropdown
     id: app
