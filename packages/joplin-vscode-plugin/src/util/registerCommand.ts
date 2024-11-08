@@ -2,6 +2,7 @@ import * as vscode from 'vscode'
 import { Disposable } from 'vscode'
 import { logger } from '../constants/logger'
 import { checkJoplinServer } from './checkJoplinServer'
+import { serializeError } from 'serialize-error'
 
 const outputChannel = vscode.window.createOutputChannel('joplin-vscode-plugin')
 
@@ -27,7 +28,7 @@ export function registerCommand(command: string, callback: (...args: any[]) => a
           await checkJoplinServer()
           return
         }
-        logger.error('command error: ' + command + ', ' + (err instanceof Error ? err.message : ''))
+        logger.error('command error: ' + command + ', ' + serializeError(err))
         throw err
       }
     },

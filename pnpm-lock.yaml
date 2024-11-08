@@ -612,6 +612,9 @@ importers:
       '@liuli-util/tree':
         specifier: ^3.5.0
         version: 3.9.0
+      '@types/lodash-es':
+        specifier: ^4.17.12
+        version: 4.17.12
       '@types/markdown-it':
         specifier: ^12.2.3
         version: 12.2.3
@@ -638,7 +641,7 @@ importers:
         version: 0.2.1
       esbuild-plugin-copy:
         specifier: ^2.1.1
-        version: 2.1.1(esbuild@0.23.0)
+        version: 2.1.1(esbuild@0.17.19)
       esbuild-visualizer:
         specifier: ^0.4.1
         version: 0.4.1
@@ -666,6 +669,9 @@ importers:
       pathe:
         specifier: ^1.1.2
         version: 1.1.2
+      serialize-error:
+        specifier: ^11.0.3
+        version: 11.0.3
       tsup:
         specifier: ^6.2.3
         version: 6.7.0(postcss@8.4.41)(ts-node@10.9.2(@types/node@20.14.14)(typescript@4.8.4))(typescript@4.8.4)
@@ -757,7 +763,7 @@ importers:
         version: 0.14.1
       '@mark-magic/plugin-doctran':
         specifier: ^0.14.0
-        version: 0.14.0(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)
+        version: 0.14.0(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)
       '@mark-magic/plugin-local':
         specifier: ^0.14.0
         version: 0.14.0
@@ -13258,13 +13264,13 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@langchain/community@0.0.57(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(encoding@0.1.13)(jsdom@24.1.1)(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)':
+  '@langchain/community@0.0.57(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(encoding@0.1.13)(jsdom@24.1.1)(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)':
     dependencies:
-      '@langchain/core': 0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))
-      '@langchain/openai': 0.0.34(encoding@0.1.13)(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))
+      '@langchain/core': 0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))
+      '@langchain/openai': 0.0.34(encoding@0.1.13)(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))
       expr-eval: 2.0.2
       flat: 5.0.2
-      langsmith: 0.1.30(@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13)))(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))
+      langsmith: 0.1.30(@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13)))(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))
       uuid: 9.0.1
       zod: 3.23.8
       zod-to-json-schema: 3.23.0(zod@3.23.8)
@@ -13280,13 +13286,13 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.47.2(encoding@0.1.13))':
+  '@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.47.2(encoding@0.1.13))':
     dependencies:
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.12
-      langsmith: 0.1.30(@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.47.2(encoding@0.1.13)))(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.47.2(encoding@0.1.13))
+      langsmith: 0.1.30(@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13)))(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.47.2(encoding@0.1.13))
       ml-distance: 4.0.1
       mustache: 4.2.0
       p-queue: 6.6.2
@@ -13298,13 +13304,13 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))':
+  '@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))':
     dependencies:
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.12
-      langsmith: 0.1.30(@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13)))(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))
+      langsmith: 0.1.30(@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13)))(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))
       ml-distance: 4.0.1
       mustache: 4.2.0
       p-queue: 6.6.2
@@ -13316,9 +13322,9 @@ snapshots:
       - langchain
       - openai
 
-  '@langchain/openai@0.0.34(encoding@0.1.13)(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))':
+  '@langchain/openai@0.0.34(encoding@0.1.13)(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))':
     dependencies:
-      '@langchain/core': 0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.47.2(encoding@0.1.13))
+      '@langchain/core': 0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.47.2(encoding@0.1.13))
       js-tiktoken: 1.0.12
       openai: 4.47.2(encoding@0.1.13)
       zod: 3.23.8
@@ -13578,7 +13584,7 @@ snapshots:
       pathe: 1.1.2
       type-fest: 3.13.1
 
-  '@mark-magic/plugin-doctran@0.14.0(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)':
+  '@mark-magic/plugin-doctran@0.14.0(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)':
     dependencies:
       '@liuli-util/async': 3.7.0
       '@mark-magic/core': 0.12.0
@@ -13587,7 +13593,7 @@ snapshots:
       find-cache-dir: 5.0.0
       fs-extra: 11.2.0
       google-translate-api-x: 10.6.8
-      langchain: 0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)
+      langchain: 0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)
       lodash-es: 4.17.21
       pathe: 1.1.2
     transitivePeerDependencies:
@@ -16921,11 +16927,11 @@ snapshots:
 
   esbuild-plugin-alias@0.2.1: {}
 
-  esbuild-plugin-copy@2.1.1(esbuild@0.23.0):
+  esbuild-plugin-copy@2.1.1(esbuild@0.17.19):
     dependencies:
       chalk: 4.1.2
       chokidar: 3.6.0
-      esbuild: 0.23.0
+      esbuild: 0.17.19
       fs-extra: 10.1.0
       globby: 11.1.0
 
@@ -18419,12 +18425,12 @@ snapshots:
 
   kuler@2.0.0: {}
 
-  langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0):
+  langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0):
     dependencies:
       '@anthropic-ai/sdk': 0.9.1(encoding@0.1.13)
-      '@langchain/community': 0.0.57(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(encoding@0.1.13)(jsdom@24.1.1)(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)
-      '@langchain/core': 0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))
-      '@langchain/openai': 0.0.34(encoding@0.1.13)(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))
+      '@langchain/community': 0.0.57(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(encoding@0.1.13)(jsdom@24.1.1)(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)
+      '@langchain/core': 0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))
+      '@langchain/openai': 0.0.34(encoding@0.1.13)(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))
       binary-extensions: 2.3.0
       expr-eval: 2.0.2
       js-tiktoken: 1.0.12
@@ -18528,7 +18534,7 @@ snapshots:
       p-retry: 4.6.2
       uuid: 9.0.1
 
-  langsmith@0.1.30(@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.47.2(encoding@0.1.13)))(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.47.2(encoding@0.1.13)):
+  langsmith@0.1.30(@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13)))(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.47.2(encoding@0.1.13)):
     dependencies:
       '@types/uuid': 9.0.8
       commander: 10.0.1
@@ -18536,11 +18542,11 @@ snapshots:
       p-retry: 4.6.2
       uuid: 9.0.1
     optionalDependencies:
-      '@langchain/core': 0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.47.2(encoding@0.1.13))
-      langchain: 0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)
+      '@langchain/core': 0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))
+      langchain: 0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)
       openai: 4.47.2(encoding@0.1.13)
 
-  langsmith@0.1.30(@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13)))(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13)):
+  langsmith@0.1.30(@langchain/core@0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13)))(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13)):
     dependencies:
       '@types/uuid': 9.0.8
       commander: 10.0.1
@@ -18548,8 +18554,8 @@ snapshots:
       p-retry: 4.6.2
       uuid: 9.0.1
     optionalDependencies:
-      '@langchain/core': 0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))
-      langchain: 0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0)(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)
+      '@langchain/core': 0.1.63(langchain@0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0))(openai@4.54.0(encoding@0.1.13))
+      langchain: 0.0.209(@aws-crypto/sha256-js@5.2.0)(@aws-sdk/client-s3@3.624.0)(@aws-sdk/credential-provider-node@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0))(@smithy/util-utf8@2.3.0)(cheerio@1.0.0-rc.12)(encoding@0.1.13)(fast-xml-parser@4.4.1)(ignore@5.3.1)(jsdom@24.1.1)(lodash@4.17.21)(openai@4.54.0(encoding@0.1.13))(ws@8.18.0)
       openai: 4.54.0(encoding@0.1.13)
 
   latest-version@7.0.0:

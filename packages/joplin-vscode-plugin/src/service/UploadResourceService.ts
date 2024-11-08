@@ -7,6 +7,7 @@ import { resourceApi } from 'joplin-api'
 import { logger } from '../constants/logger'
 import { readFile } from 'node:fs/promises'
 import path from 'pathe'
+import { serializeError } from 'serialize-error'
 
 export class UploadResourceService {
   async uploadImageFromClipboard() {
@@ -22,18 +23,18 @@ export class UploadResourceService {
         let imagePath: string
         try {
           imagePath = await UploadResourceUtil.getClipboardImage(globalStoragePath)
-        } catch (e) {
-          logger.error('getClipboardImage error', e)
-          if ((e as Error).message === 'no xclip') {
+        } catch (err) {
+          logger.error('getClipboardImage error: ' + serializeError(err))
+          if ((err as Error).message === 'no xclip') {
             vscode.window.showErrorMessage(t('upload.error.no-xclip'))
             return
           }
-          if ((e as Error).message === 'no wl-clipboard') {
+          if ((err as Error).message === 'no wl-clipboard') {
             vscode.window.showErrorMessage(t('upload.error.no-wl-clipboard'), 'https://github.com/bugaevc/wl-clipboard')
             return
           }
           vscode.window.showWarningMessage(t('Clipboard does not contain picture!'))
-          throw e
+          throw err
         }
         progress.report({ message: 'Optimizing image' })
         const Jimp = (await import('jimp')).default

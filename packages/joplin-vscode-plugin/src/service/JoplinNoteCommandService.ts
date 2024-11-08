@@ -32,10 +32,10 @@ import { fileSuffix } from '../util/fileSuffix'
 import { joplinNoteApi } from '../api/JoplinNoteApi'
 import { mkdir, readFile, rm, writeFile } from 'fs/promises'
 import { cut_for_search } from 'jieba-wasm'
-import once from 'lodash-es/once'
 import { ExtConfig } from '../constants/config'
-import { groupBy, keyBy, minBy, takeWhile } from 'lodash-es'
+import { groupBy, keyBy, minBy, takeWhile, once, pick, omit } from 'lodash-es'
 import { treeToList } from '@liuli-util/tree'
+import { serializeError } from 'serialize-error'
 
 export class JoplinNoteCommandService {
   private folderOrNoteExtendsApi = new FolderOrNoteExtendsApi()
@@ -79,7 +79,7 @@ export class JoplinNoteCommandService {
         GlobalContext.openNoteResourceMap.set(id, resourceList)
       })
       .on('error', (err) => {
-        logger.error('watch note error: ' + err)
+        logger.error('watch note error: ' + serializeError(err))
       })
     watch(tempResourceDirPath)
       .on('change', async (filePath) => {
@@ -96,11 +96,11 @@ export class JoplinNoteCommandService {
           })
           console.log('resource update? ', r)
         } catch (err) {
-          logger.error('update resource error: ' + err)
+          logger.error('update resource error: ' + serializeError(err))
         }
       })
       .on('error', (err) => {
-        logger.error('watch resource error: ' + err)
+        logger.error('watch resource error: ' + serializeError(err))
       })
   }
 
@@ -504,6 +504,11 @@ async function handleDuplicateItems(items: (vscode.QuickPickItem & { id: string;
       return takeWhile(shortestArray, (it, i) => arrays.every((arr) => arr[i] === it))
     }
     function findParents(folderId: string): FolderListAllRes[] {
+      if (!folderMap[folderId]) {
+        logger.error(
+          'findParents: folderId not found: ' + folderId + ', items: ' + JSON.stringify(Object.keys(folderMap)),
+        )
+      }
       const ids = folderMap[folderId].path
       return ids.map((it) => folderMap[it])
       // const res: FolderListAllRes[] = []
@@ -515,7 +520,14 @@ async function handleDuplicateItems(items: (vscode.QuickPickItem & { id: string;
       // return res
     }
     dupliteds.forEach(([_k, v]) => {
-      const folderNames = v.map((it) => findParents(it.parent_id).map((it) => it.title))
+      const folderNames = v.map((it) => {
+        try {
+          return findParents(it.parent_id).map((it) => it.title)
+        } catch (err) {
+          logger.error('findParents error, related item: ' + JSON.stringify(omit(it, 'body')))
+          throw err
+        }
+      })
       const commonPrefix = getCommonPrefix(folderNames)
       const diffFolderNames = folderNames
         .map((it) => it.slice(commonPrefix.length))
