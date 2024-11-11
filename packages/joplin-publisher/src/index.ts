@@ -1,4 +1,4 @@
-import joplin, { SettingItemType } from 'joplin-plugin-api'
+import { joplin, SettingItemType } from 'jpl-vite/api'
 import { publish } from './publish'
 import { initLogger } from './logger'
 import path from 'path'

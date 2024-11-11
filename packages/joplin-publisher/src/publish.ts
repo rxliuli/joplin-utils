@@ -6,10 +6,9 @@ import { convert } from '@mark-magic/core'
 import * as hexo from '@mark-magic/plugin-hexo'
 import * as joplin from '@mark-magic/plugin-joplin'
 import { withProgress } from './withProgress'
-import { emptyDir, pathExists, remove } from 'fs-extra'
+import { pathExists, remove } from 'fs-extra'
 import { get } from 'lodash-es'
 import { logger } from './logger'
-import { rm } from 'fs/promises'
 
 export async function publish(options: { token: string; username: string; repo: string; tag: string; dir: string }) {
   const onAuth = () => ({ username: options.username, password: options.token })
@@ -67,7 +66,7 @@ export async function publish(options: { token: string; username: string; repo: 
       })
     } catch (err) {
       logger.error('Failed to generate markdown file', err)
-      process.report({ message: 'Failed to generate markdown file' })
+      process.report({ error: 'Failed to generate markdown file' })
       return
     }
     // 推送到远端
@@ -89,7 +88,7 @@ export async function publish(options: { token: string; username: string; repo: 
     } catch (err) {
       if (get(err, 'data.statusCode') === 403 && !!get(err, 'data.response')) {
         logger.info('Failed to push to remote repository', get(err, 'data'))
-        process.report({ message: `Failed to push to remote repository: ${get(err, 'data.response')}` })
+        process.report({ error: `Failed to push to remote repository: ${get(err, 'data.response')}` })
         return
       }
       logger.error('Failed to push to remote repository', err)

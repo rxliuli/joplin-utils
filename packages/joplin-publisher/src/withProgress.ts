@@ -1,5 +1,4 @@
-import joplin from 'joplin-plugin-api'
-import { logger } from './logger'
+import { joplin } from 'jpl-vite/api'
 
 interface Progress<T> {
   /**
@@ -33,7 +32,7 @@ interface ProgressOptions {
 
 export async function withProgress<R>(
   options: ProgressOptions,
-  task: (progress: Progress<{ message?: string }>) => Thenable<R>,
+  task: (progress: Progress<{ message?: string; error?: string }>) => Promise<R>,
 ): Promise<R> {
   const id = new Date().toISOString()
   const dialogs = joplin.views.dialogs
@@ -47,7 +46,7 @@ export async function withProgress<R>(
       if (!value.message) {
         return
       }
-      await dialogs.setHtml(handle, value.message)
+      await dialogs.setHtml(handle, value.error ? `<p>${value.error}</p>` : `<p>${value.message}</p>`)
     },
   })
   await dialogs.setButtons(handle, [
