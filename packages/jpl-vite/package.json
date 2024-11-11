@@ -53,9 +53,11 @@
     "globby": "^14.0.1",
     "joplin-plugin-api": "workspace:^",
     "lodash-es": "^4.17.21",
+    "rollup-plugin-node-externals": "^7.1.3",
     "serialize-error": "^11.0.3",
     "tar": "^7.4.3",
     "vite": ">=5",
-    "vite-plugin-dts": "4.0.0-beta.2"
+    "vite-plugin-dts": "4.0.0-beta.2",
+    "vite-plugin-static-copy": "^1.0.5"
   }
 }

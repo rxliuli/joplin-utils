@@ -5,6 +5,7 @@ import { omit } from 'lodash-es'
 import { readFile, writeFile } from 'fs/promises'
 import { mkdirp, pathExists } from 'fs-extra/esm'
 import { bundleRequire } from 'bundle-require'
+import nodeExternals from 'rollup-plugin-node-externals'
 
 function devMode(config: UserConfig) {
   if (process.env.NODE_ENV !== 'development') {
@@ -61,8 +62,13 @@ function main(config: ResolvedPluginConfig): UserConfig {
       },
       emptyOutDir: true,
     },
+    resolve: {
+      mainFields: ['module', 'jsnext:main', 'jsnext'],
+      conditions: ['node'],
+    },
     define: defineEnv(config),
     plugins: [
+      nodeExternals(),
       {
         name: 'emitManifest',
         async buildEnd(error) {
