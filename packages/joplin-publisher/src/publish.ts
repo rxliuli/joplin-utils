@@ -4,13 +4,21 @@ import fs from 'fs'
 import { globby } from 'globby'
 import { convert } from '@mark-magic/core'
 import * as hexo from '@mark-magic/plugin-hexo'
+import * as hugo from '@mark-magic/plugin-hugo'
 import * as joplin from '@mark-magic/plugin-joplin'
 import { withProgress } from './withProgress'
 import { pathExists, remove } from 'fs-extra'
 import { get } from 'lodash-es'
 import { logger } from './logger'
 
-export async function publish(options: { token: string; username: string; repo: string; tag: string; dir: string }) {
+export async function publish(options: {
+  token: string
+  username: string
+  repo: string
+  tag: string
+  dir: string
+  ssg: string
+}) {
   const onAuth = () => ({ username: options.username, password: options.token })
 
   const { dir } = options
@@ -56,11 +64,25 @@ export async function publish(options: { token: string; username: string; repo: 
       }
     }
 
+    //  定义 ssg 目标和选项
+    let ssg_target = hexo
+    let ssg_options = new Object()
+    ssg_options = {
+      path: `${dir}`,
+    }
+
+    if (options.ssg === 'hugo') {
+      ssg_target = hugo
+      ssg_options = {
+        root: `${dir}`,
+      }
+    }
+
     // 通过 mark-magic 生成 md 文件
     try {
       await convert({
         input: joplin.input({ type: 'plugin', tag: options.tag }),
-        output: hexo.output({ path: dir }),
+        output: ssg_target.output(ssg_options),
       }).on('generate', ({ content }) => {
         process.report({ message: `Processing ${content.name}` })
       })

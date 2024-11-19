@@ -19,6 +19,7 @@
   "devDependencies": {
     "@mark-magic/core": "^0.12.0",
     "@mark-magic/plugin-hexo": "^0.18.0",
+    "@mark-magic/plugin-hugo": "^0.18.0",
     "@mark-magic/plugin-joplin": "^0.14.2",
     "@types/fs-extra": "^11.0.4",
     "@types/lodash-es": "^4.17.12",

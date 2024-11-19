@@ -30,6 +30,7 @@ async function registerCommands() {
           token: await joplin.settings.value('token'),
           username: await joplin.settings.value('username'),
           repo: await joplin.settings.value('repo'),
+          ssg: await joplin.settings.value('ssg'),
           tag: await joplin.settings.value('tag'),
         }
         if (!config.token || !config.username || !config.repo) {
@@ -76,6 +77,18 @@ async function registerSettings() {
       type: SettingItemType.String,
       label: 'GitHub Repo',
       public: true,
+    },
+    ssg: {
+      value: 'hexo',
+      section: 'PublisherSection',
+      type: SettingItemType.String,
+      label: 'Static Site Generator',
+      public: true,
+      isEnum: true,
+      options: {
+        hexo: 'Hexo',
+        hugo: 'Hugo',
+      },
     },
     tag: {
       value: 'blog',
