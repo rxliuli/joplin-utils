@@ -407,6 +407,9 @@ importers:
       '@mark-magic/plugin-hexo':
         specifier: ^0.18.0
         version: 0.18.0
+      '@mark-magic/plugin-hugo':
+        specifier: ^0.18.0
+        version: 0.18.0
       '@mark-magic/plugin-joplin':
         specifier: ^0.14.2
         version: 0.14.2
@@ -515,7 +518,7 @@ importers:
         version: 1.0.1(svelte@4.2.19)(vite@5.4.10(@types/node@20.17.6)(less@4.2.0)(terser@5.31.3))(wxt@0.19.13(@types/node@20.17.6)(less@4.2.0)(rollup@4.25.0)(terser@5.31.3)(webpack-sources@3.2.3))
       autoprefixer:
         specifier: ^10.4.17
-        version: 10.4.20(postcss@8.4.41)
+        version: 10.4.20(postcss@8.4.48)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -536,7 +539,7 @@ importers:
         version: 4.2.19
       svelte-check:
         specifier: ^3.8.4
-        version: 3.8.6(@babel/core@7.25.2)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.41)(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3)))(postcss@8.4.41)(svelte@4.2.19)
+        version: 3.8.6(@babel/core@7.25.2)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.48)(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3)))(postcss@8.4.48)(svelte@4.2.19)
       svelte-spa-router:
         specifier: ^4.0.1
         version: 4.0.1
@@ -3068,6 +3071,9 @@ packages:
 
   '@mark-magic/plugin-hexo@0.18.0':
     resolution: {integrity: sha512-sG1ern9LBzarwQSLixAiojMVGyA8M9ZPHrNKkRJUxS5SxcTdI1COVCSGMzs3+egngHWkEmKLCi3cWeNVY4DzGw==}
+
+  '@mark-magic/plugin-hugo@0.18.0':
+    resolution: {integrity: sha512-WuNxeTrZ7Jmb/lMcJs75IE/KUGcSMtfdf0WkeIpFwedxroio4wy79NHdVwPd80PrqQsJEbokDSevQ0BrL7arDQ==}
 
   '@mark-magic/plugin-joplin@0.14.2':
     resolution: {integrity: sha512-lMVeOiFMzhu/3FBJswAIy1AUbsJE8O4d9FWMZEsvY3+Mb7YrKw4Z6FY3fpfrkfRYZ4+VW1zY6kQXJYMkAJVwLQ==}
@@ -13025,6 +13031,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@mark-magic/plugin-hugo@0.18.0':
+    dependencies:
+      '@mark-magic/core': 0.12.0
+      '@mark-magic/plugin-local': 0.18.0
+      '@mark-magic/utils': 0.12.0
+      pathe: 1.1.2
+    transitivePeerDependencies:
+      - supports-color
+
   '@mark-magic/plugin-joplin@0.14.2':
     dependencies:
       '@liuli-util/async': 3.7.0
@@ -14951,16 +14966,6 @@ snapshots:
   at-least-node@1.0.0: {}
 
   atomic-sleep@1.0.0: {}
-
-  autoprefixer@10.4.20(postcss@8.4.41):
-    dependencies:
-      browserslist: 4.23.3
-      caniuse-lite: 1.0.30001649
-      fraction.js: 4.3.7
-      normalize-range: 0.1.2
-      picocolors: 1.0.1
-      postcss: 8.4.41
-      postcss-value-parser: 4.2.0
 
   autoprefixer@10.4.20(postcss@8.4.48):
     dependencies:
@@ -19283,6 +19288,15 @@ snapshots:
       postcss: 8.4.41
       ts-node: 10.9.2(@types/node@20.17.6)(typescript@5.6.3)
 
+  postcss-load-config@4.0.2(postcss@8.4.48)(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3)):
+    dependencies:
+      lilconfig: 3.1.2
+      yaml: 2.6.0
+    optionalDependencies:
+      postcss: 8.4.48
+      ts-node: 10.9.2(@types/node@20.17.6)(typescript@5.6.3)
+    optional: true
+
   postcss-nested@6.0.1(postcss@8.4.41):
     dependencies:
       postcss: 8.4.41
@@ -20548,14 +20562,14 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-check@3.8.6(@babel/core@7.25.2)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.41)(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3)))(postcss@8.4.41)(svelte@4.2.19):
+  svelte-check@3.8.6(@babel/core@7.25.2)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.48)(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3)))(postcss@8.4.48)(svelte@4.2.19):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 3.6.0
       picocolors: 1.1.1
       sade: 1.8.1
       svelte: 4.2.19
-      svelte-preprocess: 5.1.4(@babel/core@7.25.2)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.41)(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3)))(postcss@8.4.41)(svelte@4.2.19)(typescript@5.6.3)
+      svelte-preprocess: 5.1.4(@babel/core@7.25.2)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.48)(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3)))(postcss@8.4.48)(svelte@4.2.19)(typescript@5.6.3)
       typescript: 5.6.3
     transitivePeerDependencies:
       - '@babel/core'
@@ -20572,7 +20586,7 @@ snapshots:
     dependencies:
       svelte: 4.2.19
 
-  svelte-preprocess@5.1.4(@babel/core@7.25.2)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.41)(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3)))(postcss@8.4.41)(svelte@4.2.19)(typescript@5.6.3):
+  svelte-preprocess@5.1.4(@babel/core@7.25.2)(less@4.2.0)(postcss-load-config@4.0.2(postcss@8.4.48)(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3)))(postcss@8.4.48)(svelte@4.2.19)(typescript@5.6.3):
     dependencies:
       '@types/pug': 2.0.10
       detect-indent: 6.1.0
@@ -20583,8 +20597,8 @@ snapshots:
     optionalDependencies:
       '@babel/core': 7.25.2
       less: 4.2.0
-      postcss: 8.4.41
-      postcss-load-config: 4.0.2(postcss@8.4.41)(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3))
+      postcss: 8.4.48
+      postcss-load-config: 4.0.2(postcss@8.4.48)(ts-node@10.9.2(@types/node@20.17.6)(typescript@5.6.3))
       typescript: 5.6.3
 
   svelte-sonner@0.3.28(svelte@4.2.19):
