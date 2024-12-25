@@ -1,6 +1,7 @@
 {
   "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
+    "verbatimModuleSyntax": true,
     "useDefineForClassFields": true,
     "moduleResolution": "Bundler",
     "baseUrl": ".",
