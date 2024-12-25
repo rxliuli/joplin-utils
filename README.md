@@ -1,13 +1,11 @@
-# joplin-utils
+# Joplin Utils
 
-> [中文](https://joplin-utils.rxliuli.com/zh-CN/)
+Some Joplin-related tools are managed using a monorepo due to their similar functions and connections.
 
-Some joplin peripheral tools created by me. Since the functions are in the same category and are related, they are managed using monorepo.
-
-- [joplin-vscode-plugin ![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin)](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin&ssr=false#overview): joplin's vscode plugin
-- [joplin-blog](https://www.npmjs.com/package/joplin-blog): export blog/wiki from Joplin as data source
-- [joplin-search-integration](https://chrome.google.com/webstore/detail/joplin-search-integration/mcjkdcifkhjenpfjacnbhpdcnjknjkhj): Integrate joplin notes search results in Google/Bing/Baidu search
-- [joplin-batch-web](https://joplin-utils.rxliuli.com/joplin-batch-web/): Process some batch operations that Joplin does not support, and display them in the form of a visual interface
-- [joplin-api](https://www.npmjs.com/package/joplin-api): api wrapper for Joplin for web/nodejs, and the basis for the above results
+- [Joplin VSCode Plugin ![install](https://img.shields.io/visual-studio-marketplace/i/rxliuli.joplin-vscode-plugin)](https://marketplace.visualstudio.com/items?itemName=rxliuli.joplin-vscode-plugin&ssr=false#overview): Joplin's VSCode integration
+- [Joplin Publisher](https://joplin-utils.rxliuli.com/en-US/joplin-publisher/): Publish blog to GitHub from Joplin note.
+- [Joplin Search Integration](https://chromewebstore.google.com/detail/mcjkdcifkhjenpfjacnbhpdcnjknjkhj): Integrate Joplin note search results in Google/Bing/Baidu searches.
+- [Joplin Batch](https://joplinapp.org/plugins/plugin/rxliuli.joplin-batch/): Handles some batch operations that Joplin itself does not support, presented in a visual interface.
+- [Joplin Data API](https://www.npmjs.com/package/joplin-api): Joplin's API wrapper, suitable for browser/nodejs, and also the basis for the above results.
 
 If the above tools are helpful to you, you can give me a star
