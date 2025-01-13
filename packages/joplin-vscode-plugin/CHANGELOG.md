@@ -1,5 +1,9 @@
 # Release Notes
 
+## 1.7.1
+
+- fix: search cannot handle notes that are not in any notebook, close <https://github.com/rxliuli/joplin-utils/issues/108>
+
 ## 1.7.0
 
 - feat: Notebook Path Hints in Note Search and "Joplin: Search", close <https://github.com/rxliuli/joplin-utils/issues/100>
