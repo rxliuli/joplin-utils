@@ -1,5 +1,5 @@
 import { getSearchQuery } from '../utils/getQuery'
-import { SearchPlugin } from './plugin'
+import type { SearchPlugin } from './plugin'
 
 function createContainer(): HTMLElement {
   const $right = document.querySelector('#content_right')!

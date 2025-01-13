@@ -1,5 +1,5 @@
+import type { SearchPlugin } from './plugin'
 import { getSearchQuery } from '../utils/getQuery'
-import { SearchPlugin } from './plugin'
 
 export function duckduckgo(): SearchPlugin {
   return {

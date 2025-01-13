@@ -1,4 +1,4 @@
-import { SearchPlugin } from './plugin'
+import type { SearchPlugin } from './plugin'
 import { getSearchQuery } from '../utils/getQuery'
 import { createJoplinElement } from '../utils/render'
 
@@ -20,7 +20,8 @@ export function searx(): SearchPlugin {
     },
     createRenderRoot() {
       const $sidebar = document.getElementById('sidebar')
-      const $root = createJoplinElement()
+      const $root = document.createElement('div')
+      $root.id = 'joplin-search-integration'
       $sidebar?.appendChild($root)
       return $root
     },

@@ -1,5 +1,4 @@
-import { sendMessage } from '../../model/messaging'
-import { SearchNote } from '../plugins/plugin'
+import type { SearchNote } from '../plugins/plugin'
 
 export function renderList(root: HTMLDivElement, list: SearchNote[]) {
   const html = `<div>

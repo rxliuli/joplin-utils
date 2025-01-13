@@ -1,5 +1,5 @@
 import { getSearchQuery } from '../utils/getQuery'
-import { SearchPlugin } from './plugin'
+import type { SearchPlugin } from './plugin'
 
 function createRhs(): HTMLElement {
   const $context = document.querySelector('#b_context')!

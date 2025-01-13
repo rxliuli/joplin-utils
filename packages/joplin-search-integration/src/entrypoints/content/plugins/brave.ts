@@ -1,12 +1,5 @@
 import { getSearchQuery } from '../utils/getQuery'
-import { SearchPlugin } from './plugin'
-
-function createRhs(): HTMLElement {
-  const $context = document.querySelector('.sidebar')!
-  const $li = document.createElement('div') as HTMLDivElement
-  $context.appendChild($li)
-  return $li
-}
+import type { SearchPlugin } from './plugin'
 
 export function brave(): SearchPlugin {
   return {
@@ -18,10 +11,19 @@ export function brave(): SearchPlugin {
       return getSearchQuery(['q'])
     },
     createRenderRoot() {
-      const $rhs = createRhs()
-      const $root = document.createElement('div')
-      $rhs.appendChild($root)
-      return $root
+      const $context = document.querySelector('.sidebar')!
+      const $li = document.createElement('div') as HTMLDivElement
+      $li.id = 'joplin-search-integration'
+      $context.appendChild($li)
+      return $li
+    },
+    observe(render) {
+      setInterval(() => {
+        console.log('render')
+        if (document.querySelector('#joplin-search-integration') === null) {
+          render()
+        }
+      }, 1000)
     },
   }
 }
