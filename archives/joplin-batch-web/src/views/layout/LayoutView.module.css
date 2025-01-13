@@ -1,0 +1,32 @@
+.app {
+  height: 100vh;
+}
+
+.logo {
+  height: 32px;
+  margin: 0 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.sider,
+.main {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sider {
+  background-color: #ffffff;
+}
+
+.header {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.main {
+  margin: 24px;
+  height: calc(100% - 24px * 2);
+  background-color: #ffffff;
+}
