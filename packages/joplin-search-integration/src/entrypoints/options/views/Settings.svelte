@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { run } from 'svelte/legacy'
+
   import * as Card from '$lib/components/ui/card'
   import { Button } from '$lib/components/ui/button'
   import { Label } from '$lib/components/ui/label'
@@ -6,20 +8,20 @@
   import { joplinDataApi } from 'joplin-api'
   import { toast } from 'svelte-sonner'
 
-  interface Config {
+  type Config = {
     baseUrl: string
     token: string
   }
 
-  let config: Config | undefined
+  let config = $state<Config>()
 
-  $: {
+  $effect(() => {
     ;(async () => {
       if (config) {
         await browser.storage.local.set(config)
       }
     })()
-  }
+  })
 
   onMount(async () => {
     const c = (await browser.storage.local.get({
@@ -78,7 +80,7 @@
       {/if}
     </Card.Content>
     <Card.Footer>
-      <Button variant="secondary" on:click={onSave}>Save</Button>
+      <Button variant="secondary" onclick={onSave}>Save</Button>
     </Card.Footer>
   </Card.Root>
 </main>

@@ -4,9 +4,13 @@
   import { detectBackground } from '$lib/detectTheme'
   import Button from '$lib/components/ui/button/button.svelte'
 
-  export let plugin: SearchPlugin
+  interface Props {
+    plugin: SearchPlugin
+  }
 
-  let list: SearchNote[] = []
+  let { plugin }: Props = $props()
+
+  let list: SearchNote[] = $state([])
 
   onMount(async () => {
     const keyword = plugin.getQuery()
@@ -33,7 +37,7 @@
       <Button
         variant={'link'}
         class="block text-left truncate px-0"
-        on:click={async (e) => {
+        onclick={async (e) => {
           e.preventDefault()
           await sendMessage('openNote', it.id)
         }}

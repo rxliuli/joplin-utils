@@ -9,6 +9,7 @@ import { metagar } from './plugins/metagar'
 import { SearchPlugin } from './plugins/plugin'
 import { searx } from './plugins/searx'
 import { you } from './plugins/you'
+import { mount } from 'svelte'
 
 export default defineContentScript({
   matches: ['<all_urls>'],
@@ -30,7 +31,7 @@ export default defineContentScript({
         return findPlugin.createRenderRoot()
       },
       onMount: (container) => {
-        const app = new App({
+        const app = mount(App, {
           target: container,
           props: {
             plugin: findPlugin,

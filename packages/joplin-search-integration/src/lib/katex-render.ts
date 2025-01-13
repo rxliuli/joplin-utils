@@ -1,4 +1,4 @@
-import { Element, Literal } from 'hast'
+import type { Element, Literal } from 'hast'
 // @ts-ignore
 import katex from 'katex'
 import 'katex/dist/katex.min.css'

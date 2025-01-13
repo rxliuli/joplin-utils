@@ -18,7 +18,7 @@
 </script>
 
 <Router {routes} />
-<Toaster />
+<Toaster richColors />
 
 <style>
 </style>
