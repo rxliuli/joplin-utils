@@ -504,10 +504,14 @@ async function handleDuplicateItems(items: (vscode.QuickPickItem & { id: string;
       return takeWhile(shortestArray, (it, i) => arrays.every((arr) => arr[i] === it))
     }
     function findParents(folderId: string): FolderListAllRes[] {
+      if (!folderId) {
+        return []
+      }
       if (!folderMap[folderId]) {
         logger.error(
           'findParents: folderId not found: ' + folderId + ', items: ' + JSON.stringify(Object.keys(folderMap)),
         )
+        return []
       }
       const ids = folderMap[folderId].path
       return ids.map((it) => folderMap[it])
@@ -520,14 +524,7 @@ async function handleDuplicateItems(items: (vscode.QuickPickItem & { id: string;
       // return res
     }
     dupliteds.forEach(([_k, v]) => {
-      const folderNames = v.map((it) => {
-        try {
-          return findParents(it.parent_id).map((it) => it.title)
-        } catch (err) {
-          logger.error('findParents error, related item: ' + JSON.stringify(omit(it, 'body')))
-          throw err
-        }
-      })
+      const folderNames = v.map((it) => findParents(it.parent_id).map((it) => it.title))
       const commonPrefix = getCommonPrefix(folderNames)
       const diffFolderNames = folderNames
         .map((it) => it.slice(commonPrefix.length))
