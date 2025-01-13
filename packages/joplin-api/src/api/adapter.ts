@@ -13,6 +13,7 @@ import { SearchApi } from './SearchApi'
 import { TagApi } from './TagApi'
 import { EventApi } from './EventApi'
 import joplin from 'joplin-plugin-api'
+import { bindThis } from '../util/bindThis'
 
 export type ResponseType = 'arraybuffer' | 'blob' | 'json' | 'text'
 
@@ -143,7 +144,7 @@ export function joplinDataApi(options: ApiConfig): Api {
     options.type === 'plugin' ? new JoplinPluginAdapter() : new FetchAdapter(new JoplinDataApiAuthProvider(options))
 
   const ajax = new Ajax(adapter)
-  return {
+  return bindObject({
     folder: new FolderApi(ajax),
     folderExt: new FolderExtApi(ajax),
     joplin: new JoplinApi(ajax),
@@ -155,5 +156,14 @@ export function joplinDataApi(options: ApiConfig): Api {
     search: new SearchApi(ajax),
     tag: new TagApi(ajax),
     event: new EventApi(ajax),
-  }
+  })
+}
+
+function bindObject(obj: any) {
+  Object.keys(obj).forEach((key) => {
+    if (typeof obj[key] === 'object') {
+      bindThis(obj[key])
+    }
+  })
+  return obj
 }

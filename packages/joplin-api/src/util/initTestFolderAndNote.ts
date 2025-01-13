@@ -1,5 +1,4 @@
-import { afterEach, beforeEach } from 'vitest'
-import { folderApi, noteApi, tagApi } from '..'
+import { beforeEach } from 'vitest'
 
 export function initTestFolderAndNote() {
   const data = {
@@ -8,28 +7,35 @@ export function initTestFolderAndNote() {
     tagId: '',
   }
   beforeEach(async () => {
+    if (data.folderId) {
+      await api.note.remove(data.noteId)
+      data.folderId = ''
+    }
+    if (data.noteId) {
+      await api.note.remove(data.noteId)
+      data.noteId = ''
+    }
+    if (data.tagId) {
+      await api.tag.remove(data.tagId)
+      data.tagId = ''
+    }
     const dateStr = new Date().toLocaleString()
     data.folderId = (
-      await folderApi.create({
+      await api.folder.create({
         id: data.folderId,
-        title: `测试目录 ${dateStr}`,
+        title: `Test Folder ${dateStr}`,
         parent_id: '',
       })
     ).id
     data.noteId = (
-      await noteApi.create({
-        title: `测试标题 ${dateStr}`,
+      await api.note.create({
+        title: `Test Note ${dateStr}`,
         body: '',
         parent_id: data.folderId,
       })
     ).id
-    data.tagId = (await tagApi.create({ title: `测试标签 ${dateStr + Math.random()}` })).id
-    await tagApi.addTagByNoteId(data.tagId, data.noteId)
-  })
-  afterEach(async () => {
-    await noteApi.remove(data.noteId)
-    await tagApi.remove(data.tagId)
-    await folderApi.remove(data.folderId)
+    data.tagId = (await api.tag.create({ title: `Test Tag ${dateStr + Math.random()}` })).id
+    await api.tag.addTagByNoteId(data.tagId, data.noteId)
   })
   return data
 }

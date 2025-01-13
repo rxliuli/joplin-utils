@@ -5,6 +5,7 @@ import { NoteTagRelated } from '../model/NoteTagRelated'
 import { PageParam, PageRes } from '../model/PageData'
 import { FieldsParam } from '../model/FieldsParam'
 import { Ajax } from '../util/ajax'
+import { bindThis } from '../util/bindThis'
 
 export class TagApi {
   constructor(private ajax: Ajax) {}

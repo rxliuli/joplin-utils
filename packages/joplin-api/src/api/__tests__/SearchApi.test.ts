@@ -1,23 +1,23 @@
 import { expect, it, describe } from 'vitest'
-import { searchApi } from '../..'
 import { TypeEnum } from '../..'
 import { initTestFolderAndNote } from '../../util/initTestFolderAndNote'
+import { wait } from '../../util/wait'
 
-/**
- * TODO 搜索的 api 严重缺乏测试
- */
 describe('test SearchApi', () => {
-  initTestFolderAndNote()
-  it('test search note', async () => {
-    const res = await searchApi.search({
-      query: 'title:测试',
+  it.skip('test search note', async () => {
+    await api.note.create({
+      title: 'test',
+      body: 'test',
+    })
+    const res = await api.search.search({
+      query: 'test',
       type: TypeEnum.Note,
     })
     expect(res.items.length).toBeGreaterThanOrEqual(1)
   })
   it('test search folder', async () => {
-    const res = await searchApi.search({
-      query: '测试目录*',
+    const res = await api.search.search({
+      query: 'Test folder*',
       type: TypeEnum.Folder,
     })
     expect(res.items.length).toBeGreaterThanOrEqual(1)

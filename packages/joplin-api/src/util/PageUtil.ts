@@ -14,10 +14,12 @@ export class PageUtil {
   private static readonly MaxLimit = 100
 
   /**
-   * 循环获取所有分页的数据
-   * 每次都获取最大分页数量，尽可能减少请求次数
+   * Get all list from page
+   * Get max limit each time, reduce request times
+   * @param fn - The function to get page data
+   * @param pageParam - The page parameter
+   * @returns The all list
    */
-
   static async pageToAllList<F extends (pageParam: PageParam<any> & Record<string, any>) => Promise<PageRes<any>>>(
     fn: F,
     pageParam?: Omit<Parameters<F>[0], 'page' | 'limit'>,

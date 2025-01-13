@@ -50,8 +50,10 @@ export class FolderApi {
     return this.ajax.put<FolderUpdateRes>(`/folders/${id}`, others)
   }
 
-  async remove(id: string): Promise<string> {
-    return this.ajax.delete<string>(`/folders/${id}`)
+  async remove(id: string, permanent?: boolean): Promise<string> {
+    return this.ajax.delete<string>(`/folders/${id}`, null, {
+      params: permanent ? { permanent: '1' } : undefined,
+    })
   }
 
   async notesByFolderId(id: string): Promise<NoteGetRes[]>

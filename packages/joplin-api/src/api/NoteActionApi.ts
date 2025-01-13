@@ -18,7 +18,7 @@ export class NoteActionApi {
   }
 
   /**
-   * @deprecated 已废弃，请使用 {@link isWatch}
+   * @deprecated Deprecated, please use {@link isWatch}
    * @param noteId
    */
   async noteIsWatched(noteId: string): Promise<boolean> {

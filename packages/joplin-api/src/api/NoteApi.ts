@@ -45,8 +45,10 @@ export class NoteApi {
     return await this.ajax.put<NoteUpdateRes>(`/notes/${id}`, others)
   }
 
-  async remove(id: string): Promise<void> {
-    return this.ajax.delete(`/notes/${id}`)
+  async remove(id: string, permanent?: boolean): Promise<void> {
+    return this.ajax.delete(`/notes/${id}`, null, {
+      params: permanent ? { permanent: '1' } : undefined,
+    })
   }
 
   tagsById(id: string): Promise<TagGetRes[]> {

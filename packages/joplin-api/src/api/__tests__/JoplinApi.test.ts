@@ -1,6 +1,5 @@
-import { expect, it, describe } from 'vitest'
-import { joplinApi, noteApi } from '../..'
+import { expect, it } from 'vitest'
 
 it('test ping', async () => {
-  expect(await joplinApi.ping()).toBeTruthy()
+  expect(await api.joplin.ping()).toBeTruthy()
 })

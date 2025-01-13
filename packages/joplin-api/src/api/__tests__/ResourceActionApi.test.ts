@@ -1,5 +1,4 @@
 import { expect, it, describe, beforeAll } from 'vitest'
-import { resourceActionApi } from '../..'
 import { createTestResource } from './utils/CreateTestResource'
 
 function wait(ms: number) {
@@ -11,19 +10,19 @@ describe.skip('test ResourceActionApi', () => {
   beforeAll(async () => {
     id = (await createTestResource()).id
   })
-  it('test openAndWatch', async () => {
-    expect(await resourceActionApi.noteIsWatched(id)).toBeFalsy()
-    await resourceActionApi.openAndWatch(id)
+  it('Test openAndWatch', async () => {
+    expect(await api.resourceAction.noteIsWatched(id)).toBeFalsy()
+    await api.resourceAction.openAndWatch(id)
     await wait(1000)
-    expect(await resourceActionApi.noteIsWatched(id)).toBeTruthy()
-    await resourceActionApi.stopWatching(id)
-    expect(await resourceActionApi.noteIsWatched(id)).toBeFalsy()
+    expect(await api.resourceAction.noteIsWatched(id)).toBeTruthy()
+    await api.resourceAction.stopWatching(id)
+    expect(await api.resourceAction.noteIsWatched(id)).toBeFalsy()
   })
-  it('测试仅监听而不打开文件', async () => {
-    expect(await resourceActionApi.noteIsWatched(id)).toBeFalsy()
-    await resourceActionApi.watch(id)
-    expect(await resourceActionApi.noteIsWatched(id)).toBeTruthy()
-    await resourceActionApi.stopWatching(id)
-    expect(await resourceActionApi.noteIsWatched(id)).toBeFalsy()
+  it('Test watch without open file', async () => {
+    expect(await api.resourceAction.noteIsWatched(id)).toBeFalsy()
+    await api.resourceAction.watch(id)
+    expect(await api.resourceAction.noteIsWatched(id)).toBeTruthy()
+    await api.resourceAction.stopWatching(id)
+    expect(await api.resourceAction.noteIsWatched(id)).toBeFalsy()
   })
 })

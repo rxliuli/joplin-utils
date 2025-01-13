@@ -5,7 +5,11 @@ import path from 'path'
 export default defineConfig({
   test: {
     setupFiles: [path.resolve(__dirname, './src/setupTest.ts')],
-    maxConcurrency: 1,
+    poolOptions: {
+      forks: {
+        singleFork: true,
+      },
+    },
   },
   plugins: [node({ dts: true })] as any,
 })
