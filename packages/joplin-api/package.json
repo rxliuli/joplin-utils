@@ -1,12 +1,12 @@
 {
   "name": "joplin-api",
   "version": "0.6.1",
-  "description": "joplin ts/js data api",
+  "description": "joplin data api",
   "license": "mit",
-  "homepage": "https://joplin-utils.rxliuli.com/api/joplin-api",
+  "homepage": "https://joplin-utils.rxliuli.com/en-US/api/joplin-api/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rxliuli/joplin-utils/tree/master/libs/joplin-api"
+    "url": "https://github.com/rxliuli/joplin-utils/tree/master/packages/joplin-api"
   },
   "type": "module",
   "exports": {
@@ -15,6 +15,9 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "vite build",
     "dev": "vite build --watch",

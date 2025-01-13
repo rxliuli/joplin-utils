@@ -104,7 +104,9 @@ export class JoplinDataApiAuthProvider implements AuthProvider {
     this.config.baseUrl = this.config.baseUrl ?? 'http://localhost:41184'
   }
   async authenticate(info: RequestInfo): Promise<void> {
-    const query = new URLSearchParams(Object.entries({ ...info.params, token: this.config.token })).toString()
+    const query = new URLSearchParams(
+      Object.entries({ ...info.params, token: this.config.token }).filter(([_, v]) => v !== undefined),
+    ).toString()
     const baseUrl = this.config.baseUrl!.endsWith('/')
       ? this.config.baseUrl!.slice(0, this.config.baseUrl!.length - 1)
       : this.config.baseUrl
