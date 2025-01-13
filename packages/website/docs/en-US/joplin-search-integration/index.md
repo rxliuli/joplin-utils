@@ -16,7 +16,7 @@ Currently supported search engines include:
 - Baidu
 - DuckDuckGo
 - Searx
-- MetaGer
+- Brave
 
 ## FAQ
 

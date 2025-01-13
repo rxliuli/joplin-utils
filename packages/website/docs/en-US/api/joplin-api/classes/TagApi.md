@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[api/TagApi.ts:10](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/TagApi.ts#L10)
+[api/TagApi.ts:10](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/TagApi.ts#L10)
 
 ## Methods
 
@@ -40,7 +40,7 @@ Post a note to this endpoint to add the tag to the note. The note data must at l
 
 #### Defined in
 
-[api/TagApi.ts:46](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/TagApi.ts#L46)
+[api/TagApi.ts:46](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/TagApi.ts#L46)
 
 ---
 
@@ -58,7 +58,7 @@ Post a note to this endpoint to add the tag to the note. The note data must at l
 
 #### Defined in
 
-[api/TagApi.ts:24](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/TagApi.ts#L24)
+[api/TagApi.ts:24](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/TagApi.ts#L24)
 
 ---
 
@@ -76,7 +76,7 @@ Post a note to this endpoint to add the tag to the note. The note data must at l
 
 #### Defined in
 
-[api/TagApi.ts:20](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/TagApi.ts#L20)
+[api/TagApi.ts:20](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/TagApi.ts#L20)
 
 ---
 
@@ -92,7 +92,7 @@ Post a note to this endpoint to add the tag to the note. The note data must at l
 
 ##### Defined in
 
-[api/TagApi.ts:12](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/TagApi.ts#L12)
+[api/TagApi.ts:12](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/TagApi.ts#L12)
 
 #### list(pageParam)
 
@@ -112,7 +112,7 @@ Post a note to this endpoint to add the tag to the note. The note data must at l
 
 ##### Defined in
 
-[api/TagApi.ts:13](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/TagApi.ts#L13)
+[api/TagApi.ts:13](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/TagApi.ts#L13)
 
 ---
 
@@ -130,7 +130,7 @@ Post a note to this endpoint to add the tag to the note. The note data must at l
 
 #### Defined in
 
-[api/TagApi.ts:37](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/TagApi.ts#L37)
+[api/TagApi.ts:37](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/TagApi.ts#L37)
 
 ---
 
@@ -148,7 +148,7 @@ Post a note to this endpoint to add the tag to the note. The note data must at l
 
 #### Defined in
 
-[api/TagApi.ts:33](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/TagApi.ts#L33)
+[api/TagApi.ts:33](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/TagApi.ts#L33)
 
 ---
 
@@ -168,7 +168,7 @@ Post a note to this endpoint to add the tag to the note. The note data must at l
 
 #### Defined in
 
-[api/TagApi.ts:52](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/TagApi.ts#L52)
+[api/TagApi.ts:52](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/TagApi.ts#L52)
 
 ---
 
@@ -186,4 +186,4 @@ Post a note to this endpoint to add the tag to the note. The note data must at l
 
 #### Defined in
 
-[api/TagApi.ts:28](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/TagApi.ts#L28)
+[api/TagApi.ts:28](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/TagApi.ts#L28)

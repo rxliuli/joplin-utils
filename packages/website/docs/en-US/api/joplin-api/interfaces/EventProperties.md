@@ -10,7 +10,7 @@
 
 #### Defined in
 
-[api/EventApi.ts:12](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L12)
+[api/EventApi.ts:12](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/EventApi.ts#L12)
 
 ---
 
@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[api/EventApi.ts:10](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L10)
+[api/EventApi.ts:10](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/EventApi.ts#L10)
 
 ---
 
@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[api/EventApi.ts:6](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L6)
+[api/EventApi.ts:6](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/EventApi.ts#L6)
 
 ---
 
@@ -40,7 +40,7 @@
 
 #### Defined in
 
-[api/EventApi.ts:8](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L8)
+[api/EventApi.ts:8](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/EventApi.ts#L8)
 
 ---
 
@@ -50,7 +50,7 @@
 
 #### Defined in
 
-[api/EventApi.ts:7](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L7)
+[api/EventApi.ts:7](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/EventApi.ts#L7)
 
 ---
 
@@ -60,7 +60,7 @@
 
 #### Defined in
 
-[api/EventApi.ts:11](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L11)
+[api/EventApi.ts:11](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/EventApi.ts#L11)
 
 ---
 
@@ -70,4 +70,4 @@
 
 #### Defined in
 
-[api/EventApi.ts:9](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/EventApi.ts#L9)
+[api/EventApi.ts:9](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/EventApi.ts#L9)

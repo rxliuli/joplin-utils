@@ -10,7 +10,7 @@
 
 #### Defined in
 
-[api/adapter.ts:126](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/adapter.ts#L126)
+[api/adapter.ts:128](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L128)
 
 ---
 
@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[api/adapter.ts:116](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/adapter.ts#L116)
+[api/adapter.ts:118](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L118)
 
 ---
 
@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[api/adapter.ts:117](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/adapter.ts#L117)
+[api/adapter.ts:119](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L119)
 
 ---
 
@@ -40,7 +40,7 @@
 
 #### Defined in
 
-[api/adapter.ts:118](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/adapter.ts#L118)
+[api/adapter.ts:120](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L120)
 
 ---
 
@@ -50,7 +50,7 @@
 
 #### Defined in
 
-[api/adapter.ts:120](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/adapter.ts#L120)
+[api/adapter.ts:122](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L122)
 
 ---
 
@@ -60,7 +60,7 @@
 
 #### Defined in
 
-[api/adapter.ts:119](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/adapter.ts#L119)
+[api/adapter.ts:121](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L121)
 
 ---
 
@@ -70,7 +70,7 @@
 
 #### Defined in
 
-[api/adapter.ts:121](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/adapter.ts#L121)
+[api/adapter.ts:123](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L123)
 
 ---
 
@@ -80,7 +80,7 @@
 
 #### Defined in
 
-[api/adapter.ts:123](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/adapter.ts#L123)
+[api/adapter.ts:125](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L125)
 
 ---
 
@@ -90,7 +90,7 @@
 
 #### Defined in
 
-[api/adapter.ts:122](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/adapter.ts#L122)
+[api/adapter.ts:124](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L124)
 
 ---
 
@@ -100,7 +100,7 @@
 
 #### Defined in
 
-[api/adapter.ts:124](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/adapter.ts#L124)
+[api/adapter.ts:126](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L126)
 
 ---
 
@@ -110,4 +110,4 @@
 
 #### Defined in
 
-[api/adapter.ts:125](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/adapter.ts#L125)
+[api/adapter.ts:127](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L127)

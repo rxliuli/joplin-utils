@@ -16,7 +16,7 @@
 - Baidu
 - DuckDuckGo
 - Searx
-- MetaGer
+- Brave
 
 ## 常见问题
 

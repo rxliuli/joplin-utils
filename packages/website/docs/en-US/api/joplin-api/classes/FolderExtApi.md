@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[api/FolderExtApi.ts:9](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/FolderExtApi.ts#L9)
+[api/FolderExtApi.ts:9](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderExtApi.ts#L9)
 
 ## Methods
 
@@ -40,7 +40,7 @@
 
 #### Defined in
 
-[api/FolderExtApi.ts:42](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/FolderExtApi.ts#L42)
+[api/FolderExtApi.ts:42](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderExtApi.ts#L42)
 
 ---
 
@@ -60,7 +60,7 @@
 
 #### Defined in
 
-[api/FolderExtApi.ts:26](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/FolderExtApi.ts#L26)
+[api/FolderExtApi.ts:26](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderExtApi.ts#L26)
 
 ---
 
@@ -82,4 +82,4 @@
 
 #### Defined in
 
-[api/FolderExtApi.ts:18](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/FolderExtApi.ts#L18)
+[api/FolderExtApi.ts:18](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderExtApi.ts#L18)

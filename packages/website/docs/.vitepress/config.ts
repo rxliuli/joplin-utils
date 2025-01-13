@@ -45,7 +45,7 @@ export default defineConfig({
             items: [
               {
                 text: 'Privacy Policy',
-                link: '/en-US/joplin-search-integration/privacy',
+                link: 'https://rxliuli.com/webstore/privacy',
               },
             ],
           },
@@ -105,7 +105,7 @@ export default defineConfig({
             items: [
               {
                 text: '隐私政策',
-                link: '/zh-CN/joplin-search-integration/privacy',
+                link: 'https://rxliuli.com/webstore/privacy',
               },
             ],
           },

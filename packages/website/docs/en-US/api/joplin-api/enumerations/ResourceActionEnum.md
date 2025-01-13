@@ -10,7 +10,7 @@
 
 #### Defined in
 
-[api/ResourceActionApi.ts:7](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceActionApi.ts#L7)
+[api/ResourceActionApi.ts:7](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceActionApi.ts#L7)
 
 ---
 
@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[api/ResourceActionApi.ts:4](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceActionApi.ts#L4)
+[api/ResourceActionApi.ts:4](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceActionApi.ts#L4)
 
 ---
 
@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[api/ResourceActionApi.ts:6](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceActionApi.ts#L6)
+[api/ResourceActionApi.ts:6](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceActionApi.ts#L6)
 
 ---
 
@@ -40,4 +40,4 @@
 
 #### Defined in
 
-[api/ResourceActionApi.ts:5](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceActionApi.ts#L5)
+[api/ResourceActionApi.ts:5](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceActionApi.ts#L5)

@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:36](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L36)
+[api/JoplinApiGenerator.ts:36](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L36)
 
 ---
 
@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:47](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L47)
+[api/JoplinApiGenerator.ts:47](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L47)
 
 ---
 
@@ -40,7 +40,7 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:37](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L37)
+[api/JoplinApiGenerator.ts:37](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L37)
 
 ---
 
@@ -50,7 +50,7 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:38](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L38)
+[api/JoplinApiGenerator.ts:38](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L38)
 
 ---
 
@@ -60,7 +60,7 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:39](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L39)
+[api/JoplinApiGenerator.ts:39](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L39)
 
 ---
 
@@ -70,7 +70,7 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:40](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L40)
+[api/JoplinApiGenerator.ts:40](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L40)
 
 ---
 
@@ -80,7 +80,7 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:41](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L41)
+[api/JoplinApiGenerator.ts:41](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L41)
 
 ---
 
@@ -90,7 +90,7 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:42](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L42)
+[api/JoplinApiGenerator.ts:42](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L42)
 
 ---
 
@@ -100,7 +100,7 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:43](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L43)
+[api/JoplinApiGenerator.ts:43](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L43)
 
 ---
 
@@ -110,7 +110,7 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:44](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L44)
+[api/JoplinApiGenerator.ts:44](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L44)
 
 ---
 
@@ -120,7 +120,7 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:45](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L45)
+[api/JoplinApiGenerator.ts:45](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L45)
 
 ---
 
@@ -130,44 +130,60 @@
 
 #### Defined in
 
-[api/JoplinApiGenerator.ts:46](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L46)
+[api/JoplinApiGenerator.ts:46](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L46)
 
 ## Accessors
 
 ### baseUrl
 
-> `get` **baseUrl**(): `string`
+#### Get Signature
 
-> `set` **baseUrl**(`baseUrl`): `void`
+> **get** **baseUrl**(): `string`
 
-#### Parameters
-
-• **baseUrl**: `string`
-
-#### Returns
+##### Returns
 
 `string`
 
+#### Set Signature
+
+> **set** **baseUrl**(`baseUrl`): `void`
+
+##### Parameters
+
+• **baseUrl**: `string`
+
+##### Returns
+
+`void`
+
 #### Defined in
 
-[api/JoplinApiGenerator.ts:24](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L24)
+[api/JoplinApiGenerator.ts:24](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L24)
 
 ---
 
 ### token
 
-> `get` **token**(): `string`
+#### Get Signature
 
-> `set` **token**(`token`): `void`
+> **get** **token**(): `string`
 
-#### Parameters
-
-• **token**: `string`
-
-#### Returns
+##### Returns
 
 `string`
 
+#### Set Signature
+
+> **set** **token**(`token`): `void`
+
+##### Parameters
+
+• **token**: `string`
+
+##### Returns
+
+`void`
+
 #### Defined in
 
-[api/JoplinApiGenerator.ts:32](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/JoplinApiGenerator.ts#L32)
+[api/JoplinApiGenerator.ts:32](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/JoplinApiGenerator.ts#L32)

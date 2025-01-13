@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[api/ResourceApi.ts:13](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceApi.ts#L13)
+[api/ResourceApi.ts:13](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceApi.ts#L13)
 
 ## Methods
 
@@ -43,7 +43,7 @@ The "data" field is required, while the "props" one is not. If not specified, de
 
 #### Defined in
 
-[api/ResourceApi.ts:44](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceApi.ts#L44)
+[api/ResourceApi.ts:44](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceApi.ts#L44)
 
 ---
 
@@ -61,7 +61,7 @@ The "data" field is required, while the "props" one is not. If not specified, de
 
 #### Defined in
 
-[api/ResourceApi.ts:85](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceApi.ts#L85)
+[api/ResourceApi.ts:85](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceApi.ts#L85)
 
 ---
 
@@ -81,7 +81,7 @@ Gets the actual file associated with this resource.
 
 #### Defined in
 
-[api/ResourceApi.ts:74](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceApi.ts#L74)
+[api/ResourceApi.ts:74](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceApi.ts#L74)
 
 ---
 
@@ -101,7 +101,7 @@ Gets the actual file associated with this resource.
 
 ##### Defined in
 
-[api/ResourceApi.ts:25](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceApi.ts#L25)
+[api/ResourceApi.ts:25](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceApi.ts#L25)
 
 #### get(id, fields)
 
@@ -123,7 +123,7 @@ Gets the actual file associated with this resource.
 
 ##### Defined in
 
-[api/ResourceApi.ts:26](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceApi.ts#L26)
+[api/ResourceApi.ts:26](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceApi.ts#L26)
 
 ---
 
@@ -139,7 +139,7 @@ Gets the actual file associated with this resource.
 
 ##### Defined in
 
-[api/ResourceApi.ts:15](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceApi.ts#L15)
+[api/ResourceApi.ts:15](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceApi.ts#L15)
 
 #### list(pageParam)
 
@@ -159,7 +159,7 @@ Gets the actual file associated with this resource.
 
 ##### Defined in
 
-[api/ResourceApi.ts:16](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceApi.ts#L16)
+[api/ResourceApi.ts:16](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceApi.ts#L16)
 
 ---
 
@@ -179,7 +179,7 @@ TODO 这个 api 存在 bug
 
 #### Defined in
 
-[api/ResourceApi.ts:66](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceApi.ts#L66)
+[api/ResourceApi.ts:66](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceApi.ts#L66)
 
 ---
 
@@ -197,4 +197,4 @@ TODO 这个 api 存在 bug
 
 #### Defined in
 
-[api/ResourceApi.ts:53](https://github.com/rxliuli/joplin-utils/blob/485409801cf7c952cfefe9e29020115fe6abec36/packages/joplin-api/src/api/ResourceApi.ts#L53)
+[api/ResourceApi.ts:53](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/ResourceApi.ts#L53)
