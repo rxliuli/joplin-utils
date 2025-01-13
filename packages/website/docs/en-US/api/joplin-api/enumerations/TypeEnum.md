@@ -10,7 +10,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:9](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L9)
+[model/TypeEnum.ts:9](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L9)
 
 ---
 
@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:3](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L3)
+[model/TypeEnum.ts:3](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L3)
 
 ---
 
@@ -30,7 +30,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:11](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L11)
+[model/TypeEnum.ts:11](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L11)
 
 ---
 
@@ -40,7 +40,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:10](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L10)
+[model/TypeEnum.ts:10](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L10)
 
 ---
 
@@ -50,7 +50,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:15](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L15)
+[model/TypeEnum.ts:15](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L15)
 
 ---
 
@@ -60,7 +60,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:2](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L2)
+[model/TypeEnum.ts:2](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L2)
 
 ---
 
@@ -70,7 +70,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:12](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L12)
+[model/TypeEnum.ts:12](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L12)
 
 ---
 
@@ -80,7 +80,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:7](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L7)
+[model/TypeEnum.ts:7](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L7)
 
 ---
 
@@ -90,7 +90,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:5](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L5)
+[model/TypeEnum.ts:5](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L5)
 
 ---
 
@@ -100,7 +100,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:13](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L13)
+[model/TypeEnum.ts:13](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L13)
 
 ---
 
@@ -110,7 +110,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:14](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L14)
+[model/TypeEnum.ts:14](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L14)
 
 ---
 
@@ -120,7 +120,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:8](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L8)
+[model/TypeEnum.ts:8](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L8)
 
 ---
 
@@ -130,7 +130,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:4](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L4)
+[model/TypeEnum.ts:4](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L4)
 
 ---
 
@@ -140,7 +140,7 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:16](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L16)
+[model/TypeEnum.ts:16](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L16)
 
 ---
 
@@ -150,4 +150,4 @@
 
 #### Defined in
 
-[model/TypeEnum.ts:6](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/model/TypeEnum.ts#L6)
+[model/TypeEnum.ts:6](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/TypeEnum.ts#L6)

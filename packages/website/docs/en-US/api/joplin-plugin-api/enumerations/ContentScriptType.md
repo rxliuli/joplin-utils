@@ -91,7 +91,7 @@ demo](https://github.com/laurent22/joplin/tree/dev/packages/app-cli/tests/suppor
 
 #### Defined in
 
-[types.ts:749](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L749)
+[types.ts:749](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L749)
 
 ---
 
@@ -188,4 +188,4 @@ module.exports = {
 
 #### Defined in
 
-[types.ts:664](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L664)
+[types.ts:664](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L664)

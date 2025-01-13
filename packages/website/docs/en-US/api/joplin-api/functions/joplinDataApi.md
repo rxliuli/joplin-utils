@@ -14,4 +14,4 @@
 
 ## Defined in
 
-[api/adapter.ts:141](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/adapter.ts#L141)
+[api/adapter.ts:141](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L141)

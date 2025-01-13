@@ -20,7 +20,7 @@
 
 #### Defined in
 
-[api/FolderApi.ts:21](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderApi.ts#L21)
+[api/FolderApi.ts:21](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/FolderApi.ts#L21)
 
 ## Methods
 
@@ -38,7 +38,7 @@
 
 #### Defined in
 
-[api/FolderApi.ts:44](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderApi.ts#L44)
+[api/FolderApi.ts:44](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/FolderApi.ts#L44)
 
 ---
 
@@ -56,7 +56,7 @@
 
 #### Defined in
 
-[api/FolderApi.ts:40](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderApi.ts#L40)
+[api/FolderApi.ts:40](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/FolderApi.ts#L40)
 
 ---
 
@@ -72,7 +72,7 @@
 
 ##### Defined in
 
-[api/FolderApi.ts:23](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderApi.ts#L23)
+[api/FolderApi.ts:23](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/FolderApi.ts#L23)
 
 #### list(pageParam)
 
@@ -92,7 +92,7 @@
 
 ##### Defined in
 
-[api/FolderApi.ts:24](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderApi.ts#L24)
+[api/FolderApi.ts:24](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/FolderApi.ts#L24)
 
 ---
 
@@ -108,7 +108,7 @@
 
 #### Defined in
 
-[api/FolderApi.ts:34](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderApi.ts#L34)
+[api/FolderApi.ts:34](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/FolderApi.ts#L34)
 
 ---
 
@@ -128,7 +128,7 @@
 
 ##### Defined in
 
-[api/FolderApi.ts:57](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderApi.ts#L57)
+[api/FolderApi.ts:57](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/FolderApi.ts#L57)
 
 #### notesByFolderId(id, fields)
 
@@ -150,7 +150,7 @@
 
 ##### Defined in
 
-[api/FolderApi.ts:58](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderApi.ts#L58)
+[api/FolderApi.ts:58](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/FolderApi.ts#L58)
 
 ---
 
@@ -168,7 +168,7 @@
 
 #### Defined in
 
-[api/FolderApi.ts:53](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderApi.ts#L53)
+[api/FolderApi.ts:53](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/FolderApi.ts#L53)
 
 ---
 
@@ -186,4 +186,4 @@
 
 #### Defined in
 
-[api/FolderApi.ts:48](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/FolderApi.ts#L48)
+[api/FolderApi.ts:48](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/FolderApi.ts#L48)

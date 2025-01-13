@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[api/NoteExtApi.ts:10](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/NoteExtApi.ts#L10)
+[api/NoteExtApi.ts:10](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/NoteExtApi.ts#L10)
 
 ## Methods
 
@@ -40,7 +40,7 @@
 
 #### Defined in
 
-[api/NoteExtApi.ts:28](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/NoteExtApi.ts#L28)
+[api/NoteExtApi.ts:28](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/NoteExtApi.ts#L28)
 
 ---
 
@@ -62,7 +62,7 @@
 
 #### Defined in
 
-[api/NoteExtApi.ts:19](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/NoteExtApi.ts#L19)
+[api/NoteExtApi.ts:19](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/NoteExtApi.ts#L19)
 
 ---
 
@@ -84,4 +84,4 @@
 
 #### Defined in
 
-[api/NoteExtApi.ts:37](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-api/src/api/NoteExtApi.ts#L37)
+[api/NoteExtApi.ts:37](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/NoteExtApi.ts#L37)

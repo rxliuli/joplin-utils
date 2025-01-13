@@ -18,7 +18,7 @@ The description that will appear in the UI, for example in the menu item.
 
 #### Defined in
 
-[types.ts:91](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L91)
+[types.ts:91](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L91)
 
 ---
 
@@ -30,7 +30,7 @@ The extensions of the files exported by your module. For example, it is `["htm",
 
 #### Defined in
 
-[types.ts:108](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L108)
+[types.ts:108](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L108)
 
 ---
 
@@ -42,7 +42,7 @@ The format to be exported, eg "enex", "jex", "json", etc.
 
 #### Defined in
 
-[types.ts:86](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L86)
+[types.ts:86](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L86)
 
 ---
 
@@ -56,7 +56,7 @@ For example JEX or ENEX can, but HTML cannot.
 
 #### Defined in
 
-[types.ts:103](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L103)
+[types.ts:103](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L103)
 
 ---
 
@@ -68,7 +68,7 @@ Whether the module will export a single file or multiple files in a directory. I
 
 #### Defined in
 
-[types.ts:96](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L96)
+[types.ts:96](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L96)
 
 ## Methods
 
@@ -88,7 +88,7 @@ Called when the export process is done.
 
 #### Defined in
 
-[types.ts:128](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L128)
+[types.ts:128](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L128)
 
 ---
 
@@ -108,7 +108,7 @@ Called when the export process starts.
 
 #### Defined in
 
-[types.ts:113](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L113)
+[types.ts:113](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L113)
 
 ---
 
@@ -132,7 +132,7 @@ Called when an item needs to be processed. An "item" can be any Joplin object, s
 
 #### Defined in
 
-[types.ts:118](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L118)
+[types.ts:118](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L118)
 
 ---
 
@@ -156,4 +156,4 @@ Called when a resource file needs to be exported.
 
 #### Defined in
 
-[types.ts:123](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L123)
+[types.ts:123](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L123)

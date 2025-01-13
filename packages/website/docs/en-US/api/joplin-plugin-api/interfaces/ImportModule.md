@@ -12,7 +12,7 @@ The description that will appear in the UI, for example in the menu item.
 
 #### Defined in
 
-[types.ts:140](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L140)
+[types.ts:140](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L140)
 
 ---
 
@@ -24,7 +24,7 @@ Tells the file extensions of the exported files.
 
 #### Defined in
 
-[types.ts:157](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L157)
+[types.ts:157](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L157)
 
 ---
 
@@ -36,7 +36,7 @@ The format to be exported, eg "enex", "jex", "json", etc.
 
 #### Defined in
 
-[types.ts:135](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L135)
+[types.ts:135](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L135)
 
 ---
 
@@ -50,7 +50,7 @@ For example JEX or ENEX can, but HTML cannot.
 
 #### Defined in
 
-[types.ts:147](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L147)
+[types.ts:147](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L147)
 
 ---
 
@@ -62,7 +62,7 @@ Tells the type of notes that will be generated, either HTML or Markdown (default
 
 #### Defined in
 
-[types.ts:162](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L162)
+[types.ts:162](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L162)
 
 ---
 
@@ -74,7 +74,7 @@ The type of sources that are supported by the module. Tells whether the module c
 
 #### Defined in
 
-[types.ts:152](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L152)
+[types.ts:152](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L152)
 
 ## Methods
 
@@ -94,4 +94,4 @@ Called when the import process starts. There is only one event handler within wh
 
 #### Defined in
 
-[types.ts:167](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/joplin-plugin-api/src/types.ts#L167)
+[types.ts:167](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L167)

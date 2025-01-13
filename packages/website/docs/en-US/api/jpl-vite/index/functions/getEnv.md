@@ -10,4 +10,4 @@
 
 ## Defined in
 
-[jpl-vite/src/index.ts:61](https://github.com/rxliuli/joplin-utils/blob/a3a4c55f9104da0aa8b36da1259d082b810b3d68/packages/jpl-vite/src/index.ts#L61)
+[jpl-vite/src/index.ts:61](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/jpl-vite/src/index.ts#L61)
