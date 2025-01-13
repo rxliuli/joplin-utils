@@ -514,8 +514,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(svelte@5.17.3)(sveltekit-superforms@2.22.1(@sveltejs/kit@2.5.22(@sveltejs/vite-plugin-svelte@4.0.4(svelte@5.17.3)(vite@6.0.7(@types/node@22.10.5)(jiti@1.21.7)(less@4.2.0)(terser@5.31.3)(yaml@2.7.0)))(svelte@5.17.3)(vite@6.0.7(@types/node@22.10.5)(jiti@1.21.7)(less@4.2.0)(terser@5.31.3)(yaml@2.7.0)))(@types/json-schema@7.0.15)(svelte@5.17.3)(typescript@5.7.3))
       joplin-api:
-        specifier: ^0.6.1
-        version: 0.6.1
+        specifier: workspace:^
+        version: link:../joplin-api
       lucide-vue-next:
         specifier: ^0.471.0
         version: 0.471.0(vue@3.5.12(typescript@5.7.3))

@@ -11,8 +11,7 @@
     "build:firefox": "wxt build -b firefox",
     "zip": "wxt zip",
     "zip:firefox": "wxt zip -b firefox",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "postinstall": "wxt prepare"
+    "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
     "@liuli-util/async": "^3.7.0",
@@ -26,7 +25,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "formsnap": "^2.0.0",
-    "joplin-api": "^0.6.1",
+    "joplin-api": "workspace:^",
     "lucide-vue-next": "^0.471.0",
     "minimatch": "^10.0.1",
     "mode-watcher": "^0.5.0",
