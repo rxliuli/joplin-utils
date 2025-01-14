@@ -1,5 +1,5 @@
 import { diffBy } from '@liuli-util/array'
-import { noteApi, PageUtil, tagApi, TagGetRes } from 'joplin-api'
+import { PageUtil, TagGetRes } from 'joplin-api'
 import { JoplinTreeItem, JoplinListNote } from '../../provider/JoplinTreeItem'
 import { JoplinNoteUtil } from '../../util/JoplinNoteUtil'
 import * as vscode from 'vscode'
@@ -25,11 +25,11 @@ export function tagCommands() {
     if (!noteId) {
       return
     }
-    const oldSelectIdList = (await noteApi.tagsById(noteId)).map((tag) => tag.id)
+    const oldSelectIdList = (await GlobalContext.api.note.tagsById(noteId)).map((tag) => tag.id)
 
     const lastUseTimeMap = await tagUseService.getMap()
     const selectTagSet = new Set(oldSelectIdList)
-    const items = (await PageUtil.pageToAllList(tagApi.list))
+    const items = (await PageUtil.pageToAllList(GlobalContext.api.tag.list))
       .sort((a, b) => {
         const f = (it: typeof a) =>
           -(selectTagSet.has(it.id) ? Date.now() : lastUseTimeMap.get(it.id)?.lastUseTime ?? 0)
@@ -55,8 +55,8 @@ export function tagCommands() {
     const { left: addIdList } = diffBy(selectIdList, oldSelectIdList)
     const { left: deleteIdList } = diffBy(oldSelectIdList, selectIdList)
     console.log('选择项: ', selectItems, addIdList, deleteIdList)
-    await Promise.all(addIdList.map((id) => tagApi.addTagByNoteId(id, noteId)))
-    await Promise.all(deleteIdList.map((id) => tagApi.removeTagByNoteId(id, noteId)))
+    await Promise.all(addIdList.map((id) => GlobalContext.api.tag.addTagByNoteId(id, noteId)))
+    await Promise.all(deleteIdList.map((id) => GlobalContext.api.tag.removeTagByNoteId(id, noteId)))
     await tagUseService.save(selectItems.map((item) => item.tag))
   }
 
@@ -67,7 +67,7 @@ export function tagCommands() {
     if (!title) {
       return
     }
-    await tagApi.create({
+    await GlobalContext.api.tag.create({
       title,
     })
     vscode.window.showInformationMessage(
@@ -78,7 +78,7 @@ export function tagCommands() {
   }
 
   async function removeTag() {
-    const items = (await PageUtil.pageToAllList(tagApi.list)).map(
+    const items = (await PageUtil.pageToAllList(GlobalContext.api.tag.list)).map(
       (tag) =>
         ({
           label: tag.title,
@@ -91,7 +91,7 @@ export function tagCommands() {
     if (!selectItem) {
       return
     }
-    await tagApi.remove(selectItem.tag.id)
+    await GlobalContext.api.tag.remove(selectItem.tag.id)
     vscode.window.showInformationMessage(
       t('Remove tag [{{title}}] success', {
         title: selectItem.tag.title,

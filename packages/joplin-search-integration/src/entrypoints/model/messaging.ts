@@ -1,5 +1,5 @@
 import { defineExtensionMessaging } from '@webext-core/messaging'
-import { SearchNote } from '../content/plugins/plugin'
+import type { SearchNote } from '../content/plugins/plugin'
 
 interface ProtocolMap {
   openNote(id: string): void

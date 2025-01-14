@@ -1,17 +1,7 @@
 import { JoplinTreeItem, JoplinListNote } from '../provider/JoplinTreeItem'
 import * as vscode from 'vscode'
 import { QuickPickItem, TreeView } from 'vscode'
-import {
-  folderApi,
-  folderExtApi,
-  FolderListAllRes,
-  noteApi,
-  noteExtApi,
-  PageUtil,
-  resourceApi,
-  searchApi,
-  TypeEnum,
-} from 'joplin-api'
+import { FolderListAllRes, PageUtil, TypeEnum } from 'joplin-api'
 import { NoteExplorerProvider } from '../provider/NoteExplorerProvider'
 import { FolderOrNoteExtendsApi } from '../api/FolderOrNoteExtendsApi'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
@@ -72,10 +62,10 @@ export class JoplinNoteCommandService {
         if (title) {
           newNote.title = title.startsWith('# ') ? title.substring(2) : title
         }
-        await noteApi.update(newNote)
+        await GlobalContext.api.note.update(newNote)
         this.config.noteViewProvider.fire()
         GlobalContext.noteSearchProvider.refresh(newNote)
-        const resourceList = await noteApi.resourcesById(id)
+        const resourceList = await GlobalContext.api.note.resourcesById(id)
         GlobalContext.openNoteResourceMap.set(id, resourceList)
       })
       .on('error', (err) => {
@@ -89,7 +79,7 @@ export class JoplinNoteCommandService {
         }
         try {
           const data = await readFile(filePath)
-          const r = await resourceApi.update({
+          const r = await GlobalContext.api.resource.update({
             id,
             data: new Blob([data]),
             filename: path.basename(filePath),
@@ -123,14 +113,14 @@ export class JoplinNoteCommandService {
     }
 
     if (type === 'folder') {
-      await folderApi.create({
+      await GlobalContext.api.folder.create({
         title,
         parent_id: parentFolderId,
       })
       await this.config.noteViewProvider.refresh()
       return
     }
-    const { id } = await noteApi.create({
+    const { id } = await GlobalContext.api.note.create({
       title,
       parent_id: parentFolderId,
       is_todo: type === 'todo' ? 1 : 0,
@@ -203,7 +193,7 @@ export class JoplinNoteCommandService {
   }
 
   async toggleTodoState(item: JoplinTreeItem = this.config.noteListTreeView.selection[0]) {
-    await noteExtApi.toggleTodo(item.id)
+    await GlobalContext.api.noteExt.toggleTodo(item.id)
     await this.config.noteViewProvider.refresh()
   }
 
@@ -258,12 +248,12 @@ export class JoplinNoteCommandService {
     if (GlobalContext.openNoteMap.has(tempNotePath)) {
       tempNotePath = fileSuffix(tempNotePath, item.id)
     }
-    const note = await noteApi.get(item.id, ['body', 'title'])
+    const note = await GlobalContext.api.note.get(item.id, ['body', 'title'])
     const content = JoplinNoteUtil.getNoteContent(note)
     await writeFile(tempNotePath, content)
     logger.info('openNote write tempFile: ' + path.basename(tempNotePath))
     GlobalContext.openNoteMap.set(item.id, tempNotePath)
-    GlobalContext.openNoteResourceMap.set(item.id, await noteApi.resourcesById(item.id))
+    GlobalContext.openNoteResourceMap.set(item.id, await GlobalContext.api.note.resourcesById(item.id))
     await vscode.commands.executeCommand('vscode.open', vscode.Uri.file(tempNotePath))
     if (position && vscode.window.activeTextEditor) {
       real(vscode.window.activeTextEditor, position)
@@ -294,7 +284,7 @@ export class JoplinNoteCommandService {
         value = cut_for_search(value, true).join(' ')
         logger.info(`chinese search value: ${value}`)
       }
-      const { items: noteList } = await searchApi.search({
+      const { items: noteList } = await GlobalContext.api.search.search({
         query: value,
         type: TypeEnum.Note,
         fields: ['id', 'title', 'body', 'parent_id'],
@@ -345,7 +335,7 @@ export class JoplinNoteCommandService {
     if (!noteId) {
       return
     }
-    const resources = await noteApi.resourcesById(noteId)
+    const resources = await GlobalContext.api.note.resourcesById(noteId)
     const selectItem = await vscode.window.showQuickPick(
       resources.map((item) => ({
         label: item.title,
@@ -364,7 +354,7 @@ export class JoplinNoteCommandService {
   }
 
   private async focus(noteId: string) {
-    const note = await noteApi.get(noteId, ['id', 'parent_id', 'title', 'is_todo', 'todo_completed'])
+    const note = await GlobalContext.api.note.get(noteId, ['id', 'parent_id', 'title', 'is_todo', 'todo_completed'])
     this.config.noteListTreeView.reveal(
       new JoplinTreeItem({
         ...note,
@@ -411,7 +401,7 @@ export class JoplinNoteCommandService {
    */
   async removeResource() {
     const list = (
-      await PageUtil.pageToAllList(resourceApi.list, {
+      await PageUtil.pageToAllList(GlobalContext.api.resource.list, {
         order_by: 'user_updated_time',
         order_dir: 'DESC',
       })
@@ -429,7 +419,7 @@ export class JoplinNoteCommandService {
     if (!selectItemList || selectItemList.length === 0) {
       return
     }
-    await Promise.all(selectItemList.map(async (item) => resourceApi.remove(item.id)))
+    await Promise.all(selectItemList.map(async (item) => GlobalContext.api.resource.remove(item.id)))
     vscode.window.showInformationMessage(selectItemList.map((item) => item.label).join('\n'), {
       title: '删除附件成功',
     })
@@ -469,15 +459,15 @@ export class JoplinNoteCommandService {
       return
     }
     if (clipboard.type_ === TypeEnum.Folder) {
-      const paths = await folderExtApi.path(item.id)
+      const paths = await GlobalContext.api.folderExt.path(item.id)
       console.log('paths: ', paths)
       if (paths.some((item) => item.id === clipboard.id)) {
         vscode.window.showWarningMessage(t('paste-error-canTPasteSub'))
         return
       }
-      await folderExtApi.move(clipboard.id, item.id)
+      await GlobalContext.api.folderExt.move(clipboard.id, item.id)
     } else {
-      await noteExtApi.move(clipboard.id, item.id)
+      await GlobalContext.api.noteExt.move(clipboard.id, item.id)
     }
     await this.config.noteViewProvider.refresh()
     vscode.window.showInformationMessage(t('paste-success'))

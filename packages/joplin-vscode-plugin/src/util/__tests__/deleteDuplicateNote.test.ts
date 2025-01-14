@@ -1,19 +1,20 @@
 import { fileURLToPath } from 'url'
 import { it, describe, beforeEach } from 'vitest'
-import { noteApi, PageUtil } from 'joplin-api'
+import { PageUtil } from 'joplin-api'
 import * as path from 'path'
 import { groupBy, sortBy } from '@liuli-util/array'
 import { NoteProperties } from 'joplin-api'
 import { mkdir, rm, writeFile } from 'fs/promises'
+import { GlobalContext } from '../../constants/context'
 
-describe('删除重复的笔记', () => {
+describe('Delete duplicate notes', () => {
   const tempPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.temp/exportDuplicationNoteList')
   beforeEach(async () => {
     await rm(tempPath, { force: true, recursive: true })
     await mkdir(tempPath, { recursive: true })
   })
-  it('加载所有重复的笔记', async () => {
-    const noteList = await PageUtil.pageToAllList(noteApi.list, {
+  it('Load all duplicate notes', async () => {
+    const noteList = await PageUtil.pageToAllList(GlobalContext.api.note.list, {
       fields: ['id', 'title', 'user_updated_time', 'body'],
     })
     const map = groupBy(noteList, (note) => note.title)
@@ -26,16 +27,16 @@ describe('删除重复的笔记', () => {
             (note) => note.user_updated_time,
           )[0],
       )
-    await mkdirp(tempPath)
+    await mkdir(tempPath, { recursive: true })
     for (let note of deleteNoteList) {
       const filePath = path.resolve(tempPath, note.title.trim() + '.md')
       try {
         await writeFile(filePath, note.body, {
           encoding: 'utf-8',
         })
-        await noteApi.remove(note.id)
+        await GlobalContext.api.note.remove(note.id)
       } catch (e) {
-        console.log('删除失败: ', note.title)
+        console.log('Delete failed: ', note.title)
       }
     }
   })

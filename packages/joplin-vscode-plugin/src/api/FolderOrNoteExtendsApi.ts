@@ -1,16 +1,17 @@
 import { CommonType } from 'joplin-api'
-import { TypeEnum, noteApi, folderApi, noteExtApi, folderExtApi } from 'joplin-api'
+import { TypeEnum } from 'joplin-api'
 import { BaseProperties } from 'joplin-api'
 import { FolderProperties } from 'joplin-api'
+import { GlobalContext } from '../constants/context'
 
 export class FolderOrNoteExtendsApi {
   async remove(item: Pick<BaseProperties, 'id'> & CommonType) {
     switch (item.type_) {
       case TypeEnum.Folder:
-        await folderApi.remove(item.id)
+        await GlobalContext.api.folder.remove(item.id)
         break
       case TypeEnum.Note:
-        await noteApi.remove(item.id)
+        await GlobalContext.api.note.remove(item.id)
         break
     }
   }
@@ -18,10 +19,10 @@ export class FolderOrNoteExtendsApi {
   async rename(item: Pick<BaseProperties, 'id' | 'title'> & CommonType) {
     switch (item.type_) {
       case TypeEnum.Folder:
-        await folderExtApi.rename(item.id, item.title)
+        await GlobalContext.api.folderExt.rename(item.id, item.title)
         break
       case TypeEnum.Note:
-        await noteExtApi.rename(item.id, item.title)
+        await GlobalContext.api.noteExt.rename(item.id, item.title)
         break
     }
   }
@@ -29,12 +30,12 @@ export class FolderOrNoteExtendsApi {
   async create(item: Pick<FolderProperties, 'title' | 'parent_id'> & CommonType) {
     switch (item.type_) {
       case TypeEnum.Folder:
-        return await folderApi.create({
+        return await GlobalContext.api.folder.create({
           title: item.title,
           parent_id: item.parent_id,
         })
       case TypeEnum.Note:
-        return await noteApi.create({
+        return await GlobalContext.api.note.create({
           title: item.title,
           parent_id: item.parent_id,
           body: '',

@@ -1,14 +1,21 @@
-import { NoteProperties } from 'joplin-api'
+import { NoteProperties, TypeEnum } from 'joplin-api'
 import { CommonType } from 'joplin-api'
-import { noteApi, TypeEnum, folderApi } from 'joplin-api'
 import * as vscode from 'vscode'
+import { GlobalContext } from '../constants/context'
 
 class JoplinNoteApi {
   async get(
     id: string,
   ): Promise<Pick<NoteProperties, 'id' | 'parent_id' | 'title' | 'is_todo' | 'todo_completed'> & CommonType> {
     return {
-      ...(await noteApi.get(id, ['id', 'parent_id', 'title', 'is_todo', 'todo_completed', 'user_updated_time'])),
+      ...(await GlobalContext.api.note.get(id, [
+        'id',
+        'parent_id',
+        'title',
+        'is_todo',
+        'todo_completed',
+        'user_updated_time',
+      ])),
       type_: TypeEnum.Note,
     }
   }
@@ -20,7 +27,7 @@ class JoplinNoteApi {
       CommonType)[]
   > {
     return (
-      await folderApi.notesByFolderId(folderId, [
+      await GlobalContext.api.folder.notesByFolderId(folderId, [
         'id',
         'parent_id',
         'title',
@@ -41,7 +48,7 @@ class JoplinNoteApi {
    * @private
    */
   async loadLastNoteList(): Promise<(vscode.QuickPickItem & { id: string; parent_id: string })[]> {
-    const list = await noteApi.list({
+    const list = await GlobalContext.api.note.list({
       fields: ['id', 'title', 'body', 'parent_id'],
       limit: 20,
       order_dir: 'DESC',

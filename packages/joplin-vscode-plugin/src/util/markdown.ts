@@ -1,7 +1,8 @@
-import { Config, TypeEnum, config } from 'joplin-api'
+import { TypeEnum } from 'joplin-api'
 import type MarkdownIt from 'markdown-it'
 import type { RenderRule } from 'markdown-it/lib/renderer'
 // import parse from 'node-html-parser'
+import * as vscode from 'vscode'
 
 export const JoplinLinkRegex = /^:\/(\w{32})$/
 
@@ -36,6 +37,7 @@ import { ResourceGetRes } from 'joplin-api'
 import { arrayToMap } from '@liuli-util/array'
 import path from 'path'
 import { GlobalContext } from '../constants/context'
+import { ExtConfig } from '../constants/config'
 
 export function wrapLink(id: string, type: TypeEnum.Resource | TypeEnum.Note) {
   const q = encodeURIComponent(`id=${id}`)
@@ -49,7 +51,7 @@ export function wrapLink(id: string, type: TypeEnum.Resource | TypeEnum.Note) {
   }
 }
 
-function useJoplinLink(openNoteResourceMap: Map<string, ResourceGetRes[]>) {
+function useJoplinLink(extConfig: ExtConfig, openNoteResourceMap: Map<string, ResourceGetRes[]>) {
   // ref: https://code.visualstudio.com/updates/v1_72#_builtin-preview-for-some-audio-and-video-files
   const audioExts = ['wav', 'mp3', 'ogg']
   const videoExts = ['webm', 'mp4']
@@ -89,12 +91,12 @@ function useJoplinLink(openNoteResourceMap: Map<string, ResourceGetRes[]>) {
                 if (audioExts.includes(ext)) {
                   tokens[idx + 1].attrSet(joplinDeleteAttr, 'true')
                   tokens[idx + 2].attrSet(joplinDeleteAttr, 'true')
-                  return `<audio controls><source src="${config.baseUrl}/resources/${id}/file?token=${config.token}" type="audio/mpeg"></audio>`
+                  return `<audio controls><source src="${extConfig.baseUrl}/resources/${id}/file?token=${extConfig.token}" type="audio/mpeg"></audio>`
                 }
                 if (videoExts.includes(ext)) {
                   tokens[idx + 1].attrSet(joplinDeleteAttr, 'true')
                   tokens[idx + 2].attrSet(joplinDeleteAttr, 'true')
-                  return `<video controls><source src="${config.baseUrl}/resources/${id}/file?token=${config.token}" type="video/webm"></video>`
+                  return `<video controls><source src="${extConfig.baseUrl}/resources/${id}/file?token=${extConfig.token}" type="video/webm"></video>`
                 }
               }
               tokens[idx].attrs![aIndex][1] = wrapLink(id, TypeEnum.Resource)
@@ -112,7 +114,7 @@ function useJoplinLink(openNoteResourceMap: Map<string, ResourceGetRes[]>) {
   }
 }
 
-function useJoplinImage(config: Config) {
+function useJoplinImage(config: ExtConfig) {
   return (md: MarkdownIt) => {
     const defaultRender =
       md.renderer.rules.link_open ||
@@ -139,10 +141,11 @@ function useJoplinImage(config: Config) {
 }
 
 export function extendMarkdownIt(md: MarkdownIt) {
-  return md.use(useJoplinLink(GlobalContext.openNoteResourceMap)).use(
+  const extConfig = vscode.workspace.getConfiguration('joplin') as vscode.WorkspaceConfiguration & ExtConfig
+  return md.use(useJoplinLink(extConfig, GlobalContext.openNoteResourceMap)).use(
     useJoplinImage({
-      token: config.token!,
-      baseUrl: config.baseUrl!,
+      token: extConfig.token!,
+      baseUrl: extConfig.baseUrl!,
     }),
   )
   // .use(

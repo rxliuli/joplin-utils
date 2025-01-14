@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
 import { matchAll, getReferenceAtPosition } from '../util/utils'
-import { TypeEnum, noteApi, resourceApi } from 'joplin-api'
+import { TypeEnum } from 'joplin-api'
 import { formatSize } from '../util/formatSize'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
 import { GlobalContext } from '../constants/context'
@@ -76,11 +76,11 @@ export class MarkdownProvider
     const id = JoplinLinkRegex.exec(markdownTokenLink)![1]
     const resourceIdList = new Set([...GlobalContext.openNoteResourceMap.values()].flat().map((item) => item.id))
     if (resourceIdList.has(id)) {
-      const resource = await resourceApi.get(id, ['id', 'title', 'size'])
+      const resource = await GlobalContext.api.resource.get(id, ['id', 'title', 'size'])
       content = [resource.title, formatSize(resource.size)]
       logger.info('provideHover 是资源: ', resource)
     } else {
-      const note = await noteApi.get(id)
+      const note = await GlobalContext.api.note.get(id)
       const title = note.title
       content = [JoplinNoteUtil.trimTitleStart(title)]
       logger.info('provideHover 是笔记链接: ', note)
@@ -112,7 +112,7 @@ export class MarkdownProvider
     const id = JSON.parse(item.value).itemHandles[0].split('/')[1]
     if (id) {
       try {
-        const note = await noteApi.get(id)
+        const note = await GlobalContext.api.note.get(id)
         return { insertText: `[${note.title}](:/${note.id})` }
       } catch {}
     }

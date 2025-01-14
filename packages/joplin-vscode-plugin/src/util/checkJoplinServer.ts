@@ -1,7 +1,7 @@
 import * as vscode from 'vscode'
-import { joplinApi } from 'joplin-api'
 import { t } from '../constants/i18n'
 import { ExtConfig } from '../constants/config'
+import { GlobalContext } from '../constants/context'
 
 /**
  * check joplin server
@@ -21,7 +21,7 @@ export async function checkJoplinServer(): Promise<boolean> {
     return false
   }
   try {
-    if (!(await joplinApi.ping())) {
+    if (!(await GlobalContext.api.joplin.ping())) {
       return await errMsg()
     }
   } catch (e) {

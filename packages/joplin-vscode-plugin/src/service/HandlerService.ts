@@ -1,6 +1,5 @@
 import * as vscode from 'vscode'
 import { TextDocument, Uri } from 'vscode'
-import { noteApi, resourceApi } from 'joplin-api'
 import { parse } from 'querystring'
 import { JoplinNoteCommandService } from './JoplinNoteCommandService'
 import { JoplinNoteUtil } from '../util/JoplinNoteUtil'
@@ -66,7 +65,9 @@ export class HandlerService {
 
   async openResource(id: string) {
     logger.info('HandlerService.openResource: ' + id)
-    const resource = await safePromise(resourceApi.get(id, ['id', 'title', 'filename', 'file_extension']))
+    const resource = await safePromise(
+      GlobalContext.api.resource.get(id, ['id', 'title', 'filename', 'file_extension']),
+    )
     if (!resource) {
       logger.warn('HandlerService.openResource: Resource does not exist')
       vscode.window.showWarningMessage(t('Resource does not exist'))
@@ -87,7 +88,7 @@ export class HandlerService {
     if (GlobalContext.openResourceMap.has(filePath)) {
       filePath = fileSuffix(filePath, resource.id)
     }
-    const buffer = await resourceApi.fileByResourceId(id)
+    const buffer = await GlobalContext.api.resource.fileByResourceId(id)
     await writeFile(filePath, buffer)
     GlobalContext.openResourceMap.set(id, filePath)
     logger.info('HandlerService.openResource open file: ' + filePath)
@@ -100,7 +101,9 @@ export class HandlerService {
       vscode.window.showWarningMessage(t('id cannot be empty'))
       return
     }
-    const item = await safePromise(noteApi.get(id, ['id', 'parent_id', 'title', 'is_todo', 'todo_completed']))
+    const item = await safePromise(
+      GlobalContext.api.note.get(id, ['id', 'parent_id', 'title', 'is_todo', 'todo_completed']),
+    )
     if (!item) {
       vscode.window.showWarningMessage(t('Note does not exist'))
       return

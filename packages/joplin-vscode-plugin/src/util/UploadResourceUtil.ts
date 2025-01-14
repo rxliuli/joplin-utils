@@ -1,17 +1,17 @@
 import * as os from 'os'
 import * as path from 'path'
 import { exec, spawn } from 'child_process'
-import { resourceApi } from 'joplin-api'
 import { RootPath } from '../RootPath'
 import which from 'which'
 import { existsSync } from 'node:fs'
 import { mkdir, readFile } from 'node:fs/promises'
+import { GlobalContext } from '../constants/context'
 
 export class UploadResourceUtil {
   static async uploadByPath(filePath: string, isImage: boolean) {
     const title = path.basename(filePath)
     console.log('uploadFromExplorer begin: ', filePath, title)
-    const res = await resourceApi.create({
+    const res = await GlobalContext.api.resource.create({
       title,
       data: new Blob([await readFile(filePath)]),
       filename: title,

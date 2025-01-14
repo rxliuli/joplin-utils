@@ -3,7 +3,6 @@ import { window } from 'vscode'
 import { GlobalContext } from '../constants/context'
 import { UploadResourceUtil } from '../util/UploadResourceUtil'
 import { t } from '../constants/i18n'
-import { resourceApi } from 'joplin-api'
 import { logger } from '../constants/logger'
 import { readFile } from 'node:fs/promises'
 import path from 'pathe'
@@ -92,7 +91,7 @@ export class UploadResourceService {
     }
     const resourceList = GlobalContext.openNoteResourceMap.get(noteId)!
     if (!resourceList.some((item) => item.id === id)) {
-      resourceList.push(await resourceApi.get(id))
+      resourceList.push(await GlobalContext.api.resource.get(id))
     }
     GlobalContext.openNoteResourceMap.set(noteId, resourceList)
   }

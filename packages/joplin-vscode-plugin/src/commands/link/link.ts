@@ -1,4 +1,4 @@
-import { PageUtil, searchApi, TypeEnum } from 'joplin-api'
+import { PageUtil, TypeEnum } from 'joplin-api'
 import * as vscode from 'vscode'
 import { t } from '../../constants/i18n'
 import { uploadResourceService } from '../../service/UploadResourceService'
@@ -7,7 +7,6 @@ import { GlobalContext } from '../../constants/context'
 import { JoplinNoteUtil } from '../../util/JoplinNoteUtil'
 import { arrayToMap } from '@liuli-util/array'
 import { AsyncArray } from '@liuli-util/async'
-import { noteApi } from 'joplin-api'
 import { extractJoplinLink } from './utils/extractJoplinLink'
 
 export function linkCommands() {
@@ -30,7 +29,7 @@ export function linkCommands() {
         searchQuickPickBox.items = await joplinNoteApi.loadLastNoteList()
         return
       }
-      const { items: noteList } = await searchApi.search({
+      const { items: noteList } = await GlobalContext.api.search.search({
         query: value,
         type: TypeEnum.Note,
         fields: ['id', 'title'],
@@ -74,7 +73,10 @@ export function linkCommands() {
    */
   async function showLinkThisNotes() {
     await showQuickListNotes(async (id) => {
-      const notes = await PageUtil.pageToAllList(searchApi.search, { query: id, fields: ['id', 'title'] })
+      const notes = await PageUtil.pageToAllList(GlobalContext.api.search.search, {
+        query: id,
+        fields: ['id', 'title'],
+      })
       return notes.map((item) => ({ id: item.id, label: item.title } as vscode.QuickPickItem & { id: string }))
     })
   }
@@ -96,7 +98,7 @@ export function linkCommands() {
         async (id) =>
           ({
             id: id,
-            label: (await noteApi.get(id)).title,
+            label: (await GlobalContext.api.note.get(id)).title,
           } as vscode.QuickPickItem & { id: string }),
       )
       return r

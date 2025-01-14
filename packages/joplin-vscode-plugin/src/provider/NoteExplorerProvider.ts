@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import { folderApi, folderExtApi, noteExtApi } from 'joplin-api'
+import { GlobalContext } from '../constants/context'
 import { JoplinTreeItem } from './JoplinTreeItem'
 import { FolderListAllRes } from 'joplin-api'
 import { joplinNoteApi } from '../api/JoplinNoteApi'
@@ -31,7 +31,7 @@ export class NoteExplorerProvider
   private folderMap = new Map<string, FolderListAllRes>()
 
   private async init() {
-    this.folderList = await folderApi.listAll()
+    this.folderList = await GlobalContext.api.folder.listAll()
 
     treeEach(
       this.folderList,
@@ -135,18 +135,18 @@ export class NoteExplorerProvider
       return
     }
     if (!source.collapsibleState) {
-      await noteExtApi.move(source.id, targetId ?? '')
+      await GlobalContext.api.noteExt.move(source.id, targetId ?? '')
       await this.refresh()
       return
     }
     if (target) {
-      const paths = await folderExtApi.path(target.id)
+      const paths = await GlobalContext.api.folderExt.path(target.id)
       if (paths.some((item) => item.id === source.id)) {
         vscode.window.showWarningMessage(t('paste-error-canTPasteSub'))
         return
       }
     }
-    await folderExtApi.move(source.id, targetId)
+    await GlobalContext.api.folderExt.move(source.id, targetId)
     await this.refresh()
   }
 }
