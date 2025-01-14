@@ -58,10 +58,6 @@ export default defineConfig({
             link: '/en-US/joplin-batch/',
           },
           {
-            text: 'Joplin Batch Web(Legacy)',
-            link: '/en-US/joplin-batch-web/',
-          },
-          {
             text: 'API',
             items: typedocSidebar,
           },
@@ -118,10 +114,6 @@ export default defineConfig({
             link: '/zh-CN/joplin-batch/',
           },
           {
-            text: 'Joplin Batch Web(Legacy)',
-            link: '/zh-CN/joplin-batch-web/',
-          },
-          {
             text: 'API',
             items: typedocSidebar,
           },
@@ -132,16 +124,20 @@ export default defineConfig({
   themeConfig: {
     search: { provider: 'local' },
     logo: '/images/logo.svg',
-    nav: [
-      {
-        text: 'GitHub',
-        link: 'https://github.com/rxliuli/joplin-utils',
-      },
-    ],
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2021-present rxliuli',
     },
+    socialLinks: [
+      {
+        icon: 'github',
+        link: 'https://github.com/rxliuli/joplin-utils',
+      },
+      {
+        icon: 'twitter',
+        link: 'https://x.com/moeruri',
+      },
+    ],
   },
   head: [
     ['link', { rel: 'icon', href: '/images/logo.svg' }],
