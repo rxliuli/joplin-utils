@@ -20,7 +20,7 @@ When the folder was created.
 
 #### Defined in
 
-[model/BaseProperties.ts:9](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L9)
+[model/BaseProperties.ts:9](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L9)
 
 ---
 
@@ -34,7 +34,7 @@ When the folder was created.
 
 #### Defined in
 
-[model/BaseProperties.ts:33](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L33)
+[model/BaseProperties.ts:33](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L33)
 
 ---
 
@@ -44,7 +44,7 @@ When the folder was created.
 
 #### Defined in
 
-[model/ResourceProperties.ts:19](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/ResourceProperties.ts#L19)
+[model/ResourceProperties.ts:19](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/ResourceProperties.ts#L19)
 
 ---
 
@@ -60,7 +60,7 @@ text
 
 #### Defined in
 
-[model/BaseProperties.ts:29](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L29)
+[model/BaseProperties.ts:29](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L29)
 
 ---
 
@@ -70,7 +70,7 @@ text
 
 #### Defined in
 
-[model/ResourceProperties.ts:15](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/ResourceProperties.ts#L15)
+[model/ResourceProperties.ts:15](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/ResourceProperties.ts#L15)
 
 ---
 
@@ -80,7 +80,7 @@ text
 
 #### Defined in
 
-[model/ResourceProperties.ts:11](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/ResourceProperties.ts#L11)
+[model/ResourceProperties.ts:11](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/ResourceProperties.ts#L11)
 
 ---
 
@@ -96,7 +96,7 @@ text
 
 #### Defined in
 
-[model/BaseProperties.ts:5](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L5)
+[model/BaseProperties.ts:5](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L5)
 
 ---
 
@@ -110,7 +110,7 @@ text
 
 #### Defined in
 
-[model/BaseProperties.ts:37](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L37)
+[model/BaseProperties.ts:37](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L37)
 
 ---
 
@@ -120,7 +120,7 @@ text
 
 #### Defined in
 
-[model/ResourceProperties.ts:7](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/ResourceProperties.ts#L7)
+[model/ResourceProperties.ts:7](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/ResourceProperties.ts#L7)
 
 ---
 
@@ -130,7 +130,7 @@ text
 
 #### Defined in
 
-[model/ResourceProperties.ts:23](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/ResourceProperties.ts#L23)
+[model/ResourceProperties.ts:23](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/ResourceProperties.ts#L23)
 
 ---
 
@@ -146,7 +146,7 @@ The tag title.
 
 #### Defined in
 
-[model/BaseProperties.ts:25](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L25)
+[model/BaseProperties.ts:25](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L25)
 
 ---
 
@@ -162,7 +162,7 @@ When the folder was last updated.
 
 #### Defined in
 
-[model/BaseProperties.ts:13](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L13)
+[model/BaseProperties.ts:13](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L13)
 
 ---
 
@@ -178,7 +178,7 @@ When the folder was created. It may differ from created_time as it can be manual
 
 #### Defined in
 
-[model/BaseProperties.ts:17](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L17)
+[model/BaseProperties.ts:17](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L17)
 
 ---
 
@@ -194,4 +194,4 @@ When the folder was last updated. It may differ from updated_time as it can be m
 
 #### Defined in
 
-[model/BaseProperties.ts:21](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L21)
+[model/BaseProperties.ts:21](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L21)

@@ -14,7 +14,7 @@ Do not use - same as NoteListContextMenu
 
 #### Defined in
 
-[types.ts:253](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L253)
+[types.ts:253](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L253)
 
 ---
 
@@ -24,7 +24,7 @@ Do not use - same as NoteListContextMenu
 
 #### Defined in
 
-[types.ts:244](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L244)
+[types.ts:244](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L244)
 
 ---
 
@@ -34,7 +34,7 @@ Do not use - same as NoteListContextMenu
 
 #### Defined in
 
-[types.ts:265](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L265)
+[types.ts:265](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L265)
 
 ---
 
@@ -44,7 +44,7 @@ Do not use - same as NoteListContextMenu
 
 #### Defined in
 
-[types.ts:243](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L243)
+[types.ts:243](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L243)
 
 ---
 
@@ -59,7 +59,7 @@ command will receive the following arguments:
 
 #### Defined in
 
-[types.ts:273](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L273)
+[types.ts:273](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L273)
 
 ---
 
@@ -69,7 +69,7 @@ command will receive the following arguments:
 
 #### Defined in
 
-[types.ts:248](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L248)
+[types.ts:248](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L248)
 
 ---
 
@@ -79,7 +79,7 @@ command will receive the following arguments:
 
 #### Defined in
 
-[types.ts:246](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L246)
+[types.ts:246](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L246)
 
 ---
 
@@ -94,7 +94,7 @@ command will receive the following arguments:
 
 #### Defined in
 
-[types.ts:263](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L263)
+[types.ts:263](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L263)
 
 ---
 
@@ -109,7 +109,7 @@ command will receive the following arguments:
 
 #### Defined in
 
-[types.ts:281](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L281)
+[types.ts:281](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L281)
 
 ---
 
@@ -119,7 +119,7 @@ command will receive the following arguments:
 
 #### Defined in
 
-[types.ts:247](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L247)
+[types.ts:247](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L247)
 
 ---
 
@@ -129,4 +129,4 @@ command will receive the following arguments:
 
 #### Defined in
 
-[types.ts:245](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L245)
+[types.ts:245](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L245)

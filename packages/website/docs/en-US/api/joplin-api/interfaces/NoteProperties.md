@@ -16,7 +16,7 @@ numeric
 
 #### Defined in
 
-[model/NoteProperties.ts:28](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L28)
+[model/NoteProperties.ts:28](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L28)
 
 ---
 
@@ -28,7 +28,7 @@ text
 
 #### Defined in
 
-[model/NoteProperties.ts:60](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L60)
+[model/NoteProperties.ts:60](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L60)
 
 ---
 
@@ -40,7 +40,7 @@ text
 
 #### Defined in
 
-[model/NoteProperties.ts:32](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L32)
+[model/NoteProperties.ts:32](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L32)
 
 ---
 
@@ -52,7 +52,7 @@ If body_html is provided and contains relative URLs, provide the base_url parame
 
 #### Defined in
 
-[model/NoteProperties.ts:76](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L76)
+[model/NoteProperties.ts:76](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L76)
 
 ---
 
@@ -64,7 +64,7 @@ The note body, in Markdown. May also contain HTML.
 
 #### Defined in
 
-[model/NoteProperties.ts:12](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L12)
+[model/NoteProperties.ts:12](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L12)
 
 ---
 
@@ -76,7 +76,7 @@ Note body, in HTML format
 
 #### Defined in
 
-[model/NoteProperties.ts:72](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L72)
+[model/NoteProperties.ts:72](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L72)
 
 ---
 
@@ -92,7 +92,7 @@ When the folder was created.
 
 #### Defined in
 
-[model/BaseProperties.ts:9](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L9)
+[model/BaseProperties.ts:9](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L9)
 
 ---
 
@@ -120,7 +120,7 @@ If an image is provided, you can also specify an optional rectangle that will be
 
 #### Defined in
 
-[model/NoteProperties.ts:84](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L84)
+[model/NoteProperties.ts:84](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L84)
 
 ---
 
@@ -134,7 +134,7 @@ If an image is provided, you can also specify an optional rectangle that will be
 
 #### Defined in
 
-[model/BaseProperties.ts:33](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L33)
+[model/BaseProperties.ts:33](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L33)
 
 ---
 
@@ -150,7 +150,7 @@ text
 
 #### Defined in
 
-[model/BaseProperties.ts:29](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L29)
+[model/BaseProperties.ts:29](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L29)
 
 ---
 
@@ -166,7 +166,7 @@ text
 
 #### Defined in
 
-[model/BaseProperties.ts:5](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L5)
+[model/BaseProperties.ts:5](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L5)
 
 ---
 
@@ -178,7 +178,7 @@ An image to attach to the note, in Data URL format.
 
 #### Defined in
 
-[model/NoteProperties.ts:80](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L80)
+[model/NoteProperties.ts:80](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L80)
 
 ---
 
@@ -190,7 +190,7 @@ Tells whether the note is a conflict or not.
 
 #### Defined in
 
-[model/NoteProperties.ts:16](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L16)
+[model/NoteProperties.ts:16](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L16)
 
 ---
 
@@ -204,7 +204,7 @@ Tells whether the note is a conflict or not.
 
 #### Defined in
 
-[model/BaseProperties.ts:37](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L37)
+[model/BaseProperties.ts:37](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L37)
 
 ---
 
@@ -216,7 +216,7 @@ Tells whether this note is a to-do or not.
 
 #### Defined in
 
-[model/NoteProperties.ts:40](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L40)
+[model/NoteProperties.ts:40](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L40)
 
 ---
 
@@ -228,7 +228,7 @@ numeric
 
 #### Defined in
 
-[model/NoteProperties.ts:20](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L20)
+[model/NoteProperties.ts:20](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L20)
 
 ---
 
@@ -240,7 +240,7 @@ numeric
 
 #### Defined in
 
-[model/NoteProperties.ts:24](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L24)
+[model/NoteProperties.ts:24](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L24)
 
 ---
 
@@ -252,7 +252,7 @@ int
 
 #### Defined in
 
-[model/NoteProperties.ts:68](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L68)
+[model/NoteProperties.ts:68](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L68)
 
 ---
 
@@ -264,7 +264,7 @@ int
 
 #### Defined in
 
-[model/NoteProperties.ts:64](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L64)
+[model/NoteProperties.ts:64](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L64)
 
 ---
 
@@ -276,7 +276,7 @@ ID of the notebook that contains this note. Change this ID to move the note to a
 
 #### Defined in
 
-[model/NoteProperties.ts:8](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L8)
+[model/NoteProperties.ts:8](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L8)
 
 ---
 
@@ -288,7 +288,7 @@ text
 
 #### Defined in
 
-[model/NoteProperties.ts:52](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L52)
+[model/NoteProperties.ts:52](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L52)
 
 ---
 
@@ -300,7 +300,7 @@ text
 
 #### Defined in
 
-[model/NoteProperties.ts:56](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L56)
+[model/NoteProperties.ts:56](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L56)
 
 ---
 
@@ -312,7 +312,7 @@ The full URL where the note comes from.
 
 #### Defined in
 
-[model/NoteProperties.ts:36](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L36)
+[model/NoteProperties.ts:36](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L36)
 
 ---
 
@@ -328,7 +328,7 @@ The tag title.
 
 #### Defined in
 
-[model/BaseProperties.ts:25](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L25)
+[model/BaseProperties.ts:25](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L25)
 
 ---
 
@@ -340,7 +340,7 @@ Tells whether to-do is completed or not. This is a timestamp in milliseconds.
 
 #### Defined in
 
-[model/NoteProperties.ts:48](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L48)
+[model/NoteProperties.ts:48](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L48)
 
 ---
 
@@ -352,7 +352,7 @@ When the to-do is due. An alarm will be triggered on that date.
 
 #### Defined in
 
-[model/NoteProperties.ts:44](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/NoteProperties.ts#L44)
+[model/NoteProperties.ts:44](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/NoteProperties.ts#L44)
 
 ---
 
@@ -368,7 +368,7 @@ When the folder was last updated.
 
 #### Defined in
 
-[model/BaseProperties.ts:13](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L13)
+[model/BaseProperties.ts:13](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L13)
 
 ---
 
@@ -384,7 +384,7 @@ When the folder was created. It may differ from created_time as it can be manual
 
 #### Defined in
 
-[model/BaseProperties.ts:17](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L17)
+[model/BaseProperties.ts:17](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L17)
 
 ---
 
@@ -400,4 +400,4 @@ When the folder was last updated. It may differ from updated_time as it can be m
 
 #### Defined in
 
-[model/BaseProperties.ts:21](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/BaseProperties.ts#L21)
+[model/BaseProperties.ts:21](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/BaseProperties.ts#L21)

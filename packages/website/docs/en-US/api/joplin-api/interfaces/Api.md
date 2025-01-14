@@ -6,108 +6,108 @@
 
 ### event
 
-> **event**: [`EventApi`](../classes/EventApi.md)
+> **event**: `EventApi`
 
 #### Defined in
 
-[api/adapter.ts:128](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L128)
+[api/adapter.ts:129](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/api/adapter.ts#L129)
 
 ---
 
 ### folder
 
-> **folder**: [`FolderApi`](../classes/FolderApi.md)
+> **folder**: `FolderApi`
 
 #### Defined in
 
-[api/adapter.ts:118](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L118)
+[api/adapter.ts:119](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/api/adapter.ts#L119)
 
 ---
 
 ### folderExt
 
-> **folderExt**: [`FolderExtApi`](../classes/FolderExtApi.md)
+> **folderExt**: `FolderExtApi`
 
 #### Defined in
 
-[api/adapter.ts:119](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L119)
+[api/adapter.ts:120](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/api/adapter.ts#L120)
 
 ---
 
 ### joplin
 
-> **joplin**: [`JoplinApi`](../classes/JoplinApi.md)
+> **joplin**: `JoplinApi`
 
 #### Defined in
 
-[api/adapter.ts:120](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L120)
+[api/adapter.ts:121](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/api/adapter.ts#L121)
 
 ---
 
 ### note
 
-> **note**: [`NoteApi`](../classes/NoteApi.md)
+> **note**: `NoteApi`
 
 #### Defined in
 
-[api/adapter.ts:122](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L122)
+[api/adapter.ts:123](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/api/adapter.ts#L123)
 
 ---
 
 ### noteAction
 
-> **noteAction**: [`NoteActionApi`](../classes/NoteActionApi.md)
+> **noteAction**: `NoteActionApi`
 
 #### Defined in
 
-[api/adapter.ts:121](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L121)
+[api/adapter.ts:122](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/api/adapter.ts#L122)
 
 ---
 
 ### noteExt
 
-> **noteExt**: [`NoteExtApi`](../classes/NoteExtApi.md)
+> **noteExt**: `NoteExtApi`
 
 #### Defined in
 
-[api/adapter.ts:123](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L123)
+[api/adapter.ts:124](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/api/adapter.ts#L124)
 
 ---
 
 ### resource
 
-> **resource**: [`ResourceApi`](../classes/ResourceApi.md)
+> **resource**: `ResourceApi`
 
 #### Defined in
 
-[api/adapter.ts:125](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L125)
+[api/adapter.ts:126](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/api/adapter.ts#L126)
 
 ---
 
 ### resourceAction
 
-> **resourceAction**: [`ResourceActionApi`](../classes/ResourceActionApi.md)
+> **resourceAction**: `ResourceActionApi`
 
 #### Defined in
 
-[api/adapter.ts:124](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L124)
+[api/adapter.ts:125](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/api/adapter.ts#L125)
 
 ---
 
 ### search
 
-> **search**: [`SearchApi`](../classes/SearchApi.md)
+> **search**: `SearchApi`
 
 #### Defined in
 
-[api/adapter.ts:126](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L126)
+[api/adapter.ts:127](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/api/adapter.ts#L127)
 
 ---
 
 ### tag
 
-> **tag**: [`TagApi`](../classes/TagApi.md)
+> **tag**: `TagApi`
 
 #### Defined in
 
-[api/adapter.ts:127](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/api/adapter.ts#L127)
+[api/adapter.ts:128](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/api/adapter.ts#L128)

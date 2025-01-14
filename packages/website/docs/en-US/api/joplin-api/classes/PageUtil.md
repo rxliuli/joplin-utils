@@ -20,8 +20,8 @@
 
 > `static` **pageToAllList**\<`F`\>(`fn`, `pageParam`?): `Promise`\<`PageResValueType`\<`ReturnType`\<`F`\>\>[]\>
 
-循环获取所有分页的数据
-每次都获取最大分页数量，尽可能减少请求次数
+Get all list from page
+Get max limit each time, reduce request times
 
 ##### Type Parameters
 
@@ -31,15 +31,21 @@
 
 • **fn**: `F`
 
+The function to get page data
+
 • **pageParam?**: `Omit`\<`Parameters`\<`F`\>\[`0`\], `"page"` \| `"limit"`\>
+
+The page parameter
 
 ##### Returns
 
 `Promise`\<`PageResValueType`\<`ReturnType`\<`F`\>\>[]\>
 
+The all list
+
 ##### Defined in
 
-[util/PageUtil.ts:21](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/util/PageUtil.ts#L21)
+[util/PageUtil.ts:23](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/util/PageUtil.ts#L23)
 
 #### pageToAllList(fn, pageParam)
 
@@ -63,4 +69,4 @@
 
 ##### Defined in
 
-[util/PageUtil.ts:25](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/util/PageUtil.ts#L25)
+[util/PageUtil.ts:27](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/util/PageUtil.ts#L27)

@@ -6,4 +6,4 @@
 
 ## Defined in
 
-[jpl-vite/src/webview.ts:6](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/jpl-vite/src/webview.ts#L6)
+[jpl-vite/src/webview.ts:6](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/jpl-vite/src/webview.ts#L6)

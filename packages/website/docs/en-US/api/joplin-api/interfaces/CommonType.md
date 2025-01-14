@@ -10,4 +10,4 @@
 
 #### Defined in
 
-[model/CommonType.ts:4](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-api/src/model/CommonType.ts#L4)
+[model/CommonType.ts:4](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-api/src/model/CommonType.ts#L4)

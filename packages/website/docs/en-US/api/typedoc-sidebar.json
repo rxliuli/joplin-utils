@@ -9,14 +9,6 @@
         "collapsed": true,
         "items": [
           {
-            "text": "NoteActionEnum",
-            "link": "/en-US/api/joplin-api/enumerations/NoteActionEnum.md"
-          },
-          {
-            "text": "ResourceActionEnum",
-            "link": "/en-US/api/joplin-api/enumerations/ResourceActionEnum.md"
-          },
-          {
             "text": "TypeEnum",
             "link": "/en-US/api/joplin-api/enumerations/TypeEnum.md"
           }
@@ -27,60 +19,8 @@
         "collapsed": true,
         "items": [
           {
-            "text": "Config",
-            "link": "/en-US/api/joplin-api/classes/Config.md"
-          },
-          {
-            "text": "EventApi",
-            "link": "/en-US/api/joplin-api/classes/EventApi.md"
-          },
-          {
-            "text": "FolderApi",
-            "link": "/en-US/api/joplin-api/classes/FolderApi.md"
-          },
-          {
-            "text": "FolderExtApi",
-            "link": "/en-US/api/joplin-api/classes/FolderExtApi.md"
-          },
-          {
-            "text": "JoplinApi",
-            "link": "/en-US/api/joplin-api/classes/JoplinApi.md"
-          },
-          {
-            "text": "JoplinApiGenerator",
-            "link": "/en-US/api/joplin-api/classes/JoplinApiGenerator.md"
-          },
-          {
-            "text": "NoteActionApi",
-            "link": "/en-US/api/joplin-api/classes/NoteActionApi.md"
-          },
-          {
-            "text": "NoteApi",
-            "link": "/en-US/api/joplin-api/classes/NoteApi.md"
-          },
-          {
-            "text": "NoteExtApi",
-            "link": "/en-US/api/joplin-api/classes/NoteExtApi.md"
-          },
-          {
             "text": "PageUtil",
             "link": "/en-US/api/joplin-api/classes/PageUtil.md"
-          },
-          {
-            "text": "ResourceActionApi",
-            "link": "/en-US/api/joplin-api/classes/ResourceActionApi.md"
-          },
-          {
-            "text": "ResourceApi",
-            "link": "/en-US/api/joplin-api/classes/ResourceApi.md"
-          },
-          {
-            "text": "SearchApi",
-            "link": "/en-US/api/joplin-api/classes/SearchApi.md"
-          },
-          {
-            "text": "TagApi",
-            "link": "/en-US/api/joplin-api/classes/TagApi.md"
           }
         ]
       },
@@ -99,10 +39,6 @@
           {
             "text": "CommonType",
             "link": "/en-US/api/joplin-api/interfaces/CommonType.md"
-          },
-          {
-            "text": "EventProperties",
-            "link": "/en-US/api/joplin-api/interfaces/EventProperties.md"
           },
           {
             "text": "FieldsParam",
@@ -141,14 +77,6 @@
           {
             "text": "ApiConfig",
             "link": "/en-US/api/joplin-api/type-aliases/ApiConfig.md"
-          },
-          {
-            "text": "EventGetRes",
-            "link": "/en-US/api/joplin-api/type-aliases/EventGetRes.md"
-          },
-          {
-            "text": "EventListRes",
-            "link": "/en-US/api/joplin-api/type-aliases/EventListRes.md"
           },
           {
             "text": "FolderCreateRes",
@@ -197,68 +125,6 @@
           {
             "text": "TagProperties",
             "link": "/en-US/api/joplin-api/type-aliases/TagProperties.md"
-          }
-        ]
-      },
-      {
-        "text": "Variables",
-        "collapsed": true,
-        "items": [
-          {
-            "text": "actionApi",
-            "link": "/en-US/api/joplin-api/variables/actionApi.md"
-          },
-          {
-            "text": "ajax",
-            "link": "/en-US/api/joplin-api/variables/ajax.md"
-          },
-          {
-            "text": "config",
-            "link": "/en-US/api/joplin-api/variables/config.md"
-          },
-          {
-            "text": "eventApi",
-            "link": "/en-US/api/joplin-api/variables/eventApi.md"
-          },
-          {
-            "text": "folderApi",
-            "link": "/en-US/api/joplin-api/variables/folderApi.md"
-          },
-          {
-            "text": "folderExtApi",
-            "link": "/en-US/api/joplin-api/variables/folderExtApi.md"
-          },
-          {
-            "text": "joplinApi",
-            "link": "/en-US/api/joplin-api/variables/joplinApi.md"
-          },
-          {
-            "text": "noteActionApi",
-            "link": "/en-US/api/joplin-api/variables/noteActionApi.md"
-          },
-          {
-            "text": "noteApi",
-            "link": "/en-US/api/joplin-api/variables/noteApi.md"
-          },
-          {
-            "text": "noteExtApi",
-            "link": "/en-US/api/joplin-api/variables/noteExtApi.md"
-          },
-          {
-            "text": "resourceActionApi",
-            "link": "/en-US/api/joplin-api/variables/resourceActionApi.md"
-          },
-          {
-            "text": "resourceApi",
-            "link": "/en-US/api/joplin-api/variables/resourceApi.md"
-          },
-          {
-            "text": "searchApi",
-            "link": "/en-US/api/joplin-api/variables/searchApi.md"
-          },
-          {
-            "text": "tagApi",
-            "link": "/en-US/api/joplin-api/variables/tagApi.md"
           }
         ]
       },

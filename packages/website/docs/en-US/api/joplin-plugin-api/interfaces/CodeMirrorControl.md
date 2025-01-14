@@ -10,7 +10,7 @@
 
 #### Defined in
 
-[types.ts:543](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L543)
+[types.ts:543](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L543)
 
 ---
 
@@ -22,7 +22,7 @@ Points to a CodeMirror 6 EditorView instance.
 
 #### Defined in
 
-[types.ts:542](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L542)
+[types.ts:542](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L542)
 
 ---
 
@@ -68,7 +68,7 @@ Using `autocompletion({ override: [ ... ]})` causes errors when done by multiple
 
 #### Defined in
 
-[types.ts:552](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L552)
+[types.ts:552](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L552)
 
 ## Methods
 
@@ -88,7 +88,7 @@ Using `autocompletion({ override: [ ... ]})` causes errors when done by multiple
 
 #### Defined in
 
-[types.ts:546](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L546)
+[types.ts:546](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L546)
 
 ---
 
@@ -108,7 +108,7 @@ Using `autocompletion({ override: [ ... ]})` causes errors when done by multiple
 
 #### Defined in
 
-[types.ts:549](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L549)
+[types.ts:549](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L549)
 
 ---
 
@@ -128,7 +128,7 @@ Using `autocompletion({ override: [ ... ]})` causes errors when done by multiple
 
 #### Defined in
 
-[types.ts:550](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L550)
+[types.ts:550](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L550)
 
 ---
 
@@ -146,4 +146,4 @@ Using `autocompletion({ override: [ ... ]})` causes errors when done by multiple
 
 #### Defined in
 
-[types.ts:548](https://github.com/rxliuli/joplin-utils/blob/4824c3237f6c8bc282f001f71c149c89286aefdc/packages/joplin-plugin-api/src/types.ts#L548)
+[types.ts:548](https://github.com/rxliuli/joplin-utils/blob/2bc4cdf0126f9cf3a3dcc1c3f49a6f42208c3387/packages/joplin-plugin-api/src/types.ts#L548)
