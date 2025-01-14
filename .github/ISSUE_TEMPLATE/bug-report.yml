@@ -17,10 +17,11 @@ body:
     attributes:
       label: The tool/kit where the error occurred
       options:
-        - joplin-vscode-plugin
-        - joplin-search-integration
-        - joplin-batch-web
-        - joplin-api
+        - Joplin VSCode Plugin
+        - Joplin Search Integration
+        - Joplin Publisher
+        - Joplin Batch
+        - Joplin API
     validations:
       required: true
   - type: textarea
