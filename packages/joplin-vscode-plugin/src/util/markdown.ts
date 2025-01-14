@@ -1,43 +1,14 @@
 import { TypeEnum } from 'joplin-api'
 import type MarkdownIt from 'markdown-it'
-import type { RenderRule } from 'markdown-it/lib/renderer'
-// import parse from 'node-html-parser'
 import * as vscode from 'vscode'
-
-export const JoplinLinkRegex = /^:\/(\w{32})$/
-
-// /**
-//  * 替换 html 标签
-//  * @param config
-//  * @returns
-//  */
-// export function htmlImageLink(config: Config): MarkdownIt.PluginSimple {
-//   return (md) => {
-//     const htmlUrlReplace: RenderRule = (tokens, idx, options, env, self) => {
-//       if (tokens[idx].content.startsWith('<img')) {
-//         const code = tokens[idx].content
-//         const img = parse(code).querySelector('img')!
-//         const linkUrl = img.getAttribute('src')
-//         if (linkUrl && JoplinLinkRegex.test(linkUrl)) {
-//           const id = linkUrl.match(JoplinLinkRegex)![1]
-//           img.setAttribute('src', `${config.baseUrl}/resources/${id}/file?token=${config.token}`)
-//           return img.toString()
-//         }
-//       }
-
-//       return tokens[idx].content
-//     }
-//     md.renderer.rules.html_block = htmlUrlReplace
-//     md.renderer.rules.html_inline = htmlUrlReplace
-//     return md
-//   }
-// }
-
 import { ResourceGetRes } from 'joplin-api'
 import { arrayToMap } from '@liuli-util/array'
 import path from 'path'
 import { GlobalContext } from '../constants/context'
 import { ExtConfig } from '../constants/config'
+import { logger } from '../constants/logger'
+
+const JOPLIN_ID_REGEX = /^[0-9a-f]{32}$/
 
 export function wrapLink(id: string, type: TypeEnum.Resource | TypeEnum.Note) {
   const q = encodeURIComponent(`id=${id}`)
@@ -47,7 +18,7 @@ export function wrapLink(id: string, type: TypeEnum.Resource | TypeEnum.Note) {
     case TypeEnum.Note:
       return `vscode://rxliuli.joplin-vscode-plugin/open?${q}`
     default:
-      throw new Error('无法处理的链接类型')
+      throw new Error('Do not support this type ' + type)
   }
 }
 
@@ -79,11 +50,10 @@ function useJoplinLink(extConfig: ExtConfig, openNoteResourceMap: Map<string, Re
         const aIndex = tokens[idx].attrIndex(attr)
         if (aIndex >= 0) {
           const linkUrl = tokens[idx].attrs![aIndex][1]
-          // 匹配 joplin 内部引用链接和资源
-          // console.log('link: ', linkUrl)
-          if (JoplinLinkRegex.test(linkUrl)) {
+          const matched = linkUrl.match(/^:\/([0-9a-f]{32})$/)
+          if (matched) {
+            const id = matched[1]
             const resourceIdMap = arrayToMap([...openNoteResourceMap.values()].flat(), (item) => item.id)
-            const id = linkUrl.match(JoplinLinkRegex)![1]
             if (resourceIdMap.has(id)) {
               const resource = resourceIdMap.get(id)
               if (resource?.title) {
@@ -126,9 +96,9 @@ function useJoplinImage(config: ExtConfig) {
       const aIndex = tokens[idx].attrIndex('src')
       if (aIndex >= 0) {
         const linkUrl = tokens[idx].attrs![aIndex][1]
-        // 匹配 joplin 内部资源
-        if (JoplinLinkRegex.test(linkUrl)) {
-          const id = linkUrl.match(JoplinLinkRegex)![1]
+        const matched = linkUrl.match(/^:\/([0-9a-f]{32})$/)
+        if (matched) {
+          const id = matched[1]
           tokens[idx].attrs![aIndex][1] = `${config.baseUrl}/resources/${id}/file?token=${config.token}`
         }
       }

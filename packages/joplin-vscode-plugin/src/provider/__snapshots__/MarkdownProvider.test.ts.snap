@@ -1,0 +1,91 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MarkdownProvider 1`] = `
+[
+  {
+    "id": "76cc95540bc54cdd9e425898e6fd25df",
+    "label": "Another note",
+    "range": {
+      "end": {
+        "column": 62,
+        "line": 2,
+      },
+      "start": {
+        "column": 28,
+        "line": 2,
+      },
+    },
+    "type": 1,
+  },
+  {
+    "id": "76cc95540bc54cdd9e425898e6fd25df",
+    "label": "Another note",
+    "range": {
+      "end": {
+        "column": 66,
+        "line": 3,
+      },
+      "start": {
+        "column": 32,
+        "line": 3,
+      },
+    },
+    "type": 1,
+  },
+  {
+    "id": "76cc95540bc54cdd9e425898e6fd25df",
+    "label": "Another note",
+    "range": {
+      "end": {
+        "column": 66,
+        "line": 4,
+      },
+      "start": {
+        "column": 32,
+        "line": 4,
+      },
+    },
+    "type": 1,
+  },
+]
+`;
+
+exports[`include image 1`] = `
+[
+  {
+    "id": "8c08a859711c4cfd846bf916b540ee00",
+    "label": "test.drawio.svg",
+    "range": {
+      "end": {
+        "column": 53,
+        "line": 0,
+      },
+      "start": {
+        "column": 18,
+        "line": 0,
+      },
+    },
+    "type": 4,
+  },
+]
+`;
+
+exports[`include resources 1`] = `
+[
+  {
+    "id": "8c08a859711c4cfd846bf916b540ee00",
+    "label": "test.drawio.svg",
+    "range": {
+      "end": {
+        "column": 53,
+        "line": 0,
+      },
+      "start": {
+        "column": 18,
+        "line": 0,
+      },
+    },
+    "type": 4,
+  },
+]
+`;

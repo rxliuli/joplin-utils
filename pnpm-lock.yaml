@@ -405,8 +405,8 @@ importers:
         specifier: ^0.22.12
         version: 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       '@jimp/types':
-        specifier: ^0.22.12
-        version: 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
+        specifier: ^1.6.0
+        version: 1.6.0
       '@liuli-util/array':
         specifier: ^3.5.0
         version: 3.5.0
@@ -431,6 +431,9 @@ importers:
       '@types/markdown-it':
         specifier: ^12.2.3
         version: 12.2.3
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
       '@types/node':
         specifier: ^20.13.0
         version: 20.17.6
@@ -443,9 +446,6 @@ importers:
       chokidar:
         specifier: ^3.5.3
         version: 3.6.0
-      cross-path-sort:
-        specifier: ^1.0.0
-        version: 1.0.0
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -473,9 +473,12 @@ importers:
       markdown-it:
         specifier: ^13.0.1
         version: 13.0.2
-      node-html-parser:
-        specifier: ^6.1.1
-        version: 6.1.13
+      mdast-util-from-markdown:
+        specifier: ^2.0.2
+        version: 2.0.2
+      mdast-util-to-string:
+        specifier: ^4.0.0
+        version: 4.0.0
       path-exists:
         specifier: ^5.0.0
         version: 5.0.0
@@ -491,6 +494,9 @@ importers:
       typescript:
         specifier: ^4.8.4
         version: 4.9.5
+      unist-util-select:
+        specifier: ^5.1.0
+        version: 5.1.0
       utility-types:
         specifier: ^3.10.0
         version: 3.11.0
@@ -1799,6 +1805,10 @@ packages:
     resolution: {integrity: sha512-wwKYzRdElE1MBXFREvCto5s699izFHNVvALUv79GXNbsOVqlwlOxlWJ8DuyOGIXoLP4JW/m30YyuTtfUJgMRMA==}
     peerDependencies:
       '@jimp/custom': '>=0.3.5'
+
+  '@jimp/types@1.6.0':
+    resolution: {integrity: sha512-7UfRsiKo5GZTAATxm2qQ7jqmUXP0DxTArztllTcYdyw6Xi5oT4RaoXynVtCD4UyLK5gJgkZJcwonoijrhYFKfg==}
+    engines: {node: '>=18'}
 
   '@jimp/utils@0.22.12':
     resolution: {integrity: sha512-yJ5cWUknGnilBq97ZXOyOS0HhsHOyAyjHwYfHxGbSyMTohgQI6sVyE8KPgDwH8HHW/nMKXk8TrSwAE71zt716Q==}
@@ -4136,10 +4146,6 @@ packages:
 
   create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
-
-  cross-path-sort@1.0.0:
-    resolution: {integrity: sha512-aNS22Ns5IC2YmotLFBaQLmH+RtRpfjQlnZtUuwlHUaaxMKUeLQ0Pve1c69zgU6jmh2Irug1ZiMex9XkYdm5Mwg==}
-    engines: {node: '>=6'}
 
   cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
@@ -9819,6 +9825,10 @@ snapshots:
       '@jimp/tiff': 0.22.12(@jimp/custom@0.22.12(encoding@0.1.13))
       timm: 1.7.1
 
+  '@jimp/types@1.6.0':
+    dependencies:
+      zod: 3.24.1
+
   '@jimp/utils@0.22.12':
     dependencies:
       regenerator-runtime: 0.13.11
@@ -12457,8 +12467,6 @@ snapshots:
   crc-32@1.2.2: {}
 
   create-require@1.1.1: {}
-
-  cross-path-sort@1.0.0: {}
 
   cross-spawn@7.0.3:
     dependencies:
