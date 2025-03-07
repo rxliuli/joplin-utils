@@ -1,6 +1,6 @@
 {
   "name": "joplin-vscode-plugin",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "%package.description%",
   "homepage": "https://joplin-utils.rxliuli.com/zh/joplin-vscode-plugin/",
   "repository": {
