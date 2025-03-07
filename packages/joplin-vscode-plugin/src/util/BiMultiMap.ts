@@ -36,4 +36,8 @@ export class BiMultiMap<K, V> {
     this.map.delete(this.map.get(k)!)
     this.map.delete(k)
   }
+
+  keys(): (K | V)[] {
+    return Array.from(this.map.keys())
+  }
 }

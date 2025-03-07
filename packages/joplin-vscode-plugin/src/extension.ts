@@ -1,5 +1,3 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode'
 import { NoteExplorerProvider } from './provider/NoteExplorerProvider'
 import { JoplinNoteCommandService } from './service/JoplinNoteCommandService'
@@ -11,20 +9,38 @@ import { GlobalContext } from './constants/context'
 import { registerCommand } from './util/registerCommand'
 import { ClassUtil } from '@liuli-util/object'
 import { initLogger } from './constants/logger'
-import path from 'path'
+import path from 'pathe'
 import { linkCommands, noteCommands, tagCommands } from './commands'
 import { initI18n } from './constants/i18n'
 import { extendMarkdownIt } from './util/markdown'
 import { initConfig } from './constants/config'
 import { NoteSearchProvider } from './provider/NoteSearchProvider'
+import { rm } from 'node:fs/promises'
+import { AsyncArray } from '@liuli-util/async'
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
-// noinspection JSUnusedLocalSymbols
+async function cleanTempNote() {
+  // TODO: wait for https://github.com/microsoft/vscode/issues/242867
+  const tabs = vscode.window.tabGroups.all
+    .flatMap((it) => it.tabs)
+    .filter((it) => {
+      if (typeof it.input === 'object' && it.input && 'uri' in it.input && it.input.uri instanceof vscode.Uri) {
+        const fsPath = path.resolve(it.input.uri.fsPath)
+        const tempNodePath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempNote')
+        const tempResourcePath = path.resolve(GlobalContext.context.globalStorageUri.fsPath, '.tempResource')
+        return fsPath.startsWith(tempNodePath) || fsPath.startsWith(tempResourcePath)
+      }
+      return false
+    })
+  if (tabs.length > 0) {
+    await vscode.window.tabGroups.close(tabs, false)
+  }
+}
+
 export async function activate(context: vscode.ExtensionContext) {
   GlobalContext.context = context
   initConfig()
   const logPath = path.resolve(context.globalStorageUri.fsPath, 'log')
+  await cleanTempNote()
   initLogger(logPath)
   await initI18n({
     language: vscode.env.language.toLocaleLowerCase().includes('zh') ? 'zh-CN' : 'en-US',
@@ -133,11 +149,12 @@ export async function activate(context: vscode.ExtensionContext) {
     scheme: 'file',
   }
   const markdownProvider = new MarkdownProvider()
-  context.subscriptions.push(
-    vscode.languages.registerDocumentLinkProvider(docFilter, markdownProvider),
-    vscode.languages.registerHoverProvider(docFilter, markdownProvider),
-    vscode.languages.registerDocumentDropEditProvider(docFilter, markdownProvider),
-  )
+  context.subscriptions.push(vscode.languages.registerDocumentLinkProvider(docFilter, markdownProvider))
+
+  registerCommand('joplin.closeWindows', async () => {
+    const tabs = vscode.window.tabGroups.all.flatMap((it) => it.tabs)
+    await vscode.window.tabGroups.close(tabs)
+  })
 
   //endregion
 
@@ -148,5 +165,11 @@ export async function activate(context: vscode.ExtensionContext) {
   //endregion
 }
 
-// this method is called when your extension is deactivated
-export function deactivate() {}
+export async function deactivate() {
+  const files = [...GlobalContext.openNoteMap.keys(), ...GlobalContext.openResourceMap.keys()].filter((k) =>
+    path.isAbsolute(k),
+  )
+  await AsyncArray.forEach(files, async (file) => {
+    await rm(file, { force: true })
+  })
+}
