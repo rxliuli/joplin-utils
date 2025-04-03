@@ -1,6 +1,7 @@
 env:
   DIRECTORY: packages/joplin-search-integration/.output
   PROJECT_NAME: joplin-search-integration
+  PACKAGE_PATH: packages/joplin-search-integration
 
 name: Deploy Joplin Search Integration
 
@@ -59,7 +60,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install && pnpm setup-all
       - name: Zip extensions
-        run: cd packages/joplin-search-integration && pnpm run zip && pnpm run zip:firefox
+        run: pnpm run zip && pnpm run zip:firefox
+        working-directory: ${{ env.PACKAGE_PATH }}
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
