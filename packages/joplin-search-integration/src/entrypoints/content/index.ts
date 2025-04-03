@@ -7,11 +7,27 @@ import { bing } from './plugins/bing'
 import { brave } from './plugins/brave'
 import { duckduckgo } from './plugins/duckduckgo'
 import { google } from './plugins/google'
-import { searx } from './plugins/searx'
 import type { ShadowRootContentScriptUi } from 'wxt/client'
 
 export default defineContentScript({
-  matches: ['<all_urls>'],
+  matches: [
+    'https://www.baidu.com/*',
+    'https://www.bing.com/*',
+    'https://cn.bing.com/*',
+    'https://search.brave.com/*',
+    'https://duckduckgo.com/*',
+    'https://www.google.com/*',
+    'https://www.google.com.hk/*',
+    'https://www.google.co.jp/*',
+    'https://www.google.co.uk/*',
+    'https://www.google.com.au/*',
+    'https://www.google.de/*',
+    'https://www.google.fr/*',
+    'https://www.google.it/*',
+    'https://www.google.es/*',
+    'https://www.google.ru/*',
+    'https://www.google.cn/*',
+  ],
   cssInjectionMode: 'ui',
   async main(ctx) {
     let ui: ShadowRootContentScriptUi<void>
@@ -19,7 +35,7 @@ export default defineContentScript({
       if (ui) {
         ui.remove()
       }
-      const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo(), searx(), brave()]
+      const plugins: SearchPlugin[] = [google(), bing(), baidu(), duckduckgo(), brave()]
       const p = plugins.find((it) => it.match(new URL(location.href)))
       if (!p) {
         return

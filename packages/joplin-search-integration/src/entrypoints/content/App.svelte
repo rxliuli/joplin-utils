@@ -3,7 +3,6 @@
   import { sendMessage } from '../model/messaging'
   import { detectBackground } from '$lib/detectTheme'
   import Button from '$lib/components/ui/button/button.svelte'
-  import { ModeWatcher, mode } from 'mode-watcher'
 
   interface Props {
     plugin: SearchPlugin
@@ -30,14 +29,6 @@
       document.querySelector('joplin-search-plugin')?.shadowRoot?.querySelector('html')?.classList.add('dark')
     }
   })
-
-  $effect(() => {
-    const root = document.querySelector('joplin-search-plugin')?.shadowRoot?.querySelector('html')
-    const current = $mode
-    if (root && current) {
-      root.className = `color-scheme: ${current}`
-    }
-  })
 </script>
 
 <main>
@@ -56,5 +47,3 @@
     {/each}
   </nav>
 </main>
-
-<ModeWatcher />

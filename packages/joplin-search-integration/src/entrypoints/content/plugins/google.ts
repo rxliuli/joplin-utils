@@ -7,6 +7,7 @@ function createRhs(): HTMLElement {
   const $rhs = document.createElement('div') as HTMLDivElement
   $rhs.id = 'rhs'
   // $rhs.style.marginLeft = '892px'
+  $rhs.style.gridColumn = 'span 7 / -2'
   $rcht.appendChild($rhs)
   return $rhs
 }

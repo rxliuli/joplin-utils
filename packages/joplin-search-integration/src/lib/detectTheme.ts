@@ -47,6 +47,8 @@ export function detectTheme() {
     return htmlClasses.contains('b_dark') || isDarkBg
   } else if (host.includes('duckduckgo')) {
     return htmlClasses.contains('dark-bg') || isDarkBg
+  } else if (host.includes('baidu')) {
+    return isDarkBg
   }
 
   // 如果没有特定处理，综合判断
