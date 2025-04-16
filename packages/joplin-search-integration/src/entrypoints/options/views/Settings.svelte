@@ -18,7 +18,7 @@
   $effect(() => {
     ;(async () => {
       if (config) {
-        await browser.storage.local.set(config)
+        await browser.storage.local.set($state.snapshot(config))
       }
     })()
   })
