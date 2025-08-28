@@ -1,6 +1,7 @@
 import { Button } from './components/ui/button'
 import { Link, RouteConfig, RouterView, useLocation } from '@liuli-util/react-router'
 import { CleanUnusedResourcesView } from './views/CleanUnusedResourcesView'
+import { ManageAllResourcesView } from './views/ManageAllResourcesView'
 import { SettingsView } from './views/SettingsView'
 import { Menu } from 'lucide-react'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from './components/ui/sheet'
@@ -19,6 +20,13 @@ export const routeList: MenuConfig[] = [
     component: CleanUnusedResourcesView,
     meta: {
       title: 'Clean Unused Resources',
+    },
+  },
+  {
+    path: '/manage-all-resources',
+    component: ManageAllResourcesView,
+    meta: {
+      title: 'Manage All Resources',
     },
   },
   {
